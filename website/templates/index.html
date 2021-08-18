@@ -1,0 +1,24 @@
+{%extends "base.html"%}
+{%block title%}Home page{% endblock %}
+{%block nav%}
+    {% if user.is_authenticated %}
+        <div class="dropdown">
+            <button>{{user.name}}</button>
+            <div class="dropdown-content">
+                <a href="user">Account</a>
+                <a href="logout">Logout</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="dropdown">
+            <button>User</button>
+            <div class="dropdown-content">
+                <a href="login">Login</a>
+                <a href="register">Register</a>
+            </div>
+        </div>
+    {% endif %}
+{%endblock%}
+{%block content%}
+    <img src="{{url_for('static',filename='images/MYLOGO.png')}}" style="width:50%;margin-left:50%;transform:translate(-50%,0%);margin-top:50px">
+{% endblock %}

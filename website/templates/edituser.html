@@ -1,0 +1,45 @@
+{%extends "base.html"%}
+{%block title%}Home page{% endblock %}
+{%block nav%}
+    {% if user.is_authenticated %}
+        <div class="dropdown">
+            <button>{{user.name}}</button>
+            <div class="dropdown-content">
+                <a href="user">Account</a>
+                <a href="logout">Logout</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="dropdown">
+            <button>User</button>
+            <div class="dropdown-content">
+                <a href="login">Login</a>
+                <a href="register">Register</a>
+            </div>
+        </div>
+    {% endif %}
+{%endblock%}
+{%block content%}
+<div class="Info">
+    
+    {%if user%}
+        {%if image%}
+                    
+        {%else%}
+            <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
+        {%endif%}
+        <br>
+        <form action="" method="post">
+            {{ form.csrf_token }}
+            {{form.hidden_tag()}}
+            <label>Name:</label>
+            {{form.name(placeholder=user.name,style="")}}<br>
+            <label>Email:</label>
+            {{form.email(placeholder=user.email,style="")}}<br>
+            {{form.submit()}}
+            <input type="submit">
+        </form>
+        
+    {%endif%} 
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{%extends "base.html"%}
+{%block title%}Registration page{% endblock %}
+{%block nav%}
+<div class="dropdown">
+    <button>User</button>
+    <div class="dropdown-content">
+        <a href="login">Login</a>
+        <a href="register">Register</a>
+    </div>
+</div>
+{% endblock %}
+{%block content%}
+
+<div class="MainDiv" >
+    <p class="Nadpis"><b>Register</b></p>
+    <div class="Information">
+        <form action="" method="post"  class="form"> 
+            {{ form.csrf_token }}
+            {{form.hidden_tag()}}
+        <div class="Input">
+            <label  for="email"><b>Email</b></label><br>
+            {{form.email(type="text",placeholder="Enter email", style="width:200px;border-radius:5px;padding:5px",required="required")}}
+        </div>
+        <div class="Input">
+            <label  for="email"><b>Name</b></label><br>
+            {{form.name(type="text",placeholder="Enter name", style="width:200px;border-radius:5px;padding:5px")}}
+        </div>
+        <div class="Input">
+            <label  for="email"><b>Password</b></label><br>
+            {{form.password1(type="password",placeholder="Enter password", style="width:200px;border-radius:5px;padding:5px")}}
+        </div>
+        <div class="Input">
+            <label  for="email"><b>Password (Confirm):</b></label><br>
+            {{form.password2(type="password",placeholder="Enter password again", style="width:200px;border-radius:5px;padding:5px")}}
+        </div>
+        <div style="margin-top:30px">
+            {{ form.submit(style="padding:5px", value="Odeslat") }}
+        </div>
+        </form> 
+    </div>
+    <div style="position: relative;top:100px">
+        {%with messages = get_flashed_messages(with_categories=true)%}
+            {% if messages %}
+                {%for category,msg in messages %}
+                    {%if category=="error"%}
+                        <p style="background-color: rgb(214, 97, 97);">{{msg}}</p>
+                    {%else:%}
+                        <p style="background-color: rgb(135, 224, 94);">{{msg}}</p>
+                    {%endif%}
+                {%endfor%}
+            {% endif %}
+        {%endwith%}
+        {% if form.errors%}
+            {% for error in form.errors%}
+                <p style="background-color: rgb(109, 97, 214);">{{error}}</p>
+            {% endfor%}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
