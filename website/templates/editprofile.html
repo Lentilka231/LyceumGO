@@ -5,7 +5,7 @@
         <div class="dropdown">
             <button>{{user.name}}</button>
             <div class="dropdown-content">
-                <a href="user">Account</a>
+                <a href="profile">Account</a>
                 <a href="logout">Logout</a>
             </div>
         </div>
@@ -34,8 +34,7 @@
             {{form.hidden_tag()}}
             <label>Name:</label>
             {{form.name(placeholder=user.name,style="")}}<br>
-            <label>Email:</label>
-            {{form.email(placeholder=user.email,style="")}}<br>
+            <label>Email:</label><br>
             {{form.submit()}}
             <input type="submit">
         </form>

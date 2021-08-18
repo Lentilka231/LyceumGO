@@ -13,20 +13,19 @@ views = Blueprint("views", __name__)
 def home():
     return render_template("index.html",user=current_user)
 
-@views.route("/user")
-def user():
+@views.route("/profile")
+def profile():
     if current_user.is_authenticated:
-        return render_template("user.html",user=current_user)
+        return render_template("profile.html",user=current_user)
     else:
         return redirect(url_for("auth.login"))
 
 class EditUser(FlaskForm):
-    email = StringField("Email", [validators.Length(5,64, message="velikost majliku musí být od 5 do 64 znaků"),validators.Email(message="Zadáváš mi špatný email")])
     name = StringField("Name", [validators.Length(5,20,message="velikost jména musí být od 5 do 20 znaků")])
     submit = SubmitField("Save")
 
-@views.route("/edituser",methods=["GET","POST"])
-def edituser():
+@views.route("/editprofile",methods=["GET","POST"])
+def editprofile():
     if current_user.is_authenticated:
         form=EditUser(request.form)
         if form.validate_on_submit():
@@ -40,7 +39,7 @@ def edituser():
                         current_user.name=form.name.data
                         db.session.commit()
 
-            return redirect(url_for("views.user"))
-        return render_template("edituser.html",user=current_user,form=form)
+            return redirect(url_for("views.profile"))
+        return render_template("editprofile.html",user=current_user,form=form)
     else:
         return redirect(url_for("auth.login"))

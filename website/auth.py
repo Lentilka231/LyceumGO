@@ -7,9 +7,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField,SubmitField,validators,Form
 from wtforms.validators import InputRequired,Length,Email,EqualTo
 from validate_email import validate_email
-
-
+from .sendmail import *
 auth=Blueprint("auth", __name__)
+
 
 
 class RegisterForm(FlaskForm):
@@ -23,7 +23,7 @@ class RegisterForm(FlaskForm):
 @auth.route("/register",methods=["GET","POST"])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for("views.user"))
+        return redirect(url_for("views.profile"))
     form = RegisterForm(request.form)
 
     if form.validate_on_submit():
@@ -31,6 +31,7 @@ def register():
         usern = User.query.filter_by(name=form.name.data).first()
         if not usere:
             if not usern:
+                SendMail(form.email.data, form.name.data, "Welcome")
                 new_user = User(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"))
                 db.session.add(new_user)
                 db.session.commit()
@@ -53,7 +54,7 @@ class LoginForm(FlaskForm):
 @auth.route("/login",methods=["GET","POST"])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for("views.user"))
+        return redirect(url_for("views.profile"))
     form = LoginForm(request.form)
     print(form.errors)
     if form.validate_on_submit():

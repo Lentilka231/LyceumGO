@@ -43,7 +43,7 @@
             {% if messages %}
                 {%for category,msg in messages %}
                     {%if category=="error"%}
-                        <p style="background-color: rgb(214, 97, 97);">{{msg}}</p>
+                        flash error:<p style="background-color: rgb(214, 97, 97);">{{msg}}</p>
                     {%else:%}
                         <p style="background-color: rgb(135, 224, 94);">{{msg}}</p>
                     {%endif%}
@@ -52,7 +52,7 @@
         {%endwith%}
         {% if form.errors%}
             {% for error in form.errors%}
-                <p style="background-color: rgb(109, 97, 214);">{{error}}</p>
+                form error:<p style="background-color: rgb(109, 97, 214);">{{error}}</p>
             {% endfor%}
         {% endif %}
     </div>

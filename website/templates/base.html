@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='style.css')}}">
     <title>{%block title%}{%endblock%}</title>
+    
 </head>
 <body>
     <nav class="Nav">
-        <p class="Name">HokusPokus</p>
+        <p class="Name">LyceumGO</p>
         <div class="Buttons">
-            <button><a href="home" class="home">Home</a></button>
+            <a href="home">Home</a>
             {%block nav%}
             
             {%endblock%}
@@ -19,5 +20,7 @@
     {%block content%}
     
     {%endblock%}
+    <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/MiraProJAVASCRIPTER.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/mira.js')}}"></script>
 </body>
 </html>
