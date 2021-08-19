@@ -30,8 +30,10 @@
                 <div class="information">Name: <input type="text" placeholder={{user.name}} class="Inputs"></div>
                 <div class="information">Email: {{user.email}}</div>
                 <div class="information">About me:<br> 
-                    <textarea name="note" class="Inputs" id="AboutMEE"></textarea>
+                    <textarea name="note" class="Inputs" id="AboutMEE">{{note}}</textarea>
                 </div>
+                <input type="submit" class="BasicButton" name="submit_button" value="save">
+                <input type="submit" class="BasicButton" name="submit_button" value="cancel">
             </div>
         </form>
     {%endif%} 

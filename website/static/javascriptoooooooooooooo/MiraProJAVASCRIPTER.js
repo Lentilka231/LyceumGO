@@ -1,17 +1,13 @@
 var imgLogo = document.querySelector("#imgLogo");
 var div = document.querySelector("#divTabletosondo");
-var a = 0;
-var c = 1;
-var id = null;
-var id2 = null;
+var a = 0;var c = 1;var id = null;var id2 = null;
 id = setInterval(frame, 20);
 function frame(){
     if(a==50+1){
         clearInterval(id);
         id2 = setInterval(all,20);
     }
-    else{
-        a++;
+    else{a++;
         imgLogo.style.top = a + "px";
     };
 };
@@ -28,39 +24,24 @@ function all(){
         imgLogo.style.opacity = c;
     };
 };
-function divh(){
+function divh(){x=0;
     const divn = document.createElement("div");const table = document.createElement("table");
-    var text = ["Login", "Register","Login","Login"];
-    divn.className = "divnnn";
-    table.className = "divnnn";
-    div.append(divn);
-    divn.append(table);
-    //ffdfdfdfd
-    const tr1 = document.createElement("tr");const tr2 = document.createElement("tr");const tr3 = document.createElement("tr");
-    table.append(tr1);table.append(tr2);table.append(tr3);
-    //rdfffdf
-    
-
-    for(j=0;j<text.length/2;j++){
+    divn.className = "divnnn";table.className = "divnnn";div.append(divn);divn.append(table);
+    var text = ["Seznam"];
+    var href = ["https://www.seznam.cz/"];
+    for(var j=0;j<text.length/2;j++){
         const tr = document.createElement("tr");
         table.append(tr);
+        for(i=0;i < 2;i++) {
+            const td = document.createElement("td");
+            td.className = "testd";
+            tr.append(td);
+            var elA = document.createElement("a");
+            elA.setAttribute('href', href[x]);
+            elA.className = "text2255"
+            elA.innerText = text[x];
+            td.append(elA)
+            x=x+1;
+        };
     };
-    for(var i = 0; i < text.length; i += 1) {
-        const td = document.createElement("td");
-        if(i>=2 && i<=3 ){
-            td.className = "testd";
-            td.innerHTML = text[i];
-            tr2.appendChild(td);
-        }
-        else if(i>=4){
-            td.className = "testd";
-            td.innerHTML = text[i];
-            tr3.appendChild(td);
-        }
-        else{
-            td.className = "testd";
-            td.innerHTML = text[i];
-            tr1.appendChild(td);
-        }
-    }
 };

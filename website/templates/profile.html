@@ -24,8 +24,8 @@
     {%if user%}
         <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
         <div id="info">
-            <p ><b>{{user.name}}</b></p>
-            <p class="information">email: {{user.email}}</p>
+            <p style="font-size: 30px;"><b>{{user.name}}</b></p>
+            <p class="information">Email: {{user.email}}</p>
             <p class="information">About me:</p>
             <p id="AboutME">
             {%if note%}

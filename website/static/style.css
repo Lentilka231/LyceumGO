@@ -120,7 +120,11 @@ body{
 .Inputs{
   width:200px;
   border-radius:5px;
-  padding:5px
+  padding:5px;
+  border:solid 2px rgb(87, 115, 153);
+}
+.Inputs:focus{
+  border-color:rgb(0, 0, 0);
 }
 /*------------------------------------------*/
 /*--------profile.html/editprofile.html------------------*/
@@ -160,22 +164,26 @@ body{
   height:70px;
   margin-top:2px;
   padding:5px;
+  font-size: 14px;
 }
 #AboutMEE{
-  max-width:300px;
-  min-width:300px;
-  max-height: 170px;
-  min-height: 100px;
+  max-width:400px;
+  min-width:400px;
+  max-height: 70px;
+  min-height: 70px;
   font-family: Arial;
   margin-top:10px;
 }
 #info{
   margin-top:20px;
   margin-bottom:10px;
-  font-size:20px
+  font-size:16px;
+}
+textarea {
+  resize: none;
 }
 .information{
-  margin-top:15px;
+  margin-top:10px;
 }
 
 ::placeholder { /* Firefox, Chrome, Opera */
@@ -220,20 +228,17 @@ body{
   border: gray solid;
   animation-name: testTD;
   animation-duration: 1s;
-  width: 200px;
-  height: 200px;
   text-align: center;
   background-color: gray;
   font-size: 40px;
   font-family: fredokaone;
 }
-@keyframes testTD{
-  0%{opacity: 0.8;}
-  100%{opacity: 1;}
-}
 .divnnn{
   width: 950px;
-  height: 650px;
+}
+.text2255{
+  display:block;
+  font-size: 50px;
 }
 .testd:hover{
   animation-name: testalala;
@@ -241,5 +246,9 @@ body{
   animation-fill-mode: forwards;
 }
 @keyframes testalala{
-  100%{background-color: rgb(254, 95, 85);}
+  100%{background-color: rgb(254, 95, 85);};
+}
+@keyframes testTD{
+  0%{opacity: 0.8;}
+  100%{opacity: 1;}
 }
