@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint,request,redirect, url_for,flash
-from .models import User
+from .models import User,Notes
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required,logout_user,current_user
@@ -34,6 +34,9 @@ def register():
                 SendMail(form.email.data, form.name.data, "Welcome")
                 new_user = User(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"))
                 db.session.add(new_user)
+                user = User.query.filter_by(name=form.name.data).first()
+                user_notes = Notes(data="",user_id=user.id)
+                db.session.add(user_notes)
                 db.session.commit()
                 login_user(new_user, remember=True)
                 flash("Account created!", category="success")

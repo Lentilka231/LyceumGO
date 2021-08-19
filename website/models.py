@@ -3,7 +3,7 @@ from flask_login import UserMixin
 
 class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.String(10000))
+    data = db.Column(db.String(500))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 

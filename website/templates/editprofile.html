@@ -27,10 +27,10 @@
 
         <form action="" method="post">
             <div id="info">
-                <div class="information">Name: <input type="text" placeholder={{user.name}} class="Inputs"></div>
+                <div class="information">Name: <input type="text" placeholder={{user.name}} class="Inputs" name="name"></div>
                 <div class="information">Email: {{user.email}}</div>
                 <div class="information">About me:<br> 
-                    <textarea name="note" class="Inputs" id="AboutMEE">{{note}}</textarea>
+                    <textarea name="note" class="Inputs" id="AboutMEE">{%if note%}{{note.data}}{%endif%}</textarea>
                 </div>
                 <input type="submit" class="BasicButton" name="submit_button" value="save">
                 <input type="submit" class="BasicButton" name="submit_button" value="cancel">

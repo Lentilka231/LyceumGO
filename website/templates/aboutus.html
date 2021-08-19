@@ -1,0 +1,26 @@
+{%extends "base.html"%}
+{%block title%}About us{% endblock %}
+{%block nav%}
+    {% if user.is_authenticated %}
+    <div class="dropdown">
+        <button>{{user.name}}</button>
+        <div class="dropdown-content">
+            <a href="profile">Account</a>
+            <a href="logout">Logout</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="dropdown">
+        <button>User</button>
+        <div class="dropdown-content">
+            <a href="login">Login</a>
+            <a href="register">Register</a>
+        </div>
+    </div>
+    {% endif %}
+{%endblock%}
+{%block content%}
+    <div id="MainDiv">
+        random content
+    </div>
+{%endblock%}

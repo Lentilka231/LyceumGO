@@ -20,7 +20,13 @@ body{
   }
 @font-face{
   font-family:'Bree Serif';
-  src:url("fonts/breeserif") format("woff2");
+  src:url("fonts/breeserif.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal
+}
+@font-face{
+  font-family:'Oxygen';
+  src:url("fonts/oxygen.woff2") format("woff2");
   font-weight: normal;
   font-style: normal
 }
@@ -161,7 +167,7 @@ body{
   background-color: rgb(247, 247, 255);
   border-radius: 5px;
   width:400px;
-  height:70px;
+  height:110px;
   margin-top:2px;
   padding:5px;
   font-size: 14px;
@@ -169,8 +175,8 @@ body{
 #AboutMEE{
   max-width:400px;
   min-width:400px;
-  max-height: 70px;
-  min-height: 70px;
+  max-height: 75px;
+  min-height: 75px;
   font-family: Arial;
   margin-top:10px;
 }
@@ -178,6 +184,7 @@ body{
   margin-top:20px;
   margin-bottom:10px;
   font-size:16px;
+  font-family:"Arial";
 }
 textarea {
   resize: none;
@@ -220,25 +227,23 @@ textarea {
   animation-duration: 1s;
   position: relative;
 }
-@keyframes imgAni{
-  0%{opacity: 0;}
-  100%{opacity: 1;}
-}
 .testd{
   border: gray solid;
   animation-name: testTD;
   animation-duration: 1s;
-  text-align: center;
   background-color: gray;
   font-size: 40px;
   font-family: fredokaone;
+  padding:40px;
+  width:400px
 }
 .divnnn{
-  width: 950px;
+  /*xddddd*/
 }
 .text2255{
   display:block;
   font-size: 50px;
+  text-align: center;
 }
 .testd:hover{
   animation-name: testalala;
@@ -248,7 +253,20 @@ textarea {
 @keyframes testalala{
   100%{background-color: rgb(254, 95, 85);};
 }
+
 @keyframes testTD{
   0%{opacity: 0.8;}
   100%{opacity: 1;}
+}
+/*------------------------------------------*/
+/*--------------aboutus.html----------------*/
+#MainDiv{
+  display:flex;
+  justify-content: center;
+  width:700px;
+  background-color: rgb(87, 115, 153);
+  height:800px;
+  margin:auto;
+  margin-top:50px;
+  margin-bottom:50px;
 }
