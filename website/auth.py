@@ -29,7 +29,8 @@ def register():
     if form.validate_on_submit():
         usere = User.query.filter_by(email=form.email.data).first()
         usern = User.query.filter_by(name=form.name.data).first()
-        if not usere:
+        emailexist = validate_email(form.email.data)
+        if not usere and emailexist:
             if not usern:
                 SendMail(form.email.data, form.name.data, "Welcome")
                 new_user = User(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"))

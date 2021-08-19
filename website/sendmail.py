@@ -6,7 +6,7 @@ EMAIL_PASS = "Radim23147"
 context = ssl.create_default_context()
 def SendMail(EmailAddress,UserName,Message):
     KindOfAddress = EmailAddress[EmailAddress.find("@")+1:]
-    with smtplib.SMTP_SSL(f"smtp.{KindOfAddress}",465,context=context) as smtp:
+    with smtplib.SMTP_SSL(f"smtp.gmail.com",465,context=context) as smtp:
         smtp.login(EMAIL_ADDRESS,EMAIL_PASS)
         print(f"sending mail to {EmailAddress}")
         if Message=="Welcome":
