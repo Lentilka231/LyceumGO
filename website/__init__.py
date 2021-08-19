@@ -18,14 +18,14 @@ def create_app():
     app.register_blueprint(auth, url_prefix="/")
     app.register_blueprint(views, url_prefix="/")
 
-    from .models import User,Note
+    from .models import User,Notes
     create_databases(app)
 
     login_manager=LoginManager()
     login_manager.login_view = "auth.login"
     login_manager.init_app(app)
     
-    user_datastore = SQLAlchemyUserDatastore(db,User,Note)
+    user_datastore = SQLAlchemyUserDatastore(db,User,Notes)
     security = Security(app, user_datastore)
     @login_manager.user_loader
     def load_user(id):

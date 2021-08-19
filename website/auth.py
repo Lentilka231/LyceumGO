@@ -24,7 +24,7 @@ class RegisterForm(FlaskForm):
 def register():
     if current_user.is_authenticated:
         return redirect(url_for("views.profile"))
-    form = RegisterForm(request.form)
+    form = RegisterForm()
 
     if form.validate_on_submit():
         usere = User.query.filter_by(email=form.email.data).first()
@@ -55,8 +55,7 @@ class LoginForm(FlaskForm):
 def login():
     if current_user.is_authenticated:
         return redirect(url_for("views.profile"))
-    form = LoginForm(request.form)
-    print(form.errors)
+    form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user:

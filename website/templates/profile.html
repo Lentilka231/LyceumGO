@@ -23,9 +23,16 @@
 <div class="Info">
     {%if user%}
         <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
-        <p style="font-size: 45;"><b>{{user.name}}</b></p>
-        <p>email: {{user.email}}</p>
-        <a href="editprofile"><p class="EditButton">Edit Account</p></a>
+        <div id="info">
+            <p ><b>{{user.name}}</b></p>
+            <p class="information">email: {{user.email}}</p>
+            <p class="information">About me:</p>
+            <p id="AboutME">
+            {%if note%}
+                {{note}}
+            {%endif%}</p>
+        </div>
+        <a href="editprofile"><p class="BasicButton">Edit Account</p></a>
     {%endif%} 
     {%with messages = get_flashed_messages(with_categories=true)%}
             {% if messages %}

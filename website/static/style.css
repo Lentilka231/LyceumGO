@@ -14,11 +14,16 @@ body{
 /*----------------------------------------------------------------------*/
 @font-face{
   font-family: fredokaone;
-  src:url("static/fredokaone.woff") format("woff"),
-      url("fredokaone.woff2") format("woff2");
+  src:url("fonts/fredokaone.woff2") format("woff2");
   font-weight: normal;
   font-style: normal
   }
+@font-face{
+  font-family:'Bree Serif';
+  src:url("fonts/breeserif") format("woff2");
+  font-weight: normal;
+  font-style: normal
+}
 /*----------------------------------------------------------------------*/
 /*-----------base.html/and others-------------*/
 .Name{
@@ -112,8 +117,13 @@ body{
   position:relative;
   top:50px;
 }
+.Inputs{
+  width:200px;
+  border-radius:5px;
+  padding:5px
+}
 /*------------------------------------------*/
-/*--------user.html/edituser.html------------------*/
+/*--------profile.html/editprofile.html------------------*/
 .Info{
   position:relative;
   margin:auto;
@@ -127,7 +137,7 @@ body{
   border:3px solid;
   border-radius:5px;
 }
-.EditButton{
+.BasicButton{
   margin:10px 0px;
   background-color: rgb(87, 115, 153);
   padding:5px;
@@ -135,38 +145,49 @@ body{
   border-radius: 5px;
   display:inline-block;
   clear:both;
-  cursor:pointer
+  cursor:pointer;
+  color:white;
+  font-size: 18px;
 }
-.EditButton:hover{
+.BasicButton:hover{
   background-color: rgb(254, 95, 85);
 }
-#imgLogo{
-  animation-name: imgAni;
-  animation-duration: 1s;
-  width:50%;
-  margin-left:50%;
-  transform:translate(-50%,0%);
-  margin-top:50px;
-  position: relative;
-}
-@keyframes imgAni{
-  0%{opacity: 0;}
-  100%{opacity: 1;}
-}
-.vcela{
-  background-color: orange;
-  margin: auto;
-  position: relative;
-  top: 45px;
-  animation-name: xsd;
-  animation-duration: 3s;
-  height: 20px;
-  width: 500px;
-  opacity:0.3;
-}
-@keyframes xsd{
-  0%{opacity:0;width: 0px};
 
+#AboutME{
+  background-color: rgb(247, 247, 255);
+  border-radius: 5px;
+  width:400px;
+  height:70px;
+  margin-top:2px;
+  padding:5px;
+}
+#AboutMEE{
+  max-width:300px;
+  min-width:300px;
+  max-height: 170px;
+  min-height: 100px;
+  font-family: Arial;
+  margin-top:10px;
+}
+#info{
+  margin-top:20px;
+  margin-bottom:10px;
+  font-size:20px
+}
+.information{
+  margin-top:15px;
+}
+
+::placeholder { /* Firefox, Chrome, Opera */
+  color: black;
+}
+ 
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:black;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color:black;
 }
 /*------------------------------------------*/
 /*---------------index.html-----------------*/
@@ -177,3 +198,48 @@ body{
     3)bright blue          rgb(189, 213, 234)
     4)the brightest blue   rgb(247, 247, 255)
     5)red                    rgb(254, 95, 85)*/
+/*začátek projektu asi koncem dubna 2021*/
+
+#divTabletosondo{
+  display: flex;
+  justify-content: center;
+  width: 599px;
+  height: 369px;
+  margin:0px auto;
+}
+#imgLogo{
+  animation-name: imgAni;
+  animation-duration: 1s;
+  position: relative;
+}
+@keyframes imgAni{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+.testd{
+  border: gray solid;
+  animation-name: testTD;
+  animation-duration: 1s;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  background-color: gray;
+  font-size: 40px;
+  font-family: fredokaone;
+}
+@keyframes testTD{
+  0%{opacity: 0.8;}
+  100%{opacity: 1;}
+}
+.divnnn{
+  width: 950px;
+  height: 650px;
+}
+.testd:hover{
+  animation-name: testalala;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes testalala{
+  100%{background-color: rgb(254, 95, 85);}
+}

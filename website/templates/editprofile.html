@@ -23,22 +23,17 @@
 <div class="Info">
     
     {%if user%}
-        {%if image%}
-                    
-        {%else%}
-            <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
-        {%endif%}
-        <br>
+        <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
+
         <form action="" method="post">
-            {{ form.csrf_token }}
-            {{form.hidden_tag()}}
-            <label>Name:</label>
-            {{form.name(placeholder=user.name,style="")}}<br>
-            <label>Email:</label><br>
-            {{form.submit()}}
-            <input type="submit">
+            <div id="info">
+                <div class="information">Name: <input type="text" placeholder={{user.name}} class="Inputs"></div>
+                <div class="information">Email: {{user.email}}</div>
+                <div class="information">About me:<br> 
+                    <textarea name="note" class="Inputs" id="AboutMEE"></textarea>
+                </div>
+            </div>
         </form>
-        
     {%endif%} 
 </div>
 {% endblock %}

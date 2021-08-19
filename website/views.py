@@ -1,8 +1,6 @@
-from flask import Blueprint, render_template, redirect, url_for,request,flash
+from flask import Blueprint, render_template, redirect, url_for,request,flash,request
 from flask_login import login_required,current_user
-from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,BooleanField,SubmitField,validators,Form
-from .models import User
+from .models import User,Notes
 from . import db
 import os
 views = Blueprint("views", __name__)
@@ -16,30 +14,35 @@ def home():
 @views.route("/profile")
 def profile():
     if current_user.is_authenticated:
-        return render_template("profile.html",user=current_user)
+        note=Notes.query.filter_by(user_id=current_user.id).first()
+        return render_template("profile.html",user=current_user,note=note)
     else:
         return redirect(url_for("auth.login"))
-
-class EditUser(FlaskForm):
-    name = StringField("Name", [validators.Length(5,20,message="velikost jména musí být od 5 do 20 znaků")])
-    submit = SubmitField("Save")
 
 @views.route("/editprofile",methods=["GET","POST"])
 def editprofile():
     if current_user.is_authenticated:
-        form=EditUser(request.form)
-        if form.validate_on_submit():
-            usere = User.query.filter_by(email=form.email.data).first()
-            usern = User.query.filter_by(name=form.name.data).first()
-            print("tady")
-            if not usere:
+        note=Notes.query.filter_by(id=current_user.id).first()
+        if not note:
+            note=""
+        if request.method=="POST":
+            name = request.form.get("name")
+            note = request.form.get("note")
+            if name:
+                usern = User.query.filter_by(name=name).first()
                 if not usern:
-                    print(form.name.data)
-                    if form.name.data:
-                        current_user.name=form.name.data
-                        db.session.commit()
+                    current_user.name=name
+                    db.session.commit()
+                else:
+                    return redirect(url_for("views.editprofile"))
+            
+            if note:
+                new_note = Note(data=note,user_id=current_user.id)
+                db.session.add(new_note)
+                db.session.commit()
+                print("save",note)
 
             return redirect(url_for("views.profile"))
-        return render_template("editprofile.html",user=current_user,form=form)
+        return render_template("editprofile.html",user=current_user,note=note)
     else:
         return redirect(url_for("auth.login"))

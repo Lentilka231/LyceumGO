@@ -15,16 +15,16 @@
 <div class="MainDiv" style="height:400px">
     <p class="Nadpis"><b>Login</b></p>
     <div class="Information">
-        <form action="" method="post" role="form" class="form">
+        <form action="" method="post" class="form">
             {{ form.csrf_token }}
             {{form.hidden_tag()}}
             <div class="Input" >
                 <label for="email"><b>Email</b></label><br>
-                {{form.email(required="required",placeholder="Enter email", style="width:200px;border-radius:5px;padding:5px")}}
+                {{form.email(required="required",placeholder="Enter email",class="Inputs")}}
             </div>
             <div class="Input" >
                 <label for="password"><b>Password</b></label><br>
-                {{form.password(required="required",type="password",placeholder="Enter password",style="width:200px;border-radius:5px;padding:5px")}}
+                {{form.password(required="required",type="password",placeholder="Enter password",class="Inputs")}}
             </div>
             <div class="Input">
                 <label style="margin-bottom: 10px">
