@@ -1,0 +1,55 @@
+{%extends "base.html"%}
+{%block title%}Subjects{% endblock %}
+{%block nav%}
+    {% if user.is_authenticated %}
+    <div class="dropdown">
+        <button>{{user.name}}</button>
+        <div class="dropdown-content">
+            <a href="profile">Account</a>
+            <a href="logout">Logout</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="dropdown">
+        <button>User</button>
+        <div class="dropdown-content">
+            <a href="login">Login</a>
+            <a href="register">Register</a>
+        </div>
+    </div>
+
+    {% endif %}
+{%endblock%}
+{%block content%}
+<div>
+    <table style="float: left;">
+        <tr>
+            <td class="td__"><button id="G0"><p class="p__">First</p></button></td>
+        </tr>
+        <tr>
+            <td class="td__"><button id="G1"><p class="p__">Second</p></button></td>
+        </tr>
+        <tr>
+            <td class="td__"><button id="G2"><p class="p__">Third</p></button></td>
+        </tr>
+        <tr>
+            <td class="td__"><button id="G3"><p class="p__">Fourth</p></button></td>
+        </tr>
+    </table>
+    <table style="float: left;">
+        <tr>
+            <td id="_a_" class="aleale">fuck you</td>
+        </tr>
+        <tr>
+            <td id="_b_" class="aleale">you are</td>
+        </tr>
+        <tr>
+            <td id="_c_" class="aleale">they are</td>
+        </tr>
+        <tr>
+            <td id="_d_" class="aleale">is he</td>
+        </tr>
+    </table>
+ 
+</div>
+{%endblock%}

@@ -29,11 +29,14 @@
             <div id="info">
                 <div class="information">Name: <input type="text" placeholder={{user.name}} class="Inputs" name="name"></div>
                 <div class="information">Email: {{user.email}}</div>
+                <div class="information">Grate: {{user.grate}}</div>
+                <div class="information">Favourite subjects:{%for i,subject in favouritesubjects%}
+                    <span class="fsubject"id='test{{i}}'><button class="fs" id={{subject}} value={{subject}} name="submit_button"> ✕ </button> {{subject}}</span> {%endfor%}</div>
                 <div class="information">About me:<br> 
                     <textarea name="note" class="Inputs" id="AboutMEE">{%if note%}{{note.data}}{%endif%}</textarea>
                 </div>
-                <input type="submit" class="BasicButton" name="submit_button" value="save">
-                <input type="submit" class="BasicButton" name="submit_button" value="cancel">
+                <input type="submit" class="BasicButton" name="submit_button" value="Save">
+                <input type="submit" class="BasicButton" name="submit_button" value="Cancel">
             </div>
         </form>
     {%endif%} 

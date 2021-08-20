@@ -30,8 +30,8 @@ body{
   font-weight: normal;
   font-style: normal
 }
-/*----------------------------------------------------------------------*/
-/*-----------base.html/and others-------------*/
+/*-------------------------------------------------------
+-----------base.html/and others-------------*/
 .Name{
     color:rgb(254, 95, 85);
     position:relative;
@@ -52,7 +52,9 @@ body{
   position:relative;
   display:flex
 }
-
+.link{
+  margin:0px 10px;
+}
 .dropdown{
   position: absolute;
   right:150px;
@@ -100,8 +102,8 @@ body{
   font-size: 18px;
   cursor:pointer
 }
-/*------------------------------------------*/
-/*-----------register.html/login.html-------*/
+/*------------------------------------------
+-----------register.html/login.html-------*/
 .MainDiv{
   margin: auto;
   position: relative;
@@ -132,16 +134,16 @@ body{
 .Inputs:focus{
   border-color:rgb(0, 0, 0);
 }
-/*------------------------------------------*/
-/*--------profile.html/editprofile.html------------------*/
+/*------------------------------------------
+--------profile.html/editprofile.html------------------*/
 .Info{
   position:relative;
   margin:auto;
   margin-top:50px;
   background-color: rgb(189, 213, 234);
   padding:30px;
-  width:1000px;
-  height:500px;
+  width:1200px;
+  height:750px;
 }
 .UserImg{
   border:3px solid;
@@ -183,8 +185,21 @@ body{
 #info{
   margin-top:20px;
   margin-bottom:10px;
-  font-size:16px;
+  font-size:20px;
   font-family:"Arial";
+}
+.fsubject{
+  background-color: rgb(87, 115, 153);
+  padding:2px;
+  border-radius:3px;
+}
+.fs{
+  opacity: 0;
+  background-color:rgb(87, 115, 153);
+  border:solid 0px;
+}
+.fs:hover{
+  opacity: 1;
 }
 textarea {
   resize: none;
@@ -204,62 +219,58 @@ textarea {
 ::-ms-input-placeholder { /* Microsoft Edge */
   color:black;
 }
-/*------------------------------------------*/
-/*---------------index.html-----------------*/
+/*------------------------------------------
+---------------index.html-----------------
 
-/*
+
     1)black                  rgb(73, 88, 103)
     2)blue                 rgb(87, 115, 153)
     3)bright blue          rgb(189, 213, 234)
     4)the brightest blue   rgb(247, 247, 255)
-    5)red                    rgb(254, 95, 85)*/
-/*začátek projektu asi koncem dubna 2021*/
+    5)red                    rgb(254, 95, 85)
+začátek projektu asi koncem dubna 2021*/
+
 
 #divTabletosondo{
   display: flex;
   justify-content: center;
-  width: 599px;
-  height: 369px;
   margin:0px auto;
 }
+
 #imgLogo{
   animation-name: imgAni;
   animation-duration: 1s;
   position: relative;
 }
-.testd{
+.class_td{
   border: gray solid;
-  animation-name: testTD;
+  animation-name: class_td_anim;
   animation-duration: 1s;
   background-color: gray;
   font-size: 40px;
   font-family: fredokaone;
   padding:40px;
-  width:400px
+  width:400px;
 }
-.divnnn{
-  /*xddddd*/
+@keyframes class_td_anim{
+  0%{opacity: 0.8;}
+  100%{opacity: 1;}
 }
-.text2255{
+.class_p{
   display:block;
   font-size: 50px;
   text-align: center;
 }
-.testd:hover{
-  animation-name: testalala;
+.class_td:hover{
+  animation-name: classTDanim;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
-@keyframes testalala{
+@keyframes classTDanim{
   100%{background-color: rgb(254, 95, 85);};
 }
-
-@keyframes testTD{
-  0%{opacity: 0.8;}
-  100%{opacity: 1;}
-}
-/*------------------------------------------*/
-/*--------------aboutus.html----------------*/
+/*------------------------------------------
+--------------aboutus.html----------------*/
 #MainDiv{
   display:flex;
   justify-content: center;
@@ -269,4 +280,29 @@ textarea {
   margin:auto;
   margin-top:50px;
   margin-bottom:50px;
+}
+.divALL{
+  position:relative;
+  display: flex;
+  justify-content: center;
+  top: 200px;
+}
+
+
+/* TEST DOESNT ZATIM WORK*/
+
+.p__{
+  width:200px;
+  height: 50px;
+  background-color: white;
+  border: black solid;
+  height: 50px;
+  display: block;
+}
+
+.p__:hover{
+  background-color: gray;
+}
+.aleale{
+  opacity: 0;
 }

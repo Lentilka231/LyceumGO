@@ -1,11 +1,11 @@
 {%extends "base.html"%}
-{%block title%}Registration page{% endblock %}
+{%block title%}Login page{% endblock %}
 {%block nav%}
 <div class="dropdown">
     <button>User</button>
     <div class="dropdown-content">
-        <a href="login">Login</a>
-        <a href="register">Register</a>
+        <a href="login" >Login</a>
+        <a href="register" >Register</a>
     </div>
 </div>
 {% endblock %}
@@ -28,7 +28,7 @@
             </div>
             <div class="Input">
                 <label style="margin-bottom: 10px">
-                    <input name="remember_me" type="checkbox" value="y"> Remember me
+                    <input name="rememberme" type="checkbox" value="y"> Remember me
                 </label>
             </div>
             {{form.submit(style="padding:5px", value="Odeslat")}}

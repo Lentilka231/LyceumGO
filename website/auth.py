@@ -8,6 +8,7 @@ from wtforms import StringField,PasswordField,BooleanField,SubmitField,validator
 from wtforms.validators import InputRequired,Length,Email,EqualTo
 from validate_email import validate_email
 from .sendmail import *
+from datetime import date
 auth=Blueprint("auth", __name__)
 
 
@@ -33,13 +34,13 @@ def register():
         if not usere and emailexist:
             if not usern:
                 SendMail(form.email.data, form.name.data, "Welcome")
-                new_user = User(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"))
+                new_user = User(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"),favouritesubjects="",grade=1,beginning=date.today().year)
                 db.session.add(new_user)
                 user = User.query.filter_by(name=form.name.data).first()
                 user_notes = Notes(data="",user_id=user.id)
                 db.session.add(user_notes)
                 db.session.commit()
-                login_user(new_user, remember=True)
+                login_user(new_user)
                 flash("Account created!", category="success")
                 print("Account was created succesfully, welcome",form.name.data)
                 return redirect(url_for("views.home"))
@@ -52,7 +53,7 @@ def register():
 class LoginForm(FlaskForm):
     email = StringField("Email", [validators.InputRequired(), validators.Length(5,64),validators.Email()])
     password = PasswordField("Password", [validators.InputRequired(), validators.Length(5,24)])
-    remember_me = BooleanField("Remember me")
+    rememberme = BooleanField("Remember me")
     submit = SubmitField("Log In")
 
 @auth.route("/login",methods=["GET","POST"])
@@ -64,7 +65,8 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             if check_password_hash(user.password, form.password.data):
-                login_user(user, remember=True)
+                print(form.rememberme.data)
+                login_user(user, remember=form.rememberme.data)
                 return redirect (url_for("views.home"))
             else:
                 flash("Incorrect password, try again.",category="error")
