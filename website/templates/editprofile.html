@@ -33,7 +33,7 @@
                 <div class="information">Favourite subjects:{%for i,subject in favouritesubjects%}
                     <span class="fsubject"id='test{{i}}'><button class="fs" id={{subject}} value={{subject}} name="submit_button"> ✕ </button> {{subject}}</span> {%endfor%}</div>
                 <div class="information">About me:<br> 
-                    <textarea name="note" class="Inputs" id="AboutMEE">{%if note%}{{note.data}}{%endif%}</textarea>
+                    <textarea name="note" class="Inputs" id="EProfileAboutMe">{%if note%}{{note.data}}{%endif%}</textarea>
                 </div>
                 <input type="submit" class="BasicButton" name="submit_button" value="Save">
                 <input type="submit" class="BasicButton" name="submit_button" value="Cancel">

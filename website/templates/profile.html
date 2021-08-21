@@ -24,14 +24,14 @@
     {%if user%}
         <div id="user">
             <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
-            <div id="userinfo">
+            <div id="info">
                 <p style="font-size: 36px;"><b>{{user.name}}</b></p>
                 <p class="information">Email: {{user.email}}</p>
                 <p class="information">Grate: {{user.grate}}</p>
                 <p class="information">Favourite subjects:{%for subject in favouritesubjects%} {{subject}} {%endfor%}</p>
                 {%if classroom%}<p class="information">Classroom: {{classroom}}</p>{%endif%}
                 <p class="information">About me:</p>
-                <p id="AboutME">
+                <p id="ProfileAboutMe">
                 {%if note%}
                     {{note.data}}
                 {%endif%}</p>
@@ -42,7 +42,7 @@
             {%for sub in subjects%}
             {%endfor%}
                 <div id="subjects">
-
+                    
                 </div>
 
         </div>
