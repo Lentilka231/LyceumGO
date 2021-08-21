@@ -20,21 +20,33 @@
     {% endif %}
 {%endblock%}
 {%block content%}
-<div class="Info">
+<div id="Info">
     {%if user%}
-        <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
-        <div id="info">
-            <p style="font-size: 36px;"><b>{{user.name}}</b></p>
-            <p class="information">Email: {{user.email}}</p>
-            <p class="information">Grate: {{user.grate}}</p>
-            <p class="information">Favourite subjects:{%for subject in favouritesubjects%} {{subject}} {%endfor%}</p>
-            <p class="information">About me:</p>
-            <p id="AboutME">
-            {%if note%}
-                {{note.data}}
-            {%endif%}</p>
+        <div id="user">
+            <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
+            <div id="userinfo">
+                <p style="font-size: 36px;"><b>{{user.name}}</b></p>
+                <p class="information">Email: {{user.email}}</p>
+                <p class="information">Grate: {{user.grate}}</p>
+                <p class="information">Favourite subjects:{%for subject in favouritesubjects%} {{subject}} {%endfor%}</p>
+                {%if classroom%}<p class="information">Classroom: {{classroom}}</p>{%endif%}
+                <p class="information">About me:</p>
+                <p id="AboutME">
+                {%if note%}
+                    {{note.data}}
+                {%endif%}</p>
+            </div>
+            <a href="editprofile"><p class="BasicButton">Edit Account</p></a>
         </div>
-        <a href="editprofile"><p class="BasicButton">Edit Account</p></a>
+        <div id=userstats>
+            {%for sub in subjects%}
+            {%endfor%}
+                <div id="subjects">
+
+                </div>
+
+        </div>
+
     {%endif%} 
     {%with messages = get_flashed_messages(with_categories=true)%}
             {% if messages %}

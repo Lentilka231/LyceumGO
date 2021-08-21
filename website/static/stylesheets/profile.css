@@ -1,0 +1,97 @@
+/*--------profile.html/editprofile.html----------*/
+
+#Info{
+    margin:auto;
+    margin-top:50px;
+    background-color: rgb(189, 213, 234);
+    padding:30px;
+    width:1200px;
+    height:750px;
+    align-content:flex-start;
+  }
+#user{
+    width:40%;
+    float:left;
+}
+
+#userstats{
+    background-color: rgb(151, 151, 202);
+    width:60%;
+    float:left;
+    height:100%;
+}
+/*-----------user side-----------*/
+.UserImg{
+    border:3px solid;
+    border-radius:5px;
+}
+.BasicButton{
+    margin:10px 0px;
+    background-color: rgb(87, 115, 153);
+    padding:5px;
+    border: 3px;
+    border-radius: 5px;
+    display:inline-block;
+    clear:both;
+    cursor:pointer;
+    color:white;
+    font-size: 18px;
+}
+.BasicButton:hover{
+    background-color: rgb(254, 95, 85);
+}
+  
+#AboutME{
+    background-color: rgb(247, 247, 255);
+    border-radius: 5px;
+    width:400px;
+    height:110px;
+    margin-top:2px;
+    padding:5px;
+    font-size: 14px;
+}
+#AboutMEE{
+    max-width:400px;
+    min-width:400px;
+    max-height: 75px;
+    min-height: 75px;
+    font-family: Arial;
+    margin-top:10px;
+}
+#info{
+    margin-top:20px;
+    margin-bottom:10px;
+    font-size:20px;
+    font-family:"Arial";
+}
+.fsubject{
+    background-color: rgb(87, 115, 153);
+    padding:2px;
+    border-radius:3px;
+}
+.fs{
+    opacity: 0;
+    background-color:rgb(87, 115, 153);
+    border:solid 0px;
+}
+.fs:hover{
+    opacity: 1;
+}
+textarea {
+    resize: none;
+}
+.information{
+    margin-top:10px;
+}
+  
+::placeholder { /* Firefox, Chrome, Opera */
+    color: black;
+}
+   
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:black;
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:black;
+}

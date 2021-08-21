@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html{
+    height:100%;
+  }
+  body{
+    height:100%;
+    background-color: rgb(239, 239, 250);
+    font-family: arial;
+  }
+  
+/*----------------------------------------------------------------------*/
+
+
+  @font-face{
+    font-family:'Bree Serif';
+    src:url("/staticfonts/breeserif.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal
+  }
+  @font-face{
+    font-family:'Oxygen';
+    src:url("/staticfonts/oxygen.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal
+  }
+  @font-face{
+    font-family: fredokaone;
+    src:url("/static/fonts/fredokaone.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal
+    }
