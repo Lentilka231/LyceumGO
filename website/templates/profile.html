@@ -24,17 +24,22 @@
             <a href="editprofile"><p class="BasicButton">Upravit profil</p></a>
         </div>
         <div id="userstats">
-            {%for index,value in subjects.items()%}
+            {%for i,subject in subjects.items()%}
 
                 <div class="subjects">
                     <table>
                         <tr >
-                            <td rowspan="3"><img src="{{url_for('static',filename='images/'+index+'.png')}}"></td>
-                            <td><p><b>{{index}}<img id="star" src="{{url_for('static',filename='images/wstart.png')}}">
+                            <td rowspan="3"><img src="{{url_for('static',filename='images/'+i+'.png')}}"></td>
+                            <td><p><b>{{i}} <button class="star"  value={{i}} name="submit_button">
+                                    {%if subject.favourite%} 
+                                        <img  src="{{url_for('static',filename='images/ystart.png')}}">
+                                    {%else%}
+                                        <img  src="{{url_for('static',filename='images/wstart.png')}}">
+                                    {%endif%}</button>
                             </b></p></td>
                         </tr>
                         <tr>
-                            <td>{{value.progres}}</td>
+                            <td>{{subject.progres}}</td>
                         </tr>
                     </table>
                 </div>
