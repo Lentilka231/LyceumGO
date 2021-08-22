@@ -8,6 +8,7 @@
     <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/profile.css')}}">
     <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/logreg.css')}}">
     <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects.css')}}">
+
     <title>{%block title%}{%endblock%}</title>
     
 </head>
@@ -19,10 +20,10 @@
             <a href="subjects" class="link">Předměty</a>
             
             <div class="dropdown">
-                <button>Uživatel</button>
+                <button>{{user.name}}</button>
                 <div class="dropdown-content">
-                    <a href="login">Login</a>
-                    <a href="register">Register</a>
+                    <a href="profile">Účet</a>
+                    <a href="logout">Lougout</a>
                 </div>
             </div>
             {%block nav%}

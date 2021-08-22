@@ -1,53 +1,37 @@
-{%extends "base.html"%}
+{% if user.is_authenticated %}
+    {%extends "baselog.html"%}
+{% else %}
+    {%extends "base.html"%}
+{% endif %}
 {%block title%}Subjects{% endblock %}
-{%block nav%}
-    {% if user.is_authenticated %}
-    <div class="dropdown">
-        <button>{{user.name}}</button>
-        <div class="dropdown-content">
-            <a href="profile">Account</a>
-            <a href="logout">Logout</a>
-        </div>
-    </div>
-    {% else %}
-    <div class="dropdown">
-        <button>User</button>
-        <div class="dropdown-content">
-            <a href="login">Login</a>
-            <a href="register">Register</a>
-        </div>
-    </div>
-
-    {% endif %}
-{%endblock%}
 {%block content%}
 <div>
     <table style="float: left;">
         <tr>
-            <td class="td__"><button id="G0"><p class="p__">First</p></button></td>
+            <td class="td__"><button id="G0"><p class="p__">První ročník</p></button></td>
         </tr>
         <tr>
-            <td class="td__"><button id="G1"><p class="p__">Second</p></button></td>
+            <td class="td__"><button id="G1"><p class="p__">Druhý ročník</p></button></td>
         </tr>
         <tr>
-            <td class="td__"><button id="G2"><p class="p__">Third</p></button></td>
+            <td class="td__"><button id="G2"><p class="p__">Třetí ročník</p></button></td>
         </tr>
         <tr>
-            <td class="td__"><button id="G3"><p class="p__">Fourth</p></button></td>
+            <td class="td__"><button id="G3"><p class="p__">Čtvrtý ročník</p></button></td>
         </tr>
     </table>
     <table style="float: left;">
         <tr>
-            <td id="_a_" class="aleale">fuck you</td>
+            <td id="_a_" class="aleale">Are you</td>
         </tr>
         <tr>
-            <td id="_b_" class="aleale">you are</td>
+            <td id="_b_" class="aleale">making</td>
         </tr>
         <tr>
-            <td id="_c_" class="aleale">they are</td>
+            <td id="_c_" class="aleale">fun</td>
         </tr>
         <tr>
-            <td id="_d_" class="aleale">is he</td>
+            <td id="_d_" class="aleale">from programming?</td>
         </tr>
     </table>
  

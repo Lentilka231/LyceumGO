@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint,request,redirect, url_for,flash
-from .models import User,Notes
+from .models import User,Notes,Math,Physic,Informatics,Programming
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required,logout_user,current_user
@@ -11,7 +11,7 @@ from .sendmail import *
 from datetime import date
 auth=Blueprint("auth", __name__)
 
-
+subjectspro={"math":"0/10","physic":"0/10","informatics":"0/10","programming":"0/10"}
 
 class RegisterForm(FlaskForm):
     email = StringField("Email", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,64, message="velikost majliku musí být od 5 do 64 znaků"),validators.Email(message="Zadáváš mi špatný email")])
@@ -34,11 +34,20 @@ def register():
         if not usere and emailexist:
             if not usern:
                 SendMail(form.email.data, form.name.data, "Welcome")
-                new_user = User(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"),favouritesubjects="",grade=1,beginning=date.today().year)
+                new_user = User(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"),grate=1,beginning=date.today().year)
                 db.session.add(new_user)
+                db.session.commit()
                 user = User.query.filter_by(name=form.name.data).first()
                 user_notes = Notes(data="",user_id=user.id)
+                user_math = Math(user_id=user.id,progres=subjectspro["math"],tests="",favourite=False)
+                user_physic = Physic(user_id=user.id,progres=subjectspro["physic"],tests="",favourite=False)
+                user_informatics = Informatics(user_id=user.id,progres=subjectspro["informatics"],tests="",favourite=True)
+                user_programming = Programming(user_id=user.id,progres=subjectspro["programming"],tests="",favourite=True)
                 db.session.add(user_notes)
+                db.session.add(user_math)
+                db.session.add(user_physic)
+                db.session.add(user_informatics)
+                db.session.add(user_programming)
                 db.session.commit()
                 login_user(new_user)
                 flash("Account created!", category="success")

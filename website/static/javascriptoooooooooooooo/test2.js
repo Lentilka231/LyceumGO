@@ -1,4 +1,4 @@
-var x =[]
+/*var x =[]
 for(let i=0;i<4;i++){
     x[i]=document.querySelector("#G"+(i));
 };
@@ -35,4 +35,4 @@ function opa(){
     y1.style.opacity = 0;
     y2.style.opacity = 0;
     y3.style.opacity = 0;
-};
+};*/

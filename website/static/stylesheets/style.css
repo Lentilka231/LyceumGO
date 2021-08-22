@@ -1,21 +1,21 @@
 /*-------------------------------------------*/
 /*-----------base.html/and others-------------*/
 .Name{
-    color:rgb(254, 95, 85);
-    position:relative;
-    font-size:40px;
-    font-family:fredokaone;
-    margin:0px 20px;
-    padding:10px
+  color:rgb(254, 95, 85);
+  position:relative;
+  font-size:40px;
+  font-family:fredokaone;
+  margin:0px 20px;
+  padding:10px
 }
 
 /*-----------everything from nav-------------*/
 .Nav{
-    background-color: rgb(73, 88, 103);
-    width:100%;
-    display:flex;
-    align-items:center;
-    height:80px
+  background-color: rgb(73, 88, 103);
+  width:100%;
+  display:flex;
+  align-items:center;
+  height:80px
 }
 .Buttons{
   width:100%;

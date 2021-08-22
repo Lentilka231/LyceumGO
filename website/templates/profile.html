@@ -1,24 +1,9 @@
-{%extends "base.html"%}
-{%block title%}Home page{% endblock %}
-{%block nav%}
-    {% if user.is_authenticated %}
-        <div class="dropdown">
-            <button>{{user.name}}</button>
-            <div class="dropdown-content">
-                <a href="profile">Account</a>
-                <a href="logout">Logout</a>
-            </div>
-        </div>
-    {% else %}
-        <div class="dropdown">
-            <button>User</button>
-            <div class="dropdown-content">
-                <a href="login">Login</a>
-                <a href="register">Register</a>
-            </div>
-        </div>
-    {% endif %}
-{%endblock%}
+{% if user.is_authenticated %}
+    {%extends "baselog.html"%}
+{% else %}
+    {%extends "base.html"%}
+{% endif %}
+{%block title%}Profil{% endblock %}
 {%block content%}
 <div id="Info">
     {%if user%}
@@ -27,24 +12,33 @@
             <div id="info">
                 <p style="font-size: 36px;"><b>{{user.name}}</b></p>
                 <p class="information">Email: {{user.email}}</p>
-                <p class="information">Grate: {{user.grate}}</p>
-                <p class="information">Favourite subjects:{%for subject in favouritesubjects%} {{subject}} {%endfor%}</p>
-                {%if classroom%}<p class="information">Classroom: {{classroom}}</p>{%endif%}
-                <p class="information">About me:</p>
+                <p class="information">Ročník: {{user.grate}}</p>
+                <p class="information">Oblíbené předměty:{%for i,subject in subjects.items()%}{%if subject.favourite%} {{i}}{%endif%} {%endfor%}</p>
+                {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
+                <p class="information">O mě(nebo mně IDK):</p>
                 <p id="ProfileAboutMe">
                 {%if note%}
                     {{note.data}}
                 {%endif%}</p>
             </div>
-            <a href="editprofile"><p class="BasicButton">Edit Account</p></a>
+            <a href="editprofile"><p class="BasicButton">Upravit profil</p></a>
         </div>
-        <div id=userstats>
-            {%for sub in subjects%}
-            {%endfor%}
-                <div id="subjects">
-                    
-                </div>
+        <div id="userstats">
+            {%for index,value in subjects.items()%}
 
+                <div class="subjects">
+                    <table>
+                        <tr >
+                            <td rowspan="3"><img src="{{url_for('static',filename='images/'+index+'.png')}}"></td>
+                            <td><p><b>{{index}}<img id="star" src="{{url_for('static',filename='images/wstart.png')}}">
+                            </b></p></td>
+                        </tr>
+                        <tr>
+                            <td>{{value.progres}}</td>
+                        </tr>
+                    </table>
+                </div>
+            {%endfor%}
         </div>
 
     {%endif%} 

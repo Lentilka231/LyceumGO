@@ -19,6 +19,7 @@
     width:60%;
     float:left;
     height:100%;
+    padding:50px;
 }
 /*-----------user side-----------*/
 .UserImg{
@@ -80,4 +81,18 @@ textarea {
   
 ::-ms-input-placeholder { /* Microsoft Edge */
     color:black;
+}
+/*-----------userstats side-----------*/
+td{
+    padding:3px
+}
+.subjects{
+    margin-bottom:10px; 
+
+}
+.subjects:hover {
+    background-color: green;
+}
+div:hover + #star{
+    background-color: green;
 }

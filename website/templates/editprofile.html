@@ -1,42 +1,26 @@
-{%extends "base.html"%}
-{%block title%}Home page{% endblock %}
-{%block nav%}
-    {% if user.is_authenticated %}
-        <div class="dropdown">
-            <button>{{user.name}}</button>
-            <div class="dropdown-content">
-                <a href="profile">Account</a>
-                <a href="logout">Logout</a>
-            </div>
-        </div>
-    {% else %}
-        <div class="dropdown">
-            <button>User</button>
-            <div class="dropdown-content">
-                <a href="login">Login</a>
-                <a href="register">Register</a>
-            </div>
-        </div>
-    {% endif %}
-{%endblock%}
+{% if user.is_authenticated %}
+    {%extends "baselog.html"%}
+{% else %}
+    {%extends "base.html"%}
+{% endif %}
 {%block content%}
-<div class="Info">
+<div id="Info">
     
     {%if user%}
         <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
 
         <form action="" method="post">
             <div id="info">
-                <div class="information">Name: <input type="text" placeholder={{user.name}} class="Inputs" name="name"></div>
+                <div class="information">Jméno: <input type="text" placeholder={{user.name}} class="Inputs" name="name"></div>
                 <div class="information">Email: {{user.email}}</div>
-                <div class="information">Grate: {{user.grate}}</div>
-                <div class="information">Favourite subjects:{%for i,subject in favouritesubjects%}
-                    <span class="fsubject"id='test{{i}}'><button class="fs" id={{subject}} value={{subject}} name="submit_button"> ✕ </button> {{subject}}</span> {%endfor%}</div>
-                <div class="information">About me:<br> 
+                <div class="information">Ročník: {{user.grate}}</div>
+                <div class="information">Oblíbený předmět:{%for i,subject in subjects.items()%}{%if subject.favourite%}
+                    <span class="fsubject"id='test{{i}}'><button class="fs" id={{i}} value={{i}} name="submit_button"> ✕ </button> {{i}}</span> {%endif%}{%endfor%}</div>
+                <div class="information">O mě:<br> 
                     <textarea name="note" class="Inputs" id="EProfileAboutMe">{%if note%}{{note.data}}{%endif%}</textarea>
                 </div>
-                <input type="submit" class="BasicButton" name="submit_button" value="Save">
-                <input type="submit" class="BasicButton" name="submit_button" value="Cancel">
+                <input type="submit" class="BasicButton" name="submit_button" value="Uložit">
+                <input type="submit" class="BasicButton" name="submit_button" value="Zrušit">
             </div>
         </form>
     {%endif%} 

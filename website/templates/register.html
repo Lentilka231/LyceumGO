@@ -1,14 +1,5 @@
 {%extends "base.html"%}
 {%block title%}Registration page{% endblock %}
-{%block nav%}
-<div class="dropdown">
-    <button>User</button>
-    <div class="dropdown-content">
-        <a href="login">Login</a>
-        <a href="register">Register</a>
-    </div>
-</div>
-{% endblock %}
 {%block content%}
 <div class="MainDiv" >
     <p class="Nadpis"><b>Register</b></p>
@@ -21,19 +12,19 @@
             {{form.email(type="text",placeholder="Enter email", class="Inputs")}}
         </div>
         <div class="Input">
-            <label  for="email"><b>Name</b></label><br>
+            <label  for="email"><b>Jméno</b></label><br>
             {{form.name(type="text",placeholder="Enter name", class="Inputs")}}
         </div>
         <div class="Input">
-            <label  for="email"><b>Password</b></label><br>
+            <label  for="email"><b>Heslo</b></label><br>
             {{form.password1(type="password",placeholder="Enter password", class="Inputs")}}
         </div>
         <div class="Input">
-            <label  for="email"><b>Password (Confirm):</b></label><br>
-            {{form.password2(type="password",placeholder="Enter password again", class="Inputs")}}
+            <label  for="email"><b>Heslo (Potvrzení):</b></label><br>
+            {{form.password2(type="password",placeholder="Enter password (again)", class="Inputs")}}
         </div>
         <div style="margin-top:30px">
-            {{ form.submit(style="padding:5px", value="Odeslat") }}
+            {{ form.submit(style="padding:5px", value="Register") }}
         </div>
         </form> 
     </div>

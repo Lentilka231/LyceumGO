@@ -1,10 +1,11 @@
 from flask import Blueprint, render_template, redirect, url_for,request,flash,request
 from flask_login import login_required,current_user
-from .models import User,Notes
+from .models import User,Notes,Math,Physic,Informatics,Programming
 from . import db
 import os
 views = Blueprint("views", __name__)
-
+def getSubjects():
+    return {"Matika":Math.query.filter_by(user_id=current_user.id).first(),"Fyzika":Physic.query.filter_by(user_id=current_user.id).first(),"Informatika":Informatics.query.filter_by(user_id=current_user.id).first(),"Programování":Programming.query.filter_by(user_id=current_user.id).first(),}
 
 @views.route("/home")
 @views.route("/")
@@ -15,7 +16,8 @@ def home():
 def profile():
     if current_user.is_authenticated:
         note=Notes.query.filter_by(user_id=current_user.id).first()
-        return render_template("profile.html",user=current_user,note=note,favouritesubjects=[x for x in current_user.favouritesubjects.split("/")])
+        subjects=getSubjects()
+        return render_template("profile.html",user=current_user,note=note,subjects=subjects)
     else:
         return redirect(url_for("auth.login"))
 
@@ -23,11 +25,10 @@ def profile():
 def editprofile():
     if current_user.is_authenticated:
         usernote=Notes.query.filter_by(id=current_user.id).first()
-        fs=[x for x in current_user.favouritesubjects.split("/")]
-        if "" in fs:
-            fs.remove("")
+        subjects=getSubjects()
         if request.method=="POST":
-            if request.form["submit_button"]=="Save":
+            print(request.form["submit_button"])
+            if request.form["submit_button"]=="Uložit":
                 name = request.form.get("name")
                 note = request.form.get("note")
                 if name:
@@ -39,23 +40,15 @@ def editprofile():
 
                 usernote.data=note
                 db.session.commit()
-                print("Changes was save",name,note)
-            elif request.form["submit_button"]=="Cancel":
+            elif request.form["submit_button"]=="Zrušit":
                 pass
-            elif request.form["submit_button"] in fs:
-                fs.remove(request.form["submit_button"])
-                fsub = ""
-                for i,v in enumerate(fs):
-                    if i+1==len(fs):
-                        fsub+=v
-                    else:
-                        fsub+=v+"/"
-                current_user.favouritesubjects=fsub
+            elif request.form["submit_button"] in subjects.keys():
+                subjects[request.form["submit_button"]].favourite=False
                 db.session.commit()
-                return render_template("editprofile.html",user=current_user,note=usernote,favouritesubjects=enumerate(fs))
+                return render_template("editprofile.html",user=current_user,note=usernote,subjects=subjects)
             return redirect(url_for("views.profile"))
             
-        return render_template("editprofile.html",user=current_user,note=usernote,favouritesubjects=enumerate(fs))
+        return render_template("editprofile.html",user=current_user,note=usernote,subjects=subjects)
     else:
         return redirect(url_for("auth.login"))
 @views.route("/aboutus")
