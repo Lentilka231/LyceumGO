@@ -1,0 +1,38 @@
+.class_td{
+  border: gray solid;
+  animation-name: class_td_anim;
+  animation-duration: 1s;
+  background-color: gray;
+  font-size: 40px;
+  font-family: fredokaone;
+  padding:40px;
+  width:400px;
+}
+@keyframes class_td_anim{
+  0%{opacity: 0.8;}
+  100%{opacity: 1;}
+}
+.class_p{
+  display:block;
+  font-size: 50px;
+  text-align: center;
+}
+.class_td:hover{
+  animation-name: classTDanim;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes classTDanim{
+  100%{background-color: rgb(254, 95, 85);};
+}
+#divTabletosondo{
+  display: flex;
+  justify-content: center;
+  margin:0px auto;
+}
+
+#imgLogo{
+  animation-name: imgAni;
+  animation-duration: 1s;
+  position: relative;
+}

@@ -4,6 +4,9 @@
     {%extends "base.html"%}
 {% endif %}
 {%block title%}Domovská stránka{% endblock %}
+{%block head%}
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/home.css')}}">
+{%endblock%}
 {%block content%}
 
         <div id="divTabletosondo"></div>

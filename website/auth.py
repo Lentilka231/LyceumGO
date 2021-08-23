@@ -11,7 +11,7 @@ from .sendmail import *
 from datetime import date
 auth=Blueprint("auth", __name__)
 
-subjectspro={"math":"0/10","physic":"0/10","informatics":"0/10","programming":"0/10"}
+subjectspro={"math":"0/1","physic":"0/1","informatics":"0/1","programming":"0/1"}
 
 class RegisterForm(FlaskForm):
     email = StringField("Email", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,64, message="velikost majliku musí být od 5 do 64 znaků"),validators.Email(message="Zadáváš mi špatný email")])
@@ -39,10 +39,10 @@ def register():
                 db.session.commit()
                 user = User.query.filter_by(name=form.name.data).first()
                 user_notes = Notes(data="",user_id=user.id)
-                user_math = Math(user_id=user.id,progres=subjectspro["math"],tests="",favourite=False)
-                user_physic = Physic(user_id=user.id,progres=subjectspro["physic"],tests="",favourite=False)
-                user_informatics = Informatics(user_id=user.id,progres=subjectspro["informatics"],tests="",favourite=True)
-                user_programming = Programming(user_id=user.id,progres=subjectspro["programming"],tests="",favourite=True)
+                user_math = Math(user_id=user.id,progress=subjectspro["math"],tests="",favourite=False)
+                user_physic = Physic(user_id=user.id,progress=subjectspro["physic"],tests="",favourite=False)
+                user_informatics = Informatics(user_id=user.id,progress=subjectspro["informatics"],tests="",favourite=True)
+                user_programming = Programming(user_id=user.id,progress=subjectspro["programming"],tests="",favourite=True)
                 db.session.add(user_notes)
                 db.session.add(user_math)
                 db.session.add(user_physic)

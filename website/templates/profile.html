@@ -1,9 +1,8 @@
-{% if user.is_authenticated %}
-    {%extends "baselog.html"%}
-{% else %}
-    {%extends "base.html"%}
-{% endif %}
+{%extends "baselog.html"%}
 {%block title%}Profil{% endblock %}
+{%block head%}
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/profile.css')}}">
+{%endblock%}
 {%block content%}
 <div id="Info">
     {%if user%}
@@ -24,9 +23,9 @@
             <a href="editprofile"><p class="BasicButton">Upravit profil</p></a>
         </div>
         <div id="userstats">
+            <form action="" method="POST">
             {%for i,subject in subjects.items()%}
-
-                <div class="subjects">
+                <div class="subjects" style="float: left;">
                     <table>
                         <tr >
                             <td rowspan="3"><img src="{{url_for('static',filename='images/'+i+'.png')}}"></td>
@@ -39,13 +38,18 @@
                             </b></p></td>
                         </tr>
                         <tr>
-                            <td>{{subject.progres}}</td>
+                            <td><span id='{{i}}'>{{subject.progress}}</span>
+                                <div class="bar_jak_sar">
+                                    <div id="{{i}}bar" class="papapa"></div>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                 </div>
             {%endfor%}
+            <form>
         </div>
-
+        <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/progress_bar.js')}}"></script>
     {%endif%} 
     {%with messages = get_flashed_messages(with_categories=true)%}
             {% if messages %}

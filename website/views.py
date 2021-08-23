@@ -12,11 +12,23 @@ def getSubjects():
 def home():
     return render_template("index.html",user=current_user)
 
-@views.route("/profile")
+@views.route("/profile",methods=["GET","POST"])
 def profile():
     if current_user.is_authenticated:
-        note=Notes.query.filter_by(user_id=current_user.id).first()
         subjects=getSubjects()
+        note=Notes.query.filter_by(user_id=current_user.id).first()
+        if request.method=="POST":
+            r=request.form["submit_button"]
+            print(r)
+            if r in subjects.keys():
+                if subjects[r].favourite==True:
+                    print("FALSEE")
+                    subjects[r].favourite=False
+                else:
+                    print("TRUEE")
+                    subjects[r].favourite=True
+        db.session.commit()
+
         return render_template("profile.html",user=current_user,note=note,subjects=subjects)
     else:
         return redirect(url_for("auth.login"))
@@ -51,13 +63,11 @@ def editprofile():
         return render_template("editprofile.html",user=current_user,note=usernote,subjects=subjects)
     else:
         return redirect(url_for("auth.login"))
-@views.route("/aboutus")
-def aboutus():
-    return render_template("aboutus.html",user=current_user)
 
 @views.route("/subjects")
 def subjects():
     if current_user.is_authenticated:
-        return render_template("subjects.html",user=current_user)
+        subjects=[getSubjects()]
+        return render_template("subjects.html",user=current_user,subjects=enumerate(subjects))
     else:
         return redirect(url_for("auth.login"))

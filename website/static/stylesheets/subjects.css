@@ -1,27 +1,49 @@
-.class_td{
-    border: gray solid;
-    animation-name: class_td_anim;
-    animation-duration: 1s;
-    background-color: gray;
-    font-size: 40px;
-    font-family: fredokaone;
-    padding:40px;
-    width:400px;
+#SubjectMainDiv{
+    width:1600px;
+    height:750px;
+    background-color: rgb(189, 213, 234);
+    margin:auto;
+    margin-top:50px;
+    padding:50px;
+    display:flex;
   }
-  @keyframes class_td_anim{
-    0%{opacity: 0.8;}
-    100%{opacity: 1;}
-  }
-  .class_p{
-    display:block;
-    font-size: 50px;
+#grades{
+    width:300px;
+    height:650px;
+    background-color: rgb(39, 111, 173);
+    padding:10px;
+}
+.grade{
+    cursor: pointer;
+    position:relative;
+    top:100px;
+    width:260px;
+    border:solid 2px black;
+    margin:10px;
     text-align: center;
-  }
-  .class_td:hover{
-    animation-name: classTDanim;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-  }
-  @keyframes classTDanim{
-    100%{background-color: rgb(254, 95, 85);};
-  }
+    padding:20px;
+}
+.grade:hover{
+    background-color: rgb(29, 101, 173);
+}
+#Subjects{
+    margin-left:100px;
+    width:1100px;
+    height:650px;
+    background-color: rgb(130, 130, 216);
+    float:right;
+    padding:30px;
+}
+.sub{
+    display:flex;
+    justify-content: space-between;
+}
+.subject{
+    width:220px;
+    height:250px;
+    background-color: rgb(157, 157, 223);
+    padding:20px;
+}
+.SubName{
+    font-size:24px;
+}

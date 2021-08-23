@@ -1,39 +1,44 @@
-{% if user.is_authenticated %}
-    {%extends "baselog.html"%}
-{% else %}
-    {%extends "base.html"%}
-{% endif %}
+{%extends "baselog.html"%}
 {%block title%}Subjects{% endblock %}
+{%block head%}
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects.css')}}">
+{%endblock%}
 {%block content%}
-<div>
-    <table style="float: left;">
-        <tr>
-            <td class="td__"><button id="G0"><p class="p__">První ročník</p></button></td>
-        </tr>
-        <tr>
-            <td class="td__"><button id="G1"><p class="p__">Druhý ročník</p></button></td>
-        </tr>
-        <tr>
-            <td class="td__"><button id="G2"><p class="p__">Třetí ročník</p></button></td>
-        </tr>
-        <tr>
-            <td class="td__"><button id="G3"><p class="p__">Čtvrtý ročník</p></button></td>
-        </tr>
-    </table>
-    <table style="float: left;">
-        <tr>
-            <td id="_a_" class="aleale">Are you</td>
-        </tr>
-        <tr>
-            <td id="_b_" class="aleale">making</td>
-        </tr>
-        <tr>
-            <td id="_c_" class="aleale">fun</td>
-        </tr>
-        <tr>
-            <td id="_d_" class="aleale">from programming?</td>
-        </tr>
-    </table>
- 
+<div id="SubjectMainDiv">
+    <div id="grades">
+        <div class="grade"id="g1">Ročník 1</div>
+        <div class="grade"id="g2">Ročník 2</div>
+        <div class="grade"id="g3">Ročník 3</div>
+        <div class="grade"id="g4">Ročník 4</div>
+    </div>
+    <div id="Subjects"> 
+        {%for i,v in subjects%}
+            <div class="sub" id="sub{{i}}">
+            {%for name,sub in v.items()%}
+                <a href="{{name}}">
+                    <div class="subject" id={{name}}>
+                        <p class="SubName"><b>{{name}}</b></p>
+                    </div>
+                </a>
+            {%endfor%}
+            </div>
+        {%endfor%}
+    </div>
+    <script>
+        $(document).ready(function(){
+            for(let i=0;i<4;i++){
+                $("#sub"+i).hide();
+            }
+            for(let i=1;i<=4;i++){
+                $("#g"+i).click(function(){
+                    for(let i=0;i<4;i++){
+                        $("#sub"+i).hide();
+                    }
+                    $("#sub"+(i-1)).show();
+                });
+            }    
+        });
+    </script>
+    <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/subjects.js')}}"></script>
 </div>
 {%endblock%}

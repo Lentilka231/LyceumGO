@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
+
     <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/universal.css')}}">
     <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/style.css')}}">
-    <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/profile.css')}}">
-    <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/logreg.css')}}">
-    <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects.css')}}">
+
     <title>{%block title%}{%endblock%}</title>
-    
+    {%block head%}
+    {%endblock%}
 </head>
 <body>
     <nav class="Nav">
@@ -32,7 +32,6 @@
     {%block content%}
     {%endblock%}
 
-    <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/test2.js')}}"></script>
 
 </body>
 </html>

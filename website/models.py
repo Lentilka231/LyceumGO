@@ -8,28 +8,28 @@ class Notes(db.Model):
  
 class Math (db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    progres=db.Column(db.String(10))
+    progress=db.Column(db.String(10))
     tests=db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     favourite = db.Column(db.Boolean)
 
 class Physic (db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    progres=db.Column(db.String(10))
+    progress=db.Column(db.String(10))
     tests=db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     favourite = db.Column(db.Boolean)
 
 class Informatics (db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    progres=db.Column(db.String(10))
+    progress=db.Column(db.String(10))
     tests=db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     favourite = db.Column(db.Boolean)
 
 class Programming (db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    progres=db.Column(db.String(10))
+    progress=db.Column(db.String(10))
     tests=db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     favourite = db.Column(db.Boolean)

@@ -8,6 +8,8 @@
     width:1200px;
     height:750px;
     align-content:flex-start;
+    border: solid rgb(189, 193, 234);
+    border-radius: 10px;
   }
 #user{
     width:40%;
@@ -20,6 +22,8 @@
     float:left;
     height:100%;
     padding:50px;
+    border: solid rgb(151, 131, 202);
+    border-radius: 10px;
 }
 /*-----------user side-----------*/
 .UserImg{
@@ -42,6 +46,30 @@
     padding:5px;
     font-size: 14px;
 }
+
+/*-----------userstats side-----------*/
+td{
+    padding:3px
+}
+.subjects{
+    margin-bottom:10px;
+    width:300px;
+    border: solid rgb(151, 131, 202);
+    border-radius: 10px;
+    background-color: rgb(160, 138, 214);
+}
+.star{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    opacity:0;
+}
+
+.subjects:hover .star {
+    opacity: 1;
+}
+
+/*-----------editprofile.html-----------*/
 #EProfileAboutMe{
     max-width:400px;
     min-width:400px;
@@ -56,13 +84,13 @@
     padding:2px;
     border-radius:3px;
 }
+.fsubject:hover .fs{
+    opacity:1; 
+} 
 .fs{
     opacity: 0;
     background-color:rgb(87, 115, 153);
     border:solid 0px;
-}
-.fs:hover{
-    opacity: 1;
 }
 textarea {
     resize: none;
@@ -82,23 +110,18 @@ textarea {
 ::-ms-input-placeholder { /* Microsoft Edge */
     color:black;
 }
-/*-----------userstats side-----------*/
-td{
-    padding:3px
-}
-.subjects{
-    margin-bottom:10px; 
 
+.bar_jak_sar{
+    height: 14px;
+    width: 150px;
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 4px;
 }
-.star{
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    opacity:0;
-}
-.star:focus{
-    src:"{{url_for('static',filename='images/ystart.png')}}"
-}
-.subjects:hover .star {
-    opacity: 1;
+.papapa{
+    height: 100%;
+    width: 0%;
+    background-color: rgb(96, 79, 255);
+    float: left;
+    border-radius: 2px;
 }
