@@ -37,13 +37,25 @@
 .sub{
     display:flex;
     justify-content: space-between;
+
 }
 .subject{
     width:220px;
     height:250px;
     background-color: rgb(157, 157, 223);
     padding:20px;
+    color:black
 }
 .SubName{
     font-size:24px;
+    margin-bottom:10px
+}
+.SubProg{
+    font-size:16px;
+}
+.invisible{
+    display:none
+}
+.subject:hover .invisible{
+    display:block
 }

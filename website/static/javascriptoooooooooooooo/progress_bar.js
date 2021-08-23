@@ -1,4 +1,4 @@
-var list = ["Matika","Fyzika","Informatika","Programování",]
+var list = ["Matematika","Fyzika","Informatika","Programování",]
 for(let j=0;j<list.length;j++){
     var bar = document.querySelector('#'+list[j]+"bar");
     var a = document.querySelector('#'+list[j]);

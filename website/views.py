@@ -5,7 +5,7 @@ from . import db
 import os
 views = Blueprint("views", __name__)
 def getSubjects():
-    return {"Matika":Math.query.filter_by(user_id=current_user.id).first(),"Fyzika":Physic.query.filter_by(user_id=current_user.id).first(),"Informatika":Informatics.query.filter_by(user_id=current_user.id).first(),"Programování":Programming.query.filter_by(user_id=current_user.id).first(),}
+    return {"Matematika":Math.query.filter_by(user_id=current_user.id).first(),"Fyzika":Physic.query.filter_by(user_id=current_user.id).first(),"Informatika":Informatics.query.filter_by(user_id=current_user.id).first(),"Programování":Programming.query.filter_by(user_id=current_user.id).first(),}
 
 @views.route("/home")
 @views.route("/")
