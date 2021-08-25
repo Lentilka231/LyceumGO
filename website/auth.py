@@ -4,7 +4,7 @@ from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required,logout_user,current_user
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,BooleanField,SubmitField,validators,Form
+from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,validators,Form
 from wtforms.validators import InputRequired,Length,Email,EqualTo
 from validate_email import validate_email
 from .sendmail import *
@@ -18,6 +18,7 @@ class RegisterForm(FlaskForm):
     name = StringField("Name", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,20,message="velikost jména musí být od 5 do 20 znaků")])
     password1 = PasswordField("Password1", [validators.InputRequired(message="Heslo potřebuji"), validators.Length(5,24),validators.EqualTo("password2",message="Password must match")])
     password2 = PasswordField("Password2")
+    person = SelectField("Person",[validators.InputRequired(message="Jsi student nebo učitel")],choices=[("s","student"),("t","teacher")])
     submit = SubmitField("Log In")
 
 
@@ -34,15 +35,15 @@ def register():
         if not usere and emailexist:
             if not usern:
                 SendMail(form.email.data, form.name.data, "Welcome")
-                new_user = User(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"),grate=1,beginning=date.today().year)
+                new_user = User(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"),person=form.person.data,grate=1,beginning=date.today().year)
                 db.session.add(new_user)
                 db.session.commit()
                 user = User.query.filter_by(name=form.name.data).first()
                 user_notes = Notes(data="",user_id=user.id)
-                user_math = Math(user_id=user.id,progress=subjectspro["math"],tests="",favourite=False)
-                user_physic = Physic(user_id=user.id,progress=subjectspro["physic"],tests="",favourite=False)
-                user_informatics = Informatics(user_id=user.id,progress=subjectspro["informatics"],tests="",favourite=True)
-                user_programming = Programming(user_id=user.id,progress=subjectspro["programming"],tests="",favourite=True)
+                user_math = Math(user_id=user.id,progress1=subjectspro["math"],tests1="",favourite=False)
+                user_physic = Physic(user_id=user.id,progress1=subjectspro["physic"],tests1="",favourite=False)
+                user_informatics = Informatics(user_id=user.id,progress1=subjectspro["informatics"],tests1="",favourite=False)
+                user_programming = Programming(user_id=user.id,progress1=subjectspro["programming"],tests1="",favourite=False)
                 db.session.add(user_notes)
                 db.session.add(user_math)
                 db.session.add(user_physic)

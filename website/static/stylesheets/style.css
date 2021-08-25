@@ -86,6 +86,15 @@
 .BasicButton:hover{
   background-color: rgb(254, 95, 85);
 }
+.Inputs{
+  width:200px;
+  border-radius:5px;
+  padding:5px;
+  border:solid 2px rgb(87, 115, 153);
+}
+.Inputs:focus{
+  border-color:rgb(0, 0, 0);
+}
 /*-------------------------------------------*/
 
 @keyframes ahojda{

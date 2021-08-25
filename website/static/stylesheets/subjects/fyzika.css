@@ -1,0 +1,96 @@
+.circleFirst{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: black solid 4px;
+    text-align: center;
+    position: absolute;
+    top: 350px;
+    left: 250px;
+    float: left;
+    z-index: 3;
+    cursor: pointer;
+}
+.circle{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: black solid 4px;
+    text-align: center;
+    position: relative;
+    float: left;
+    z-index: 2;
+    cursor: pointer;
+}
+#idvelkekoule{
+    width: 100px;
+    height: 100px;
+    z-index: 3;
+}
+.circle:hover{
+    background-color: rgb(194, 188, 255);
+}
+.circleFirst:hover{
+    background-color: rgb(194, 188, 255);
+}
+.cara{
+    position: relative;
+    width: 300px;
+    height: 5px;
+    left: 92px;
+    top: 40px;
+    background-color: black;
+    float: left;
+    z-index: 1;
+}
+.caraU{
+    position: relative;
+    width: 5px;
+    height: 160px;
+    background-color: black;
+    transform: rotate(30deg);
+    bottom: 155px;
+    left: 70px;
+    float: left;
+    z-index: 1;
+}
+.caraD{
+    position: relative;
+    width: 5px;
+    height: 160px;
+    background-color: black;
+    transform: rotate(10deg);
+    top: 75px;
+    left: -10px;
+    float: left;
+    z-index: 1;
+}
+.caraD2{
+    position: relative;
+    width: 5px;
+    height: 160px;
+    background-color: black;
+    transform: rotate(-40deg);
+    top: 70px;
+    left: 85px;
+    float: left;
+    z-index: 1;
+}
+
+
+.pTextp{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    font-size: 6px;
+    top: 18px;
+    left: -4px;
+}
+#pTextpMain{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    font-size: 16px;
+    top: 20px;
+    left: 16px;
+}

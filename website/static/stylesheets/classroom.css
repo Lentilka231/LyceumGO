@@ -1,0 +1,57 @@
+#studentdiv{
+    padding:20px;
+    height:150px;
+    width:240px;
+    background-color: rgb(87, 115, 153);
+    border-radius:20px;
+    margin:auto;
+    margin-top:200px;
+    justify-content: center;
+}
+#uciteldiv{
+    padding:20px;
+    height:250px;
+    width:250px;
+    background-color: rgb(87, 115, 153);
+    border-radius:20px;
+    margin:auto;
+    margin-top:200px;
+    justify-content: center;
+}
+.Inputs{
+    margin:20px 0px;
+}
+#tlacitko{
+    background-color: rgb(110, 140, 182);
+    margin:auto;
+}
+#tlacitko:hover{
+  background-color: rgb(254, 95, 85);
+}
+#MainDiv{
+    margin:auto;
+    margin-top:50px;
+    background-color: rgb(189, 213, 234);
+    padding:30px;
+    width:1600px;
+    height:750px;
+    align-content:flex-start;
+    border: solid rgb(189, 193, 234);
+    border-radius: 10px;
+}
+#Name{
+    font-size:70px;
+}
+#info{
+    margin-top:20px;
+    margin-bottom:10px;
+    font-size:20px;
+    font-family:"Arial"
+}
+.i{
+    margin-top:10px;
+}
+#tabulka{
+    width:800px;
+    height:900px;
+}

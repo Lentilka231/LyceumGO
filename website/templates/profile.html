@@ -11,7 +11,11 @@
             <div id="info">
                 <p style="font-size: 36px;"><b>{{user.name}}</b></p>
                 <p class="information">Email: {{user.email}}</p>
-                <p class="information">Ročník: {{user.grate}}</p>
+                {%if user.person=="s"%}
+                    <p class="information">Ročník: {{user.grate}}</p>
+                {%else%}
+                    <p class="information">Učitel</p>
+                {%endif%}
                 <p class="information">Oblíbené předměty:{%for i,subject in subjects.items()%}{%if subject.favourite%} {{i}}{%endif%} {%endfor%}</p>
                 {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
                 <p class="information">O mě(nebo mně IDK):</p>
@@ -38,7 +42,7 @@
                             </b></p></td>
                         </tr>
                         <tr>
-                            <td><span id='{{i}}'>{{subject.progress}}</span>
+                            <td><span id='{{i}}'>{{subject.progress1}}</span>
                                 <div class="bar_jak_sar">
                                     <div id="{{i}}bar" class="papapa"></div>
                                 </div>

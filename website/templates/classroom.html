@@ -1,0 +1,49 @@
+{%extends "baselog.html"%}
+{%block title%}Třída{% endblock %}
+{%block head%}
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/classroom.css')}}">
+{%endblock%}
+{%block content%}
+{%if not user.classroom%}
+    {%if user.person=="s"%}
+        <div id="studentdiv">
+            <div id="content">
+                <form action="" method="POST">
+                    <div class="Input">
+                        <input type="text" name="code" placeholder="Zadej kód" class="Inputs">
+                    </div>
+                    <div class="Input">
+                        <button class="BasicButton" name="submit_button" type="submit" value="Odeslat" id="tlacitko">Odeslat</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {%elif user.person=="t"%}
+        <div id="uciteldiv">
+            <form action="" method="POST" style="margin:auto">
+                <input type="text" name="name" placeholder="Enter name" class="Inputs">
+                <select name="grate" class="Inputs">
+                    <option value="g1">Ročník 1</option>
+                    <option value="g2">Ročník 2</option>
+                    <option value="g3">Ročník 3</option>
+                    <option value="g4">Ročník 4</option>
+                </select>
+                <button class="BasicButton" value="createclass" name="submit_button" id="tlacitko">Vytvořit třídu</button> 
+            </form>
+
+        </div>
+    {%endif%}
+{%else%}
+    <div id="MainDiv"><div id="Name"><b>{{classroom.name}}</b></div>
+        <div id="info">
+            <div class="i">Učitelka: {{classroom.teacher}}</div>
+            <div class="i">Založeno: {{classroom.beginning}}</div>
+        </div>
+        <div id="tabulka">
+            <table>
+                
+            </table>
+        </div>
+    </div>
+{%endif%}
+{%endblock%}

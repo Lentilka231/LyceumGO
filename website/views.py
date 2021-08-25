@@ -1,11 +1,21 @@
 from flask import Blueprint, render_template, redirect, url_for,request,flash,request
 from flask_login import login_required,current_user
-from .models import User,Notes,Math,Physic,Informatics,Programming
+from .models import User,Notes,Math,Physic,Informatics,Programming,Classroom
 from . import db
 import os
+import random
+import string
+from datetime import date
 views = Blueprint("views", __name__)
 def getSubjects():
     return {"Matematika":Math.query.filter_by(user_id=current_user.id).first(),"Fyzika":Physic.query.filter_by(user_id=current_user.id).first(),"Informatika":Informatics.query.filter_by(user_id=current_user.id).first(),"Programování":Programming.query.filter_by(user_id=current_user.id).first(),}
+
+def createrandomcode():
+    x=""
+    for i in range(6):
+        x+=random.choice(string.ascii_letters)
+    return x
+
 
 @views.route("/home")
 @views.route("/")
@@ -69,5 +79,27 @@ def subjects():
     if current_user.is_authenticated:
         subjects=[getSubjects()]
         return render_template("subjects.html",user=current_user,subjects=enumerate(subjects))
+    else:
+        return redirect(url_for("auth.login"))
+
+@views.route("/classroom",methods=["GET","POST"])
+def classroom():
+    if current_user.is_authenticated:
+        if request.method=="POST":
+            if request.form["submit_button"]=="Odeslat":
+                code=request.form.get("code")
+            elif request.form["submit_button"]=="createclass":
+                fc =Classroom.query.filter_by(name=request.form.get("name")).first()
+                if not fc :
+                    new_class = Classroom(name=request.form.get("name"),teacher=current_user.name,code=createrandomcode(),beginning=date.today().year)
+                    current_user.classroom=request.form.get("name")
+                    db.session.add(new_class)
+                    db.session.commit()
+                else:
+                    flash("použij jiné jméno")
+        classroom=Classroom.query.filter_by(name=current_user.classroom).first()
+        print(classroom)
+        subjects=[getSubjects()]
+        return render_template("classroom.html",user=current_user,subjects=enumerate(subjects),classroom=classroom)
     else:
         return redirect(url_for("auth.login"))
