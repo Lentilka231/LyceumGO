@@ -2,8 +2,10 @@
 {%block title%}Subjects{% endblock %}
 {%block head%}
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects.css')}}">
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
 {%endblock%}
 {%block content%}
+<div id="flex-container">
 <div id="SubjectMainDiv">
     <div id="grades">
         <div class="grade"id="g1">Ročník 1</div>
@@ -44,5 +46,6 @@
         });
     </script>
     <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/subjects.js')}}"></script>
+</div>
 </div>
 {%endblock%}

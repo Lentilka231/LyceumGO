@@ -16,11 +16,10 @@ subjectspro={"math":"0/1","physic":"0/1","informatics":"0/1","programming":"0/1"
 class RegisterForm(FlaskForm):
     email = StringField("Email", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,64, message="velikost majliku musí být od 5 do 64 znaků"),validators.Email(message="Zadáváš mi špatný email")])
     name = StringField("Name", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,20,message="velikost jména musí být od 5 do 20 znaků")])
-    password1 = PasswordField("Password1", [validators.InputRequired(message="Heslo potřebuji"), validators.Length(5,24),validators.EqualTo("password2",message="Password must match")])
+    password1 = PasswordField("Password1", [validators.InputRequired(message="Heslo potřebuji"), validators.Length(5,24),validators.EqualTo("password2",message="Hesla se musí rovnat")])
     password2 = PasswordField("Password2")
-    person = SelectField("Person",[validators.InputRequired(message="Jsi student nebo učitel")],choices=[("s","student"),("t","teacher")])
+    person = SelectField("Person",choices=[("s","student"),("t","teacher")])
     submit = SubmitField("Log In")
-
 
 @auth.route("/register",methods=["GET","POST"])
 def register():
@@ -51,13 +50,12 @@ def register():
                 db.session.add(user_programming)
                 db.session.commit()
                 login_user(new_user)
-                flash("Account created!", category="success")
                 print("Account was created succesfully, welcome",form.name.data)
                 return redirect(url_for("views.home"))
             else:
-                flash("Please use different name.",category="error")
+                flash("Please use different name.")
         else:
-            flash("Please use different email account.",category="error")
+            flash("Please use different email.")
     return render_template("register.html",user=current_user,form=form)
 
 class LoginForm(FlaskForm):

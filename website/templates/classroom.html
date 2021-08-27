@@ -2,6 +2,7 @@
 {%block title%}Třída{% endblock %}
 {%block head%}
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/classroom.css')}}">
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
 {%endblock%}
 {%block content%}
 {%if not user.classroom%}
@@ -34,16 +35,86 @@
         </div>
     {%endif%}
 {%else%}
-    <div id="MainDiv"><div id="Name"><b>{{classroom.name}}</b></div>
+<div id="flex-container">
+    <div id="MainDiv">
+        <div id="Name"><b>{{classroom.name}}</b></div>
+
         <div id="info">
             <div class="i">Učitelka: {{classroom.teacher}}</div>
             <div class="i">Založeno: {{classroom.beginning}}</div>
+            <div class="i">Code: {{classroom.code}}</div>
         </div>
-        <div id="tabulka">
-            <table>
-                
-            </table>
+        <div class="seznam">
+            <b>
+            <div id="classnav">
+                <div class="objekt" id="o1">Studenti</div>
+                <div class="objekt" id="o2">Chat</div>
+                <div class="objekt" id="o3">Předměty</div>
+            </div>
+            </b>
+            <div class="s" id="s0">
+                <table id="tabulka">
+                    <tr style="background-color: rgb(91, 91, 172);border-bottom:1px solid black">
+                        <th style="width:5%">Id</th>
+                        <th style="width:70%">Jméno</th>
+                        <th style="width:100%">Score</th>
+                    </tr>
+                    {%for i in range(30)%}
+                        <tr class="sinfo">
+                            {%if students[i]%}
+                                <td>{{i+1}}</td>
+                                <td>{{students[i].name}}</td>
+                                <td>{{students[i].score}}</td>
+                            {%endif%}
+                        </tr>
+                    {%endfor%}
+                </table>
+            </div>
+            <div class="s" id="s1">
+                comming soon...
+            </div>
+            <div class="s" id="s2">
+                {%for sub,teacher in subxteach.items()%}
+                    {%if sub%}
+                        <div class="subject">
+                            <p id=""><b>{{sub}}</b></p>
+                            
+                            {%if teacher%}
+                                Učitel(ka):{{teacher}}
+                            {%else%}
+                                <form action="" method="POST">
+                                    Učitel(ka):
+                                    <select name="ucitel">
+                                        <option value="None"></option>
+                                        {%for teacher in teachers%}
+                                            <option value="{{teacher}}">{{teacher}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </form>
+                            {%endif%}
+                        </div>
+                    {%endif%}
+                {%endfor%}
+            </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+            for(let i=0;i<4;i++){
+                $("#s"+i).hide();
+            }
+            $("#s0").show();
+            for(let i=1;i<=4;i++){
+                $("#o"+i).click(function(){
+                    for(let i=0;i<4;i++){
+                        $("#s"+i).hide();
+                    }
+                    $("#s"+(i-1)).show();
+                });
+            }    
+        });
+    </script>
+</div>
+
 {%endif%}
 {%endblock%}

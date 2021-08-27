@@ -2,8 +2,10 @@
 {%block title%}Úprava profilu{%endblock%}
 {%block head%}
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/profile.css')}}">
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
 {%endblock%}
 {%block content%}
+<div id="flex-container">
 <div id="Info">
     
     {%if user%}
@@ -24,5 +26,6 @@
             </div>
         </form>
     {%endif%} 
+</div>
 </div>
 {% endblock %}

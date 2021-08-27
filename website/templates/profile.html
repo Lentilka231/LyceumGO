@@ -2,69 +2,59 @@
 {%block title%}Profil{% endblock %}
 {%block head%}
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/profile.css')}}">
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
 {%endblock%}
 {%block content%}
+<div id="flex-container">
 <div id="Info">
-    {%if user%}
-        <div id="user">
-            <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
-            <div id="info">
-                <p style="font-size: 36px;"><b>{{user.name}}</b></p>
-                <p class="information">Email: {{user.email}}</p>
-                {%if user.person=="s"%}
-                    <p class="information">Ročník: {{user.grate}}</p>
-                {%else%}
-                    <p class="information">Učitel</p>
-                {%endif%}
-                <p class="information">Oblíbené předměty:{%for i,subject in subjects.items()%}{%if subject.favourite%} {{i}}{%endif%} {%endfor%}</p>
-                {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
-                <p class="information">O mě(nebo mně IDK):</p>
-                <p id="ProfileAboutMe">
-                {%if note%}
-                    {{note.data}}
-                {%endif%}</p>
+    <div id="user">
+        <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
+        <div id="info">
+            <p style="font-size: 36px;"><b>{{user.name}}</b></p>
+            <p class="information">Email: {{user.email}}</p>
+            {%if user.person=="s"%}
+                <p class="information">Ročník: {{user.grate}}</p>
+            {%else%}
+                <p class="information">Učitel</p>
+            {%endif%}
+            <p class="information">Oblíbené předměty:{%for i,subject in subjects.items()%}{%if subject.favourite%} {{i}}{%endif%} {%endfor%}</p>
+            {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
+            <p class="information">O mě(nebo mně IDK):</p>
+            <p id="ProfileAboutMe">
+            {%if note%}
+                {{note.data}}
+            {%endif%}</p>
+        </div>
+        <a href="editprofile"><p class="BasicButton">Upravit profil</p></a>
+    </div>
+    <div id="userstats">
+        <form action="" method="POST">
+        {%for i,subject in subjects.items()%}
+            <div class="subjects" style="float: left;">
+                <table>
+                    <tr >
+                        <td rowspan="3"><img src="{{url_for('static',filename='images/'+i+'.png')}}"></td>
+                        <td><p><b>{{i}} <button class="star"  value={{i}} name="submit_button">
+                                {%if subject.favourite%} 
+                                    <img  src="{{url_for('static',filename='images/ystart.png')}}">
+                                {%else%}
+                                    <img  src="{{url_for('static',filename='images/wstart.png')}}">
+                                {%endif%}</button>
+                        </b></p></td>
+                    </tr>
+                    <tr>
+                        <td><span id='{{i}}'>{{subject.progress1}}</span>
+                            <div class="bar_jak_sar">
+                                <div id="{{i}}bar" class="papapa"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <a href="editprofile"><p class="BasicButton">Upravit profil</p></a>
-        </div>
-        <div id="userstats">
-            <form action="" method="POST">
-            {%for i,subject in subjects.items()%}
-                <div class="subjects" style="float: left;">
-                    <table>
-                        <tr >
-                            <td rowspan="3"><img src="{{url_for('static',filename='images/'+i+'.png')}}"></td>
-                            <td><p><b>{{i}} <button class="star"  value={{i}} name="submit_button">
-                                    {%if subject.favourite%} 
-                                        <img  src="{{url_for('static',filename='images/ystart.png')}}">
-                                    {%else%}
-                                        <img  src="{{url_for('static',filename='images/wstart.png')}}">
-                                    {%endif%}</button>
-                            </b></p></td>
-                        </tr>
-                        <tr>
-                            <td><span id='{{i}}'>{{subject.progress1}}</span>
-                                <div class="bar_jak_sar">
-                                    <div id="{{i}}bar" class="papapa"></div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            {%endfor%}
-            <form>
-        </div>
-        <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/progress_bar.js')}}"></script>
-    {%endif%} 
-    {%with messages = get_flashed_messages(with_categories=true)%}
-            {% if messages %}
-                {%for category,msg in messages %}
-                    {%if category=="error"%}
-                        <p style="background-color: rgb(214, 97, 97);">{{msg}}</p>
-                    {%else:%}
-                        <p style="background-color: rgb(135, 224, 94);">{{msg}}</p>
-                    {%endif%}
-                {%endfor%}
-            {% endif %}
-        {%endwith%}
+        {%endfor%}
+        <form>
+    </div>
+    <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/progress_bar.js')}}"></script>
+</div>
 </div>
 {% endblock %}

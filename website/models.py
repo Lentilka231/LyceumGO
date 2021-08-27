@@ -1,6 +1,6 @@
 from . import db
 from flask_login import UserMixin
-
+# Rozdělit User na Studenty a Učitele NE DOHROMADY
 class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(500))
@@ -42,6 +42,7 @@ class User (db.Model,UserMixin):
     notes = db.relationship("Notes")
     person = db.Column(db.String(7))
     grate = db.Column(db.Integer)
+    score = db.Column(db.Integer)
     achievements = db.Column(db.String(200))
     classroom = db.Column(db.String(20))
     beginning = db.Column(db.Integer)
@@ -56,10 +57,11 @@ class Subjects(db.Model):
     students=db.Column(db.String(100))
     
 class Classroom (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True)
     teacher = db.Column(db.String(50))
     students = db.Column(db.String(100))
-    code= db.Column(db.String(6))
-    grate= db.Column(db.Integer)
+    code = db.Column(db.String(6))
+    grate = db.Column(db.Integer)
     beginning = db.Column(db.Integer)
+    teachers=db.Column(db.String(200))

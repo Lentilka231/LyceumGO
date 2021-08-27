@@ -1,0 +1,9 @@
+#Maindiv{
+    background-color: rgb(189, 213, 234);
+    padding:30px;
+    width:80%;
+    height:90%;
+    border: solid rgb(189, 193, 234);
+    border-radius: 10px;
+    position: relative;
+}

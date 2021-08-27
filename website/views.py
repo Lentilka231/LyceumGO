@@ -7,9 +7,10 @@ import random
 import string
 from datetime import date
 views = Blueprint("views", __name__)
+SUBJECTS =["Matematika","Fyzika","Progamování","Informatika"]
+
 def getSubjects():
     return {"Matematika":Math.query.filter_by(user_id=current_user.id).first(),"Fyzika":Physic.query.filter_by(user_id=current_user.id).first(),"Informatika":Informatics.query.filter_by(user_id=current_user.id).first(),"Programování":Programming.query.filter_by(user_id=current_user.id).first(),}
-
 def createrandomcode():
     x=""
     for i in range(6):
@@ -29,7 +30,6 @@ def profile():
         note=Notes.query.filter_by(user_id=current_user.id).first()
         if request.method=="POST":
             r=request.form["submit_button"]
-            print(r)
             if r in subjects.keys():
                 if subjects[r].favourite==True:
                     print("FALSEE")
@@ -49,7 +49,6 @@ def editprofile():
         usernote=Notes.query.filter_by(id=current_user.id).first()
         subjects=getSubjects()
         if request.method=="POST":
-            print(request.form["submit_button"])
             if request.form["submit_button"]=="Uložit":
                 name = request.form.get("name")
                 note = request.form.get("note")
@@ -91,15 +90,28 @@ def classroom():
             elif request.form["submit_button"]=="createclass":
                 fc =Classroom.query.filter_by(name=request.form.get("name")).first()
                 if not fc :
-                    new_class = Classroom(name=request.form.get("name"),teacher=current_user.name,code=createrandomcode(),beginning=date.today().year)
+                    new_class = Classroom(name=request.form.get("name"),teacher=current_user.name,code=createrandomcode(),beginning=date.today().year,students="/"*29,teachers="/".join(i+":" for i in SUBJECTS))
                     current_user.classroom=request.form.get("name")
                     db.session.add(new_class)
                     db.session.commit()
                 else:
                     flash("použij jiné jméno")
         classroom=Classroom.query.filter_by(name=current_user.classroom).first()
-        print(classroom)
-        subjects=[getSubjects()]
-        return render_template("classroom.html",user=current_user,subjects=enumerate(subjects),classroom=classroom)
+        subjects=enumerate([getSubjects()])
+        x={}
+        students=[]
+        teachers=User.query.filter_by(person="t").all()
+        print(teachers)
+        if classroom:
+            for i in classroom.students.split("/"):
+                students.append(User.query.filter_by(name="i"))
+            for i in classroom.teachers.split("/"):
+                a=i.find(":")
+                x[i[:a-1]]=i[a+1:]
+        return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=[],subxteach=x)
     else:
         return redirect(url_for("auth.login"))
+
+@views.route("/notification")
+def notification():
+    return render_template("notification.html",user=current_user)

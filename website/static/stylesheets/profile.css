@@ -1,13 +1,10 @@
 /*--------profile.html/editprofile.html----------*/
 
 #Info{
-    margin:auto;
-    margin-top:50px;
     background-color: rgb(189, 213, 234);
     padding:30px;
     width:1200px;
     height:750px;
-    align-content:flex-start;
     border: solid rgb(189, 193, 234);
     border-radius: 10px;
   }

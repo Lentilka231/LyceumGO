@@ -8,11 +8,38 @@
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/home.css')}}">
 {%endblock%}
 {%block content%}
-
-        <div id="divTabletosondo"></div>
+    
+    <div class="mainHomeDiv">
+            <table class="podMainHomeDiv">
+                <tr>
+                    <td class="tdple">
+                        <div class="leftTop">
+                        </div>
+                    </td>
+                    <td class="tdple" id="rightFirstShow">
+                        <div class="rightTopName"><p>Přihlašování</p></div>
+                        <div class="rightTop">
+                            <div class="rightFirst" id="rightFirstShow">Login</div>
+                            <div class="rightFirst">Register</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdple">
+                        <div class="leftBottom">
+                        </div>
+                    </td>
+                    <td class="tdple">
+                        <div class="rightBottom">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+    </div>
+    <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/prosim.js')}}"></script>
         {% if user.is_authenticated %}
         {% else %}
-            <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/test1.js')}}"></script>
+
         {% endif %}
 {% endblock %}
 
