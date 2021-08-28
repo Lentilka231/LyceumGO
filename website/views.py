@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for,request,flash,request
 from flask_login import login_required,current_user
-from .models import User,Notes,Math,Physic,Informatics,Programming,Classroom
+from .models import User,Notes,Math,Physic,Informatics,Programming,Classroom,Messages
 from . import db
 import os
 import random
@@ -84,6 +84,7 @@ def subjects():
 @views.route("/classroom",methods=["GET","POST"])
 def classroom():
     if current_user.is_authenticated:
+        classroom=Classroom.query.filter_by(name=current_user.classroom).first()
         if request.method=="POST":
             if request.form["submit_button"]=="Odeslat":
                 code=request.form.get("code")
@@ -96,22 +97,30 @@ def classroom():
                     db.session.commit()
                 else:
                     flash("použij jiné jméno")
-        classroom=Classroom.query.filter_by(name=current_user.classroom).first()
+            elif request.form["submit_button"]=="sendt":
+                t=""
+                for i in request.form:
+                    classroom.teachers[i]
+        
         subjects=enumerate([getSubjects()])
         x={}
         students=[]
         teachers=User.query.filter_by(person="t").all()
-        print(teachers)
         if classroom:
             for i in classroom.students.split("/"):
-                students.append(User.query.filter_by(name="i"))
+                students.append(User.query.filter_by(name=i))
             for i in classroom.teachers.split("/"):
                 a=i.find(":")
-                x[i[:a-1]]=i[a+1:]
-        return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=[],subxteach=x)
+                x[i[:a]]=i[a+1:]
+        return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers,subxteach=x)
     else:
         return redirect(url_for("auth.login"))
 
-@views.route("/notification")
+@views.route("/notification",methods=["GET","POST"])
 def notification():
-    return render_template("notification.html",user=current_user)
+    if current_user.is_authenticated:
+
+        messages=Messages.query.filter_by(user_id=current_user.id).all()
+        return render_template("notification.html",user=current_user,messages=messages)
+    else:
+        return redirect(url_for("auth.login"))

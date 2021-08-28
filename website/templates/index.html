@@ -14,23 +14,40 @@
                 <tr>
                     <td class="tdple">
                         <div class="leftTop">
+                            <p>Předměty</p>
                         </div>
                     </td>
+
+
+
+
                     <td class="tdple" id="rightFirstShow">
+                    <a href="profile" style="text-align: center;color: black;font-size: 24px;">
+                    <div>
+                   
+                        {% if user.is_authenticated %}
+                        <div><p>Profil</p></div>
+                        {% else %}
                         <div class="rightTopName"><p>Přihlašování</p></div>
                         <div class="rightTop">
-                            <div class="rightFirst" id="rightFirstShow">Login</div>
-                            <div class="rightFirst">Register</div>
+                            <a href="login"><div class="rightFirst" id="rightFirstShow">Login</div></a>
+                            <a href="register"><div class="rightFirst">Register</div></a>
                         </div>
+                        {% endif %}
+                    
+                    </div>
+                    </a>
                     </td>
                 </tr>
                 <tr>
                     <td class="tdple">
                         <div class="leftBottom">
+                            <p>assdasdaas</p>
                         </div>
                     </td>
                     <td class="tdple">
                         <div class="rightBottom">
+                            <p>asxyxysdaas</p>
                         </div>
                     </td>
                 </tr>

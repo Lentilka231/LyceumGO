@@ -8,8 +8,18 @@
 {%block content%}
 <div id="flex-container">
     <div id="Maindiv">
-        <table>
-            
+        <table id="tabulka">
+            <tr style="background-color: rgb(91, 91, 172);border-bottom:1px solid black">
+                <th style="column-span:3">Messages</th>
+
+            </tr>
+            {%for message in messages%}
+                <tr class="sinfo">
+                    <td></td>
+                    <td>{{message.name}}</td>
+                    <td>{{message.text}}</td>
+                </tr>
+            {%endfor%}
         </table>
     </div>
 </div>

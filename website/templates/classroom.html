@@ -74,27 +74,34 @@
                 comming soon...
             </div>
             <div class="s" id="s2">
-                {%for sub,teacher in subxteach.items()%}
-                    {%if sub%}
-                        <div class="subject">
-                            <p id=""><b>{{sub}}</b></p>
-                            
-                            {%if teacher%}
-                                Učitel(ka):{{teacher}}
-                            {%else%}
-                                <form action="" method="POST">
-                                    Učitel(ka):
-                                    <select name="ucitel">
-                                        <option value="None"></option>
-                                        {%for teacher in teachers%}
-                                            <option value="{{teacher}}">{{teacher}}</option>
-                                        {%endfor%}
-                                    </select>
-                                </form>
-                            {%endif%}
-                        </div>
-                    {%endif%}
-                {%endfor%}
+                <form action="" method="POST">
+                    {%for sub,teacher in subxteach.items()%}
+                        {%if sub%}
+                                <div class="subject">
+                                    <p id=""><b>{{sub}}</b></p>
+                                    
+                                        {%if teacher%}
+                                        Učitel(ka):
+                                            <select name="{{sub}}">
+                                                <option value={{teacher}}>{{teacher}}</option>
+                                                {%for t in teachers%}{%if teacher!=t%}
+                                                    <option value="{{teacher}}">{{t.name}}</option>{%endif%}
+                                                {%endfor%}
+                                            </select>
+                                        {%else%}
+                                            Učitel(ka):
+                                            <select name="{{sub}}">
+                                                <option value="None"></option>
+                                                {%for teacher in teachers%}
+                                                    <option value="{{teacher}}">{{teacher.name}}</option>
+                                                {%endfor%}
+                                            </select>
+                                        {%endif%}
+                                </div>
+                        {%endif%}
+                    {%endfor%}
+                <button name="submit_button" value="sendt">Uložit</button>
+                </form>
             </div>
         </div>
     </div>

@@ -14,19 +14,27 @@
   border: 4px solid black;
   opacity: 0;
   display: block;
-}/*
+  transform: rotate(330deg);
+}
 .leftTop{
-
+  font-size: 24px;
+  text-align: center;
 }
 .rightBottom{
-
+  font-size: 24px;
+  text-align: center;
 }
 .leftBottom{
-
-}*/
+  font-size: 24px;
+  text-align: center;
+}
 .rightFirst{
-  background-color: white;
+  background-color: rgb(73, 88, 103);
   height: 40px;
+}
+.rightFirst:hover{
+  background-color: rgb(87, 115, 153);
+  display: block;
 }
 .rightTopName{
   display: block;
@@ -34,19 +42,21 @@
   font-size: 24px;
 }
 .tdple{
-  background-color: rgb(73, 88, 103);;
+  background-color: rgb(73, 88, 103);
   width: 200px;
   height: 200px;
 }
 .tdple:hover{
-  transition: 0.5s ease-in;
+  transition: 1s;
+  opacity: 1;
   background-color: lightgray;
 }
 .tdple:hover .rightTop{
-  transition: 0.5s ease-in;
+  transition: 0.5s;
+  transform: rotate(360deg);
   opacity: 1;
 }
 .tdple:hover .rightTopName{
-  transition: 1s ease-out;
-  display: none;
+  font-size: small;
+  opacity: 0;
 }
