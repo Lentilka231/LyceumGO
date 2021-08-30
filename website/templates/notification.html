@@ -9,18 +9,30 @@
 <div id="flex-container">
     <div id="Maindiv">
         <table id="tabulka">
-            <tr style="background-color: rgb(91, 91, 172);border-bottom:1px solid black">
+            <tr class="sMesS">
                 <th style="column-span:3">Messages</th>
 
             </tr>
             {%for message in messages%}
                 <tr class="sinfo">
-                    <td></td>
-                    <td>{{message.name}}</td>
-                    <td>{{message.text}}</td>
+                    <td class='sTil'>{{message.title}} </td>
+                    <td>{{message.message}} </td>
+                    <td id="sDatum">{{message.datum}} </td>
+                    <td>
+                        <form action="" method="POST" style="margin:auto">
+                            <button>Yes</button>
+                            <button>No</button>
+                        </form>
+                    </td>
+
+
+
+
+
                 </tr>
             {%endfor%}
         </table>
     </div>
 </div>
+<script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/notificS.js')}}"></script>
 {%endblock%}

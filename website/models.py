@@ -68,6 +68,8 @@ class Classroom (db.Model):
 
 class Messages(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    user_id = db.Column(db.Integer)
+    user_name = db.Column(db.Integer)
     title = db.Column(db.String(100))
     message = db.Column(db.String(10000))
+    datum = db.Column(db.String(50))
+    seen = db.Column(db.Boolean)

@@ -7,3 +7,25 @@
     border-radius: 10px;
     position: relative;
 }
+
+#sDatum{
+    font-size: 10px;
+}
+tr.sinfo td{
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgb(189, 203, 234);
+    border: solid black 0.5px;
+}
+tr.sinfo:hover td{
+    background-color: rgb(99, 179, 250);;
+}
+#tabulka{
+    border-left:rgb(119, 173, 255,0.8) solid;
+    border-top:rgba(119, 173, 255,0.8) solid;
+}
+.sMesS{
+    background-color: rgba(137, 137, 235, 0.5);
+    font-size: 20px;
+}

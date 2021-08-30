@@ -5,7 +5,7 @@ from . import db
 import os
 import random
 import string
-from datetime import date
+from datetime import date,datetime
 views = Blueprint("views", __name__)
 SUBJECTS =["Matematika","Fyzika","Progamování","Informatika"]
 
@@ -16,8 +16,12 @@ def createrandomcode():
     for i in range(6):
         x+=random.choice(string.ascii_letters)
     return x
-
-
+def createmessage(title,message,prijemce):
+    datum=str(datetime.now())[:-11]
+    new_message=Messages(user_name=prijemce,title=title,message=message,datum=datum,seen=False)
+    db.session.add(new_message)
+    print("message was created")
+    db.session.commit()
 @views.route("/home")
 @views.route("/")
 def home():
@@ -85,23 +89,6 @@ def subjects():
 def classroom():
     if current_user.is_authenticated:
         classroom=Classroom.query.filter_by(name=current_user.classroom).first()
-        if request.method=="POST":
-            if request.form["submit_button"]=="Odeslat":
-                code=request.form.get("code")
-            elif request.form["submit_button"]=="createclass":
-                fc =Classroom.query.filter_by(name=request.form.get("name")).first()
-                if not fc :
-                    new_class = Classroom(name=request.form.get("name"),teacher=current_user.name,code=createrandomcode(),beginning=date.today().year,students="/"*29,teachers="/".join(i+":" for i in SUBJECTS))
-                    current_user.classroom=request.form.get("name")
-                    db.session.add(new_class)
-                    db.session.commit()
-                else:
-                    flash("použij jiné jméno")
-            elif request.form["submit_button"]=="sendt":
-                t=""
-                for i in request.form:
-                    classroom.teachers[i]
-        
         subjects=enumerate([getSubjects()])
         x={}
         students=[]
@@ -112,6 +99,26 @@ def classroom():
             for i in classroom.teachers.split("/"):
                 a=i.find(":")
                 x[i[:a]]=i[a+1:]
+        if request.method=="POST":
+            if request.form["submit_button"]:
+                if request.form["submit_button"]=="Odeslat":
+                    code=request.form.get("code")
+                    classroom=Classroom.query.filter_by(code=code).first()
+                    teacher=User.query.filter_by(name=classroom.teacher).first()
+                    createmessage("Žádost", f"{current_user.name} žádá o připojení do třídy {classroom.name}. Chcete ho příjmout",teacher.name)
+                elif request.form["submit_button"]=="createclass":
+                    fc =Classroom.query.filter_by(name=request.form.get("name")).first()
+                    if not fc :
+                        new_class = Classroom(name=request.form.get("name"),teacher=current_user.name,code=createrandomcode(),beginning=date.today().year,students="/"*29,teachers="/".join(i+":" for i in SUBJECTS))
+                        current_user.classroom=request.form.get("name")
+                        db.session.add(new_class)
+                        db.session.commit()
+                    else:
+                        flash("použij jiné jméno")
+                elif request.form["submit_button"]=="sendt":
+                    t=""
+        
+
         return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers,subxteach=x)
     else:
         return redirect(url_for("auth.login"))
@@ -119,8 +126,8 @@ def classroom():
 @views.route("/notification",methods=["GET","POST"])
 def notification():
     if current_user.is_authenticated:
-
-        messages=Messages.query.filter_by(user_id=current_user.id).all()
+        messages=Messages.query.filter_by(user_name=current_user.name).all()
+        print(messages)
         return render_template("notification.html",user=current_user,messages=messages)
     else:
         return redirect(url_for("auth.login"))

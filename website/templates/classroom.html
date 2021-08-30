@@ -71,7 +71,10 @@
                 </table>
             </div>
             <div class="s" id="s1">
-                comming soon...
+                probably never come
+                <ul id="messages"></ul>
+                <input type="text" id="myMessage">
+                <button id="sendButton">Send</button>
             </div>
             <div class="s" id="s2">
                 <form action="" method="POST">
@@ -122,6 +125,10 @@
         });
     </script>
 </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+<script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/liveChat.js')}}"></script>
 
 {%endif%}
 {%endblock%}
