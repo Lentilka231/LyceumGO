@@ -1,2 +1,1 @@
-#This is micosoft windos thank you for your comporationfd
-
+#This project is made for my seminar paper.
