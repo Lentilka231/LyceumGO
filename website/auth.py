@@ -1,8 +1,8 @@
 from flask import render_template, Blueprint,request,redirect, url_for,flash
-from .models import User,Notes,Math,Physic,Informatics,Programming
+from .models import Users,Math,Physic,Informatics,Programming
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, login_required,logout_user,current_user
+from flask_login import login_user, logout_user,current_user
 from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,validators,Form
 from wtforms.validators import InputRequired,Length,Email,EqualTo
@@ -28,26 +28,14 @@ def register():
     form = RegisterForm()
 
     if form.validate_on_submit():
-        usere = User.query.filter_by(email=form.email.data).first()
-        usern = User.query.filter_by(name=form.name.data).first()
+        usere = Users.query.filter_by(email=form.email.data).first()
+        usern = Users.query.filter_by(name=form.name.data).first()
         emailexist = validate_email(form.email.data)
         if not usere and emailexist:
             if not usern:
                 SendMail(form.email.data, form.name.data, "Welcome")
-                new_user = User(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"),person=form.person.data,grate=1,beginning=date.today().year)
+                new_user = Users(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=form.person.data)
                 db.session.add(new_user)
-                db.session.commit()
-                user = User.query.filter_by(name=form.name.data).first()
-                user_notes = Notes(data="",user_id=user.id)
-                user_math = Math(user_id=user.id,progress1=subjectspro["math"],tests1="",favourite=False)
-                user_physic = Physic(user_id=user.id,progress1=subjectspro["physic"],tests1="",favourite=False)
-                user_informatics = Informatics(user_id=user.id,progress1=subjectspro["informatics"],tests1="",favourite=False)
-                user_programming = Programming(user_id=user.id,progress1=subjectspro["programming"],tests1="",favourite=False)
-                db.session.add(user_notes)
-                db.session.add(user_math)
-                db.session.add(user_physic)
-                db.session.add(user_informatics)
-                db.session.add(user_programming)
                 db.session.commit()
                 login_user(new_user)
                 print("Account was created succesfully, welcome",form.name.data)
@@ -70,10 +58,9 @@ def login():
         return redirect(url_for("views.profile"))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = Users.query.filter_by(email=form.email.data).first()
         if user:
             if check_password_hash(user.password, form.password.data):
-                print(form.rememberme.data)
                 login_user(user, remember=form.rememberme.data)
                 return redirect (url_for("views.home"))
             else:

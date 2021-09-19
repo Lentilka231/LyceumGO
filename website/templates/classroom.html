@@ -14,7 +14,7 @@
                         <input type="text" name="code" placeholder="Zadej kód" class="Inputs">
                     </div>
                     <div class="Input">
-                        <button class="BasicButton" name="submit_button" type="submit" value="Odeslat" id="tlacitko">Odeslat</button>
+                        <button class="BasicButton" name="submit_button" value="findclass" id="tlacitko">Odeslat</button>
                     </div>
                 </form>
             </div>
@@ -37,12 +37,13 @@
 {%else%}
 <div id="flex-container">
     <div id="MainDiv">
-        <div id="Name"><b>{{classroom.name}}</b></div>
-
-        <div id="info">
-            <div class="i">Učitelka: {{classroom.teacher}}</div>
-            <div class="i">Založeno: {{classroom.beginning}}</div>
-            <div class="i">Code: {{classroom.code}}</div>
+        <div id="ClassInfo">   
+            <div id="Name"><b>{{classroom.name}}</b></div>
+            <div id="info">
+                <div class="i">Učitelka: {{classroom.teacher}}</div>
+                <div class="i">Založeno: {{classroom.beginning}}</div>
+                <div class="i">Code: {{classroom.code}}</div>
+            </div>
         </div>
         <div class="seznam">
             <b>
@@ -53,58 +54,67 @@
             </div>
             </b>
             <div class="s" id="s0">
-                <table id="tabulka">
+                <table style="width:100%">
                     <tr style="background-color: rgb(91, 91, 172);border-bottom:1px solid black">
                         <th style="width:5%">Id</th>
                         <th style="width:70%">Jméno</th>
-                        <th style="width:100%">Score</th>
+                        <th style="width:95%">Oblíbený předmět</th>
+                        <th style="width:100%"></th>
                     </tr>
-                    {%for i in range(30)%}
+                    <form method="POST">
+                    {%for i,v in students%}
                         <tr class="sinfo">
-                            {%if students[i]%}
-                                <td>{{i+1}}</td>
-                                <td>{{students[i].name}}</td>
-                                <td>{{students[i].score}}</td>
-                            {%endif%}
+                            <td>{{i+1}}</td>
+                            <td>{{v.name}}</td>
+                            <td>{{v.favouritesub}}</td>
+                            <td><button value="kickstudent-{{v.id}}" name="submit_button" id="kickstudent">✕</button></td>
                         </tr>
                     {%endfor%}
+                </form>
                 </table>
             </div>
             <div class="s" id="s1">
                 probably never come
                 <ul id="messages"></ul>
                 <input type="text" id="myMessage">
-                <button id="sendButton">Send</button>
+                <button name="submit_button" value="sendmess" id="sendButton">Send</button>
             </div>
             <div class="s" id="s2">
-                <form action="" method="POST">
-                    {%for sub,teacher in subxteach.items()%}
-                        {%if sub%}
-                                <div class="subject">
-                                    <p id=""><b>{{sub}}</b></p>
-                                    
-                                        {%if teacher%}
-                                        Učitel(ka):
-                                            <select name="{{sub}}">
-                                                <option value={{teacher}}>{{teacher}}</option>
-                                                {%for t in teachers%}{%if teacher!=t%}
-                                                    <option value="{{teacher}}">{{t.name}}</option>{%endif%}
-                                                {%endfor%}
-                                            </select>
-                                        {%else%}
-                                            Učitel(ka):
-                                            <select name="{{sub}}">
-                                                <option value="None"></option>
-                                                {%for teacher in teachers%}
-                                                    <option value="{{teacher}}">{{teacher.name}}</option>
-                                                {%endfor%}
-                                            </select>
-                                        {%endif%}
-                                </div>
-                        {%endif%}
-                    {%endfor%}
-                <button name="submit_button" value="sendt">Uložit</button>
-                </form>
+                {%for sub,teacher in subxteach.items()%}
+                    {%if sub%}
+                            <div class="subject">
+                                <p id=""><b>{{sub}}</b></p>
+                                Učitel(ka):{{teacher}}
+                            </div>
+                    {%endif%}
+                {%endfor%}
+                <div class="BasicButton" id="NewClassroom">
+                    Vytvořit novou učebnu
+                </div>
+                <div class="Bubak">
+                    <form method="POST">
+                        <div class="input">
+                            <label>Předmět:</label><br>
+                            <select>
+                                {%for i in subjects%}
+                                    <option name="subject" value="{{i}}">{{i}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                        <div class="input">
+                            <label>Učitel:</label><br>
+                            <select>
+                                {%for i in teachers%}
+                                    <option name="teacher" value="{{i.name}}">{{i.name}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                        <input name="submit_button" value="createclass" type="submit">
+                    </form>
+                    <div class="BasicButton" id="exit">
+                        Zrušit
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -121,7 +131,14 @@
                     }
                     $("#s"+(i-1)).show();
                 });
-            }    
+            }   
+            $(".Bubak").hide()
+            $("#NewClassroom").click(function(){
+                $(".Bubak").show()
+            })
+            $("#exit").click(function(){
+                $(".Bubak").hide()
+            }) 
         });
     </script>
 </div>

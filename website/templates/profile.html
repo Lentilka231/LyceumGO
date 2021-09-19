@@ -17,15 +17,12 @@
             {%else%}
                 <p class="information">Učitel</p>
             {%endif%}
-            <p class="information">Oblíbené předměty:{%for i,subject in subjects.items()%}{%if subject.favourite%} {{i}}{%endif%} {%endfor%}</p>
+            <p class="information">Oblíbené předměty:{%for fs in favouritesub%}{{fs}}{%endfor%}</p>
             {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
             <p class="information">O mě(nebo mně IDK):</p>
-            <p id="ProfileAboutMe">
-            {%if note%}
-                {{note.data}}
-            {%endif%}</p>
+            <p id="ProfileAboutMe">{{user.notes}}</p>
+            
         </div>
-        <a href="editprofile"><p class="BasicButton">Upravit profil</p></a>
     </div>
     <div id="userstats">
         <form action="" method="POST">
@@ -33,14 +30,14 @@
             <div class="subjects" style="float: left;">
                 <table>
                     <tr >
-                        <td rowspan="3"><img src="{{url_for('static',filename='images/'+i+'.png')}}"></td>
-                        <td><p><b>{{i}} <button class="star"  value={{i}} name="submit_button">
-                                {%if subject.favourite%} 
-                                    <img  src="{{url_for('static',filename='images/ystart.png')}}">
-                                {%else%}
-                                    <img  src="{{url_for('static',filename='images/wstart.png')}}">
-                                {%endif%}</button>
-                        </b></p></td>
+                        <td rowspan="3"><img src="{{url_for('static',filename='images/'+i+'.png')}}" style="border-radius:50%"></td>
+                        <td><p><b>{{i}}<buton class="star" value={{i}} name="submit_button">
+                            {%if i in favouritesub%}
+                                <img style="width: 16px" src="{{url_for('static',filename='images/ystar.png')}}">
+                            {%else%}
+                                <img style="width: 16px" src="{{url_for('static',filename='images/wstar.png')}}">
+                            {%endif%}</buton>
+                        </td>
                     </tr>
                     <tr>
                         <td><span id='{{i}}'>{{subject.progress1}}</span>
@@ -54,6 +51,23 @@
         {%endfor%}
         <form>
     </div>
+    <div id="NotesBubak">
+        <form method="POST">
+            <textarea name="note" class="Inputs" id="editnotes">{{user.notes}}</textarea><br>
+            <button name="submit_button"value="save" class="BasicButton">Uložit</button>
+            <button name="submit_button" value="cancel" class="BasicButton" style="float:right">Zrušit</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#NotesBubak").hide();
+            $("#ProfileAboutMe").click(function(){
+                if ($("#NotesBubak").is(":hidden")){
+                    $("#NotesBubak").show();
+                }                
+            });
+        });
+    </script>
     <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/progress_bar.js')}}"></script>
 </div>
 </div>

@@ -7,29 +7,18 @@
 {%block content%}
 <div id="flex-container">
 <div id="SubjectMainDiv">
-    <div id="grades">
-        <div class="grade"id="g1">Ročník 1</div>
-        <div class="grade"id="g2">Ročník 2</div>
-        <div class="grade"id="g3">Ročník 3</div>
-        <div class="grade"id="g4">Ročník 4</div>
-    </div>
-    <div id="Subjects"> 
-        {%for i,v in subjects%}
-            <div class="sub" id="sub{{i}}">
-            {%for name,sub in v.items()%}
-                <a href="{{name}}">
-                    <div class="subject" id={{name}}>
-                        <p class="SubName"><b>{{name}}</b></p>
- 
-                        <p class="SubProg">{{sub.progress1}}</p>
-                        <div class="invisible">
-                        </div>
-                    </div>
-                </a>
-            {%endfor%}
-            </div>
-        {%endfor%}
-    </div>
+    {%if user.person=="t"%}
+    {%for sub in user.subclass%}
+        <div class="sub">
+            <a href="{{sub.subject}}">
+                <div class="subject">
+                    <p class="ClassName">{{sub.classroom}}</p>
+                    <p class="SubName">{{sub.subject}}</p>                    
+                </div>
+            </a>
+        </div>
+    {%endfor%}
+
     <script>
         $(document).ready(function(){
             for(let i=0;i<4;i++){
@@ -42,9 +31,31 @@
                     }
                     $("#sub"+(i-1)).show();
                 });
-            }    
+            }
         });
     </script>
+    {%else%}
+    <div id="grades">
+        <div class="grade"id="g1">Ročník 1</div>
+        <div class="grade"id="g2">Ročník 2</div>
+        <div class="grade"id="g3">Ročník 3</div>
+        <div class="grade"id="g4">Ročník 4</div>
+    </div>
+    <div id="Subjects"> 
+        {%for i in subjects%}
+            <div class="sub" id="sub{{i}}">
+                <a href="{{i}}">
+                    <div class="subject" id={{i}}>
+                        <p class="SubName"><b>{{i}}</b></p>
+                        <p class="SubProg"></p>
+                        <div class="invisible">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {%endfor%}
+    </div>
+    {%endif%}
 </div>
 </div>
 {%endblock%}

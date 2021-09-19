@@ -31,6 +31,10 @@
     background-color: rgb(130, 130, 216);
     float:right;
     padding:30px;
+    position:relative;
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
 }
 .sub{
     display:flex;
@@ -56,4 +60,15 @@
 }
 .subject:hover .invisible{
     display:block
+}
+
+#MainDiv{
+    width:250px;
+    height:300px;
+    background-color: rgb(87, 115, 153);
+}
+#NewClassroom{
+    position: absolute;
+    right:70px;
+    bottom:30px;
 }

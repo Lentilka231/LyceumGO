@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for,request,flash,request
 from flask_login import login_required,current_user
-from .models import User,Notes,Math,Physic,Informatics,Programming
+from .models import Users,Math,Physic,Informatics,Programming
 from . import db
 import json
 

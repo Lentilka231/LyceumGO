@@ -67,27 +67,22 @@ td{
 }
 
 /*-----------editprofile.html-----------*/
-#EProfileAboutMe{
+#editnotes{
     max-width:400px;
     min-width:400px;
     max-height: 75px;
     min-height: 75px;
     font-family: Arial;
-    margin-top:10px;
-}
 
-.fsubject{
-    background-color: rgb(87, 115, 153);
-    padding:2px;
-    border-radius:3px;
 }
-.fsubject:hover .fs{
-    opacity:1; 
-} 
-.fs{
-    opacity: 0;
-    background-color:rgb(87, 115, 153);
-    border:solid 0px;
+#NotesBubak{
+    background-color: rgb(189, 213, 234);
+    padding:20px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
 }
 textarea {
     resize: none;
@@ -96,6 +91,7 @@ textarea {
     margin-top:10px;
 }
   
+
 ::placeholder { /* Firefox, Chrome, Opera */
     color: black;
 }
@@ -106,19 +102,4 @@ textarea {
   
 ::-ms-input-placeholder { /* Microsoft Edge */
     color:black;
-}
-
-.bar_jak_sar{
-    height: 14px;
-    width: 150px;
-    border: 2px solid black;
-    background-color: white;
-    border-radius: 4px;
-}
-.papapa{
-    height: 100%;
-    width: 0%;
-    background-color: rgb(96, 79, 255);
-    float: left;
-    border-radius: 2px;
 }
