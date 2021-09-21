@@ -23,7 +23,7 @@
         <div id="uciteldiv">
             <form action="" method="POST" style="margin:auto">
                 <input type="text" name="name" placeholder="Enter name" class="Inputs">
-                <select name="grate" class="Inputs">
+                <select name="grade" class="Inputs">
                     <option value="g1">Ročník 1</option>
                     <option value="g2">Ročník 2</option>
                     <option value="g3">Ročník 3</option>
@@ -80,44 +80,48 @@
                 <button name="submit_button" value="sendmess" id="sendButton">Send</button>
             </div>
             <div class="s" id="s2">
-                {%for sub,teacher in subxteach.items()%}
-                    {%if sub%}
-                            <div class="subject">
-                                <p id=""><b>{{sub}}</b></p>
-                                Učitel(ka):{{teacher}}
-                            </div>
-                    {%endif%}
+                {%for sub in classroom.subclass%}
+                    <div class="subject">
+                        <p id=""><b>{{sub.subject}}</b></p>
+                        Učitel(ka): {{sub.teacher}}
+                    </div>
                 {%endfor%}
+                {%if user.person=="t"%}
                 <div class="BasicButton" id="NewClassroom">
                     Vytvořit novou učebnu
                 </div>
-                <div class="Bubak">
-                    <form method="POST">
-                        <div class="input">
-                            <label>Předmět:</label><br>
-                            <select>
-                                {%for i in subjects%}
-                                    <option name="subject" value="{{i}}">{{i}}</option>
-                                {%endfor%}
-                            </select>
-                        </div>
-                        <div class="input">
-                            <label>Učitel:</label><br>
-                            <select>
-                                {%for i in teachers%}
-                                    <option name="teacher" value="{{i.name}}">{{i.name}}</option>
-                                {%endfor%}
-                            </select>
-                        </div>
-                        <input name="submit_button" value="createclass" type="submit">
-                    </form>
-                    <div class="BasicButton" id="exit">
-                        Zrušit
-                    </div>
-                </div>
+                {%endif%}
             </div>
         </div>
     </div>
+{%if user.person=="t"%}
+    <div id="CreateSubClass">
+        <div class="Bubak">
+            <form method="POST">
+                <div class="input">
+                    <label>Předmět:</label><br>
+                    <select name="subject">
+                        {%for i in subjects[classroom.grade-1]%}
+                            <option value="{{i}}">{{i}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+                <div class="input">
+                    <label>Učitel:</label><br>
+                    <select name="teacher">
+                        {%for i in teachers%}
+                            <option  value="{{i.name}}">{{i.name}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+                <button name="submit_button" value="createsubclass">Vytvoř učebnus</button>
+            </form>
+            <div class="BasicButton" id="exit">
+                Zrušit
+            </div>
+        </div>
+    </div>
+{%endif%}
     <script>
         $(document).ready(function(){
             for(let i=0;i<4;i++){
@@ -132,12 +136,12 @@
                     $("#s"+(i-1)).show();
                 });
             }   
-            $(".Bubak").hide()
+            $("#CreateSubClass").hide()
             $("#NewClassroom").click(function(){
-                $(".Bubak").show()
+                $("#CreateSubClass").show()
             })
             $("#exit").click(function(){
-                $(".Bubak").hide()
+                $("#CreateSubClass").hide()
             }) 
         });
     </script>

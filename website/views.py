@@ -7,7 +7,7 @@ import random
 import string
 from datetime import date,datetime
 views = Blueprint("views", __name__)
-SUBJECTS =["Matematika#1","Fyzika#1","Programování#1","Informatika#1","Germany#1"]
+SUBJECTS = [["Matematika","Fyzika","Programování","Informatika","Germany"]]
 def createrandomcode():
     x=""
     for i in range(6):
@@ -48,7 +48,7 @@ def profile():
 @views.route("/subjects",methods=["GET","POST"])
 def subjects():
     if current_user.is_authenticated:
-        return render_template("subjects.html",user=current_user,subjects=SUBJECTS,teachers=teachers)
+        return render_template("subjects.html",user=current_user)
     else:
         return redirect(url_for("auth.login"))
 
@@ -63,13 +63,16 @@ def classroom():
             if request.form["submit_button"]=="findclass":
                 code=request.form.get("code")
                 classroom=Classrooms.query.filter_by(code=code).first()
-                teacher=Users.query.filter_by(name=classroom.teacher).first()
-                createmessage("Žádost", f"{current_user.name} žádá o připojení do třídy {classroom.name}. Chcete ho příjmout",teacher.id,"anone")
-                flash("Žádost byla odeslána")
+                if classroom:
+                    teacher=Users.query.filter_by(name=classroom.teacher).first()
+                    createmessage("Žádost", f"{current_user.name} žádá o připojení do třídy {classroom.name}. Chcete ho příjmout",teacher.id,"anone")
+                    flash("Žádost byla odeslána")
+                else:
+                    flash("Špatný code")
             elif request.form["submit_button"]=="createclass":
                 fc =Classrooms.query.filter_by(name=request.form.get("name")).first()
                 if not fc :
-                    new_class = Classrooms(name=request.form.get("name"),teacher=current_user.name,code=createrandomcode(),beginning=date.today().year,numofstudents=0,active=True,grate=request.form.get("grate"))
+                    new_class = Classrooms(name=request.form.get("name"),teacher=current_user.name,code=createrandomcode(),beginning=date.today().year,numofstudents=0,active=True,grade=request.form.get("grade")[1])
                     current_user.classroom=request.form.get("name")
                     db.session.add(new_class)
                     db.session.commit()
@@ -82,16 +85,28 @@ def classroom():
                 a=request.form.get("submit_button")
                 print(a,a[a.find("-")+1:])
                 student=Users.query.filter_by(id=a[a.find("-")+1:]).first()
+                classroom.numofstudents-=1
                 student.classroom=None
                 student.classroomid=None
+
                 createmessage("Vyhazov", f"Byl jste vyhozen ze třídy {current_user.classroom}",student.id,"none")
                     
-            elif request.form["submit_button"]=="createclass":
-                newsubclass = SubClass(teacher=request.form.get("teacher"),classroom=current_user.classroom,subject=request.form.get("subject"))
+            elif request.form["submit_button"]=="createsubclass":
+                a=True
+                for i in classroom.subclass:
+                    if request.form.get("subject")==i.subject:
+                        a=False
+                if a:
+                    newsubclass = SubClass(teacher=request.form.get("teacher"),teacherid=current_user.id,subject=request.form.get("subject"),classroomname=classroom.name,grade=classroom.grade)
+                    db.session.add(newsubclass)
+                    db.session.commit()
+                else:
+                    flash("Tato učebna pro tuto už existuje")
+                
         if classroom:
             if classroom.students:
                 students=enumerate(classroom.students)
-        return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers,subxteach={})
+        return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers,subjects=SUBJECTS)
     else:
         return redirect(url_for("auth.login"))
 

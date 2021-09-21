@@ -130,3 +130,15 @@ tr:nth-child(odd) {background: rgb(58, 119, 177)}
 .input{
     padding:10px;
 }
+#NewClassroom{
+    position: absolute;
+    right:70px;
+    bottom:30px;
+}
+#CreateSubClass{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}

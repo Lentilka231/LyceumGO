@@ -42,11 +42,11 @@
         <div class="grade"id="g4">Ročník 4</div>
     </div>
     <div id="Subjects"> 
-        {%for i in subjects%}
-            <div class="sub" id="sub{{i}}">
-                <a href="{{i}}">
-                    <div class="subject" id={{i}}>
-                        <p class="SubName"><b>{{i}}</b></p>
+        {%for i in user.subclass%}
+            <div class="sub" id="sub{{i.subject}}">
+                <a href="{{i.subject}}">
+                    <div class="subject" id={{i.subject}}>
+                        <p class="SubName"><b>{{i.subject}}</b></p>
                         <p class="SubProg"></p>
                         <div class="invisible">
                         </div>
