@@ -1,37 +1,5 @@
 from . import db
 from flask_login import UserMixin
-class Math (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress1=db.Column(db.String(10))
-    tests1=db.Column(db.String(100))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-
-class Physic (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress1=db.Column(db.String(10))
-    tests1=db.Column(db.String(100))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-
-class Informatics (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress1=db.Column(db.String(10))
-    tests1=db.Column(db.String(100))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-
-class Programming (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress1=db.Column(db.String(10))
-    tests1=db.Column(db.String(100))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-class Germany (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress1=db.Column(db.String(10))
-    tests1=db.Column(db.String(100))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class Users (db.Model,UserMixin):
     id=db.Column(db.Integer, primary_key=True)
@@ -80,3 +48,31 @@ class Messages(db.Model):
     seen = db.Column(db.Boolean)
     answer = db.Column(db.String(20))
     question = db.Column(db.String(20))
+
+class Math (db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    progress=db.Column(db.String(10))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+
+class Physic (db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    progress=db.Column(db.String(10))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+
+class Informatics (db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    progress=db.Column(db.String(10))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+
+class Programming (db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    progress=db.Column(db.String(10))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+class Germany (db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    progress=db.Column(db.String(10))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

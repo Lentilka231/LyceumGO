@@ -136,6 +136,7 @@ tr:nth-child(odd) {background: rgb(58, 119, 177)}
     bottom:30px;
 }
 #CreateSubClass{
+    display:none;
     position: fixed;
     top: 0;
     right: 0;

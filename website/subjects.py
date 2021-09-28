@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for,request,flash,request
 from flask_login import login_required,current_user
-from .models import Users,Math,Physic,Informatics,Programming
+from .models import *
 from . import db
 import json
 
@@ -11,11 +11,6 @@ def Test(sub,test):
         data = json.load(f)
     return data[test]
 
-#------------MATEMATIKA-----------------------------------------------------------------------------------------------------------------------
-@subjects.route("/Matematika")
-def Matika():
-
-    return render_template("subjects/matika.html",user=current_user,subject=Math.query.filter_by(user_id=current_user.id).first())
 #------------FYZYKA-----------------------------------------------------------------------------------------------------------------------
 @subjects.route("/Fyzika",methods=["GET","POST"])
 def Fyzika():
@@ -38,3 +33,7 @@ def Informatika():
 @subjects.route("/Programování")
 def Programovani():
     return render_template("subjects/programovani.html",user=current_user,subject=Programming.query.filter_by(user_id=current_user.id).first())
+#------------NĚMČINA----------------------------------------------------------------------------------------------------------------------------
+@subjects.route("/Němčina")
+def Nemcina():
+    return render_template("subjects/germany.html",user=current_user,subject=Germany.query.filter_by(user_id=current_user.id).first())

@@ -80,12 +80,16 @@
                 <button name="submit_button" value="sendmess" id="sendButton">Send</button>
             </div>
             <div class="s" id="s2">
+                <form method="POST">
                 {%for sub in classroom.subclass%}
                     <div class="subject">
                         <p id=""><b>{{sub.subject}}</b></p>
                         Učitel(ka): {{sub.teacher}}
+                        
+                        <button value="destroysubclass-{{sub.id}}" name="submit_button" id="kickstudent">✕</button>
                     </div>
                 {%endfor%}
+                </form>
                 {%if user.person=="t"%}
                 <div class="BasicButton" id="NewClassroom">
                     Vytvořit novou učebnu
@@ -114,7 +118,7 @@
                         {%endfor%}
                     </select>
                 </div>
-                <button name="submit_button" value="createsubclass">Vytvoř učebnus</button>
+                <button name="submit_button" value="createsubclass">Vytvoř učebnu</button>
             </form>
             <div class="BasicButton" id="exit">
                 Zrušit
@@ -136,7 +140,6 @@
                     $("#s"+(i-1)).show();
                 });
             }   
-            $("#CreateSubClass").hide()
             $("#NewClassroom").click(function(){
                 $("#CreateSubClass").show()
             })

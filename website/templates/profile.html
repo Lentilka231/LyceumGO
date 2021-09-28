@@ -20,7 +20,7 @@
             <p class="information">Oblíbené předměty:{%for fs in favouritesub%}{{fs}}{%endfor%}</p>
             {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
             <p class="information">O mě(nebo mně IDK):</p>
-            <p id="ProfileAboutMe">{{user.notes}}</p>
+            <p id="ProfileAboutMe">{%if user.notes%}{{user.notes}}{%endif%}</p>
             
         </div>
     </div>

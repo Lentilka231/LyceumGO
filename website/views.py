@@ -1,13 +1,13 @@
 from flask import Blueprint, render_template, redirect, url_for,request,flash,request
 from flask_login import current_user
-from .models import Users,Math,Physic,Informatics,Programming,Classrooms,Messages,SubClass
+from .models import *
 from . import db
 import os
 import random
 import string
 from datetime import date,datetime
 views = Blueprint("views", __name__)
-SUBJECTS = [["Matematika","Fyzika","Programování","Informatika","Germany"]]
+SUBJECTS = [["Fyzika","Chemie","Programování","Informatika","Němčina"]]
 def createrandomcode():
     x=""
     for i in range(6):
@@ -19,6 +19,21 @@ def createmessage(title,message,prijemceid,question):
     db.session.add(new_message)
     print("message was created")
     db.session.commit()
+
+def createsubforstudents(studentid,s):
+    if studentid:
+        if s=="Matematika":
+            return Math(user_id=studentid,progress="0/100")
+        elif s=="Fyzika":
+            return Physic(user_id=studentid,progress="0/100")
+        elif s=="Programování":
+            return Programming(user_id=studentid,progress="0/100")
+        elif s=="Informatika":
+            return Informatics(user_id=studentid,progress="0/100")
+        elif s=="Němčina":
+            return Germany(user_id=studentid,progress="0/100")
+
+
 @views.route("/home")
 @views.route("/")
 def home():
@@ -99,10 +114,16 @@ def classroom():
                 if a:
                     newsubclass = SubClass(teacher=request.form.get("teacher"),teacherid=current_user.id,subject=request.form.get("subject"),classroomname=classroom.name,grade=classroom.grade)
                     db.session.add(newsubclass)
+                    for student in classroom.students:
+                        db.session.add(createsubforstudents(student.id, request.form.get("subject")))
                     db.session.commit()
                 else:
-                    flash("Tato učebna pro tuto už existuje")
-                
+                    flash("Tato učebna pro tuto třídu už existuje")
+            elif "destroysubclass" in request.form["submit_button"]:
+                a=request.form.get("submit_button")
+                subclass = SubClass.query.filter_by(id=a[a.find("-")+1:]).first()
+                db.session.delete(subclass)
+                db.session.commit()
         if classroom:
             if classroom.students:
                 students=enumerate(classroom.students)
@@ -128,6 +149,8 @@ def notification():
                     boy=Users.query.filter_by(id=message.sender).first()
                     boy.classroom=classroom.name
                     boy.classroomid=classroom.id
+                    for sub in classroom.subclass:
+                        db.session.add(createsubforstudents(boy.id, sub))
                     classroom.numofstudents+=1
                     db.session.commit()
                     createmessage("Odpověď",f"Byl jsi příjmut do třídy {classroom.name}.", message.sender,"none")

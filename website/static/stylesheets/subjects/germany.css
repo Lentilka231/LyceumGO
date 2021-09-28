@@ -1,0 +1,12 @@
+.Module{
+    background-color: rgb(16, 163, 16);
+    padding:15px;
+    margin:10px;
+    height:40px;
+    z-index:2;
+    /* animation: forwards backhover 0.2s; */
+
+}
+.child{
+    display:none;
+}

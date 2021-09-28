@@ -2,6 +2,32 @@
     padding:50px;
 }
 #NAME{
+    left:100px;
     font-size: 70px;
     font-family:Arial;
+    position:absolute;
+}
+#flex-container{
+    display:flex;
+    align-items: flex-end;
+
+    justify-content: space-around;
+}
+.flex-items{
+    background-color: rgb(189, 213, 234);
+    border: black 3px solid;
+    margin:10px;
+    flex-shrink:0;
+}
+.first{
+    width:550px;
+    min-height: 600px;
+}
+.second{
+    width:400px;
+    min-height: 700px;
+}
+.third{
+    min-height: 700px;
+    width:640px;
 }
