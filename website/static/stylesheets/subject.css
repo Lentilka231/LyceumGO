@@ -20,14 +20,26 @@
     flex-shrink:0;
 }
 .first{
-    width:550px;
     min-height: 600px;
+    width:35%
 }
 .second{
-    width:400px;
     min-height: 700px;
 }
 .third{
     min-height: 700px;
-    width:640px;
+    width:45%
+}
+.Module{
+    cursor:pointer;
+}
+.child p {
+    margin-top:5px;
+}
+#subclassinfo{
+    margin: 20px;
+    font-size: 35px;
+}
+#subclassinfo p{
+    margin-bottom:10px;
 }

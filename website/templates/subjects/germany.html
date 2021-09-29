@@ -11,52 +11,57 @@
     
     <div id="flex-container">
         <div class="flex-items first">
-            
+            <div id="subclassinfo">
+                <p>Třída: {{subclass.classroomname}}</p>
+                <p>Progres: {{subclass.progres}}</p>
+            </div>
         </div>
         <div class="flex-items second">
             <div class="Module" id="M1" tabindex="1">
                 <p><b>1) Deutsch ist NICHT leicht!</b></p>
                 <div class="child">
-                    <a href="module1"><p>Lekiton 1</p></a>
-                    <a href="module2"><p>Lekiton 2</p></a>
-                    <a href="module3"><p>Lekiton 3</p></a>
+                    <p id="L1">Lektion 1</p>
+                    <p id="L2">Lektion 2</p>
+                    <p id="L3">Lektion 3</p>
                 </div>                
             </div>
             <div class="Module" id="M2" tabindex="1">
                 <p><b>2) Hobbys und Schule</b></p>
                 <div class="child">
-                    <p>Lekiton 4</p>
-                    <p>Lekiton 5</p>
-                    <p>Lekiton 6</p>
+                    <p id="L4">Lektion 4</p>
+                    <p id="L5">Lektion 5</p>
+                    <p id="L6">Lektion 6</p>
                 </div> 
             </div>
             <div class="Module" id="M3" tabindex="1">
                 <p><b>3) Freizeit und Feiern</b></p>
                 <div class="child">
-                    <p>Lekiton 7</p>
-                    <p>Lekiton 8</p>
-                    <p>Lekiton 9</p>
+                    <p id="L7">Lektion 7</p>
+                    <p id="L8">Lektion 8</p>
+                    <p id="L9">Lektion 9</p>
                 </div>
             </div>
             <div class="Module" id="M4" tabindex="1">
                 <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
                 <div class="child">
-                    <p>Lekiton 10</p>
-                    <p>Lekiton 11</p>
-                    <p>Lekiton 12</p>
+                    <p id="L10">Lektion 10</p>
+                    <p id="L11">Lektion 11</p>
+                    <p id="L12">Lektion 12</p>
                 </div>
             </div>
             <div class="Module" id="M5" tabindex="1">
                     <p><b>5) Module 5</b></p>
                 <div class="child">
-                    <p>Lekiton 13</p>
-                    <p>Lekiton 14</p>
-                    <p>Lekiton 15</p>
+                    <p id="L13">Lektion 13</p>
+                    <p id="L14">Lektion 14</p>
+                    <p id="L15">Lektion 15</p>
                 </div>
             </div>
         </div>
         <div class="flex-items third">
-            
+            <div id="DIVL1">
+                random text
+            </div>
         </div>
     </div>
 </div>
@@ -65,6 +70,7 @@
         const a = [false,false,false,false,false]
         const x = document.querySelectorAll(".Module");
         const child = document.querySelectorAll(".child");
+        
         for(let i=1;i<=5;i++){
                 $("#M"+i).click(function(){
                     if (!(a[i-1])){
@@ -84,12 +90,17 @@
                     };                 
                 });
             };
+        for(let i=1;i<16;i++){
+            $("#L"+i).click(function(){
+                if($("#DIVL"+i).is(":visible")){
+                    $("#DIVL"+i).hide()
+                }
+                else{
+                    $("#DIVL"+i).show()                
+                }
+
+            })
+        }
         });
 </script>
-<!-- <script>
-    const x = document.querySelectorAll(".Module");
-    for(let i=0;i<x.length;i++){
-        console.log(x[i].style.backgroundColor = "rgb(100,"+40*i+",100)");
-    }
-</script> -->
 {%endblock%}

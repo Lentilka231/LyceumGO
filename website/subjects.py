@@ -36,4 +36,7 @@ def Programovani():
 #------------NĚMČINA----------------------------------------------------------------------------------------------------------------------------
 @subjects.route("/Němčina")
 def Nemcina():
-    return render_template("subjects/germany.html",user=current_user,subject=Germany.query.filter_by(user_id=current_user.id).first())
+    subclass=None
+    if current_user.person=="t":
+        subclass=SubClass.query.filter_by(teacher=current_user.name).first()
+    return render_template("subjects/germany.html",user=current_user,subclass=subclass,subject=Germany.query.filter_by(user_id=current_user.id).first())
