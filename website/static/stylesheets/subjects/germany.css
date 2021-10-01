@@ -10,3 +10,33 @@
 .child{
     display:none;
 }
+
+
+.DIVchild{
+    margin:10px;
+    height:150px;
+    background-color: rgb(216, 94, 94);
+    border:black 3px solid;
+
+}
+.Material{
+    display: flex;
+    justify-content:left;
+    justify-items: stretch;
+    align-items:stretch;
+    position: relative;
+    overflow-x: auto;
+    height:85%;
+}
+.DIVchild p {
+    height:15%;
+    position:relative;
+    left:15px
+}
+.Block{
+    margin:5px;
+    border:3px solid black;
+    padding:5px 15px;
+    max-width: 200px;
+    min-width: 95px;
+}

@@ -52,27 +52,27 @@ class Messages(db.Model):
 class Math (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
 
 
 class Physic (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
 
 
 class Informatics (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
 
 
 class Programming (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
 
 class Germany (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)

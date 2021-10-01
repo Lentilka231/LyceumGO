@@ -1,0 +1,28 @@
+{
+    "German":[
+        {
+            "name":"NJ1",
+            "content":{
+                "kapitola1":{
+                    "gramatik":{
+
+                    },
+                    "wortschatz":{
+                        "Seite 9-10":{
+                            "Deutsch":"němčina, německy",
+                            "leicht":"jednoduchý, lehký",
+                            "das Foto, -s":"fotka",
+                            "der Tourist, -en":"turista"
+                        }
+                    },
+                    "lesen":{
+
+                    },
+                    "EndTest":{
+
+                    }
+                }
+            }
+        }
+    ]
+}

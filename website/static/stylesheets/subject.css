@@ -20,14 +20,14 @@
     flex-shrink:0;
 }
 .first{
-    min-height: 600px;
+    min-height: 700px;
     width:35%
 }
 .second{
-    min-height: 700px;
+    min-height: 800px;
 }
 .third{
-    min-height: 700px;
+    min-height: 800px;
     width:45%
 }
 .Module{

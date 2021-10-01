@@ -37,6 +37,8 @@ def Programovani():
 @subjects.route("/Němčina")
 def Nemcina():
     subclass=None
-    if current_user.person=="t":
-        subclass=SubClass.query.filter_by(teacher=current_user.name).first()
-    return render_template("subjects/germany.html",user=current_user,subclass=subclass,subject=Germany.query.filter_by(user_id=current_user.id).first())
+    if current_user.is_authenticated:
+        if current_user.person=="t":
+            subclass=SubClass.query.filter_by(teacher=current_user.name).first()
+        return render_template("subjects/germany.html",user=current_user,subclass=subclass,subject=Germany.query.filter_by(user_id=current_user.id).first())
+    return redirect(url_for("auth.login"))

@@ -150,7 +150,7 @@ def notification():
                     boy.classroom=classroom.name
                     boy.classroomid=classroom.id
                     for sub in classroom.subclass:
-                        db.session.add(createsubforstudents(boy.id, sub))
+                        db.session.add(createsubforstudents(boy.id, sub.subject))
                     classroom.numofstudents+=1
                     db.session.commit()
                     createmessage("Odpověď",f"Byl jsi příjmut do třídy {classroom.name}.", message.sender,"none")
