@@ -141,20 +141,23 @@
                     if (!(a[i-1])){
                         for (let y=0;y<=4;y++){
                             a[y]=false;
-                            x[y].style.height="40px";
+                            //x[y].style.height="40px";
                             child[y].style.display="none";
                         };
                         a[i-1]=true;
-                        x[i-1].style.height="110px";
+                        //x[i-1].style.height="110px";
                         child[i-1].style.display="block";
                     }
                     else{
                         a[i-1]=false;
-                        x[i-1].style.height="40px";
+                        //x[i-1].style.height="40px";
                         child[i-1].style.display="none";
                     };                 
                 });
             };
+        for (let i=1;i<16;i++){
+            $("#DIVL"+i).hide()
+        }
         for(let i=1;i<16;i++){
             $("#L"+i).click(function(e){
                 e.stopPropagation();

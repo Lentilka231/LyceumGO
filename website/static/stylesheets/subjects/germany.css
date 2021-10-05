@@ -2,7 +2,7 @@
     background-color: rgb(16, 163, 16);
     padding:15px;
     margin:10px;
-    height:40px;
+    min-height:40px;
     z-index:2;
     /* animation: forwards backhover 0.2s; */
 
@@ -37,6 +37,7 @@
     margin:5px;
     border:3px solid black;
     padding:5px 15px;
+    /*
     max-width: 200px;
-    min-width: 95px;
+    min-width: 95px;*/
 }
