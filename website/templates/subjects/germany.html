@@ -7,124 +7,105 @@
 {%endblock%}
 {%block content%}
 <div id="MainDiv">
-    <div id="NAME"><b>Němčina</b></div>
+
     
     <div id="flex-container">
         <div class="flex-items first">
-            <div id="subclassinfo">
-                <p>Třída: {{subclass.classroomname}}</p>
-                <p>Progres: {{subclass.progres}}</p>
+            <div id="NAME"><b>Němčina</b></div>
+            <div class="decorator" style="height:90%">
+                <div id="subclassinfo">
+                    <p>Třída: {{subclass.classroomname}}</p>
+                    <p>Progres: {{subclass.progres}}</p>
+                </div>
             </div>
         </div>
         <div class="flex-items second">
-            <div class="Module" id="M1" tabindex="1">
-                <p><b>1) Deutsch ist NICHT leicht!</b></p>
-                <div class="child">
-                     <p class="L" id="L1">Lektion 1-3</p>
-                </div>                
-            </div>
-            <div class="Module" id="M2" tabindex="1">
-                <p><b>2) Hobbys und Schule</b></p>
-                <div class="child">
-                     <p class="L" id="L4">Lektion 4</p>
-                     <p class="L" id="L5">Lektion 5</p>
-                     <p class="L" id="L6">Lektion 6</p>
-                </div> 
-            </div>
-            <div class="Module" id="M3" tabindex="1">
-                <p><b>3) Freizeit und Feiern</b></p>
-                <div class="child">
-                     <p class="L" id="L7">Lektion 7</p>
-                     <p class="L" id="L8">Lektion 8</p>
-                     <p class="L" id="L9">Lektion 9</p>
+            <div class="decorator">
+                <div class="Module" id="M1" tabindex="1">
+                    <p><b>1) Deutsch ist NICHT leicht!</b></p>
+                    <div class="child">
+                        <p class="L" id="L1">Lektion 1-3</p>
+                    </div>                
                 </div>
-            </div>
-            <div class="Module" id="M4" tabindex="1">
-                <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
-                <div class="child">
-                     <p class="L" id="L10">Lektion 10</p>
-                     <p class="L" id="L11">Lektion 11</p>
-                     <p class="L" id="L12">Lektion 12</p>
+                <div class="Module" id="M2" tabindex="1">
+                    <p><b>2) Hobbys und Schule</b></p>
+                    <div class="child">
+                        <p class="L" id="L4">Lektion 4</p>
+                        <p class="L" id="L5">Lektion 5</p>
+                        <p class="L" id="L6">Lektion 6</p>
+                    </div> 
                 </div>
-            </div>
-            <div class="Module" id="M5" tabindex="1">
-                    <p><b>5) Module 5</b></p>
-                <div class="child">
-                     <p class="L" id="L13">Lektion 13</p>
-                     <p class="L" id="L14">Lektion 14</p>
-                     <p class="L" id="L15">Lektion 15</p>
+                <div class="Module" id="M3" tabindex="1">
+                    <p><b>3) Freizeit und Feiern</b></p>
+                    <div class="child">
+                        <p class="L" id="L7">Lektion 7</p>
+                        <p class="L" id="L8">Lektion 8</p>
+                        <p class="L" id="L9">Lektion 9</p>
+                    </div>
+                </div>
+                <div class="Module" id="M4" tabindex="1">
+                    <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
+                    <div class="child">
+                        <p class="L" id="L10">Lektion 10</p>
+                        <p class="L" id="L11">Lektion 11</p>
+                        <p class="L" id="L12">Lektion 12</p>
+                    </div>
+                </div>
+                <div class="Module" id="M5" tabindex="1">
+                        <p><b>5) Module 5</b></p>
+                    <div class="child">
+                        <p class="L" id="L13">Lektion 13</p>
+                        <p class="L" id="L14">Lektion 14</p>
+                        <p class="L" id="L15">Lektion 15</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="flex-items third">
-            <div id="DIVL1">
-                <div class="DIVchild" id="gramatik">
-                    <p>Gramatik</p>
-                    <div class="Material">
-                        <div class="Block">
-                            <b>Verbkonjugation im Präsens</b><br>
-                            Časování sloves v přítomném čase
-                        </div>
-                        <div class="Block">
-                            <b>Unbestimmte und bestimmte Artikel</b><br>
-                            Neurčité a určitě členy
-                        </div>
-                        <div class="Block">
-                            <b>Possessivartikel</b><br>
-                            Přivlasťnovací zájmena
-                        </div>
-                    </div>
-                </div>
-                <div class="DIVchild" id="wortschatz">
-                    <p>Wortschatz</p>
-                    <div class="Material">
-                        <div class="Block">
-                            Seite 9
-                            <div class="celkemwort">
+            <div class="decorator">
+                <div id="DIVL1">
+                    <div class="DIVchild" id="gramatik">
+                        <p>Gramatik</p>
+                        <div class="Material">
+                            <div class="Block">
+                                <b>Verbkonjugation im Präsens</b><br>
+                                Časování sloves v přítomném čase
+                            </div>
+                            <div class="Block">
+                                <b>Unbestimmte und bestimmte Artikel</b><br>
+                                Neurčité a určitě členy
+                            </div>
+                            <div class="Block">
+                                <b>Possessivartikel</b><br>
+                                Přivlasťnovací zájmena
                             </div>
                         </div>
-                        <div class="Block">
-                            Seite 10
-                        </div>
-                        <div class="Block">
-                            Seite 11
-                        </div>
-                        <div class="Block">
-                            Seite 12
-                        </div>
-                        <div class="Block">
-                            Seite 13
-                        </div>
-                        <div class="Block">
-                            Seite 14
-                        </div>
-                        <div class="Block">
-                            Seite 15
-                        </div>
-                        <div class="Block">
-                            Seite 16
-                        </div>
-                        <div class="Block">
-                            Seite 17
-                        </div>
-                        <div class="Block">
-                            Seite 18
+                    </div>
+                    <div class="DIVchild" id="wortschatz">
+                        <p>Wortschatz</p>
+                        <div class="Material">
+                            {%for page in NJ.words%}
+                            <div class="Block">
+                                Seite 9
+                                <div class="celkemwort">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="DIVchild" id="lesen">
-                    <p>Lesen</p>
-                    <div class="Material">
-                        <div class="Block">
-                        </div>
-                        <div class="Block">
-                        </div>
-                        <div class="Block">
+                    <div class="DIVchild" id="lesen">
+                        <p>Lesen</p>
+                        <div class="Material">
+                            <div class="Block">
+                            </div>
+                            <div class="Block">
+                            </div>
+                            <div class="Block">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="DIVchild" id="endtest">
-                    EndTest
+                    <div class="DIVchild" id="endtest">
+                        EndTest
+                    </div>
                 </div>
             </div>
         </div>

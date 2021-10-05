@@ -6,29 +6,31 @@
     left:5%;
     font-size: 70px;
     font-family:Arial;
-    position:absolute;
+    height:10%;
 }
 #flex-container{
     height:100%;
     display:flex;
-    align-items: stretch;
+    align-items:stretch;
     width:100%;
     justify-content: space-around;
 }
 .flex-items{
-    background-color: rgb(189, 213, 234);
-    border: black 3px solid;
     margin:10px;
 }
+.decorator{
+    background-color: rgb(189, 213, 234);
+    border: black 3px solid;
+    height: 100%;
+    overflow-y: auto;
+}
 .first{
-    /*min-height: 700px;*/
-    width:35%
+    /* min-height: 700px; */
+    width:35%;
 }
-.second{
-    /*min-height: 800px;*/
-}
+
 .third{
-    /*min-height: 800px;*/
+    /* min-height: 800px; */
     width:45%
 }
 .Module{
