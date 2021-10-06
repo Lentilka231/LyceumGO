@@ -10,6 +10,8 @@ def Test(sub,test):
     with open(f"{{sub}}.json") as f:
         data = json.load(f)
     return data[test]
+def NJf (rocnik,kapitola):
+    pass
 
 #------------FYZYKA-----------------------------------------------------------------------------------------------------------------------
 @subjects.route("/Fyzika",methods=["GET","POST"])
@@ -37,8 +39,10 @@ def Programovani():
 @subjects.route("/Němčina")
 def Nemcina():
     subclass=None
+    with open("website/tests/germany.json", encoding="utf-8") as f:
+        NJ = json.load(f)
     if current_user.is_authenticated:
         if current_user.person=="t":
             subclass=SubClass.query.filter_by(teacher=current_user.name).first()
-        return render_template("subjects/germany.html",user=current_user,subclass=subclass,subject=Germany.query.filter_by(user_id=current_user.id).first())
+        return render_template("subjects/germany.html",user=current_user,subclass=subclass,subject=Germany.query.filter_by(user_id=current_user.id).first(),NJ=NJ)
     return redirect(url_for("auth.login"))

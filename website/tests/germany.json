@@ -1,19 +1,19 @@
 {
     "German":[
         {
-            "name":"NJ1",
-            "content":{
+            "NJ1":{
                 "kapitola1":{
-                    "gramatik":{
+                    "grammar":{
 
                     },
-                    "wortschatz":{
-                        "Seite 9-10":{
+                    "words":{
+                        "Seite 9-10":[30,{
                             "Deutsch":"němčina, německy",
                             "leicht":"jednoduchý, lehký",
                             "das Foto, -s":"fotka",
                             "der Tourist, -en":"turista",
                             "der Hamburger, -":"hamburger",
+                            "der Computer, -":"počítač",
                             "das Baby, -s":"miminko",
                             "das Kino, -s":"kino",
                             "das T-Shirt, -s":"tričko",
@@ -38,8 +38,8 @@
                             "(der) Fußball (Sg)":"fotbal",
                             "die Schweiz":"Švýcarsko",
                             "deutsch":"německý, německy"
-                        },
-                        "Seite 11":{
+                        }],
+                        "Seite 11":[18,{
                             "die tradition, -en":"tradice",
                             "die Kultur, -en":"kultura",
                             "die Stadt, Städte":"město",
@@ -58,8 +58,8 @@
                             "tschüs":"čau (při loučení)",
                             "fragen":"ptát se",
                             "antworten":"odpovídat"
-                        },
-                        "Seite 12":{
+                        }],
+                        "Seite 12":[26,{
                             "(der) Basketball (nur Sg)":"basketbal",
                             "(der) Voleyball (nur Sg)":"volejbal",
                             "(der) Handball (nur Sg)":"házená",
@@ -81,9 +81,13 @@
                             "Slowakisch":"slovenština, slovensky",
                             "Wer":"kdo",
                             "Was":"co",
+                            "ja":"ano",
+                            "nein":"ne",
+                            "ich":"já",
+                            "du":"ty",
                             "er, sie, es":"on, ona, ono"
-                        },
-                        "Seite 13":{
+                        }],
+                        "Seite 13":[18,{
                             "die Zahl, -en":"číslo",
                             "eins":"jedna",
                             "zwei":"dva",
@@ -102,8 +106,8 @@
                             "bitte":"prosím",
                             "Wie bitte?":"Jak prosím?",
                             "Noch einmal bitte!":"Ještě jednou, prosím!"
-                        },
-                        "Seite 14":{
+                        }],
+                        "Seite 14":[25,{
                             "der Stundenplan, Stundenpläne":"rozvrh hodin",
                             "der Schulfach, Schulfächer":"školní předmět",
                             "die Klasse, -n":"třída",
@@ -129,8 +133,8 @@
                             "die Ethik, -en":"etika",
                             "die Religion, -en":"náboženství",
                             "haben":"mít"
-                        },
-                        "Seite 15":{
+                        }],
+                        "Seite 15":[28,{
                             "wann":"kdy",
                             "am Montag":"v pondělí",
                             "wir":"my",
@@ -159,8 +163,8 @@
                             "der Geburstag, -e":"narozeniny",
                             "im Frühling":"na jaře",
                             "im Januar":"v lednu"
-                        },
-                        "Seite 16":{
+                        }],
+                        "Seite 16":[16,{
                             "das Café, -s":"kavárna",
                             "die Pizza, -s, auch Pizzen":"pizza",
                             "die Tomate, -n":"rajče",
@@ -177,8 +181,8 @@
                             "essen":"jíst",
                             "trinken":"pít",
                             "gern":"rád"
-                        },
-                        "Seife 17":{
+                        }],
+                        "Seife 17":[21,{
                             "dreizehn":"třináct",
                             "vierzehn":"čtrnáct",
                             "fünfzehn":"patnáct",
@@ -200,8 +204,8 @@
                             "der Euro, -s":"euro",
                             "kosten":"stát (cena)",
                             "die Speisekarte, -n":"jídelní lístek"
-                        },
-                        "Seife 18":{
+                        }],
+                        "Seife 18":[23,{
                             "die Kleidung (nur Sg)":"oblečení",
                             "das Top, -s":"top, tílko",
                             "die Bluse, -n":"blůza",
@@ -225,8 +229,8 @@
                             "braun":"hnědá",
                             "grau":"šedá",
                             "schwarz":"černá"
-                        },
-                        "Seite 19-20":{
+                        }],
+                        "Seite 19-20":[25,{
                             "sein":"být",
                             "Was ist das?":"Co je to?",
                             "Das ist.../ Das sind...":"To je.../ To jsou...",
@@ -251,9 +255,9 @@
                             "der Großvater, Großväter/ Opa, -s":"dědeček/děda",
                             "der Großmutter, Großmütter/ Oma, -s":"babička/babi",
                             "die Großeltern (Pl)":"prarodiče",
-                            "(das) Österreich":"Rakousko"
-                        },
-                        "Seite 21-26":{
+                            "(das) Österreich":"Rakousko"  
+                        }],
+                        "Seite 21-26":[21,{
                             "hier":"tady",
                             "süß":"sladký, roztomilý",
                             "dein, dein, deine":"tvůj, tvoje, tvoje",
@@ -275,12 +279,12 @@
                             "das Haus, Häuser":"dům",
                             "das Kind, -er":"dítě",
                             "das Bonbon, -s":"bonbon"
-                        }                        
+                        }]                        
                     },
-                    "lesen":{
+                    "text":{
 
                     },
-                    "EndTest":{
+                    "tests":{
 
                     }
                 }

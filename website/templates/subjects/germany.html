@@ -84,12 +84,15 @@
                     <div class="DIVchild" id="wortschatz">
                         <p>Wortschatz</p>
                         <div class="Material">
-                            {%for page in NJ.words%}
+                            {%for i,v in NJ["German"][0]["NJ1"]["kapitola1"]["words"].items()%}
                             <div class="Block">
-                                Seite 9
+                                {{i}}
                                 <div class="celkemwort">
+                                    {{v[0]}}
                                 </div>
                             </div>
+                            {%endfor%}
+                           
                         </div>
                     </div>
                     <div class="DIVchild" id="lesen">
