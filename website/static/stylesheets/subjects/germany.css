@@ -1,5 +1,4 @@
 .Module{
-    background-color: rgb(16, 163, 16);
     padding:15px;
     margin:10px;
     min-height:40px;
@@ -35,7 +34,37 @@
 }
 .Block{
     margin:5px;
-    border:3px solid black;
     padding:5px 15px;
-    min-width: 120px;
+    min-width: 130px;
+    font-size:18px;
+
+}
+.b11:hover{
+    background:rgb(158, 103, 158)
+}
+.b12:hover{
+    background-color:rgb(134, 84, 172) ;
+}
+.b13:hover{
+    background-color:rgb(75, 67, 134) ;
+}
+.b14:hover{
+    background-color:rgb(134, 84, 172) ;
+}
+.Block:hover  .celkemwort{
+    display:block;
+}
+.celkemwort{
+    margin-top:10px;
+    width: 100%;
+    text-align: center;
+    font-size:16px;
+    display:none;
+}
+.nadpisChild{
+    margin-left:10px;
+    font-size:20px;
+}
+#SecondDiv{
+    
 }

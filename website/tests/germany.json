@@ -2,7 +2,7 @@
     "German":[
         {
             "NJ1":{
-                "kapitola1":{
+                "kapitola1-3":{
                     "grammar":{
 
                     },
@@ -31,7 +31,7 @@
                             "mit":"se, s",
                             "aber":"ale",
                             "auch":"také",
-                            "der Käse (nur Sg)":"sýr",
+                            "der Käse ":"sýr",
                             "der Fan, -s":"fanoušek, fanda",
                             "fleißig":"pilný",
                             "der Schweizer, -":"Švýcar",
@@ -44,11 +44,11 @@
                             "die Kultur, -en":"kultura",
                             "die Stadt, Städte":"město",
                             "die Hauptstadt, Haupstädte":"hlavní město",
-                            "der Schnee (nur Sg)":"sníh",
-                            "die Alpen (Pl)":"Alpy",
+                            "der Schnee ":"sníh",
+                            "die Alpen ":"Alpy",
                             "die Temperatur, -en":"teplota",
                             "(das) Mitteleuropa":"střední Evropa",
-                            "der Advent (nur Sg)":"advent",
+                            "der Advent ":"advent",
                             "(das) Deutschland":"Německo",
                             "markieren":"označit",
                             "super":"super",
@@ -60,12 +60,12 @@
                             "antworten":"odpovídat"
                         }],
                         "Seite 12":[26,{
-                            "(der) Basketball (nur Sg)":"basketbal",
-                            "(der) Voleyball (nur Sg)":"volejbal",
-                            "(der) Handball (nur Sg)":"házená",
-                            "(das) Eishockey (nur Sg)":"lední hokej",
-                            "(das) Tennis (nur Sg)":"tenis",
-                            "(das) Schach (nur Sg)":"šachy",
+                            "(der) Basketball ":"basketbal",
+                            "(der) Voleyball ":"volejbal",
+                            "(der) Handball ":"házená",
+                            "(das) Eishockey ":"lední hokej",
+                            "(das) Tennis ":"tenis",
+                            "(das) Schach ":"šachy",
                             "das Computerspiel, -e":"počítačová hra",
                             "das Theater":"divadlo",
                             "die Karte, -n":"karta",
@@ -119,17 +119,17 @@
                             "der Samstag,-e":"sobota",
                             "der Sonntag,-e":"neděla",
                             "das Wochenende, -n":"víkend",
-                            "(die) Biologie (nur Sg)":"biologie",
-                            "(die) Mathematik/ Mathe (nur Sg)":"matematika/matematik",
-                            "(die) Geschichte (nur Sg)":"dějepis",
-                            "(die) Geografie (nur Sg)":"zeměpis",
-                            "(die) Physik (nur Sg)":"fyzika",
-                            "(die) Chemie (nur Sg)":"chemie",
-                            "(die) Sozialkunde (nur Sg)":"občanská výchova/nauka",
-                            "(die) Informatik (nur Sg)":"informatika",
-                            "(die) Kunst (nur Sg)":"výtvarná výchova, umění",
+                            "(die) Biologie ":"biologie",
+                            "(die) Mathematik/ Mathe ":"matematika/matematik",
+                            "(die) Geschichte ":"dějepis",
+                            "(die) Geografie ":"zeměpis",
+                            "(die) Physik ":"fyzika",
+                            "(die) Chemie ":"chemie",
+                            "(die) Sozialkunde ":"občanská výchova/nauka",
+                            "(die) Informatik ":"informatika",
+                            "(die) Kunst ":"výtvarná výchova, umění",
                             "Französisch":"francouština",
-                            "der Sport (nur Sg)":"tělesná výchova, sport",
+                            "der Sport ":"tělesná výchova, sport",
                             "die Ethik, -en":"etika",
                             "die Religion, -en":"náboženství",
                             "haben":"mít"
@@ -139,7 +139,7 @@
                             "am Montag":"v pondělí",
                             "wir":"my",
                             "ihr":"vy (tykání více osobám)",
-                            "sie (Pl)":"oni",
+                            "sie ":"oni",
                             "Sie":"Vy (vykání jedné nebo více osobám)",
                             "das Jahr, -e":"rok",
                             "die Jahrszeit, -en":"roční období",
@@ -170,10 +170,10 @@
                             "die Tomate, -n":"rajče",
                             "die Salami, -s":"tvrdý salám",
                             "der/das Joghurt, -s":"jogurt",
-                            "das Eis (nur Sg)":"zmrzlina",
+                            "das Eis ":"zmrzlina",
                             "die Schokolade, -n":"čokoláda",
-                            "das Schokoladeneis (nur Sg)":"čokoládová zmrzlina",
-                            "die Sahne (nur Sg)":"šlehačka",
+                            "das Schokoladeneis ":"čokoládová zmrzlina",
+                            "die Sahne ":"šlehačka",
                             "der Kaffee, -s":"káva",
                             "der Tee, -s":"čaj",
                             "das Mineralwasser, -":"minerální voda, minerálka",
@@ -206,7 +206,7 @@
                             "die Speisekarte, -n":"jídelní lístek"
                         }],
                         "Seife 18":[23,{
-                            "die Kleidung (nur Sg)":"oblečení",
+                            "die Kleidung ":"oblečení",
                             "das Top, -s":"top, tílko",
                             "die Bluse, -n":"blůza",
                             "warm":"teplý",
@@ -244,17 +244,17 @@
                             "das Pferd, -e":"kůň",
                             "der Bruder, Brüder":"bratr",
                             "die Schwester, -n":"sestra",
-                            "die Geschwister (PL)":"sourozenci",
+                            "die Geschwister ":"sourozenci",
                             "der Vater, Väter":"otec, tatínek",
                             "der Mutter, Mütter":"matka, maminka",
-                            "die Eltern (Pl)":"rodiče",
+                            "die Eltern ":"rodiče",
                             "die Cousine, -n":"sestřenice",
                             "der Cousin, -s":"bratranec",
                             "der Onkel, -":"strýc",
                             "die Tante, -n":"teta",
                             "der Großvater, Großväter/ Opa, -s":"dědeček/děda",
                             "der Großmutter, Großmütter/ Oma, -s":"babička/babi",
-                            "die Großeltern (Pl)":"prarodiče",
+                            "die Großeltern ":"prarodiče",
                             "(das) Österreich":"Rakousko"  
                         }],
                         "Seite 21-26":[21,{
@@ -280,6 +280,19 @@
                             "das Kind, -er":"dítě",
                             "das Bonbon, -s":"bonbon"
                         }]                        
+                    },
+                    "text":{
+
+                    },
+                    "tests":{
+
+                    }
+                },
+                "kapitola4":{
+                    "grammar":{
+
+                    },
+                    "words":{                     
                     },
                     "text":{
 

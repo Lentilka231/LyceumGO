@@ -7,8 +7,6 @@
 {%endblock%}
 {%block content%}
 <div id="MainDiv">
-
-    
     <div id="flex-container">
         <div class="flex-items first">
             <div id="NAME"><b>Němčina</b></div>
@@ -21,13 +19,13 @@
         </div>
         <div class="flex-items second">
             <div class="decorator">
-                <div class="Module" id="M1" tabindex="1">
+                <div class="Module" id="M1" tabindex="1" style="background-color: rgb(115, 64, 155);">
                     <p><b>1) Deutsch ist NICHT leicht!</b></p>
                     <div class="child">
-                        <p class="L" id="L1">Lektion 1-3</p>
+                        <p class="L" id="L3">Lektion 1-3</p>
                     </div>                
                 </div>
-                <div class="Module" id="M2" tabindex="1">
+                <div class="Module" id="M2" tabindex="1" style="background-color: orange;">
                     <p><b>2) Hobbys und Schule</b></p>
                     <div class="child">
                         <p class="L" id="L4">Lektion 4</p>
@@ -35,7 +33,7 @@
                         <p class="L" id="L6">Lektion 6</p>
                     </div> 
                 </div>
-                <div class="Module" id="M3" tabindex="1">
+                <div class="Module" id="M3" tabindex="1" style="background-color: rgb(153, 28, 126);">
                     <p><b>3) Freizeit und Feiern</b></p>
                     <div class="child">
                         <p class="L" id="L7">Lektion 7</p>
@@ -43,7 +41,7 @@
                         <p class="L" id="L9">Lektion 9</p>
                     </div>
                 </div>
-                <div class="Module" id="M4" tabindex="1">
+                <div class="Module" id="M4" tabindex="1" style="background-color: rgb(30, 150, 70);">
                     <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
                     <div class="child">
                         <p class="L" id="L10">Lektion 10</p>
@@ -51,7 +49,7 @@
                         <p class="L" id="L12">Lektion 12</p>
                     </div>
                 </div>
-                <div class="Module" id="M5" tabindex="1">
+                <div class="Module" id="M5" tabindex="1" style="background-color: rgb(74, 101, 160);">
                         <p><b>5) Module 5</b></p>
                     <div class="child">
                         <p class="L" id="L13">Lektion 13</p>
@@ -63,30 +61,30 @@
         </div>
         <div class="flex-items third">
             <div class="decorator">
-                <div id="DIVL1">
-                    <div class="DIVchild" id="gramatik">
-                        <p>Gramatik</p>
+                <div id="DIVL3">
+                    <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
+                        <b class="nadpisChild">Gramatik</b>
                         <div class="Material">
-                            <div class="Block">
+                            <div class="Block b11">
                                 <b>Verbkonjugation im Präsens</b><br>
                                 Časování sloves v přítomném čase
                             </div>
-                            <div class="Block">
+                            <div class="Block b11">
                                 <b>Unbestimmte und bestimmte Artikel</b><br>
                                 Neurčité a určitě členy
                             </div>
-                            <div class="Block">
+                            <div class="Block b11">
                                 <b>Possessivartikel</b><br>
                                 Přivlasťnovací zájmena
                             </div>
                         </div>
                     </div>
-                    <div class="DIVchild" id="wortschatz">
-                        <p>Wortschatz</p>
+                    <div class="DIVchild" id="wortschatz" style="background-color: rgb(157, 101, 201);">
+                        <b class="nadpisChild">Wortschatz</b>
                         <div class="Material">
-                            {%for i,v in NJ["German"][0]["NJ1"]["kapitola1"]["words"].items()%}
-                            <div class="Block">
-                                {{i}}
+                            {%for i,v in NJ["German"][0]["NJ1"]["kapitola1-3"]["words"].items()%}
+                            <div class="Block b12" onmouseover="changecolor">
+                                <b>{{i}}</b>
                                 <div class="celkemwort">
                                     {{v[0]}}
                                 </div>
@@ -95,24 +93,36 @@
                            
                         </div>
                     </div>
-                    <div class="DIVchild" id="lesen">
-                        <p>Lesen</p>
+                    <div class="DIVchild" id="lesen" style="background-color: rgb(93, 84, 164);">
+                        <b class="nadpisChild">Lesen</b>
                         <div class="Material">
-                            <div class="Block">
+                            <div class="Block b13">
+                                <b>Text1</b><br>
+                                Hallo Leute!
                             </div>
-                            <div class="Block">
+                            <div class="Block b13">
+                                <b>Text2</b><br>
+                                Heute habe ich nicht Geburstag.
                             </div>
-                            <div class="Block">
+                            <div class="Block b13">
+                                <b>Text3</b><br>
+                                Prag ist teuer.
+                            </div>
+                            <div class="Block b13">
+                                <b>Text4</b><br>
+                                Meine Familie ist groß.
                             </div>
                         </div>
                     </div>
-                    <div class="DIVchild" id="endtest">
-                        EndTest
+                    <div class="DIVchild" id="endtest" style="background-color: rgb(54, 80, 136);">
+                        <b class="nadpisChild">Tests</b>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!------------------------------------------------------------------------------------------------------------>
+    <div id="SecondDiv"></div>
 </div>
 <script>
      $(document).ready(function(){
@@ -139,10 +149,10 @@
                     };                 
                 });
             };
-        for (let i=1;i<16;i++){
+        for (let i=3;i<16;i++){
             $("#DIVL"+i).hide()
         }
-        for(let i=1;i<16;i++){
+        for(let i=3;i<16;i++){
             $("#L"+i).click(function(e){
                 e.stopPropagation();
                 if($("#DIVL"+i).is(":visible")){
@@ -150,7 +160,7 @@
                     $("#DIVL"+i).hide()
                 }
                 else{
-                    document.getElementById("L"+i).style.color="blue";
+                    document.getElementById("L"+i).style.color="gray";
                     $("#DIVL"+i).show()                
                 }
 
