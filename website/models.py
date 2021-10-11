@@ -76,3 +76,4 @@ class Germany (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
+    

@@ -6,6 +6,18 @@
 
 {%endblock%}
 {%block content%}
+<script>
+    
+    function visibilator(lekce,typ,ukol){
+        $("#TestDiv").show();
+        $(".x"+lekce+typ+ukol).show();
+        console.log(".x"+lekce+typ+ukol)
+    };
+    function hider(){
+        $("#TestDiv").hide();
+        $("#TDContent").children().hide()
+    };
+</script>
 <div id="MainDiv">
     <div id="flex-container">
         <div class="flex-items first">
@@ -14,6 +26,9 @@
                 <div id="subclassinfo">
                     <p>Třída: {{subclass.classroomname}}</p>
                     <p>Progres: {{subclass.progres}}</p>
+                    <div id="PVerb" onclick="visibilator('PVerb','','')"  style="cursor:pointer;">
+                        Verb/Slovesa
+                    </div>
                 </div>
             </div>
         </div>
@@ -22,7 +37,7 @@
                 <div class="Module" id="M1" tabindex="1" style="background-color: rgb(115, 64, 155);">
                     <p><b>1) Deutsch ist NICHT leicht!</b></p>
                     <div class="child">
-                        <p class="L" id="L3">Lektion 1-3</p>
+                        <p class="L" id="L3" >Lektion 1-3</p>
                     </div>                
                 </div>
                 <div class="Module" id="M2" tabindex="1" style="background-color: orange;">
@@ -65,15 +80,15 @@
                     <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
                         <b class="nadpisChild">Gramatik</b>
                         <div class="Material">
-                            <div class="Block b11">
+                            <div class="Block b11"onclick="visibilator('1','g',1)">
                                 <b>Verbkonjugation im Präsens</b><br>
                                 Časování sloves v přítomném čase
                             </div>
-                            <div class="Block b11">
+                            <div class="Block b11"onclick="visibilator('1','g',2)">
                                 <b>Unbestimmte und bestimmte Artikel</b><br>
                                 Neurčité a určitě členy
                             </div>
-                            <div class="Block b11">
+                            <div class="Block b11"onclick="visibilator('1','g',3)">
                                 <b>Possessivartikel</b><br>
                                 Přivlasťnovací zájmena
                             </div>
@@ -83,7 +98,7 @@
                         <b class="nadpisChild">Wortschatz</b>
                         <div class="Material">
                             {%for i,v in NJ["German"][0]["NJ1"]["kapitola1-3"]["words"].items()%}
-                            <div class="Block b12" onmouseover="changecolor">
+                            <div class="Block b12" onclick="visibilator('w','{{i}}')">
                                 <b>{{i}}</b>
                                 <div class="celkemwort">
                                     {{v[0]}}
@@ -96,19 +111,19 @@
                     <div class="DIVchild" id="lesen" style="background-color: rgb(93, 84, 164);">
                         <b class="nadpisChild">Lesen</b>
                         <div class="Material">
-                            <div class="Block b13">
+                            <div class="Block b13" onclick="visibilator('l','1')">
                                 <b>Text1</b><br>
                                 Hallo Leute!
                             </div>
-                            <div class="Block b13">
+                            <div class="Block b13" onclick="visibilator('l','2')">
                                 <b>Text2</b><br>
                                 Heute habe ich nicht Geburstag.
                             </div>
-                            <div class="Block b13">
+                            <div class="Block b13" onclick="visibilator('l','3')">
                                 <b>Text3</b><br>
                                 Prag ist teuer.
                             </div>
-                            <div class="Block b13">
+                            <div class="Block b13" onclick="visibilator('l','4')">
                                 <b>Text4</b><br>
                                 Meine Familie ist groß.
                             </div>
@@ -120,42 +135,101 @@
                 </div>
             </div>
         </div>
+        <!------------------------------------------------------------------------------------------------------------>
+        <div id="TestDiv">
+            <div class="krizek" onclick="hider()" tabindex=3>✕</div>
+            <div id="TDContent">
+                <div class="d xPVerb">
+                    <table>
+                        <tr>
+                            <th>id</th>
+                            <th>slovíčko</th>
+                        </tr>
+                        <tr><td>1</td><td>haben</td></tr>
+                        <tr><td>[cislo]</td><td>[sloveso]</td></tr>
+                    </table>
+                </div>
+                <div class="d x1g1">
+                    <p class="nnadpis"><b>Verbkonjugation im Präsens</b></p>
+                    <p class="cnadpis">Časování sloves v přítomném čase</p>
+                    <div class="g">
+                        <table>
+                            <tr><th></th><th colspan="2">pravidelná slovesa</th><th colspan="3">nepravidelná slovesa</th></tr>
+                            <tr><th>infinitiv</th><td>spielen</td><td>trinken</td><td>haben</td><td>sein</td><td>essen</td></tr>
+                            <tr><th>ich</th><td>spiel<span>e</span></td><td>trink<span>e</span></td><td>hab<span>e</span></td><td><span>bin</span></td><td>ess<span>e</span></td></tr>
+                            <tr><th>du</th><td>spiel<span>st</span></td><td>trink<span>st</span></td><td><span>hast</span></td><td><span>bist</span></td><td><span>isst</span></td></tr>
+                            <tr><th>er/sie/es</th><td>spiel<span>t</span></td><td>trink<span>t</span></td><td><span>hat</span></td><td><span>ist</span></td><td><span>isst</span></td></tr>
+                            <tr><th>wir</th><td>spiel<span>en</span></td><td>trink<span>en</span></td><td>hab<span>en</span></td><td>sind</td><td>ess<span>en</span></td></tr>
+                            <tr><th>ihr</th><td>spiel<span>t</span></td><td>trink<span>t</span></td><td>hab<span>t</span></td><td>seid</td><td>ess<span>t</span></td></tr>
+                            <tr><th>sie/Sie</th><td>spiel<span>en</span></td><td>trink<span>en</span></td><td>hab<span>en</span></td><td><span>sind</span></td><td>ess<span>en</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="cara"> </div>
+                    <div class="t">
+                        <p class="ntext"><b>Übungen:</b></p>
+                        <p class="ctext">Cvičení:</p>
+                        <div class="easyt">leicht Test</div>
+                        <div class="hardt">schwer Test</div>
+                    </div>
+                </div>
+                <div class="d x1g2">asdasd</div>
+                <div class="d x1g3">asdasd</div>
+
+                <div class="d x1w1">hgjghj</div>
+                <div class="d x1w2">ghjghj</div>
+                <div class="d x1w3">ghjghjgnb</div>
+
+                <div class="d x1l1">nbmgzu</div>
+                <div class="d x1l2">hgkignmb</div>
+                <div class="d x1l3"></div>
+
+                <div class="d x1t1"></div>
+                <div class="d x1t2"></div>
+                <div class="d x1t3"></div>
+            </div>
+        </div>
     </div>
-    <!------------------------------------------------------------------------------------------------------------>
-    <div id="SecondDiv"></div>
 </div>
 <script>
      $(document).ready(function(){
         const a = [false,false,false,false,false]
         const x = document.querySelectorAll(".Module");
         const child = document.querySelectorAll(".child");
-        
-        for(let i=1;i<=5;i++){
-                $("#M"+i).click(function(){
-                    if (!(a[i-1])){
-                        for (let y=0;y<=4;y++){
-                            a[y]=false;
-                            //x[y].style.height="40px";
-                            child[y].style.display="none";
-                        };
-                        a[i-1]=true;
-                        //x[i-1].style.height="110px";
-                        child[i-1].style.display="block";
-                    }
-                    else{
-                        a[i-1]=false;
-                        //x[i-1].style.height="40px";
-                        child[i-1].style.display="none";
-                    };                 
-                });
-            };
+        const L = document.querySelectorAll(".L")
+        // tohle zobrazuje Lektiony 1-15 v modulech
+        for(let i=1;i<6;i++){
+            $("#M"+i).click(function(){
+                if (!(a[i-1]) ){
+                    for (let y=0;y<5;y++){
+                        a[y]=false;
+                        child[y].style.display="none";
+                    };
+                    a[i-1]=true;
+                    child[i-1].style.display="block";
+                }
+                else{
+                    a[i-1]=false;
+                    child[i-1].style.display="none";
+                };                 
+            });
+        };
+        $("#TDContent").children().hide()
+        //pracujou s rozklikáváním jednotlivých modelů
         for (let i=3;i<16;i++){
             $("#DIVL"+i).hide()
         }
-        for(let i=3;i<16;i++){
+        
+        for(let i=3;i<L.length;i++){
             $("#L"+i).click(function(e){
+                for(let i=0;i<L.length;i++){
+                        L[i].style.color="black"
+                }
+                for (let i=3;i<16;i++){
+                    $("#DIVL"+i).hide()
+                }
                 e.stopPropagation();
                 if($("#DIVL"+i).is(":visible")){
+                    
                     document.getElementById("L"+i).style.color="black";
                     $("#DIVL"+i).hide()
                 }

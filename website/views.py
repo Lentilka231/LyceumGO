@@ -113,6 +113,7 @@ def classroom():
                         a=False
                 if a:
                     newsubclass = SubClass(teacher=request.form.get("teacher"),teacherid=current_user.id,subject=request.form.get("subject"),classroomname=classroom.name,grade=classroom.grade)
+                    newgermany = Germany(progress="0/100",user_id=current_user.id)
                     db.session.add(newsubclass)
                     for student in classroom.students:
                         db.session.add(createsubforstudents(student.id, request.form.get("subject")))

@@ -35,7 +35,7 @@
                             "der Fan, -s":"fanoušek, fanda",
                             "fleißig":"pilný",
                             "der Schweizer, -":"Švýcar",
-                            "(der) Fußball (Sg)":"fotbal",
+                            "(der) Fußball ":"fotbal",
                             "die Schweiz":"Švýcarsko",
                             "deutsch":"německý, německy"
                         }],
@@ -292,13 +292,62 @@
                     "grammar":{
 
                     },
-                    "words":{                     
-                    },
+                    "words":{
+                        "Seite 27-29":[23,{
+                            "das Hobby, -s":"koníček",
+                            "der Schüler":"žák",
+                            "die Zeitung, -en":"noviny",
+                            "die Videokamera, -s": "kamera",
+                            "die Frau, -en":"žena",
+                            "interessant":"zajimavý",
+                            "der Workshop, -s":"workshop",
+                            "das Video, -s":"video",
+                            "das Radio, -s":"rádio",
+                            "der Krimi: -s":"detektivka",
+                            "der Comic, -s":"komiks",
+                            "lessen":"číst",
+                            "Comics lesen":"číst komiksy",
+                            "das Internet":"internet",
+                            "im Internet surfen":"surfovat na internetu",
+                            "gehen":"jít, chodit",
+                            "ins Kino gehen":"chodit do kina",
+                            "ins Theater gehen":"chodit do divadla",
+                            "machen":"dělat",
+                            "Sport machen":"sportovat",
+                            "viel":"mnoho, hodně",
+                            "chatten":"chatovat",
+                            "falsch":"špatný, špatně(nesprávně)"
+                    }],
+                        "Seite 30-31":[24,{
+                            "der Kontakt, -e":"kontakt",
+                            "(das) Aerobic ":"aerobic",
+                            "Aerobic machen":"chodint na aerobic",
+                            "außerdem":"kromě, toho",
+                            "gern":"rád/ráda",
+                            "die Freundin, -nen":"kamarádka",
+                            "der Film, -e":"film",
+                            "sehen":"vidět",
+                            "genial":"geniální",
+                            "der Computer,-":"počítač",
+                            "telefonieren":"telefonovat",
+                            "zeichnen":"kreslit",
+                            "die Leute":"lidé",
+                            "die Musik":"hudba",
+                            "hören":"poslochat,slyšet",
+                            "Musik hören":"poslouchat hudbu",
+                            "sammeln":"sbírat",
+                            "Ich habe keine Hobbys.":"Nemám koníčky.",
+                            "die CD, -s":"CD",
+                            "Radio hören":"poslouchat rádio",
+                            "Ich weiß nicht.":"Nevím.",
+                            "das Beispiel, -e":"příklad",
+                            "das Handy, -s":"mobil",
+                            "die DVD, -s":"DVD"
+                            }]
+                            },
                     "text":{
-
                     },
                     "tests":{
-
                     }
                 }
             }
