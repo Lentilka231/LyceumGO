@@ -72,14 +72,14 @@
     font-size:20px;
 }
 #TestDiv{
-    width:80vw;
-    height:80vh;
+    width:900px;
+    height:600px;
     background-color: rgb(247, 247, 255);
     display:none;
     position:absolute;
     box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
     padding:30px;
-    top:10vh;
+    top:15vh;
 }
 .d{
     display:none;
@@ -111,8 +111,11 @@ table,th,td{
     border-collapse:collapse;
     padding:3px;
 }
-.g,.t{
+.g,.b{
     margin:20px 0px;
+}
+.t{
+    cursor: pointer;
 }
 table span{
     color:red;
@@ -131,4 +134,7 @@ table span{
     padding:10px;
     position: absolute;
     left:150px;
+}
+.questions{
+    display:none;
 }
