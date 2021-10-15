@@ -83,6 +83,7 @@
 }
 .d{
     display:none;
+    height: 100%;
 }
 
 .krizek{
@@ -137,4 +138,22 @@ table span{
 }
 .questions{
     display:none;
+    height:100px;
+}
+.quest{
+    flex-direction: column;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    height: 100%;
+    margin-top: 150px;
+}
+#TDContent{
+    height:100%;
+}
+.questions p{
+    font-size: 30px;
+}
+.ukol{
+    width:800px;
 }
