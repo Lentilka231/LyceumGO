@@ -81,7 +81,7 @@
     padding:30px;
     top:15vh;
 }
-.d{
+.w{
     display:none;
     height: 100%;
 }
@@ -136,11 +136,11 @@ table span{
     position: absolute;
     left:150px;
 }
-.questions{
+.task{
     display:none;
     height:100px;
 }
-.quest{
+.answer{
     flex-direction: column;
     display: flex;
     align-items:center;
@@ -151,9 +151,29 @@ table span{
 #TDContent{
     height:100%;
 }
-.questions p{
+.task p{
+    font-size: 25px;
+}
+.question{
+    width:800px;
+}
+#nzadani{
     font-size: 30px;
 }
-.ukol{
-    width:800px;
+.answer input{
+    padding:5px;
+    font-size: 30px;
+    width:300px;
+}
+.answer button{
+    background-color: rgb(189, 213, 234);
+    border: none;
+    font-size: 28px;
+    padding: 5px;
+    border-radius:5px ;
+    width:250px;
+}
+.ABCDtable,.ABCDtable td{
+    padding: 30px;
+    border:none;
 }

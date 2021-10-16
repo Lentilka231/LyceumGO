@@ -7,22 +7,48 @@
 {%endblock%}
 {%block content%}
 <script>
-    
+    const NJ = JSON.parse('{{ NJ1 | tojson | safe }}');
+    var question;
+    var typetest;
     function visibilator(lekce,typ,ukol){
         $("#TestDiv").show();
         $(".x"+lekce+typ+ukol).show();
     };
     function hider(){
-        $(".gramatikside").children().show();
         $("#TestDiv").hide();
         $("#TDContent").children().hide()
-        $(".questions").hide()
+        $(".task").hide()
 
     };
-    function tp(test){
-        $(".gramatikside").children().hide()
-        $(".q"+test).show();
-    }
+    function checkanswer (){
+        
+    };
+    function newquestion (){
+        a=Math.floor(Math.random()*question.length);   
+        document.getElementById("nzadani").innerHTML=question.zadaniN
+        document.getElementById("czadani").innerHTML=question.zadaniC
+        
+        switch(typetest){
+            case "ABCD":
+            document.getElementByID("A").innerHTML=""
+            document.getElementByID("B").innerHTML=""
+            document.getElementByID("C").innerHTML=""
+            document.getElementByID("D").innerHTML=""
+
+            case "X":
+            document.getElementByID("").innerHTML=""
+        }
+        
+        question["otazky"].slice(a);
+    };
+    function tp(type,k,t,x){
+        $(".w").hide()
+        $("."+type).show();
+        console.log(NJ);
+        question=NJ["kapitola"+k][t][x];
+        typetest=type
+        newquestion()
+    };
 </script>
 <div id="MainDiv">
 <div id="flex-container">
@@ -103,7 +129,7 @@
             <div class="DIVchild" id="wortschatz" style="background-color: rgb(157, 101, 201);">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ["German"][0]["NJ1"]["kapitola1-3"]["words"].items()%}
+                    {%for i,v in NJ1["kapitola3"]["words"].items()%}
                     <div class="Block b12" onclick="visibilator('w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -145,7 +171,34 @@
 <div id="TestDiv">
     <div class="krizek" onclick="hider()" tabindex=3>✕</div>
     <div id="TDContent">
-        <div class="d xPVerb">
+        <div class="task ABCD">
+            <p class="question">
+                <b id="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
+                <p id="czadani">Vyber (správnou) odpověď, alespoň to zkus.</p>
+            </p>
+            <div class="answer">
+                <table class="ABCDtable">
+                    <tr>
+                        <td><button type="button" class="A" onclick="checkanswer()">Odpoved A</button></td>
+                        <td><button type="button" class="B" onclick="checkanswer()">Odpoved B</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" class="C" onclick="checkanswer()">Odpoved C</button></td>
+                        <td><button type="button" class="D" onclick="checkanswer()">Odpoved D</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="task X">
+            <p class="question">Schreibst du die (richtige) Antwort.<br>
+                Napiš (správnou) odpověď.
+            </p>
+            <div class="answer">
+                <input type="text">
+                <button type="button" onclick="checkanswer()" class="kontrola" style="margin-top:50px;">Kontroll</button>
+            </div>
+        </div>
+        <div class="w xPVerb">
             <table>
                 <tr>
                     <th>id</th>
@@ -155,58 +208,43 @@
                 <tr><td>[cislo]</td><td>[sloveso]</td></tr>
             </table>
         </div>
-        <div class="d x1g1">
-            <div class="gramatikside">
-                <p class="nnadpis"><b>Verbkonjugation im Präsens</b></p>
-                <p class="cnadpis">Časování sloves v přítomném čase</p>
-                <div class="g">
-                    <table>
-                        <tr><th></th><th colspan="2">pravidelná slovesa</th><th colspan="3">nepravidelná slovesa</th></tr>
-                        <tr><th>infinitiv</th><td>spielen</td><td>trinken</td><td>haben</td><td>sein</td><td>essen</td></tr>
-                        <tr><th>ich</th><td>spiel<span>e</span></td><td>trink<span>e</span></td><td>hab<span>e</span></td><td><span>bin</span></td><td>ess<span>e</span></td></tr>
-                        <tr><th>du</th><td>spiel<span>st</span></td><td>trink<span>st</span></td><td><span>hast</span></td><td><span>bist</span></td><td><span>isst</span></td></tr>
-                        <tr><th>er/sie/es</th><td>spiel<span>t</span></td><td>trink<span>t</span></td><td><span>hat</span></td><td><span>ist</span></td><td><span>isst</span></td></tr>
-                        <tr><th>wir</th><td>spiel<span>en</span></td><td>trink<span>en</span></td><td>hab<span>en</span></td><td>sind</td><td>ess<span>en</span></td></tr>
-                        <tr><th>ihr</th><td>spiel<span>t</span></td><td>trink<span>t</span></td><td>hab<span>t</span></td><td>seid</td><td>ess<span>t</span></td></tr>
-                        <tr><th>sie/Sie</th><td>spiel<span>en</span></td><td>trink<span>en</span></td><td>hab<span>en</span></td><td><span>sind</span></td><td>ess<span>en</span></td></tr>
-                    </table>
-                </div>
-                <div class="cara"> </div>
-                <div class="b">
-                    <p class="ntext"><b>Übungen:</b></p>
-                    <p class="ctext">Cvičení:</p>
-                    <div class="t easyt" onclick="tp('1g1l')">leichter Test</div>
-                    <div class="t hardt" onclick="tp('1g1s')">schwieriger Test</div>
-                </div>
+        <div class="w x1g1">
+            <p class="nnadpis"><b>Verbkonjugation im Präsens</b></p>
+            <p class="cnadpis">Časování sloves v přítomném čase</p>
+            <div class="g">
+                <table>
+                    <tr><th></th><th colspan="2">pravidelná slovesa</th><th colspan="3">nepravidelná slovesa</th></tr>
+                    <tr><th>infinitiv</th><td>spielen</td><td>trinken</td><td>haben</td><td>sein</td><td>essen</td></tr>
+                    <tr><th>ich</th><td>spiel<span>e</span></td><td>trink<span>e</span></td><td>hab<span>e</span></td><td><span>bin</span></td><td>ess<span>e</span></td></tr>
+                    <tr><th>du</th><td>spiel<span>st</span></td><td>trink<span>st</span></td><td><span>hast</span></td><td><span>bist</span></td><td><span>isst</span></td></tr>
+                    <tr><th>er/sie/es</th><td>spiel<span>t</span></td><td>trink<span>t</span></td><td><span>hat</span></td><td><span>ist</span></td><td><span>isst</span></td></tr>
+                    <tr><th>wir</th><td>spiel<span>en</span></td><td>trink<span>en</span></td><td>hab<span>en</span></td><td>sind</td><td>ess<span>en</span></td></tr>
+                    <tr><th>ihr</th><td>spiel<span>t</span></td><td>trink<span>t</span></td><td>hab<span>t</span></td><td>seid</td><td>ess<span>t</span></td></tr>
+                    <tr><th>sie/Sie</th><td>spiel<span>en</span></td><td>trink<span>en</span></td><td>hab<span>en</span></td><td><span>sind</span></td><td>ess<span>en</span></td></tr>
+                </table>
             </div>
-            
-            <div class="questions q1g1l">
-                <p class="ukol">Vyber správnou odpověď:</p>
-                <div class="quest">
-                    
-                    <input type="text">
-                    <button type="button" onclick="getInputValue()">Kontroll</button>
-                </div>
-            </div>
-            <div class="questions q1g1s">
-                <input type="text">
-                <button type="button" onclick="getInputValue()">Kontroll</button>
+            <div class="cara"> </div>
+            <div class="b">
+                <p class="ntext"><b>Übungen:</b></p>
+                <p class="ctext">Cvičení:</p>
+                <div class="t easyt" onclick="tp('ABCD','3','grammar','1')">leichter Test</div>
+                <div class="t hardt" onclick="tp('X','3','grammar','1')">schwieriger Test</div>
             </div>
         </div>
-        <div class="d x1g2">asdasd</div>
-        <div class="d x1g3">asdasd</div>
+        <div class="w x1g2">asdasd</div>
+        <div class="w x1g3">asdasd</div>
 
-        <div class="d x1w1">hgjghj</div>
-        <div class="d x1w2">ghjghj</div>
-        <div class="d x1w3">ghjghjgnb</div>
+        <div class="w x1w1">hgjghj</div>
+        <div class="w x1w2">ghjghj</div>
+        <div class="w x1w3">ghjghjgnb</div>
 
-        <div class="d x1l1">nbmgzu</div>
-        <div class="d x1l2">hgkignmb</div>
-        <div class="d x1l3"></div>
+        <div class="w x1l1">nbmgzu</div>
+        <div class="w x1l2">hgkignmb</div>
+        <div class="w x1l3"></div>
 
-        <div class="d x1t1"></div>
-        <div class="d x1t2"></div>
-        <div class="d x1t3"></div>
+        <div class="w x1t1"></div>
+        <div class="w x1t2"></div>
+        <div class="w x1t3"></div>
     </div>
 </div>
 </div>
