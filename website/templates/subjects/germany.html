@@ -129,7 +129,7 @@
     <div class="krizek" onclick="hider()" tabindex=3>✕</div>
     <div id="TDContent">
         <div class="task ABCD">
-            <p class="question">
+            <p class="questions">
                 <b id="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
                 <p id="czadani">Vyber (správnou) odpověď, alespoň to zkus.</p>
             </p>
@@ -137,23 +137,23 @@
             <div class="answer">
                 <table class="ABCDtable">
                     <tr>
-                        <td><button type="button" id="A" onclick="checkanswer()">Odpoved A</button></td>
-                        <td><button type="button" id="B" onclick="checkanswer()">Odpoved B</button></td>
+                        <td><button type="button" id="A" onclick="checkanswer('A')">Odpoved A</button></td>
+                        <td><button type="button" id="B" onclick="checkanswer('B')">Odpoved B</button></td>
                     </tr>
                     <tr>
-                        <td><button type="button" id="C" onclick="checkanswer()">Odpoved C</button></td>
-                        <td><button type="button" id="D" onclick="checkanswer()">Odpoved D</button></td>
+                        <td><button type="button" id="C" onclick="checkanswer('C')">Odpoved C</button></td>
+                        <td><button type="button" id="D" onclick="checkanswer('D')">Odpoved D</button></td>
                     </tr>
                 </table>
             </div>
         </div>
         <div class="task X">
-            <p class="question">Schreibst du die (richtige) Antwort.<br>
+            <p class="questions">Schreibst du die (richtige) Antwort.<br>
                 Napiš (správnou) odpověď.
             </p>
             <div class="answer">
                 <input type="text">
-                <button type="button" onclick="checkanswer()" class="kontrola" style="margin-top:50px;">Kontroll</button>
+                <button type="button" onclick="checkanswer()" id="kontrola" style="margin-top:50px;">Kontroll</button>
             </div>
         </div>
         <div class="w xPVerb">
@@ -208,6 +208,7 @@
 </div>
 </div>
 <script>
+    //vše týkající se zviditelňování
      $(document).ready(function(){
         const a = [false,false,false,false,false]
         const x = document.querySelectorAll(".Module");
@@ -258,8 +259,10 @@
             })
         }
         });
-        const NJ = JSON.parse('{{ NJ1 | tojson | safe }}');
-    var question;
+    // Vše týkající se testů 
+    const NJ = JSON.parse('{{ NJ1 | tojson | safe }}');
+    var questions;
+    var momentalQuestion;
     var typetest;
     function visibilator(lekce,typ,ukol){
         $("#TestDiv").show();
@@ -267,42 +270,71 @@
     };
     function hider(){
         $("#TestDiv").hide();
-        $("#TDContent").children().hide()
-        $(".task").hide()
+        $("#TDContent").children().hide();
+        $(".task").hide();
+    };
+    function endOfTest(){
+        $(".task").hide();
 
-    };
-    function checkanswer (){
-        
-    };
-    function newquestion (){
-        a=Math.floor(Math.random()*question.otazky.length);   
-        document.getElementById("nzadani").innerHTML=question.zadaniN;
-        document.getElementById("czadani").innerHTML=question.zadaniC;
-        document.getElementById("Franta").innerHTML=question.otazky[a]["q"];
+    }
+    function sleep(ms){
+        return new Promise(resolve => setTimeout(resolve,ms))
+    }
+
+    async function checkanswer (x){
+        a=document.getElementById(x)
         switch(typetest){
             case "ABCD":
-            b=["a","1","2","3"];
-            c=["A","B","C","D"];
-            for (let i=0;i<4;i++){
-                d=Math.floor(Math.random()*(3-i));
-                console.log(question.otazky[a][b[d]]);
-                b.slice(b[d])
-                document.getElementById(c[i]).innerHTML=question.otazky[a][b[d]];
-            };
-
-            case "X":
-            document.getElementByID("X").innerHTML=""
+                if (task.otazky[momentalQuestion].a==a.innerHTML){
+                    console.log("správně")
+                    a.style.border="solid rgb(25, 146, 61) 3px";
+                    questions.splice(momentalQuestion-1,1);
+                    await sleep(1000);
+                    c=["A","B","C","D"];
+                    for(let i=0;i<4;i++){
+                        document.getElementById(c[i]).style.border="none";
+                    }
+                    newquestion()
+                }
+                else{
+                    a.style.border="solid red 3px";
+                }
+            case "kontrola":
         }
-        
-        question["otazky"].slice(a);
+    };
+    function newquestion (){
+        if (questions.length>0){
+            a=Math.floor(Math.random()*questions.length);   
+            document.getElementById("nzadani").innerHTML=task.zadaniN;
+            document.getElementById("czadani").innerHTML=task.zadaniC;
+            document.getElementById("Franta").innerHTML=task.otazky[a]["q"];
+            switch(typetest){
+                case "ABCD":
+                    b=["a","1","2","3"];
+                    c=["A","B","C","D"];
+                    for (let i=0;i<4;i++){
+                        d=Math.floor(Math.random()*(3-i));
+                        document.getElementById(c[i]).innerHTML=task.otazky[a][b[d]];
+                        b.splice(d,1);
+                    };
+                    momentalQuestion=a;
+                    break;
+                case "kontrola":
+                    document.getElementById("kontrola").innerHTML="";
+                    break;
+            };
+        }
+        else{
+            endOfTest();
+        };
     };
     function tp(type,k,t,x){
-        $(".w").hide()
+        $(".w").hide();
         $("."+type).show();
-        console.log(NJ);
-        question=NJ["kapitola"+k][t][x];
-        typetest=type
-        newquestion()
+        questions =Array.from({length:NJ["kapitola"+k][t][x].otazky.length}, (_, i) => i + 1);
+        task=NJ["kapitola"+k][t][x];
+        typetest=type;
+        newquestion();
     };
 </script>
 {%endblock%}
