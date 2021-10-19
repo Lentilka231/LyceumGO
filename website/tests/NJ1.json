@@ -8,32 +8,44 @@
                 {
                     "q":"ich ______",
                     "a":"spiele",
-                    "d":"spielst, spielt, spielen,"
+                    "1":"spielst",
+                    "2":"spielt",
+                    "3":"spielen"
                 },
                 {
                     "q":"du ______",
                     "a":"spielst",
-                    "d":"spiele, spielt, spielen,"
+                    "1":"spiele",
+                    "2":"spielt",
+                    "3":"spielen"
                 },
                 {
                     "q":"er/sie/es ______",
                     "a":"spielt",
-                    "d":"spiele, spielst, spielen,"
+                    "1":"spielst",
+                    "2":"spiele",
+                    "3":"spielen"
                 },
                 {
                     "q":"wir ______",
                     "a":"spielen",
-                    "d":"spiele, spielt, spielst,"
+                    "1":"spielst",
+                    "2":"spielt",
+                    "3":"spiele"
                 },
                 {
                     "q":"ihr ______",
                     "a":"spielt",
-                    "d":"spiele, spielst, spielen,"
+                    "1":"spielst",
+                    "2":"spiele",
+                    "3":"spielen"
                 },
                 {
                     "q":"sie/Sie ______",
                     "a":"spielen",
-                    "d":"spiele, spielt, spielst,"
+                    "1":"spielst",
+                    "2":"spielt",
+                    "3":"spiele"
                 }
             ]
         }

@@ -6,50 +6,7 @@
 
 {%endblock%}
 {%block content%}
-<script>
-    const NJ = JSON.parse('{{ NJ1 | tojson | safe }}');
-    var question;
-    var typetest;
-    function visibilator(lekce,typ,ukol){
-        $("#TestDiv").show();
-        $(".x"+lekce+typ+ukol).show();
-    };
-    function hider(){
-        $("#TestDiv").hide();
-        $("#TDContent").children().hide()
-        $(".task").hide()
 
-    };
-    function checkanswer (){
-        
-    };
-    function newquestion (){
-        a=Math.floor(Math.random()*question.length);   
-        document.getElementById("nzadani").innerHTML=question.zadaniN
-        document.getElementById("czadani").innerHTML=question.zadaniC
-        
-        switch(typetest){
-            case "ABCD":
-            document.getElementByID("A").innerHTML=""
-            document.getElementByID("B").innerHTML=""
-            document.getElementByID("C").innerHTML=""
-            document.getElementByID("D").innerHTML=""
-
-            case "X":
-            document.getElementByID("").innerHTML=""
-        }
-        
-        question["otazky"].slice(a);
-    };
-    function tp(type,k,t,x){
-        $(".w").hide()
-        $("."+type).show();
-        console.log(NJ);
-        question=NJ["kapitola"+k][t][x];
-        typetest=type
-        newquestion()
-    };
-</script>
 <div id="MainDiv">
 <div id="flex-container">
 <div class="flex-items first">
@@ -176,15 +133,16 @@
                 <b id="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
                 <p id="czadani">Vyber (správnou) odpověď, alespoň to zkus.</p>
             </p>
+            <p id="Franta"></p>
             <div class="answer">
                 <table class="ABCDtable">
                     <tr>
-                        <td><button type="button" class="A" onclick="checkanswer()">Odpoved A</button></td>
-                        <td><button type="button" class="B" onclick="checkanswer()">Odpoved B</button></td>
+                        <td><button type="button" id="A" onclick="checkanswer()">Odpoved A</button></td>
+                        <td><button type="button" id="B" onclick="checkanswer()">Odpoved B</button></td>
                     </tr>
                     <tr>
-                        <td><button type="button" class="C" onclick="checkanswer()">Odpoved C</button></td>
-                        <td><button type="button" class="D" onclick="checkanswer()">Odpoved D</button></td>
+                        <td><button type="button" id="C" onclick="checkanswer()">Odpoved C</button></td>
+                        <td><button type="button" id="D" onclick="checkanswer()">Odpoved D</button></td>
                     </tr>
                 </table>
             </div>
@@ -300,5 +258,51 @@
             })
         }
         });
+        const NJ = JSON.parse('{{ NJ1 | tojson | safe }}');
+    var question;
+    var typetest;
+    function visibilator(lekce,typ,ukol){
+        $("#TestDiv").show();
+        $(".x"+lekce+typ+ukol).show();
+    };
+    function hider(){
+        $("#TestDiv").hide();
+        $("#TDContent").children().hide()
+        $(".task").hide()
+
+    };
+    function checkanswer (){
+        
+    };
+    function newquestion (){
+        a=Math.floor(Math.random()*question.otazky.length);   
+        document.getElementById("nzadani").innerHTML=question.zadaniN;
+        document.getElementById("czadani").innerHTML=question.zadaniC;
+        document.getElementById("Franta").innerHTML=question.otazky[a]["q"];
+        switch(typetest){
+            case "ABCD":
+            b=["a","1","2","3"];
+            c=["A","B","C","D"];
+            for (let i=0;i<4;i++){
+                d=Math.floor(Math.random()*(3-i));
+                console.log(question.otazky[a][b[d]]);
+                b.slice(b[d])
+                document.getElementById(c[i]).innerHTML=question.otazky[a][b[d]];
+            };
+
+            case "X":
+            document.getElementByID("X").innerHTML=""
+        }
+        
+        question["otazky"].slice(a);
+    };
+    function tp(type,k,t,x){
+        $(".w").hide()
+        $("."+type).show();
+        console.log(NJ);
+        question=NJ["kapitola"+k][t][x];
+        typetest=type
+        newquestion()
+    };
 </script>
 {%endblock%}
