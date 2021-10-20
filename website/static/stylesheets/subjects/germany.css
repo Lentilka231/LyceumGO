@@ -150,6 +150,7 @@ table span{
 }
 #TDContent{
     height:100%;
+    position: relative;
 }
 .task p{
     font-size: 25px;
@@ -176,4 +177,8 @@ table span{
 .ABCDtable,.ABCDtable td{
     padding: 30px;
     border:none;
+}
+.congratulations{
+    display:none;
+    height:100%;
 }

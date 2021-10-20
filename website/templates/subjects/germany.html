@@ -156,6 +156,13 @@
                 <button type="button" onclick="checkanswer()" id="kontrola" style="margin-top:50px;">Kontroll</button>
             </div>
         </div>
+        <div class="congratulation">
+            <div style="display:flex;flex-direction:column;justify-content:center;align-items: center;position: absolute;width: 100%;height: 100%;">
+                <p style="font-size: 42px;"><b>Gratuluji k dokončení testu:</b></p>
+                <p>úspěšnost:</p><br>
+                <p style="font-size: 100px;"id="procenta"></p>
+            </div>
+        </div>
         <div class="w xPVerb">
             <table>
                 <tr>
@@ -264,6 +271,7 @@
     var questions;
     var momentalQuestion;
     var typetest;
+    var task;
     function visibilator(lekce,typ,ukol){
         $("#TestDiv").show();
         $(".x"+lekce+typ+ukol).show();
@@ -272,10 +280,11 @@
         $("#TestDiv").hide();
         $("#TDContent").children().hide();
         $(".task").hide();
+        $(".congratulation").hide();
     };
     function endOfTest(){
         $(".task").hide();
-
+        $(".congratulation").show();
     }
     function sleep(ms){
         return new Promise(resolve => setTimeout(resolve,ms))
@@ -288,8 +297,9 @@
                 if (task.otazky[momentalQuestion].a==a.innerHTML){
                     console.log("správně")
                     a.style.border="solid rgb(25, 146, 61) 3px";
-                    questions.splice(momentalQuestion-1,1);
-                    await sleep(1000);
+                    console.log(questions.indexOf(momentalQuestion))
+                    questions.splice(questions.indexOf(momentalQuestion),1);
+                    // await sleep(1000);
                     c=["A","B","C","D"];
                     for(let i=0;i<4;i++){
                         document.getElementById(c[i]).style.border="none";
@@ -304,7 +314,12 @@
     };
     function newquestion (){
         if (questions.length>0){
-            a=Math.floor(Math.random()*questions.length);   
+            do{
+                a=Math.floor(Math.random()*task.otazky.length);   
+                console.log(a,"random generator")
+            }
+            while(!questions.includes(a));
+            console.log(a,questions)
             document.getElementById("nzadani").innerHTML=task.zadaniN;
             document.getElementById("czadani").innerHTML=task.zadaniC;
             document.getElementById("Franta").innerHTML=task.otazky[a]["q"];
@@ -331,7 +346,7 @@
     function tp(type,k,t,x){
         $(".w").hide();
         $("."+type).show();
-        questions =Array.from({length:NJ["kapitola"+k][t][x].otazky.length}, (_, i) => i + 1);
+        questions =Array.from({length:NJ["kapitola"+k][t][x].otazky.length}, (_, i) => i);
         task=NJ["kapitola"+k][t][x];
         typetest=type;
         newquestion();
