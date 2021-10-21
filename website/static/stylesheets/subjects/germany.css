@@ -1,6 +1,6 @@
 .Module{
     padding:15px;
-    margin:10px;
+    margin:10px 0px;
     min-height:40px;
     z-index:2;
     /* animation: forwards backhover 0.2s; */
@@ -73,7 +73,7 @@
 }
 #TestDiv{
     width:900px;
-    height:500px;
+    height:550px;
     background-color: rgb(247, 247, 255);
     display:none;
     position:absolute;
@@ -107,19 +107,30 @@
 }
 /* Samé konkrétní úpravy :) */
 /* 1g1 */
-table,th,td{
-    border: 1px solid black;
-    border-collapse:collapse;
+#VK th{
     padding:3px;
+}
+#VK td{
+    background-color: rgb(163, 163, 238);
+    border-radius:  5px;
+    padding:3px;
+}
+#VK{
+    border: 3px solid black;
+    background-color: rgb(77, 135, 223);
+    border-radius:  10px;
 }
 .g,.b{
     margin:20px 0px;
 }
+.didyouknow{
+    margin:10px 0px;
+}
 .t{
     cursor: pointer;
 }
-table span{
-    color:red;
+#VK span{
+    color:rgb(255, 153, 0);
 }
 .cara{
     background-color: black;
@@ -155,12 +166,16 @@ table span{
 .task p{
     font-size: 25px;
 }
-.question{
+.questions{
     width:800px;
 }
-#nzadani{
+.nzadani{
     font-size: 30px;
 }
+.Franta{
+
+}
+
 .answer input{
     padding:5px;
     font-size: 30px;

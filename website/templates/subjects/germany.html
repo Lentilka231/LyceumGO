@@ -12,126 +12,136 @@
 <div class="flex-items first">
     <div id="NAME"><b>Němčina</b></div>
     <div class="decorator" >
-        <div id="subclassinfo">
-            <p>Třída: {{subclass.classroomname}}</p>
-            <p>Progres: {{subclass.progres}}</p>
-            <div id="PVerb" onclick="visibilator('PVerb','','')"  style="cursor:pointer;">
-                Verb/Slovesa
+        <div class="scroler">
+            <div id="subclassinfo">
+                <p>Třída: {{subclass.classroomname}}</p>
+                <p>Progres: {{subclass.progres}}</p>
+                <div id="PVerb" onclick="visibilator('PVerb','','')"  style="cursor:pointer;">
+                    Verb/Slovesa
+                </div>
             </div>
+        </div>
+        <div class="bsetings">
+            <input type="checkbox" id="chvilkanakontrolu"> <label for="chvilkanakontrolu">dodatečný čas po odpovědi</label>
         </div>
     </div>
 </div>
 <div class="flex-items second">
     <div class="decorator">
-        <div class="Module" id="M1" tabindex="1" style="background-color: rgb(115, 64, 155);">
-            <p><b>1) Deutsch ist NICHT leicht!</b></p>
-            <div class="child">
-                <p class="L" id="L3" >Lektion 1-3</p>
-            </div>                
-        </div>
-        <div class="Module" id="M2" tabindex="1" style="background-color: orange;">
-            <p><b>2) Hobbys und Schule</b></p>
-            <div class="child">
-                <p class="L" id="L4">Lektion 4</p>
-                <p class="L" id="L5">Lektion 5</p>
-                <p class="L" id="L6">Lektion 6</p>
-            </div> 
-        </div>
-        <div class="Module" id="M3" tabindex="1" style="background-color: rgb(153, 28, 126);">
-            <p><b>3) Freizeit und Feiern</b></p>
-            <div class="child">
-                <p class="L" id="L7">Lektion 7</p>
-                <p class="L" id="L8">Lektion 8</p>
-                <p class="L" id="L9">Lektion 9</p>
+        <div class="scroller">
+            <div class="Module" id="M1" tabindex="1" style="background-color: rgb(115, 64, 155);">
+                <p><b>1) Deutsch ist NICHT leicht!</b></p>
+                <div class="child">
+                    <p class="L" id="L3" >Lektion 1-3</p>
+                </div>                
             </div>
-        </div>
-        <div class="Module" id="M4" tabindex="1" style="background-color: rgb(30, 150, 70);">
-            <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
-            <div class="child">
-                <p class="L" id="L10">Lektion 10</p>
-                <p class="L" id="L11">Lektion 11</p>
-                <p class="L" id="L12">Lektion 12</p>
+            <div class="Module" id="M2" tabindex="1" style="background-color: orange;">
+                <p><b>2) Hobbys und Schule</b></p>
+                <div class="child">
+                    <p class="L" id="L4">Lektion 4</p>
+                    <p class="L" id="L5">Lektion 5</p>
+                    <p class="L" id="L6">Lektion 6</p>
+                </div> 
             </div>
-        </div>
-        <div class="Module" id="M5" tabindex="1" style="background-color: rgb(74, 101, 160);">
-                <p><b>5) Module 5</b></p>
-            <div class="child">
-                <p class="L" id="L13">Lektion 13</p>
-                <p class="L" id="L14">Lektion 14</p>
-                <p class="L" id="L15">Lektion 15</p>
+            <div class="Module" id="M3" tabindex="1" style="background-color: rgb(153, 28, 126);">
+                <p><b>3) Freizeit und Feiern</b></p>
+                <div class="child">
+                    <p class="L" id="L7">Lektion 7</p>
+                    <p class="L" id="L8">Lektion 8</p>
+                    <p class="L" id="L9">Lektion 9</p>
+                </div>
+            </div>
+            <div class="Module" id="M4" tabindex="1" style="background-color: rgb(30, 150, 70);">
+                <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
+                <div class="child">
+                    <p class="L" id="L10">Lektion 10</p>
+                    <p class="L" id="L11">Lektion 11</p>
+                    <p class="L" id="L12">Lektion 12</p>
+                </div>
+            </div>
+            <div class="Module" id="M5" tabindex="1" style="background-color: rgb(74, 101, 160);">
+                    <p><b>5) Module 5</b></p>
+                <div class="child">
+                    <p class="L" id="L13">Lektion 13</p>
+                    <p class="L" id="L14">Lektion 14</p>
+                    <p class="L" id="L15">Lektion 15</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <div class="flex-items third">
     <div class="decorator">
-        <div id="DIVL3">
-            <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
-                <b class="nadpisChild">Gramatik</b>
-                <div class="Material">
-                    <div class="Block b11"onclick="visibilator('1','g',1)">
-                        <b>Verbkonjugation im Präsens</b><br>
-                        Časování sloves v přítomném čase
-                    </div>
-                    <div class="Block b11"onclick="visibilator('1','g',2)">
-                        <b>Unbestimmte und bestimmte Artikel</b><br>
-                        Neurčité a určitě členy
-                    </div>
-                    <div class="Block b11"onclick="visibilator('1','g',3)">
-                        <b>Possessivartikel</b><br>
-                        Přivlasťnovací zájmena
-                    </div>
-                </div>
-            </div>
-            <div class="DIVchild" id="wortschatz" style="background-color: rgb(157, 101, 201);">
-                <b class="nadpisChild">Wortschatz</b>
-                <div class="Material">
-                    {%for i,v in NJ1["kapitola3"]["words"].items()%}
-                    <div class="Block b12" onclick="visibilator('w','{{i}}')">
-                        <b>{{i}}</b>
-                        <div class="celkemwort">
-                            {{v[0]}}
+        <div class="scroller">
+            <div id="DIVL3">
+                <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
+                    <b class="nadpisChild">Gramatik</b>
+                    <div class="Material">
+                        <div class="Block b11"onclick="visibilator('1','g',1)">
+                            <b>Verbkonjugation im Präsens</b><br>
+                            Časování sloves v přítomném čase
+                        </div>
+                        <div class="Block b11"onclick="visibilator('1','g',2)">
+                            <b>Unbestimmte und bestimmte Artikel</b><br>
+                            Neurčité a určitě členy
+                        </div>
+                        <div class="Block b11"onclick="visibilator('1','g',3)">
+                            <b>Possessivartikel</b><br>
+                            Přivlasťnovací zájmena
                         </div>
                     </div>
-                    {%endfor%}
-                    
                 </div>
-            </div>
-            <div class="DIVchild" id="lesen" style="background-color: rgb(93, 84, 164);">
-                <b class="nadpisChild">Lesen</b>
-                <div class="Material">
-                    <div class="Block b13" onclick="visibilator('l','1')">
-                        <b>Text1</b><br>
-                        Hallo Leute!
-                    </div>
-                    <div class="Block b13" onclick="visibilator('l','2')">
-                        <b>Text2</b><br>
-                        Heute habe ich nicht Geburstag.
-                    </div>
-                    <div class="Block b13" onclick="visibilator('l','3')">
-                        <b>Text3</b><br>
-                        Prag ist teuer.
-                    </div>
-                    <div class="Block b13" onclick="visibilator('l','4')">
-                        <b>Text4</b><br>
-                        Meine Familie ist groß.
+                <div class="DIVchild" id="wortschatz" style="background-color: rgb(157, 101, 201);">
+                    <b class="nadpisChild">Wortschatz</b>
+                    <div class="Material">
+                        {%for i,v in NJ1["kapitola3"]["words"].items()%}
+                        <div class="Block b12" onclick="visibilator('w','{{i}}')">
+                            <b>{{i}}</b>
+                            <div class="celkemwort">
+                                {{v[0]}}
+                            </div>
+                        </div>
+                        {%endfor%}
+                        
                     </div>
                 </div>
-            </div>
-            <div class="DIVchild" id="endtest" style="background-color: rgb(54, 80, 136);">
-                <b class="nadpisChild">Tests</b>
+                <div class="DIVchild" id="lesen" style="background-color: rgb(93, 84, 164);">
+                    <b class="nadpisChild">Lesen</b>
+                    <div class="Material">
+                        <div class="Block b13" onclick="visibilator('l','1')">
+                            <b>Text1</b><br>
+                            Hallo Leute!
+                        </div>
+                        <div class="Block b13" onclick="visibilator('l','2')">
+                            <b>Text2</b><br>
+                            Heute habe ich nicht Geburstag.
+                        </div>
+                        <div class="Block b13" onclick="visibilator('l','3')">
+                            <b>Text3</b><br>
+                            Prag ist teuer.
+                        </div>
+                        <div class="Block b13" onclick="visibilator('l','4')">
+                            <b>Text4</b><br>
+                            Meine Familie ist groß.
+                        </div>
+                    </div>
+                </div>
+                <div class="DIVchild" id="endtest" style="background-color: rgb(54, 80, 136);">
+                    <b class="nadpisChild">Tests</b>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
 <!------------------------------------------------------------------------------------------------------------>
 <div id="TestDiv">
-    <div class="krizek" onclick="hider()" tabindex=3>✕</div>
+    <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
     <div id="TDContent">
         <div class="task ABCD">
             <p class="questions">
-                <b id="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
-                <p id="czadani">Vyber (správnou) odpověď, alespoň to zkus.</p>
+                <b class="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
+                <p class="czadani">Vyber (správnou) odpověď, alespoň to zkus.</p>
             </p>
             <p id="Franta"></p>
             <div class="answer">
@@ -148,18 +158,21 @@
             </div>
         </div>
         <div class="task X">
-            <p class="questions">Schreibst du die (richtige) Antwort.<br>
-                Napiš (správnou) odpověď.
+            <p class="questions">
+                <b class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
+                <p class="czadani">Napiš (správnou) odpověď.</p>
             </p>
+            <p class="Franta"></p>
             <div class="answer">
-                <input type="text">
+                <input type="textToControl">
                 <button type="button" onclick="checkanswer()" id="kontrola" style="margin-top:50px;">Kontroll</button>
             </div>
         </div>
         <div class="congratulation">
             <div style="display:flex;flex-direction:column;justify-content:center;align-items: center;position: absolute;width: 100%;height: 100%;">
-                <p style="font-size: 42px;"><b>Gratuluji k dokončení testu:</b></p>
-                <p>úspěšnost:</p><br>
+                <p style="font-size: 42px;"><b>Gratulation zum Bestehen der Prüfung</b></p>
+                <p style="font-size:30px;">Gratuluji k dokončení testu:</p><br>
+                <p>Erfolgsquote / úspěšnost:</p><br>
                 <p style="font-size: 100px;"id="procenta"></p>
             </div>
         </div>
@@ -177,7 +190,7 @@
             <p class="nnadpis"><b>Verbkonjugation im Präsens</b></p>
             <p class="cnadpis">Časování sloves v přítomném čase</p>
             <div class="g">
-                <table>
+                <table id="VK">
                     <tr><th></th><th colspan="2">pravidelná slovesa</th><th colspan="3">nepravidelná slovesa</th></tr>
                     <tr><th>infinitiv</th><td>spielen</td><td>trinken</td><td>haben</td><td>sein</td><td>essen</td></tr>
                     <tr><th>ich</th><td>spiel<span>e</span></td><td>trink<span>e</span></td><td>hab<span>e</span></td><td><span>bin</span></td><td>ess<span>e</span></td></tr>
@@ -188,6 +201,7 @@
                     <tr><th>sie/Sie</th><td>spiel<span>en</span></td><td>trink<span>en</span></td><td>hab<span>en</span></td><td><span>sind</span></td><td>ess<span>en</span></td></tr>
                 </table>
             </div>
+            <p class="didyouknow">Věděliste, že v němčině při vykání vlastně "onikáme".</p>
             <div class="cara"> </div>
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
@@ -272,11 +286,14 @@
     var momentalQuestion;
     var typetest;
     var task;
+    var uspesnost =[];
+    var z;
     function visibilator(lekce,typ,ukol){
         $("#TestDiv").show();
         $(".x"+lekce+typ+ukol).show();
     };
     function hider(){
+        console.log("click")
         $("#TestDiv").hide();
         $("#TDContent").children().hide();
         $(".task").hide();
@@ -284,11 +301,19 @@
     };
     function endOfTest(){
         $(".task").hide();
+        
+        for(let i=0;i<uspesnost.length;i++){
+            z+=uspesnost[i];
+        };
+        console.log(z);
+        console.log(uspesnost.length);
+        document.getElementById("procenta").innerHTML=Math.round(z/uspesnost.length*100)+"%";
         $(".congratulation").show();
-    }
+
+    };
     function sleep(ms){
         return new Promise(resolve => setTimeout(resolve,ms))
-    }
+    };
 
     async function checkanswer (x){
         a=document.getElementById(x)
@@ -299,7 +324,9 @@
                     a.style.border="solid rgb(25, 146, 61) 3px";
                     console.log(questions.indexOf(momentalQuestion))
                     questions.splice(questions.indexOf(momentalQuestion),1);
-                    // await sleep(1000);
+                    if(document.getElementById("chvilkanakontrolu").checked){
+                        await sleep(1000);
+                    }
                     c=["A","B","C","D"];
                     for(let i=0;i<4;i++){
                         document.getElementById(c[i]).style.border="none";
@@ -307,6 +334,7 @@
                     newquestion()
                 }
                 else{
+                    uspesnost[momentalQuestion]=0;
                     a.style.border="solid red 3px";
                 }
             case "kontrola":
@@ -319,10 +347,10 @@
                 console.log(a,"random generator")
             }
             while(!questions.includes(a));
-            console.log(a,questions)
-            document.getElementById("nzadani").innerHTML=task.zadaniN;
-            document.getElementById("czadani").innerHTML=task.zadaniC;
-            document.getElementById("Franta").innerHTML=task.otazky[a]["q"];
+            console.log(document.getElementsByClassName("nzadani"));
+            document.getElementsByClassName("nzadani").innerHTML=task.zadaniN;
+            document.getElementsByClassName("czadani").innerHTML=task.zadaniC;
+            document.getElementsByClassName("Franta").innerHTML=task.otazky[a]["q"];
             switch(typetest){
                 case "ABCD":
                     b=["a","1","2","3"];
@@ -335,7 +363,7 @@
                     momentalQuestion=a;
                     break;
                 case "kontrola":
-                    document.getElementById("kontrola").innerHTML="";
+                    console.log(document.getElementById("textToControl").value);
                     break;
             };
         }
@@ -347,8 +375,10 @@
         $(".w").hide();
         $("."+type).show();
         questions =Array.from({length:NJ["kapitola"+k][t][x].otazky.length}, (_, i) => i);
+        uspesnost =Array.from({length:NJ["kapitola"+k][t][x].otazky.length},(_,i) => 1);
         task=NJ["kapitola"+k][t][x];
         typetest=type;
+        z=0
         newquestion();
     };
 </script>
