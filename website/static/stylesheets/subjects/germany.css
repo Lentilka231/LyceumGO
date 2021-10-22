@@ -149,16 +149,10 @@
 }
 .task{
     display:none;
-    height:100px;
+    position: relative;
+    height:100%;
 }
-.answer{
-    flex-direction: column;
-    display: flex;
-    align-items:center;
-    justify-content: space-between;
-    height: 100%;
-    margin-top: 150px;
-}
+
 #TDContent{
     height:100%;
     position: relative;
@@ -172,27 +166,49 @@
 .nzadani{
     font-size: 30px;
 }
+.answer{
+    position:absolute;
+    top:20%;
+    height: 80%;
+    left:50%;
+    transform: translate(-50%,0%);
+}
 .Franta{
+    top:70px;
+    width:700px;
+    text-align: center;
+}
+.centralizer,.Franta{
+    position: absolute;
+    left:50%;
+    transform: translate(-50%,0%);
 
 }
-
 .answer input{
     padding:5px;
     font-size: 30px;
     width:300px;
 }
 .answer button{
+    border:solid 3px rgb(189, 213, 234);
     background-color: rgb(189, 213, 234);
-    border: none;
     font-size: 28px;
     padding: 5px;
     border-radius:5px ;
     width:250px;
+    height: max-content;
 }
-.ABCDtable,.ABCDtable td{
-    padding: 30px;
-    border:none;
+.answer button:hover{
+    border:solid 3px rgb(87, 115, 153);
 }
+.ABCDodpovedi{
+    display:grid;
+    grid-template-columns: 250px 250px;
+    grid-template-rows: 40px 40px;
+    grid-row-gap:30px;
+    grid-column-gap:40px;
+}
+
 .congratulations{
     display:none;
     height:100%;

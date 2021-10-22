@@ -139,33 +139,38 @@
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
     <div id="TDContent">
         <div class="task ABCD">
-            <p class="questions">
-                <b class="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
-                <p class="czadani">Vyber (správnou) odpověď, alespoň to zkus.</p>
-            </p>
-            <p id="Franta"></p>
+            <div class="questions">
+                <b id="nzABCD" class="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
+                <p id="czABCD" class="czadani">Vyber (správnou) odpověď, alespoň to zkus.</p>
+            </div>
             <div class="answer">
-                <table class="ABCDtable">
-                    <tr>
-                        <td><button type="button" id="A" onclick="checkanswer('A')">Odpoved A</button></td>
-                        <td><button type="button" id="B" onclick="checkanswer('B')">Odpoved B</button></td>
-                    </tr>
-                    <tr>
-                        <td><button type="button" id="C" onclick="checkanswer('C')">Odpoved C</button></td>
-                        <td><button type="button" id="D" onclick="checkanswer('D')">Odpoved D</button></td>
-                    </tr>
-                </table>
+                <p id="FrantaABCD" class="Franta"></p>
+                <div class="centralizer" style="bottom:30px;">
+                    <div class="ABCDodpovedi">
+                        <button type="button" id="A" onclick="checkanswer('A')">Odpoved A</button>
+                        <button type="button" id="B" onclick="checkanswer('B')">Odpoved B</button>
+                        <button type="button" id="C" onclick="checkanswer('C')">Odpoved C</button>
+                        <button type="button" id="D" onclick="checkanswer('D')">Odpoved D</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="task X">
-            <p class="questions">
-                <b class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
-                <p class="czadani">Napiš (správnou) odpověď.</p>
-            </p>
-            <p class="Franta"></p>
+            <div class="questions">
+                <b id="nzX" class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
+                <p id="czX" class="czadani">Napiš (správnou) odpověď.</p>
+            </div>
             <div class="answer">
-                <input type="textToControl">
-                <button type="button" onclick="checkanswer()" id="kontrola" style="margin-top:50px;">Kontroll</button>
+                <p id="FrantaX" class="Franta"></p>
+                
+                <div class="centralizer" style="bottom: 150px;">
+                    <div id="XP">
+                        <input type="text" id="X" spellcheck="false">
+                    </div>
+                </div>
+                <div class="centralizer" style="bottom: 70px;">
+                    <button type="button" onclick="checkanswer('X')" id="kontrola" style="margin-top:50px;">Kontroll</button>
+                </div>
             </div>
         </div>
         <div class="congratulation">
@@ -288,16 +293,24 @@
     var task;
     var uspesnost =[];
     var z;
+    var XTest=false;
     function visibilator(lekce,typ,ukol){
         $("#TestDiv").show();
         $(".x"+lekce+typ+ukol).show();
     };
     function hider(){
-        console.log("click")
         $("#TestDiv").hide();
         $("#TDContent").children().hide();
         $(".task").hide();
         $(".congratulation").hide();
+        c=["A","B","C","D"];
+        for(let i=0;i<4;i++){
+            document.getElementById(c[i]).style.border="solid 3px rgb(189, 213, 234)";
+        }
+        document.getElementById("XP").style.border="none";
+        document.getElementById("X").value="";
+        XTest=false;
+
     };
     function endOfTest(){
         $(".task").hide();
@@ -305,8 +318,6 @@
         for(let i=0;i<uspesnost.length;i++){
             z+=uspesnost[i];
         };
-        console.log(z);
-        console.log(uspesnost.length);
         document.getElementById("procenta").innerHTML=Math.round(z/uspesnost.length*100)+"%";
         $(".congratulation").show();
 
@@ -314,45 +325,64 @@
     function sleep(ms){
         return new Promise(resolve => setTimeout(resolve,ms))
     };
-
+    document.onkeypress = function (e) {
+        if(e.key=="Enter" & XTest){
+            checkanswer("X")
+        };
+    };
     async function checkanswer (x){
-        a=document.getElementById(x)
         switch(typetest){
             case "ABCD":
+                a=document.getElementById(x)
                 if (task.otazky[momentalQuestion].a==a.innerHTML){
-                    console.log("správně")
                     a.style.border="solid rgb(25, 146, 61) 3px";
-                    console.log(questions.indexOf(momentalQuestion))
                     questions.splice(questions.indexOf(momentalQuestion),1);
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(1000);
                     }
                     c=["A","B","C","D"];
                     for(let i=0;i<4;i++){
-                        document.getElementById(c[i]).style.border="none";
+                        document.getElementById(c[i]).style.border="solid 3px rgb(189, 213, 234)";
                     }
+                    XTest=false;
                     newquestion()
                 }
                 else{
                     uspesnost[momentalQuestion]=0;
                     a.style.border="solid red 3px";
                 }
-            case "kontrola":
+                break;
+            case "X":
+                if (task.otazky[momentalQuestion].a==document.getElementById("X").value){
+                    questions.splice(questions.indexOf(momentalQuestion),1);
+                    document.getElementById("XP").style.border="rgb(25, 146, 61) solid 3px";
+
+                    if(document.getElementById("chvilkanakontrolu").checked){
+                        await sleep(1000);
+                    }
+                    document.getElementById("XP").style.border="none";
+                    document.getElementById("X").value="";
+                    newquestion()
+                }
+                else{
+                    document.getElementById("XP").style.border="red solid 3px";
+                    uspesnost[momentalQuestion]=0;
+                }
+                break;
+
         }
     };
     function newquestion (){
         if (questions.length>0){
             do{
                 a=Math.floor(Math.random()*task.otazky.length);   
-                console.log(a,"random generator")
             }
             while(!questions.includes(a));
-            console.log(document.getElementsByClassName("nzadani"));
-            document.getElementsByClassName("nzadani").innerHTML=task.zadaniN;
-            document.getElementsByClassName("czadani").innerHTML=task.zadaniC;
-            document.getElementsByClassName("Franta").innerHTML=task.otazky[a]["q"];
             switch(typetest){
                 case "ABCD":
+                    document.getElementById("nzABCD").innerHTML=task.zadaniN;
+                    document.getElementById("czABCD").innerHTML=task.zadaniC;
+                    document.getElementById("FrantaABCD").innerHTML=task.otazky[a]["q"];
                     b=["a","1","2","3"];
                     c=["A","B","C","D"];
                     for (let i=0;i<4;i++){
@@ -360,12 +390,15 @@
                         document.getElementById(c[i]).innerHTML=task.otazky[a][b[d]];
                         b.splice(d,1);
                     };
-                    momentalQuestion=a;
                     break;
-                case "kontrola":
-                    console.log(document.getElementById("textToControl").value);
+                case "X":
+                    XTest=true;
+                    document.getElementById("nzX").innerHTML=task.zadaniN;
+                    document.getElementById("czX").innerHTML=task.zadaniC;
+                    document.getElementById("FrantaX").innerHTML=task.otazky[a]["q"];
                     break;
             };
+            momentalQuestion=a;
         }
         else{
             endOfTest();
