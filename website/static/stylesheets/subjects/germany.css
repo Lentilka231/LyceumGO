@@ -213,3 +213,52 @@
     display:none;
     height:100%;
 }
+#strana{
+    height:7%;
+    font-size: 30px;
+    text-align: center;
+}
+.sgrid{
+    height:93%;
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    grid-template-rows:1fr 1fr 1fr;
+    grid-gap:10px;
+}
+.gridchild{
+    background-color: rgb(86, 167, 140);
+    padding:20px;
+    font-size: 24px;
+    text-align: center;
+}
+.Flashcards{
+    grid-column:2/4;
+}
+.Matches{
+    grid-column:2/4;
+}
+#slovicka{
+    grid-row:1/4;
+    max-height: 100%;
+    overflow-y: auto;
+    border:solid 3px black;
+    border-radius: 5px;
+}
+#slovnicek{
+    width:100%;
+    background-color: rgb(189, 213, 234);
+    border-spacing:0px;
+    padding-right: 0px;
+}
+#slovnicek th{
+    border-bottom:solid 1px black;
+    background-color: rgb(122, 64, 175);
+}
+#slovnicek th, #slovnicek td{
+    border-right:1px solid black;
+    padding:3px;
+}
+#slovnicek tr:nth-child(odd) {background: rgb(112, 178, 240)}

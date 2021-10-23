@@ -77,15 +77,15 @@
                 <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
                     <b class="nadpisChild">Gramatik</b>
                     <div class="Material">
-                        <div class="Block b11"onclick="visibilator('1','g',1)">
+                        <div class="Block b11"onclick="visibilator('3','g',1)">
                             <b>Verbkonjugation im Präsens</b><br>
                             Časování sloves v přítomném čase
                         </div>
-                        <div class="Block b11"onclick="visibilator('1','g',2)">
+                        <div class="Block b11"onclick="visibilator('3','g',2)">
                             <b>Unbestimmte und bestimmte Artikel</b><br>
                             Neurčité a určitě členy
                         </div>
-                        <div class="Block b11"onclick="visibilator('1','g',3)">
+                        <div class="Block b11"onclick="visibilator('3','g',3)">
                             <b>Possessivartikel</b><br>
                             Přivlasťnovací zájmena
                         </div>
@@ -94,8 +94,8 @@
                 <div class="DIVchild" id="wortschatz" style="background-color: rgb(157, 101, 201);">
                     <b class="nadpisChild">Wortschatz</b>
                     <div class="Material">
-                        {%for i,v in NJ1["kapitola3"]["words"].items()%}
-                        <div class="Block b12" onclick="visibilator('w','{{i}}')">
+                        {%for i,v in NJ1["lekce3"]["words"].items()%}
+                        <div class="Block b12" onclick="visibilator('3','w','{{i}}')">
                             <b>{{i}}</b>
                             <div class="celkemwort">
                                 {{v[0]}}
@@ -138,6 +138,9 @@
 <div id="TestDiv">
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
     <div id="TDContent">
+        <div class="task W">
+            <div class=""></div>
+        </div>
         <div class="task ABCD">
             <div class="questions">
                 <b id="nzABCD" class="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
@@ -191,7 +194,7 @@
                 <tr><td>[cislo]</td><td>[sloveso]</td></tr>
             </table>
         </div>
-        <div class="w x1g1">
+        <div class="w x3g1">
             <p class="nnadpis"><b>Verbkonjugation im Präsens</b></p>
             <p class="cnadpis">Časování sloves v přítomném čase</p>
             <div class="g">
@@ -215,20 +218,44 @@
                 <div class="t hardt" onclick="tp('X','3','grammar','1')">schwieriger Test</div>
             </div>
         </div>
-        <div class="w x1g2">asdasd</div>
-        <div class="w x1g3">asdasd</div>
+        <div class="w x3g2">asdasd</div>
+        <div class="w x3g3">asdasd</div>
 
-        <div class="w x1w1">hgjghj</div>
-        <div class="w x1w2">ghjghj</div>
-        <div class="w x1w3">ghjghjgnb</div>
+        <div class="w xs">
+            <b><div id="strana"></div></b>
+            <div class="sgrid">
+                <div id="slovicka">
+                    <table id='slovnicek'>
+                    </table>
+                </div>
+                <div class="gridchild Flashcards" onclick="">
+                    Flashcards
+                </div>
+                <div class="gridchild WritingČ">
+                    Psaní<br>
+                    němčina<br>
+                    ↓<br>
+                    čeština
+                </div>
+                <div class="gridchild WritingN">
+                    Psaní<br>
+                    čeština<br>
+                    ↓<br>
+                    němčina
+                </div>
+                <div class="gridchild Matches">
+                    Spojování
+                </div>
+            </div>
+        </div>
 
-        <div class="w x1l1">nbmgzu</div>
-        <div class="w x1l2">hgkignmb</div>
-        <div class="w x1l3"></div>
+        <div class="w x3l1">nbmgzu</div>
+        <div class="w x3l2">hgkignmb</div>
+        <div class="w x3l3"></div>
 
-        <div class="w x1t1"></div>
-        <div class="w x1t2"></div>
-        <div class="w x1t3"></div>
+        <div class="w x3t1"></div>
+        <div class="w x3t2"></div>
+        <div class="w x3t3"></div>
     </div>
 </div>
 </div>
@@ -296,7 +323,20 @@
     var XTest=false;
     function visibilator(lekce,typ,ukol){
         $("#TestDiv").show();
-        $(".x"+lekce+typ+ukol).show();
+        if (typ=="w"){
+            cw=NJ["lekce"+lekce]["words"][ukol];
+            slovicka=""
+            document.getElementById("slovnicek").innerHTML="<tr><th>id</th><th>německy</th><th>česky</th></tr>";
+            for(var i=0;i<cw[0];i++){
+                slovicka+="<tr><td>"+(i+1)+"</td><td>"+cw[1][i]+"</td><td>"+cw[2][i]+"</td></tr>";
+            };
+            document.getElementById("slovnicek").innerHTML+=slovicka;
+            document.getElementById("strana").innerHTML=ukol;
+            $(".xs").show();
+        }
+        else{
+            $(".x"+lekce+typ+ukol).show();
+        }
     };
     function hider(){
         $("#TestDiv").hide();
@@ -407,9 +447,9 @@
     function tp(type,k,t,x){
         $(".w").hide();
         $("."+type).show();
-        questions =Array.from({length:NJ["kapitola"+k][t][x].otazky.length}, (_, i) => i);
-        uspesnost =Array.from({length:NJ["kapitola"+k][t][x].otazky.length},(_,i) => 1);
-        task=NJ["kapitola"+k][t][x];
+        questions =Array.from({length:NJ["lekce"+k][t][x].otazky.length}, (_, i) => i);
+        uspesnost =Array.from({length:NJ["lekce"+k][t][x].otazky.length},(_,i) => 1);
+        task=NJ["lekce"+k][t][x];
         typetest=type;
         z=0
         newquestion();
