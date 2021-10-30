@@ -8,132 +8,127 @@
 {%block content%}
 
 <div id="MainDiv">
-<div id="flex-container">
-<div class="flex-items first">
-    <div id="NAME"><b>Němčina</b></div>
-    <div class="decorator" >
-        <div class="scroler">
-            <div id="subclassinfo">
-                <p>Třída: {{subclass.classroomname}}</p>
-                <p>Progres: {{subclass.progres}}</p>
-                <div id="PVerb" onclick="visibilator('PVerb','','')"  style="cursor:pointer;">
-                    Verb/Slovesa
-                </div>
+<div id="grid-container">
+<div class="NAME"><b>Němčina</b></div>
+<div class="grid-items first">
+    <div class="scroler">
+        <div id="subclassinfo">
+            <p>Třída: {{subclass.classroomname}}</p>
+            <p>Progres: {{subclass.progres}}</p>
+            <div id="PVerb" onclick="visibilator('PVerb','','')"  style="cursor:pointer;">
+                Verb/Slovesa
             </div>
-        </div>
-        <div class="bsetings">
-            <input type="checkbox" id="chvilkanakontrolu"> <label for="chvilkanakontrolu">dodatečný čas po odpovědi</label>
         </div>
     </div>
+    <div class="bsetings">
+        <input type="checkbox" id="chvilkanakontrolu"> <label for="chvilkanakontrolu">dodatečný čas po odpovědi</label>
+    </div>
 </div>
-<div class="flex-items second">
-    <div class="decorator">
-        <div class="scroller">
-            <div class="Module" id="M1" tabindex="1" style="background-color: rgb(115, 64, 155);">
-                <p><b>1) Deutsch ist NICHT leicht!</b></p>
-                <div class="child">
-                    <p class="L" id="L3" >Lektion 1-3</p>
-                </div>                
+<div class="grid-items second">
+    <div class="scroller">
+        <div class="Module" id="M1" tabindex="1" style="background-color: rgb(115, 64, 155);">
+            <p><b>1) Deutsch ist NICHT leicht!</b></p>
+            <div class="child">
+                <p class="L" id="L3" >Lektion 1-3</p>
+            </div>                
+        </div>
+        <div class="Module" id="M2" tabindex="1" style="background-color: orange;">
+            <p><b>2) Hobbys und Schule</b></p>
+            <div class="child">
+                <p class="L" id="L4">Lektion 4</p>
+                <p class="L" id="L5">Lektion 5</p>
+                <p class="L" id="L6">Lektion 6</p>
+            </div> 
+        </div>
+        <div class="Module" id="M3" tabindex="1" style="background-color: rgb(153, 28, 126);">
+            <p><b>3) Freizeit und Feiern</b></p>
+            <div class="child">
+                <p class="L" id="L7">Lektion 7</p>
+                <p class="L" id="L8">Lektion 8</p>
+                <p class="L" id="L9">Lektion 9</p>
             </div>
-            <div class="Module" id="M2" tabindex="1" style="background-color: orange;">
-                <p><b>2) Hobbys und Schule</b></p>
-                <div class="child">
-                    <p class="L" id="L4">Lektion 4</p>
-                    <p class="L" id="L5">Lektion 5</p>
-                    <p class="L" id="L6">Lektion 6</p>
-                </div> 
+        </div>
+        <div class="Module" id="M4" tabindex="1" style="background-color: rgb(30, 150, 70);">
+            <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
+            <div class="child">
+                <p class="L" id="L10">Lektion 10</p>
+                <p class="L" id="L11">Lektion 11</p>
+                <p class="L" id="L12">Lektion 12</p>
             </div>
-            <div class="Module" id="M3" tabindex="1" style="background-color: rgb(153, 28, 126);">
-                <p><b>3) Freizeit und Feiern</b></p>
-                <div class="child">
-                    <p class="L" id="L7">Lektion 7</p>
-                    <p class="L" id="L8">Lektion 8</p>
-                    <p class="L" id="L9">Lektion 9</p>
-                </div>
-            </div>
-            <div class="Module" id="M4" tabindex="1" style="background-color: rgb(30, 150, 70);">
-                <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
-                <div class="child">
-                    <p class="L" id="L10">Lektion 10</p>
-                    <p class="L" id="L11">Lektion 11</p>
-                    <p class="L" id="L12">Lektion 12</p>
-                </div>
-            </div>
-            <div class="Module" id="M5" tabindex="1" style="background-color: rgb(74, 101, 160);">
-                    <p><b>5) Module 5</b></p>
-                <div class="child">
-                    <p class="L" id="L13">Lektion 13</p>
-                    <p class="L" id="L14">Lektion 14</p>
-                    <p class="L" id="L15">Lektion 15</p>
-                </div>
+        </div>
+        <div class="Module" id="M5" tabindex="1" style="background-color: rgb(74, 101, 160);">
+                <p><b>5) Module 5</b></p>
+            <div class="child">
+                <p class="L" id="L13">Lektion 13</p>
+                <p class="L" id="L14">Lektion 14</p>
+                <p class="L" id="L15">Lektion 15</p>
             </div>
         </div>
     </div>
 </div>
-<div class="flex-items third">
-    <div class="decorator">
-        <div class="scroller">
-            <div id="DIVL3">
-                <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
-                    <b class="nadpisChild">Gramatik</b>
-                    <div class="Material">
-                        <div class="Block b11"onclick="visibilator('3','g',1)">
-                            <b>Verbkonjugation im Präsens</b><br>
-                            Časování sloves v přítomném čase
-                        </div>
-                        <div class="Block b11"onclick="visibilator('3','g',2)">
-                            <b>Unbestimmte und bestimmte Artikel</b><br>
-                            Neurčité a určitě členy
-                        </div>
-                        <div class="Block b11"onclick="visibilator('3','g',3)">
-                            <b>Possessivartikel</b><br>
-                            Přivlasťnovací zájmena
-                        </div>
+<div class="grid-items third">
+    <div class="scrollery">
+        <div id="DIVL3">
+            <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b11"onclick="visibilator('3','g',1)">
+                        <b>Verbkonjugation im Präsens</b><br>
+                        Časování sloves v přítomném čase
                     </div>
-                </div>
-                <div class="DIVchild" id="wortschatz" style="background-color: rgb(157, 101, 201);">
-                    <b class="nadpisChild">Wortschatz</b>
-                    <div class="Material">
-                        {%for i,v in NJ1["lekce3"]["words"].items()%}
-                        <div class="Block b12" onclick="visibilator('3','w','{{i}}')">
-                            <b>{{i}}</b>
-                            <div class="celkemwort">
-                                {{v[0]}}
-                            </div>
-                        </div>
-                        {%endfor%}
-                        
+                    <div class="Block b11"onclick="visibilator('3','g',2)">
+                        <b>Unbestimmte und bestimmte Artikel</b><br>
+                        Neurčité a určitě členy
                     </div>
-                </div>
-                <div class="DIVchild" id="lesen" style="background-color: rgb(93, 84, 164);">
-                    <b class="nadpisChild">Lesen</b>
-                    <div class="Material">
-                        <div class="Block b13" onclick="visibilator('l','1')">
-                            <b>Text1</b><br>
-                            Hallo Leute!
-                        </div>
-                        <div class="Block b13" onclick="visibilator('l','2')">
-                            <b>Text2</b><br>
-                            Heute habe ich nicht Geburstag.
-                        </div>
-                        <div class="Block b13" onclick="visibilator('l','3')">
-                            <b>Text3</b><br>
-                            Prag ist teuer.
-                        </div>
-                        <div class="Block b13" onclick="visibilator('l','4')">
-                            <b>Text4</b><br>
-                            Meine Familie ist groß.
-                        </div>
+                    <div class="Block b11"onclick="visibilator('3','g',3)">
+                        <b>Possessivartikel</b><br>
+                        Přivlasťnovací zájmena
                     </div>
-                </div>
-                <div class="DIVchild" id="endtest" style="background-color: rgb(54, 80, 136);">
-                    <b class="nadpisChild">Tests</b>
                 </div>
             </div>
+            <div class="DIVchild" id="wortschatz" style="background-color: rgb(157, 101, 201);">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce3"]["words"].items()%}
+                    <div class="Block b12" onclick="visibilator('3','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color: rgb(93, 84, 164);">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b13" onclick="visibilator('l','1')">
+                        <b>Text1</b><br>
+                        Hallo Leute!
+                    </div>
+                    <div class="Block b13" onclick="visibilator('l','2')">
+                        <b>Text2</b><br>
+                        Heute habe ich nicht Geburstag.
+                    </div>
+                    <div class="Block b13" onclick="visibilator('l','3')">
+                        <b>Text3</b><br>
+                        Prag ist teuer.
+                    </div>
+                    <div class="Block b13" onclick="visibilator('l','4')">
+                        <b>Text4</b><br>
+                        Meine Familie ist groß.
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color: rgb(54, 80, 136);">
+                <b class="nadpisChild">Tests</b>
+            </div>
         </div>
+    </div>
+</div>
+</div>
 
-    </div>
-</div>
 <!------------------------------------------------------------------------------------------------------------>
 <div id="TestDiv">
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
@@ -228,16 +223,16 @@
                     <table id='slovnicek'>
                     </table>
                 </div>
-                <div class="gridchild Flashcards" onclick="">
+                <div class="gridchild Flashcards" onclick="tp('w')">
                     Flashcards
                 </div>
-                <div class="gridchild WritingČ">
+                <div class="gridchild WritingCZ" onclick="tp('NtoCZ')">
                     Psaní<br>
                     němčina<br>
                     ↓<br>
                     čeština
                 </div>
-                <div class="gridchild WritingN">
+                <div class="gridchild WritingN" onclick="tp('CZtoN')">
                     Psaní<br>
                     čeština<br>
                     ↓<br>
@@ -257,7 +252,6 @@
         <div class="w x3t2"></div>
         <div class="w x3t3"></div>
     </div>
-</div>
 </div>
 </div>
 <script>
@@ -313,22 +307,26 @@
         }
         });
     // Vše týkající se testů 
+    //kdybych se někdy divil proč jsem místo dict rozložil slovíčka na 2 array
+    //je to z toho důvodu že přes internet dict přichází 
+    //ROZHÁZENÉ a já nevím jak to :D
     const NJ = JSON.parse('{{ NJ1 | tojson | safe }}');
-    var questions;
-    var momentalQuestion;
-    var typetest;
-    var task;
-    var uspesnost =[];
-    var z;
-    var XTest=false;
+    let UnusedQuestions;
+    let MomentalQuestion;
+    let TypeOfTest;
+    let SetOfQuestions;
+    let Success =[];
+    let NumberForCalculationOfSuccess;
+    let CanUseEnter=false;
+    let CurrentVocabulary;
     function visibilator(lekce,typ,ukol){
         $("#TestDiv").show();
         if (typ=="w"){
-            cw=NJ["lekce"+lekce]["words"][ukol];
+            CurrentVocabulary=NJ["lekce"+lekce]["words"][ukol];
             slovicka=""
             document.getElementById("slovnicek").innerHTML="<tr><th>id</th><th>německy</th><th>česky</th></tr>";
-            for(var i=0;i<cw[0];i++){
-                slovicka+="<tr><td>"+(i+1)+"</td><td>"+cw[1][i]+"</td><td>"+cw[2][i]+"</td></tr>";
+            for(let i=0;i<CurrentVocabulary[0];i++){
+                slovicka+="<tr><td>"+(i+1)+"</td><td>"+CurrentVocabulary[1][i]+"</td><td>"+CurrentVocabulary[2][i]+"</td></tr>";
             };
             document.getElementById("slovnicek").innerHTML+=slovicka;
             document.getElementById("strana").innerHTML=ukol;
@@ -349,16 +347,16 @@
         }
         document.getElementById("XP").style.border="none";
         document.getElementById("X").value="";
-        XTest=false;
+        CanUseEnter=false;
 
     };
     function endOfTest(){
         $(".task").hide();
         
-        for(let i=0;i<uspesnost.length;i++){
-            z+=uspesnost[i];
+        for(let i=0;i<Success.length;i++){
+            NumberForCalculationOfSuccess+=Success[i];
         };
-        document.getElementById("procenta").innerHTML=Math.round(z/uspesnost.length*100)+"%";
+        document.getElementById("procenta").innerHTML=Math.round(NumberForCalculationOfSuccess/Success.length*100)+"%";
         $(".congratulation").show();
 
     };
@@ -366,17 +364,17 @@
         return new Promise(resolve => setTimeout(resolve,ms))
     };
     document.onkeypress = function (e) {
-        if(e.key=="Enter" & XTest){
+        if(e.key=="Enter" & CanUseEnter){
             checkanswer("X")
         };
     };
     async function checkanswer (x){
-        switch(typetest){
+        switch(TypeOfTest){
             case "ABCD":
                 a=document.getElementById(x)
-                if (task.otazky[momentalQuestion].a==a.innerHTML){
+                if (SetOfQuestions[MomentalQuestion].a==a.innerHTML){
                     a.style.border="solid rgb(25, 146, 61) 3px";
-                    questions.splice(questions.indexOf(momentalQuestion),1);
+                    UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(1000);
                     }
@@ -384,17 +382,16 @@
                     for(let i=0;i<4;i++){
                         document.getElementById(c[i]).style.border="solid 3px rgb(189, 213, 234)";
                     }
-                    XTest=false;
                     newquestion()
                 }
                 else{
-                    uspesnost[momentalQuestion]=0;
+                    Success[MomentalQuestion]=0;
                     a.style.border="solid red 3px";
                 }
                 break;
             case "X":
-                if (task.otazky[momentalQuestion].a==document.getElementById("X").value){
-                    questions.splice(questions.indexOf(momentalQuestion),1);
+                if (SetOfQuestions[MomentalQuestion].a==document.getElementById("X").value){
+                    UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
                     document.getElementById("XP").style.border="rgb(25, 146, 61) solid 3px";
 
                     if(document.getElementById("chvilkanakontrolu").checked){
@@ -406,39 +403,60 @@
                 }
                 else{
                     document.getElementById("XP").style.border="red solid 3px";
-                    uspesnost[momentalQuestion]=0;
+                    Success[MomentalQuestion]=0;
                 }
                 break;
 
         }
     };
     function newquestion (){
-        if (questions.length>0){
+        if (UnusedQuestions.length>0){
             do{
-                a=Math.floor(Math.random()*task.otazky.length);   
+                switch(TypeOfTest){
+                    case "ABCD":
+                    case "X":
+                        a=Math.floor(Math.random()*SetOfQuestions.length);   
+                        break;
+                    case "CZtoN":
+                    case "NtoCZ":
+                        a=Math.floor(Math.random()*CurrentVocabulary[0]);
+                        break;   
+                }
             }
-            while(!questions.includes(a));
-            switch(typetest){
+            while(!UnusedQuestions.includes(a));
+            switch(TypeOfTest){
                 case "ABCD":
-                    document.getElementById("nzABCD").innerHTML=task.zadaniN;
-                    document.getElementById("czABCD").innerHTML=task.zadaniC;
-                    document.getElementById("FrantaABCD").innerHTML=task.otazky[a]["q"];
+                    MomentalQuestion=a;
+                    document.getElementById("nzABCD").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
+                    document.getElementById("czABCD").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
+                    document.getElementById("FrantaABCD").innerHTML=SetOfQuestions[a]["q"];
                     b=["a","1","2","3"];
                     c=["A","B","C","D"];
                     for (let i=0;i<4;i++){
                         d=Math.floor(Math.random()*(3-i));
-                        document.getElementById(c[i]).innerHTML=task.otazky[a][b[d]];
+                        document.getElementById(c[i]).innerHTML=SetOfQuestions[a][b[d]];
                         b.splice(d,1);
                     };
                     break;
                 case "X":
-                    XTest=true;
-                    document.getElementById("nzX").innerHTML=task.zadaniN;
-                    document.getElementById("czX").innerHTML=task.zadaniC;
-                    document.getElementById("FrantaX").innerHTML=task.otazky[a]["q"];
+                    CanUseEnter=true;
+                    document.getElementById("nzX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
+                    document.getElementById("czX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
+                    document.getElementById("FrantaX").innerHTML=SetOfQuestions[a]["q"];
+                    break;
+                case "CZtoN":
+                    CanUseEnter=true;
+                    document.getElementById("nzX").innerHTML="Schreibst du die deutsche Version des Wortes.";
+                    document.getElementById("czX").innerHTML="Napiš německou verzi slovíčka.";
+                    document.getElementById("FrantaX").innerHTML=SetOfQuestions[0][MomentalQuestion];
+                    break;
+                case "NtoCZ":
+                    CanUseEnter=true;
+                    document.getElementById("nzX").innerHTML="Schreibst du die tschechische Version des Wortes.";
+                    document.getElementById("czX").innerHTML="Napiš českou verzi slovíčka.";
+                    document.getElementById("FrantaX").innerHTML=SetOfQuestions[1][MomentalQuestion];
                     break;
             };
-            momentalQuestion=a;
         }
         else{
             endOfTest();
@@ -447,12 +465,24 @@
     function tp(type,k,t,x){
         $(".w").hide();
         $("."+type).show();
-        questions =Array.from({length:NJ["lekce"+k][t][x].otazky.length}, (_, i) => i);
-        uspesnost =Array.from({length:NJ["lekce"+k][t][x].otazky.length},(_,i) => 1);
-        task=NJ["lekce"+k][t][x];
-        typetest=type;
-        z=0
-        newquestion();
+        switch(type){
+            case "ABCD":
+            case "X":
+                SetOfQuestions=NJ["lekce"+k][t][x-1];
+                UnusedQuestions=Array.from({length:SetOfQuestions.length}, (_, i) => i);
+                Success=Array.from({length:SetOfQuestions.length},(_,i) => 1);
+                TypeOfTest=type;
+                NumberForCalculationOfSuccess=0
+                
+                newquestion();
+            case "CZtoN":
+            case "NtoCZ":
+                UnusedQuestions=Array.from({length:CurrentVocabulary[0]}, (_, i) => i);
+                Success=Array.from({length:CurrentVocabulary[0]},(_,i) => 1);
+                TypeOfTest=type;
+                NumberForCalculationOfSuccess=0
+                newquestion();
+        }  
     };
 </script>
 {%endblock%}

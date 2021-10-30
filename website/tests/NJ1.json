@@ -1,55 +1,63 @@
 {
 "lekce3":{
-    "grammar":{
-        "1":{
-            "zadaniN":"Gibst du die richtige Form des Verbs an:",
-            "zadaniC":"Uveď správný tvar slovesa:",
-            "otazky":[
-                {
-                    "q":"ich ______",
-                    "a":"spiele",
-                    "1":"spielst",
-                    "2":"spielt",
-                    "3":"spielen"
-                },
-                {
-                    "q":"du ______",
-                    "a":"spielst",
-                    "1":"spiele",
-                    "2":"spielt",
-                    "3":"spielen"
-                },
-                {
-                    "q":"er/sie/es ______",
-                    "a":"spielt",
-                    "1":"spielst",
-                    "2":"spiele",
-                    "3":"spielen"
-                },
-                {
-                    "q":"wir ______",
-                    "a":"spielen",
-                    "1":"spielst",
-                    "2":"spielt",
-                    "3":"spiele"
-                },
-                {
-                    "q":"ihr ______",
-                    "a":"spielt",
-                    "1":"spielst",
-                    "2":"spiele",
-                    "3":"spielen"
-                },
-                {
-                    "q":"sie/Sie ______",
-                    "a":"spielen",
-                    "1":"spielst",
-                    "2":"spielt",
-                    "3":"spiele"
-                }
-            ]
-        }
-    },
+    "grammar":[
+        [
+            {
+                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
+                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "q":"ich ______",
+                "a":"spiele",
+                "1":"spielst",
+                "2":"spielt",
+                "3":"spielen"
+            },
+            {
+                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
+                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "q":"du ______",
+                "a":"spielst",
+                "1":"spiele",
+                "2":"spielt",
+                "3":"spielen"
+            },
+            {
+                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
+                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "q":"er/sie/es ______",
+                "a":"spielt",
+                "1":"spielst",
+                "2":"spiele",
+                "3":"spielen"
+            },
+            {
+                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
+                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "q":"wir ______",
+                "a":"spielen",
+                "1":"spielst",
+                "2":"spielt",
+                "3":"spiele"
+            },
+            {
+                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
+                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "q":"ihr ______",
+                "a":"spielt",
+                "1":"spielst",
+                "2":"spiele",
+                "3":"spielen"
+            },
+            {
+                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
+                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "q":"sie/Sie ______",
+                "a":"spielen",
+                "1":"spielst",
+                "2":"spielt",
+                "3":"spiele"
+            }
+        ]
+    ],
     "words":{
         "Seite 9-10":[30,
             [
@@ -625,12 +633,12 @@
     },
     "tests":{
 
-    }                     
+    }
 },
 "lekce4":{
-    "grammar":{
-
-    },
+    "grammar":[
+        []
+    ],
     "words":{
         "Seite 27-29":[23,
             [
