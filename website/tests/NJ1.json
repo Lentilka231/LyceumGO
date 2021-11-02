@@ -3,8 +3,8 @@
     "grammar":[
         [
             {
-                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
-                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
+                "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
                 "q":"ich ______",
                 "a":"spiele",
                 "1":"spielst",
@@ -12,8 +12,8 @@
                 "3":"spielen"
             },
             {
-                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
-                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
+                "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
                 "q":"du ______",
                 "a":"spielst",
                 "1":"spiele",
@@ -21,8 +21,8 @@
                 "3":"spielen"
             },
             {
-                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
-                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
+                "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
                 "q":"er/sie/es ______",
                 "a":"spielt",
                 "1":"spielst",
@@ -30,8 +30,8 @@
                 "3":"spielen"
             },
             {
-                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
-                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
+                "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
                 "q":"wir ______",
                 "a":"spielen",
                 "1":"spielst",
@@ -39,8 +39,8 @@
                 "3":"spiele"
             },
             {
-                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
-                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
+                "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
                 "q":"ihr ______",
                 "a":"spielt",
                 "1":"spielst",
@@ -48,8 +48,8 @@
                 "3":"spielen"
             },
             {
-                "zadaniN":"Gibst du die richtige Form des Verbs spielen an:",
-                "zadaniC":"Uveď správný tvar slovesa spielen:",
+                "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
+                "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
                 "q":"sie/Sie ______",
                 "a":"spielen",
                 "1":"spielst",

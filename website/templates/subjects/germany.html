@@ -145,10 +145,10 @@
                 <p id="FrantaABCD" class="Franta"></p>
                 <div class="centralizer" style="bottom:30px;">
                     <div class="ABCDodpovedi">
-                        <button type="button" id="A" onclick="checkanswer('A')">Odpoved A</button>
-                        <button type="button" id="B" onclick="checkanswer('B')">Odpoved B</button>
-                        <button type="button" id="C" onclick="checkanswer('C')">Odpoved C</button>
-                        <button type="button" id="D" onclick="checkanswer('D')">Odpoved D</button>
+                        <button type="button" class="Felix" id="A" onclick="checkanswer('A')">Odpoved A</button>
+                        <button type="button" class="Felix" id="B" onclick="checkanswer('B')">Odpoved B</button>
+                        <button type="button" class="Felix" id="C" onclick="checkanswer('C')">Odpoved C</button>
+                        <button type="button" class="Felix" id="D" onclick="checkanswer('D')">Odpoved D</button>
                     </div>
                 </div>
             </div>
@@ -378,10 +378,16 @@
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(1000);
                     }
-                    c=["A","B","C","D"];
-                    for(let i=0;i<4;i++){
-                        document.getElementById(c[i]).style.border="solid 3px rgb(189, 213, 234)";
+                    
+                    
+                    c=document.getElementsByClassName("Felix");
+                    for (let i=0;i<4;i++){
+                        c[i].style.border="solid 3px rgb(189, 213, 234)";
+                        c.addEventListener("mouseover",function (event){
+                            event.target.style.border="solid 3px rgb(87, 115, 153)";
+                        })
                     }
+                    
                     newquestion()
                 }
                 else{
@@ -409,7 +415,9 @@
 
         }
     };
+    
     function newquestion (){
+
         if (UnusedQuestions.length>0){
             do{
                 switch(TypeOfTest){
@@ -424,9 +432,10 @@
                 }
             }
             while(!UnusedQuestions.includes(a));
+            MomentalQuestion=a;
+
             switch(TypeOfTest){
                 case "ABCD":
-                    MomentalQuestion=a;
                     document.getElementById("nzABCD").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
                     document.getElementById("czABCD").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
                     document.getElementById("FrantaABCD").innerHTML=SetOfQuestions[a]["q"];
@@ -440,6 +449,7 @@
                     break;
                 case "X":
                     CanUseEnter=true;
+
                     document.getElementById("nzX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
                     document.getElementById("czX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
                     document.getElementById("FrantaX").innerHTML=SetOfQuestions[a]["q"];
@@ -475,6 +485,7 @@
                 NumberForCalculationOfSuccess=0
                 
                 newquestion();
+                break;
             case "CZtoN":
             case "NtoCZ":
                 UnusedQuestions=Array.from({length:CurrentVocabulary[0]}, (_, i) => i);
@@ -482,6 +493,7 @@
                 TypeOfTest=type;
                 NumberForCalculationOfSuccess=0
                 newquestion();
+                break;
         }  
     };
 </script>
