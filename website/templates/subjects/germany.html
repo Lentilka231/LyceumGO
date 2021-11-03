@@ -3,7 +3,6 @@
 {%block head%}
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subject.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects/germany.css')}}">
-
 {%endblock%}
 {%block content%}
 
@@ -145,10 +144,10 @@
                 <p id="FrantaABCD" class="Franta"></p>
                 <div class="centralizer" style="bottom:30px;">
                     <div class="ABCDodpovedi">
-                        <button type="button" class="Felix" id="A" onclick="checkanswer('A')">Odpoved A</button>
-                        <button type="button" class="Felix" id="B" onclick="checkanswer('B')">Odpoved B</button>
-                        <button type="button" class="Felix" id="C" onclick="checkanswer('C')">Odpoved C</button>
-                        <button type="button" class="Felix" id="D" onclick="checkanswer('D')">Odpoved D</button>
+                        <button style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="A" onclick="checkanswer('A')">Odpoved A</button>
+                        <button style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="B" onclick="checkanswer('B')">Odpoved B</button>
+                        <button style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="C" onclick="checkanswer('C')">Odpoved C</button>
+                        <button style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="D" onclick="checkanswer('D')">Odpoved D</button>
                     </div>
                 </div>
             </div>
@@ -179,7 +178,7 @@
                 <p style="font-size: 100px;"id="procenta"></p>
             </div>
         </div>
-        <div class="w xPVerb">
+        <div class="Mufasa xPVerb">
             <table>
                 <tr>
                     <th>id</th>
@@ -189,7 +188,7 @@
                 <tr><td>[cislo]</td><td>[sloveso]</td></tr>
             </table>
         </div>
-        <div class="w x3g1">
+        <div class="Mufasa x3g1">
             <p class="nnadpis"><b>Verbkonjugation im Präsens</b></p>
             <p class="cnadpis">Časování sloves v přítomném čase</p>
             <div class="g">
@@ -213,17 +212,17 @@
                 <div class="t hardt" onclick="tp('X','3','grammar','1')">schwieriger Test</div>
             </div>
         </div>
-        <div class="w x3g2">asdasd</div>
-        <div class="w x3g3">asdasd</div>
+        <div class="Mufasa x3g2">asdasd</div>
+        <div class="Mufasa x3g3">asdasd</div>
 
-        <div class="w xs">
+        <div class="Mufasa xs">
             <b><div id="strana"></div></b>
             <div class="sgrid">
                 <div id="slovicka">
                     <table id='slovnicek'>
                     </table>
                 </div>
-                <div class="gridchild Flashcards" onclick="tp('w')">
+                <div class="gridchild Flashcards" onclick="tp('Mufasa')">
                     Flashcards
                 </div>
                 <div class="gridchild WritingCZ" onclick="tp('NtoCZ')">
@@ -244,17 +243,18 @@
             </div>
         </div>
 
-        <div class="w x3l1">nbmgzu</div>
-        <div class="w x3l2">hgkignmb</div>
-        <div class="w x3l3"></div>
+        <div class="Mufasa x3l1">nbmgzu</div>
+        <div class="Mufasa x3l2">hgkignmb</div>
+        <div class="Mufasa x3l3"></div>
 
-        <div class="w x3t1"></div>
-        <div class="w x3t2"></div>
-        <div class="w x3t3"></div>
+        <div class="Mufasa x3t1"></div>
+        <div class="Mufasa x3t2"></div>
+        <div class="Mufasa x3t3"></div>
     </div>
 </div>
 </div>
 <script>
+
     //vše týkající se zviditelňování
      $(document).ready(function(){
         const a = [false,false,false,false,false]
@@ -305,12 +305,18 @@
 
             })
         }
-        });
+
+    });
+
     // Vše týkající se testů 
     //kdybych se někdy divil proč jsem místo dict rozložil slovíčka na 2 array
     //je to z toho důvodu že přes internet dict přichází 
     //ROZHÁZENÉ a já nevím jak to :D
     const NJ = JSON.parse('{{ NJ1 | tojson | safe }}');
+    const zakladnibarva = "3px solid rgb(189, 213, 234)";
+    const spravnabarva = "3px solid rgb(25, 146, 61)";
+    const spatnabarva = "3px solid rgb(199, 42, 42)";
+    const oznacovacibarva = "3px solid rgb(87, 115, 153)";
     let UnusedQuestions;
     let MomentalQuestion;
     let TypeOfTest;
@@ -319,6 +325,21 @@
     let NumberForCalculationOfSuccess;
     let CanUseEnter=false;
     let CurrentVocabulary;
+    let ABCDanswer=document.getElementsByClassName("Felix");
+    
+    for (let i=0;i<4;i++){
+        ABCDanswer[i].addEventListener("mouseover",function (event){
+            if (event.target.style.border==zakladnibarva) {
+                event.target.style.border=oznacovacibarva;                
+            }
+        })
+        ABCDanswer[i].addEventListener("mouseleave",function (event){
+            if (event.target.style.border==oznacovacibarva) {
+                event.target.style.border=zakladnibarva;
+            }
+        })
+    }    
+    
     function visibilator(lekce,typ,ukol){
         $("#TestDiv").show();
         if (typ=="w"){
@@ -341,9 +362,8 @@
         $("#TDContent").children().hide();
         $(".task").hide();
         $(".congratulation").hide();
-        c=["A","B","C","D"];
         for(let i=0;i<4;i++){
-            document.getElementById(c[i]).style.border="solid 3px rgb(189, 213, 234)";
+            ABCDanswer[i].style.border="solid 3px rgb(189, 213, 234)";
         }
         document.getElementById("XP").style.border="none";
         document.getElementById("X").value="";
@@ -373,32 +393,25 @@
             case "ABCD":
                 a=document.getElementById(x)
                 if (SetOfQuestions[MomentalQuestion].a==a.innerHTML){
-                    a.style.border="solid rgb(25, 146, 61) 3px";
+                    a.style.border=spravnabarva;
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(1000);
                     }
-                    
-                    
-                    c=document.getElementsByClassName("Felix");
                     for (let i=0;i<4;i++){
-                        c[i].style.border="solid 3px rgb(189, 213, 234)";
-                        c.addEventListener("mouseover",function (event){
-                            event.target.style.border="solid 3px rgb(87, 115, 153)";
-                        })
+                        ABCDanswer[i].style.border=zakladnibarva; 
                     }
-                    
                     newquestion()
                 }
                 else{
                     Success[MomentalQuestion]=0;
-                    a.style.border="solid red 3px";
+                    a.style.border=spatnabarva;
                 }
                 break;
             case "X":
                 if (SetOfQuestions[MomentalQuestion].a==document.getElementById("X").value){
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                    document.getElementById("XP").style.border="rgb(25, 146, 61) solid 3px";
+                    document.getElementById("XP").style.border=spravnabarva;
 
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(1000);
@@ -408,14 +421,46 @@
                     newquestion()
                 }
                 else{
-                    document.getElementById("XP").style.border="red solid 3px";
+                    document.getElementById("XP").style.border=spatnabarva;
                     Success[MomentalQuestion]=0;
                 }
                 break;
+            case "NtoCZ":
+            case "CZtoN":
+                let n;
+                let slovicka;
+                let itcanbe=false;
+                if(TypeOfTest=="NtoCZ"){
+                    n=1;
+                }else{
+                    n=2
+                }
+                slovicka=CurrentVocabulary[n][MomentalQuestion].replace("/\s/g", '').split(",")
+                for(let i=0;i<slovicka.length;i++){
+                    if (slovicka[i]==document.getElementById("X").value){
+                        itcanbe=true;
+                        break;
+                    }
+                }
+                if(itcanbe){
+                    
+                    UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
+                    document.getElementById("XP").style.border=spravnabarva;
 
+                    if(document.getElementById("chvilkanakontrolu").checked){
+                        await sleep(1000);
+                    }
+                    document.getElementById("XP").style.border="none";
+                    document.getElementById("X").value="";
+                    newquestion();
+                }
+                else{
+                    document.getElementById("XP").style.border=spatnabarva;
+                    Success[MomentalQuestion]=0;
+                }
+                break;
         }
     };
-    
     function newquestion (){
 
         if (UnusedQuestions.length>0){
@@ -440,10 +485,9 @@
                     document.getElementById("czABCD").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
                     document.getElementById("FrantaABCD").innerHTML=SetOfQuestions[a]["q"];
                     b=["a","1","2","3"];
-                    c=["A","B","C","D"];
                     for (let i=0;i<4;i++){
                         d=Math.floor(Math.random()*(3-i));
-                        document.getElementById(c[i]).innerHTML=SetOfQuestions[a][b[d]];
+                        ABCDanswer[i].innerHTML=SetOfQuestions[a][b[d]];
                         b.splice(d,1);
                     };
                     break;
@@ -458,13 +502,13 @@
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML="Schreibst du die deutsche Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš německou verzi slovíčka.";
-                    document.getElementById("FrantaX").innerHTML=SetOfQuestions[0][MomentalQuestion];
+                    document.getElementById("FrantaX").innerHTML=CurrentVocabulary[1][MomentalQuestion];
                     break;
                 case "NtoCZ":
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML="Schreibst du die tschechische Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš českou verzi slovíčka.";
-                    document.getElementById("FrantaX").innerHTML=SetOfQuestions[1][MomentalQuestion];
+                    document.getElementById("FrantaX").innerHTML=CurrentVocabulary[2][MomentalQuestion];
                     break;
             };
         }
@@ -473,11 +517,11 @@
         };
     };
     function tp(type,k,t,x){
-        $(".w").hide();
-        $("."+type).show();
+        $(".Mufasa").hide();
         switch(type){
             case "ABCD":
             case "X":
+                $("."+type).show();
                 SetOfQuestions=NJ["lekce"+k][t][x-1];
                 UnusedQuestions=Array.from({length:SetOfQuestions.length}, (_, i) => i);
                 Success=Array.from({length:SetOfQuestions.length},(_,i) => 1);
@@ -488,6 +532,7 @@
                 break;
             case "CZtoN":
             case "NtoCZ":
+                $(".X").show();
                 UnusedQuestions=Array.from({length:CurrentVocabulary[0]}, (_, i) => i);
                 Success=Array.from({length:CurrentVocabulary[0]},(_,i) => 1);
                 TypeOfTest=type;

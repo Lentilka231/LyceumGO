@@ -191,7 +191,6 @@
     width:300px;
 }
 .answer button{
-    border:solid 3px rgb(189, 213, 234);
     background-color: rgb(189, 213, 234);
     font-size: 28px;
     padding: 5px;
@@ -199,9 +198,7 @@
     width:250px;
     height: max-content;
 }
-.answer button:hover{
-    border:solid 3px rgb(87, 115, 153);
-}
+
 .ABCDodpovedi{
     display:grid;
     grid-template-columns: 250px 250px;
