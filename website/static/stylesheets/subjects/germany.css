@@ -190,6 +190,13 @@
     font-size: 30px;
     width:300px;
 }
+#SabstituteForInput{
+    text-align: center;
+    width:300px;
+    font-size:30px;
+    padding:5px;
+    display:none;
+}
 .answer button{
     background-color: rgb(189, 213, 234);
     font-size: 28px;

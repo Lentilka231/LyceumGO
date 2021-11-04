@@ -164,6 +164,9 @@
                     <div id="XP">
                         <input type="text" id="X" spellcheck="false">
                     </div>
+                    <div id="SabsituteForInput">
+
+                    </div>
                 </div>
                 <div class="centralizer" style="bottom: 70px;">
                     <button type="button" onclick="checkanswer('X')" id="kontrola" style="margin-top:50px;">Kontroll</button>
@@ -326,7 +329,7 @@
     let CanUseEnter=false;
     let CurrentVocabulary;
     let ABCDanswer=document.getElementsByClassName("Felix");
-    
+    let dvapokusy;
     for (let i=0;i<4;i++){
         ABCDanswer[i].addEventListener("mouseover",function (event){
             if (event.target.style.border==zakladnibarva) {
@@ -385,7 +388,12 @@
     };
     document.onkeypress = function (e) {
         if(e.key=="Enter" & CanUseEnter){
-            checkanswer("X")
+            if (dvapokusy==0){
+                newquestion();
+            }
+            else{
+                checkanswer("X");
+            }
         };
     };
     async function checkanswer (x){
@@ -396,7 +404,7 @@
                     a.style.border=spravnabarva;
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
                     if(document.getElementById("chvilkanakontrolu").checked){
-                        await sleep(1000);
+                        await sleep(500);
                     }
                     for (let i=0;i<4;i++){
                         ABCDanswer[i].style.border=zakladnibarva; 
@@ -414,15 +422,21 @@
                     document.getElementById("XP").style.border=spravnabarva;
 
                     if(document.getElementById("chvilkanakontrolu").checked){
-                        await sleep(1000);
+                        await sleep(500);
                     }
                     document.getElementById("XP").style.border="none";
                     document.getElementById("X").value="";
                     newquestion()
                 }
                 else{
+                    if(dvapokusy==0){
+                        Success[MomentalQuestion]=0;
+                        $("#SabsituteForInput").show();
+                        CanUseEnter=true;
+                        newquestion()
+                    }
                     document.getElementById("XP").style.border=spatnabarva;
-                    Success[MomentalQuestion]=0;
+                    dvapokusy--;
                 }
                 break;
             case "NtoCZ":
@@ -443,12 +457,11 @@
                     }
                 }
                 if(itcanbe){
-                    
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
                     document.getElementById("XP").style.border=spravnabarva;
 
                     if(document.getElementById("chvilkanakontrolu").checked){
-                        await sleep(1000);
+                        await sleep(500);
                     }
                     document.getElementById("XP").style.border="none";
                     document.getElementById("X").value="";
@@ -493,22 +506,24 @@
                     break;
                 case "X":
                     CanUseEnter=true;
-
                     document.getElementById("nzX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
                     document.getElementById("czX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
                     document.getElementById("FrantaX").innerHTML=SetOfQuestions[a]["q"];
+                    dvapokusy=1;
                     break;
                 case "CZtoN":
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML="Schreibst du die deutsche Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš německou verzi slovíčka.";
                     document.getElementById("FrantaX").innerHTML=CurrentVocabulary[1][MomentalQuestion];
+                    dvapokusy=1;
                     break;
                 case "NtoCZ":
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML="Schreibst du die tschechische Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš českou verzi slovíčka.";
                     document.getElementById("FrantaX").innerHTML=CurrentVocabulary[2][MomentalQuestion];
+                    dvapokusy=1;
                     break;
             };
         }
