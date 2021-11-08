@@ -160,11 +160,11 @@
             <div class="answer">
                 <p id="FrantaX" class="Franta"></p>
                 
-                <div class="centralizer" style="bottom: 150px;">
+                <div class="centralizer" style="bottom: 170px;">
                     <div id="XP">
                         <input type="text" id="X" spellcheck="false">
                     </div>
-                    <div id="SabsituteForInput">
+                    <div id="SubstituteForInput">
 
                     </div>
                 </div>
@@ -386,9 +386,15 @@
     function sleep(ms){
         return new Promise(resolve => setTimeout(resolve,ms))
     };
-    document.onkeypress = function (e) {
+    document.onkeypress =function(e){
         if(e.key=="Enter" & CanUseEnter){
-            if (dvapokusy==0){
+            if (dvapokusy==-1){
+                document.getElementById("SubstituteForInput").innerHTML="";
+                $("#SubstituteForInput").hide();
+                $("#XP").show();
+                UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
+                document.getElementById("XP").style.border="none";
+                document.getElementById("X").value="";
                 newquestion();
             }
             else{
@@ -417,7 +423,7 @@
                 }
                 break;
             case "X":
-                if (SetOfQuestions[MomentalQuestion].a==document.getElementById("X").value){
+                    if (SetOfQuestions[MomentalQuestion].a==document.getElementById("X").value){
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
                     document.getElementById("XP").style.border=spravnabarva;
 
@@ -431,12 +437,21 @@
                 else{
                     if(dvapokusy==0){
                         Success[MomentalQuestion]=0;
-                        $("#SabsituteForInput").show();
-                        CanUseEnter=true;
-                        newquestion()
+                        document.getElementById("SubstituteForInput").innerHTML=SetOfQuestions[MomentalQuestion].a;
+                        $("#SubstituteForInput").show();
+                        $("#XP").hide();
                     }
-                    document.getElementById("XP").style.border=spatnabarva;
+                    else if (dvapokusy==-1) {
+                        document.getElementById("SubstituteForInput").innerHTML="";
+                        $("#SubstituteForInput").hide();
+                        $("#XP").show();
+                        UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
+                        document.getElementById("XP").style.border="none";
+                        document.getElementById("X").value="";
+                        newquestion();
+                    }
                     dvapokusy--;
+                    document.getElementById("XP").style.border=spatnabarva;
                 }
                 break;
             case "NtoCZ":
