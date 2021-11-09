@@ -225,22 +225,22 @@
                     <table id='slovnicek'>
                     </table>
                 </div>
-                <div class="gridchild Flashcards" onclick="tp('Mufasa')">
+                <div class="Wgridchild Flashcards" onclick="tp('Mufasa')">
                     Flashcards
                 </div>
-                <div class="gridchild WritingCZ" onclick="tp('NtoCZ')">
+                <div class="Wgridchild WritingCZ" onclick="tp('NtoCZ')">
                     Psaní<br>
                     němčina<br>
                     ↓<br>
                     čeština
                 </div>
-                <div class="gridchild WritingN" onclick="tp('CZtoN')">
+                <div class="Wgridchild WritingN" onclick="tp('CZtoN')">
                     Psaní<br>
                     čeština<br>
                     ↓<br>
                     němčina
                 </div>
-                <div class="gridchild Matches">
+                <div class="Wgridchild Matches">
                     Spojování
                 </div>
             </div>
@@ -310,7 +310,8 @@
         }
 
     });
-
+</script>
+<script>
     // Vše týkající se testů 
     //kdybych se někdy divil proč jsem místo dict rozložil slovíčka na 2 array
     //je to z toho důvodu že přes internet dict přichází 
@@ -327,6 +328,7 @@
     let Success =[];
     let NumberForCalculationOfSuccess;
     let CanUseEnter=false;
+    let CanUseEsc=false;
     let CurrentVocabulary;
     let ABCDanswer=document.getElementsByClassName("Felix");
     let dvapokusy;
@@ -344,6 +346,7 @@
     }    
     
     function visibilator(lekce,typ,ukol){
+        CanUseEsc=true;
         $("#TestDiv").show();
         if (typ=="w"){
             CurrentVocabulary=NJ["lekce"+lekce]["words"][ukol];
@@ -370,24 +373,24 @@
         }
         document.getElementById("XP").style.border="none";
         document.getElementById("X").value="";
-        CanUseEnter=false;
-
+        CanUseEsc=false;
+        dvapokusy=1;
     };
     function endOfTest(){
         $(".task").hide();
-        
         for(let i=0;i<Success.length;i++){
             NumberForCalculationOfSuccess+=Success[i];
         };
         document.getElementById("procenta").innerHTML=Math.round(NumberForCalculationOfSuccess/Success.length*100)+"%";
         $(".congratulation").show();
+        CanUseEnter=false;
 
     };
     function sleep(ms){
         return new Promise(resolve => setTimeout(resolve,ms))
     };
-    document.onkeypress =function(e){
-        if(e.key=="Enter" & CanUseEnter){
+    document.addEventListener("keydown",function(e){
+        if(e.key==="Enter" & CanUseEnter){
             if (dvapokusy==-1){
                 document.getElementById("SubstituteForInput").innerHTML="";
                 $("#SubstituteForInput").hide();
@@ -400,8 +403,11 @@
             else{
                 checkanswer("X");
             }
-        };
-    };
+        }
+        else if (e.key==="Escape" & CanUseEsc){
+            hider();
+        }
+    })
     async function checkanswer (x){
         switch(TypeOfTest){
             case "ABCD":
@@ -506,7 +512,7 @@
             }
             while(!UnusedQuestions.includes(a));
             MomentalQuestion=a;
-
+            dvapokusy=1;
             switch(TypeOfTest){
                 case "ABCD":
                     document.getElementById("nzABCD").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
@@ -524,21 +530,18 @@
                     document.getElementById("nzX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
                     document.getElementById("czX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
                     document.getElementById("FrantaX").innerHTML=SetOfQuestions[a]["q"];
-                    dvapokusy=1;
                     break;
                 case "CZtoN":
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML="Schreibst du die deutsche Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš německou verzi slovíčka.";
                     document.getElementById("FrantaX").innerHTML=CurrentVocabulary[1][MomentalQuestion];
-                    dvapokusy=1;
                     break;
                 case "NtoCZ":
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML="Schreibst du die tschechische Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš českou verzi slovíčka.";
                     document.getElementById("FrantaX").innerHTML=CurrentVocabulary[2][MomentalQuestion];
-                    dvapokusy=1;
                     break;
             };
         }

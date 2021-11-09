@@ -233,11 +233,12 @@
     grid-template-rows:1fr 1fr 1fr;
     grid-gap:10px;
 }
-.gridchild{
+.Wgridchild{
     background-color: rgb(86, 167, 140);
     padding:20px;
     font-size: 24px;
     text-align: center;
+    cursor:pointer;
 }
 .Flashcards{
     grid-column:2/4;
