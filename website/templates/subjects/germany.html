@@ -10,7 +10,7 @@
 <div id="grid-container">
 <div class="NAME"><b>Němčina</b></div>
 <div class="grid-items first">
-    <div class="scroler">
+    <div class="scrollery">
         <div id="subclassinfo">
             <p>Třída: {{subclass.classroomname}}</p>
             <p>Progres: {{subclass.progres}}</p>
@@ -24,7 +24,7 @@
     </div>
 </div>
 <div class="grid-items second">
-    <div class="scroller">
+    <div class="scrollery">
         <div class="Module" id="M1" tabindex="1" style="background-color: rgb(115, 64, 155);">
             <p><b>1) Deutsch ist NICHT leicht!</b></p>
             <div class="child">
@@ -132,9 +132,6 @@
 <div id="TestDiv">
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
     <div id="TDContent">
-        <div class="task W">
-            <div class=""></div>
-        </div>
         <div class="task ABCD">
             <div class="questions">
                 <b id="nzABCD" class="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
@@ -173,6 +170,21 @@
                 </div>
             </div>
         </div>
+        <div class="task FLASHCARDS">
+            <div class="questions">
+                <b id="nzX" class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
+                <p id="czX" class="czadani">Pomocí šipek (←/→) otáčej karty. </p>
+            </div>
+            <div class="centralizer stul">
+                <div id="balicek1">
+                    <div class="karta draggable" >
+                        <div class="centralizer" style="width:90%">
+                            <p class="KartaText">nejaky text</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="congratulation">
             <div style="display:flex;flex-direction:column;justify-content:center;align-items: center;position: absolute;width: 100%;height: 100%;">
                 <p style="font-size: 42px;"><b>Gratulation zum Bestehen der Prüfung</b></p>
@@ -191,6 +203,34 @@
                 <tr><td>[cislo]</td><td>[sloveso]</td></tr>
             </table>
         </div>
+        <div class="Mufasa xs">
+            <b><div id="strana"></div></b>
+            <div class="sgrid">
+                <div id="slovicka">
+                    <table id='slovnicek'>
+                    </table>
+                </div>
+                <div class="Wgridchild Flashcards" onclick="tp('FlashCards')">
+                    Flashcards
+                </div>
+                <div class="Wgridchild WritingCZ" onclick="tp('NtoCZ')">
+                    Psaní<br>
+                    němčina<br>
+                    ↓<br>
+                    čeština
+                </div>
+                <div class="Wgridchild WritingN" onclick="tp('CZtoN')">
+                    Psaní<br>
+                    čeština<br>
+                    ↓<br>
+                    němčina
+                </div>
+                <div class="Wgridchild Matches">
+                    Spojování
+                </div>
+            </div>
+        </div>
+
         <div class="Mufasa x3g1">
             <p class="nnadpis"><b>Verbkonjugation im Präsens</b></p>
             <p class="cnadpis">Časování sloves v přítomném čase</p>
@@ -218,33 +258,7 @@
         <div class="Mufasa x3g2">asdasd</div>
         <div class="Mufasa x3g3">asdasd</div>
 
-        <div class="Mufasa xs">
-            <b><div id="strana"></div></b>
-            <div class="sgrid">
-                <div id="slovicka">
-                    <table id='slovnicek'>
-                    </table>
-                </div>
-                <div class="Wgridchild Flashcards" onclick="tp('Mufasa')">
-                    Flashcards
-                </div>
-                <div class="Wgridchild WritingCZ" onclick="tp('NtoCZ')">
-                    Psaní<br>
-                    němčina<br>
-                    ↓<br>
-                    čeština
-                </div>
-                <div class="Wgridchild WritingN" onclick="tp('CZtoN')">
-                    Psaní<br>
-                    čeština<br>
-                    ↓<br>
-                    němčina
-                </div>
-                <div class="Wgridchild Matches">
-                    Spojování
-                </div>
-            </div>
-        </div>
+        
 
         <div class="Mufasa x3l1">nbmgzu</div>
         <div class="Mufasa x3l2">hgkignmb</div>
@@ -329,6 +343,7 @@
     let NumberForCalculationOfSuccess;
     let CanUseEnter=false;
     let CanUseEsc=false;
+    let CanUseArrows=false;
     let CurrentVocabulary;
     let ABCDanswer=document.getElementsByClassName("Felix");
     let dvapokusy;
@@ -344,7 +359,9 @@
             }
         })
     }    
-    
+    function FlashcardsPreparing(){
+
+    }
     function visibilator(lekce,typ,ukol){
         CanUseEsc=true;
         $("#TestDiv").show();
@@ -429,7 +446,7 @@
                 }
                 break;
             case "X":
-                    if (SetOfQuestions[MomentalQuestion].a==document.getElementById("X").value){
+                if (SetOfQuestions[MomentalQuestion].a==document.getElementById("X").value){
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
                     document.getElementById("XP").style.border=spravnabarva;
 
@@ -441,6 +458,7 @@
                     newquestion()
                 }
                 else{
+                    document.getElementById("XP").style.border=spatnabarva;
                     if(dvapokusy==0){
                         Success[MomentalQuestion]=0;
                         document.getElementById("SubstituteForInput").innerHTML=SetOfQuestions[MomentalQuestion].a;
@@ -457,7 +475,6 @@
                         newquestion();
                     }
                     dvapokusy--;
-                    document.getElementById("XP").style.border=spatnabarva;
                 }
                 break;
             case "NtoCZ":
@@ -490,7 +507,21 @@
                 }
                 else{
                     document.getElementById("XP").style.border=spatnabarva;
-                    Success[MomentalQuestion]=0;
+                    if(dvapokusy==0){
+                        Success[MomentalQuestion]=0;
+                        document.getElementById("SubstituteForInput").innerHTML=CurrentVocabulary[n][MomentalQuestion];
+                        $("#SubstituteForInput").show();
+                        $("#XP").hide();
+                    }else if(dvapokusy==-1){
+                        document.getElementById("SubstituteForInput").innerHTML="";
+                        $("#SubstituteForInput").hide();
+                        $("#XP").show();
+                        UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
+                        document.getElementById("XP").style.border="none";
+                        document.getElementById("X").value="";
+                        newquestion();
+                    }
+                    dvapokusy--;
                 }
                 break;
         }
@@ -526,18 +557,21 @@
                     };
                     break;
                 case "X":
+                    document.getElementById("X").focus();
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
                     document.getElementById("czX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
                     document.getElementById("FrantaX").innerHTML=SetOfQuestions[a]["q"];
                     break;
                 case "CZtoN":
+                    document.getElementById("X").focus();
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML="Schreibst du die deutsche Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš německou verzi slovíčka.";
                     document.getElementById("FrantaX").innerHTML=CurrentVocabulary[1][MomentalQuestion];
                     break;
                 case "NtoCZ":
+                    document.getElementById("X").focus();
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML="Schreibst du die tschechische Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš českou verzi slovíčka.";
@@ -565,6 +599,7 @@
                 break;
             case "CZtoN":
             case "NtoCZ":
+            
                 $(".X").show();
                 UnusedQuestions=Array.from({length:CurrentVocabulary[0]}, (_, i) => i);
                 Success=Array.from({length:CurrentVocabulary[0]},(_,i) => 1);
@@ -572,7 +607,72 @@
                 NumberForCalculationOfSuccess=0
                 newquestion();
                 break;
+            case "FlashCards":
+                $(".FLASHCARDS").show();
+                FlashcardsPreparing();
+                break;
         }  
     };
+    const d = document.getElementsByClassName("draggable");
+
+    for (let i = 0; i < d.length; i++) {
+        d[i].style.position = "relative";
+    }
+
+    function filter(e) {
+        let target = e.target;
+
+        if (!target.classList.contains("draggable")) {
+            return;
+        }
+
+        target.moving = true;
+        
+        //NOTICE THIS 👇
+        e.clientX ? // Check if Mouse events exist on user' device
+        (target.oldX = e.clientX, // If they exist then use Mouse input
+        target.oldY = e.clientY) :
+        (target.oldX = e.touches[0].clientX, // otherwise use touch input
+        target.oldY = e.touches[0].clientY)
+        //NOTICE THIS 👆 Since there can be multiple touches, you need to mention which touch to look for, we are using the first touch only in this case
+
+        target.oldLeft = window.getComputedStyle(target).getPropertyValue('left').split('px')[0] * 1;
+        target.oldTop = window.getComputedStyle(target).getPropertyValue('top').split('px')[0] * 1;
+
+        document.onmousemove = dr;
+        //NOTICE THIS 👇
+        document.ontouchmove = dr;
+        //NOTICE THIS 👆
+
+        function dr(event) {
+            event.preventDefault();
+
+            if (!target.moving) {
+            return;
+            }
+        //NOTICE THIS 👇
+            event.clientX ?
+            (target.distX = event.clientX - target.oldX,
+            target.distY = event.clientY - target.oldY) :
+            (target.distX = event.touches[0].clientX - target.oldX,
+            target.distY = event.touches[0].clientY - target.oldY)
+        //NOTICE THIS 👆
+
+            target.style.left = target.oldLeft + target.distX + "px";
+            target.style.top = target.oldTop + target.distY + "px";
+        }
+
+        function endDrag() {
+            target.moving = false;
+        }
+        target.onmouseup = endDrag;
+        //NOTICE THIS 👇
+        target.ontouchend = endDrag;
+        //NOTICE THIS 👆
+    }
+    document.onmousedown = filter;
+    //NOTICE THIS 👇
+    document.ontouchstart = filter;
+    //NOTICE THIS 👆
 </script>
 {%endblock%}

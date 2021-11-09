@@ -3,6 +3,7 @@
     margin:10px 0px;
     min-height:40px;
     z-index:2;
+    border-radius:10px ;
     /* animation: forwards backhover 0.2s; */
 
 }
@@ -15,14 +16,16 @@
     border:solid 3px rgb(138, 38, 38);
     position: relative;
     width:220px;
+    border-radius:10px ;
+
 }
 
 .DIVchild{
     margin:10px;
-    height:150px;
+    height:160px;
     background-color: rgb(216, 94, 94);
-    border:black 3px solid;
-    padding:5px;
+    border-radius: 10px;
+    padding:10px;
 }
 .Material{
     display: flex;
@@ -45,6 +48,7 @@
     min-width: 210px;
     font-size:18px;
     cursor:pointer;
+    border-radius: 10px;
 }
 .b11:hover{
     background:rgb(158, 103, 158)
@@ -129,6 +133,7 @@
 }
 .t{
     cursor: pointer;
+    border-radius: 10px;
 }
 #VK span{
     color:rgb(255, 153, 0);
@@ -138,12 +143,20 @@
     height:2px;
 }
 .easyt{
-    background-color: rgb(53, 141, 53);
+    background-color: rgb(67, 155, 67);
     padding:10px;
+    border: solid 3px rgb(67, 155, 67);
     position: absolute;
 }
+.easyt:hover{
+    border: solid 3px rgb(38, 114, 38);
+}
+.hardt:hover{
+    border: solid 3px rgb(148, 29, 29);
+}
 .hardt{
-    background-color: rgb(184, 38, 38);
+    border: solid 3px rgb(201, 39, 39);
+    background-color: rgb(201, 39, 39);
     padding:10px;
     position: absolute;
     left:150px;
@@ -239,6 +252,7 @@
     font-size: 24px;
     text-align: center;
     cursor:pointer;
+    border-radius: 10px;
 }
 .Flashcards{
     grid-column:2/4;
@@ -268,3 +282,24 @@
     padding:3px;
 }
 #slovnicek tr:nth-child(odd) {background: rgb(112, 178, 240)}
+#stul{
+    width:700px;
+    height:300px;
+    border: black solid 3px;
+}
+.stul{
+    top:100px;
+}
+.KartaText{
+    top:75px;
+    position: absolute;
+    text-align: center;
+    width:100%;
+}
+.karta{
+    width:200px;
+    height:250px;
+    border: black solid 3px;
+    border-radius: 10px;
+    background-color: white;
+}
