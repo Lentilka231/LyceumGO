@@ -14,7 +14,7 @@
         <div id="subclassinfo">
             <p>Třída: {{subclass.classroomname}}</p>
             <p>Progres: {{subclass.progres}}</p>
-            <div id="PVerb" onclick="visibilator('PVerb','','')"  style="cursor:pointer;">
+            <div id="PVerb" onclick="visibilator('PVerb','','')" style="cursor:pointer;">
                 Verb/Slovesa
             </div>
         </div>
@@ -24,14 +24,14 @@
     </div>
 </div>
 <div class="grid-items second">
-    <div class="scrollery">
-        <div class="Module" id="M1" tabindex="1" style="background-color: rgb(115, 64, 155);">
+
+        <div class="Module" id="M1" tabindex="1" value="3" value2="4" style="background-color: rgb(115, 64, 155);">
             <p><b>1) Deutsch ist NICHT leicht!</b></p>
             <div class="child">
                 <p class="L" id="L3" >Lektion 1-3</p>
             </div>                
         </div>
-        <div class="Module" id="M2" tabindex="1" style="background-color: orange;">
+        <div class="Module" id="M2" tabindex="1" value="3" value2="7" style="background-color: orange;">
             <p><b>2) Hobbys und Schule</b></p>
             <div class="child">
                 <p class="L" id="L4">Lektion 4</p>
@@ -39,7 +39,7 @@
                 <p class="L" id="L6">Lektion 6</p>
             </div> 
         </div>
-        <div class="Module" id="M3" tabindex="1" style="background-color: rgb(153, 28, 126);">
+        <div class="Module" id="M3" tabindex="1" value="3" value2="7" style="background-color: rgb(153, 28, 126);">
             <p><b>3) Freizeit und Feiern</b></p>
             <div class="child">
                 <p class="L" id="L7">Lektion 7</p>
@@ -47,7 +47,7 @@
                 <p class="L" id="L9">Lektion 9</p>
             </div>
         </div>
-        <div class="Module" id="M4" tabindex="1" style="background-color: rgb(30, 150, 70);">
+        <div class="Module" id="M4" tabindex="1" value="4" value2="8" style="background-color: rgb(30, 150, 70);height:4rem;">
             <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
             <div class="child">
                 <p class="L" id="L10">Lektion 10</p>
@@ -55,7 +55,7 @@
                 <p class="L" id="L12">Lektion 12</p>
             </div>
         </div>
-        <div class="Module" id="M5" tabindex="1" style="background-color: rgb(74, 101, 160);">
+        <div class="Module" id="M5" tabindex="1" value="3" value2="7" style="background-color: rgb(74, 101, 160);">
                 <p><b>5) Module 5</b></p>
             <div class="child">
                 <p class="L" id="L13">Lektion 13</p>
@@ -63,7 +63,7 @@
                 <p class="L" id="L15">Lektion 15</p>
             </div>
         </div>
-    </div>
+
 </div>
 <div class="grid-items third">
     <div class="scrollery">
@@ -175,13 +175,20 @@
                 <b id="nzX" class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
                 <p id="czX" class="czadani">Pomocí šipek (←/→) otáčej karty. </p>
             </div>
-            <div class="centralizer stul">
-                <div id="balicek1">
-                    <div class="karta draggable" >
-                        <div class="centralizer" style="width:90%">
-                            <p class="KartaText">nejaky text</p>
+            <div class="stul centralizer">
+                <div id="balicek SPATNY">
+                    
+                </div>
+                <div class="centralizer">
+                    <div class="balicek VYBER">
+                        <div class="karta draggable" >
+                            <div class="centralizer" style="width:90%">
+                                <p class="KartaText">nejaky text</p>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="balicek DOBRY">
                 </div>
             </div>
         </div>
@@ -271,7 +278,9 @@
 </div>
 </div>
 <script>
-
+    function sleep(ms){
+        return new Promise(resolve => setTimeout(resolve,ms))
+    };
     //vše týkající se zviditelňování
      $(document).ready(function(){
         const a = [false,false,false,false,false]
@@ -279,22 +288,28 @@
         const child = document.querySelectorAll(".child");
         const L = document.querySelectorAll(".L")
         // tohle zobrazuje Lektiony 1-15 v modulech
+
         for(let i=1;i<6;i++){
-            $("#M"+i).click(function(){
-                if (!(a[i-1]) ){
-                    for (let y=0;y<5;y++){
-                        a[y]=false;
-                        child[y].style.display="none";
-                    };
-                    a[i-1]=true;
-                    child[i-1].style.display="block";
-                }
-                else{
-                    a[i-1]=false;
-                    child[i-1].style.display="none";
-                };                 
-            });
+        $("#M"+i).click(function(){
+            if (!(a[i-1]) ){
+                for (let y=0;y<5;y++){
+                    a[y]=false;
+                    child[y].style.display="none";
+                    x[y].style.height=x[y].getAttribute("value")+"rem";
+                };
+                a[i-1]=true;
+                x[i-1].style.height=x[i-1].getAttribute("value2")+"rem";
+                child[i-1].style.display="block";
+            }
+            else{
+                a[i-1]=false;
+                child[i-1].style.display="none";
+                console.log("somethingelse");
+                x[i-1].style.height=x[i-1].getAttribute("value")+"rem";
+            };                 
+        });
         };
+        
         $("#TDContent").children().hide()
         //pracujou s rozklikáváním jednotlivých modelů
         for (let i=3;i<16;i++){
@@ -403,9 +418,7 @@
         CanUseEnter=false;
 
     };
-    function sleep(ms){
-        return new Promise(resolve => setTimeout(resolve,ms))
-    };
+
     document.addEventListener("keydown",function(e){
         if(e.key==="Enter" & CanUseEnter){
             if (dvapokusy==-1){
@@ -613,8 +626,18 @@
                 break;
         }  
     };
+    //------------------------------------------------------------
     const d = document.getElementsByClassName("draggable");
-
+    const c = document.getElementByClassName("containers")
+    d.forEach(draggable => {
+        draggable.addEventListener("dragstart", () => {
+            draggable.classList.add("dragging")
+        })
+        draggable.addEventListener("draggable", () => {
+            draggable.classList.remove("dragging")
+        })
+    })
+    containers
     for (let i = 0; i < d.length; i++) {
         d[i].style.position = "relative";
     }
