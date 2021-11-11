@@ -284,24 +284,30 @@
 #slovnicek tr:nth-child(odd) {background: rgb(112, 178, 240)}
 .stul{
     position: absolute;
-    width:700px;
-    height:300px;
-    top:150px;
+    width:800px;
+    height:400px;
+    top:100px;
+    padding:40px;
+    border: solid black 1px;
 }
 .SPATNY{
     background-color: rgb(161, 35, 35);
     left:10px;
+    position:absolute;
 }
 .DOBRY{
     background-color: rgb(13, 161, 75);
     right:10px;
+    position:absolute;
+
 }
 .balicek{
-    position:absolute;
     width:200px;
     height:250px;
     border:black solid 3px;
     border-radius: 10px;
+    z-index:0;
+
 }
 .KartaText{
     top:75px;
@@ -315,4 +321,6 @@
     border: black solid 3px;
     border-radius: 10px;
     background-color: white;
+    position: absolute;
+    z-index:1;
 }

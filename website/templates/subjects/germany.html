@@ -176,19 +176,20 @@
                 <p id="czX" class="czadani">Pomocí šipek (←/→) otáčej karty. </p>
             </div>
             <div class="stul centralizer">
-                <div id="balicek SPATNY">
+                <div class="balicek SPATNY">
                     
+                </div>
+                <div class="balicek DOBRY">
                 </div>
                 <div class="centralizer">
                     <div class="balicek VYBER">
-                        <div class="karta draggable" >
-                            <div class="centralizer" style="width:90%">
-                                <p class="KartaText">nejaky text</p>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
-                <div class="balicek DOBRY">
+                <div class="karta draggablecard">
+                    <div class="centralizer" style="width:90%">
+                        <p class="KartaText">nejaky text</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -627,75 +628,60 @@
         }  
     };
     //------------------------------------------------------------
-    const d = document.getElementsByClassName("draggable");
-    const c = document.getElementByClassName("containers")
-    d.forEach(draggable => {
-        draggable.addEventListener("dragstart", () => {
-            draggable.classList.add("dragging")
-        })
-        draggable.addEventListener("draggable", () => {
-            draggable.classList.remove("dragging")
-        })
-    })
-    containers
-    for (let i = 0; i < d.length; i++) {
-        d[i].style.position = "relative";
+    //draggable
+    //Make the DIV element draggagle:
+    let draggables= document.getElementsByClassName("draggablecard");
+    for(let i=0;i<draggables.length;i++){
+        dragElement(draggables[i]);
+    }
+    function dragElement(elmnt) {
+    console.log(elmnt);
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    
+    elmnt.onmousedown = dragMouseDown;
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
     }
 
-    function filter(e) {
-        let target = e.target;
-
-        if (!target.classList.contains("draggable")) {
-            return;
-        }
-
-        target.moving = true;
-        
-        //NOTICE THIS 👇
-        e.clientX ? // Check if Mouse events exist on user' device
-        (target.oldX = e.clientX, // If they exist then use Mouse input
-        target.oldY = e.clientY) :
-        (target.oldX = e.touches[0].clientX, // otherwise use touch input
-        target.oldY = e.touches[0].clientY)
-        //NOTICE THIS 👆 Since there can be multiple touches, you need to mention which touch to look for, we are using the first touch only in this case
-
-        target.oldLeft = window.getComputedStyle(target).getPropertyValue('left').split('px')[0] * 1;
-        target.oldTop = window.getComputedStyle(target).getPropertyValue('top').split('px')[0] * 1;
-
-        document.onmousemove = dr;
-        //NOTICE THIS 👇
-        document.ontouchmove = dr;
-        //NOTICE THIS 👆
-
-        function dr(event) {
-            event.preventDefault();
-
-            if (!target.moving) {
-            return;
-            }
-        //NOTICE THIS 👇
-            event.clientX ?
-            (target.distX = event.clientX - target.oldX,
-            target.distY = event.clientY - target.oldY) :
-            (target.distX = event.touches[0].clientX - target.oldX,
-            target.distY = event.touches[0].clientY - target.oldY)
-        //NOTICE THIS 👆
-
-            target.style.left = target.oldLeft + target.distX + "px";
-            target.style.top = target.oldTop + target.distY + "px";
-        }
-
-        function endDrag() {
-            target.moving = false;
-        }
-        target.onmouseup = endDrag;
-        //NOTICE THIS 👇
-        target.ontouchend = endDrag;
-        //NOTICE THIS 👆
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        let right=elmnt.style.width;
+        let bottom=elmnt.style.height;
+        let x=elmnt.offsetTop- pos2
+        let y=elmnt.offsetLeft - pos1
+        if (x<0){
+            x=0;
+        };
+        // if(x>right){
+        //     x=right;
+        // }
+        if(y<0){
+            y=0;
+        };
+        // set the element's new position:
+        elmnt.style.top = x + "px";
+        elmnt.style.left = y + "px";
     }
-    document.onmousedown = filter;
-    //NOTICE THIS 👇
-    document.ontouchstart = filter;
-    //NOTICE THIS 👆
+
+    function closeDragElement() {
+        /* stop moving when mouse button is released:*/
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+    }
 </script>
 {%endblock%}
