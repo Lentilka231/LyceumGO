@@ -175,22 +175,22 @@
                 <b id="nzX" class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
                 <p id="czX" class="czadani">Pomocí šipek (←/→) otáčej karty. </p>
             </div>
-            <div class="stul centralizer">
-                <div class="balicek SPATNY">
+            <div id="stul"class="centralizer">
+                <div class="balicek"id="SPATNY">
                     
                 </div>
-                <div class="balicek DOBRY">
+                <div class="balicek"id="DOBRY">
                 </div>
                 <div class="centralizer">
-                    <div class="balicek VYBER">
+                    <div class="balicek" id="VYBER">
                         
                     </div>
                 </div>
-                <div class="karta draggablecard">
-                    <div class="centralizer" style="width:90%">
+                <!-- <div class="karta draggablecard">
+                    <div class="textcentralizer">
                         <p class="KartaText">nejaky text</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="congratulation">
@@ -201,7 +201,7 @@
                 <p style="font-size: 100px;"id="procenta"></p>
             </div>
         </div>
-        <div class="Mufasa xPVerb">
+        <div class="Teorie xPVerb">
             <table>
                 <tr>
                     <th>id</th>
@@ -211,23 +211,23 @@
                 <tr><td>[cislo]</td><td>[sloveso]</td></tr>
             </table>
         </div>
-        <div class="Mufasa xs">
+        <div class="Teorie xs">
             <b><div id="strana"></div></b>
             <div class="sgrid">
                 <div id="slovicka">
                     <table id='slovnicek'>
                     </table>
                 </div>
-                <div class="Wgridchild Flashcards" onclick="tp('FlashCards')">
+                <div class="Wgridchild Flashcards" onclick="teststart('FlashCards')">
                     Flashcards
                 </div>
-                <div class="Wgridchild WritingCZ" onclick="tp('NtoCZ')">
+                <div class="Wgridchild WritingCZ" onclick="teststart('NtoCZ')">
                     Psaní<br>
                     němčina<br>
                     ↓<br>
                     čeština
                 </div>
-                <div class="Wgridchild WritingN" onclick="tp('CZtoN')">
+                <div class="Wgridchild WritingN" onclick="teststart('CZtoN')">
                     Psaní<br>
                     čeština<br>
                     ↓<br>
@@ -239,7 +239,7 @@
             </div>
         </div>
 
-        <div class="Mufasa x3g1">
+        <div class="Teorie x3g1">
             <p class="nnadpis"><b>Verbkonjugation im Präsens</b></p>
             <p class="cnadpis">Časování sloves v přítomném čase</p>
             <div class="g">
@@ -259,22 +259,22 @@
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
                 <p class="ctext">Cvičení:</p>
-                <div class="t easyt" onclick="tp('ABCD','3','grammar','1')">leichter Test</div>
-                <div class="t hardt" onclick="tp('X','3','grammar','1')">schwieriger Test</div>
+                <div class="t easyt" onclick="teststart('ABCD','3','grammar','1')">leichter Test</div>
+                <div class="t hardt" onclick="teststart('X','3','grammar','1')">schwieriger Test</div>
             </div>
         </div>
-        <div class="Mufasa x3g2">asdasd</div>
-        <div class="Mufasa x3g3">asdasd</div>
+        <div class="Teorie x3g2">asdasd</div>
+        <div class="Teorie x3g3">asdasd</div>
 
         
 
-        <div class="Mufasa x3l1">nbmgzu</div>
-        <div class="Mufasa x3l2">hgkignmb</div>
-        <div class="Mufasa x3l3"></div>
+        <div class="Teorie x3l1">nbmgzu</div>
+        <div class="Teorie x3l2">hgkignmb</div>
+        <div class="Teorie x3l3"></div>
 
-        <div class="Mufasa x3t1"></div>
-        <div class="Mufasa x3t2"></div>
-        <div class="Mufasa x3t3"></div>
+        <div class="Teorie x3t1"></div>
+        <div class="Teorie x3t2"></div>
+        <div class="Teorie x3t3"></div>
     </div>
 </div>
 </div>
@@ -363,6 +363,12 @@
     let CurrentVocabulary;
     let ABCDanswer=document.getElementsByClassName("Felix");
     let dvapokusy;
+    // vytvoření karty:
+    
+    //---------------------------------------------------
+    const balicekVyber = document.getElementById("VYBER");
+    const balicekSpatny = document.getElementById("SPATNY");
+    const balicekDobry = document.getElementById("DOBRY");
     for (let i=0;i<4;i++){
         ABCDanswer[i].addEventListener("mouseover",function (event){
             if (event.target.style.border==zakladnibarva) {
@@ -376,8 +382,56 @@
         })
     }    
     function FlashcardsPreparing(){
+        for(let i=0;i<CurrentVocabulary[0];i++){
+            let karta = document.createElement("div");
+            let centralizer = document.createElement("div");
+            let textf = document.createElement("p");
+            let textb = document.createElement("p");
+            let front = document.createElement("div");
+            let back = document.createElement("div");
+            karta.setAttribute("class","karta draggablecard");
+            centralizer.setAttribute("class","textcentralizer");
+            karta.appendChild(centralizer);
+            
+            karta.setAttribute("onclick","rotateclick()");
 
+            textf.setAttribute("class","KartaText");
+            textf.appendChild(document.createTextNode(CurrentVocabulary[1][i]));
+            textb.setAttribute("class","KartaText");
+            textb.appendChild(document.createTextNode(CurrentVocabulary[2][i]));
+
+            front.setAttribute("class","card-side front");
+            back.setAttribute("class","card-side back");
+            front.appendChild(textf);
+            back.appendChild(textb);
+            
+            centralizer.appendChild(front);
+            centralizer.appendChild(back);
+            karta.setAttribute("onclick","rotateclick(this)");
+            karta.setAttribute("id",i);
+            balicekVyber.appendChild(karta);
+            dragElement(karta);
+        };
+        let kontrola = new MutationObserver(function(mutations){
+            if (balicekVyber.childNodes.length==1){
+                console.log("hotovo");
+            };
+        })
+        let config = { attributes: true, childList: true, characterData: true };
+        kontrola.observe(balicekVyber,config);
+    };
+    function rotateclick(t){
+        let front = t.children[0].children[0];
+        let back = t.children[0].children[1];
+        if (front.style.transform=="rotateY(0deg)"){
+            front.style.transform="rotateY(180deg)"
+            back.style.transform="rotateY(0deg)"
+        }else{
+            front.style.transform="rotateY(0deg)"
+            back.style.transform="rotateY(180deg)"
+        }
     }
+    //zobrazuje okno pro teorii, texty, otázky 
     function visibilator(lekce,typ,ukol){
         CanUseEsc=true;
         $("#TestDiv").show();
@@ -409,33 +463,30 @@
         CanUseEsc=false;
         dvapokusy=1;
     };
-    function endOfTest(){
-        $(".task").hide();
-        for(let i=0;i<Success.length;i++){
-            NumberForCalculationOfSuccess+=Success[i];
-        };
-        document.getElementById("procenta").innerHTML=Math.round(NumberForCalculationOfSuccess/Success.length*100)+"%";
-        $(".congratulation").show();
-        CanUseEnter=false;
 
-    };
 
     document.addEventListener("keydown",function(e){
         if(e.key==="Enter" & CanUseEnter){
-            if (dvapokusy==-1){
-                document.getElementById("SubstituteForInput").innerHTML="";
-                $("#SubstituteForInput").hide();
-                $("#XP").show();
-                UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                document.getElementById("XP").style.border="none";
-                document.getElementById("X").value="";
-                newquestion();
+            switch (TypeOfTest){
+            case "FlashCards":
+                rotateclick(balicekVyber.children[balicekVyber.children.length-1])
+                break;
+            case "CZtoN":
+            case "NtoCZ":
+            case "X":
+                if (dvapokusy==-1){
+                    document.getElementById("SubstituteForInput").innerHTML="";
+                    $("#SubstituteForInput").hide();
+                    $("#XP").show();
+                    UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
+                    document.getElementById("XP").style.border="none";
+                    document.getElementById("X").value="";
+                    newquestion();
+                }else if (dvapokusy==1 || dvapokusy==0){
+                    checkanswer("X");
+                }
             }
-            else{
-                checkanswer("X");
-            }
-        }
-        else if (e.key==="Escape" & CanUseEsc){
+        }else if (e.key==="Escape" & CanUseEsc){
             hider();
         }
     })
@@ -597,8 +648,8 @@
             endOfTest();
         };
     };
-    function tp(type,k,t,x){
-        $(".Mufasa").hide();
+    function teststart(type,k,t,x){
+        $(".Teorie").hide();
         switch(type){
             case "ABCD":
             case "X":
@@ -608,12 +659,10 @@
                 Success=Array.from({length:SetOfQuestions.length},(_,i) => 1);
                 TypeOfTest=type;
                 NumberForCalculationOfSuccess=0
-                
                 newquestion();
                 break;
             case "CZtoN":
             case "NtoCZ":
-            
                 $(".X").show();
                 UnusedQuestions=Array.from({length:CurrentVocabulary[0]}, (_, i) => i);
                 Success=Array.from({length:CurrentVocabulary[0]},(_,i) => 1);
@@ -623,21 +672,28 @@
                 break;
             case "FlashCards":
                 $(".FLASHCARDS").show();
+                CanUseEnter=true;
+                TypeOfTest=type;
                 FlashcardsPreparing();
                 break;
         }  
     };
+    function endoftest(){
+        $(".task").hide();
+        for (let i=0;i<Success.length;i++){
+            NumberForCalculationOfSuccess+=Success[i];
+        };
+        document.getElementById("procenta").innerHTML=Math.round(NumberForCalculationOfSuccess/Success.length*100)+"%";
+        $("congratulation").show();
+        CanUseArrows=false;
+        CanUseEnter=false;
+    }
+
     //------------------------------------------------------------
     //draggable
-    //Make the DIV element draggagle:
-    let draggables= document.getElementsByClassName("draggablecard");
-    for(let i=0;i<draggables.length;i++){
-        dragElement(draggables[i]);
-    }
+    //Make the DIV element draggable:
     function dragElement(elmnt) {
-    console.log(elmnt);
-    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0,x=0,y=0;
     elmnt.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
@@ -650,7 +706,6 @@
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
     }
-
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
@@ -659,26 +714,34 @@
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        let right=elmnt.style.width;
-        let bottom=elmnt.style.height;
-        let x=elmnt.offsetTop- pos2
-        let y=elmnt.offsetLeft - pos1
-        if (x<0){
-            x=0;
-        };
-        // if(x>right){
-        //     x=right;
-        // }
-        if(y<0){
-            y=0;
-        };
+
+        x=elmnt.offsetTop- pos2
+        y=elmnt.offsetLeft - pos1
         // set the element's new position:
         elmnt.style.top = x + "px";
         elmnt.style.left = y + "px";
     }
-
     function closeDragElement() {
         /* stop moving when mouse button is released:*/
+        if (y<-75){
+            elmnt.style.top="0px";
+            elmnt.style.left="0px";
+            elmnt.onmousedown="";
+            elmnt.onmousemove="";
+            elmnt.onmouseup="";
+            balicekSpatny.appendChild(elmnt);
+        }else if(y>175){
+            elmnt.onmousedown="";
+            elmnt.onmousemove="";
+            elmnt.onmouseup="";
+            elmnt.style.top="0px";
+            elmnt.style.left="0px";
+            elmnt.classList.remove("draggablecard");
+            balicekDobry.appendChild(elmnt);
+        }else{
+            elmnt.style.top="10px";
+            elmnt.style.left="10px";
+        }
         document.onmouseup = null;
         document.onmousemove = null;
     }
