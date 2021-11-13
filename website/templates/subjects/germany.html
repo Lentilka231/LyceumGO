@@ -176,22 +176,25 @@
                 <p id="czX" class="czadani">Pomocí šipek (←/→) otáčej karty. </p>
             </div>
             <div id="stul"class="centralizer">
-                <div class="balicek"id="SPATNY">
-                    
-                </div>
-                <div class="balicek"id="DOBRY">
-                </div>
+                <div class="balicek"id="SPATNY"></div>
+                <div class="balicek"id="DOBRY"></div>
                 <div class="centralizer">
-                    <div class="balicek" id="VYBER">
-                        
-                    </div>
+                    <div class="balicek" id="VYBER"></div>
                 </div>
-                <!-- <div class="karta draggablecard">
-                    <div class="textcentralizer">
-                        <p class="KartaText">nejaky text</p>
-                    </div>
-                </div> -->
+                <!--Jak vypadá karta
+                    <div class="karta draggablecard">
+                        <div class="textcentralizer">
+                            <div class="front">
+                                <p class="KartaText">das Deutsch</p>
+                            </div>
+                            <div class="back">
+                                <p class="KartaText">němčina</p>
+                            </div>
+                        </div>
+                    </div> 
+                -->
             </div>
+            <div id="vyhodnoceni"class=centralizer></div>
         </div>
         <div class="congratulation">
             <div style="display:flex;flex-direction:column;justify-content:center;align-items: center;position: absolute;width: 100%;height: 100%;">
@@ -363,12 +366,7 @@
     let CurrentVocabulary;
     let ABCDanswer=document.getElementsByClassName("Felix");
     let dvapokusy;
-    // vytvoření karty:
-    
-    //---------------------------------------------------
-    const balicekVyber = document.getElementById("VYBER");
-    const balicekSpatny = document.getElementById("SPATNY");
-    const balicekDobry = document.getElementById("DOBRY");
+    //ABCD hover mod
     for (let i=0;i<4;i++){
         ABCDanswer[i].addEventListener("mouseover",function (event){
             if (event.target.style.border==zakladnibarva) {
@@ -381,6 +379,45 @@
             }
         })
     }    
+    // Na zmáčknutí určitých kláves
+    document.addEventListener("keydown",function(e){
+        if(e.key==="Enter" & CanUseEnter){
+            switch (TypeOfTest){
+            case "FlashCards":
+                rotatecard(balicekVyber.children[balicekVyber.children.length-1])
+                break;
+            case "CZtoN":
+            case "NtoCZ":
+            case "X":
+                if (dvapokusy==-1){
+                    document.getElementById("SubstituteForInput").innerHTML="";
+                    $("#SubstituteForInput").hide();
+                    $("#XP").show();
+                    UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
+                    document.getElementById("XP").style.border="none";
+                    document.getElementById("X").value="";
+                    newquestion();
+                }else if (dvapokusy==1 || dvapokusy==0){
+                    checkanswer("X");
+                }
+            }
+        }
+        else if (e.key==="Escape" & CanUseEsc){
+            hider();
+        }
+        else if (e.key==="ArrowLeft"){
+            movecard("left");
+        }
+        else if (e.key==="ArrowRight"){
+            movecard("right");
+        };
+    })
+    // Flashcards ---------------------------------------
+    const balicekVyber = document.getElementById("VYBER");
+    const balicekSpatny = document.getElementById("SPATNY");
+    const balicekDobry = document.getElementById("DOBRY");
+    const vyhodnoceni = document.getElementById("vyhodnoceni");
+    //Zde se připravuje balíček karet
     function FlashcardsPreparing(){
         for(let i=0;i<CurrentVocabulary[0];i++){
             let karta = document.createElement("div");
@@ -393,7 +430,7 @@
             centralizer.setAttribute("class","textcentralizer");
             karta.appendChild(centralizer);
             
-            karta.setAttribute("onclick","rotateclick()");
+            karta.setAttribute("onclick","rotatecard()");
 
             textf.setAttribute("class","KartaText");
             textf.appendChild(document.createTextNode(CurrentVocabulary[1][i]));
@@ -407,20 +444,21 @@
             
             centralizer.appendChild(front);
             centralizer.appendChild(back);
-            karta.setAttribute("onclick","rotateclick(this)");
+            karta.setAttribute("onclick","rotatecard(this)");
             karta.setAttribute("id",i);
             balicekVyber.appendChild(karta);
             dragElement(karta);
         };
         let kontrola = new MutationObserver(function(mutations){
-            if (balicekVyber.childNodes.length==1){
-                console.log("hotovo");
+            if (balicekVyber.childNodes.length==0){
+                vyhodnoceni.innerHTML=Math.round(balicekDobry.children.length/CurrentVocabulary[0]*100)+"%";
             };
         })
         let config = { attributes: true, childList: true, characterData: true };
         kontrola.observe(balicekVyber,config);
     };
-    function rotateclick(t){
+    //funkce pro manipulaci s kartama pomocí klávesnice
+    function rotatecard(t){
         let front = t.children[0].children[0];
         let back = t.children[0].children[1];
         if (front.style.transform=="rotateY(0deg)"){
@@ -431,7 +469,20 @@
             back.style.transform="rotateY(180deg)"
         }
     }
-    //zobrazuje okno pro teorii, texty, otázky 
+    function movecard(smer){
+        if(balicekVyber.firstChild){
+            switch (smer){
+            case "left":
+                balicekSpatny.appendChild(balicekVyber.children[balicekVyber.children.length-1]);
+                break;
+            case "right":
+                balicekDobry.appendChild(balicekVyber.children[balicekVyber.children.length-1]);
+                break;
+        }
+        }
+    }
+    // Obecné funkce pro otázky, ... -----------------------------
+    // zobrazuje okno pro teorie, texty, otázky, ...
     function visibilator(lekce,typ,ukol){
         CanUseEsc=true;
         $("#TestDiv").show();
@@ -450,46 +501,26 @@
             $(".x"+lekce+typ+ukol).show();
         }
     };
+    // skovává okno pro teorie, texty, otázky, ...
     function hider(){
         $("#TestDiv").hide();
         $("#TDContent").children().hide();
         $(".task").hide();
         $(".congratulation").hide();
+        balicekDobry.innerHTML="";
+        balicekSpatny.innerHTML="";
+        balicekVyber.innerHTML="";
+        vyhodnoceni.innerHTML="";
         for(let i=0;i<4;i++){
             ABCDanswer[i].style.border="solid 3px rgb(189, 213, 234)";
         }
         document.getElementById("XP").style.border="none";
         document.getElementById("X").value="";
         CanUseEsc=false;
+        CanUseEnter=false;
+        CanUseArrows=false;
         dvapokusy=1;
     };
-
-
-    document.addEventListener("keydown",function(e){
-        if(e.key==="Enter" & CanUseEnter){
-            switch (TypeOfTest){
-            case "FlashCards":
-                rotateclick(balicekVyber.children[balicekVyber.children.length-1])
-                break;
-            case "CZtoN":
-            case "NtoCZ":
-            case "X":
-                if (dvapokusy==-1){
-                    document.getElementById("SubstituteForInput").innerHTML="";
-                    $("#SubstituteForInput").hide();
-                    $("#XP").show();
-                    UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                    document.getElementById("XP").style.border="none";
-                    document.getElementById("X").value="";
-                    newquestion();
-                }else if (dvapokusy==1 || dvapokusy==0){
-                    checkanswer("X");
-                }
-            }
-        }else if (e.key==="Escape" & CanUseEsc){
-            hider();
-        }
-    })
     async function checkanswer (x){
         switch(TypeOfTest){
             case "ABCD":
@@ -673,6 +704,7 @@
             case "FlashCards":
                 $(".FLASHCARDS").show();
                 CanUseEnter=true;
+                CanUseArrows=true;
                 TypeOfTest=type;
                 FlashcardsPreparing();
                 break;
@@ -690,7 +722,6 @@
     }
 
     //------------------------------------------------------------
-    //draggable
     //Make the DIV element draggable:
     function dragElement(elmnt) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0,x=0,y=0;
@@ -724,24 +755,20 @@
     function closeDragElement() {
         /* stop moving when mouse button is released:*/
         if (y<-75){
-            elmnt.style.top="0px";
-            elmnt.style.left="0px";
             elmnt.onmousedown="";
             elmnt.onmousemove="";
             elmnt.onmouseup="";
+            elmnt.classList.remove("draggablecard");
             balicekSpatny.appendChild(elmnt);
         }else if(y>175){
             elmnt.onmousedown="";
             elmnt.onmousemove="";
             elmnt.onmouseup="";
-            elmnt.style.top="0px";
-            elmnt.style.left="0px";
             elmnt.classList.remove("draggablecard");
             balicekDobry.appendChild(elmnt);
-        }else{
-            elmnt.style.top="10px";
-            elmnt.style.left="10px";
         }
+        elmnt.style.top="0px";
+        elmnt.style.left="0px";
         document.onmouseup = null;
         document.onmousemove = null;
     }

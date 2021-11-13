@@ -288,22 +288,23 @@
 #stul{
     position: absolute;
     width:800px;
-    height:400px;
+    height:300px;
     top:100px;
-    padding:50px;
+    padding:10px;
     border: solid black 1px;
 }
 #SPATNY{
     background-color: rgb(161, 35, 35);
     border:rgb(141, 23, 23) solid 10px;
     left:10px;
-    position:absolute;
 }
 #DOBRY{
     background-color: rgb(13, 161, 75);
     right:10px;
     border:rgb(13, 128, 61) solid 10px;
-    position:absolute;
+}
+#VYBER {
+    position:relative;
 }
 
 .balicek{
@@ -312,6 +313,7 @@
     border:rgb(126, 126, 126) solid 10px;
     border-radius: 10px;
     z-index:0;
+    position: absolute;
 }
 .KartaText{
     top:75px;
@@ -345,4 +347,11 @@
     position: absolute;
     left:50%;
     transform: translate(-50%,0%);
+}
+#vyhodnoceni{
+    width:130px;
+    height:70px;
+    font-size: 42px;
+    background-color: rgb(189, 213, 234);
+    bottom:0px;
 }
