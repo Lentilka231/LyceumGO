@@ -176,6 +176,7 @@
                 <p id="czX" class="czadani">Pomocí šipek (←/→) otáčej karty. </p>
             </div>
             <div id="stul"class="centralizer">
+                <p id="spatnyrepete">Möchtest du das Kartendeck wiederholen? </p>
                 <div class="balicek"id="SPATNY"></div>
                 <div class="balicek"id="DOBRY"></div>
                 <div class="centralizer">
@@ -452,6 +453,15 @@
         let kontrola = new MutationObserver(function(mutations){
             if (balicekVyber.childNodes.length==0){
                 vyhodnoceni.innerHTML=Math.round(balicekDobry.children.length/CurrentVocabulary[0]*100)+"%";
+                balicekSpatny.onmouseover=function(){
+                    document.getElementById("spatnyrepete").style.visibility="visible";
+                    balicekSpatny.style.opacity="0.5";
+
+                };
+                balicekSpatny.onmouseout=function(){
+                    document.getElementById("spatnyrepete").style.visibility="hidden";
+                    balicekSpatny.style.opacity="1";
+                };
             };
         })
         let config = { attributes: true, childList: true, characterData: true };
