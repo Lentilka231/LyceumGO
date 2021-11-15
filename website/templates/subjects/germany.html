@@ -172,18 +172,20 @@
         </div>
         <div class="task FLASHCARDS">
             <div class="questions">
-                <b id="nzX" class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
+                <b id="nzX" class="nzadani">Benutze die Pfeiltasten (←/→), um die Karten zu drehen.</b><br>
                 <p id="czX" class="czadani">Pomocí šipek (←/→) otáčej karty. </p>
             </div>
+            <p id="flashinfo"></p>
+
             <div id="stul"class="centralizer">
-                <p id="spatnyrepete">Möchtest du das Kartendeck wiederholen? </p>
-                <div class="balicek"id="SPATNY"></div>
-                <div class="balicek"id="DOBRY"></div>
-                <div class="centralizer">
-                    <div class="balicek" id="VYBER"></div>
+                <div class="balicek" id="SPATNY"></div>
+                <div class="balicek" id="DOBRY"></div>
+                <div class="centralizer balicek "id="V">
+                    <img id="repete" src="{{url_for('static',filename='images/repete.png')}}">
+                    <div id="VYBER"></div>
                 </div>
                 <!--Jak vypadá karta
-                    <div class="karta draggablecard">
+                    <div class="karta ">
                         <div class="textcentralizer">
                             <div class="front">
                                 <p class="KartaText">das Deutsch</p>
@@ -342,7 +344,7 @@
 
             })
         }
-
+        
     });
 </script>
 <script>
@@ -420,6 +422,17 @@
     const vyhodnoceni = document.getElementById("vyhodnoceni");
     //Zde se připravuje balíček karet
     function FlashcardsPreparing(){
+        balicekSpatny.innerHTML="";
+        balicekDobry.innerHTML="";
+        balicekVyber.innerHTML="";
+        balicekSpatny.onmouseover=null;
+        balicekSpatny.onmouseout=null;
+        balicekSpatny.style.opacity="1";
+        document.getElementById("V").onmouseover=null;
+        document.getElementById("V").onmouseout=null;
+        document.getElementById("V").onclick=null;
+        document.getElementById("V").style.opacity="1";
+        document.getElementById("flashinfo").innerHTML="";
         for(let i=0;i<CurrentVocabulary[0];i++){
             let karta = document.createElement("div");
             let centralizer = document.createElement("div");
@@ -427,7 +440,7 @@
             let textb = document.createElement("p");
             let front = document.createElement("div");
             let back = document.createElement("div");
-            karta.setAttribute("class","karta draggablecard");
+            karta.setAttribute("class","karta");
             centralizer.setAttribute("class","textcentralizer");
             karta.appendChild(centralizer);
             
@@ -451,17 +464,26 @@
             dragElement(karta);
         };
         let kontrola = new MutationObserver(function(mutations){
+            vyhodnoceni.innerHTML=balicekSpatny.children.length+balicekDobry.children.length+"/"+CurrentVocabulary[0];
             if (balicekVyber.childNodes.length==0){
                 vyhodnoceni.innerHTML=Math.round(balicekDobry.children.length/CurrentVocabulary[0]*100)+"%";
                 balicekSpatny.onmouseover=function(){
-                    document.getElementById("spatnyrepete").style.visibility="visible";
+                    document.getElementById("flashinfo").innerHTML="Willst du deine Fehler korrigieren?";
                     balicekSpatny.style.opacity="0.5";
-
                 };
                 balicekSpatny.onmouseout=function(){
-                    document.getElementById("spatnyrepete").style.visibility="hidden";
+                    document.getElementById("flashinfo").innerHTML="";
                     balicekSpatny.style.opacity="1";
                 };
+                document.getElementById("V").onmouseover=function(){
+                    document.getElementById("flashinfo").innerHTML="Möchtest du das Kartendeck wiederholen?";
+                    document.getElementById("V").style.opacity="0.5";
+                }
+                document.getElementById("V").onmouseout=function(){
+                    document.getElementById("flashinfo").innerHTML="";
+                    document.getElementById("V").style.opacity="1";
+                }
+                document.getElementById("V").setAttribute("onclick","FlashcardsPreparing()");
             };
         })
         let config = { attributes: true, childList: true, characterData: true };
@@ -481,6 +503,7 @@
     }
     function movecard(smer){
         if(balicekVyber.firstChild){
+            removedraggable(balicekVyber.children[balicekVyber.children.length-1]);
             switch (smer){
             case "left":
                 balicekSpatny.appendChild(balicekVyber.children[balicekVyber.children.length-1]);
@@ -489,6 +512,58 @@
                 balicekDobry.appendChild(balicekVyber.children[balicekVyber.children.length-1]);
                 break;
         }
+        }
+    }
+    function removedraggable(elmnt){
+        elmnt.onmousedown="";
+        elmnt.onmousemove="";
+        elmnt.onmouseup="";
+    }
+    //Make the DIV element draggable:
+    function dragElement(elmnt) {
+        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0,x=0,y=0;
+        elmnt.onmousedown = dragMouseDown;
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+
+            x=elmnt.offsetTop- pos2
+            y=elmnt.offsetLeft - pos1
+            // set the element's new position:
+            elmnt.style.top = x + "px";
+            elmnt.style.left = y + "px";
+        }
+        function closeDragElement() {
+            /* stop moving when mouse button is released:*/
+            if (y<-75){
+                removedraggable(elmnt);
+                balicekSpatny.appendChild(elmnt);
+                console.log("spatnybalik");
+            }else if(y>175){
+                removedraggable(elmnt);
+                balicekDobry.appendChild(elmnt);
+                console.log("dobrybalik");
+            }
+            elmnt.style.top="0px";
+            elmnt.style.left="0px";
+            document.onmouseup = null;
+            document.onmousemove = null;
         }
     }
     // Obecné funkce pro otázky, ... -----------------------------
@@ -732,56 +807,7 @@
     }
 
     //------------------------------------------------------------
-    //Make the DIV element draggable:
-    function dragElement(elmnt) {
-    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0,x=0,y=0;
-    elmnt.onmousedown = dragMouseDown;
 
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-    }
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
 
-        x=elmnt.offsetTop- pos2
-        y=elmnt.offsetLeft - pos1
-        // set the element's new position:
-        elmnt.style.top = x + "px";
-        elmnt.style.left = y + "px";
-    }
-    function closeDragElement() {
-        /* stop moving when mouse button is released:*/
-        if (y<-75){
-            elmnt.onmousedown="";
-            elmnt.onmousemove="";
-            elmnt.onmouseup="";
-            elmnt.classList.remove("draggablecard");
-            balicekSpatny.appendChild(elmnt);
-        }else if(y>175){
-            elmnt.onmousedown="";
-            elmnt.onmousemove="";
-            elmnt.onmouseup="";
-            elmnt.classList.remove("draggablecard");
-            balicekDobry.appendChild(elmnt);
-        }
-        elmnt.style.top="0px";
-        elmnt.style.left="0px";
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-    }
 </script>
 {%endblock%}
