@@ -84,7 +84,7 @@
     position:absolute;
     box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
     padding:30px;
-    top:15vh;
+    top:5vh;
 }
 .w{
     display:none;
@@ -304,12 +304,12 @@
     transition: all 0.1s ease;
 }
 
-#SPATNY{
+#spatny{
     background-color: rgb(161, 35, 35);
     left:10px;
     border:rgb(141, 23, 23) solid 10px;
 }
-#DOBRY{
+#dobry{
     background-color: rgb(13, 161, 75);
     right:10px;
     border:rgb(13, 128, 61) solid 10px;

@@ -178,8 +178,8 @@
             <p id="flashinfo"></p>
 
             <div id="stul"class="centralizer">
-                <div class="balicek" id="SPATNY"></div>
-                <div class="balicek" id="DOBRY"></div>
+                <div class="balicek" id="spatny"><div id="SPATNY"></div></div>
+                <div class="balicek" id="dobry"><div id="DOBRY"></div></div>
                 <div class="centralizer balicek "id="V">
                     <img id="repete" src="{{url_for('static',filename='images/repete.png')}}">
                     <div id="VYBER"></div>
@@ -311,7 +311,6 @@
             else{
                 a[i-1]=false;
                 child[i-1].style.display="none";
-                console.log("somethingelse");
                 x[i-1].style.height=x[i-1].getAttribute("value")+"rem";
             };                 
         });
@@ -387,7 +386,7 @@
         if(e.key==="Enter" & CanUseEnter){
             switch (TypeOfTest){
             case "FlashCards":
-                rotatecard(balicekVyber.children[balicekVyber.children.length-1])
+                rotatecard(balicekKaretVyber.children[balicekKaretVyber.children.length-1])
                 break;
             case "CZtoN":
             case "NtoCZ":
@@ -416,18 +415,19 @@
         };
     })
     // Flashcards ---------------------------------------
-    const balicekVyber = document.getElementById("VYBER");
-    const balicekSpatny = document.getElementById("SPATNY");
-    const balicekDobry = document.getElementById("DOBRY");
+    const balicekKaretVyber = document.getElementById("VYBER");
+    const balicekKaretSpatny = document.getElementById("SPATNY");
+    const balicekKaretDobry = document.getElementById("DOBRY");
     const vyhodnoceni = document.getElementById("vyhodnoceni");
     //Zde se připravuje balíček karet
     function FlashcardsPreparing(){
-        balicekSpatny.innerHTML="";
-        balicekDobry.innerHTML="";
-        balicekVyber.innerHTML="";
-        balicekSpatny.onmouseover=null;
-        balicekSpatny.onmouseout=null;
-        balicekSpatny.style.opacity="1";
+        
+        balicekKaretSpatny.innerHTML="";
+        balicekKaretDobry.innerHTML="";
+        balicekKaretVyber.innerHTML="";
+        balicekKaretSpatny.onmouseover=null;
+        balicekKaretSpatny.onmouseout=null;
+        balicekKaretSpatny.style.opacity="1";
         document.getElementById("V").onmouseover=null;
         document.getElementById("V").onmouseout=null;
         document.getElementById("V").onclick=null;
@@ -460,34 +460,39 @@
             centralizer.appendChild(back);
             karta.setAttribute("onclick","rotatecard(this)");
             karta.setAttribute("id",i);
-            balicekVyber.appendChild(karta);
+            balicekKaretVyber.appendChild(karta);
             dragElement(karta);
         };
+        vyhodnoceni.innerHTML="0/"+balicekKaretVyber.children.length;
+        
         let kontrola = new MutationObserver(function(mutations){
-            vyhodnoceni.innerHTML=balicekSpatny.children.length+balicekDobry.children.length+"/"+CurrentVocabulary[0];
-            if (balicekVyber.childNodes.length==0){
-                vyhodnoceni.innerHTML=Math.round(balicekDobry.children.length/CurrentVocabulary[0]*100)+"%";
-                balicekSpatny.onmouseover=function(){
-                    document.getElementById("flashinfo").innerHTML="Willst du deine Fehler korrigieren?";
-                    balicekSpatny.style.opacity="0.5";
-                };
-                balicekSpatny.onmouseout=function(){
-                    document.getElementById("flashinfo").innerHTML="";
-                    balicekSpatny.style.opacity="1";
-                };
-                document.getElementById("V").onmouseover=function(){
-                    document.getElementById("flashinfo").innerHTML="Möchtest du das Kartendeck wiederholen?";
-                    document.getElementById("V").style.opacity="0.5";
-                }
-                document.getElementById("V").onmouseout=function(){
-                    document.getElementById("flashinfo").innerHTML="";
-                    document.getElementById("V").style.opacity="1";
-                }
-                document.getElementById("V").setAttribute("onclick","FlashcardsPreparing()");
+        vyhodnoceni.innerHTML=balicekKaretSpatny.children.length+balicekKaretDobry.children.length+"/"+CurrentVocabulary[0];
+        if (balicekKaretVyber.children.length==0){
+            vyhodnoceni.innerHTML=Math.round(balicekKaretDobry.children.length/CurrentVocabulary[0]*100)+"%";
+            balicekKaretSpatny.onmouseover=function(){
+                document.getElementById("flashinfo").innerHTML="Willst du deine Fehler korrigieren?";
+                document.getElementById("spatny").style.opacity="0.5";
             };
+            balicekKaretSpatny.onmouseout=function(){
+                document.getElementById("flashinfo").innerHTML="";
+                document.getElementById("spatny").style.opacity="1";
+            };
+            document.getElementById("V").onmouseover=function(){
+                document.getElementById("flashinfo").innerHTML="Möchtest du das Kartendeck wiederholen?";
+                document.getElementById("V").style.opacity="0.5";
+            }
+            document.getElementById("V").onmouseout=function(){
+                document.getElementById("flashinfo").innerHTML="";
+                document.getElementById("V").style.opacity="1";
+            }
+            document.getElementById("V").setAttribute("onclick","FlashcardsPreparing()");
+            dragElement(balicekKaretSpatny);
+        };
         })
         let config = { attributes: true, childList: true, characterData: true };
-        kontrola.observe(balicekVyber,config);
+        kontrola.observe(balicekKaretVyber,config);
+    
+        
     };
     //funkce pro manipulaci s kartama pomocí klávesnice
     function rotatecard(t){
@@ -502,14 +507,14 @@
         }
     }
     function movecard(smer){
-        if(balicekVyber.firstChild){
-            removedraggable(balicekVyber.children[balicekVyber.children.length-1]);
+        if(balicekKaretVyber.firstChild){
+            removedraggable(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
             switch (smer){
             case "left":
-                balicekSpatny.appendChild(balicekVyber.children[balicekVyber.children.length-1]);
+                balicekKaretSpatny.appendChild(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
                 break;
             case "right":
-                balicekDobry.appendChild(balicekVyber.children[balicekVyber.children.length-1]);
+                balicekKaretDobry.appendChild(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
                 break;
         }
         }
@@ -550,16 +555,26 @@
             elmnt.style.left = y + "px";
         }
         function closeDragElement() {
+            console.log(elmnt.id);
             /* stop moving when mouse button is released:*/
-            if (y<-75){
-                removedraggable(elmnt);
-                balicekSpatny.appendChild(elmnt);
-                console.log("spatnybalik");
-            }else if(y>175){
-                removedraggable(elmnt);
-                balicekDobry.appendChild(elmnt);
-                console.log("dobrybalik");
+            if(elmnt.classList.contains("karta")){
+                if (y<-75){
+                    removedraggable(elmnt);
+                    balicekKaretSpatny.appendChild(elmnt);
+                }else if(y>175){
+                    removedraggable(elmnt);
+                    balicekKaretDobry.appendChild(elmnt);
+                }
             }
+            else if(elmnt.id=="SPATNY"){
+                if(y>100 & y<300){
+                    for(let i=0;i<balicekKaretSpatny.children.length;i++){
+                        balicekKaretVyber.appendChild(balicekKaretSpatny.children[i]);
+                    }
+                    balicekKaretSpatny.innerHTML="";
+                }
+            }
+            
             elmnt.style.top="0px";
             elmnt.style.left="0px";
             document.onmouseup = null;
@@ -592,9 +607,9 @@
         $("#TDContent").children().hide();
         $(".task").hide();
         $(".congratulation").hide();
-        balicekDobry.innerHTML="";
-        balicekSpatny.innerHTML="";
-        balicekVyber.innerHTML="";
+        balicekKaretDobry.innerHTML="";
+        balicekKaretSpatny.innerHTML="";
+        balicekKaretVyber.innerHTML="";
         vyhodnoceni.innerHTML="";
         for(let i=0;i<4;i++){
             ABCDanswer[i].style.border="solid 3px rgb(189, 213, 234)";
