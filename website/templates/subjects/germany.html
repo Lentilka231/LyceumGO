@@ -178,12 +178,12 @@
             <p id="flashinfo"></p>
 
             <div id="stul"class="centralizer">
-                <div class="balicek" id="spatny"><div id="SPATNY"></div></div>
-                <div class="balicek" id="dobry"><div id="DOBRY"></div></div>
-                <div class="centralizer balicek "id="V">
-                    <img id="repete" src="{{url_for('static',filename='images/repete.png')}}">
+                <div class="centralizer balicek repete"id="vyber" style="background-image: url(/static/images/repete.png)">
                     <div id="VYBER"></div>
                 </div>
+                <div class="balicek" id="spatny"><div id="SPATNY"></div></div>
+                <div class="balicek" id="dobry"><div id="DOBRY"></div></div>
+                
                 <!--Jak vypadá karta
                     <div class="karta ">
                         <div class="textcentralizer">
@@ -197,6 +197,8 @@
                     </div> 
                 -->
             </div>
+            <div id="bspopis"><b>wiederholen</b></div>
+            <div id="bdpopis"><b>verstanden</b></div>
             <div id="vyhodnoceni"class=centralizer></div>
         </div>
         <div class="congratulation">
@@ -273,7 +275,6 @@
         <div class="Teorie x3g3">asdasd</div>
 
         
-
         <div class="Teorie x3l1">nbmgzu</div>
         <div class="Teorie x3l2">hgkignmb</div>
         <div class="Teorie x3l3"></div>
@@ -368,6 +369,8 @@
     let CurrentVocabulary;
     let ABCDanswer=document.getElementsByClassName("Felix");
     let dvapokusy;
+    let WordsToTestTotal;
+    let WordsToTest;
     //ABCD hover mod
     for (let i=0;i<4;i++){
         ABCDanswer[i].addEventListener("mouseover",function (event){
@@ -419,20 +422,18 @@
     const balicekKaretSpatny = document.getElementById("SPATNY");
     const balicekKaretDobry = document.getElementById("DOBRY");
     const vyhodnoceni = document.getElementById("vyhodnoceni");
+    const flashinfo = document.getElementById("flashinfo")
+    let config = { attributes: true, childList: true, characterData: true };
     //Zde se připravuje balíček karet
     function FlashcardsPreparing(){
-        
+        WordsToTestTotal=CurrentVocabulary[0]
+        WordsToTest=0;
         balicekKaretSpatny.innerHTML="";
         balicekKaretDobry.innerHTML="";
         balicekKaretVyber.innerHTML="";
-        balicekKaretSpatny.onmouseover=null;
-        balicekKaretSpatny.onmouseout=null;
-        balicekKaretSpatny.style.opacity="1";
-        document.getElementById("V").onmouseover=null;
-        document.getElementById("V").onmouseout=null;
-        document.getElementById("V").onclick=null;
-        document.getElementById("V").style.opacity="1";
-        document.getElementById("flashinfo").innerHTML="";
+        dragRemove(balicekKaretSpatny);
+        dragRemove(document.getElementById("vyber"));
+        flashinfo.innerHTML="";
         for(let i=0;i<CurrentVocabulary[0];i++){
             let karta = document.createElement("div");
             let centralizer = document.createElement("div");
@@ -463,33 +464,33 @@
             balicekKaretVyber.appendChild(karta);
             dragElement(karta);
         };
-        vyhodnoceni.innerHTML="0/"+balicekKaretVyber.children.length;
+        vyhodnoceni.innerHTML="0/"+WordsToTestTotal;
         
         let kontrola = new MutationObserver(function(mutations){
-        vyhodnoceni.innerHTML=balicekKaretSpatny.children.length+balicekKaretDobry.children.length+"/"+CurrentVocabulary[0];
-        if (balicekKaretVyber.children.length==0){
-            vyhodnoceni.innerHTML=Math.round(balicekKaretDobry.children.length/CurrentVocabulary[0]*100)+"%";
-            balicekKaretSpatny.onmouseover=function(){
-                document.getElementById("flashinfo").innerHTML="Willst du deine Fehler korrigieren?";
-                document.getElementById("spatny").style.opacity="0.5";
+            vyhodnoceni.innerHTML=WordsToTest+"/"+WordsToTestTotal;
+            if (balicekKaretVyber.children.length==0){
+                vyhodnoceni.innerHTML=Math.round(balicekKaretDobry.children.length/CurrentVocabulary[0]*100)+"%";
+                balicekKaretSpatny.onmouseover=function(){
+                    flashinfo.innerHTML="Willst du deine Fehler korrigieren?";
+                    document.getElementById("spatny").style.border="rgb(130,0,0) solid 10px"
+                };
+                balicekKaretSpatny.onmouseout=function(){
+                    flashinfo.innerHTML="";
+                    document.getElementById("spatny").style.border="rgb(160,22,22) solid 10px";
+                };
+                document.getElementById("vyber").onmouseover=function(){
+                    flashinfo.innerHTML="Möchtest du das Kartendeck wiederholen?";
+                    document.getElementById("vyber").style.border="rgb(100, 100, 100) solid 10px";
+                }
+                document.getElementById("vyber").onmouseout=function(){
+                    flashinfo.innerHTML="";
+                    document.getElementById("vyber").style.border="rgb(126, 126, 126) solid 10px";
+                }
+                document.getElementById("vyber").setAttribute("onclick","FlashcardsPreparing()");
+                dragElement(balicekKaretSpatny);
+                balicekKaretSpatny.style.zIndex="2";
             };
-            balicekKaretSpatny.onmouseout=function(){
-                document.getElementById("flashinfo").innerHTML="";
-                document.getElementById("spatny").style.opacity="1";
-            };
-            document.getElementById("V").onmouseover=function(){
-                document.getElementById("flashinfo").innerHTML="Möchtest du das Kartendeck wiederholen?";
-                document.getElementById("V").style.opacity="0.5";
-            }
-            document.getElementById("V").onmouseout=function(){
-                document.getElementById("flashinfo").innerHTML="";
-                document.getElementById("V").style.opacity="1";
-            }
-            document.getElementById("V").setAttribute("onclick","FlashcardsPreparing()");
-            dragElement(balicekKaretSpatny);
-        };
         })
-        let config = { attributes: true, childList: true, characterData: true };
         kontrola.observe(balicekKaretVyber,config);
     
         
@@ -511,9 +512,11 @@
             removedraggable(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
             switch (smer){
             case "left":
+                WordsToTest++;
                 balicekKaretSpatny.appendChild(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
                 break;
             case "right":
+                WordsToTest++;
                 balicekKaretDobry.appendChild(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
                 break;
         }
@@ -524,6 +527,27 @@
         elmnt.onmousemove="";
         elmnt.onmouseup="";
     }
+    function dragRemove(elmnt){
+        elmnt.onmouseup=null;
+        elmnt.onmouseover=null;
+        elmnt.onmouseout=null;
+        elmnt.onmouseup=null;
+        elmnt.onmousemove=null;
+        elmnt.onmousedown=null;
+        elmnt.onclick=null;
+        flashinfo.innerHTML="";
+    }
+
+    let flashinfokontrola = new MutationObserver(function(){
+        if (flashinfo.innerHTML==""){
+            flashinfo.style.visibility="hidden";
+        }
+        else {
+            flashinfo.style.visibility="visible";
+        }
+    }) 
+    flashinfokontrola.observe(flashinfo,config);
+
     //Make the DIV element draggable:
     function dragElement(elmnt) {
         let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0,x=0,y=0;
@@ -548,30 +572,39 @@
             pos3 = e.clientX;
             pos4 = e.clientY;
 
-            x=elmnt.offsetTop- pos2
-            y=elmnt.offsetLeft - pos1
+            x=elmnt.offsetTop- pos2;
+            y=elmnt.offsetLeft - pos1;
             // set the element's new position:
             elmnt.style.top = x + "px";
             elmnt.style.left = y + "px";
         }
         function closeDragElement() {
-            console.log(elmnt.id);
             /* stop moving when mouse button is released:*/
             if(elmnt.classList.contains("karta")){
                 if (y<-75){
                     removedraggable(elmnt);
-                    balicekKaretSpatny.appendChild(elmnt);
+                    movecard("left");
                 }else if(y>175){
                     removedraggable(elmnt);
-                    balicekKaretDobry.appendChild(elmnt);
+                    movecard("right");
                 }
             }
             else if(elmnt.id=="SPATNY"){
-                if(y>100 & y<300){
-                    for(let i=0;i<balicekKaretSpatny.children.length;i++){
-                        balicekKaretVyber.appendChild(balicekKaretSpatny.children[i]);
+                if(y>100 & y<400){
+                    let x = balicekKaretSpatny.children.length;
+                    for(let i=0;i<x;i++){
+                        dragElement(balicekKaretSpatny.children[0]);
+                        balicekKaretSpatny.children[0].querySelectorAll(".front")[0].style.transform="rotateY(180deg)";
+                        balicekKaretSpatny.children[0].querySelectorAll(".back")[0].style.transform="rotateY(0deg)";
+                        balicekKaretVyber.appendChild(balicekKaretSpatny.children[0]);
                     }
+                    balicekKaretSpatny.style.zIndex="0";
                     balicekKaretSpatny.innerHTML="";
+                    dragRemove(balicekKaretSpatny);
+                    balicekKaretVyber.onclick=null;
+                    dragRemove(document.getElementById("vyber"));
+                    WordsToTestTotal=balicekKaretVyber.children.length;
+                    WordsToTest=0;
                 }
             }
             

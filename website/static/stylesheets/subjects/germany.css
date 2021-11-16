@@ -84,7 +84,8 @@
     position:absolute;
     box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
     padding:30px;
-    top:5vh;
+    top:50%;
+    transform: translate(0%,-50%);
 }
 .w{
     display:none;
@@ -291,7 +292,7 @@
     height:300px;
     bottom:70px;
     padding:10px;
-    border: solid black 1px;
+    z-index:1;
 }
 .balicek{
     width:220px;
@@ -301,13 +302,16 @@
     border-radius: 10px;
     z-index:1;
     position: absolute;
-    transition: all 0.1s ease;
 }
-
+#SPATNY,#DOBRY{
+    position: absolute;
+    height:100%;
+    width:100%;
+}
 #spatny{
-    background-color: rgb(161, 35, 35);
+    background-color: rgb(209,36,36);
     left:10px;
-    border:rgb(141, 23, 23) solid 10px;
+    border:rgb(160,22,22) solid 10px;
 }
 #dobry{
     background-color: rgb(13, 161, 75);
@@ -320,7 +324,16 @@
     height:100%;
 }
 
-
+#bspopis{
+    position:absolute;
+    bottom:40px;
+    left:95px;
+}
+#bdpopis{
+    position:absolute;
+    bottom:40px;
+    right:95px;
+}
 .KartaText{
     top:75px;
     position: absolute;
@@ -332,7 +345,6 @@
     width:200px;
     height:250px;
     position: absolute;
-    z-index:4;
     perspective: 150rem;
 }
 .card-side{
@@ -342,7 +354,7 @@
     height:100%;
     width:100%;
     transition: all 0.8s ease;
-    backface-visibility: hidden;
+    backface-visibility:hidden;
 }
 .front{
     transform: rotateY(-180deg);
@@ -360,20 +372,24 @@
     font-size: 42px;
     bottom:0px;
     text-align: center;
+    z-index:0;
 }
 #flashinfo{
-    width:100%;
+    width:fit-content;
     text-align: center;
     position: absolute;
     top:110px;
-    font-size: 24px;
-}
-#repete{
-    position: absolute;
-    width: 130px;
-    height:130px;
-    top:50px;
     left:50%;
-    transform: translate(-50%,0%);
-    z-index:2;
+    transform:translate(-50%,0%);
+    font-size: 24px;
+    border:solid rgb(78, 78, 78) 5px;
+    border-radius: 10px;
+    padding:3px;
+    background-color: white;
+    visibility: hidden;
+}
+.repete{
+    background-size:130px 130px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
