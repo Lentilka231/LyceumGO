@@ -207,7 +207,7 @@
                 <p id="czX" class="czadani">Spoj německé slovíčko s českým.</p>
             </div>
             <div class="ConnectingTable">
-                <section>
+                <section id="GermanSection">
                     <div class="GermanWord" id="GW1"></div>
                     <div class="GermanWord" id="GW2"></div>
                     <div class="GermanWord" id="GW3"></div>
@@ -405,7 +405,7 @@
     let WordsToTestTotal;
     let WordsToTest;
     let TenWords=[];
-    dragElement(document.getElementById("germanword"))
+    let WhichBox;
     //ABCD hover mod
     for (let i=0;i<4;i++){
         ABCDanswer[i].addEventListener("mouseover",function (event){
@@ -599,13 +599,20 @@
     function newquestion(){
         if(TypeOfTest=="Connecting"){
             let alreadyUsedNumbers =[];
+            document.getElementById("GermanSection").innerHTML="";
             for(let i=1;i<11;i++){
                 do{
                     a=Math.floor(Math.random()*CurrentVocabulary[0]);
                 }
                 while(alreadyUsedNumbers.includes(a));
+
+                let blok = document.createElement("div");
+                blok.setAttribute("class","GermanWord");
+                blok.setAttribute("id","GW"+i);
+                blok.appendChild(document.createTextNode(CurrentVocabulary[1][a]));
+                document.getElementById("GermanSection").appendChild(blok);
+                dragElement(blok)
                 document.getElementById("CZW"+i).innerHTML=CurrentVocabulary[2][a];
-                document.getElementById("GW"+i).innerHTML=CurrentVocabulary[1][a];
                 alreadyUsedNumbers.push(a);
             }
         }
@@ -850,7 +857,6 @@
     function dragElement(elmnt) {
         let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0,x=0,y=0;
         elmnt.onmousedown = dragMouseDown;
-
         function dragMouseDown(e) {
             e = e || window.event;
             e.preventDefault();
@@ -869,13 +875,11 @@
             pos2 = pos4 - e.clientY;
             pos3 = e.clientX;
             pos4 = e.clientY;
-
             x=elmnt.offsetTop- pos2;
             y=elmnt.offsetLeft - pos1;
             // set the element's new position:
             elmnt.style.top = x + "px";
             elmnt.style.left = y + "px";
-
         }
         function closeDragElement() {
             /* stop moving when mouse button is released:*/
@@ -906,7 +910,7 @@
                     WordsToTest=0;
                 }
             }
-            
+
             elmnt.style.top="0px";
             elmnt.style.left="0px";
             document.onmouseup = null;
@@ -914,15 +918,15 @@
             if (TypeOfTest=="Connecting"){
                 elmnt.style.top=null;
                 elmnt.style.left=null;
-                console.log(y);
-                if (y>273 && y<546){
-                    let t;
-                    document.getElementById("PTL"+t).appendChild(elmnt);
+                if(WhichBox){
+                    document.getElementById("PTL"+WhichBox).appendChild(elmnt);
                 }
+
             }
         }
     }
     //------------------------------------------------------------
+    
 
 
 </script>
