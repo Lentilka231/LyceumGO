@@ -179,13 +179,13 @@
 
             <div id="table"class="centralizer">
                 <div class="centralizer balicek repete"id="vyber" style="z-index:3;background-image: url(/static/images/repete.png)">
-                    <div id="VYBER"></div>
+                    <div class="decks" id="VYBER"></div>
                 </div>
-                <div class="balicek" id="spatny" ><div id="SPATNY"></div></div>
-                <div class="balicek" id="dobry"><div id="DOBRY"></div></div>
+                <div class="balicek" id="spatny" ><div class="decks" id="SPATNY"></div></div>
+                <div class="balicek" id="dobry"><div class="decks" id="DOBRY"></div></div>
                 
                 <!--Jak vypadá karta
-                    <div class="karta ">
+                    <div class="karta" draggable="true" >
                         <div class="textcentralizer">
                             <div class="front">
                                 <p class="KartaText">das Deutsch</p>
@@ -406,6 +406,9 @@
     let WordsToTest;
     let TenWords=[];
     let WhichBox;
+    let z=0;
+    let draggedItem = null;
+
     //ABCD hover mod
     for (let i=0;i<4;i++){
         ABCDanswer[i].addEventListener("mouseover",function (event){
@@ -611,7 +614,7 @@
                 blok.setAttribute("id","GW"+i);
                 blok.appendChild(document.createTextNode(CurrentVocabulary[1][a]));
                 document.getElementById("GermanSection").appendChild(blok);
-                dragElement(blok)
+                // dragElement(blok)
                 document.getElementById("CZW"+i).innerHTML=CurrentVocabulary[2][a];
                 alreadyUsedNumbers.push(a);
             }
@@ -724,13 +727,14 @@
     const config = { attributes: true, childList: true, characterData: true };
     //Zde se připravuje balíček karet
     function FlashcardsPreparing(){
+        removeDrag();
         WordsToTestTotal=CurrentVocabulary[0]
         WordsToTest=0;
         balicekKaretSpatny.innerHTML="";
         balicekKaretDobry.innerHTML="";
         balicekKaretVyber.innerHTML="";
-        dragRemove(balicekKaretSpatny);
-        dragRemove(document.getElementById("vyber"));
+        // dragRemove(balicekKaretSpatny);
+        // dragRemove(document.getElementById("vyber"));
         flashinfo.innerHTML="";
         for(let i=0;i<CurrentVocabulary[0];i++){
             let karta = document.createElement("div");
@@ -744,12 +748,13 @@
             karta.appendChild(centralizer);
             
             karta.setAttribute("onclick","rotatecard()");
+            karta.setAttribute("draggable","true");
 
             textf.setAttribute("class","KartaText");
             textf.appendChild(document.createTextNode(CurrentVocabulary[1][i]));
             textb.setAttribute("class","KartaText");
             textb.appendChild(document.createTextNode(CurrentVocabulary[2][i]));
-
+            
             front.setAttribute("class","card-side front");
             back.setAttribute("class","card-side back");
             front.appendChild(textf);
@@ -760,8 +765,10 @@
             karta.setAttribute("onclick","rotatecard(this)");
             karta.setAttribute("id",i);
             balicekKaretVyber.appendChild(karta);
-            dragElement(karta);
         };
+
+        enableDrag();
+
         vyhodnoceni.innerHTML="0/"+WordsToTestTotal;
         
         let kontrola = new MutationObserver(function(mutations){
@@ -790,8 +797,7 @@
                     document.getElementById("vyber").style.cursor="auto";
                 }
                 document.getElementById("vyber").setAttribute("onclick","FlashcardsPreparing()");
-                dragElement(balicekKaretSpatny);
-                document.getElementById("spatny").style.zIndex="4";
+                balicekKaretSpatny.setAttribute("draggable","true");
             };
         })
         kontrola.observe(balicekKaretVyber,config);
@@ -833,16 +839,7 @@
         elmnt.onmouseup="";
     }
     //odebírá schopnosti se pohybovat měnit barvy atd...
-    function dragRemove(elmnt){
-        elmnt.onmouseup=null;
-        elmnt.onmouseover=null;
-        elmnt.onmouseout=null;
-        elmnt.onmouseup=null;
-        elmnt.onmousemove=null;
-        elmnt.onmousedown=null;
-        elmnt.onclick=null;
-        flashinfo.innerHTML="";
-    }
+
     //hlídá jestli se má flashinfo zobrazit nebo ne
     let flashinfokontrola = new MutationObserver(function(){
         if (flashinfo.innerHTML==""){
@@ -853,81 +850,57 @@
         }
     }) 
     flashinfokontrola.observe(flashinfo,config);
-    //Make the DIV element draggable:
-    function dragElement(elmnt) {
-        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0,x=0,y=0;
-        elmnt.onmousedown = dragMouseDown;
-        function dragMouseDown(e) {
-            e = e || window.event;
-            e.preventDefault();
-            // get the mouse cursor position at startup:
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            // call a function whenever the cursor moves:
-            document.onmousemove = elementDrag;
-        }
-        function elementDrag(e) {
-            e = e || window.event;
-            e.preventDefault();
-            // calculate the new cursor position:
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            x=elmnt.offsetTop- pos2;
-            y=elmnt.offsetLeft - pos1;
-            // set the element's new position:
-            elmnt.style.top = x + "px";
-            elmnt.style.left = y + "px";
-        }
-        function closeDragElement() {
-            /* stop moving when mouse button is released:*/
-            if(elmnt.classList.contains("karta")){
-                if (y<-75){
-                    removeDraggableToCard(elmnt);
-                    movecard("left");
-                }else if(y>175){
-                    removeDraggableToCard(elmnt);
-                    movecard("right");
-                }
-            }
-            else if(elmnt.id=="SPATNY"){
-                if(y>100 & y<400){
-                    let x = balicekKaretSpatny.children.length;
-                    for(let i=0;i<x;i++){
-                        dragElement(balicekKaretSpatny.children[0]);
-                        balicekKaretSpatny.children[0].querySelectorAll(".front")[0].style.transform="rotateY(180deg)";
-                        balicekKaretSpatny.children[0].querySelectorAll(".back")[0].style.transform="rotateY(0deg)";
-                        balicekKaretVyber.appendChild(balicekKaretSpatny.children[0]);
-                    }
-                    document.getElementById("spatny").style.zIndex="0";
-                    balicekKaretSpatny.innerHTML="";
-                    dragRemove(balicekKaretSpatny);
-                    balicekKaretVyber.onclick=null;
-                    dragRemove(document.getElementById("vyber"));
-                    WordsToTestTotal=balicekKaretVyber.children.length;
-                    WordsToTest=0;
-                }
-            }
-
-            elmnt.style.top="0px";
-            elmnt.style.left="0px";
-            document.onmouseup = null;
-            document.onmousemove = null;
-            if (TypeOfTest=="Connecting"){
-                elmnt.style.top=null;
-                elmnt.style.left=null;
-                if(WhichBox){
-                    document.getElementById("PTL"+WhichBox).appendChild(elmnt);
-                }
-
+    //------------------------------------------------------------
+    function drags(){
+        let item= this
+        draggedItem =item;
+        setTimeout(function () {
+            item.style.display = 'none';
+        }, 0)
+    }
+    function drage(){
+        setTimeout(function () {
+            draggedItem.style.display = 'block';
+            draggedItem = null;
+        }, 0);
+    }
+    function pD(e){
+        e.preventDefault();
+    }
+    function drop(){
+        this.append(draggedItem);
+    }
+    function enableDrag(){
+        const list_items = document.querySelectorAll('.karta');
+        const lists = document.querySelectorAll('.decks');
+        for (let i = 0; i < list_items.length; i++) {
+            const item = list_items[i];
+            item.addEventListener('dragstart',drags);
+            item.addEventListener('dragend',drage)
+            for (let j = 0; j < lists.length; j ++) {
+                const list = lists[j];
+                list.addEventListener('dragover',pD);
+                list.addEventListener('dragenter',pD);
+                list.addEventListener('drop',drop);
             }
         }
     }
-    //------------------------------------------------------------
-    
-
+    function removeDrag(){
+        let cards = document.querySelectorAll('.karta');
+        let deck = document.querySelectorAll('.decks');;
+        for (let i = 0; i < cards.length; i++) {
+            const item = cards[i];
+            item.removeEventListener('dragstart',drags);
+            item.removeEventListener('dragend',drage);
+            for (let j = 0; j < deck.length; j ++) {
+                const list = deck[j];
+                list.removeEventListener('dragover',pD);
+                list.removeEventListener('dragenter',pD);
+                list.removeEventListener('drop',drop);
+            }
+        }
+        console.log(cards);
+    }
 
 </script>
 {%endblock%}
