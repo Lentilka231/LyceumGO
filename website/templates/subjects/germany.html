@@ -796,9 +796,9 @@
                     document.getElementById("vyber").style.cursor="auto";
                 }
                 document.getElementById("vyber").setAttribute("onclick","FlashcardsPreparing()");
-                balicekKaretSpatny.setAttribute("draggable","true");
                 removeDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
-                enableDrag(balicekKaretSpatny,balicekKaretVyber);
+                enableDrag([balicekKaretSpatny],[balicekKaretVyber]);
+                enableDrag(balicekKaretVyber.children,document.querySelectorAll('.decks'))
             };
         })
         kontrola.observe(balicekKaretVyber,config);
@@ -869,40 +869,52 @@
         e.preventDefault();
     }
     function drop(){
-        this.append(draggedItem);
+        if (draggedItem==balicekKaretSpatny){
+            console.log(balicekKaretSpatny.children);
+            let x = balicekKaretSpatny.children.length;
+            for(let i=0;i<x;i++){
+                this.append(balicekKaretSpatny.children[0]);
+            }
+            balicekKaretSpatny.style.display="block";
+            removeDrag([balicekKaretSpatny],[balicekKaretVyber]);
+        }
+        else{
+            this.append(draggedItem);
+        }
         WordsToTest=balicekKaretVyber.children.length;
     }
     function enableDrag(ToDraw,PlaceToPut){
         let list_items = ToDraw;
-        let lists = PlaceToPut
+        let lists = PlaceToPut;
         for (let i = 0; i < list_items.length; i++) {
-            const item = list_items[i];
+            let item = list_items[i];
+            item.setAttribute("draggable","true");
             item.addEventListener('dragstart',drags);
-            item.addEventListener('dragend',drage)
+            item.addEventListener('dragend',drage);
             for (let j = 0; j < lists.length; j ++) {
-                const list = lists[j];
+                let list = lists[j];
                 list.addEventListener('dragover',pD);
                 list.addEventListener('dragenter',pD);
                 list.addEventListener('drop',drop);
+                
             }
         }
     }
     function removeDrag(ToDraw,PlaceToPut){
         let cards = ToDraw;
         let deck = PlaceToPut;
-        console.log(cards)
         for (let i = 0; i < cards.length; i++) {
-            const item = cards[i];
+            let item = cards[i];
+            item.setAttribute("draggable","false");
             item.removeEventListener('dragstart',drags);
             item.removeEventListener('dragend',drage);
             for (let j = 0; j < deck.length; j ++) {
-                const list = deck[j];
+                let list = deck[j];
                 list.removeEventListener('dragover',pD);
                 list.removeEventListener('dragenter',pD);
                 list.removeEventListener('drop',drop);
             }
         }
-        console.log(cards);
     }
 </script>
 {%endblock%}
