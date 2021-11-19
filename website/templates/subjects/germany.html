@@ -402,7 +402,6 @@
     let CurrentVocabulary;
     let ABCDanswer=document.getElementsByClassName("Felix");
     let dvapokusy;
-    let WordsToTestTotal;
     let WordsToTest;
     let TenWords=[];
     let WhichBox;
@@ -727,12 +726,12 @@
     const config = { attributes: true, childList: true, characterData: true };
     //Zde se připravuje balíček karet
     function FlashcardsPreparing(){
-        removeDrag();
-        WordsToTestTotal=CurrentVocabulary[0]
-        WordsToTest=0;
+        removeDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
+        WordsToTest=CurrentVocabulary[0];
         balicekKaretSpatny.innerHTML="";
         balicekKaretDobry.innerHTML="";
         balicekKaretVyber.innerHTML="";
+        balicekKaretVyber.onclick=null;
         // dragRemove(balicekKaretSpatny);
         // dragRemove(document.getElementById("vyber"));
         flashinfo.innerHTML="";
@@ -767,12 +766,12 @@
             balicekKaretVyber.appendChild(karta);
         };
 
-        enableDrag();
+        enableDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
 
-        vyhodnoceni.innerHTML="0/"+WordsToTestTotal;
+        vyhodnoceni.innerHTML=WordsToTest;
         
         let kontrola = new MutationObserver(function(mutations){
-            vyhodnoceni.innerHTML=WordsToTest+"/"+WordsToTestTotal;
+            vyhodnoceni.innerHTML=WordsToTest;
             if (balicekKaretVyber.children.length==0){
                 vyhodnoceni.innerHTML=Math.round(balicekKaretDobry.children.length/CurrentVocabulary[0]*100)+"%";
                 balicekKaretSpatny.onmouseover=function(){
@@ -798,6 +797,8 @@
                 }
                 document.getElementById("vyber").setAttribute("onclick","FlashcardsPreparing()");
                 balicekKaretSpatny.setAttribute("draggable","true");
+                removeDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
+                enableDrag(balicekKaretSpatny,balicekKaretVyber);
             };
         })
         kontrola.observe(balicekKaretVyber,config);
@@ -822,11 +823,11 @@
             removeDraggableToCard(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
             switch (smer){
             case "left":
-                WordsToTest++;
+                WordsToTest--;
                 balicekKaretSpatny.appendChild(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
                 break;
             case "right":
-                WordsToTest++;
+                WordsToTest--;
                 balicekKaretDobry.appendChild(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
                 break;
         }
@@ -869,10 +870,11 @@
     }
     function drop(){
         this.append(draggedItem);
+        WordsToTest=balicekKaretVyber.children.length;
     }
-    function enableDrag(){
-        const list_items = document.querySelectorAll('.karta');
-        const lists = document.querySelectorAll('.decks');
+    function enableDrag(ToDraw,PlaceToPut){
+        let list_items = ToDraw;
+        let lists = PlaceToPut
         for (let i = 0; i < list_items.length; i++) {
             const item = list_items[i];
             item.addEventListener('dragstart',drags);
@@ -885,9 +887,10 @@
             }
         }
     }
-    function removeDrag(){
-        let cards = document.querySelectorAll('.karta');
-        let deck = document.querySelectorAll('.decks');;
+    function removeDrag(ToDraw,PlaceToPut){
+        let cards = ToDraw;
+        let deck = PlaceToPut;
+        console.log(cards)
         for (let i = 0; i < cards.length; i++) {
             const item = cards[i];
             item.removeEventListener('dragstart',drags);
@@ -901,6 +904,5 @@
         }
         console.log(cards);
     }
-
 </script>
 {%endblock%}
