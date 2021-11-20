@@ -129,6 +129,7 @@
 </div>
 
 <!------------------------------------------------------------------------------------------------------------>
+<div id="clickDisabler">
 <div id="TestDiv">
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
     <div id="TDContent">
@@ -318,6 +319,7 @@
     </div>
 </div>
 </div>
+</div>
 <script>
     function sleep(ms){
         return new Promise(resolve => setTimeout(resolve,ms))
@@ -401,12 +403,15 @@
     let CanUseArrows=false;
     let CurrentVocabulary;
     let ABCDanswer=document.getElementsByClassName("Felix");
+    const substituteForInput=document.getElementById("SubstituteForInput");
+    const TextInput = document.getElementById("X");
+    const BorderForTextInput = document.getElementById("XP"); 
     let dvapokusy;
-    let WordsToTest;
     let TenWords=[];
     let WhichBox;
     let z=0;
     let draggedItem = null;
+    const config = { attributes: true, childList: true, characterData: true };
 
     //ABCD hover mod
     for (let i=0;i<4;i++){
@@ -425,13 +430,13 @@
     //zobrazuje okno pro teorie, texty, otázky, ...
     function visibilator(lekce,typ,ukol){
         CanUseEsc=true;
-        $("#TestDiv").show();
+        $("#clickDisabler").show();
         if (typ=="w"){
             CurrentVocabulary=NJ["lekce"+lekce]["words"][ukol];
             slovicka=""
             document.getElementById("slovnicek").innerHTML="<tr><th>id</th><th>německy</th><th>česky</th></tr>";
             for(let i=0;i<CurrentVocabulary[0];i++){
-                slovicka+="<tr><td>"+(i+1)+"</td><td>"+CurrentVocabulary[1][i]+"</td><td>"+CurrentVocabulary[2][i]+"</td></tr>";
+                slovicka+="<tr><td>"+(i+1)+"</td><td>"+CurrentVocabulary[2][i]+"</td><td>"+CurrentVocabulary[1][i]+"</td></tr>";
             };
             document.getElementById("slovnicek").innerHTML+=slovicka;
             document.getElementById("strana").innerHTML=ukol;
@@ -443,19 +448,19 @@
     };
     // skovává okno pro teorie, texty, otázky, ...
     function hider(){
-        $("#TestDiv").hide();
+        $("#clickDisabler").hide();
         $("#TDContent").children().hide();
         $(".task").hide();
         $(".congratulation").hide();
         balicekKaretDobry.innerHTML="";
         balicekKaretSpatny.innerHTML="";
         balicekKaretVyber.innerHTML="";
-        vyhodnoceni.innerHTML="";
         for(let i=0;i<4;i++){
             ABCDanswer[i].style.border="solid 3px rgb(189, 213, 234)";
         }
-        document.getElementById("XP").style.border="none";
-        document.getElementById("X").value="";
+        substituteForInput.innerHTML="";
+        BorderForTextInput.style.border="none";
+        TextInput.value="";
         CanUseEsc=false;
         CanUseEnter=false;
         CanUseArrows=false;
@@ -517,32 +522,28 @@
                 }
                 break;
             case "X":
-                if (SetOfQuestions[MomentalQuestion].a==document.getElementById("X").value){
+                if (SetOfQuestions[MomentalQuestion].a==TextInput.value){
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                    document.getElementById("XP").style.border=spravnabarva;
+                    BorderForTextInput.style.border=spravnabarva;
 
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(500);
                     }
-                    document.getElementById("XP").style.border="none";
-                    document.getElementById("X").value="";
+                    BorderForTextInput.style.border="none";
+                    TextInput.value="";
                     newquestion()
                 }
                 else{
-                    document.getElementById("XP").style.border=spatnabarva;
+                    BorderForTextInput.style.border=spatnabarva;
                     if(dvapokusy==0){
                         Success[MomentalQuestion]=0;
-                        document.getElementById("SubstituteForInput").innerHTML=SetOfQuestions[MomentalQuestion].a;
-                        $("#SubstituteForInput").show();
-                        $("#XP").hide();
+                        substituteForInput.innerHTML=SetOfQuestions[MomentalQuestion].a;
                     }
                     else if (dvapokusy==-1) {
-                        document.getElementById("SubstituteForInput").innerHTML="";
-                        $("#SubstituteForInput").hide();
-                        $("#XP").show();
+                        substituteForInput.innerHTML="";
                         UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                        document.getElementById("XP").style.border="none";
-                        document.getElementById("X").value="";
+                        BorderForTextInput.style.border="none";
+                        TextInput.value="";
                         newquestion();
                     }
                     dvapokusy--;
@@ -554,42 +555,38 @@
                 let slovicka;
                 let itcanbe=false;
                 if(TypeOfTest=="NtoCZ"){
-                    n=1;
+                    n=2;
                 }else{
-                    n=2
+                    n=1
                 }
-                slovicka=CurrentVocabulary[n][MomentalQuestion].replace("/\s/g", '').split(",")
+                slovicka=CurrentVocabulary[n][MomentalQuestion].replace(" ", '').split(",");
                 for(let i=0;i<slovicka.length;i++){
-                    if (slovicka[i]==document.getElementById("X").value){
+                    if (slovicka[i]==TextInput.value){
                         itcanbe=true;
                         break;
                     }
                 }
                 if(itcanbe){
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                    document.getElementById("XP").style.border=spravnabarva;
+                    BorderForTextInput.style.border=spravnabarva;
 
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(500);
                     }
-                    document.getElementById("XP").style.border="none";
-                    document.getElementById("X").value="";
+                    BorderForTextInput.style.border="none";
+                    TextInput.value="";
                     newquestion();
                 }
                 else{
-                    document.getElementById("XP").style.border=spatnabarva;
+                    BorderForTextInput.style.border=spatnabarva;
                     if(dvapokusy==0){
                         Success[MomentalQuestion]=0;
-                        document.getElementById("SubstituteForInput").innerHTML=CurrentVocabulary[n][MomentalQuestion];
-                        $("#SubstituteForInput").show();
-                        $("#XP").hide();
+                        substituteForInput.innerHTML=CurrentVocabulary[n][MomentalQuestion];
                     }else if(dvapokusy==-1){
-                        document.getElementById("SubstituteForInput").innerHTML="";
-                        $("#SubstituteForInput").hide();
-                        $("#XP").show();
+                        substituteForInput.innerHTML="";
                         UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                        document.getElementById("XP").style.border="none";
-                        document.getElementById("X").value="";
+                        BorderForTextInput.style.border="none";
+                        TextInput.value="";
                         newquestion();
                     }
                     dvapokusy--;
@@ -611,10 +608,10 @@
                 let blok = document.createElement("div");
                 blok.setAttribute("class","GermanWord");
                 blok.setAttribute("id","GW"+i);
-                blok.appendChild(document.createTextNode(CurrentVocabulary[1][a]));
+                blok.appendChild(document.createTextNode(CurrentVocabulary[2][a]));
                 document.getElementById("GermanSection").appendChild(blok);
                 // dragElement(blok)
-                document.getElementById("CZW"+i).innerHTML=CurrentVocabulary[2][a];
+                document.getElementById("CZW"+i).innerHTML=CurrentVocabulary[1][a];
                 alreadyUsedNumbers.push(a);
             }
         }
@@ -647,30 +644,30 @@
                     };
                     break;
                 case "X":
-                    document.getElementById("X").focus();
+                    TextInput.focus();
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
                     document.getElementById("czX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
                     document.getElementById("FrantaX").innerHTML=SetOfQuestions[a]["q"];
                     break;
                 case "CZtoN":
-                    document.getElementById("X").focus();
+                    TextInput.focus();
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML="Schreibst du die deutsche Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš německou verzi slovíčka.";
-                    document.getElementById("FrantaX").innerHTML=CurrentVocabulary[1][MomentalQuestion];
+                    document.getElementById("FrantaX").innerHTML=CurrentVocabulary[2][MomentalQuestion];
                     break;
                 case "NtoCZ":
-                    document.getElementById("X").focus();
+                    TextInput.focus();
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML="Schreibst du die tschechische Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš českou verzi slovíčka.";
-                    document.getElementById("FrantaX").innerHTML=CurrentVocabulary[2][MomentalQuestion];
+                    document.getElementById("FrantaX").innerHTML=CurrentVocabulary[1][MomentalQuestion];
                     break;
             };
         }
         else{
-            endOfTest();
+            endoftest();
         };
     };
     // ukončení testu, gratulace
@@ -680,13 +677,25 @@
             NumberForCalculationOfSuccess+=Success[i];
         };
         document.getElementById("procenta").innerHTML=Math.round(NumberForCalculationOfSuccess/Success.length*100)+"%";
-        $("congratulation").show();
+        $(".congratulation").show();
         CanUseArrows=false;
         CanUseEnter=false;
     }
-    // Na zmáčknutí určitých kláves
+    // hlídá, jestli má zobrazit výsledek pro TextInput nebo ne 
+    let SubstituteForInputKontrol = new MutationObserver(function(){
+        if (substituteForInput.innerHTML!=""){
+            BorderForTextInput.style.display="none";
+            substituteForInput.style.display="block";
+        }
+        else{
+            substituteForInput.style.display="none";
+            BorderForTextInput.style.display="block";
+        };
+    });
+    SubstituteForInputKontrol.observe(substituteForInput,config);
+    // na zmáčknutí určitých kláves
     document.addEventListener("keydown",function(e){
-        if(e.key==="Enter" & CanUseEnter){
+        if(e.key==="Enter" && CanUseEnter){
             switch (TypeOfTest){
             case "FlashCards":
                 rotatecard(balicekKaretVyber.children[balicekKaretVyber.children.length-1])
@@ -695,39 +704,41 @@
             case "NtoCZ":
             case "X":
                 if (dvapokusy==-1){
-                    document.getElementById("SubstituteForInput").innerHTML="";
-                    $("#SubstituteForInput").hide();
-                    $("#XP").show();
+                    substituteForInput.innerHTML="";
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                    document.getElementById("XP").style.border="none";
-                    document.getElementById("X").value="";
+                    BorderForTextInput.style.border="none";
+                    TextInput.value="";
                     newquestion();
                 }else if (dvapokusy==1 || dvapokusy==0){
                     checkanswer("X");
                 }
             }
         }
-        else if (e.key==="Escape" & CanUseEsc){
+        else if (e.key==="Escape" && CanUseEsc){
             hider();
         }
-        else if (e.key==="ArrowLeft"){
-            movecard("left");
+        else if (e.key==="ArrowLeft" && CanUseArrows){
+            if(balicekKaretVyber.firstChild){
+                balicekKaretSpatny.appendChild(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
+            }
         }
-        else if (e.key==="ArrowRight"){
-            movecard("right");
+        else if (e.key==="ArrowRight" && CanUseArrows){
+            if(balicekKaretVyber.firstChild){
+                balicekKaretDobry.appendChild(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
+            }
         };
     })
+    //---------------------------------------------------------------------------
     // Flashcards ---------------------------------------------------------------
     const balicekKaretVyber = document.getElementById("VYBER");
     const balicekKaretSpatny = document.getElementById("SPATNY");
     const balicekKaretDobry = document.getElementById("DOBRY");
     const vyhodnoceni = document.getElementById("vyhodnoceni");
     const flashinfo = document.getElementById("flashinfo")
-    const config = { attributes: true, childList: true, characterData: true };
-    //Zde se připravuje balíček karet
+    // zde se připravuje balíček karet
     function FlashcardsPreparing(){
+        resetDecks();
         removeDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
-        WordsToTest=CurrentVocabulary[0];
         balicekKaretSpatny.innerHTML="";
         balicekKaretDobry.innerHTML="";
         balicekKaretVyber.innerHTML="";
@@ -750,9 +761,9 @@
             karta.setAttribute("draggable","true");
 
             textf.setAttribute("class","KartaText");
-            textf.appendChild(document.createTextNode(CurrentVocabulary[1][i]));
+            textf.appendChild(document.createTextNode(CurrentVocabulary[2][i]));
             textb.setAttribute("class","KartaText");
-            textb.appendChild(document.createTextNode(CurrentVocabulary[2][i]));
+            textb.appendChild(document.createTextNode(CurrentVocabulary[1][i]));
             
             front.setAttribute("class","card-side front");
             back.setAttribute("class","card-side back");
@@ -768,10 +779,8 @@
 
         enableDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
 
-        vyhodnoceni.innerHTML=WordsToTest;
         
         let kontrola = new MutationObserver(function(mutations){
-            vyhodnoceni.innerHTML=WordsToTest;
             if (balicekKaretVyber.children.length==0){
                 vyhodnoceni.innerHTML=Math.round(balicekKaretDobry.children.length/CurrentVocabulary[0]*100)+"%";
                 balicekKaretSpatny.onmouseover=function(){
@@ -805,7 +814,7 @@
     
         
     };
-    //funkce pro manipulaci s kartama pomocí klávesnice
+    // otáčí kartu o 180°
     function rotatecard(t){
         let front = t.children[0].children[0];
         let back = t.children[0].children[1];
@@ -817,30 +826,14 @@
             back.style.transform="rotateY(180deg)"
         }
     }
-    //přesouvá karty z balíčku do červeného a zeleného balíčku
-    function movecard(smer){
-        if(balicekKaretVyber.firstChild){
-            removeDraggableToCard(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
-            switch (smer){
-            case "left":
-                WordsToTest--;
-                balicekKaretSpatny.appendChild(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
-                break;
-            case "right":
-                WordsToTest--;
-                balicekKaretDobry.appendChild(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
-                break;
-        }
-        }
+    // obnovuje výchozí nastavení balíčků
+    function resetDecks(){
+        balicekKaretSpatny.onmouseover="";
+        balicekKaretSpatny.onmouseout="";
+        document.getElementById("vyber").onmouseover="";
+        document.getElementById("vyber").onmouseout="";
+        document.getElementById("vyber").style.border="rgb(126, 126, 126) solid 10px";
     }
-    //odebírá možnost "kartám" se pohybovat
-    function removeDraggableToCard(elmnt){
-        elmnt.onmousedown="";
-        elmnt.onmousemove="";
-        elmnt.onmouseup="";
-    }
-    //odebírá schopnosti se pohybovat měnit barvy atd...
-
     //hlídá jestli se má flashinfo zobrazit nebo ne
     let flashinfokontrola = new MutationObserver(function(){
         if (flashinfo.innerHTML==""){
@@ -848,10 +841,16 @@
         }
         else {
             flashinfo.style.visibility="visible";
-        }
-    }) 
+        };
+    }) ;
     flashinfokontrola.observe(flashinfo,config);
+    //hlídá počet karet v balíčku "výběr"
+    let CardsLeft = new MutationObserver(function(){
+        vyhodnoceni.innerHTML=balicekKaretVyber.children.length;
+    });
+    CardsLeft.observe(balicekKaretVyber,config);
     //------------------------------------------------------------
+    //Draggable stuff
     function drags(){
         let item= this
         draggedItem =item;
@@ -870,18 +869,17 @@
     }
     function drop(){
         if (draggedItem==balicekKaretSpatny){
-            console.log(balicekKaretSpatny.children);
             let x = balicekKaretSpatny.children.length;
             for(let i=0;i<x;i++){
                 this.append(balicekKaretSpatny.children[0]);
             }
             balicekKaretSpatny.style.display="block";
+            resetDecks();
             removeDrag([balicekKaretSpatny],[balicekKaretVyber]);
         }
         else{
             this.append(draggedItem);
         }
-        WordsToTest=balicekKaretVyber.children.length;
     }
     function enableDrag(ToDraw,PlaceToPut){
         let list_items = ToDraw;
