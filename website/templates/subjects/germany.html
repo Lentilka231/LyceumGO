@@ -150,7 +150,7 @@
                 </div>
             </div>
         </div>
-        <div class="task X">
+        <div class="task TextInput">
             <div class="questions">
                 <b id="nzX" class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
                 <p id="czX" class="czadani">Napiš (správnou) odpověď.</p>
@@ -160,14 +160,14 @@
                 
                 <div class="centralizer" style="bottom: 170px;">
                     <div id="XP">
-                        <input type="text" id="X" spellcheck="false">
+                        <input type="text" id="TextInput" spellcheck="false">
                     </div>
                     <div id="SubstituteForInput">
 
                     </div>
                 </div>
                 <div class="centralizer" style="bottom: 70px;">
-                    <button type="button" onclick="checkanswer('X')" id="kontrola" style="margin-top:50px;">Kontroll</button>
+                    <button type="button" onclick="checkanswer('TextInput')" id="kontrola" style="margin-top:50px;">Kontroll</button>
                 </div>
             </div>
         </div>
@@ -208,29 +208,29 @@
                 <p id="czX" class="czadani">Spoj německé slovíčko s českým.</p>
             </div>
             <div class="ConnectingTable">
-                <section id="GermanSection">
-                    <div class="GermanWord" id="GW1"></div>
-                    <div class="GermanWord" id="GW2"></div>
-                    <div class="GermanWord" id="GW3"></div>
-                    <div class="GermanWord" id="GW4"></div>
-                    <div class="GermanWord" id="GW5"></div>
-                    <div class="GermanWord" id="GW6"></div>
-                    <div class="GermanWord" id="GW7"></div>
-                    <div class="GermanWord" id="GW8"></div>
-                    <div class="GermanWord" id="GW9"></div>
-                    <div class="GermanWord" id="GW10"></div>
+                <section id="CzechSection">
+                    <div class="CzechWord" id="CZW1"></div>
+                    <div class="CzechWord" id="CZW2"></div>
+                    <div class="CzechWord" id="CZW3"></div>
+                    <div class="CzechWord" id="CZW4"></div>
+                    <div class="CzechWord" id="CZW5"></div>
+                    <div class="CzechWord" id="CZW6"></div>
+                    <div class="CzechWord" id="CZW7"></div>
+                    <div class="CzechWord" id="CZW8"></div>
+                    <div class="CzechWord" id="CZW9"></div>
+                    <div class="CzechWord" id="CZW10"></div>
                 </section>
                 <div class="GridConnecting">
-                    <div class="PlaceToLeft" id="PTL1"></div><div class="CzechWord"id="CZW1"></div>
-                    <div class="PlaceToLeft" id="PTL2"></div><div class="CzechWord"id="CZW2"></div>
-                    <div class="PlaceToLeft" id="PTL3"></div><div class="CzechWord"id="CZW3"></div>
-                    <div class="PlaceToLeft" id="PTL4"></div><div class="CzechWord"id="CZW4"></div>
-                    <div class="PlaceToLeft" id="PTL5"></div><div class="CzechWord"id="CZW5"></div>
-                    <div class="PlaceToLeft" id="PTL6"></div><div class="CzechWord"id="CZW6"></div>
-                    <div class="PlaceToLeft" id="PTL7"></div><div class="CzechWord"id="CZW7"></div>
-                    <div class="PlaceToLeft" id="PTL8"></div><div class="CzechWord"id="CZW8"></div>
-                    <div class="PlaceToLeft" id="PTL9"></div><div class="CzechWord"id="CZW9"></div>
-                    <div class="PlaceToLeft" id="PTL10"></div><div class="CzechWord"id="CZW10"></div>
+                    <div class="PlaceForWordCards" id="PTL1"></div><div class="GermanWord"id="GW1"></div>
+                    <div class="PlaceForWordCards" id="PTL2"></div><div class="GermanWord"id="GW2"></div>
+                    <div class="PlaceForWordCards" id="PTL3"></div><div class="GermanWord"id="GW3"></div>
+                    <div class="PlaceForWordCards" id="PTL4"></div><div class="GermanWord"id="GW4"></div>
+                    <div class="PlaceForWordCards" id="PTL5"></div><div class="GermanWord"id="GW5"></div>
+                    <div class="PlaceForWordCards" id="PTL6"></div><div class="GermanWord"id="GW6"></div>
+                    <div class="PlaceForWordCards" id="PTL7"></div><div class="GermanWord"id="GW7"></div>
+                    <div class="PlaceForWordCards" id="PTL8"></div><div class="GermanWord"id="GW8"></div>
+                    <div class="PlaceForWordCards" id="PTL9"></div><div class="GermanWord"id="GW9"></div>
+                    <div class="PlaceForWordCards" id="PTL10"></div><div class="GermanWord"id="GW10"></div>
 
                 </div>
             </div>
@@ -302,7 +302,7 @@
                 <p class="ntext"><b>Übungen:</b></p>
                 <p class="ctext">Cvičení:</p>
                 <div class="t easyt" onclick="teststart('ABCD','3','grammar','1')">leichter Test</div>
-                <div class="t hardt" onclick="teststart('X','3','grammar','1')">schwieriger Test</div>
+                <div class="t hardt" onclick="teststart('TextInput','3','grammar','1')">schwieriger Test</div>
             </div>
         </div>
         <div class="Teorie x3g2">asdasd</div>
@@ -396,7 +396,7 @@
     let MomentalQuestion;
     let TypeOfTest;
     let SetOfQuestions;
-    let Success =[];
+    let Success;
     let NumberForCalculationOfSuccess;
     let CanUseEnter=false;
     let CanUseEsc=false;
@@ -404,10 +404,10 @@
     let CurrentVocabulary;
     let ABCDanswer=document.getElementsByClassName("Felix");
     const substituteForInput=document.getElementById("SubstituteForInput");
-    const TextInput = document.getElementById("X");
+    const TextInput = document.getElementById("TextInput");
     const BorderForTextInput = document.getElementById("XP"); 
     let dvapokusy;
-    let TenWords=[];
+    let TenWords;
     let WhichBox;
     let z=0;
     let draggedItem = null;
@@ -472,7 +472,7 @@
         TypeOfTest=type;
         switch(type){
             case "ABCD":
-            case "X":
+            case "TextInput":
                 $("."+type).show();
                 SetOfQuestions=NJ["lekce"+k][t][x-1];
                 UnusedQuestions=Array.from({length:SetOfQuestions.length}, (_, i) => i);
@@ -482,7 +482,7 @@
                 break;
             case "CZtoN":
             case "NtoCZ":
-                $(".X").show();
+                $(".TextInput").show();
                 UnusedQuestions=Array.from({length:CurrentVocabulary[0]}, (_, i) => i);
                 Success=Array.from({length:CurrentVocabulary[0]},(_,i) => 1);
                 NumberForCalculationOfSuccess=0
@@ -521,7 +521,7 @@
                     a.style.border=spatnabarva;
                 }
                 break;
-            case "X":
+            case "TextInput":
                 if (SetOfQuestions[MomentalQuestion].a==TextInput.value){
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
                     BorderForTextInput.style.border=spravnabarva;
@@ -598,7 +598,7 @@
     function newquestion(){
         if(TypeOfTest=="Connecting"){
             let alreadyUsedNumbers =[];
-            document.getElementById("GermanSection").innerHTML="";
+            document.getElementById("CzechSection").innerHTML="";
             for(let i=1;i<11;i++){
                 do{
                     a=Math.floor(Math.random()*CurrentVocabulary[0]);
@@ -606,20 +606,22 @@
                 while(alreadyUsedNumbers.includes(a));
 
                 let blok = document.createElement("div");
-                blok.setAttribute("class","GermanWord");
-                blok.setAttribute("id","GW"+i);
-                blok.appendChild(document.createTextNode(CurrentVocabulary[2][a]));
-                document.getElementById("GermanSection").appendChild(blok);
-                // dragElement(blok)
-                document.getElementById("CZW"+i).innerHTML=CurrentVocabulary[1][a];
+                blok.setAttribute("class","CzechWord");
+                blok.setAttribute("id","CZW"+i);
+                blok.appendChild(document.createTextNode(CurrentVocabulary[1][a]));
+                document.getElementById("CzechSection").appendChild(blok);
+
+                document.getElementById("GW"+i).innerHTML=CurrentVocabulary[2][a];
                 alreadyUsedNumbers.push(a);
             }
+            enableDrag(document.getElementsByClassName("CzechWord"),document.getElementsByClassName("PlaceForWordCards"));
+            enableDrag(document.getElementsByClassName("CzechWord"),document.getElementById("CzechSection"));
         }
         else if (UnusedQuestions.length>0){
             do{
                 switch(TypeOfTest){
                     case "ABCD":
-                    case "X":
+                    case "TextInput":
                         a=Math.floor(Math.random()*SetOfQuestions.length);   
                         break;
                     case "CZtoN":
@@ -643,7 +645,7 @@
                         b.splice(d,1);
                     };
                     break;
-                case "X":
+                case "TextInput":
                     TextInput.focus();
                     CanUseEnter=true;
                     document.getElementById("nzX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
@@ -702,7 +704,7 @@
                 break;
             case "CZtoN":
             case "NtoCZ":
-            case "X":
+            case "TextInput":
                 if (dvapokusy==-1){
                     substituteForInput.innerHTML="";
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
@@ -710,7 +712,7 @@
                     TextInput.value="";
                     newquestion();
                 }else if (dvapokusy==1 || dvapokusy==0){
-                    checkanswer("X");
+                    checkanswer("TextInput");
                 }
             }
         }
@@ -850,7 +852,10 @@
     });
     CardsLeft.observe(balicekKaretVyber,config);
     //------------------------------------------------------------
-    //Draggable stuff
+    // Connecting stuff
+
+    //------------------------------------------------------------
+    // Draggable stuff
     function drags(){
         let item= this
         draggedItem =item;
@@ -868,17 +873,26 @@
         e.preventDefault();
     }
     function drop(){
-        if (draggedItem==balicekKaretSpatny){
-            let x = balicekKaretSpatny.children.length;
-            for(let i=0;i<x;i++){
-                this.append(balicekKaretSpatny.children[0]);
+        if (TypeOfTest=="Connecting"){
+            if(this.firstChild){
+                document.getElementById("CzechSection").append(draggedItem);
             }
-            balicekKaretSpatny.style.display="block";
-            resetDecks();
-            removeDrag([balicekKaretSpatny],[balicekKaretVyber]);
+            else {
+                this.append(draggedItem);
+            }
         }
         else{
-            this.append(draggedItem);
+            if (draggedItem==balicekKaretSpatny){
+                let x = balicekKaretSpatny.children.length;
+                for(let i=0;i<x;i++){
+                    this.append(balicekKaretSpatny.children[0]);
+                }
+                balicekKaretSpatny.style.display="block";
+                resetDecks();
+                removeDrag([balicekKaretSpatny],[balicekKaretVyber]);
+            }else{
+                this.append(draggedItem);
+            }
         }
     }
     function enableDrag(ToDraw,PlaceToPut){
