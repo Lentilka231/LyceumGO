@@ -219,6 +219,7 @@
                     <div class="CzechWord" id="CZW8"></div>
                     <div class="CzechWord" id="CZW9"></div>
                     <div class="CzechWord" id="CZW10"></div>
+                    <!-- <div id="ConnectingControl">Kontroll</div> -->
                 </section>
                 <div class="GridConnecting">
                     <div class="PlaceForWordCards" id="PTL1"></div><div class="GermanWord"id="GW1"></div>
@@ -615,7 +616,7 @@
                 alreadyUsedNumbers.push(a);
             }
             enableDrag(document.getElementsByClassName("CzechWord"),document.getElementsByClassName("PlaceForWordCards"));
-            enableDrag(document.getElementsByClassName("CzechWord"),document.getElementById("CzechSection"));
+            enableDrag(document.getElementsByClassName("CzechWord"),[document.getElementById("CzechSection")]);
         }
         else if (UnusedQuestions.length>0){
             do{
@@ -695,12 +696,21 @@
         };
     });
     SubstituteForInputKontrol.observe(substituteForInput,config);
+    let CzechSectionKontrol = new MutationObserver(function(){
+        if(document.getElementById("CzechSection").querySelectorAll(".CzechWord").length==0){
+            let newDiv = document.createElement("div");
+            newDiv.setAttribute("id","ConnectingControl");
+            newDiv.innerHTML="Kontroll";
+            document.getElementById("CzechSection").append(newDiv);
+        }
+    })
+    CzechSectionKontrol.observe(document.getElementById("CzechSection"),config);
     // na zmáčknutí určitých kláves
     document.addEventListener("keydown",function(e){
         if(e.key==="Enter" && CanUseEnter){
             switch (TypeOfTest){
             case "FlashCards":
-                rotatecard(balicekKaretVyber.children[balicekKaretVyber.children.length-1])
+                rotatecard(balicekKaretVyber.children[balicekKaretVyber.children.length-1]);
                 break;
             case "CZtoN":
             case "NtoCZ":
@@ -874,10 +884,15 @@
     }
     function drop(){
         if (TypeOfTest=="Connecting"){
-            if(this.firstChild){
+            console.log(this.querySelector("#"+draggedItem.id));
+            if (this.querySelector("#"+draggedItem.id)){
+            }
+            else if(this.firstChild){
+                draggedItem.style.margin="10px";
                 document.getElementById("CzechSection").append(draggedItem);
             }
             else {
+                draggedItem.style.margin="0px";
                 this.append(draggedItem);
             }
         }
