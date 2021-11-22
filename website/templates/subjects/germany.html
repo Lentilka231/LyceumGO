@@ -208,6 +208,8 @@
                 <p id="czX" class="czadani">Spoj německé slovíčko s českým.</p>
             </div>
             <div class="ConnectingTable">
+                <div id="ConnectingControl" onclick="checkanswer()">Kontroll</div>
+                <div id="RepeatConnecting" style="background-image: url(/static/images/repete.png)"> </div>
                 <section id="CzechSection">
                     <div class="CzechWord" id="CZW1"></div>
                     <div class="CzechWord" id="CZW2"></div>
@@ -219,7 +221,6 @@
                     <div class="CzechWord" id="CZW8"></div>
                     <div class="CzechWord" id="CZW9"></div>
                     <div class="CzechWord" id="CZW10"></div>
-                    <!-- <div id="ConnectingControl">Kontroll</div> -->
                 </section>
                 <div class="GridConnecting">
                     <div class="PlaceForWordCards" id="PTL1"></div><div class="GermanWord"id="GW1"></div>
@@ -390,14 +391,16 @@
     //ROZHÁZENÉ a já nevím jak to :D
     const NJ = JSON.parse('{{ NJ1 | tojson | safe }}');
     const zakladnibarva = "3px solid rgb(189, 213, 234)";
-    const spravnabarva = "3px solid rgb(25, 146, 61)";
-    const spatnabarva = "3px solid rgb(199, 42, 42)";
+    const spravnabarva = "rgb(25, 146, 61)";
+    const spatnabarva = "rgb(199, 42, 42)";
     const oznacovacibarva = "3px solid rgb(87, 115, 153)";
     let UnusedQuestions;
     let MomentalQuestion;
     let TypeOfTest;
     let SetOfQuestions;
     let Success;
+    let WordsInVocabulary=[];
+    let OrderOfWords =[];
     let NumberForCalculationOfSuccess;
     let CanUseEnter=false;
     let CanUseEsc=false;
@@ -427,7 +430,7 @@
             }
         })
     }    
-    //Obecné funkce pro otázky, ...
+//Obecné funkce pro otázky, ...
     //zobrazuje okno pro teorie, texty, otázky, ...
     function visibilator(lekce,typ,ukol){
         CanUseEsc=true;
@@ -453,6 +456,8 @@
         $("#TDContent").children().hide();
         $(".task").hide();
         $(".congratulation").hide();
+        $("#ConnectingControl").hide();
+        $("#RepeatConnecting").hide();
         balicekKaretDobry.innerHTML="";
         balicekKaretSpatny.innerHTML="";
         balicekKaretVyber.innerHTML="";
@@ -510,7 +515,7 @@
             case "ABCD":
                 a=document.getElementById(x)
                 if (SetOfQuestions[MomentalQuestion].a==a.innerHTML){
-                    a.style.border=spravnabarva;
+                    a.style.border="3px solid "+spravnabarva;
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(500);
@@ -522,13 +527,13 @@
                 }
                 else{
                     Success[MomentalQuestion]=0;
-                    a.style.border=spatnabarva;
+                    a.style.border="3px solid "+spatnabarva;
                 }
                 break;
             case "TextInput":
                 if (SetOfQuestions[MomentalQuestion].a==TextInput.value){
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                    BorderForTextInput.style.border=spravnabarva;
+                    BorderForTextInput.style.border="3px solid "+spravnabarva;
 
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(500);
@@ -538,7 +543,7 @@
                     newquestion()
                 }
                 else{
-                    BorderForTextInput.style.border=spatnabarva;
+                    BorderForTextInput.style.border="3px solid "+spatnabarva;
                     if(dvapokusy==0){
                         Success[MomentalQuestion]=0;
                         substituteForInput.innerHTML=SetOfQuestions[MomentalQuestion].a;
@@ -572,7 +577,7 @@
                 }
                 if(itcanbe){
                     UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                    BorderForTextInput.style.border=spravnabarva;
+                    BorderForTextInput.style.border="3px solid "+spravnabarva;
 
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(500);
@@ -582,7 +587,7 @@
                     newquestion();
                 }
                 else{
-                    BorderForTextInput.style.border=spatnabarva;
+                    BorderForTextInput.style.border="3px solid "+spatnabarva;
                     if(dvapokusy==0){
                         Success[MomentalQuestion]=0;
                         substituteForInput.innerHTML=CurrentVocabulary[n][MomentalQuestion];
@@ -596,27 +601,41 @@
                     dvapokusy--;
                 }
                 break;
+            case "Connecting":
+                for (let i=1;i<11;i++){
+                    if(document.getElementById("CZW"+i).parentNode.id.replace("PTL","")==OrderOfWords[i-1]){
+                        document.getElementById("CZW"+i).style.backgroundColor=spravnabarva;
+                    }
+                    else{
+                        document.getElementById("CZW"+i).style.backgroundColor=spatnabarva;
+                    }
+                }
+                $("#ConnectingControl").hide();
+                $("#RepeatConnecting").show();
+                break;
         }
     };
     // odesílá novou otázku
     function newquestion(){
         if(TypeOfTest=="Connecting"){
-            let alreadyUsedNumbers =[];
             document.getElementById("CzechSection").innerHTML="";
             for(let i=1;i<11;i++){
                 do{
                     a=Math.floor(Math.random()*CurrentVocabulary[0]);
                 }
-                while(alreadyUsedNumbers.includes(a));
-
+                while(WordsInVocabulary.includes(a));
+                do{
+                    b=Math.floor(Math.random()*10+1);
+                }
+                while(OrderOfWords.includes(b));
                 let blok = document.createElement("div");
                 blok.setAttribute("class","CzechWord");
                 blok.setAttribute("id","CZW"+i);
                 blok.appendChild(document.createTextNode(CurrentVocabulary[1][a]));
                 document.getElementById("CzechSection").appendChild(blok);
-
-                document.getElementById("GW"+i).innerHTML=CurrentVocabulary[2][a];
-                alreadyUsedNumbers.push(a);
+                document.getElementById("GW"+b).innerHTML=CurrentVocabulary[2][a];
+                WordsInVocabulary.push(a);
+                OrderOfWords.push(b);
             }
             enableDrag(document.getElementsByClassName("CzechWord"),document.getElementsByClassName("PlaceForWordCards"));
             enableDrag(document.getElementsByClassName("CzechWord"),[document.getElementById("CzechSection")]);
@@ -699,16 +718,8 @@
         };
     });
     SubstituteForInputKontrol.observe(substituteForInput,config);
-    let CzechSectionKontrol = new MutationObserver(function(){
-        if (document.getElementById("ConnectingControl")){
-        }else if(document.getElementById("CzechSection").querySelectorAll(".CzechWord").length==0){
-            let newDiv = document.createElement("div");
-            newDiv.setAttribute("id","ConnectingControl");
-            newDiv.innerHTML="Kontroll";
-            document.getElementById("CzechSection").append(newDiv);
-        }
-    })
-    CzechSectionKontrol.observe(document.getElementById("CzechSection"),config);
+    
+
     // na zmáčknutí určitých kláves
     document.addEventListener("keydown",function(e){
         if(e.key==="Enter" && CanUseEnter){
@@ -744,8 +755,8 @@
             }
         };
     })
-    //---------------------------------------------------------------------------
-    // Flashcards ---------------------------------------------------------------
+//---------------------------------------------------------------------------
+// Flashcards ---------------------------------------------------------------
     const balicekKaretVyber = document.getElementById("VYBER");
     const balicekKaretSpatny = document.getElementById("SPATNY");
     const balicekKaretDobry = document.getElementById("DOBRY");
@@ -865,11 +876,20 @@
         vyhodnoceni.innerHTML=balicekKaretVyber.children.length;
     });
     CardsLeft.observe(balicekKaretVyber,config);
-    //------------------------------------------------------------
-    // Connecting stuff
+//------------------------------------------------------------
+// Connecting stuff
+    let CzechSectionKontrol = new MutationObserver(function(){
+        if(document.getElementById("CzechSection").querySelectorAll(".CzechWord").length==0){
+            $("#ConnectingControl").show();
+        }
+        else{
+            $("#ConnectingControl").hide();
+        }
+    })
+    CzechSectionKontrol.observe(document.getElementById("CzechSection"),config);
 
-    //------------------------------------------------------------
-    // Draggable stuff
+//------------------------------------------------------------
+// Draggable stuff
     function drags(){
         let item= this
         draggedItem =item;
@@ -891,7 +911,7 @@
             if (this.querySelector("#"+draggedItem.id)){
             }
             else if(this.firstChild){
-                draggedItem.style.margin="10px";
+                draggedItem.style.margin="5px";
                 document.getElementById("CzechSection").append(draggedItem);
             }
             else {

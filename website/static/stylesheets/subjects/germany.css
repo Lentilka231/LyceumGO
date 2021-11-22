@@ -255,14 +255,13 @@
 .Wgridchild{
     background-color: rgb(86, 167, 140);
     padding:20px;
-    border:rgb(86, 167, 140) solid 5px;
     font-size: 24px;
     text-align: center;
     cursor:pointer;
     border-radius: 10px;
 }
 .Wgridchild:hover{
-    border:rgb(60, 112, 95) solid 5px;
+    background-color:rgb(74, 143, 120);
 }
 .Flashcards{
     grid-column:2/4;
@@ -406,7 +405,6 @@
     position: relative;
 }
 .GridConnecting{
-    margin-top:10px;
     position:absolute;
     right:0px;
     display:grid;
@@ -423,7 +421,7 @@
     padding:3px 10px;
     border-radius: 4px;
     z-index: 0;
-    margin:10px;
+    margin:5px;
 }
 .PlaceForWordCards{
     width:100%;
@@ -434,12 +432,38 @@
 }
 #CzechSection{
     position: absolute;
+    width:260px;
+    height:420px;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+
 }
 #ConnectingControl{
     position: absolute;
     top:50%;
+    left:75px;
     transform: translate(0%,-50%);
     background-color: rgb(189, 213, 234);
     border-radius: 5px;
-    width:250px;
+    text-align: center;
+    padding:10px;
+    font-size: 36px;
+    z-index:10;
+    cursor: pointer;
+}
+#ConnectingControl:hover{
+    background-color: rgb(189, 213, 234);
+}
+#RepeatConnecting{
+    background-size:80px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index:10;
+    width:80px;
+    height:80px;
+    position: absolute;
+    top:50%;
+    transform: translate(0%,-50%);
+    left:75px;
 }
