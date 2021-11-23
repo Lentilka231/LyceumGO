@@ -209,7 +209,7 @@
             </div>
             <div class="ConnectingTable">
                 <div id="ConnectingControl" onclick="checkanswer()">Kontroll</div>
-                <div id="RepeatConnecting" style="background-image: url(/static/images/repete.png)"> </div>
+                <div id="RepeatConnecting" style="background-image: url(/static/images/repete.png)" onclick="teststart('Connecting')"> </div>
                 <section id="CzechSection">
                     <div class="CzechWord" id="CZW1"></div>
                     <div class="CzechWord" id="CZW2"></div>
@@ -618,7 +618,11 @@
     // odesílá novou otázku
     function newquestion(){
         if(TypeOfTest=="Connecting"){
+            $("#RepeatConnecting").hide();
             document.getElementById("CzechSection").innerHTML="";
+            console.log("etwas");
+            OrderOfWords=[];
+            WordsInVocabulary=[];
             for(let i=1;i<11;i++){
                 do{
                     a=Math.floor(Math.random()*CurrentVocabulary[0]);
