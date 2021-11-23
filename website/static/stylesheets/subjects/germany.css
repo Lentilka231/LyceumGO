@@ -132,13 +132,20 @@
     background-color: rgb(77, 135, 223);
     border-radius:  10px;
 }
-.g,.b{
+.g{
     margin:20px 0px;
+}
+.b{
+    position: absolute;
+    bottom:0px;
+    height:130px;
 }
 
 .t{
     cursor: pointer;
     border-radius: 10px;
+    width:140px;
+    text-align: center;
 }
 #VK span{
     color:rgb(255, 153, 0);
@@ -146,6 +153,9 @@
 .cara{
     background-color: black;
     height:2px;
+    position: absolute;
+    bottom:140px;
+    width:100%;
 }
 .easyt{
     background-color: rgb(67, 155, 67);
@@ -477,13 +487,23 @@
     width:250px;
     height:400px;
     display:flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .DidYKChild{
+    margin:10px;
     width:100%;
-    height:100px;
-    background-color:rgb(136, 169, 231) ;
+    height:40px;
+    background-color:rgb(158, 186, 238) ;
     border-radius: 5px;
-    padding:5px;
-
+    padding:10px;
+    transition: height 0.3s ease;
+    cursor:pointer;
+}
+.DidYKChild:hover{
+    background-color:rgb(136, 169, 231);
+}
+.DYKCBody{
+    margin-top: 10px;
+    visibility: hidden;
 }
