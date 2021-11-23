@@ -143,7 +143,7 @@
     cursor: pointer;
     border-radius: 10px;
 }
-#VK span{
+#VK y{
     color:rgb(255, 153, 0);
 }
 .cara{
@@ -153,17 +153,15 @@
 .easyt{
     background-color: rgb(67, 155, 67);
     padding:10px;
-    border: solid 3px rgb(67, 155, 67);
     position: absolute;
 }
 .easyt:hover{
-    border: solid 3px rgb(38, 114, 38);
+    background-color:rgb(38, 114, 38);
 }
 .hardt:hover{
-    border: solid 3px rgb(148, 29, 29);
+    background-color:rgb(148, 29, 29);
 }
 .hardt{
-    border: solid 3px rgb(201, 39, 39);
     background-color: rgb(201, 39, 39);
     padding:10px;
     position: absolute;
@@ -451,6 +449,8 @@
     font-size: 36px;
     z-index:10;
     cursor: pointer;
+    transition:background-color 0.2s;
+
 }
 #ConnectingControl:hover{
     background-color: rgb(189, 213, 234);
@@ -472,4 +472,8 @@
 }
 #RepeatConnecting:hover{
     background-color: rgb(169, 190, 207);
+}
+.DidYouKnow{
+    display:flex;
+    
 }

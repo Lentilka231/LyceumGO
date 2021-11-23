@@ -306,6 +306,10 @@
                 <div class="t easyt" onclick="teststart('ABCD','3','grammar','1')">leichter Test</div>
                 <div class="t hardt" onclick="teststart('TextInput','3','grammar','1')">schwieriger Test</div>
             </div>
+            <div class="DidYouKnow">
+                <div class="DidYKChild">
+                </div>
+            </div>
         </div>
         <div class="Teorie x3g2">asdasd</div>
         <div class="Teorie x3g3">asdasd</div>
@@ -618,6 +622,9 @@
     // odesílá novou otázku
     function newquestion(){
         if(TypeOfTest=="Connecting"){
+            for(let i=1;i<11;i++){
+            document.getElementById("PTL"+i).innerHTML="";
+            }
             $("#RepeatConnecting").hide();
             document.getElementById("CzechSection").innerHTML="";
             console.log("etwas");
