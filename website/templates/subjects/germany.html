@@ -83,6 +83,10 @@
                         <b>Possessivartikel</b><br>
                         Přivlasťnovací zájmena
                     </div>
+                    <div class="Block b11"onclick="visibilator('3','g',4)">
+                        <b>Zeitangaben</b><br>
+                        Časové údaje
+                    </div>
                 </div>
             </div>
             <div class="DIVchild" id="wortschatz" style="background-color: rgb(157, 101, 201);">
@@ -137,6 +141,9 @@
             <div class="questions">
                 <b id="nzABCD" class="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
                 <p id="czABCD" class="czadani">Vyber (správnou) odpověď, alespoň to zkus.</p>
+            </div>
+            <div class="progression">
+                <div id="fill"></div>
             </div>
             <div class="answer">
                 <p id="FrantaABCD" class="Franta"></p>
@@ -298,6 +305,7 @@
                     <tr><th>sie/Sie</th><td>spiel<span>en</span></td><td>trink<span>en</span></td><td>hab<span>en</span></td><td><span>sind</span></td><td>ess<span>en</span></td></tr>
                 </table>
             </div>
+            <div></div>
             <div class="cara"> </div>
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
@@ -307,7 +315,16 @@
             </div>
             <div class="DidYouKnow">
                 <div class="DidYKChild">
-                    Věděliste, že v němčině při vykání vlastně "onikáme".
+                    <div class="DYCKName"><b>1. Hast du das wissen?</b></div>
+                    <div class="DYKCBody">
+                        Věděl jsi, že v němčině při vykání vlastně "onikáme"?
+                    </div>
+                </div>
+                <div class="DidYKChild">
+                    <div class="DYCKName"><b>2. Hast du das wissen?</b></div>
+                    <div class="DYKCBody">
+                        Věděl jsi, že pro dobré znalosti němčiny je potřeba alespoň 4000 slovíček?
+                    </div>
                 </div>
             </div>
         </div>
@@ -335,7 +352,9 @@
         const a = [false,false,false,false,false]
         const x = document.querySelectorAll(".Module");
         const child = document.querySelectorAll(".child");
-        const L = document.querySelectorAll(".L")
+        const DidYouKnow = document.getElementsByClassName("DidYKChild");
+        const L = document.querySelectorAll(".L");
+        let DidYouKnowOPEN = [];
         // tohle zobrazuje Lektiony 1-15 v modulech
 
         for(let i=1;i<6;i++){
@@ -358,7 +377,7 @@
         });
         };
         
-        $("#TDContent").children().hide()
+        $("#TDContent").children().hide();
         //pracujou s rozklikáváním jednotlivých modelů
         for (let i=3;i<16;i++){
             $("#DIVL"+i).hide()
@@ -373,6 +392,7 @@
                     $("#DIVL"+i).hide()
                 }
                 e.stopPropagation();
+
                 if($("#DIVL"+i).is(":visible")){
                     
                     document.getElementById("L"+i).style.color="black";
@@ -385,7 +405,32 @@
 
             })
         }
-        
+        for(let i=0;i<DidYouKnow.length;i++){
+            DidYouKnowOPEN.push[false];
+        }
+        for(let i=0;i<DidYouKnow.length;i++){
+            console.log(DidYouKnow[i]);
+            DidYouKnow[i].onclick= async function(){
+                
+                if (!DidYouKnowOPEN[i]){
+                    for(let j=0;j<DidYouKnow.length;j++){
+                        DidYouKnow[j].style.height="40px";
+                        DidYouKnow[j].querySelector(".DYKCBody").style.visibility="hidden";
+                        DidYouKnowOPEN[j]=false;
+                    }
+                    DidYouKnow[i].style.height="100px";
+                    await sleep(200);
+                    DidYouKnow[i].querySelector(".DYKCBody").style.visibility="visible";
+                    DidYouKnowOPEN[i]=true;
+                }
+                else{
+                    DidYouKnow[i].querySelector(".DYKCBody").style.visibility="hidden";
+                    DidYouKnow[i].style.height="40px";
+                    DidYouKnowOPEN[i]=false;
+                }
+                console.log(DidYouKnowOPEN);
+            };
+        };
     });
 </script>
 <script>
@@ -527,6 +572,7 @@
                     for (let i=0;i<4;i++){
                         ABCDanswer[i].style.border=zakladnibarva; 
                     }
+                    document.getElementById("fill").style.width=(SetOfQuestions.length-UnusedQuestions.length)/SetOfQuestions.length*100+"%";
                     newquestion()
                 }
                 else{

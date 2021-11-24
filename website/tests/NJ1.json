@@ -55,7 +55,224 @@
             "1":"spielst",
             "2":"spielt",
             "3":"spiele"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
+            "q":"ich ______",
+            "a":"trinke",
+            "1":"trinkst",
+            "2":"trinkt",
+            "3":"trinken"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
+            "q":"du ______",
+            "a":"trinkst",
+            "1":"trinke",
+            "2":"trinkt",
+            "3":"trinken"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
+            "q":"er/sie/es ______",
+            "a":"trinkt",
+            "1":"trinkst",
+            "2":"trinke",
+            "3":"trinken"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
+            "q":"wir ______",
+            "a":"trinken",
+            "1":"trinkst",
+            "2":"trinkt",
+            "3":"trinke"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
+            "q":"ihr ______",
+            "a":"trinkt",
+            "1":"trinkst",
+            "2":"trinke",
+            "3":"trinken"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
+            "q":"sie/Sie ______",
+            "a":"trinken",
+            "1":"trinkst",
+            "2":"trinkt",
+            "3":"trinke"
+            },
+            {
+                "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
+                "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
+                "q":"ich ______",
+                "a":"habe",
+                "1":"hast",
+                "2":"hat",
+                "3":"haben"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
+            "q":"du ______",
+            "a":"hast",
+            "1":"habe",
+            "2":"hat",
+            "3":"haben"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
+            "q":"er/sie/es ______",
+            "a":"hat",
+            "1":"hast",
+            "2":"habt",
+            "3":"haben"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
+            "q":"wir ______",
+            "a":"haben",
+            "1":"hast",
+            "2":"hat",
+            "3":"habe"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
+            "q":"ihr ______",
+            "a":"habt",
+            "1":"hast",
+            "2":"habe",
+            "3":"haben"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
+            "q":"sie/Sie ______",
+            "a":"haben",
+            "1":"hast",
+            "2":"habt",
+            "3":"habe"
+            },
+            {
+                "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
+                "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
+                "q":"ich ______",
+                "a":"bin",
+                "1":"bist",
+                "2":"ist",
+                "3":"sind"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
+            "q":"du ______",
+            "a":"bist",
+            "1":"bin",
+            "2":"ist",
+            "3":"seid"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
+            "q":"er/sie/es ______",
+            "a":"ist",
+            "1":"bist",
+            "2":"bin",
+            "3":"sind"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
+            "q":"wir ______",
+            "a":"sind",
+            "1":"bist",
+            "2":"ist",
+            "3":"bin"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
+            "q":"ihr ______",
+            "a":"seid",
+            "1":"bist",
+            "2":"bin",
+            "3":"sind"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
+            "q":"sie/Sie ______",
+            "a":"sind",
+            "1":"bist",
+            "2":"ist",
+            "3":"bin"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
+            "q":"ich ______",
+            "a":"esse",
+            "1":"isst",
+            "2":"esst",
+            "3":"essen"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
+            "q":"du ______",
+            "a":"isst",
+            "1":"esse",
+            "2":"esst",
+            "3":"essen"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
+            "q":"er/sie/es ______",
+            "a":"isst",
+            "1":"esst",
+            "2":"esse",
+            "3":"essen"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
+            "q":"wir ______",
+            "a":"essen",
+            "1":"isst",
+            "2":"esst",
+            "3":"esse"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
+            "q":"ihr ______",
+            "a":"esst",
+            "1":"isst",
+            "2":"esse",
+            "3":"essen"
+            },
+            {
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
+            "q":"sie/Sie ______",
+            "a":"essen",
+            "1":"isst",
+            "2":"esst",
+            "3":"esse"
             }
+    
         ]
     ],
     "words":{
