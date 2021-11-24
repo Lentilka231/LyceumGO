@@ -273,6 +273,80 @@
             "3":"esse"
             }
     
+        ],
+        [
+            {
+            "zadaniN":"Welcher bestimmte Artikel ist Maskulin?",
+            "zadaniC":"Který člen je mužský?",
+            "q":"___ Ring",
+            "a":"der",
+            "1":"die",
+            "2":"das",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher bestimmte Artikel ist Neutral?",
+            "zadaniC":"Který člen je střední?",
+            "q":"___ T-Shirt",
+            "a":"das",
+            "1":"die",
+            "2":"der",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher bestimmte Artikel ist Feminim?",
+            "zadaniC":"Který člen je ženský?",
+            "q":"___ Jacke",
+            "a":"die",
+            "1":"das",
+            "2":"der",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher bestimmte Artikel ist für Plural?",
+            "zadaniC":"Který člen je pro množné číslo?",
+            "q":"___ Schuhe",
+            "a":"die",
+            "1":"das",
+            "2":"der",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher unbestimmte Artikel ist Feminim?",
+            "zadaniC":"Který neurčitý člen je ženský?",
+            "q":"___ Jacke",
+            "a":"eine",
+            "1":"ein",
+            "2":"einen",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher unbestimmte Artikel ist Maskulin?",
+            "zadaniC":"Který neurčitý člen je mužský?",
+            "q":"___ Ring",
+            "a":"ein",
+            "1":"einen",
+            "2":"eine",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher unbestimmte Artikel ist Neutral?",
+            "zadaniC":"Který neurčitý člen je střední?",
+            "q":"___ T-Shirt",
+            "a":"ein",
+            "1":"eine",
+            "2":"einen",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher unbestimmte Artikel ist für Plural?",
+            "zadaniC":"Který neurčitý člen je pro množné číslo?",
+            "q":"___ Schuhe",
+            "a":"die",
+            "1":"das",
+            "2":"der",
+            "3":""
+            }
         ]
     ],
     "words":{
