@@ -1,7 +1,8 @@
 {
 "lekce3":{
     "grammar":[
-        [
+        [4,
+            [
             {
             "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
             "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
@@ -111,13 +112,13 @@
             "3":"trinke"
             },
             {
-                "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
-                "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
-                "q":"ich ______",
-                "a":"habe",
-                "1":"hast",
-                "2":"hat",
-                "3":"haben"
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
+            "q":"ich ______",
+            "a":"habe",
+            "1":"hast",
+            "2":"hat",
+            "3":"haben"
             },
             {
             "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
@@ -165,13 +166,13 @@
             "3":"habe"
             },
             {
-                "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
-                "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
-                "q":"ich ______",
-                "a":"bin",
-                "1":"bist",
-                "2":"ist",
-                "3":"sind"
+            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
+            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
+            "q":"ich ______",
+            "a":"bin",
+            "1":"bist",
+            "2":"ist",
+            "3":"sind"
             },
             {
             "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
@@ -272,12 +273,13 @@
             "2":"esst",
             "3":"esse"
             }
-    
+            ]
         ],
-        [
+        [4,
+            [
             {
-            "zadaniN":"Welcher bestimmte Artikel ist Maskulin?",
-            "zadaniC":"Který člen je mužský?",
+            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Maskulin</u></i>?",
+            "zadaniC":"Který člen je <u><i>mužský</u></i>?",
             "q":"___ Ring",
             "a":"der",
             "1":"die",
@@ -285,8 +287,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist Neutral?",
-            "zadaniC":"Který člen je střední?",
+            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Neutral</u></i>?",
+            "zadaniC":"Který člen je <u><i>střední</u></i>?",
             "q":"___ T-Shirt",
             "a":"das",
             "1":"die",
@@ -294,8 +296,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist Feminim?",
-            "zadaniC":"Který člen je ženský?",
+            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Feminim</u></i>?",
+            "zadaniC":"Který člen je <u><i>ženský</u></i>?",
             "q":"___ Jacke",
             "a":"die",
             "1":"das",
@@ -303,8 +305,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist für Plural?",
-            "zadaniC":"Který člen je pro množné číslo?",
+            "zadaniN":"Welcher bestimmte Artikel ist für <u><i>Plural</u></i>?",
+            "zadaniC":"Který člen je pro <u><i>množné číslo</u></i>?",
             "q":"___ Schuhe",
             "a":"die",
             "1":"das",
@@ -312,8 +314,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist Feminim?",
-            "zadaniC":"Který neurčitý člen je ženský?",
+            "zadaniN":"Welcher unbestimmte Artikel ist <u><i>Feminim</u></i>?",
+            "zadaniC":"Který neurčitý člen je <u><i>ženský</u></i>?",
             "q":"___ Jacke",
             "a":"eine",
             "1":"ein",
@@ -321,8 +323,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist Maskulin?",
-            "zadaniC":"Který neurčitý člen je mužský?",
+            "zadaniN":"Welcher unbestimmte Artikel ist <u><i>Maskulin</u></i>?",
+            "zadaniC":"Který neurčitý člen je <u><i>mužský</u></i>?",
             "q":"___ Ring",
             "a":"ein",
             "1":"einen",
@@ -330,8 +332,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist Neutral?",
-            "zadaniC":"Který neurčitý člen je střední?",
+            "zadaniN":"Welcher unbestimmte Artikel ist <u><i>Neutral</u></i>?",
+            "zadaniC":"Který neurčitý člen je <u><i>střední</u></i>?",
             "q":"___ T-Shirt",
             "a":"ein",
             "1":"eine",
@@ -339,14 +341,109 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist für Plural?",
-            "zadaniC":"Který neurčitý člen je pro množné číslo?",
+            "zadaniN":"Welcher unbestimmte Artikel ist für <u><i>Plural</u></i>?",
+            "zadaniC":"Který neurčitý člen je pro <u><i>množné číslo</u></i>?",
             "q":"___ Schuhe",
             "a":"die",
             "1":"das",
             "2":"der",
             "3":""
             }
+            ]
+        ],
+        [4,
+            [
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Neutral</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>střední</u></i> rod?",
+            "q":"___ Baby",
+            "a":"mein",
+            "1":"meine",
+            "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Maskulin</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>mužský</u></i> rod?",
+            "q":"___ Vater",
+            "a":"mein",
+            "1":"meine",
+            "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Feminim</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>ženský</u></i> rod?",
+            "q":"___ Mutter",
+            "a":"meine",
+            "1":"mein",
+            "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Plural</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>množné číslo</u></i>?",
+            "q":"___ Eltern",
+            "a":"meine",
+            "1":"mein",
+            "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Feminim</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>ženský</u></i>?",
+            "q":"___ Mutter",
+            "a":"deine",
+            "1":"dein",
+            "2":"deinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Neutral</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>střední</u></i>?",
+            "q":"___ Baby",
+            "a":"dein",
+            "1":"deine",
+            "2":"deinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Maskulin</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>mužský</u></i>?",
+            "q":"___ Vater",
+            "a":"mein",
+            "1":"meine",
+            "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Plural</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>množné číslo</u></i>?",
+            "q":"___ Eltern",
+            "a":"deine",
+            "1":"dein",
+            "2":"deinen",
+            "3":""
+            }
+            ]
+        ],
+        [2,
+            [
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Montag",
+            "a":"am",
+            "1":"im"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Montag",
+            "a":"am",
+            "1":"im"
+            }
+            ]
         ]
     ],
     "words":{

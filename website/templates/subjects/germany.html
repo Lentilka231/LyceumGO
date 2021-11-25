@@ -139,26 +139,28 @@
 <div id="TestDiv">
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
     <div id="TDContent">
+        <div id="progression">
+            <div id="fill"></div>
+        </div>
         <div class="task ABCD">
             <div class="questions">
                 <b id="nzABCD" class="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
                 <p id="czABCD" class="czadani">Vyber (správnou) odpověď, alespoň to zkus.</p>
             </div>
-            <div class="progression">
-                <div id="fill"></div>
-            </div>
             <div class="answer">
                 <p id="FrantaABCD" class="Franta"></p>
                 <div class="centralizer" style="bottom:30px;">
-                    <div class="ABCDodpovedi">
-                        <button style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="A" onclick="checkanswer('A')">Odpoved A</button>
-                        <button style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="B" onclick="checkanswer('B')">Odpoved B</button>
-                        <button style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="C" onclick="checkanswer('C')">Odpoved C</button>
-                        <button style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="D" onclick="checkanswer('D')">Odpoved D</button>
+                    <div id="ABCDodpovedi">
+                        <div style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="A" onclick="checkanswer('A')">Odpoved A</div>
+                        <div style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="B" onclick="checkanswer('B')">Odpoved B</div>
+                        <div style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="C" onclick="checkanswer('C')">Odpoved C</div>
+                        <div style="border:solid 3px rgb(189, 213, 234)" type="button" class="Felix" id="D" onclick="checkanswer('D')">Odpoved D</div>
+                        
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="task TextInput">
             <div class="questions">
                 <b id="nzX" class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
@@ -176,7 +178,7 @@
                     </div>
                 </div>
                 <div class="centralizer" style="bottom: 70px;">
-                    <button type="button" onclick="checkanswer('TextInput')" id="kontrola" style="margin-top:50px;">Kontroll</button>
+                    <div type="button" onclick="checkanswer('TextInput')" id="kontrola" style="margin-top:50px;">Kontroll</div>
                 </div>
             </div>
         </div>
@@ -349,17 +351,17 @@
                     </tr>
                     <tr>
                         <td style="background-color:rgb(77, 135, 223)"><b>Das ist/sind ...</b></td>
-                        <td><i>ein Ring</i></td>
-                        <td><i>eine Jacke</i></td>
-                        <td><i>ein T-Shirt</i></td>
-                        <td><i>Schuhe</i></td>
+                        <td><span>ein</span> Ring</td>
+                        <td><span>eine</span> Jacke</td>
+                        <td><span>ein</span> T-Shirt</td>
+                        <td>Schuhe</td>
                     </tr>
                     <tr>
                         <td style="background-color:rgb(77, 135, 223)"><b>Was kostet/kosten ...?</b></td>
-                        <td><i>der Ring</i></td>
-                        <td><i>die Jacke</i></td>
-                        <td><i>das T-Shirt</i></td>
-                        <td><i>die Schuhe</i></td>
+                        <td><span>der</span> Ring</td>
+                        <td><span>die</span> Jacke</td>
+                        <td><span>das</span> T-Shirt</td>
+                        <td><span>die</span> Schuhe</td>
                     </tr>
 
                 </table>
@@ -378,8 +380,8 @@
             </div>
         </div>
         <div class="Teorie x3g3">
-            <p class="nnadpis"><b>Unbestimmte und bestimmte Artikel</b></p>
-            <p class="cnadpis">Neurčité a určité členy</p>
+            <p class="nnadpis"><b>Possessivartikel</b></p>
+            <p class="cnadpis">Přivlasťnovací zájmena</p>
             <div class="g">
                 <table id="UuBAtable">
                     <tr>
@@ -389,24 +391,24 @@
                     </tr>
                     <tr>
                         <th></th>
-                        <td class="m" style="background-color:rgb(163, 163, 238);">rod mužský (m)</td>
+                        <td class="m" style="background-color:rgb(97, 97, 231);">rod mužský (m)</td>
                         <td class="f" style="background-color:rgb(194, 92, 92);">rod ženský (ž)</td>
                         <td class="n" style="background-color:rgb(110, 177, 127);">rod střední (s)</td>
                         <td class="a" style="background-color:rgb(228, 213, 76);">všechny rody</td>
                     </tr>
                     <tr>
                         <td style="background-color:rgb(77, 135, 223)"><b>Das ist/sind ...</b></td>
-                        <td><i>mein</i> Vater</td>
-                        <td><i>mein</i> Baby</td>
-                        <td><i>meine</i> Mutter</td>
-                        <td><i>meine</i> Eltern</td>
+                        <td><span>mein</span> Vater</td>
+                        <td><span>mein</span> Baby</td>
+                        <td><span>meine</span> Mutter</td>
+                        <td><span>meine</span> Eltern</td>
                     </tr>
                     <tr>
                         <td style="background-color:rgb(77, 135, 223)"><b>Ist/Sind das ...?</b></td>
-                        <td><i>dein</i> Vater</td>
-                        <td><i>dein</i> Baby</td>
-                        <td><i>deine</i> Mutter</td>
-                        <td><i>deine</i> Eltern</td>
+                        <td><span>dein</span> Vater</td>
+                        <td><span>dein</span> Baby</td>
+                        <td><span>deine</span> Mutter</td>
+                        <td><span>deine</span> Eltern</td>
                     </tr>
 
                 </table>
@@ -418,8 +420,8 @@
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
                 <p class="ctext">Cvičení:</p>
-                <div class="t easyt" onclick="teststart('ABCD','3','grammar','2')">leichter Test</div>
-                <div class="t hardt" onclick="teststart('TextInput','3','grammar','2')">schwieriger Test</div>
+                <div class="t easyt" onclick="teststart('ABCD','3','grammar','3')">leichter Test</div>
+                <div class="t hardt" onclick="teststart('TextInput','3','grammar','3')">schwieriger Test</div>
             </div>
         </div>
         <div class="Teorie x3g4">
@@ -435,25 +437,25 @@
                     </tr>
                     <tr>
                         <th rowspan="2">am</th>
-                        <td>am Montag</td>
+                        <td><span>am</span> Montag</td>
                         <td>v pondělí</td>
-                        <td>am + dny v týdnu</td>
+                        <td><span>am</span> + dny v týdnu</td>
                     </tr>
                     <tr>
-                        <td>am Wochenende</td>
+                        <td><span>am</span> Wochenende</td>
                         <td>o víkendu</td>
-                        <td>am + víkend</td>
+                        <td><span>am</span> + víkend</td>
                     </tr>
                     <tr>
                         <th rowspan="2">im</th>
-                        <td>im Januar</td>
+                        <td><span>im</span> Januar</td>
                         <td>v lednu</td>
-                        <td>im + měsíce</td>
+                        <td><span>im</span> + měsíce</td>
                     </tr>
                     <tr>
-                        <td>im Winter</td>
+                        <td><span>im</span> Winter</td>
                         <td>v zimě</td>
-                        <td>im + roční období</td>
+                        <td><span>im</span> + roční období</td>
                     </tr>
 
                 </table>
@@ -464,8 +466,8 @@
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
                 <p class="ctext">Cvičení:</p>
-                <div class="t easyt" onclick="teststart('ABCD','3','grammar','2')">leichter Test</div>
-                <div class="t hardt" onclick="teststart('TextInput','3','grammar','2')">schwieriger Test</div>
+                <div class="t easyt" onclick="teststart('ABCD','3','grammar','4')">leichter Test</div>
+                <div class="t hardt" onclick="teststart('TextInput','3','grammar','4')">schwieriger Test</div>
             </div>
         </div>
         
@@ -546,7 +548,6 @@
             DidYouKnowOPEN.push[false];
         }
         for(let i=0;i<DidYouKnow.length;i++){
-            console.log(DidYouKnow[i]);
             DidYouKnow[i].onclick= async function(){
                 
                 if (!DidYouKnowOPEN[i]){
@@ -565,7 +566,6 @@
                     DidYouKnow[i].style.height="40px";
                     DidYouKnowOPEN[i]=false;
                 }
-                console.log(DidYouKnowOPEN);
             };
         };
     });
@@ -644,6 +644,7 @@
         $(".congratulation").hide();
         $("#ConnectingControl").hide();
         $("#RepeatConnecting").hide();
+        $("#progression").hide();
         balicekKaretDobry.innerHTML="";
         balicekKaretSpatny.innerHTML="";
         balicekKaretVyber.innerHTML="";
@@ -662,6 +663,8 @@
         dvapokusy=1;
         document.getElementById("fill").style.width="0px";
     };
+    
+    
     // příprava sady otázek
     function teststart(type,k,t,x){
         $(".Teorie").hide();
@@ -669,11 +672,17 @@
         switch(type){
             case "ABCD":
             case "TextInput":
+                $("#progression").show();
                 $("."+type).show();
-                SetOfQuestions=NJ["lekce"+k][t][x-1];
+                SetOfQuestions=NJ["lekce"+k][t][x-1][1];
                 UnusedQuestions=Array.from({length:SetOfQuestions.length}, (_, i) => i);
                 Success=Array.from({length:SetOfQuestions.length},(_,i) => 1);
                 NumberForCalculationOfSuccess=0
+                document.getElementById("ABCDodpovedi").innerHTML="";
+                ABCD=["A","B","C","D"];
+                for(let i=0;i<NJ["lekce"+k][t][x-1][0];i++){
+                    document.getElementById("ABCDodpovedi").innerHTML+=`<div style='border:solid 3px rgb(189, 213, 234)' type='button' class='Felix' id='${ABCD[i]}' onclick='checkanswer(\"${ABCD[i]}\")'>Odpoved ${ABCD[i]}</div>`;
+                };
                 newquestion();
                 break;
             case "CZtoN":
@@ -728,6 +737,8 @@
                     }
                     BorderForTextInput.style.border="none";
                     TextInput.value="";
+                    document.getElementById("fill").style.width=(SetOfQuestions.length-UnusedQuestions.length)/SetOfQuestions.length*100+"%";
+
                     newquestion()
                 }
                 else{
@@ -811,7 +822,6 @@
             }
             $("#RepeatConnecting").hide();
             document.getElementById("CzechSection").innerHTML="";
-            console.log("etwas");
             OrderOfWords=[];
             WordsInVocabulary=[];
             for(let i=1;i<11;i++){
@@ -858,7 +868,9 @@
                     document.getElementById("FrantaABCD").innerHTML=SetOfQuestions[a]["q"];
                     b=["a","1","2","3"];
                     for (let i=0;i<4;i++){
-                        d=Math.floor(Math.random()*(3-i));
+                        d=Math.floor(Math.random()*(4-i));
+                        let newdiv = document.createElement("div");
+                        newdiv.setAttribute("onclick","cli")
                         ABCDanswer[i].innerHTML=SetOfQuestions[a][b[d]];
                         b.splice(d,1);
                     };
@@ -893,6 +905,7 @@
     // ukončení testu, gratulace
     function endoftest(){
         $(".task").hide();
+        $("#progression").hide();
         for (let i=0;i<Success.length;i++){
             NumberForCalculationOfSuccess+=Success[i];
         };

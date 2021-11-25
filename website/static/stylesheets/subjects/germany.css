@@ -135,7 +135,7 @@
     width:140px;
     text-align: center;
 }
-#VK span{
+span{
     color:rgb(255, 153, 0);
 }
 .cara{
@@ -210,22 +210,23 @@
     padding:5px;
     display:none;
 }
-.answer button{
+#ABCDodpovedi div,#kontrola{
     background-color: rgb(189, 213, 234);
     font-size: 28px;
     border-radius:5px ;
     width:250px;
-    height:40px;
+    padding:3px;
+    text-align: center;
+    cursor: pointer;
 }
 
-.ABCDodpovedi{
+#ABCDodpovedi{
     display:grid;
     grid-template-columns: 250px 250px;
     grid-template-rows: 40px 40px;
-    grid-row-gap:30px;
     grid-column-gap:40px;
+    grid-row-gap:30px;
 }
-
 .congratulations{
     display:none;
     height:100%;
@@ -495,7 +496,7 @@
     margin-top: 10px;
     visibility: hidden;
 }
-.progression{
+#progression{
     height:30px;
     position: absolute;
     top:100px;
