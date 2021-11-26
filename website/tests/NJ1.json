@@ -287,9 +287,54 @@
             "3":""
             },
             {
+            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Maskulin</u></i>?",
+            "zadaniC":"Který člen je <u><i>mužský</u></i>?",
+            "q":"___ Computer",
+            "a":"der",
+            "1":"die",
+            "2":"das",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Maskulin</u></i>?",
+            "zadaniC":"Který člen je <u><i>mužský</u></i>?",
+            "q":"___ Computer",
+            "a":"ein",
+            "1":"eine",
+            "2":"ein",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Feminim</u></i>?",
+            "zadaniC":"Který člen je <u><i>ženský</u></i>?",
+            "q":"___ Banane",
+            "a":"ein",
+            "1":"eine",
+            "2":"ein",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Feminim</u></i>?",
+            "zadaniC":"Který člen je <u><i>ženský</u></i>?",
+            "q":"___ Banane",
+            "a":"der",
+            "1":"die",
+            "2":"das",
+            "3":""
+            },
+            {
             "zadaniN":"Welcher bestimmte Artikel ist <u><i>Neutral</u></i>?",
             "zadaniC":"Který člen je <u><i>střední</u></i>?",
             "q":"___ T-Shirt",
+            "a":"das",
+            "1":"die",
+            "2":"der",
+            "3":""
+            },
+            {
+            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Neutral</u></i>?",
+            "zadaniC":"Který člen je <u><i>střední</u></i>?",
+            "q":"___ Kino",
             "a":"das",
             "1":"die",
             "2":"der",
@@ -363,12 +408,48 @@
             "3":""
             },
             {
+            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Neutral</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>střední</u></i> rod?",
+            "q":"___ Foto",
+            "a":"mein",
+            "1":"meine",
+            "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Neutral</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>střední</u></i> rod?",
+            "q":"___ Foto",
+            "a":"dein",
+            "1":"deine",
+            "2":"deinen",
+            "3":""
+            },
+            {
             "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Maskulin</u></i>?",
             "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>mužský</u></i> rod?",
             "q":"___ Vater",
             "a":"mein",
             "1":"meine",
             "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Maskulin</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>mužský</u></i> rod?",
+            "q":"___ Tourist",
+            "a":"mein",
+            "1":"meine",
+            "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Maskulin</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>mužský</u></i> rod?",
+            "q":"___ Tourist",
+            "a":"dein",
+            "1":"deine",
+            "2":"deinen",
             "3":""
             },
             {
@@ -381,12 +462,48 @@
             "3":""
             },
             {
+            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Feminim</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>ženský</u></i> rod?",
+            "q":"___ Disco",
+            "a":"meine",
+            "1":"mein",
+            "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Feminim</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>ženský</u></i> rod?",
+            "q":"___ Disco",
+            "a":"deine",
+            "1":"dein",
+            "2":"deinen",
+            "3":""
+            },
+            {
             "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Plural</u></i>?",
             "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>množné číslo</u></i>?",
             "q":"___ Eltern",
             "a":"meine",
             "1":"mein",
             "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Plural</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>množné číslo</u></i>?",
+            "q":"___ Traditionen",
+            "a":"meine",
+            "1":"mein",
+            "2":"meinen",
+            "3":""
+            },
+            {
+            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Plural</u></i>?",
+            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>množné číslo</u></i>?",
+            "q":"___ Traditionen",
+            "a":"deine",
+            "1":"dein",
+            "2":"deinen",
             "3":""
             },
             {
@@ -439,9 +556,163 @@
             {
             "zadaniN":"Schreibst du die richtige Zeitpräposition.",
             "zadaniC":"Uveď správnou časovou předložku.",
-            "q":"___ Montag",
+            "q":"___ Dienstag",
             "a":"am",
             "1":"im"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Mittwoch",
+            "a":"am",
+            "1":"im"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Donnerstag",
+            "a":"am",
+            "1":"im"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Freitag",
+            "a":"am",
+            "1":"im"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Samstag",
+            "a":"am",
+            "1":"im"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Sonntag",
+            "a":"am",
+            "1":"im"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Wochenende",
+            "a":"am",
+            "1":"im"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Januar",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Februar",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ March",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ April",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Mai",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Juny",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ July",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ August",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ September",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ October",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ November",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Dezember",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Frühling",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Sommer",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Herbst",
+            "a":"im",
+            "1":"am"
+            },
+            {
+            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
+            "zadaniC":"Uveď správnou časovou předložku.",
+            "q":"___ Winter",
+            "a":"im",
+            "1":"am"
             }
             ]
         ]

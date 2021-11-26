@@ -327,7 +327,7 @@
                 <div class="DidYKChild">
                     <div class="DYCKName"><b>2. Hast du das wissen?</b></div>
                     <div class="DYKCBody">
-                        Věděl jsi, že pro dobré znalosti němčiny je potřeba alespoň 4000 slovíček?
+                        Věděl jsi, že pro pochopení 95% textu se ti hodí znát 4000 slovíček? 
                     </div>
                 </div>
             </div>
@@ -585,14 +585,15 @@
     let TypeOfTest;
     let SetOfQuestions;
     let Success;
+    let NumberOfPossibleAnswers;
     let WordsInVocabulary=[];
     let OrderOfWords =[];
     let NumberForCalculationOfSuccess;
     let CanUseEnter=false;
     let CanUseEsc=false;
+    let ABCDanswer;
     let CanUseArrows=false;
     let CurrentVocabulary;
-    let ABCDanswer=document.getElementsByClassName("Felix");
     const substituteForInput=document.getElementById("SubstituteForInput");
     const TextInput = document.getElementById("TextInput");
     const BorderForTextInput = document.getElementById("XP"); 
@@ -604,18 +605,21 @@
     const config = { attributes: true, childList: true, characterData: true };
 
     //ABCD hover mod
-    for (let i=0;i<4;i++){
-        ABCDanswer[i].addEventListener("mouseover",function (event){
-            if (event.target.style.border==zakladnibarva) {
-                event.target.style.border=oznacovacibarva;                
-            }
-        })
-        ABCDanswer[i].addEventListener("mouseleave",function (event){
-            if (event.target.style.border==oznacovacibarva) {
-                event.target.style.border=zakladnibarva;
-            }
-        })
-    }    
+    function ABCDhover(){
+        for (let i=0;i<NumberOfPossibleAnswers;i++){
+            ABCDanswer[i].addEventListener("mouseover",function (event){
+                if (event.target.style.border==zakladnibarva) {
+                    event.target.style.border=oznacovacibarva;                
+                }
+            })
+            ABCDanswer[i].addEventListener("mouseleave",function (event){
+                if (event.target.style.border==oznacovacibarva) {
+                    event.target.style.border=zakladnibarva;
+                }
+            })
+        }
+    }
+        
 //Obecné funkce pro otázky, ...
     //zobrazuje okno pro teorie, texty, otázky, ...
     function visibilator(lekce,typ,ukol){
@@ -648,7 +652,7 @@
         balicekKaretDobry.innerHTML="";
         balicekKaretSpatny.innerHTML="";
         balicekKaretVyber.innerHTML="";
-        for(let i=0;i<4;i++){
+        for(let i=0;i<NumberOfPossibleAnswers;i++){
             ABCDanswer[i].style.border="solid 3px rgb(189, 213, 234)";
         }
         for(let i=1;i<11;i++){
@@ -680,6 +684,9 @@
                 NumberForCalculationOfSuccess=0
                 document.getElementById("ABCDodpovedi").innerHTML="";
                 ABCD=["A","B","C","D"];
+                ABCDanswer=document.getElementsByClassName("Felix");
+                ABCDhover();
+                NumberOfPossibleAnswers=NJ["lekce"+k][t][x-1][0];
                 for(let i=0;i<NJ["lekce"+k][t][x-1][0];i++){
                     document.getElementById("ABCDodpovedi").innerHTML+=`<div style='border:solid 3px rgb(189, 213, 234)' type='button' class='Felix' id='${ABCD[i]}' onclick='checkanswer(\"${ABCD[i]}\")'>Odpoved ${ABCD[i]}</div>`;
                 };
@@ -716,7 +723,7 @@
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(500);
                     }
-                    for (let i=0;i<4;i++){
+                    for (let i=0;i<NumberOfPossibleAnswers;i++){
                         ABCDanswer[i].style.border=zakladnibarva; 
                     }
                     document.getElementById("fill").style.width=(SetOfQuestions.length-UnusedQuestions.length)/SetOfQuestions.length*100+"%";
@@ -738,7 +745,6 @@
                     BorderForTextInput.style.border="none";
                     TextInput.value="";
                     document.getElementById("fill").style.width=(SetOfQuestions.length-UnusedQuestions.length)/SetOfQuestions.length*100+"%";
-
                     newquestion()
                 }
                 else{
@@ -867,10 +873,9 @@
                     document.getElementById("czABCD").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
                     document.getElementById("FrantaABCD").innerHTML=SetOfQuestions[a]["q"];
                     b=["a","1","2","3"];
-                    for (let i=0;i<4;i++){
-                        d=Math.floor(Math.random()*(4-i));
-                        let newdiv = document.createElement("div");
-                        newdiv.setAttribute("onclick","cli")
+                    for (let i=0;i<NumberOfPossibleAnswers;i++){
+                        d=Math.floor(Math.random()*Math.abs(NumberOfPossibleAnswers-i));
+                        console.log(d);
                         ABCDanswer[i].innerHTML=SetOfQuestions[a][b[d]];
                         b.splice(d,1);
                     };
