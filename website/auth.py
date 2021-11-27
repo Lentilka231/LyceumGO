@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint,request,redirect, url_for,flash
-from .models import Users,Math,Physic,Informatics,Programming
+from .models import Users,Informatics,Programming
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user,current_user
@@ -11,7 +11,7 @@ from .sendmail import *
 from datetime import date
 auth=Blueprint("auth", __name__)
 
-subjectspro={"math":"0/1","physic":"0/1","informatics":"0/1","programming":"0/1"}
+subjectspro={"informatics":"0/1","programming":"0/1"}
 
 class RegisterForm(FlaskForm):
     email = StringField("Email", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,64, message="velikost majliku musí být od 5 do 64 znaků"),validators.Email(message="Zadáváš mi špatný email")])
@@ -34,7 +34,7 @@ def register():
         if not usere and emailexist:
             if not usern:
                 SendMail(form.email.data, form.name.data, "Welcome")
-                new_user = Users(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=form.person.data)
+                new_user = Users(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=form.person.data,subjects="")
                 db.session.add(new_user)
                 db.session.commit()
                 login_user(new_user)

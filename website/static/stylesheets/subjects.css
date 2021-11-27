@@ -3,46 +3,28 @@
     height:80vh;
     background-color: rgb(189, 213, 234);
     padding:50px;
-    display:flex;
-  }
-#grades{
-    width:300px;
-    height:650px;
-    background-color: rgb(39, 111, 173);
-    padding:10px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit,200px);
+    grid-template-rows:repeat(auto-fit,250px);
+    grid-column-gap:40px;
+    grid-row-gap:30px;
 }
-.grade{
-    cursor: pointer;
-    position:relative;
-    top:100px;
-    width:260px;
-    border:solid 2px black;
-    margin:10px;
+#studySubject{
+    height: 100%;
+    width:100%;
+    margin:auto;
+    font-size: 150px;
     text-align: center;
-    padding:20px;
-}
-.grade:hover{
-    background-color: rgb(29, 101, 173);
-}
-#Subjects{
-    margin-left:100px;
-    width:1100px;
-    height:650px;
-    background-color: rgb(130, 130, 216);
-    float:right;
-    padding:30px;
-    position:relative;
-    display:flex;
-    justify-content:space-around;
-    flex-wrap:wrap;
+    padding-top:1rem;
+    background-color: rgb(157, 157, 223);
+    cursor:pointer
 }
 .sub{
     display:flex;
     justify-content: space-between;
-
 }
 .subject{
-    width:220px;
+    width:200px;
     height:250px;
     background-color: rgb(157, 157, 223);
     padding:20px;
@@ -52,18 +34,41 @@
     font-size:24px;
     margin-bottom:10px
 }
-.SubProg{
-    font-size:16px;
+.Bubak{
+    width:300px;
+    height:150px;
+    padding:30px;
+    background-color: rgb(189, 213, 234);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
 }
-.invisible{
-    display:none
+#CreateSub{
+    display:none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
-.subject:hover .invisible{
-    display:block
+#buttonForSubjects{
+    margin-top:50px;
+    position:absolute;
+    bottom:20px;
 }
-
-#MainDiv{
-    width:250px;
-    height:300px;
-    background-color: rgb(87, 115, 153);
+#exit{
+    position:absolute;
+    right:30px;
+    bottom:20px;
+}
+#selection{
+    padding: 3px;
+    font-size: 20px;
+    position: absolute;
+    left:50%;
+    transform: translate(-50%,0%);
+    border:3px solid rgb(73, 73, 73);
+    border-radius:5px;
 }

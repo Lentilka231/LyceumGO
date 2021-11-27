@@ -111,17 +111,7 @@ tr:nth-child(odd) {background: rgb(58, 119, 177)}
     background-color:transparent;
     cursor:pointer;
 }
-.Bubak{
-    width:400px;
-    height:400px;
-    padding:30px;
-    background-color: rgb(189, 213, 234);
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
-}
+
 #exit{
     position: absolute;
     right:50px;

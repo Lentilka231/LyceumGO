@@ -13,18 +13,9 @@ class Users (db.Model,UserMixin):
     grade = db.Column(db.Integer)
     beginning = db.Column(db.Integer)
     favouritesub =db.Column(db.String(30))
-    subclass = db.relationship("SubClass")
     messages = db.relationship("Messages")
-    
-class SubClass(db.Model):
-    id=db.Column(db.Integer,primary_key=True)
-    grade=db.Column(db.Integer)
-    teacher=db.Column(db.String(20))
-    subject=db.Column(db.String(10))
-    progres=db.Column(db.String(1000))
-    teacherid = db.Column(db.Integer, db.ForeignKey('users.id'))
-    classroomname = db.Column(db.Integer, db.ForeignKey("classrooms.name"))
-  
+    subjects = db.Column(db.String(50))
+
 class Classrooms (db.Model):
     id = db.Column(db.Integer, primary_key=True)
     active = db.Column(db.Boolean)
@@ -35,8 +26,6 @@ class Classrooms (db.Model):
     grade = db.Column(db.Integer)
     beginning = db.Column(db.Integer)
     students = db.relationship("Users")
-    subclass = db.relationship("SubClass")
-    # teachers=db.Column(db.String(200))
 
 class Messages(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -49,31 +38,20 @@ class Messages(db.Model):
     answer = db.Column(db.String(20))
     question = db.Column(db.String(20))
 
-class Math (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress=db.Column(db.String(10))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-
-
-class Physic (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress=db.Column(db.String(10))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-
-
 class Informatics (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-
+    subname = db.Column(db.String(10))
 
 class Programming (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
+    subname = db.Column(db.String(10))
 
 class Germany (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-    
+    subname = db.Column(db.String(10))

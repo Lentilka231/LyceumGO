@@ -42,7 +42,5 @@ def Nemcina():
     with open("website/tests/NJ1.json", encoding="utf-8") as f:
         NJ = json.load(f)
     if current_user.is_authenticated:
-        if current_user.person=="t":
-            subclass=SubClass.query.filter_by(teacher=current_user.name).first()
-        return render_template("subjects/germany.html",user=current_user,subclass=subclass,subject=Germany.query.filter_by(user_id=current_user.id).first(),NJ1=NJ)
+        return render_template("subjects/germany.html",user=current_user,subject=Germany.query.filter_by(user_id=current_user.id).first(),NJ1=NJ)
     return redirect(url_for("auth.login"))

@@ -7,7 +7,7 @@ import random
 import string
 from datetime import date,datetime
 views = Blueprint("views", __name__)
-SUBJECTS = [["Fyzika","Chemie","Programování","Informatika","Němčina"]]
+SUBJECTS = ["Programování","Informatika","Němčina 1"]
 def createrandomcode():
     x=""
     for i in range(6):
@@ -19,21 +19,6 @@ def createmessage(title,message,prijemceid,question):
     db.session.add(new_message)
     print("message was created")
     db.session.commit()
-
-def createsubforstudents(studentid,s):
-    if studentid:
-        if s=="Matematika":
-            return Math(user_id=studentid,progress="0/100")
-        elif s=="Fyzika":
-            return Physic(user_id=studentid,progress="0/100")
-        elif s=="Programování":
-            return Programming(user_id=studentid,progress="0/100")
-        elif s=="Informatika":
-            return Informatics(user_id=studentid,progress="0/100")
-        elif s=="Němčina":
-            return Germany(user_id=studentid,progress="0/100")
-
-
 @views.route("/home")
 @views.route("/")
 def home():
@@ -63,7 +48,24 @@ def profile():
 @views.route("/subjects",methods=["GET","POST"])
 def subjects():
     if current_user.is_authenticated:
-        return render_template("subjects.html",user=current_user)
+        if request.method=="POST":
+            if request.form["submit_button"]=="createsub":
+                if not Germany.query.filter_by(user_id=request.form.get("subject")).first():
+                    current_user.subjects+="Germany/"
+                    newgermany = Germany(progress="0/100",user_id=current_user.id,subname="Němčina")
+                    db.session.add(newgermany)
+                    db.session.commit()
+                else:
+                    flash("Tato učebna pro tuto třídu už existuje")
+        usersub=[]
+        for i in current_user.subjects.split("/"):
+            if i=="Germany":
+                usersub.append(Germany.query.filter_by(user_id=current_user.id).first())
+            elif i=="Informatics":
+                usersub.append(Informatics.query.filter_by(user_id=current_user.id).first())
+            elif i=="Programming":
+                usersub.append(Programming.query.filter_by(user_id=current_user.id).first())
+        return render_template("subjects.html",user=current_user,subjects=SUBJECTS,usersub=usersub)
     else:
         return redirect(url_for("auth.login"))
 
@@ -72,7 +74,6 @@ def classroom():
     if current_user.is_authenticated:
         classroom=Classrooms.query.filter_by(name=current_user.classroom).first()
         students=[]
-
         teachers=Users.query.filter_by(person="t").all()
         if request.method=="POST":
             if request.form["submit_button"]=="findclass":
@@ -98,33 +99,11 @@ def classroom():
                 pass
             elif "kickstudent" in request.form["submit_button"]:
                 a=request.form.get("submit_button")
-                print(a,a[a.find("-")+1:])
                 student=Users.query.filter_by(id=a[a.find("-")+1:]).first()
                 classroom.numofstudents-=1
                 student.classroom=None
                 student.classroomid=None
-
-                createmessage("Vyhazov", f"Byl jste vyhozen ze třídy {current_user.classroom}",student.id,"none")
-                    
-            elif request.form["submit_button"]=="createsubclass":
-                a=True
-                for i in classroom.subclass:
-                    if request.form.get("subject")==i.subject:
-                        a=False
-                if a:
-                    newsubclass = SubClass(teacher=request.form.get("teacher"),teacherid=current_user.id,subject=request.form.get("subject"),classroomname=classroom.name,grade=classroom.grade)
-                    newgermany = Germany(progress="0/100",user_id=current_user.id)
-                    db.session.add(newsubclass)
-                    for student in classroom.students:
-                        db.session.add(createsubforstudents(student.id, request.form.get("subject")))
-                    db.session.commit()
-                else:
-                    flash("Tato učebna pro tuto třídu už existuje")
-            elif "destroysubclass" in request.form["submit_button"]:
-                a=request.form.get("submit_button")
-                subclass = SubClass.query.filter_by(id=a[a.find("-")+1:]).first()
-                db.session.delete(subclass)
-                db.session.commit()
+                createmessage("Vyhazov", f"Byl jste vyhozen ze třídy {current_user.classroom}",student.id,"none")    
         if classroom:
             if classroom.students:
                 students=enumerate(classroom.students)
@@ -150,8 +129,6 @@ def notification():
                     boy=Users.query.filter_by(id=message.sender).first()
                     boy.classroom=classroom.name
                     boy.classroomid=classroom.id
-                    for sub in classroom.subclass:
-                        db.session.add(createsubforstudents(boy.id, sub.subject))
                     classroom.numofstudents+=1
                     db.session.commit()
                     createmessage("Odpověď",f"Byl jsi příjmut do třídy {classroom.name}.", message.sender,"none")

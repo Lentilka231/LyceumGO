@@ -8,54 +8,49 @@
 <div id="flex-container">
 <div id="SubjectMainDiv">
     {%if user.person=="t"%}
-    {%for sub in user.subclass%}
+    {%for sub in usersub%}
         <div class="sub">
-            <a href="{{sub.subject}}">
+            <a href="{{sub.subname}}">
                 <div class="subject">
-                    <p class="ClassName">{{sub.classroom}}</p>
-                    <p class="SubName">{{sub.subject}}</p>                    
+                    <p class="SubName">{{sub.subname}}</p>                    
                 </div>
             </a>
         </div>
+        
     {%endfor%}
-
-    <script>
-        $(document).ready(function(){
-            for(let i=0;i<4;i++){
-                $("#sub"+i).hide();
-            }
-            for(let i=1;i<=4;i++){
-                $("#g"+i).click(function(){
-                    for(let i=0;i<4;i++){
-                        $("#sub"+i).hide();
-                    }
-                    $("#sub"+(i-1)).show();
-                });
-            }
-        });
-    </script>
-    {%else%}
-    <div id="grades">
-        <div class="grade"id="g1">Ročník 1</div>
-        <div class="grade"id="g2">Ročník 2</div>
-        <div class="grade"id="g3">Ročník 3</div>
-        <div class="grade"id="g4">Ročník 4</div>
-    </div>
-    <div id="Subjects"> 
-        {%for i in user.subclass%}
-            <div class="sub" id="sub{{i.subject}}">
-                <a href="{{i.subject}}">
-                    <div class="subject" id={{i.subject}}>
-                        <p class="SubName"><b>{{i.subject}}</b></p>
-                        <p class="SubProg"></p>
-                        <div class="invisible">
-                        </div>
-                    </div>
-                </a>
-            </div>
-        {%endfor%}
+    <div id="studySubject">
+        ＋
     </div>
     {%endif%}
 </div>
+<div>
+    <div id="CreateSub">
+    <div class="Bubak">
+        <form method="POST">
+            <div id="input">
+                <select id="selection"name="subject">
+                    {%for i in subjects%}
+                        <option value="{{i}}">{{i}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+            <button class="BasicButton"name="submit_button" value="createsub" id="buttonForSubjects">Vytvoř učebnu</button>
+        </form>
+        <div class="BasicButton" id="exit">
+            Zrušit
+        </div>
+    </div>
+    </div>
 </div>
+</div>
+<script>
+    $(document).ready(function(){ 
+        $("#studySubject").click(function(){
+            $("#CreateSub").show()
+        })
+        $("#exit").click(function(){
+            $("#CreateSub").hide()
+        }) 
+    });
+</script>
 {%endblock%}

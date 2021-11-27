@@ -81,20 +81,13 @@
             </div>
             <div class="s" id="s2">
                 <form method="POST">
-                {%for sub in classroom.subclass%}
+                {%for sub in subjects%}
                     <div class="subject">
                         <p id=""><b>{{sub.subject}}</b></p>
-                        Učitel(ka): {{sub.teacher}}
-                        
                         <button value="destroysubclass-{{sub.id}}" name="submit_button" id="kickstudent">✕</button>
                     </div>
                 {%endfor%}
                 </form>
-                {%if user.person=="t"%}
-                <div class="BasicButton" id="NewClassroom">
-                    Vytvořit novou učebnu
-                </div>
-                {%endif%}
             </div>
         </div>
     </div>
