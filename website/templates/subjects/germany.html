@@ -316,17 +316,20 @@
                 <div class="t easyt" onclick="teststart('ABCD','3','grammar','1')">leichter Test</div>
                 <div class="t hardt" onclick="teststart('TextInput','3','grammar','1')">schwieriger Test</div>
             </div>
-            <div class="DidYouKnow">
-                <div class="DidYKChild">
-                    <div class="DYCKName"><b>1. Hast du das wissen?</b></div>
-                    <div class="DYKCBody">
-                        Věděl jsi, že v němčině při vykání vlastně "onikáme"?
+            <div class="DYK">
+                <div class="arrow-left"></div>
+                <div class="DidYouKnow">
+                    <div class="DidYKChild" value="5">
+                        <div class="DYCKName"><b>1. Hast du das wissen?</b></div>
+                        <div class="DYKCBody" >
+                            Věděl jsi, že v němčině při vykání vlastně "onikáme"?
+                        </div>
                     </div>
-                </div>
-                <div class="DidYKChild">
-                    <div class="DYCKName"><b>2. Hast du das wissen?</b></div>
-                    <div class="DYKCBody">
-                        Věděl jsi, že pro pochopení 95% textu se ti hodí znát 4000 slovíček? 
+                    <div class="DidYKChild" value="6">
+                        <div class="DYCKName"><b>2. Hast du das wissen?</b></div>
+                        <div class="DYKCBody">
+                            Věděl jsi, že pro pochopení 95% textu potřebuješ znát 4000 slovíček? 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -343,7 +346,7 @@
                     </tr>
                     <tr>
                         <th></th>
-                        <td class="m" style="background-color:rgb(163, 163, 238);">rod mužský (m)</td>
+                        <td class="m" style="background-color:rgb(97, 97, 231);">rod mužský (m)</td>
                         <td class="f" style="background-color:rgb(194, 92, 92);">rod ženský (ž)</td>
                         <td class="n" style="background-color:rgb(110, 177, 127);">rod střední (s)</td>
                         <td class="a" style="background-color:rgb(228, 213, 76);">všechny rody</td>
@@ -377,6 +380,18 @@
                 <div class="t easyt" onclick="teststart('ABCD','3','grammar','2')">leichter Test</div>
                 <div class="t hardt" onclick="teststart('TextInput','3','grammar','2')">schwieriger Test</div>
             </div>
+            <div class="DYK">
+                <div class="arrow-left"></div>
+                <div class="DidYouKnow">
+                    <div class="DidYKChild" value="6">
+                        <div class="DYCKName"><b>1. Hast du das wissen?</b></div>
+                        <div class="DYKCBody" >
+                            46% slov má rod ženský<br>34% slov má rod mužský<br>20% slov má rod střední
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="Teorie x3g3">
             <p class="nnadpis"><b>Possessivartikel</b></p>
@@ -485,14 +500,16 @@
     function sleep(ms){
         return new Promise(resolve => setTimeout(resolve,ms))
     };
+    const DidYouKnow = document.getElementsByClassName("DidYKChild");
+    let DidYouKnowOPEN = [];
+
     //vše týkající se zviditelňování
      $(document).ready(function(){
-        const a = [false,false,false,false,false]
+        const child = document.querySelectorAll(".child"); 
         const x = document.querySelectorAll(".Module");
-        const child = document.querySelectorAll(".child");
-        const DidYouKnow = document.getElementsByClassName("DidYKChild");
         const L = document.querySelectorAll(".L");
-        let DidYouKnowOPEN = [];
+        const a = [false,false,false,false,false]
+
         // tohle zobrazuje Lektiony 1-15 v modulech
 
         for(let i=1;i<6;i++){
@@ -555,7 +572,7 @@
                         DidYouKnow[j].querySelector(".DYKCBody").style.visibility="hidden";
                         DidYouKnowOPEN[j]=false;
                     }
-                    DidYouKnow[i].style.height="100px";
+                    DidYouKnow[i].style.height=DidYouKnow[i].getAttribute("value")+"rem";
                     await sleep(200);
                     DidYouKnow[i].querySelector(".DYKCBody").style.visibility="visible";
                     DidYouKnowOPEN[i]=true;
@@ -636,6 +653,11 @@
             $(".xs").show();
         }
         else{
+            for(let i=0;i<DidYouKnow.length;i++){
+                DidYouKnowOPEN[i]=false;
+                DidYouKnow[i].querySelector(".DYKCBody").style.visibility="hidden";
+                DidYouKnow[i].style.height="40px";
+            }
             $(".x"+lekce+typ+ukol).show();
         }
     };
