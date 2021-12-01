@@ -546,4 +546,28 @@ span{
     border-bottom: 20px solid transparent;
     
     border-right:20px solid rgb(223, 223, 255);
-  }
+}
+.Text{
+    width:400px;
+}
+.P1{
+    color:red;
+    text-align: right;
+    vertical-align:top
+}
+.P2{
+    color:green;
+    text-align: right;
+    vertical-align:top
+}
+.P3{
+    color:blue;
+    text-align: right;
+    vertical-align:top
+}
+.Text span{
+    color:black;
+    background-color:rgb(197, 137, 8) ;
+    padding:1px;
+    border-radius:3px;
+}

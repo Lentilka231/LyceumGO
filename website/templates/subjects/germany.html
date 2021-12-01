@@ -107,19 +107,19 @@
             <div class="DIVchild" id="lesen" style="background-color: rgb(93, 84, 164);">
                 <b class="nadpisChild">Lesen</b>
                 <div class="Material">
-                    <div class="Block b13" onclick="visibilator('l','1')">
+                    <div class="Block b13" onclick="visibilator('3','l','1')">
                         <b>Text1</b><br>
                         Hallo Leute!
                     </div>
-                    <div class="Block b13" onclick="visibilator('l','2')">
+                    <div class="Block b13" onclick="visibilator('3','l','2')">
                         <b>Text2</b><br>
                         Heute habe ich nicht Geburstag.
                     </div>
-                    <div class="Block b13" onclick="visibilator('l','3')">
+                    <div class="Block b13" onclick="visibilator('3','l','3')">
                         <b>Text3</b><br>
                         Prag ist teuer.
                     </div>
-                    <div class="Block b13" onclick="visibilator('l','4')">
+                    <div class="Block b13" onclick="visibilator('3','l','4')">
                         <b>Text4</b><br>
                         Meine Familie ist groß.
                     </div>
@@ -159,7 +159,6 @@
                 </div>
             </div>
         </div>
-
         <div class="task TextInput">
             <div class="questions">
                 <b id="nzX" class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
@@ -485,7 +484,30 @@
             </div>
         </div>
         
-        <div class="Teorie x3l1">nbmgzu</div>
+        <div class="Teorie x3l1">
+            <table class="Text">
+                <tr><th class="P1">Nikola:</th><td>Hallo Peter</td></tr>
+                <tr><th class="P2">Peter:</th><td> Hallo Nikola. Wie geht's?</td></tr>
+                <tr><th class="P1">Nikola:</th><td><span>Es geht</span>, und du?</td></tr>
+                <tr><th class="P2">Peter:</th><td>Nicht so gut.</td></tr>
+                <tr><th class="P1">Nikola:</th><td>Warum?</td></tr>
+                <tr><th class="P2">Peter:</th><td>Ich warte hier auf jemand seit einer halb Stunde. Wir mussten ins Schwimmbad gehen, aber sie ist immer nocht nicht hier.</td></tr>
+                <tr><th class="P1">Nikola:</th><td>Wer ist das?</td></tr>
+                <tr><th class="P2">Peter:</th><td>Er kenne du wahrscheinlich nicht. Er heißt Adam.</td></tr>
+                <tr><th class="P1">Nikola:</th><td>Adam Müller? <span>Der neuer Schüler.</span></td></tr>
+                <tr><th class="P2">Peter:</th><td>Du kenne ihn?</td></tr>
+                <tr><th class="P1">Nikola:</th><td>Natürlich, er ist mein neu Nachbar.</td></tr>
+                <tr><th class="P2">Peter:</th><td>Das habe ich nicht gewusst. <span>Hier er ist.</span></td></tr>
+                <tr><th class="P3">Adam:</th><td>Hallo Leute, Ich entschuldige mich für die Verspätung. Ich bin verloren.</td></tr>
+            </table>
+            <div>Fragen und Aufgaben</div>
+            <div>Otázky a úkoly</div>
+            <ol style="margin-left:50px">
+                <li>Wer ist Adam?</li>
+                <li>Warum Nikola kennt Adam?</li>
+                <li>Was bedautet farbige Wörte?</li>
+            </ol>
+        </div>
         <div class="Teorie x3l2">hgkignmb</div>
         <div class="Teorie x3l3"></div>
 
@@ -504,7 +526,7 @@
     let DidYouKnowOPEN = [];
 
     //vše týkající se zviditelňování
-     $(document).ready(function(){
+    $(document).ready(function(){
         const child = document.querySelectorAll(".child"); 
         const x = document.querySelectorAll(".Module");
         const L = document.querySelectorAll(".L");
@@ -658,6 +680,7 @@
                 DidYouKnow[i].querySelector(".DYKCBody").style.visibility="hidden";
                 DidYouKnow[i].style.height="40px";
             }
+            console.log(".x"+lekce+typ+ukol);
             $(".x"+lekce+typ+ukol).show();
         }
     };
@@ -688,7 +711,6 @@
         dvapokusy=1;
         document.getElementById("fill").style.width="0px";
     };
-    
     
     // příprava sady otázek
     function teststart(type,k,t,x){
