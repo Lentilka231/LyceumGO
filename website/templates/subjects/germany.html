@@ -485,28 +485,40 @@
         </div>
         
         <div class="Teorie x3l1">
-            <table class="Text">
-                <tr><th class="P1">Nikola:</th><td>Hallo Peter</td></tr>
-                <tr><th class="P2">Peter:</th><td> Hallo Nikola. Wie geht's?</td></tr>
-                <tr><th class="P1">Nikola:</th><td><span>Es geht</span>, und du?</td></tr>
-                <tr><th class="P2">Peter:</th><td>Nicht so gut.</td></tr>
-                <tr><th class="P1">Nikola:</th><td>Warum?</td></tr>
-                <tr><th class="P2">Peter:</th><td>Ich warte hier auf jemand seit einer halb Stunde. Wir mussten ins Schwimmbad gehen, aber sie ist immer nocht nicht hier.</td></tr>
-                <tr><th class="P1">Nikola:</th><td>Wer ist das?</td></tr>
-                <tr><th class="P2">Peter:</th><td>Er kenne du wahrscheinlich nicht. Er heißt Adam.</td></tr>
-                <tr><th class="P1">Nikola:</th><td>Adam Müller? <span>Der neuer Schüler.</span></td></tr>
-                <tr><th class="P2">Peter:</th><td>Du kenne ihn?</td></tr>
-                <tr><th class="P1">Nikola:</th><td>Natürlich, er ist mein neu Nachbar.</td></tr>
-                <tr><th class="P2">Peter:</th><td>Das habe ich nicht gewusst. <span>Hier er ist.</span></td></tr>
-                <tr><th class="P3">Adam:</th><td>Hallo Leute, Ich entschuldige mich für die Verspätung. Ich bin verloren.</td></tr>
-            </table>
-            <div>Fragen und Aufgaben</div>
-            <div>Otázky a úkoly</div>
-            <ol style="margin-left:50px">
-                <li>Wer ist Adam?</li>
-                <li>Warum Nikola kennt Adam?</li>
-                <li>Was bedautet farbige Wörte?</li>
-            </ol>
+            <div class="gtext">
+                <table class="Text">
+                    <tr><th class="P1">Nikola:</th><td>Hallo Peter</td></tr>
+                    <tr><th class="P2">Peter:</th><td> Hallo Nikola. Wie geht's?</td></tr>
+                    <tr><th class="P1">Nikola:</th><td><span class="mark">Es geht</span>, und du?</td></tr>
+                    <tr><th class="P2">Peter:</th><td>Nicht so gut.</td></tr>
+                    <tr><th class="P1">Nikola:</th><td>Warum?</td></tr>
+                    <tr><th class="P2">Peter:</th><td>Ich <span class="warten">warte</span> hier auf jemand seit einer halb Stunde. Wir <span class="wollen">haben</span> ins Schwimmbad gehen <span class="wollen">gewollt</span>, aber er ist immer nocht nicht hier.</td></tr>
+                    <tr><th class="P1">Nikola:</th><td>Wer ist das?</td></tr>
+                    <tr><th class="P2">Peter:</th><td>Er kenne du <span class="wahrscheinlich">wahrscheinlich</span> nicht. Er heißt Adam.</td></tr>
+                    <tr><th class="P1">Nikola:</th><td>Adam Müller? <span class="mark">Der neuer Schüler.</span></td></tr>
+                    <tr><th class="P2">Peter:</th><td>Du kenne ihn?</td></tr>
+                    <tr><th class="P1">Nikola:</th><td>Natürlich, er ist mein neu Nachbar.</td></tr>
+                    <tr><th class="P2">Peter:</th><td>Das habe ich nicht gewusst. <span class="mark">Hier er ist.</span></td></tr>
+                    <tr><th class="P3">Adam:</th><td>Hallo Leute, Ich entschuldige mich für die Verspätung. Ich bin verloren.</td></tr>
+                </table>
+                <div>
+                    <p class="ntext"><b>Fragen und Aufgaben:</b></p>
+                    <p class="ctext">Otázky a úkoly:</p>
+                    <ol style="margin-left:50px;line-height:25px;">
+                        <li>Wer ist Adam?</li>
+                        <li>Warum Nikola kennt Adam?</li>
+                        <li>Was bedautet markierte Wörte?</li>
+                    </ol>
+                </div>
+                <div class="dictionaryFHardWords">
+                    <div class="DFHWchild">
+                        <div onmouseover="show('warten')"onmouseout="hide('warten')">warten = čekat</div>
+                        <div onmouseover="show('wollen')"onmouseout="hide('wollen')">wollen (h. gewollt) = chtít (chtěli jsme)</div>
+                        <div onmouseover="show('wahrscheinlich')"onmouseout="hide('wahrscheinlich')">wahrscheinlich = asi</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cara"> </div>
         </div>
         <div class="Teorie x3l2">hgkignmb</div>
         <div class="Teorie x3l3"></div>
@@ -641,7 +653,21 @@
     let z=0;
     let draggedItem = null;
     const config = { attributes: true, childList: true, characterData: true };
+    function show(a){
+        x=document.getElementsByClassName(a);
+        for(let i=0;i<x.length;i++){
 
+            x[i].style.backgroundColor="rgb(168, 168, 168)";
+            x[i].style.borderRadius="2px";
+        }
+    }
+    function hide(a){
+        x=document.getElementsByClassName(a);
+        for(let i=0;i<x.length;i++){
+            x[i].style.backgroundColor="";
+            x[i].style.borderRadius="";
+        }
+    }
     //ABCD hover mod
     function ABCDhover(){
         for (let i=0;i<NumberOfPossibleAnswers;i++){

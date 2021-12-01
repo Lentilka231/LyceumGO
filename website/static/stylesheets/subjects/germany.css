@@ -549,6 +549,10 @@ span{
 }
 .Text{
     width:400px;
+    border-spacing:5px;
+    background-color:  rgb(189, 213, 234);
+    border:5px solid rgb(87, 115, 153);
+    border-radius: 5px;
 }
 .P1{
     color:red;
@@ -565,9 +569,31 @@ span{
     text-align: right;
     vertical-align:top
 }
-.Text span{
+.mark{
     color:black;
-    background-color:rgb(197, 137, 8) ;
+    background-color:rgb(226, 162, 24) ;
     padding:1px;
     border-radius:3px;
+}
+.Text span{
+    color:black;
+}
+.gtext{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 400px 140px;
+    grid-auto-flow: row;
+}
+.dictionaryFHardWords{
+    grid-column:1/3;
+    display:flex;
+    padding:10px;
+    line-height: 30px;
+}
+.dictionaryFHardWords div{
+    width:300px;
+    margin:0px 10px;
+}
+.DFHWchild div{
+    cursor:default;
 }
