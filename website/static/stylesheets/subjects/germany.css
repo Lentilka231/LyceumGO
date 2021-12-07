@@ -266,25 +266,35 @@ span{
 #slovicka{
     grid-row:1/4;
     max-height: 100%;
-    overflow-y: auto;
-    border:solid 3px black;
-    border-radius: 5px;
 }
 #slovnicek{
     width:100%;
-    background-color: rgb(189, 213, 234);
+    border-spacing:0px; 
+}
+#scroll{
+    max-height:500px;
+    width:100%;
+    overflow-y: auto;
+}
+#tabulka{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width:100%;
     border-spacing:0px;
     padding-right: 0px;
 }
-#slovnicek th{
+#tabulka th{
+    background-color:rgba(0,0,0,.3);
     border-bottom:solid 1px black;
-    background-color: rgb(122, 64, 175);
 }
-#slovnicek th, #slovnicek td{
-    border-right:1px solid black;
-    padding:3px;
-}
-#slovnicek tr:nth-child(odd) {background: rgb(112, 178, 240)}
+#tabulka th, #slovnicek td{padding:3px;}
+#slovnicek tr:nth-child(odd) {background: rgba(0, 0, 0, 0.1)}
+#slovnicek td:nth-child(1) {text-align:right;width:20px}
+#slovnicek td:nth-child(2) {text-align:right;width:30px}
+#slovnicek td:nth-child(3) {width:200px}
+#slovnicek td:nth-child(4) {width:200px}
+
+
 #table{
     position: absolute;
     width:800px;

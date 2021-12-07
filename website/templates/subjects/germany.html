@@ -268,7 +268,15 @@
             <b><div id="strana"></div></b>
             <div class="sgrid">
                 <div id="slovicka">
-                    <table id='slovnicek'>
+                    <table id='tabulka'>
+                        <tr><th style="width:30px">id</th><th style="width:230px">německy</th><th>česky</th></tr>
+                        <tr><td colspan=3 >
+                            <div id="scroll">
+                                <table id="slovnicek">
+
+                                </table>
+                            </div>
+                        </td></tr>
                     </table>
                 </div>
                 <div class="Wgridchild Flashcards" onclick="teststart('FlashCards')">
@@ -692,9 +700,8 @@
         if (typ=="w"){
             CurrentVocabulary=NJ["lekce"+lekce]["words"][ukol];
             slovicka=""
-            document.getElementById("slovnicek").innerHTML="<tr><th>id</th><th>německy</th><th>česky</th></tr>";
             for(let i=0;i<CurrentVocabulary[0];i++){
-                slovicka+="<tr><td>"+(i+1)+"</td><td>"+CurrentVocabulary[2][i]+"</td><td>"+CurrentVocabulary[1][i]+"</td></tr>";
+                slovicka+="<tr><td>"+(i+1)+"</td><td>"+CurrentVocabulary[3][i]+"</td><td>"+CurrentVocabulary[1][i]+"</td><td>"+CurrentVocabulary[2][i]+"</td></tr>";
             };
             document.getElementById("slovnicek").innerHTML+=slovicka;
             document.getElementById("strana").innerHTML=ukol;
