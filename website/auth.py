@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint,request,redirect, url_for,flash
-from .models import Users,Informatics,Programming
+from .models import Users
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user,current_user
@@ -30,8 +30,7 @@ def register():
     if form.validate_on_submit():
         usere = Users.query.filter_by(email=form.email.data).first()
         usern = Users.query.filter_by(name=form.name.data).first()
-        emailexist = validate_email(form.email.data)
-        if not usere and emailexist:
+        if not usere :
             if not usern:
                 SendMail(form.email.data, form.name.data, "Welcome")
                 new_user = Users(email=form.email.data,name=form.name.data,password=generate_password_hash(form.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=form.person.data,subjects="")

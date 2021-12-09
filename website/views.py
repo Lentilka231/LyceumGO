@@ -7,7 +7,7 @@ import random
 import string
 from datetime import date,datetime
 views = Blueprint("views", __name__)
-SUBJECTS = ["Programování","Informatika","Němčina 1"]
+SUBJECTS = ["Programování","Informatika","Němčina 1","Fyzika"]
 def createrandomcode():
     x=""
     for i in range(6):
@@ -50,21 +50,37 @@ def subjects():
     if current_user.is_authenticated:
         if request.method=="POST":
             if request.form["submit_button"]=="createsub":
-                if not Germany.query.filter_by(user_id=request.form.get("subject")).first():
-                    current_user.subjects+="Germany/"
-                    newgermany = Germany(progress="0/100",user_id=current_user.id,subname="Němčina")
-                    db.session.add(newgermany)
-                    db.session.commit()
-                else:
-                    flash("Tato učebna pro tuto třídu už existuje")
+                x=request.form.get("subject")
+                if x=="Programování":
+                    pass
+                elif x=="Informatika":
+                    pass
+                elif x=="Fyzika":
+                    if not Physics.query.filter_by(user_id=current_user.id).first():
+                        current_user.subjects+="Physics/"
+                        news = Physics(progress="0/100",user_id=current_user.id,subname="Fyzika")
+                        db.session.add(news)
+                        db.session.commit()
+                    else:
+                        flash("Tato učebna už existuje")
+                elif x=="Němčina 1":
+                    if not Germany.query.filter_by(user_id=current_user.id).first():
+                        current_user.subjects+="Germany1/"
+                        news = Germany(progress="0/100",user_id=current_user.id,subname="Němčina 1")
+                        db.session.add(news)
+                        db.session.commit()
+                    else:
+                        flash("Tato učebna už existuje")
         usersub=[]
         for i in current_user.subjects.split("/"):
-            if i=="Germany":
+            if i=="Germany1":
                 usersub.append(Germany.query.filter_by(user_id=current_user.id).first())
             elif i=="Informatics":
                 usersub.append(Informatics.query.filter_by(user_id=current_user.id).first())
             elif i=="Programming":
                 usersub.append(Programming.query.filter_by(user_id=current_user.id).first())
+            elif i=="Physics":
+                usersub.append(Physics.query.filter_by(user_id=current_user.id).first())
         return render_template("subjects.html",user=current_user,subjects=SUBJECTS,usersub=usersub)
     else:
         return redirect(url_for("auth.login"))

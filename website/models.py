@@ -55,3 +55,8 @@ class Germany (db.Model):
     progress=db.Column(db.String(10))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
     subname = db.Column(db.String(10))
+class Physics (db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    progress=db.Column(db.String(10))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
+    subname = db.Column(db.String(10))
