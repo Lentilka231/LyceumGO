@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="Module" id="M5" tabindex="1" value="3" value2="7" style="background-color: rgb(74, 101, 160);">
-                <p><b>5) Module 5</b></p>
+            <p><b>5) Zu Hause und auf Reisen</b></p>
             <div class="child">
                 <p class="L" id="L13">Lektion 13</p>
                 <p class="L" id="L14">Lektion 14</p>
@@ -126,6 +126,536 @@
                 </div>
             </div>
             <div class="DIVchild" id="endtest" style="background-color: rgb(54, 80, 136);">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL4">
+            <div class="DIVchild" id="gramatik" style="background-color:rgb(247, 218, 24)">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b21"onclick="visibilator('4','g',1)">
+                        <b>Verbkonjugation im Präsens</b><br>
+                        Časování sloves v přítomném čase
+                    </div>
+                    <div class="Block b21"onclick="visibilator('4','g',2)">
+                        <b>Personalpronomen im Nominativ</b><br>
+                        Osobní zájmena v 1. pádě/nominativu
+                    </div>
+                    <div class="Block b21"onclick="visibilator('4','g',3)">
+                        <b>Ja/Nein-Frage und Aussage</b><br>
+                        Otázka zjišťovací a věta oznamovací
+                    </div>
+                    <div class="Block b21"onclick="visibilator('4','g',4)">
+                        <b>Konjuktion und;<br>Adverb gern</b><br>
+                        Spojka und;<br>Příslovce gern
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="wortschatz" style="background-color: rgb(247, 167, 18);">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce4"]["words"].items()%}
+                    <div class="Block b22" onclick="visibilator('4','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color: rgb(199, 133, 12);">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b23" onclick="visibilator('4','l','1')">
+                        <b>Text1</b><br>
+                        Was magst du?
+                    </div>
+                    <div class="Block b23" onclick="visibilator('4','l','2')">
+                        <b>Text2</b><br>
+                        Was sind meine Hobbys?
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color: rgb(141, 94, 6);">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL5">
+            <div class="DIVchild" id="gramatik" style="background-color:rgb(247, 218, 24)">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b21"onclick="visibilator('5','g',1)">
+                        <b>Verbkonjugation im Präsens</b><br>
+                        Časování sloves v přítomném čase
+                    </div>
+                    <div class="Block b21"onclick="visibilator('5','g',2)">
+                        <b>Fragepronomen/-adverbien und W-Frage</b><br>
+                        Tázací zájmena, příslovce a otázka doplňovací
+                    </div>
+                    <div class="Block b21"onclick="visibilator('5','g',3)">
+                        <b>Lokale Präposition bei Ländern</b><br>
+                        Předložky ve spojení s názvy států in, aus
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="wortschatz" style="background-color: rgb(247, 167, 18);">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce5"]["words"].items()%}
+                    <div class="Block b22" onclick="visibilator('5','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color: rgb(199, 133, 12);">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b23" onclick="visibilator('5','l','1')">
+                        <b>Text1</b><br>
+                        Kanst du ihn?
+                    </div>
+                    <div class="Block b23" onclick="visibilator('5','l','2')">
+                        <b>Text2</b><br>
+                        Neue Schülerin
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color: rgb(141, 94, 6);">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL6">
+            <div class="DIVchild" id="gramatik" style="background-color:rgb(247, 218, 24)">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b21"onclick="visibilator('6','g',1)">
+                        <b>Verbkonjugation im Präsens</b><br>
+                        Časování sloves v přítomném čase
+                    </div>
+                    <div class="Block b21"onclick="visibilator('6','g',2)">
+                        <b>Plural von Nomen</b><br>
+                        Množné číslo podstatných jmen
+                    </div>
+                    <div class="Block b21"onclick="visibilator('6','g',3)">
+                        <b>Negation mit kein</b><br>
+                        Zápor s kein
+                    </div>
+                    <div class="Block b21"onclick="visibilator('6','g',3)">
+                        <b>Artikel und Possessivartikel deklination</b><br>
+                        Skloňování členů a přívlastních zájmen
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="wortschatz" style="background-color: rgb(247, 167, 18);">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce6"]["words"].items()%}
+                    <div class="Block b22" onclick="visibilator('6','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color: rgb(199, 133, 12);">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b23" onclick="visibilator('6','l','1')">
+                        <b>Text1</b><br>
+                        Kanst du ihn?
+                    </div>
+                    <div class="Block b23" onclick="visibilator('6','l','2')">
+                        <b>Text2</b><br>
+                        Neue Schülerin
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color: rgb(141, 94, 6);">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL7">
+            <div class="DIVchild" id="gramatik" style="background-color:rgb(243, 118, 142)">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b31"onclick="visibilator('7','g',1)">
+                        <b>Verbkonjugation im Präsens</b><br>
+                        Časování sloves v přítomném čase
+                    </div>
+                    <div class="Block b31"onclick="visibilator('7','g',2)">
+                        <b>Modalverben</b><br>
+                        Způsobová slovesa
+                    </div>
+                    <div class="Block b31"onclick="visibilator('7','g',3)">
+                        <b>Negation</b><br>
+                        Zápor s nicht
+                    </div>
+                    <div class="Block b31"onclick="visibilator('7','g',3)">
+                        <b>Frageadverbien;<br>Temporale Präpositionen</b><br>
+                        Tázací příslovce;<br>Časové předložky
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="wortschatz" style="background-color: rgb(229, 65, 96)">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce7"]["words"].items()%}
+                    <div class="Block b32" onclick="visibilator('7','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color: rgb(156, 38, 87)">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b33" onclick="visibilator('7','l','1')">
+                        <b>Text1</b><br>
+                        Kanst du ihn?
+                    </div>
+                    <div class="Block b33" onclick="visibilator('7','l','2')">
+                        <b>Text2</b><br>
+                        Neue Schülerin
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color: rgb(96, 15, 68)">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL8">
+            <div class="DIVchild" id="gramatik" style="background-color:rgb(243, 118, 142)">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b31"onclick="visibilator('8','g',1)">
+                        <b>Deklination der Nomen</b><br>
+                        Skloňování podstatných jmen
+                    </div>
+                    <div class="Block b31"onclick="visibilator('8','g',2)">
+                        <b>Frageadverbien</b><br>
+                        Tázací příslovce
+                    </div>
+                    <div class="Block b31"onclick="visibilator('8','g',3)">
+                        <b>Häufigkeitsangaben</b><br>
+                        Příslovce četnosti
+                    </div>
+                    <div class="Block b31"onclick="visibilator('8','g',3)">
+                        <b>Ordinalzahlen + Datum</b><br>
+                        Řadové číslovky + datum
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="wortschatz" style="background-color: rgb(229, 65, 96)">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce8"]["words"].items()%}
+                    <div class="Block b32" onclick="visibilator('8','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color: rgb(156, 38, 87)">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b33" onclick="visibilator('8','l','1')">
+                        <b>Text1</b><br>
+                        Kanst du ihn?
+                    </div>
+                    <div class="Block b33" onclick="visibilator('8','l','2')">
+                        <b>Text2</b><br>
+                        Neue Schülerin
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color: rgb(96, 15, 68)">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL9">
+            <div class="DIVchild" id="gramatik" style="background-color:rgb(243, 118, 142)">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b31"onclick="visibilator('9','g',1)">
+                        <b>Trennbare Verben</b><br>
+                        Slovesa s odlučitelnou předponou
+                    </div>
+                    <div class="Block b31"onclick="visibilator('9','g',2)">
+                        <b>Personalpronomen im Akkusativ</b><br>
+                        Osobní zájmena v 4. pádě/akuzativu
+                    </div>
+                    <div class="Block b31"onclick="visibilator('9','g',3)">
+                        <b>Fragepronomen;<br>Präposition für</b><br>
+                        Tázací zájmena;<br>Předložka für
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="wortschatz" style="background-color: rgb(229, 65, 96)">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce9"]["words"].items()%}
+                    <div class="Block b32" onclick="visibilator('9','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color: rgb(156, 38, 87)">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b33" onclick="visibilator('9','l','1')">
+                        <b>Text1</b><br>
+                        Kanst du ihn?
+                    </div>
+                    <div class="Block b33" onclick="visibilator('9','l','2')">
+                        <b>Text2</b><br>
+                        Neue Schülerin
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color: rgb(96, 15, 68)">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL10">
+            <div class="DIVchild" id="gramatik" style="background-color:rgb(99, 217, 138)">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b41"onclick="visibilator('10','g',1)">
+                        <b>Verbkonjugation im Präsens</b><br>
+                        Časování sloves v přítomném čase
+                    </div>
+                    <div class="Block b41"onclick="visibilator('10','g',2)">
+                        <b>Nullartikel und negativer Artikel</b><br>
+                        Nulový a záporný člen
+                    </div>
+                    <div class="Block b41"onclick="visibilator('10','g',3)">
+                        <b>Komparativ lieber</b><br>
+                        Stupňování lieber
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="wortschatz" style="background-color:rgb(58, 176, 89)">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce10"]["words"].items()%}
+                    <div class="Block b42" onclick="visibilator('10','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color:rgb(30, 130, 63)">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b43" onclick="visibilator('10','l','1')">
+                        <b>Text1</b><br>
+                        Kanst du ihn?
+                    </div>
+                    <div class="Block b43" onclick="visibilator('10','l','2')">
+                        <b>Text2</b><br>
+                        Neue Schülerin
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color:rgb(8, 76, 31)">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL11">
+            <div class="DIVchild" id="gramatik" style="background-color:rgb(99, 217, 138)">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b41"onclick="visibilator('11','g',1)">
+                        <b>Verbkonjugation im Präsens</b><br>
+                        Časování sloves v přítomném čase
+                    </div>
+                    <div class="Block b41"onclick="visibilator('11','g',2)">
+                        <b>Personalpronomen im Dativ</b><br>
+                        Osobní zájmena ve 3. pádě/dativu
+                    </div>
+                    <div class="Block b41"onclick="visibilator('11','g',3)">
+                        <b>Verben mit Dativ</b><br>
+                        Slovesa se 3. pádem /dativem
+                    </div>
+                    <div class="Block b41"onclick="visibilator('11','g',3)">
+                        <b>Fragepronomen welch-</b><br>
+                        Tázací zájmeno welch-
+                    </div>
+                    <div class="Block b41"onclick="visibilator('11','g',3)">
+                        <b>Possessivartikel sein, ihr</b><br>
+                        Přivlasťnovací zájmeno (jeho, její)
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="wortschatz" style="background-color:rgb(58, 176, 89)">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce11"]["words"].items()%}
+                    <div class="Block b42" onclick="visibilator('11','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color:rgb(30, 130, 63)">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b43" onclick="visibilator('11','l','1')">
+                        <b>Text1</b><br>
+                        Kanst du ihn?
+                    </div>
+                    <div class="Block b43" onclick="visibilator('11','l','2')">
+                        <b>Text2</b><br>
+                        Neue Schülerin
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color:rgb(8, 76, 31)">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL12">
+            <div class="DIVchild" id="gramatik" style="background-color:rgb(99, 217, 138)">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b41"onclick="visibilator('12','g',1)">
+                        <b>Verbkonjugation im Präsens</b><br>
+                        Časování sloves v přítomném čase
+                    </div>
+                    <div class="Block b41"onclick="visibilator('12','g',2)">
+                        <b>Personalpronomen im Dativ</b><br>
+                        Osobní zájmena ve 3. pádě/dativu
+                    </div>
+                    <div class="Block b41"onclick="visibilator('12','g',3)">
+                        <b>Verben mit Dativ</b><br>
+                        Slovesa se 3. pádem /dativem
+                    </div>
+                    <div class="Block b41"onclick="visibilator('12','g',3)">
+                        <b>Fragepronomen welch-</b><br>
+                        Tázací zájmeno welch-
+                    </div>
+                    <div class="Block b41"onclick="visibilator('12','g',3)">
+                        <b>Possessivartikel sein, ihr</b><br>
+                        Přivlasťnovací zájmeno (jeho, její)
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="wortschatz" style="background-color:rgb(58, 176, 89)">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce11"]["words"].items()%}
+                    <div class="Block b42" onclick="visibilator('12','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color:rgb(30, 130, 63)">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b43" onclick="visibilator('12','l','1')">
+                        <b>Text1</b><br>
+                        Kanst du ihn?
+                    </div>
+                    <div class="Block b43" onclick="visibilator('12','l','2')">
+                        <b>Text2</b><br>
+                        Neue Schülerin
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color:rgb(8, 76, 31)">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL13">
+            <div class="DIVchild" id="gramatik" style="background-color:rgb(144, 170, 229)">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b51"onclick="visibilator('13','g',1)">
+                        <b>Verbkonjugation im Präsens</b><br>
+                        Časování sloves v přítomném čase
+                    </div>
+                    <div class="Block b51"onclick="visibilator('13','g',2)">
+                        <b>Personalpronomen im Dativ</b><br>
+                        Osobní zájmena ve 3. pádě/dativu
+                    </div>
+                    <div class="Block b51"onclick="visibilator('13','g',3)">
+                        <b>Verben mit Dativ</b><br>
+                        Slovesa se 3. pádem /dativem
+                    </div>
+                    <div class="Block b51"onclick="visibilator('13','g',3)">
+                        <b>Fragepronomen welch-</b><br>
+                        Tázací zájmeno welch-
+                    </div>
+                    <div class="Block b51"onclick="visibilator('13','g',3)">
+                        <b>Possessivartikel sein, ihr</b><br>
+                        Přivlasťnovací zájmeno (jeho, její)
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="wortschatz" style="background-color:rgb(91, 122, 188)">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce13"]["words"].items()%}
+                    <div class="Block b52" onclick="visibilator('13','w','{{i}}')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color:rgb(57, 82, 138)">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b53" onclick="visibilator('13','l',1)">
+                        <b>Text1</b><br>
+                        Kanst du ihn?
+                    </div>
+                    <div class="Block b53" onclick="visibilator('13','l',2)">
+                        <b>Text2</b><br>
+                        Neue Schülerin
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color:rgb(39, 57, 98)">
                 <b class="nadpisChild">Tests</b>
             </div>
         </div>
@@ -556,7 +1086,7 @@
 
         for(let i=1;i<6;i++){
         $("#M"+i).click(function(){
-            if (!(a[i-1]) ){
+            if (!(a[i-1])){
                 for (let y=0;y<5;y++){
                     a[y]=false;
                     child[y].style.display="none";
@@ -580,7 +1110,7 @@
             $("#DIVL"+i).hide()
         }
         
-        for(let i=3;i<L.length;i++){
+        for(let i=3;i<16;i++){
             $("#L"+i).click(function(e){
                 for(let i=0;i<L.length;i++){
                         L[i].style.color="black"
