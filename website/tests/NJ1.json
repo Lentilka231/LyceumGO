@@ -278,62 +278,62 @@
         [4,
             [
             {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Maskulin</u></i>?",
-            "zadaniC":"Který člen je <u><i>mužský</u></i>?",
-            "q":"___ Ring",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"Schaust! ___ Ring. Wie viel kostet ___ Ring.",
             "a":"der",
             "1":"die",
             "2":"das",
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Maskulin</u></i>?",
-            "zadaniC":"Který člen je <u><i>mužský</u></i>?",
-            "q":"___ Computer",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"Hast du ___ Computer.",
             "a":"der",
             "1":"die",
             "2":"das",
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Maskulin</u></i>?",
-            "zadaniC":"Který člen je <u><i>mužský</u></i>?",
-            "q":"___ Sport",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"Treiben sie ___ Sport",
             "a":"der",
             "1":"die",
             "2":"das",
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Maskulin</u></i>?",
-            "zadaniC":"Který člen je <u><i>mužský</u></i>?",
-            "q":"___ Tee",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"Trinkst du ___ Tee.",
             "a":"ein",
             "1":"eine",
-            "2":"ein",
+            "2":"einen",
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist <u><i>Maskulin</u></i>?",
-            "zadaniC":"Který neurčitý člen je <u><i>mužský</u></i>?",
-            "q":"___ Pullover",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"Was kostet ___ Pullover",
             "a":"ein",
             "1":"einen",
             "2":"eine",
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Feminim</u></i>?",
-            "zadaniC":"Který člen je <u><i>ženský</u></i>?",
-            "q":"___ Banane",
-            "a":"der",
-            "1":"die",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"___ Banane? Ich mag nicht Bananen",
+            "a":"die",
+            "1":"",
             "2":"das",
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Feminim</u></i>?",
-            "zadaniC":"Který člen je <u><i>ženský</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Jacke",
             "a":"die",
             "1":"das",
@@ -341,8 +341,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Feminim</u></i>?",
-            "zadaniC":"Který člen je <u><i>ženský</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Bratwurst",
             "a":"die",
             "1":"das",
@@ -350,17 +350,17 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist <u><i>Feminim</u></i>?",
-            "zadaniC":"Který neurčitý člen je <u><i>ženský</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Tomate",
             "a":"eine",
             "1":"ein",
             "2":"einen",
             "3":""
             },
-            {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Feminim</u></i>?",
-            "zadaniC":"Který člen je <u><i>ženský</u></i>?",
+            {            
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Hose",
             "a":"ein",
             "1":"eine",
@@ -368,8 +368,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Neutral</u></i>?",
-            "zadaniC":"Který člen je <u><i>střední</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ T-Shirt",
             "a":"das",
             "1":"die",
@@ -377,8 +377,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Neutral</u></i>?",
-            "zadaniC":"Který člen je <u><i>střední</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Schokoladeneis",
             "a":"das",
             "1":"die",
@@ -386,8 +386,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist <u><i>Neutral</u></i>?",
-            "zadaniC":"Který člen je <u><i>střední</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Kino",
             "a":"das",
             "1":"die",
@@ -395,8 +395,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist <u><i>Neutral</u></i>?",
-            "zadaniC":"Který neurčitý člen je <u><i>střední</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Café",
             "a":"ein",
             "1":"eine",
@@ -404,8 +404,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist <u><i>Neutral</u></i>?",
-            "zadaniC":"Který neurčitý člen je <u><i>střední</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Wort",
             "a":"ein",
             "1":"eine",
@@ -413,8 +413,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist für <u><i>Plural</u></i>?",
-            "zadaniC":"Který člen je pro <u><i>množné číslo</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Schuhe",
             "a":"die",
             "1":"das",
@@ -422,8 +422,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher bestimmte Artikel ist für <u><i>Plural</u></i>?",
-            "zadaniC":"Který člen je pro <u><i>množné číslo</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Tomaten",
             "a":"die",
             "1":"das",
@@ -431,8 +431,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist für <u><i>Plural</u></i>?",
-            "zadaniC":"Který neurčitý člen je pro <u><i>množné číslo</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Hände",
             "a":"die",
             "1":"das",
@@ -440,8 +440,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist für <u><i>Plural</u></i>?",
-            "zadaniC":"Který neurčitý člen je pro <u><i>množné číslo</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Bonbons",
             "a":"eine",
             "1":"ein",
@@ -449,8 +449,8 @@
             "3":""
             },
             {
-            "zadaniN":"Welcher unbestimmte Artikel ist für <u><i>Plural</u></i>?",
-            "zadaniC":"Který neurčitý člen je pro <u><i>množné číslo</u></i>?",
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Tage",
             "a":"eine",
             "1":"ein",

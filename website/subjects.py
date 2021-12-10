@@ -27,7 +27,7 @@ def Programovani():
 def Fyzika():
     return render_template("subjects/physics.html",user=current_user,subject=Physics.query.filter_by(user_id=current_user.id).first())
 #------------NĚMČINA----------------------------------------------------------------------------------------------------------------------------
-@subjects.route("/Němčina")
+@subjects.route("/Němčina 1")
 def Nemcina():
     subclass=None
     with open("website/tests/NJ1.json", encoding="utf-8") as f:
