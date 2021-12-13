@@ -240,7 +240,7 @@ span{
     transform: translate(-50%,0%);
 }
 .Franta{
-    top:70px;
+    top:90px;
     width:700px;
     text-align: center;
 }
@@ -261,22 +261,25 @@ span{
     padding:5px;
     display:none;
 }
-#ABCDodpovedi div,#kontrola{
+.Felix,#kontrola{
     background-color: rgb(189, 213, 234);
     font-size: 28px;
     border-radius:5px ;
     width:250px;
+    height:44px;
     padding:3px;
     text-align: center;
     cursor: pointer;
+    transition: border 0.2s ease;
 }
 
 #ABCDodpovedi{
-    display:grid;
-    grid-template-columns: 250px 250px;
-    grid-template-rows: 40px 40px;
-    grid-column-gap:40px;
-    grid-row-gap:30px;
+    display:flex;
+    justify-content: space-evenly;
+    width:600px;
+    height:150px;
+    align-content:space-around;
+    flex-wrap:wrap;
 }
 .congratulations{
     display:none;
@@ -558,7 +561,7 @@ span{
 #progression{
     height:30px;
     position: absolute;
-    top:100px;
+    top:120px;
     left:50%;
     transform: translate(-50%,0%);
     width:500px;

@@ -660,7 +660,6 @@
     </div>
 </div>
 </div>
-
 <!------------------------------------------------------------------------------------------------------------>
 <div id="clickDisabler">
 <div id="TestDiv">
@@ -1219,6 +1218,7 @@
             })
         }
     }
+//---------------------------------------------------------------------------
 //Obecné funkce pro otázky, ...
     //zobrazuje okno pro teorie, texty, otázky, ...
     function visibilator(lekce,typ,ukol){
@@ -1240,7 +1240,6 @@
                 DidYouKnow[i].querySelector(".DYKCBody").style.visibility="hidden";
                 DidYouKnow[i].style.height="40px";
             }
-            console.log(".x"+lekce+typ+ukol);
             $(".x"+lekce+typ+ukol).show();
         }
     };
@@ -1287,11 +1286,11 @@
                 document.getElementById("ABCDodpovedi").innerHTML="";
                 ABCD=["A","B","C","D"];
                 ABCDanswer=document.getElementsByClassName("Felix");
-                ABCDhover();
                 NumberOfPossibleAnswers=NJ["lekce"+k][t][x-1][0];
-                for(let i=0;i<NJ["lekce"+k][t][x-1][0];i++){
+                for(let i=0;i<NumberOfPossibleAnswers;i++){
                     document.getElementById("ABCDodpovedi").innerHTML+=`<div style='border:solid 3px rgb(189, 213, 234)' type='button' class='Felix' id='${ABCD[i]}' onclick='checkanswer(\"${ABCD[i]}\")'>Odpoved ${ABCD[i]}</div>`;
                 };
+                ABCDhover();
                 newquestion();
                 break;
             case "CZtoN":
@@ -1477,7 +1476,6 @@
                     b=["a","1","2","3"];
                     for (let i=0;i<NumberOfPossibleAnswers;i++){
                         d=Math.floor(Math.random()*Math.abs(NumberOfPossibleAnswers-i));
-                        console.log(d);
                         ABCDanswer[i].innerHTML=SetOfQuestions[a][b[d]];
                         b.splice(d,1);
                     };

@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for,request,flash,request
 from flask_login import current_user
 from .models import *
+from flask_wtf import FlaskForm
+from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,validators,Form
+from wtforms.validators import InputRequired,Length,Email,EqualTo
 from . import db
 import os
 import random
@@ -19,10 +22,52 @@ def createmessage(title,message,prijemceid,question):
     db.session.add(new_message)
     print("message was created")
     db.session.commit()
-@views.route("/home")
+class RegisterForm(FlaskForm):
+    email = StringField("Email", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,64, message="velikost majliku musí být od 5 do 64 znaků"),validators.Email(message="Zadáváš mi špatný email")])
+    name = StringField("Name", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,20,message="velikost jména musí být od 5 do 20 znaků")])
+    password1 = PasswordField("Password1", [validators.InputRequired(message="Heslo potřebuji"), validators.Length(5,24),validators.EqualTo("password2",message="Hesla se musí rovnat")])
+    password2 = PasswordField("Password2")
+    person = SelectField("Person",choices=[("s","student"),("t","teacher")])
+    submit = SubmitField("Log In")
+class LoginForm(FlaskForm):
+    email = StringField("Email", [validators.InputRequired(), validators.Length(5,64),validators.Email()])
+    password = PasswordField("Password", [validators.InputRequired(), validators.Length(5,24)])
+    rememberme = BooleanField("Remember me")
+    submit = SubmitField("Log In")
+
+@views.route("/home",methods=["GET","POST"])
 @views.route("/")
 def home():
-    return render_template("index.html",user=current_user)
+    formL = LoginForm()
+    formR = RegisterForm()
+
+    if formL.validate_on_submit():
+        user = Users.query.filter_by(email=formL.email.data).first()
+        if user:
+            if check_password_hash(user.password, formL.password.data):
+                login_user(user, remember=formL.rememberme.data)
+                return redirect (url_for("views.home"))
+            else:
+                flash("Incorrect password, try again.",category="error")
+        else:
+            flash("Email does not exist.",category="error")
+    if formR.validate_on_submit():
+        usere = Users.query.filter_by(email=formR.email.data).first()
+        usern = Users.query.filter_by(name=formR.name.data).first()
+        if not usere :
+            if not usern:
+                SendMail(formR.email.data, formR.name.data, "Welcome")
+                new_user = Users(email=formR.email.data,name=formR.name.data,password=generate_password_hash(form.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=formR.person.data,subjects="")
+                db.session.add(new_user)
+                db.session.commit()
+                login_user(new_user)
+                print("Account was created succesfully, welcome",form.name.data)
+                return redirect(url_for("views.home"))
+            else:
+                flash("Please use different name.")
+        else:
+            flash("Please use different email.")
+    return render_template("index.html", user=current_user,formL=formL,formR=formR)
 
 @views.route("/profile",methods=["GET","POST"])
 def profile():

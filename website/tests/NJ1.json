@@ -275,187 +275,103 @@
             }
             ]
         ],
-        [4,
+        [3,
             [
             {
             "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
             "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"Schaust! ___ Ring. Wie viel kostet ___ Ring.",
-            "a":"der",
-            "1":"die",
-            "2":"das",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"Hast du ___ Computer.",
-            "a":"der",
-            "1":"die",
-            "2":"das",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"Treiben sie ___ Sport",
-            "a":"der",
-            "1":"die",
-            "2":"das",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"Trinkst du ___ Tee.",
+            "q":"Hast du ___ Computer zu Hause?",
             "a":"ein",
-            "1":"eine",
-            "2":"einen",
-            "3":""
+            "1":"der",
+            "2":""
             },
             {
             "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
             "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"Was kostet ___ Pullover",
+            "q":"Trinken Sie ___ Tee? Ja, ich trinke gern der schwarzen Tee.",
             "a":"ein",
-            "1":"einen",
-            "2":"eine",
-            "3":""
+            "1":"der",
+            "2":""
             },
             {
             "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
             "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Banane? Ich mag nicht Bananen",
-            "a":"die",
-            "1":"",
-            "2":"das",
-            "3":""
+            "q":"___ Pullover den ich gekauft habe ist super.",
+            "a":"Der",
+            "1":"Ein",
+            "2":""
             },
             {
             "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
             "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Jacke",
-            "a":"die",
-            "1":"das",
-            "2":"der",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Bratwurst",
-            "a":"die",
-            "1":"das",
-            "2":"der",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Tomate",
+            "q":"Ist es ___ Banane? Das denke ich nicht.",
             "a":"eine",
+            "1":"die",
+            "2":""
+            },
+            {
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"Können wir ___ Speisekarte nehmen.",
+            "a":"eine",
+            "1":"die",
+            "2":""
+            },
+            {
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"Hose! Was kostet ___ Hose? ",
+            "a":"die",
+            "1":"eine",
+            "2":""
+            },
+            {
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"Endlich habe ich ___ T-Shirt gekauft.",
+            "a":"das",
             "1":"ein",
-            "2":"einen",
-            "3":""
+            "2":""
+            },
+            {
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"___ Eis hat dir gefallen? Ja es war super lecker.",
+            "a":"Das",
+            "1":"Ein",
+            "2":""
+            },
+            {
+            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
+            "q":"Ich muss ___ Auto kaufen, aber ich weiß nicht welche.",
+            "a":"ein",
+            "1":"das",
+            "2":""
             },
             {            
             "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
             "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Hose",
-            "a":"ein",
-            "1":"eine",
-            "2":"ein",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ T-Shirt",
-            "a":"das",
-            "1":"die",
-            "2":"der",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Schokoladeneis",
-            "a":"das",
-            "1":"die",
-            "2":"der",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Kino",
-            "a":"das",
-            "1":"die",
-            "2":"der",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Café",
-            "a":"ein",
-            "1":"eine",
-            "2":"einen",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Wort",
-            "a":"ein",
-            "1":"eine",
-            "2":"einen",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Schuhe",
+            "q":"Wie viel kosten ___ Schuhe.",
             "a":"die",
-            "1":"das",
-            "2":"der",
-            "3":""
+            "1":"eine",
+            "2":""
             },
             {
             "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
             "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Tomaten",
-            "a":"die",
-            "1":"das",
-            "2":"der",
-            "3":""
+            "q":"___ Tomaten? Warum brauchen wir die Tomaten?",
+            "a":"",
+            "1":"eine",
+            "2":"die"
             },
             {
             "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
             "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Hände",
-            "a":"die",
-            "1":"das",
-            "2":"der",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Bonbons",
-            "a":"eine",
-            "1":"ein",
-            "2":"einer",
-            "3":""
-            },
-            {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
-            "q":"___ Tage",
-            "a":"eine",
-            "1":"ein",
-            "2":"einer",
-            "3":""
+            "q":"Ich brauche ___ Socken, aber wo kann ich sie kaufen?",
+            "a":"",
+            "1":"eine",
+            "2":"die"
             }
             ]
         ],
@@ -817,38 +733,6 @@
         ]
     ],
     "words":{
-        "Grundlegend-1":[1,
-            [
-                "hallo",
-                "was",
-                "wie",
-                "wo",
-                "wer",
-                "welcher",
-                "wann",
-                "und",
-                "oder",
-                "mit",
-                "aber",
-                "auch",
-                "neu",
-                "gut",
-                "schlecht",
-                "super",
-                "tschüs",
-                "ja",
-                "nein",
-                "ich",
-                "du",
-                "er",
-                "sie",
-                "es",
-                "wir",
-                "ihr",
-                "nur"
-
-            ]
-        ],
         "Seite 9-10":[30,
             [
             "Deutsch",
@@ -1575,11 +1459,7 @@
             ]
         ]
     },
-    "text":{
-
-    },
     "tests":{
-
     }
 },
 "lekce4":{

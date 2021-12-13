@@ -1,66 +1,106 @@
-{% if user.is_authenticated %}
-    {%extends "baselog.html"%}
-{% else %}
-    {%extends "base.html"%}
-{% endif %}
-{%block title%}Domovská stránka{% endblock %}
-{%block head%}
-<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/home.css')}}">
-{%endblock%}
-{%block content%}
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/universal.css')}}">
     
-    <div class="mainHomeDiv">
-            <table class="podMainHomeDiv">
-                <tr>
-                    <td class="tdple">
-                        <div class="leftTop">
-                            <p>Předměty</p>
-                        </div>
-                    </td>
-
-
-
-
-                    <td class="tdple" id="rightFirstShow">
-                    <a href="profile" style="text-align: center;color: black;font-size: 24px;">
-                    <div>
-                   
-                        {% if user.is_authenticated %}
-                        <div><p>Profil</p></div>
-                        {% else %}
-                        <div class="rightTopName"><p>Přihlašování</p></div>
-                        <div class="rightTop">
-                            <a href="login"><div class="rightFirst" id="rightFirstShow">Login</div></a>
-                            <a href="register"><div class="rightFirst">Register</div></a>
-                        </div>
-                        {% endif %}
-                    
-                    </div>
-                    </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tdple">
-                        <div class="leftBottom">
-                            <p>assdasdaas</p>
-                        </div>
-                    </td>
-                    <td class="tdple">
-                        <div class="rightBottom">
-                            <p>asxyxysdaas</p>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+    <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/home.css')}}">
+    <title>LyceumGO</title>
+</head>
+<body>
+    <div id="LyceumGO">
+        LyceumGO
     </div>
-    <script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/prosim.js')}}"></script>
-        {% if user.is_authenticated %}
-        {% else %}
-
-        {% endif %}
-{% endblock %}
-
-<!--       -->
-
-
-    
+    <div id="logreg">
+        <div class="flex-container">
+            <div class="LoginDiv" style="height:400px">
+                <p class="Nadpis"><b>Login</b></p>
+                <div class="Information">
+                    <form action="" method="post" class="form">
+                        {{ formL.csrf_token }}
+                        {{formL.hidden_tag()}}
+                        <div class="Input" >
+                            {{formL.email(required="required",placeholder="Enter email",class="Inputs")}}
+                        </div>
+                        <div class="Input" >
+                            {{formL.password(required="required",type="password",placeholder="Enter password",class="Inputs")}}
+                        </div>
+                        <div class="Input">
+                            <input name="rememberme" type="checkbox" value="y" > Remember me
+                        </div>
+                        {{formL.submit(style="padding:5px",value="Login",id="submit")}}
+                    </form> 
+                    {%with messages = get_flashed_messages()%}
+                        {% if messages %}
+                            {%for msg in messages %}
+                            <p>{{msg}}</p>
+                            {%endfor%}
+                        {% endif %}
+                    {%endwith%}
+                </div>
+            </div>
+            <div class="RegisterDiv" >
+                <p class="Nadpis"><b>Register</b></p>
+                <div class="Information">
+                    <form action="" method="post"  class="form"> 
+                        {{ formR.csrf_token }}
+                        {{formR.hidden_tag()}}
+                        <div class="Input">
+                            <label><b>Email</b></label><br>
+                            {{formR.email(type="text",placeholder="Enter email", class="Inputs")}}
+                        </div>
+                        <div class="Input">
+                            <label><b>Jméno</b></label><br>
+                            {{formR.name(type="text",placeholder="Enter name", class="Inputs")}}
+                        </div>
+                        <div class="Input">
+                            <label><b>Heslo</b></label><br>
+                            {{formR.password1(type="password",placeholder="Enter password", class="Inputs")}}
+                        </div>
+                        <div class="Input">
+                            <label><b>Heslo (Potvrzení):</b></label><br>
+                            {{formR.password2(type="password",placeholder="Enter password (again)", class="Inputs")}}
+                        </div>
+                        <div class="Input">
+                            {{formR.person(class="Inputs")}}
+                        </div>
+                        <div style="margin-top:30px">
+                            {{formR.submit(style="padding:5px", value="Register") }}
+                        </div>
+                    </form> 
+                </div>
+                <div style="position: relative;top:100px">
+                    {%with messages = get_flashed_messages(with_categories=true)%}
+                        {% if messages %}
+                            {%for msg in messages %}
+                                flash error:<p style="background-color: rgb(214, 97, 97);">{{msg}}</p>
+                            {%endfor%}
+                        {% endif %}
+                    {%endwith%}
+                    {% for error in formR.name.errors%}
+                        <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
+                    {% endfor%}
+                    {% for error in formR.password1.errors%}
+                        <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
+                    {% endfor%}
+                    {% for error in formR.email.errors%}
+                        <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
+                    {% endfor%}
+                </div>
+            </div>
+            <div id="LRbackground"></div>
+            <div class="LR"id="L">Login</div>
+            <div class="LR" id="R">Register</div> 
+        </div>
+    </div>
+    <script>
+        let LRbackground = document.getElementById("LRbackground");
+        document.getElementById("L").onclick=function(){
+            LRbackground.style.left="0px";
+        }
+        document.getElementById("R").onclick=function(){
+            LRbackground.style.left="200px";
+        }
+    </script>
+</body>
+</html>
