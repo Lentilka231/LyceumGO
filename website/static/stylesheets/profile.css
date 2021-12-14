@@ -3,8 +3,8 @@
 #Info{
     background-color: rgb(189, 213, 234);
     padding:30px;
-    width:1200px;
-    height:750px;
+    width:90%;
+    height:90%;
     border: solid rgb(189, 193, 234);
     border-radius: 10px;
   }
@@ -39,6 +39,7 @@
     border-radius: 5px;
     width:400px;
     height:110px;
+    word-break:break-all;
     margin-top:2px;
     padding:5px;
     font-size: 14px;
