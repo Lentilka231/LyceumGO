@@ -8,99 +8,129 @@
     <title>LyceumGO</title>
 </head>
 <body>
+    <div id="barvitko"></div>
+    <img src="{{url_for('static',filename='images/SPSPrerov.svg')}}" id=LOGO>
+    <div id="background">
+    </div>
     <div id="LyceumGO">
         LyceumGO
     </div>
     <div id="logreg">
         <div class="flex-container">
-            <div class="LoginDiv" style="height:400px">
-                <p class="Nadpis"><b>Login</b></p>
-                <div class="Information">
-                    <form action="" method="post" class="form">
-                        {{ formL.csrf_token }}
-                        {{formL.hidden_tag()}}
-                        <div class="Input" >
-                            {{formL.email(required="required",placeholder="Enter email",class="Inputs")}}
-                        </div>
-                        <div class="Input" >
-                            {{formL.password(required="required",type="password",placeholder="Enter password",class="Inputs")}}
-                        </div>
-                        <div class="Input">
-                            <input name="rememberme" type="checkbox" value="y" > Remember me
-                        </div>
-                        {{formL.submit(style="padding:5px",value="Login",id="submit")}}
-                    </form> 
-                    {%with messages = get_flashed_messages()%}
-                        {% if messages %}
-                            {%for msg in messages %}
-                            <p>{{msg}}</p>
-                            {%endfor%}
-                        {% endif %}
-                    {%endwith%}
+            <div id="Move">
+                <div class="RegisterDiv" >
+                    <p class="Nadpis"><b>Register</b></p>
+                    <div class="Information">
+                        <form action="" method="post"  class="form"> 
+                            {{ formR.csrf_token }}
+                            {{formR.hidden_tag()}}
+                            <div class="Input">
+                                {{formR.email(type="text",placeholder="Enter email", class="Inputs")}}
+                            </div>
+                            <div class="Input">
+                                {{formR.name(type="text",placeholder="Enter name", class="Inputs")}}
+                            </div>
+                            <div class="Input">
+                                {{formR.password1(type="password",placeholder="Enter password", class="Inputs")}}
+                            </div>
+                            <div class="Input">
+                                {{formR.password2(type="password",placeholder="Enter password (again)", class="Inputs")}}
+                            </div>
+                            <div class="Input">
+                                {{formR.person(class="Inputs")}}
+                            </div>
+                            <div>
+                                {{formR.submit(style="padding:5px", value="Register",class="submit") }}
+                            </div>
+                        </form> 
+                    </div>
+                    <div style="position: relative;top:100px">
+                        {%with messages = get_flashed_messages(with_categories=true)%}
+                            {% if messages %}
+                                {%for msg in messages %}
+                                    flash error:<p style="background-color: rgb(214, 97, 97);">{{msg}}</p>
+                                {%endfor%}
+                            {% endif %}
+                        {%endwith%}
+                        {% for error in formR.name.errors%}
+                            <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
+                        {% endfor%}
+                        {% for error in formR.password1.errors%}
+                            <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
+                        {% endfor%}
+                        {% for error in formR.email.errors%}
+                            <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
+                        {% endfor%}
+                    </div>
                 </div>
+                <div class="LoginDiv" style="height:400px">
+                    <p class="Nadpis"><b>Login</b></p>
+                    <div class="Information">
+                        <form action="" method="post" class="form">
+                            {{ formL.csrf_token }}
+                            {{formL.hidden_tag()}}
+                            <div class="Input" >
+                                {{formL.email(required="required",placeholder="Enter email",class="Inputs")}}
+                            </div>
+                            <div class="Input" >
+                                {{formL.password(required="required",type="password",placeholder="Enter password",class="Inputs")}}
+                            </div>
+                            <div class="Input">
+                                <input name="rememberme" type="checkbox" value="y" > Remember me
+                            </div>
+                            {{formL.submit(style="padding:5px",value="Login",class="submit")}}
+                        </form> 
+                        {%with messages = get_flashed_messages()%}
+                            {% if messages %}
+                                {%for msg in messages %}
+                                <p>{{msg}}</p>
+                                {%endfor%}
+                            {% endif %}
+                        {%endwith%}
+                    </div>
+                </div>
+                
             </div>
-            <div class="RegisterDiv" >
-                <p class="Nadpis"><b>Register</b></p>
-                <div class="Information">
-                    <form action="" method="post"  class="form"> 
-                        {{ formR.csrf_token }}
-                        {{formR.hidden_tag()}}
-                        <div class="Input">
-                            <label><b>Email</b></label><br>
-                            {{formR.email(type="text",placeholder="Enter email", class="Inputs")}}
-                        </div>
-                        <div class="Input">
-                            <label><b>Jméno</b></label><br>
-                            {{formR.name(type="text",placeholder="Enter name", class="Inputs")}}
-                        </div>
-                        <div class="Input">
-                            <label><b>Heslo</b></label><br>
-                            {{formR.password1(type="password",placeholder="Enter password", class="Inputs")}}
-                        </div>
-                        <div class="Input">
-                            <label><b>Heslo (Potvrzení):</b></label><br>
-                            {{formR.password2(type="password",placeholder="Enter password (again)", class="Inputs")}}
-                        </div>
-                        <div class="Input">
-                            {{formR.person(class="Inputs")}}
-                        </div>
-                        <div style="margin-top:30px">
-                            {{formR.submit(style="padding:5px", value="Register") }}
-                        </div>
-                    </form> 
-                </div>
-                <div style="position: relative;top:100px">
-                    {%with messages = get_flashed_messages(with_categories=true)%}
-                        {% if messages %}
-                            {%for msg in messages %}
-                                flash error:<p style="background-color: rgb(214, 97, 97);">{{msg}}</p>
-                            {%endfor%}
-                        {% endif %}
-                    {%endwith%}
-                    {% for error in formR.name.errors%}
-                        <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
-                    {% endfor%}
-                    {% for error in formR.password1.errors%}
-                        <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
-                    {% endfor%}
-                    {% for error in formR.email.errors%}
-                        <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
-                    {% endfor%}
-                </div>
-            </div>
+            <div id="bg">
             <div id="LRbackground"></div>
             <div class="LR"id="L">Login</div>
             <div class="LR" id="R">Register</div> 
+            </div>
         </div>
     </div>
     <script>
         let LRbackground = document.getElementById("LRbackground");
+        let Move = document.getElementById("Move");
+        let bg = document.getElementById("background");
+        for(let y=-1;y<50;y++){
+            for(let x=-1;x<50;x++){
+                let hexagone = document.createElement("img");
+                hexagone.setAttribute("class","h");
+                hexagone.src="{{url_for('static',filename='images/hexagon.svg')}}"
+                hexagone.style.top=2*y+"rem";
+                if(y%2==0){
+                    hexagone.style.left=6*x+3+"rem";
+                }
+                else{
+                    hexagone.style.left=6*x+"rem";
+                }
+                bg.append(hexagone);
+            }
+        };
         document.getElementById("L").onclick=function(){
             LRbackground.style.left="0px";
+            Move.style.left="-390px";
         }
         document.getElementById("R").onclick=function(){
             LRbackground.style.left="200px";
+            Move.style.left="10px";
         }
+        let circle =document.getElementById("barvitko");
+        const onMouseMove = (e) =>{
+            circle.style.left=e.pageX-100+"px";
+            circle.style.top=e.pageY-100+"px";
+        }
+        document.addEventListener("mousemove",onMouseMove);
     </script>
 </body>
 </html>

@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, redirect, url_for,request,flash,re
 from flask_login import current_user
 from .models import *
 from flask_wtf import FlaskForm
+from flask_login import login_user, logout_user,current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,validators,Form
 from wtforms.validators import InputRequired,Length,Email,EqualTo
 from . import db
@@ -9,7 +11,13 @@ import os
 import random
 import string
 from datetime import date,datetime
+from validate_email import validate_email
+from .sendmail import *
+
 views = Blueprint("views", __name__)
+
+subjectspro={"informatics":"0/1","programming":"0/1"}
+
 SUBJECTS = ["Programování","Informatika","Němčina 1","Fyzika"]
 def createrandomcode():
     x=""
@@ -36,8 +44,10 @@ class LoginForm(FlaskForm):
     submit = SubmitField("Log In")
 
 @views.route("/home",methods=["GET","POST"])
-@views.route("/")
+@views.route("/",methods=["GET","POST"])
 def home():
+    if current_user.is_authenticated:
+        return redirect(url_for("views.profile"))
     formL = LoginForm()
     formR = RegisterForm()
 
@@ -46,7 +56,7 @@ def home():
         if user:
             if check_password_hash(user.password, formL.password.data):
                 login_user(user, remember=formL.rememberme.data)
-                return redirect (url_for("views.home"))
+                return redirect (url_for("views.profile"))
             else:
                 flash("Incorrect password, try again.",category="error")
         else:
@@ -89,7 +99,7 @@ def profile():
             db.session.commit()
         return render_template("profile.html",user=current_user,subjects={},favouritesub=x)
     else:
-        return redirect(url_for("auth.login"))
+        return redirect(url_for("views.home"))
 @views.route("/subjects",methods=["GET","POST"])
 def subjects():
     if current_user.is_authenticated:
@@ -128,7 +138,7 @@ def subjects():
                 usersub.append(Physics.query.filter_by(user_id=current_user.id).first())
         return render_template("subjects.html",user=current_user,subjects=SUBJECTS,usersub=usersub)
     else:
-        return redirect(url_for("auth.login"))
+        return redirect(url_for("views.home"))
 
 @views.route("/classroom",methods=["GET","POST"])
 def classroom():
@@ -170,7 +180,13 @@ def classroom():
                 students=enumerate(classroom.students)
         return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers,subjects=SUBJECTS)
     else:
-        return redirect(url_for("auth.login"))
+        return redirect(url_for("views.home"))
+
+@views.route("/logout")
+def logout():
+    if current_user.is_authenticated:
+        logout_user()
+    return redirect(url_for("views.home"))
 
 @views.route("/notification",methods=["GET","POST"])
 def notification():
