@@ -63,6 +63,9 @@
             <p class="L" id="L15">Lektion 15</p>
         </div>
     </div>
+    <div id="CreateTest" onclick="visibilator('CreateTest')">
+        <b>Test erstellen</b>
+    </div>
 </div>
 <div class="grid-items third">
     <div class="scrollery">
@@ -665,6 +668,105 @@
 <div id="TestDiv">
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
     <div id="TDContent">
+        <div id="CreateTestDIV">
+            <div class="nzadani"><b>Hier kannst du einen Test erstellen</b></div>
+            <div id="filters">
+                <div>
+                    Module
+                    <select id="ModuleChoose">
+                        <option value="none"></option>
+                        <option value="M1">Module 1</option>
+                        <option value="M2">Module 2</option>
+                        <option value="M3">Module 3</option>
+                        <option value="M4">Module 4</option>
+                        <option value="M5">Module 5</option>
+                    </select>
+                </div>
+                <div>
+                    Lektion
+                    <select id="LektionChoose">
+                        <option value="none"></option>
+                        <option value="L1-3">1-3</option>
+                        <option value="L4">4</option>
+                        <option value="L5">5</option>
+                        <option value="L6">6</option>
+                        <option value="L7">7</option>
+                        <option value="L8">8</option>
+                        <option value="L9">9</option>
+                        <option value="L10">10</option>
+                        <option value="L11">11</option>
+                        <option value="L12">12</option>
+                        <option value="L13">13</option>
+                        <option value="L14">14</option>
+                        <option value="L15">15</option>               
+                    </select>
+                </div>
+                <div>
+                    Type
+                    <select id="TypeChoose">
+                        <option value=""></option>
+                        <option value="Wortschatz">Wortschatz</option>
+                        <option value="Gramatik">Gramatik</option>
+                    </select>
+                </div>
+            </div>
+            <table id="ListOfMaterials">
+                <tr >
+                    <th style="border-top-left-radius:5px"><div class="LOFMColor">Module</div></th>
+                    <th><div class="LOFMColor">Lektion</div></th>
+                    <th><div class="LOFMColor">Type</div></th>
+                    <th style="border-top-right-radius:5px"><div class="LOFMColor">Name</div></th>
+                </tr>
+                <tr >
+                    <td >1</td>
+                    <td >1-3</td>
+                    <td >Gramatik</td>
+                    <td >Verbkonjugation im Präsens</td>
+                </tr>
+                <tr >
+                    <td >1</td>
+                    <td >1-3</td>
+                    <td >Gramatik</td>
+                    <td >Unbestimmte und bestimmte Artikel</td>
+                </tr>
+                <tr>
+                    <td >1</td>
+                    <td >1-3</td>
+                    <td >Gramatik</td>
+                    <td >Possessivartikel</td>
+                </tr>
+                <tr>
+                    <td >1</td>
+                    <td >1-3</td>
+                    <td >Gramatik</td>
+                    <td >Zeitangaben</td>
+                </tr>
+                <tr>
+                    <td >1</td>
+                    <td >1-3</td>
+                    <td >Wortschatz</td>
+                    <td >Ich</td>
+                </tr>
+                <tr>
+                    <td >1</td>
+                    <td >1-3</td>
+                    <td >Wortschatz</td>
+                    <td >Du</td>
+                </tr>
+                <tr>
+                    <td >1</td>
+                    <td >1-3</td>
+                    <td >Wortschatz</td>
+                    <td >Er</td>
+                </tr>
+                <tr>
+                    <td >1</td>
+                    <td >1-3</td>
+                    <td >Wortschatz</td>
+                    <td >Sie</td>
+                </tr>
+            </table>
+        </div>
         <div id="progression">
             <div id="fill"></div>
         </div>
@@ -1224,23 +1326,29 @@
     function visibilator(lekce,typ,ukol){
         CanUseEsc=true;
         $("#clickDisabler").show();
-        if (typ=="w"){
-            CurrentVocabulary=NJ["lekce"+lekce]["words"][ukol];
-            slovicka=""
-            for(let i=0;i<CurrentVocabulary[0];i++){
-                slovicka+="<tr><td>"+(i+1)+"</td><td>"+CurrentVocabulary[3][i]+"</td><td>"+CurrentVocabulary[1][i]+"</td><td>"+CurrentVocabulary[2][i]+"</td></tr>";
-            };
-            document.getElementById("slovnicek").innerHTML+=slovicka;
-            document.getElementById("strana").innerHTML=ukol;
-            $(".xs").show();
+        if (lekce=="CreateTest"){
+            document.getElementById("CreateTestDIV").style.display="block";
+            
         }
         else{
-            for(let i=0;i<DidYouKnow.length;i++){
-                DidYouKnowOPEN[i]=false;
-                DidYouKnow[i].querySelector(".DYKCBody").style.visibility="hidden";
-                DidYouKnow[i].style.height="40px";
+            if (typ=="w"){
+                CurrentVocabulary=NJ["lekce"+lekce]["words"][ukol];
+                slovicka=""
+                for(let i=0;i<CurrentVocabulary[0];i++){
+                    slovicka+="<tr><td>"+(i+1)+"</td><td>"+CurrentVocabulary[3][i]+"</td><td>"+CurrentVocabulary[1][i]+"</td><td>"+CurrentVocabulary[2][i]+"</td></tr>";
+                };
+                document.getElementById("slovnicek").innerHTML+=slovicka;
+                document.getElementById("strana").innerHTML=ukol;
+                $(".xs").show();
             }
-            $(".x"+lekce+typ+ukol).show();
+            else{
+                for(let i=0;i<DidYouKnow.length;i++){
+                    DidYouKnowOPEN[i]=false;
+                    DidYouKnow[i].querySelector(".DYKCBody").style.visibility="hidden";
+                    DidYouKnow[i].style.height="40px";
+                }
+                $(".x"+lekce+typ+ukol).show();
+            }
         }
     };
     // skovává okno pro teorie, texty, otázky, ...
@@ -1532,7 +1640,7 @@
     });
     SubstituteForInputKontrol.observe(substituteForInput,config);
     
-
+    
     // na zmáčknutí určitých kláves
     document.addEventListener("keydown",function(e){
         if(e.key==="Enter" && CanUseEnter){

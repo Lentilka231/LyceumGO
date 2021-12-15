@@ -7,6 +7,24 @@
     transition:height .3s;
     overflow: hidden;
 }
+#CreateTest{
+    padding:15px;
+    margin:10px 0px;
+    height:3rem;
+    z-index:2;
+    border-radius:10px;
+    background-color: rgb(212, 22, 22);
+    position: absolute;
+    bottom:10px;
+    width:calc(100% - 40px);
+    cursor: pointer;
+}
+.CreateTestDIV{
+    display: none;
+}
+.second{
+    position: relative;
+}
 .child{
     display:none;
 }
@@ -26,6 +44,7 @@
     left:0;
     right:0;
     display:none;
+    z-index:3;
 }
 .DIVchild{
     margin:10px;
@@ -488,6 +507,7 @@ span{
     border-radius:5px;
     z-index:2;
 }
+
 #CzechSection{
     position: absolute;
     width:260px;
@@ -661,3 +681,40 @@ span{
 .DFHWchild div{
     cursor:default;
 }
+#filters{
+    height:50px;
+    width:500px;
+    display:flex;
+    align-items:center;
+    gap:0px 30px
+}
+#ModuleChoose,#LektionChoose,#TypeChoose{
+    padding:3px;
+    font-size: 16px;
+}
+#ListOfMaterials{
+    width:500px;
+    border-spacing:0px;
+    border:3px solid rgb(55, 55, 55);
+    border-radius:10px;
+}
+.LOFMColor{
+    padding:5px;
+    color:white;
+    background-color: rgb(55, 55, 55);
+    cursor: pointer;
+}
+.LOFMColor:hover{
+    background-color: rgb(99, 99, 99);
+}
+#ListOfMaterials th{
+    overflow: hidden;
+}
+
+#ListOfMaterials td{
+    height:1rem;
+    padding:3px;
+    text-align: center;
+}
+#ListOfMaterials tr:nth-child(even) {background: rgba(0, 0, 0, 0.1)}
+#ListOfMaterials td:nth-child(4) {text-align: left;}
