@@ -67,11 +67,11 @@ def home():
         if not usere :
             if not usern:
                 SendMail(formR.email.data, formR.name.data, "Welcome")
-                new_user = Users(email=formR.email.data,name=formR.name.data,password=generate_password_hash(form.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=formR.person.data,subjects="")
+                new_user = Users(email=formR.email.data,name=formR.name.data,password=generate_password_hash(formR.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=formR.person.data,subjects="")
                 db.session.add(new_user)
                 db.session.commit()
                 login_user(new_user)
-                print("Account was created succesfully, welcome",form.name.data)
+                print("Account was created succesfully, welcome",formR.name.data)
                 return redirect(url_for("views.home"))
             else:
                 flash("Please use different name.")

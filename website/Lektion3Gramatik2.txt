@@ -1,14 +1,14 @@
 Unbestimmte und bestimmte Artikel
 ---------------------------------
-der Computer - Hast du ein Computer zu Hause? Nein, ich habe keine Computer.
-der Tee - Trinken Sie ein Tee? Ja, ich mag schwarzen Tee.
-der Pullover - Der Pullover den ich gekauft habe ist super.
-die Banane - Ist es eine Banane? Das denke ich nicht.
-die Speisekarte - Können wir eine Speisekarte nehmen.
+der Computer - Hast du ein Computer zu Hause? Nein, ich habe keinen Computer.
+der Tee - Trinken Sie Tee? Ja, ich mag schwarzen Tee.
+der Pullover - Der Pullover, den ich gekauft habe, ist super.
+die Banane - Ist das die Banane? Das denke ich nicht.
+die Speisekarte - Können wir eine Speisekarte nehmen?
 die Hose - Hose! Was kostet die Hose? 
 das T-Shirt - Endlich habe ich das T-Shirt gekauft.
-das Schokoladeneis - Das Eis hat dir gefallen? Ja es war super lecker.
-das Auto - Ich muss ein Auto kaufen, aber ich weiß nicht welche.
-die Schuhe - Wie viel kosten die Schuhe.
+das Schokoladeneis - Das Eis hat dir geschmeckt? Ja es war (super) lecker.
+das Auto - Ich muss ein Auto kaufen, aber ich weiß nicht, welches.
+die Schuhe - Wie viel kosten die Schuhe?
 die Tomaten - Tomaten? Warum brauchen wir die Tomaten?
 die Socken - Ich brauche Socken, aber wo kann ich sie kaufen?
