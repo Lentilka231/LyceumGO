@@ -675,96 +675,63 @@
                     Module
                     <select id="ModuleChoose">
                         <option value="none"></option>
-                        <option value="M1">Module 1</option>
-                        <option value="M2">Module 2</option>
-                        <option value="M3">Module 3</option>
-                        <option value="M4">Module 4</option>
-                        <option value="M5">Module 5</option>
+                        <option value="1">Module 1</option>
+                        <option value="2">Module 2</option>
+                        <option value="3">Module 3</option>
+                        <option value="4">Module 4</option>
+                        <option value="5">Module 5</option>
                     </select>
                 </div>
                 <div>
                     Lektion
                     <select id="LektionChoose">
                         <option value="none"></option>
-                        <option value="L1-3">1-3</option>
-                        <option value="L4">4</option>
-                        <option value="L5">5</option>
-                        <option value="L6">6</option>
-                        <option value="L7">7</option>
-                        <option value="L8">8</option>
-                        <option value="L9">9</option>
-                        <option value="L10">10</option>
-                        <option value="L11">11</option>
-                        <option value="L12">12</option>
-                        <option value="L13">13</option>
-                        <option value="L14">14</option>
-                        <option value="L15">15</option>               
+                        <option value="1-3">1-3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>               
                     </select>
                 </div>
                 <div>
                     Type
                     <select id="TypeChoose">
-                        <option value=""></option>
+                        <option value="none"></option>
                         <option value="Wortschatz">Wortschatz</option>
                         <option value="Gramatik">Gramatik</option>
                     </select>
                 </div>
+                <div id="reset" onclick="filterReset()">
+                    Reset
+                </div>
             </div>
             <table id="ListOfMaterials">
-                <tr >
-                    <th style="border-top-left-radius:5px"><div class="LOFMColor">Module</div></th>
-                    <th><div class="LOFMColor">Lektion</div></th>
-                    <th><div class="LOFMColor">Type</div></th>
-                    <th style="border-top-right-radius:5px"><div class="LOFMColor">Name</div></th>
-                </tr>
-                <tr >
-                    <td >1</td>
-                    <td >1-3</td>
-                    <td >Gramatik</td>
-                    <td >Verbkonjugation im Präsens</td>
-                </tr>
-                <tr >
-                    <td >1</td>
-                    <td >1-3</td>
-                    <td >Gramatik</td>
-                    <td >Unbestimmte und bestimmte Artikel</td>
-                </tr>
-                <tr>
-                    <td >1</td>
-                    <td >1-3</td>
-                    <td >Gramatik</td>
-                    <td >Possessivartikel</td>
-                </tr>
-                <tr>
-                    <td >1</td>
-                    <td >1-3</td>
-                    <td >Gramatik</td>
-                    <td >Zeitangaben</td>
-                </tr>
-                <tr>
-                    <td >1</td>
-                    <td >1-3</td>
-                    <td >Wortschatz</td>
-                    <td >Ich</td>
-                </tr>
-                <tr>
-                    <td >1</td>
-                    <td >1-3</td>
-                    <td >Wortschatz</td>
-                    <td >Du</td>
-                </tr>
-                <tr>
-                    <td >1</td>
-                    <td >1-3</td>
-                    <td >Wortschatz</td>
-                    <td >Er</td>
-                </tr>
-                <tr>
-                    <td >1</td>
-                    <td >1-3</td>
-                    <td >Wortschatz</td>
-                    <td >Sie</td>
-                </tr>
+                <thead>
+                    <tr >
+                        <th style="border-top-left-radius:5px"><div class="LOFMColor">Module</div></th>
+                        <th><div class="LOFMColor">Lektion</div></th>
+                        <th><div class="LOFMColor">Type</div></th>
+                        <th style="border-top-right-radius:5px"><div class="LOFMColor">Name</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Verbkonjugation im Präsens</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Unbestimmte und bestimmte Artikel</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Possessivartikel</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Zeitangaben</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Ich</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Du</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Er</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Sie</td></tr>
+                </tbody>
             </table>
         </div>
         <div id="progression">
@@ -1289,6 +1256,10 @@
     let WhichBox;
     let z=0;
     let draggedItem = null;
+    const TableQuestions = Array.from(document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].querySelectorAll("tr"));
+    const MChoose =document.getElementById("ModuleChoose");
+    const LChoose =document.getElementById("LektionChoose");
+    const TChoose =document.getElementById("TypeChoose");
     const config = { attributes: true, childList: true, characterData: true };
     function show(a){
         x=document.getElementsByClassName(a);
@@ -1639,7 +1610,58 @@
         };
     });
     SubstituteForInputKontrol.observe(substituteForInput,config);
-    
+    function sortTableByColumn(table, column, asc = true) {
+        const dirModifier = asc ? 1 : -1;
+        const tBody = table.tBodies[0];
+        const rows = Array.from(tBody.querySelectorAll("tr"));
+        console.log(rows);
+        // Sort each row
+        const sortedRows = rows.sort((a, b) => {
+            const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+            const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+            return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
+        });
+
+        // Remove all existing TRs from the table
+        while (tBody.firstChild) {
+            tBody.removeChild(tBody.firstChild);
+        }
+
+        // Re-add the newly sorted rows
+        tBody.append(...sortedRows);
+        // Remember how the column is currently sorted
+        table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
+        table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-asc", asc);
+        table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
+    }
+    const tabulka = document.getElementById("ListOfMaterials").getElementsByTagName("th")
+    Array.prototype.forEach.call(tabulka,headerCell => {
+        headerCell.addEventListener("click", () => {
+        const tableElement =headerCell.parentElement.parentElement.parentElement ;
+        const headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
+        const currentIsAscending = headerCell.classList.contains("th-sort-asc");
+        sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
+        });
+    })
+    function rozinac (){
+        for(let i =0;i<TableQuestions.length;i++){
+            row = TableQuestions[i];
+            if ((MChoose.value==row.getElementsByTagName("td")[0].textContent||MChoose.value=="none")&&(LChoose.value==row.getElementsByTagName("td")[1].textContent||LChoose.value=="none")&&(TChoose.value==row.getElementsByTagName("td")[2].textContent||TChoose.value=="none")){
+                row.style.display="table-row";
+            }
+            else{
+                row.style.display="none";
+            }
+        }
+    }
+    function filterReset(){
+        MChoose.value="none";
+        LChoose.value="none";
+        TChoose.value="none";
+    }
+    MChoose.addEventListener("change",rozinac);
+    LChoose.addEventListener("change",rozinac);
+    TChoose.addEventListener("change",rozinac);
     
     // na zmáčknutí určitých kláves
     document.addEventListener("keydown",function(e){

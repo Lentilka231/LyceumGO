@@ -683,7 +683,7 @@ span{
 }
 #filters{
     height:50px;
-    width:500px;
+    width:600px;
     display:flex;
     align-items:center;
     gap:0px 30px
@@ -718,3 +718,9 @@ span{
 }
 #ListOfMaterials tr:nth-child(even) {background: rgba(0, 0, 0, 0.1)}
 #ListOfMaterials td:nth-child(4) {text-align: left;}
+#reset{
+    padding:5px;
+    background-color: rgb(230, 19, 19);
+    border-radius: 5px;
+    cursor: pointer;
+}
