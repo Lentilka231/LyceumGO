@@ -713,13 +713,14 @@
                     Reset
                 </div>
             </div>
+            
             <table id="ListOfMaterials">
                 <thead>
                     <tr >
-                        <th style="border-top-left-radius:5px"><div class="LOFMColor">Module</div></th>
-                        <th><div class="LOFMColor">Lektion</div></th>
-                        <th><div class="LOFMColor">Type</div></th>
-                        <th style="border-top-right-radius:5px"><div class="LOFMColor">Name</div></th>
+                        <th style="border-top-left-radius:5px;width:70px"><div class="LOFMColor">Module</div></th>
+                        <th style="width:70px"><div class="LOFMColor">Lektion</div></th>
+                        <th style="width:90px"><div class="LOFMColor">Type</div></th>
+                        <th style="border-top-right-radius:5px;width:270px"><div class="LOFMColor">Name</div></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -731,8 +732,30 @@
                     <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Du</td></tr>
                     <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Er</td></tr>
                     <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Sie</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Sie</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Sie</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Sie</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Sie</td></tr>
                 </tbody>
             </table>
+            <table id="ActiveMaterials">
+                <tbody>
+                    <tr>
+                        
+                    </tr>
+                </tbody>
+            </table>
+            <div id="canvas">
+                <div id="RemovePage" onclick="DoSmWithPage('R')">-</div>
+                <div id="LeftButton" onclick="changePage('left')"><</div>
+                <div id="PageNumber">1</div>
+                <div id="RightButton" onclick="changePage('right')">></div>
+                <div id="AddPage" onclick="DoSmWithPage('A')">+</div>
+                <div class="list">
+                    <div id="NameOfTest" contenteditable="true" spellcheck="false">Test</div>
+                    <div id="studentName" contenteditable="true" spellcheck="false">jméno žáka: </div>
+                </div>
+            </div>
         </div>
         <div id="progression">
             <div id="fill"></div>
@@ -1256,6 +1279,11 @@
     let WhichBox;
     let z=0;
     let draggedItem = null;
+    let CurrentPage = 1;
+    const canvas = document.getElementById("canvas");
+    const PageNumber =document.getElementById("PageNumber");
+    const RightButton =document.getElementById("RightButton");
+    const LeftButton =document.getElementById("LeftButton");
     const TableQuestions = Array.from(document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].querySelectorAll("tr"));
     const MChoose =document.getElementById("ModuleChoose");
     const LChoose =document.getElementById("LektionChoose");
@@ -1610,6 +1638,7 @@
         };
     });
     SubstituteForInputKontrol.observe(substituteForInput,config);
+    // Všechno pro tvorbu PDF testům
     function sortTableByColumn(table, column, asc = true) {
         const dirModifier = asc ? 1 : -1;
         const tBody = table.tBodies[0];
@@ -1644,6 +1673,7 @@
         });
     })
     function rozinac (){
+        console.log("spusteno")
         for(let i =0;i<TableQuestions.length;i++){
             row = TableQuestions[i];
             if ((MChoose.value==row.getElementsByTagName("td")[0].textContent||MChoose.value=="none")&&(LChoose.value==row.getElementsByTagName("td")[1].textContent||LChoose.value=="none")&&(TChoose.value==row.getElementsByTagName("td")[2].textContent||TChoose.value=="none")){
@@ -1658,11 +1688,61 @@
         MChoose.value="none";
         LChoose.value="none";
         TChoose.value="none";
+        rozinac()
     }
     MChoose.addEventListener("change",rozinac);
     LChoose.addEventListener("change",rozinac);
     TChoose.addEventListener("change",rozinac);
-    
+    function changePage(x,max=""){
+        lists = canvas.getElementsByClassName("list");
+        if(x=="right"&&lists[CurrentPage]){
+            for (let i=0;i<lists.length;i++){
+                lists[0].style.display="none";
+            }
+            CurrentPage=max=="yes"?lists.length:CurrentPage+1;
+            lists[CurrentPage-1].style.display="block";
+            PageNumber.innerText=CurrentPage;
+        }
+        else if(x=="left"&&CurrentPage!=1){
+            for (let i=0;i<lists.length;i++){
+                lists[0].style.display="none";
+            }
+            CurrentPage-=1;
+            lists[CurrentPage-1].style.display="block";
+            PageNumber.innerText=CurrentPage;
+        }
+    }
+    function DoSmWithPage(x){
+
+        // <div class="list">
+        //             <div id="NameOfTest">Name of test</div>
+        //         </div>
+        if(x=="A"){
+            let newList = document.createElement("div");
+            let NameOfTestDiv = document.createElement("div");
+            newList.setAttribute("class","list");
+            NameOfTestDiv.setAttribute("class","NameOfTest");
+            newList.append(NameOfTestDiv);
+            canvas.append(newList);
+            changePage("right","yes");
+        }
+        else if(x=="R"){
+            let lists = canvas.getElementsByClassName("list")
+            if(lists.length!=1){
+                lists[CurrentPage-1].remove();
+                changePage("left")
+            }
+        }
+
+    }
+    $('[contenteditable]').on('paste', function(e) {
+     	var $self = $(this);
+      setTimeout(function() {
+       	$self.html($self.text());
+       }, 0);
+    }).on('keypress', function(e){
+    	 return e.which != 13;
+    });
     // na zmáčknutí určitých kláves
     document.addEventListener("keydown",function(e){
         if(e.key==="Enter" && CanUseEnter){
@@ -1719,8 +1799,8 @@
         for(let i=0;i<CurrentVocabulary[0];i++){
             let karta = document.createElement("div");
             let centralizer = document.createElement("div");
-            let textf = document.createElement("p");
             let textb = document.createElement("p");
+            let textf = document.createElement("p");
             let front = document.createElement("div");
             let back = document.createElement("div");
             karta.setAttribute("class","karta");
@@ -1731,14 +1811,14 @@
             karta.setAttribute("draggable","true");
 
             textf.setAttribute("class","KartaText");
-            textf.appendChild(document.createTextNode(CurrentVocabulary[2][i]));
+            textf.appendChild(document.createTextNode(CurrentVocabulary[1][i]));
             textb.setAttribute("class","KartaText");
-            textb.appendChild(document.createTextNode(CurrentVocabulary[1][i]));
+            textb.appendChild(document.createTextNode(CurrentVocabulary[2][i]));
             
             front.setAttribute("class","card-side front");
             back.setAttribute("class","card-side back");
-            front.appendChild(textf);
             back.appendChild(textb);
+            front.appendChild(textf);
             
             centralizer.appendChild(front);
             centralizer.appendChild(back);
@@ -1786,14 +1866,14 @@
     };
     // otáčí kartu o 180°
     function rotatecard(t){
-        let front = t.children[0].children[0];
-        let back = t.children[0].children[1];
-        if (front.style.transform=="rotateY(0deg)"){
+        let front = t.getElementsByClassName("front")[0];
+        let back = t.getElementsByClassName("back")[0];
+        if (back.style.transform=="rotateY(0deg)"){
+            front.style.transform="rotateY(0deg)"
+            back.style.transform="rotateY(-180deg)"            
+        }else{
             front.style.transform="rotateY(180deg)"
             back.style.transform="rotateY(0deg)"
-        }else{
-            front.style.transform="rotateY(0deg)"
-            back.style.transform="rotateY(180deg)"
         }
     }
     // obnovuje výchozí nastavení balíčků

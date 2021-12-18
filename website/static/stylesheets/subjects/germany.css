@@ -439,7 +439,7 @@ span{
     transition: all 0.8s ease;
     backface-visibility:hidden;
 }
-.front{
+.back{
     transform: rotateY(-180deg);
 }
 .textcentralizer{
@@ -686,18 +686,35 @@ span{
     width:600px;
     display:flex;
     align-items:center;
-    gap:0px 30px
+    gap:0px 10px
 }
 #ModuleChoose,#LektionChoose,#TypeChoose{
     padding:3px;
     font-size: 16px;
 }
 #ListOfMaterials{
+    display:block;
     width:500px;
     border-spacing:0px;
     border:3px solid rgb(55, 55, 55);
     border-radius:10px;
+    height: 250px;
+    overflow-y: hidden;
 }
+#ListOfMaterials tbody{
+    display:block;
+    height:100%;
+    overflow-y: auto;
+}
+#ListOfMaterials thead{
+    width:100%;
+}
+#ActivMaterials{
+    width:500px;
+    border-radius:10px;
+    border-spacing:0px;
+}
+
 .LOFMColor{
     padding:5px;
     color:white;
@@ -710,17 +727,72 @@ span{
 #ListOfMaterials th{
     overflow: hidden;
 }
-
 #ListOfMaterials td{
     height:1rem;
     padding:3px;
     text-align: center;
 }
 #ListOfMaterials tr:nth-child(even) {background: rgba(0, 0, 0, 0.1)}
+#ListOfMaterials td:nth-child(1) {width:70px}
+#ListOfMaterials td:nth-child(2) {width:70px}
+#ListOfMaterials td:nth-child(3) {width:90px}
+#ListOfMaterials td:nth-child(4) {width:270px}
+
 #ListOfMaterials td:nth-child(4) {text-align: left;}
 #reset{
     padding:5px;
     background-color: rgb(230, 19, 19);
     border-radius: 5px;
     cursor: pointer;
+}
+#canvas{
+    width:420px;
+    height:494px;
+    position: absolute;
+    right:0px;
+    top:30px;
+    background-color: white;
+}   
+.list{
+    position:absolute;
+    height:100%;
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:30px 3fr 3fr 3fr;
+    grid-gap:10px;
+    padding:30px;
+} 
+#PageNumber,#RightButton,#LeftButton,#AddPage,#RemovePage{
+    z-index:3;
+    font-size: 26px;
+    position:absolute;
+    width:30px;
+    height:30px;
+    transition: background-color 0.2s ease;
+    border-radius: 5px;
+    text-align: center;
+    bottom:10px;
+    transform: translate(-50%,0%);
+}
+#PageNumber{left:50%;cursor: pointer;}
+#AddPage{left:90%;cursor: pointer;}
+#RemovePage{left:10%;cursor: pointer;}
+#RightButton{left:60%;cursor: pointer;}
+#LeftButton{left:40%;cursor: pointer;}
+#RightButton:hover{background-color: rgba(33, 33, 33, 0.534);}
+#LeftButton:hover{background-color: rgba(33, 33, 33, 0.534);}
+#AddPage:hover{background-color: rgba(33, 33, 33, 0.534);}
+#RemovePage:hover{background-color: rgba(33, 33, 33, 0.534);}
+
+#NameOfTest,#studentName{
+    position:absolute;
+    width: fit-content;
+    padding:3px;
+    border:1px solid white;
+}
+#NameOfTest{top:5%;left:5%;font-size:20px;}
+#studentName{top:12%;left:5%;font-size: 15px;}
+#NameOfTest:hover,#studentName:hover{
+    border:1px solid black
 }
