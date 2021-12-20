@@ -669,6 +669,7 @@
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
     <div id="TDContent">
         <div id="CreateTestDIV">
+
             <div class="nzadani"><b>Hier kannst du einen Test erstellen</b></div>
             <div id="filters">
                 <div>
@@ -712,8 +713,7 @@
                 <div id="reset" onclick="filterReset()">
                     Reset
                 </div>
-            </div>
-            
+            </div>          
             <table id="ListOfMaterials">
                 <thead>
                     <tr >
@@ -745,18 +745,23 @@
                     </tr>
                 </tbody>
             </table>
+            <div id="newTask">Přidat</div>
             <div id="canvas">
                 <div id="RemovePage" onclick="DoSmWithPage('R')">-</div>
-                <div id="LeftButton" onclick="changePage('left')"><</div>
+                <div id="LeftButton" onclick="changePage('left')">&lt</div>
                 <div id="PageNumber">1</div>
-                <div id="RightButton" onclick="changePage('right')">></div>
+                <div id="RightButton" onclick="changePage('right')">&gt</div>
                 <div id="AddPage" onclick="DoSmWithPage('A')">+</div>
                 <div class="list">
-                    <div id="NameOfTest" contenteditable="true" spellcheck="false">Test</div>
-                    <div id="studentName" contenteditable="true" spellcheck="false">jméno žáka: </div>
+                    <div id="zahlavi">
+                        <b><div id="NameOfTest" contenteditable="true" spellcheck="false">Test</div></b>
+                        <div id="studentName" contenteditable="true" spellcheck="false">jméno: </div>
+                        <div id="className" contenteditable="true" spellcheck="false">třída: </div>
+                        <div id="datumName" contenteditable="true" spellcheck="false">datum: </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div>   
         <div id="progression">
             <div id="fill"></div>
         </div>
@@ -1289,6 +1294,20 @@
     const LChoose =document.getElementById("LektionChoose");
     const TChoose =document.getElementById("TypeChoose");
     const config = { attributes: true, childList: true, characterData: true };
+    let markTask;
+    let kontrola;
+    const newTask = document.getElementsByClassName("newTask");
+    const Tasks= document.getElementById("ListOfMaterials").getElementsByTagName("tr");
+    for(let i=0;i<Tasks.length;i++){
+        tr = Tasks[i]
+        tr.onclick=function(){
+            for(let x=0;x<Tasks.length;x++){   
+                Tasks[x].style.backgroundColor="rgba(0,0,0,0.5)";
+            }
+
+            tr.style.backgroundColor="rgb(100,170,100)";
+        }
+    }
     function show(a){
         x=document.getElementsByClassName(a);
         for(let i=0;i<x.length;i++){
@@ -1327,7 +1346,6 @@
         $("#clickDisabler").show();
         if (lekce=="CreateTest"){
             document.getElementById("CreateTestDIV").style.display="block";
-            
         }
         else{
             if (typ=="w"){
@@ -1376,6 +1394,9 @@
         CanUseArrows=false;
         dvapokusy=1;
         document.getElementById("fill").style.width="0px";
+        kontrola.disconnect();
+
+
     };
     // příprava sady otázek
     function teststart(type,k,t,x){
@@ -1643,7 +1664,6 @@
         const dirModifier = asc ? 1 : -1;
         const tBody = table.tBodies[0];
         const rows = Array.from(tBody.querySelectorAll("tr"));
-        console.log(rows);
         // Sort each row
         const sortedRows = rows.sort((a, b) => {
             const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
@@ -1673,7 +1693,6 @@
         });
     })
     function rozinac (){
-        console.log("spusteno")
         for(let i =0;i<TableQuestions.length;i++){
             row = TableQuestions[i];
             if ((MChoose.value==row.getElementsByTagName("td")[0].textContent||MChoose.value=="none")&&(LChoose.value==row.getElementsByTagName("td")[1].textContent||LChoose.value=="none")&&(TChoose.value==row.getElementsByTagName("td")[2].textContent||TChoose.value=="none")){
@@ -1816,7 +1835,9 @@
             textb.appendChild(document.createTextNode(CurrentVocabulary[2][i]));
             
             front.setAttribute("class","card-side front");
+            front.setAttribute("style","transform:rotateY(0deg)");
             back.setAttribute("class","card-side back");
+            back.setAttribute("style","transform:rotateY(-180deg)");
             back.appendChild(textb);
             front.appendChild(textf);
             
@@ -1830,7 +1851,7 @@
         enableDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
 
         
-        let kontrola = new MutationObserver(function(mutations){
+        kontrola = new MutationObserver(function(mutations){
             if (balicekKaretVyber.children.length==0){
                 vyhodnoceni.innerHTML=Math.round(balicekKaretDobry.children.length/CurrentVocabulary[0]*100)+"%";
                 balicekKaretSpatny.onmouseover=function(){
@@ -1847,7 +1868,6 @@
                     flashinfo.innerHTML="Möchtest du das Kartendeck wiederholen?";
                     document.getElementById("vyber").style.border="rgb(100, 100, 100) solid 10px";
                     document.getElementById("vyber").style.cursor="pointer";
-
                 }
                 document.getElementById("vyber").onmouseout=function(){
                     flashinfo.innerHTML="";
@@ -1861,7 +1881,6 @@
             };
         })
         kontrola.observe(balicekKaretVyber,config);
-    
         
     };
     // otáčí kartu o 180°
@@ -1916,11 +1935,24 @@
     function drags(){
         let item= this
         draggedItem =item;
+        if(item.children[0].children[0].style.transform=="rotateY(0deg)"&&TypeOfTest=="FlashCards"){
+            item.children[0].children[1].style.display="none";
+        }
+        else{
+            item.children[0].children[0].style.display="none";
+        }
+
         setTimeout(function () {
             item.style.display = 'none';
         }, 0)
     }
     function drage(){
+        if(draggedItem.children[0].children[0].style.transform=="rotateY(0deg)"){
+            draggedItem.children[0].children[1].style.display="block";
+        }
+        else{
+            draggedItem.children[0].children[0].style.display="block";
+        }
         setTimeout(function () {
             draggedItem.style.display = 'block';
             draggedItem = null;
@@ -1989,5 +2021,6 @@
             }
         }
     }
+
 </script>
 {%endblock%}
