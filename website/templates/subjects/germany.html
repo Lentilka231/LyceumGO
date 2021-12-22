@@ -4,7 +4,12 @@
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subject.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects/germany.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects/germany12.css')}}">
-<script src="{{url_for('static',filename='jspdf.umd.min.js')}}"></script>
+
+<script src="{{url_for('static',filename='jspdf/node_modules/jspdf/dist/jspdf.umd.min.js')}}"></script>
+<script>const { jsPDF } = window.jspdf;</script>
+<script src="{{url_for('static',filename='fonts/Calibri Regular-normal.js')}}"></script>
+<script src="{{url_for('static',filename='fonts/Calibri Bold-bold.js')}}"></script>
+
 {%endblock%}
 {%block content%}
 
@@ -664,7 +669,6 @@
 </div>
 </div>
 <!------------------------------------------------------------------------------------------------------------>
-
 <div id="clickDisabler">
 <div id="TestDiv">
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
@@ -752,7 +756,7 @@
                 <div id="AddPage" onclick="DoSmWithPage('A')">+</div>
                 <div class="list">
                     <div id="zahlavi">
-                        <b><div id="NameOfTest" contenteditable="true" spellcheck="false">Test</div></b>
+                        <b><div id="nameOfTest" contenteditable="true" spellcheck="false">Test</div></b>
                         <div id="studentName" contenteditable="true" spellcheck="false">jméno: </div>
                         <div id="className" contenteditable="true" spellcheck="false">třída: </div>
                         <div id="datumName" contenteditable="true" spellcheck="false">datum: </div>
@@ -1641,7 +1645,6 @@
         };
     });
     SubstituteForInputKontrol.observe(substituteForInput,config);
- 
     // na zmáčknutí určitých kláves
     document.addEventListener("keydown",function(e){
         if(e.key==="Enter" && CanUseEnter){
@@ -1677,7 +1680,6 @@
             }
         };
     })
-
 </script>
 <!-- Connecting stuff -->
 <script>
@@ -1693,7 +1695,6 @@
 </script>
 <!-- Všechno pro tvorbu PDF testům -->
 <script>
-const { jsPDF } = window.jspdf;
 const canvas = document.getElementById("canvas");
 const PageNumber =document.getElementById("PageNumber");
 const RightButton =document.getElementById("RightButton");
@@ -1735,9 +1736,19 @@ function addTask (){
     }
 }
 function downloadPDF(){
-    const a = new jsPDF();
-    a.text("Hello world!", 10, 10);
-    a.save("a4.pdf");
+    let pages=document.getElementsByClassName("list");
+    const doc = new jsPDF();
+    doc.setFont("Calibri Regular","normal");
+    doc.text("Random ultra náhodný text",10,10);
+    doc.text(document.getElementById("studentName").innerText,10,20);
+    doc.text(document.getElementById("className").innerText,154,10);
+    doc.text(document.getElementById("datumName").innerText,150,20);
+
+    for(let i=0;i<pages.length;i++){
+        page=pages[i];
+        doc.addPage();
+    }
+    doc.save(document.getElementById("nameOfTest").innerText+".pdf");
 }
 
 function sortTableByColumn(table, column, asc = true) {
