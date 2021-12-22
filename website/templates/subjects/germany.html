@@ -4,7 +4,7 @@
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subject.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects/germany.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects/germany12.css')}}">
-
+<script src="{{url_for('static',filename='jspdf.umd.min.js')}}"></script>
 {%endblock%}
 {%block content%}
 
@@ -664,6 +664,7 @@
 </div>
 </div>
 <!------------------------------------------------------------------------------------------------------------>
+
 <div id="clickDisabler">
 <div id="TestDiv">
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
@@ -742,6 +743,7 @@
                 </tbody>
             </table>
             <div id="newTask" onclick="addTask()">Přidat</div>
+            <div id="downloadPDF" onclick="downloadPDF()">Stáhnout</div>
             <div id="canvas">
                 <div id="RemovePage" onclick="DoSmWithPage('R')">-</div>
                 <div id="LeftButton" onclick="changePage('left')">&lt</div>
@@ -1225,6 +1227,7 @@
         for(let i=0;i<DidYouKnow.length;i++){
             DidYouKnowOPEN.push[false];
         }
+
         for(let i=0;i<DidYouKnow.length;i++){
             DidYouKnow[i].onclick= async function(){
                 
@@ -1258,6 +1261,7 @@
     const spravnabarva = "rgb(25, 146, 61)";
     const spatnabarva = "rgb(199, 42, 42)";
     const oznacovacibarva = "3px solid rgb(87, 115, 153)";
+    let kontrola;
     let UnusedQuestions;
     let MomentalQuestion;
     let TypeOfTest;
@@ -1280,38 +1284,12 @@
     let WhichBox;
     let z=0;
     let draggedItem = null;
-    let CurrentPage = 1;
-    const canvas = document.getElementById("canvas");
-    const PageNumber =document.getElementById("PageNumber");
-    const RightButton =document.getElementById("RightButton");
-    const LeftButton =document.getElementById("LeftButton");
-    const TableQuestions = Array.from(document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].querySelectorAll("tr"));
     const MChoose =document.getElementById("ModuleChoose");
     const LChoose =document.getElementById("LektionChoose");
     const TChoose =document.getElementById("TypeChoose");
     const config = { attributes: true, childList: true, characterData: true };
-    let markTask;
-    let kontrola;
-    const Tasks= document.getElementById("ListOfMaterials").getElementsByTagName("tr");
-    for(let i=0;i<Tasks.length;i++){
-        let tr = Tasks[i]
-        tr.onclick=function(){
-            for(let x=0;x<Tasks.length;x++){   
-                Tasks[x].style.backgroundColor="rgba(0,0,0,0.5)";
-            }
-            tr.style.backgroundColor="rgb(100,170,100)";
-            markTask=tr.children[3].innerText;
-        }
-    }
-    function addTask (){
-        console.log("Kryšpín");
-        let TaskDiv = document.createElement("div");
-        let TaskTitle = document.createElement("p");
-        TaskTitle.innerText=markTask;
-        TaskDiv.setAttribute("class","TaskDiv");
-        TaskDiv.append(TaskTitle);
-        canvas.getElementsByClassName("list")[CurrentPage-1].append(TaskDiv);
-    }
+
+    
     function show(a){
         x=document.getElementsByClassName(a);
         for(let i=0;i<x.length;i++){
@@ -1381,6 +1359,7 @@
         $("#ConnectingControl").hide();
         $("#RepeatConnecting").hide();
         $("#progression").hide();
+        kontrola.disconnect();
         balicekKaretDobry.innerHTML="";
         balicekKaretSpatny.innerHTML="";
         balicekKaretVyber.innerHTML="";
@@ -1398,9 +1377,8 @@
         CanUseArrows=false;
         dvapokusy=1;
         document.getElementById("fill").style.width="0px";
-        kontrola.disconnect();
-
-
+        document.getElementById("vyber").onclick="";
+        removeDrag([balicekKaretSpatny],[balicekKaretVyber]);
     };
     // příprava sady otázek
     function teststart(type,k,t,x){
@@ -1663,109 +1641,7 @@
         };
     });
     SubstituteForInputKontrol.observe(substituteForInput,config);
-    // Všechno pro tvorbu PDF testům
-    function sortTableByColumn(table, column, asc = true) {
-        const dirModifier = asc ? 1 : -1;
-        const tBody = table.tBodies[0];
-        const rows = Array.from(tBody.querySelectorAll("tr"));
-        // Sort each row
-        const sortedRows = rows.sort((a, b) => {
-            const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
-            const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
-            return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
-        });
-
-        // Remove all existing TRs from the table
-        while (tBody.firstChild) {
-            tBody.removeChild(tBody.firstChild);
-        }
-
-        // Re-add the newly sorted rows
-        tBody.append(...sortedRows);
-        // Remember how the column is currently sorted
-        table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
-        table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-asc", asc);
-        table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
-    }
-    const tabulka = document.getElementById("ListOfMaterials").getElementsByTagName("th")
-    Array.prototype.forEach.call(tabulka,headerCell => {
-        headerCell.addEventListener("click", () => {
-        const tableElement =headerCell.parentElement.parentElement.parentElement ;
-        const headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
-        const currentIsAscending = headerCell.classList.contains("th-sort-asc");
-        sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
-        });
-    })
-    function rozinac (){
-        for(let i =0;i<TableQuestions.length;i++){
-            row = TableQuestions[i];
-            if ((MChoose.value==row.getElementsByTagName("td")[0].textContent||MChoose.value=="none")&&(LChoose.value==row.getElementsByTagName("td")[1].textContent||LChoose.value=="none")&&(TChoose.value==row.getElementsByTagName("td")[2].textContent||TChoose.value=="none")){
-                row.style.display="table-row";
-            }
-            else{
-                row.style.display="none";
-            }
-        }
-    }
-    function filterReset(){
-        MChoose.value="none";
-        LChoose.value="none";
-        TChoose.value="none";
-        rozinac()
-    }
-    MChoose.addEventListener("change",rozinac);
-    LChoose.addEventListener("change",rozinac);
-    TChoose.addEventListener("change",rozinac);
-    function changePage(x,max=""){
-        lists = canvas.getElementsByClassName("list");
-        if(x=="right"&&lists[CurrentPage]){
-            for (let i=0;i<lists.length;i++){
-                lists[0].style.display="none";
-            }
-            CurrentPage=max=="yes"?lists.length:CurrentPage+1;
-            lists[CurrentPage-1].style.display="block";
-            PageNumber.innerText=CurrentPage;
-        }
-        else if(x=="left"&&CurrentPage!=1){
-            for (let i=0;i<lists.length;i++){
-                lists[0].style.display="none";
-            }
-            CurrentPage-=1;
-            lists[CurrentPage-1].style.display="block";
-            PageNumber.innerText=CurrentPage;
-        }
-    }
-    function DoSmWithPage(x){
-
-        // <div class="list">
-        //             <div id="NameOfTest">Name of test</div>
-        //         </div>
-        if(x=="A"){
-            let newList = document.createElement("div");
-            let NameOfTestDiv = document.createElement("div");
-            newList.setAttribute("class","list");
-            NameOfTestDiv.setAttribute("class","NameOfTest");
-            newList.append(NameOfTestDiv);
-            canvas.append(newList);
-            changePage("right","yes");
-        }
-        else if(x=="R"){
-            let lists = canvas.getElementsByClassName("list")
-            if(lists.length!=1){
-                lists[CurrentPage-1].remove();
-                changePage("left")
-            }
-        }
-
-    }
-    $('[contenteditable]').on('paste', function(e) {
-     	var $self = $(this);
-      setTimeout(function() {
-       	$self.html($self.text());
-       }, 0);
-    }).on('keypress', function(e){
-    	 return e.which != 13;
-    });
+ 
     // na zmáčknutí určitých kláves
     document.addEventListener("keydown",function(e){
         if(e.key==="Enter" && CanUseEnter){
@@ -1801,129 +1677,10 @@
             }
         };
     })
-//---------------------------------------------------------------------------
-// Flashcards ---------------------------------------------------------------
-    const balicekKaretVyber = document.getElementById("VYBER");
-    const balicekKaretSpatny = document.getElementById("SPATNY");
-    const balicekKaretDobry = document.getElementById("DOBRY");
-    const vyhodnoceni = document.getElementById("vyhodnoceni");
-    const flashinfo = document.getElementById("flashinfo")
-    // zde se připravuje balíček karet
-    function FlashcardsPreparing(){
-        resetDecks();
-        removeDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
-        balicekKaretSpatny.innerHTML="";
-        balicekKaretDobry.innerHTML="";
-        balicekKaretVyber.innerHTML="";
-        balicekKaretVyber.onclick=null;
-        // dragRemove(balicekKaretSpatny);
-        // dragRemove(document.getElementById("vyber"));
-        flashinfo.innerHTML="";
-        for(let i=0;i<CurrentVocabulary[0];i++){
-            let karta = document.createElement("div");
-            let centralizer = document.createElement("div");
-            let textb = document.createElement("p");
-            let textf = document.createElement("p");
-            let front = document.createElement("div");
-            let back = document.createElement("div");
-            karta.setAttribute("class","karta");
-            centralizer.setAttribute("class","textcentralizer");
-            karta.appendChild(centralizer);
-            
-            karta.setAttribute("onclick","rotatecard()");
-            karta.setAttribute("draggable","true");
 
-            textf.setAttribute("class","KartaText");
-            textf.appendChild(document.createTextNode(CurrentVocabulary[1][i]));
-            textb.setAttribute("class","KartaText");
-            textb.appendChild(document.createTextNode(CurrentVocabulary[2][i]));
-            
-            front.setAttribute("class","card-side front");
-            front.setAttribute("style","transform:rotateY(0deg)");
-            back.setAttribute("class","card-side back");
-            back.setAttribute("style","transform:rotateY(-180deg)");
-            back.appendChild(textb);
-            front.appendChild(textf);
-            
-            centralizer.appendChild(front);
-            centralizer.appendChild(back);
-            karta.setAttribute("onclick","rotatecard(this)");
-            karta.setAttribute("id",i);
-            balicekKaretVyber.appendChild(karta);
-        };
-
-        enableDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
-
-        
-        kontrola = new MutationObserver(function(mutations){
-            if (balicekKaretVyber.children.length==0){
-                vyhodnoceni.innerHTML=Math.round(balicekKaretDobry.children.length/CurrentVocabulary[0]*100)+"%";
-                balicekKaretSpatny.onmouseover=function(){
-                    flashinfo.innerHTML="Willst du deine Fehler korrigieren?";
-                    document.getElementById("spatny").style.border="rgb(130,0,0) solid 10px";
-                    document.getElementById("spatny").style.cursor="pointer";
-                };
-                balicekKaretSpatny.onmouseout=function(){
-                    flashinfo.innerHTML="";
-                    document.getElementById("spatny").style.border="rgb(160,22,22) solid 10px";
-                    document.getElementById("spatny").style.cursor="auto";
-                };
-                document.getElementById("vyber").onmouseover=function(){
-                    flashinfo.innerHTML="Möchtest du das Kartendeck wiederholen?";
-                    document.getElementById("vyber").style.border="rgb(100, 100, 100) solid 10px";
-                    document.getElementById("vyber").style.cursor="pointer";
-                }
-                document.getElementById("vyber").onmouseout=function(){
-                    flashinfo.innerHTML="";
-                    document.getElementById("vyber").style.border="rgb(126, 126, 126) solid 10px";
-                    document.getElementById("vyber").style.cursor="auto";
-                }
-                document.getElementById("vyber").setAttribute("onclick","FlashcardsPreparing()");
-                removeDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
-                enableDrag([balicekKaretSpatny],[balicekKaretVyber]);
-                enableDrag(balicekKaretVyber.children,document.querySelectorAll('.decks'))
-            };
-        })
-        kontrola.observe(balicekKaretVyber,config);
-        
-    };
-    // otáčí kartu o 180°
-    function rotatecard(t){
-        let front = t.getElementsByClassName("front")[0];
-        let back = t.getElementsByClassName("back")[0];
-        if (back.style.transform=="rotateY(0deg)"){
-            front.style.transform="rotateY(0deg)"
-            back.style.transform="rotateY(-180deg)"            
-        }else{
-            front.style.transform="rotateY(180deg)"
-            back.style.transform="rotateY(0deg)"
-        }
-    }
-    // obnovuje výchozí nastavení balíčků
-    function resetDecks(){
-        balicekKaretSpatny.onmouseover="";
-        balicekKaretSpatny.onmouseout="";
-        document.getElementById("vyber").onmouseover="";
-        document.getElementById("vyber").onmouseout="";
-        document.getElementById("vyber").style.border="rgb(126, 126, 126) solid 10px";
-    }
-    //hlídá jestli se má flashinfo zobrazit nebo ne
-    let flashinfokontrola = new MutationObserver(function(){
-        if (flashinfo.innerHTML==""){
-            flashinfo.style.visibility="hidden";
-        }
-        else {
-            flashinfo.style.visibility="visible";
-        };
-    }) ;
-    flashinfokontrola.observe(flashinfo,config);
-    //hlídá počet karet v balíčku "výběr"
-    let CardsLeft = new MutationObserver(function(){
-        vyhodnoceni.innerHTML=balicekKaretVyber.children.length;
-    });
-    CardsLeft.observe(balicekKaretVyber,config);
-//------------------------------------------------------------
-// Connecting stuff
+</script>
+<!-- Connecting stuff -->
+<script>
     let CzechSectionKontrol = new MutationObserver(function(){
         if(document.getElementById("CzechSection").querySelectorAll(".CzechWord").length==0){
             $("#ConnectingControl").show();
@@ -1933,98 +1690,378 @@
         }
     })
     CzechSectionKontrol.observe(document.getElementById("CzechSection"),config);
+</script>
+<!-- Všechno pro tvorbu PDF testům -->
+<script>
+const { jsPDF } = window.jspdf;
+const canvas = document.getElementById("canvas");
+const PageNumber =document.getElementById("PageNumber");
+const RightButton =document.getElementById("RightButton");
+const LeftButton =document.getElementById("LeftButton")
+const ButtonAddTask = document.getElementById("newTask");
+const Tasks= document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+const TableQuestions = Array.from(document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].querySelectorAll("tr"));
+let CurrentPage = 1;
+let markTask;
+for(let i=0;i<Tasks.length;i++){
+    let tr = Tasks[i]
+    tr.onclick=function(){
+        if (tr.style.backgroundColor!="rgb(100, 170, 100)")
+        {
+            for(let x=0;x<Tasks.length;x++){   
+                Tasks[x].style.backgroundColor="inherit";
+            }
+            tr.style.backgroundColor="rgb(100,170,100)";
+            markTask=tr.children[3].innerText;
+            ButtonAddTask.style.opacity="1";
+        }
+        else{
+            markTask="";
+            ButtonAddTask.style.opacity="0.5";
+            tr.style.backgroundColor="inherit";
+        }
+    }
+}
 
-//------------------------------------------------------------
-// Draggable stuff
-    function drags(){
-        let item= this
-        draggedItem =item;
-        if(item.children[0].children[0].style.transform=="rotateY(0deg)"&&TypeOfTest=="FlashCards"){
+function addTask (){
+    if (markTask!=""){
+        let TaskDiv = document.createElement("div");
+        let TaskTitle = document.createElement("p");
+        TaskTitle.innerText=markTask;
+        TaskDiv.style.height="100px"
+        TaskDiv.setAttribute("class","TaskDiv");
+        TaskDiv.append(TaskTitle);
+        canvas.getElementsByClassName("list")[CurrentPage-1].append(TaskDiv);
+    }
+}
+function downloadPDF(){
+    const a = new jsPDF();
+    a.text("Hello world!", 10, 10);
+    a.save("a4.pdf");
+}
+
+function sortTableByColumn(table, column, asc = true) {
+    const dirModifier = asc ? 1 : -1;
+    const tBody = table.tBodies[0];
+    const rows = Array.from(tBody.querySelectorAll("tr"));
+    // Sort each row
+    const sortedRows = rows.sort((a, b) => {
+        const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+        const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+        return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
+    });
+
+    // Remove all existing TRs from the table
+    while (tBody.firstChild) {
+        tBody.removeChild(tBody.firstChild);
+    }
+
+    // Re-add the newly sorted rows
+    tBody.append(...sortedRows);
+    // Remember how the column is currently sorted
+    table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
+    table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-asc", asc);
+    table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
+}
+const tabulka = document.getElementById("ListOfMaterials").getElementsByTagName("th")
+Array.prototype.forEach.call(tabulka,headerCell => {
+    headerCell.addEventListener("click", () => {
+    const tableElement =headerCell.parentElement.parentElement.parentElement ;
+    const headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
+    const currentIsAscending = headerCell.classList.contains("th-sort-asc");
+    sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
+    });
+})
+function rozinac (){
+    for(let i =0;i<TableQuestions.length;i++){
+        row = TableQuestions[i];
+        if ((MChoose.value==row.getElementsByTagName("td")[0].textContent||MChoose.value=="none")&&(LChoose.value==row.getElementsByTagName("td")[1].textContent||LChoose.value=="none")&&(TChoose.value==row.getElementsByTagName("td")[2].textContent||TChoose.value=="none")){
+            row.style.display="table-row";
+        }
+        else{
+            row.style.display="none";
+        }
+    }
+}
+function filterReset(){
+    MChoose.value="none";
+    LChoose.value="none";
+    TChoose.value="none";
+    rozinac()
+}
+MChoose.addEventListener("change",rozinac);
+LChoose.addEventListener("change",rozinac);
+TChoose.addEventListener("change",rozinac);
+function changePage(x,max=""){
+    lists = canvas.getElementsByClassName("list");
+    if(x=="right"&&lists[CurrentPage]){
+        for (let i=0;i<lists.length;i++){
+            lists[0].style.display="none";
+        }
+        CurrentPage=max=="yes"?lists.length:CurrentPage+1;
+        lists[CurrentPage-1].style.display="block";
+        PageNumber.innerText=CurrentPage;
+    }
+    else if(x=="left"&&CurrentPage!=1){
+        for (let i=0;i<lists.length;i++){
+            lists[0].style.display="none";
+        }
+        CurrentPage-=1;
+        lists[CurrentPage-1].style.display="block";
+        PageNumber.innerText=CurrentPage;
+    }
+}
+function DoSmWithPage(x){
+
+    // <div class="list">
+    //             <div id="NameOfTest">Name of test</div>
+    //         </div>
+    if(x=="A"){
+        let newList = document.createElement("div");
+        let NameOfTestDiv = document.createElement("div");
+        newList.setAttribute("class","list");
+        NameOfTestDiv.setAttribute("class","NameOfTest");
+        newList.append(NameOfTestDiv);
+        canvas.append(newList);
+        changePage("right","yes");
+    }
+    else if(x=="R"){
+        let lists = canvas.getElementsByClassName("list")
+        if(lists.length!=1){
+            lists[CurrentPage-1].remove();
+            changePage("left")
+        }
+    }
+
+}
+$('[contenteditable]').on('paste', function(e) {
+    var $self = $(this);
+    setTimeout(function() {
+    $self.html($self.text());
+    }, 0);
+}).on('keypress', function(e){
+        return e.which != 13;
+});
+</script>
+<!-- Draggable stuff -->
+<script>
+function drags(){
+    let item= this;
+    draggedItem =item;
+    if(TypeOfTest=="FlashCards"){
+        if(item.children[0].children[0].style.transform=="rotateY(0deg)"){
             item.children[0].children[1].style.display="none";
         }
         else{
             item.children[0].children[0].style.display="none";
         }
-
-        setTimeout(function () {
-            item.style.display = 'none';
-        }, 0)
     }
-    function drage(){
+
+    setTimeout(function () {
+        item.style.display = 'none';
+    }, 0)
+}
+function drage(){
+    if(TypeOfTest=="FlashCards"){
         if(draggedItem.children[0].children[0].style.transform=="rotateY(0deg)"){
             draggedItem.children[0].children[1].style.display="block";
         }
         else{
             draggedItem.children[0].children[0].style.display="block";
         }
-        setTimeout(function () {
-            draggedItem.style.display = 'block';
-            draggedItem = null;
-        }, 0);
     }
-    function pD(e){
-        e.preventDefault();
-    }
-    function drop(){
-        if (TypeOfTest=="Connecting"){
-            if (this.querySelector("#"+draggedItem.id)){
-            }
-            else if(this.firstChild){
-                draggedItem.style.margin="5px";
-                document.getElementById("CzechSection").append(draggedItem);
-            }
-            else {
-                draggedItem.style.margin="0px";
-                this.append(draggedItem);
-            }
+    setTimeout(function () {
+        draggedItem.style.display = 'block';
+        draggedItem = null;
+    }, 0);
+}
+function pD(e){
+    e.preventDefault();
+}
+function drop(){
+    if (TypeOfTest=="Connecting"){
+        if (this.querySelector("#"+draggedItem.id)){
         }
-        else{
-            if (draggedItem==balicekKaretSpatny){
-                let x = balicekKaretSpatny.children.length;
-                for(let i=0;i<x;i++){
-                    this.append(balicekKaretSpatny.children[0]);
-                }
-                balicekKaretSpatny.style.display="block";
-                resetDecks();
-                removeDrag([balicekKaretSpatny],[balicekKaretVyber]);
-            }else{
-                this.append(draggedItem);
-            }
+        else if(this.firstChild){
+            draggedItem.style.margin="5px";
+            document.getElementById("CzechSection").append(draggedItem);
+        }
+        else {
+            draggedItem.style.margin="0px";
+            this.append(draggedItem);
         }
     }
-    function enableDrag(ToDraw,PlaceToPut){
-        let list_items = ToDraw;
-        let lists = PlaceToPut;
-        for (let i = 0; i < list_items.length; i++) {
-            let item = list_items[i];
-            item.setAttribute("draggable","true");
-            item.addEventListener('dragstart',drags);
-            item.addEventListener('dragend',drage);
-            for (let j = 0; j < lists.length; j ++) {
-                let list = lists[j];
-                list.addEventListener('dragover',pD);
-                list.addEventListener('dragenter',pD);
-                list.addEventListener('drop',drop);
-                
+    else{
+        if (draggedItem==balicekKaretSpatny){
+            let x = balicekKaretSpatny.children.length;
+            for(let i=0;i<x;i++){
+                this.append(balicekKaretSpatny.children[0]);
             }
+            balicekKaretSpatny.style.display="block";
+            resetDecks();
+            removeDrag([balicekKaretSpatny],[balicekKaretVyber]);
+        }else{
+            this.append(draggedItem);
         }
     }
-    function removeDrag(ToDraw,PlaceToPut){
-        let cards = ToDraw;
-        let deck = PlaceToPut;
-        for (let i = 0; i < cards.length; i++) {
-            let item = cards[i];
-            item.setAttribute("draggable","false");
-            item.removeEventListener('dragstart',drags);
-            item.removeEventListener('dragend',drage);
-            for (let j = 0; j < deck.length; j ++) {
-                let list = deck[j];
-                list.removeEventListener('dragover',pD);
-                list.removeEventListener('dragenter',pD);
-                list.removeEventListener('drop',drop);
-            }
+}
+function enableDrag(ToDraw,PlaceToPut){
+    let list_items = ToDraw;
+    let lists = PlaceToPut;
+    for (let i = 0; i < list_items.length; i++) {
+        let item = list_items[i];
+        item.setAttribute("draggable","true");
+        item.addEventListener('dragstart',drags);
+        item.addEventListener('dragend',drage);
+        for (let j = 0; j < lists.length; j ++) {
+            let list = lists[j];
+            list.addEventListener('dragover',pD);
+            list.addEventListener('dragenter',pD);
+            list.addEventListener('drop',drop);
+            
         }
     }
+}
+function removeDrag(ToDraw,PlaceToPut){
+    let cards = ToDraw;
+    let deck = PlaceToPut;
+    for (let i = 0; i < cards.length; i++) {
+        let item = cards[i];
+        item.setAttribute("draggable","false");
+        item.removeEventListener('dragstart',drags);
+        item.removeEventListener('dragend',drage);
+        for (let j = 0; j < deck.length; j ++) {
+            let list = deck[j];
+            list.removeEventListener('dragover',pD);
+            list.removeEventListener('dragenter',pD);
+            list.removeEventListener('drop',drop);
+        }
+    }
+}
+</script>
+<!-- Flashcards -->
+<script>
+const balicekKaretVyber = document.getElementById("VYBER");
+const balicekKaretSpatny = document.getElementById("SPATNY");
+const balicekKaretDobry = document.getElementById("DOBRY");
+const vyhodnoceni = document.getElementById("vyhodnoceni");
+const flashinfo = document.getElementById("flashinfo");
+// let kontrola;
+// zde se připravuje balíček karet
+function FlashcardsPreparing(){
+    document.getElementById("vyber").onclick="";
+    resetDecks();
+    removeDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
+    balicekKaretSpatny.innerHTML="";
+    balicekKaretDobry.innerHTML="";
+    balicekKaretVyber.innerHTML="";
+    balicekKaretVyber.onclick=null;
+    // dragRemove(balicekKaretSpatny);
+    // dragRemove(document.getElementById("vyber"));
+    flashinfo.innerHTML="";
+    for(let i=0;i<CurrentVocabulary[0];i++){
+        let karta = document.createElement("div");
+        let centralizer = document.createElement("div");
+        let textb = document.createElement("p");
+        let textf = document.createElement("p");
+        let front = document.createElement("div");
+        let back = document.createElement("div");
+        karta.setAttribute("class","karta");
+        centralizer.setAttribute("class","textcentralizer");
+        karta.appendChild(centralizer);
+        
+        karta.setAttribute("onclick","rotatecard()");
+        karta.setAttribute("draggable","true");
+
+        textf.setAttribute("class","KartaText");
+        textf.appendChild(document.createTextNode(CurrentVocabulary[1][i]));
+        textb.setAttribute("class","KartaText");
+        textb.appendChild(document.createTextNode(CurrentVocabulary[2][i]));
+        
+        front.setAttribute("class","card-side front");
+        front.setAttribute("style","transform:rotateY(0deg)");
+        back.setAttribute("class","card-side back");
+        back.setAttribute("style","transform:rotateY(-180deg)");
+        back.appendChild(textb);
+        front.appendChild(textf);
+        
+        centralizer.appendChild(front);
+        centralizer.appendChild(back);
+        karta.setAttribute("onclick","rotatecard(this)");
+        karta.setAttribute("id",i);
+        balicekKaretVyber.appendChild(karta);
+    };
+
+    enableDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
+
+    
+    kontrola = new MutationObserver(function(mutations){
+        if (balicekKaretVyber.children.length==0){
+            vyhodnoceni.innerHTML=Math.round(balicekKaretDobry.children.length/CurrentVocabulary[0]*100)+"%";
+            balicekKaretSpatny.onmouseover=function(){
+                flashinfo.innerHTML="Willst du deine Fehler korrigieren?";
+                document.getElementById("spatny").style.border="rgb(130,0,0) solid 10px";
+                document.getElementById("spatny").style.cursor="pointer";
+            };
+            balicekKaretSpatny.onmouseout=function(){
+                flashinfo.innerHTML="";
+                document.getElementById("spatny").style.border="rgb(160,22,22) solid 10px";
+                document.getElementById("spatny").style.cursor="auto";
+            };
+            document.getElementById("vyber").onmouseover=function(){
+                flashinfo.innerHTML="Möchtest du das Kartendeck wiederholen?";
+                document.getElementById("vyber").style.border="rgb(100, 100, 100) solid 10px";
+                document.getElementById("vyber").style.cursor="pointer";
+            }
+            document.getElementById("vyber").onmouseout=function(){
+                flashinfo.innerHTML="";
+                document.getElementById("vyber").style.border="rgb(126, 126, 126) solid 10px";
+                document.getElementById("vyber").style.cursor="auto";
+            }
+            document.getElementById("vyber").setAttribute("onclick","FlashcardsPreparing()");
+            removeDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
+            enableDrag([balicekKaretSpatny],[balicekKaretVyber]);
+            enableDrag(balicekKaretVyber.children,document.querySelectorAll('.decks'))
+        };
+    })
+    kontrola.observe(balicekKaretVyber,config);
+    
+};
+// otáčí kartu o 180°
+function rotatecard(t){
+    let front = t.getElementsByClassName("front")[0];
+    let back = t.getElementsByClassName("back")[0];
+    if (back.style.transform=="rotateY(0deg)"){
+        front.style.transform="rotateY(0deg)"
+        back.style.transform="rotateY(-180deg)"            
+    }else{
+        front.style.transform="rotateY(180deg)"
+        back.style.transform="rotateY(0deg)"
+    }
+}
+// obnovuje výchozí nastavení balíčků
+function resetDecks(){
+    balicekKaretSpatny.onmouseover="";
+    balicekKaretSpatny.onmouseout="";
+    document.getElementById("vyber").onmouseover="";
+    document.getElementById("vyber").onmouseout="";
+    document.getElementById("vyber").style.border="rgb(126, 126, 126) solid 10px";
+}
+//hlídá jestli se má flashinfo zobrazit nebo ne
+let flashinfokontrola = new MutationObserver(function(){
+    if (flashinfo.innerHTML==""){
+        flashinfo.style.visibility="hidden";
+    }
+    else {
+        flashinfo.style.visibility="visible";
+    };
+}) ;
+flashinfokontrola.observe(flashinfo,config);
+//hlídá počet karet v balíčku "výběr"
+let CardsLeft = new MutationObserver(function(){
+    vyhodnoceni.innerHTML=balicekKaretVyber.children.length;
+});
+CardsLeft.observe(balicekKaretVyber,config);
 
 </script>
 {%endblock%}

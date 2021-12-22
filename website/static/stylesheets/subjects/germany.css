@@ -707,6 +707,9 @@ span{
 #ListOfMaterials thead{
     width:100%;
 }
+#ListOfMaterials tbody tr:hover{
+    background-color: rgba(0,0,0,0.1);
+}
 #ActivMaterials{
     width:500px;
     border-radius:10px;
@@ -730,7 +733,6 @@ span{
     padding:3px;
     text-align: center;
 }
-#ListOfMaterials tr:nth-child(even) {background: rgba(0, 0, 0, 0.1)}
 #ListOfMaterials td:nth-child(1) {width:70px}
 #ListOfMaterials td:nth-child(2) {width:70px}
 #ListOfMaterials td:nth-child(3) {width:90px}
@@ -811,8 +813,23 @@ span{
     font-size: 20px;
     border-radius: 5px;
     width:fit-content;
-    margin-left: 400px;
-    margin-top: 20px;
+    position: absolute;
+    top:350px;
+    left:400px;
     cursor:pointer;
     opacity:0.5;
+}
+
+.TaskDiv{
+    background-color: rgba(0,0,0,0.1);
+}
+#downloadPDF{
+    cursor:pointer;
+    position: absolute;
+    top:350px;
+    left:50px;
+    border-radius: 5px;
+    font-size: 20px;
+    padding:5px;
+    background-color: rgb(102, 102, 102);
 }
