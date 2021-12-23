@@ -9,6 +9,7 @@
 <script>const { jsPDF } = window.jspdf;</script>
 <script src="{{url_for('static',filename='fonts/Calibri Regular-normal.js')}}"></script>
 <script src="{{url_for('static',filename='fonts/Calibri Bold-bold.js')}}"></script>
+<script src="{{url_for('static',filename='fonts/Cantarell-Regular-normal.js')}}"></script>
 
 {%endblock%}
 {%block content%}
@@ -99,8 +100,8 @@
             <div class="DIVchild" id="wortschatz" style="background-color: rgb(157, 101, 201);">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce3"]["words"].items()%}
-                    <div class="Block b12" onclick="visibilator('3','w','{{i}}')">
+                    {%for i,v in NJ1["lekce1-3"]["words"].items()%}
+                    <div class="Block b12" onclick="visibilator('1-3','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
                             {{v[0]}}
@@ -733,10 +734,19 @@
                     <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Unbestimmte und bestimmte Artikel</td></tr>
                     <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Possessivartikel</td></tr>
                     <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Zeitangaben</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Ich</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Du</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Er</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Sie</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Slovíčka 1-3</td></tr>
+                    <tr><td>2</td><td>4</td><td>Wortschatz</td><td>Slovíčka 4</td></tr>
+                    <tr><td>2</td><td>5</td><td>Wortschatz</td><td>Slovíčka 5</td></tr>
+                    <tr><td>2</td><td>6</td><td>Wortschatz</td><td>Slovíčka 6</td></tr>
+                    <tr><td>3</td><td>7</td><td>Wortschatz</td><td>Slovíčka 7</td></tr>
+                    <tr><td>3</td><td>8</td><td>Wortschatz</td><td>Slovíčka 8</td></tr>
+                    <tr><td>3</td><td>9</td><td>Wortschatz</td><td>Slovíčka 9</td></tr>
+                    <tr><td>4</td><td>10</td><td>Wortschatz</td><td>Slovíčka 10</td></tr>
+                    <tr><td>4</td><td>11</td><td>Wortschatz</td><td>Slovíčka 11</td></tr>
+                    <tr><td>4</td><td>12</td><td>Wortschatz</td><td>Slovíčka 12</td></tr>
+                    <tr><td>5</td><td>13</td><td>Wortschatz</td><td>Slovíčka 13</td></tr>
+                    <tr><td>5</td><td>14</td><td>Wortschatz</td><td>Slovíčka 14</td></tr>
+                    <tr><td>5</td><td>15</td><td>Wortschatz</td><td>Slovíčka 15</td></tr>
                 </tbody>
             </table>
             <table id="ActiveMaterials">
@@ -760,6 +770,9 @@
                         <div id="studentName" contenteditable="true" spellcheck="false">jméno: </div>
                         <div id="className" contenteditable="true" spellcheck="false">třída: </div>
                         <div id="datumName" contenteditable="true" spellcheck="false">datum: </div>
+                        <hr style="position:absolute;top:100px;width:calc(100% - 60px);">
+                    </div>
+                    <div class="content" style="height:calc(100% - 80px);margin-top:10px;">
                     </div>
                 </div>
             </div>
@@ -1255,6 +1268,7 @@
         };
     });
 </script>
+<!-- kostra projektu -->
 <script>
     // Vše týkající se testů 
     //kdybych se někdy divil proč jsem místo dict rozložil slovíčka na 2 array
@@ -1288,9 +1302,6 @@
     let WhichBox;
     let z=0;
     let draggedItem = null;
-    const MChoose =document.getElementById("ModuleChoose");
-    const LChoose =document.getElementById("LektionChoose");
-    const TChoose =document.getElementById("TypeChoose");
     const config = { attributes: true, childList: true, characterData: true };
 
     
@@ -1628,7 +1639,7 @@
         for (let i=0;i<Success.length;i++){
             NumberForCalculationOfSuccess+=Success[i];
         };
-        document.getElementById("procenta").innerHTML=Math.round(NumberForCalculationOfSuccess/Success.length*100)+"%";
+        document.getElementById("procenta").innerText=Math.round(NumberForCalculationOfSuccess/Success.length*100)+"%";
         $(".congratulation").show();
         CanUseArrows=false;
         CanUseEnter=false;
@@ -1695,10 +1706,16 @@
 </script>
 <!-- Všechno pro tvorbu PDF testům -->
 <script>
+// užitečné odkazy:
+// Basic examples: https://mrrio.github.io/jsPDF/examples/basic.html
+// for fonts: https://www.devlinpeck.com/tutorials/jspdf-custom-font
+const MChoose =document.getElementById("ModuleChoose");
+const LChoose =document.getElementById("LektionChoose");
+const TChoose =document.getElementById("TypeChoose");
 const canvas = document.getElementById("canvas");
 const PageNumber =document.getElementById("PageNumber");
 const RightButton =document.getElementById("RightButton");
-const LeftButton =document.getElementById("LeftButton")
+const LeftButton =document.getElementById("LeftButton");
 const ButtonAddTask = document.getElementById("newTask");
 const Tasks= document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 const TableQuestions = Array.from(document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].querySelectorAll("tr"));
@@ -1713,7 +1730,7 @@ for(let i=0;i<Tasks.length;i++){
                 Tasks[x].style.backgroundColor="inherit";
             }
             tr.style.backgroundColor="rgb(100,170,100)";
-            markTask=tr.children[3].innerText;
+            markTask=tr;
             ButtonAddTask.style.opacity="1";
         }
         else{
@@ -1725,28 +1742,69 @@ for(let i=0;i<Tasks.length;i++){
 }
 
 function addTask (){
-    if (markTask!=""){
-        let TaskDiv = document.createElement("div");
-        let TaskTitle = document.createElement("p");
-        TaskTitle.innerText=markTask;
-        TaskDiv.style.height="100px"
-        TaskDiv.setAttribute("class","TaskDiv");
-        TaskDiv.append(TaskTitle);
-        canvas.getElementsByClassName("list")[CurrentPage-1].append(TaskDiv);
+    let Page=canvas.getElementsByClassName("list")[CurrentPage-1].getElementsByClassName("content")[0]
+    let h=0;
+    for(let i=0;i<Page.children.length;i++){h+=Page.children[i].offsetHeight;}
+    if(markTask!=""&&h<298){
+        if(markTask.children[2].innerText=="Gramatik"){
+            let TaskDiv = `
+            <div class='TaskDiv'>
+                <b><div class="TaskName"></div></b>
+                Otázek: <select class='numberOfQuestions'>
+                    <option value='6'>6</option>
+                    <option value='8'>8</option>
+                    <option value='10'>10</option>
+                    <option value='12'>12</option>
+                </select>
+                <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
+            </div>`;
+            Page.insertAdjacentHTML("beforeend",TaskDiv);
+            Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[3].innerText;
+            Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
+                Page.lastChild.style.height=24*Page.lastChild.getElementsByTagName("select")[0].value+20+"px";
+            });
+        }
+        else{
+            let TaskDiv = `
+            <div class='TaskDiv'>
+                <b><div class="TaskName"></div></b>
+                Slovíček: <select class='numberOfQuestions'>
+                    <option value='9'>9</option>
+                    <option value='12'>12</option>
+                    <option value='15'>15</option>
+                    <option value='18'>18</option>
+                    <option value='21'>21</option>
+                    <option value='24'>24</option>
+                </select>
+                <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
+            <div>`;
+            Page.insertAdjacentHTML("beforeend",TaskDiv);
+            Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[3].innerText;
+            Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
+                Page.lastChild.style.height=4*Page.lastChild.getElementsByTagName("select")[0].value+20+"px";
+            });
+        }
     }
 }
 function downloadPDF(){
     let pages=document.getElementsByClassName("list");
     const doc = new jsPDF();
-    doc.setFont("Calibri Regular","normal");
+    doc.setFont("Calibri Bold","bold");
+    doc.setFontSize(20);
     doc.text("Random ultra náhodný text",10,10);
+    doc.setFont("Calibri Regular","normal");
+    doc.setFontSize(16);
     doc.text(document.getElementById("studentName").innerText,10,20);
-    doc.text(document.getElementById("className").innerText,154,10);
-    doc.text(document.getElementById("datumName").innerText,150,20);
+    doc.text(document.getElementById("datumName").innerText,150,10);
+    doc.text(document.getElementById("className").innerText,154,20);
+    doc.line(10,30,200,30);
+    for(let x=0;x<1;x++){
 
-    for(let i=0;i<pages.length;i++){
+    }
+    for(let i=1;i<pages.length;i++){
         page=pages[i];
         doc.addPage();
+        
     }
     doc.save(document.getElementById("nameOfTest").innerText+".pdf");
 }
