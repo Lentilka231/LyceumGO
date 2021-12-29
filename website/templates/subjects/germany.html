@@ -759,20 +759,20 @@
             <div id="newTask" onclick="addTask()">Přidat</div>
             <div id="downloadPDF" onclick="downloadPDF()">Stáhnout</div>
             <div id="canvas">
-                <div id="RemovePage" onclick="DoSmWithPage('R')">-</div>
-                <div id="LeftButton" onclick="changePage('left')">&lt</div>
+                <div id="RemovePage" class="CantHover" onclick="DoSmWithPage('R')">-</div>
+                <div id="LeftButton" class="CantHover" onclick="changePage('left')">&lt</div>
                 <div id="PageNumber">1</div>
-                <div id="RightButton" onclick="changePage('right')">&gt</div>
-                <div id="AddPage" onclick="DoSmWithPage('A')">+</div>
+                <div id="RightButton" class="CantHover" onclick="changePage('right')">&gt</div>
+                <div id="AddPage" class="CanHover" onclick="DoSmWithPage('A')">+</div>
                 <div class="list"id="firstPage">
                     <div id="zahlavi">
                         <b><div id="nameOfTest" contenteditable="true" spellcheck="false">Test</div></b>
                         <div id="studentName" contenteditable="true" spellcheck="false">jméno: </div>
                         <div id="className" contenteditable="true" spellcheck="false">třída: </div>
                         <div id="datumName" contenteditable="true" spellcheck="false">datum: </div>
-                        <hr style="position:absolute;top:100px;width:calc(100% - 60px);">
+                        <hr style="position:absolute;top:100px;width:calc(100% - 50px);">
                     </div>
-                    <div class="content" style="height:calc(100% - 80px);margin-top:10px;">
+                    <div class="content" style="height:calc(100% - 94px);margin-top:10px;">
                     </div>
                 </div>
             </div>
@@ -1723,17 +1723,18 @@ const LeftButton =document.getElementById("LeftButton");
 const ButtonAddTask = document.getElementById("newTask");
 const Tasks= document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 const TableQuestions = Array.from(document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].querySelectorAll("tr"));
+const PageSize=450;
 let CurrentPage = 1;
 let markTask;
 for(let i=0;i<Tasks.length;i++){
     let tr = Tasks[i]
     tr.onclick=function(){
-        if (tr.style.backgroundColor!="rgb(100, 170, 100)")
+        if (tr.style.backgroundColor!="var(--brighterBlue)")
         {
             for(let x=0;x<Tasks.length;x++){   
                 Tasks[x].style.backgroundColor="inherit";
             }
-            tr.style.backgroundColor="rgb(100,170,100)";
+            tr.style.backgroundColor="var(--brighterBlue)";
             markTask=tr;
             ButtonAddTask.style.opacity="1";
         }
@@ -1749,37 +1750,39 @@ function addTask (){
     let h=0;
     for(let i=0;i<Page.children.length;i++){h+=Page.children[i].offsetHeight;}
     if(markTask!=""){
-        if(markTask.children[2].innerText=="Grammatik"&&h+164<354){
-            let TaskDiv = `
-            <div class='TaskDiv' style="height:164px">
-                <b><div class="TaskName"></div></b>
-                Otázek: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
-                    <option value='6'>6</option>
-                    <option value='8'>8</option>
-                    <option value='10'>10</option>
-                    <option value='12'>12</option>
-                </select> (L:<span class="lesson"></span> <span class="type"></span>)
-                <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
-            </div>`;
-            Page.insertAdjacentHTML("beforeend",TaskDiv);
-            Page.lastChild.getElementsByClassName("lesson")[0].innerText=markTask.children[1].innerText;
-            Page.lastChild.getElementsByClassName("type")[0].innerText=markTask.children[2].innerText;Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[3].innerText;
-            Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
-                h=0;
-                for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
-                if(h+12*this.value+20<354){
-                    this.parentElement.style.height=12*this.value+20+"px";
-                }
-                else{
-                    console.log(this.getAttribute("datavalue"));
-                    this.value=this.getAttribute("datavalue");
-                }
-                this.blur();
-            });
+        if(markTask.children[2].innerText=="Grammatik"){
+            if(h+80<PageSize){
+                let TaskDiv = `
+                <div class='TaskDiv' style="height:86px">
+                    <b><div class="TaskName"></div></b>
+                    Otázek: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
+                        <option value='6'>6</option>
+                        <option value='8'>8</option>
+                        <option value='10'>10</option>
+                        <option value='12'>12</option>
+                    </select> (L:<span class="lesson"></span> <span class="type"></span>)
+                    <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
+                </div>`;
+                Page.insertAdjacentHTML("beforeend",TaskDiv);
+                Page.lastChild.getElementsByClassName("lesson")[0].innerText=markTask.children[1].innerText;
+                Page.lastChild.getElementsByClassName("type")[0].innerText=markTask.children[2].innerText;Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[3].innerText;
+                Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
+                    h=0;
+                    for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
+                    if(h+11*this.value+20<PageSize){
+                        this.parentElement.style.height=11*this.value+20+"px";
+                    }
+                    else{
+                        console.log(this.getAttribute("datavalue"));
+                        this.value=this.getAttribute("datavalue");
+                    }
+                    this.blur();
+                });
+            }
         }
-        else if(h+56<354){
+        else if(h+56<PageSize){
             let TaskDiv = `
-            <div class='TaskDiv' style="height:height:56px">
+            <div class='TaskDiv' style="height:51.5px">
                 <b><div class="TaskName"></div></b>
                 Slovíček: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
                     <option value='9'>9</option>
@@ -1798,8 +1801,8 @@ function addTask (){
             Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(e){
                 h=0;
                 for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
-                if(h+4*this.value+20<354){
-                    this.parentElement.style.height=4*this.value+20+"px";
+                if(h+3.5*this.value+20<PageSize){
+                    this.parentElement.style.height=3.5*this.value+20+"px";
                 }
                 else{
                     console.log(this.getAttribute("datavalue"));
@@ -1812,7 +1815,7 @@ function addTask (){
 }
 function downloadPDF(){
     let pages=document.getElementsByClassName("list");
-    const doc = new jsPDF();
+    const doc = new jsPDF('p','mm',[297, 210]);
     doc.setFont("Calibri Bold","bold");
     doc.setFontSize(20);
     doc.text(document.getElementById("nameOfTest").innerText,10,10);
@@ -1822,41 +1825,51 @@ function downloadPDF(){
     doc.text(document.getElementById("datumName").innerText,150,10);
     doc.text(document.getElementById("className").innerText,154,20);
     doc.line(10,30,200,30);
-    let h=0;
-    for(let x=0;x<document.getElementById("firstPage").getElementsByClassName("content")[0].children.length;x++){
-        Task=document.getElementById("firstPage").getElementsByClassName("content")[0].children[x];
-        TaskQ =NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText];
-        console.log(TaskQ);
-        doc.setFontSize(16);
-        doc.setFont("Calibri Bold","bold");
-        if(Task.getElementsByClassName("type")[0].innerText=="Grammatik"){
-            doc.text(TaskQ[2],10,40+h);
-            h+=12;
-            doc.setFontSize(14);
-            doc.setFont("Calibri Regular","normal");
-            UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
-            for(let y=0;y<document.getElementsByClassName("numberOfQuestions")[0].value;y++){
-                randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
-                doc.text(TaskQ[1][UnusedQuestions[randomNumber]]["q"],10,40+h);
+    let ukol=1;
+    for(let i=0;i<pages.length;i++){
+        page=pages[i];
+        if(i!=0){
+            doc.addPage();
+        }
+        let h=0;
+        for(let x=0;x<page.getElementsByClassName("content")[0].children.length;x++){
+            Task=page.getElementsByClassName("content")[0].children[x];
+            doc.setFontSize(16);
+            doc.setFont("Calibri Bold","bold");
+            if(Task.getElementsByClassName("type")[0].innerText=="Grammatik"){
+                TaskQ =NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText];
+                doc.text(ukol+". "+TaskQ[2],10,i!=0?(h+15):(40+h));
+                h+=5;
+                doc.setFontSize(12);
+                doc.setFont("Calibri Regular","normal");
+                UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
+                for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
+                    randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+                    doc.text(y+1+") "+TaskQ[1][UnusedQuestions[randomNumber]]["q"],10,i!=0?(h+15):(40+h));
+                    h+=6;
+                    UnusedQuestions.splice(randomNumber,1);
+                }
+            }
+            else{
+                TaskQ =Object.values(NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText]);
+                doc.text(ukol+". Übersetzen diese Wörter",10,i!=0?h+15:40+h);
+                h+=5;
+                doc.setFontSize(12);
+                UnusedQuestions=Array.from({length:TaskQ.length}, (_, i) => Array.from({length:TaskQ[i][1].length}, (_, e) => e));
+                doc.setFont("Calibri Regular","normal");
+                for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value/3;y++){
+                    for(let z=0;z<3;z++){
+                        randomNumber1=Math.floor(Math.random()*UnusedQuestions.length);
+                        randomNumber2=Math.floor(Math.random()*UnusedQuestions[randomNumber1].length);
+                        doc.text(TaskQ[randomNumber1][2][UnusedQuestions[randomNumber1][randomNumber2]],10+z*65,i!=0?15+h:40+h);
+                        UnusedQuestions[randomNumber1].splice(randomNumber2,1);
+                    }
                 h+=6;
-                UnusedQuestions.splice(randomNumber,1);
             }
         }
-        else{
-            doc.text("Übersetzen diese Wörter",10,40+h);
-            h+=12;
-            doc.setFontSize(14);
-            doc.setFont("Calibri Regular","normal");
-
-        }
-        h+=10;
+        ukol++;
+        h+=5;
     }
-    for(let i=1;i<pages.length;i++){
-        page=pages[i];
-        doc.addPage();
-        for(let x=0;x<page.children;x++){
-            Task=page.children[x];
-        }
     }
     doc.save(document.getElementById("nameOfTest").innerText+".pdf");
 }
@@ -1917,33 +1930,48 @@ function changePage(x,max=""){
     lists = canvas.getElementsByClassName("list");
     if(x=="right"&&lists[CurrentPage]){
         for (let i=0;i<lists.length;i++){
-            lists[0].style.display="none";
+            lists[i].style.display="none";
         }
         CurrentPage=max=="yes"?lists.length:CurrentPage+1;
         lists[CurrentPage-1].style.display="block";
         PageNumber.innerText=CurrentPage;
+        LeftButton.classList.add("CanHover");
+        LeftButton.classList.remove("CantHover");
+        console.log(lists.length);
+        console.log(CurrentPage);
+        if(lists.length==CurrentPage){
+            RightButton.classList.add("CantHover");    
+            RightButton.classList.remove("CanHover");
+        }
+        document.getElementById("RemovePage").classList.add("CanHover");
+        document.getElementById("RemovePage").classList.remove("CantHover");
     }
     else if(x=="left"&&CurrentPage!=1){
         for (let i=0;i<lists.length;i++){
-            lists[0].style.display="none";
+            lists[i].style.display="none";
         }
         CurrentPage-=1;
+        if(CurrentPage==1){
+            LeftButton.classList.add("CantHover");
+            LeftButton.classList.remove("CanHover");
+            document.getElementById("RemovePage").classList.add("CantHover");
+            document.getElementById("RemovePage").classList.remove("CanHover");
+        }
+        RightButton.classList.remove("CantHover");
+        RightButton.classList.add("CanHover");
         lists[CurrentPage-1].style.display="block";
         PageNumber.innerText=CurrentPage;
     }
 }
 function DoSmWithPage(x){
 
-    // <div class="list">
-    //             <div id="NameOfTest">Name of test</div>
-    //         </div>
     if(x=="A"){
-        let newList = document.createElement("div");
-        let NameOfTestDiv = document.createElement("div");
-        newList.setAttribute("class","list");
-        NameOfTestDiv.setAttribute("class","NameOfTest");
-        newList.append(NameOfTestDiv);
-        canvas.append(newList);
+        let a=`
+            <div class="list">
+                <div class="content" style="height:calc(100% - 14px)"></div>
+            </div>
+        `;
+        canvas.insertAdjacentHTML("beforeend",a);
         changePage("right","yes");
     }
     else if(x=="R"){

@@ -6,7 +6,6 @@
     border-radius:10px ;
     transition:height .3s;
     overflow: hidden;
-    background-color: var(--module);
     color:rgb(49, 49, 49);
 }
 /* #T3,#T4,#T5{  
@@ -160,7 +159,7 @@
 }
 #TestDiv{
     width:1000px;
-    height:600px;
+    height:700px;
     background-color: var(--theBrightestBlue);
     position:absolute;
     box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
@@ -712,6 +711,7 @@ span{
     display:block;
     height:calc(100% - 28px);
     overflow-y: auto;
+    background-color: rgb(250, 250, 253);
 }
 #ListOfMaterials thead{
     width:100%;
@@ -756,7 +756,7 @@ span{
 }
 #canvas{
     width:420px;
-    height:494px;
+    height:594px;
     position: absolute;
     right:0px;
     top:30px;
@@ -766,7 +766,7 @@ span{
     position:absolute;
     height:100%;
     width:100%;
-    padding:30px;
+    padding:25px;
 }
 .listgrid{
     display:grid;
@@ -792,16 +792,21 @@ span{
     bottom:5px;
     transform: translate(-50%,0%);
 }
-#PageNumber{left:50%;cursor: pointer;}
-#AddPage{left:90%;cursor: pointer;}
-#RemovePage{left:10%;cursor: pointer;}
-#RightButton{left:60%;cursor: pointer;}
-#LeftButton{left:40%;cursor: pointer;}
-#RightButton:hover{background-color: rgba(33, 33, 33, 0.534);}
-#LeftButton:hover{background-color: rgba(33, 33, 33, 0.534);}
-#AddPage:hover{background-color: rgba(33, 33, 33, 0.534);}
-#RemovePage:hover{background-color: rgba(33, 33, 33, 0.534);}
-
+#PageNumber{left:50%;}
+#AddPage{left:90%;}
+#RemovePage{left:10%;}
+#RightButton{left:60%;}
+#LeftButton{left:40%;}
+.CanHover{
+    cursor: pointer;
+}
+.CanHover:hover{
+    background-color:rgb(0,0,0,0.5)
+}
+.CantHover{
+    color:rgba(0,0,0,0.5);
+    cursor:default;
+}
 #nameOfTest,#studentName,#className,#datumName{
     position:absolute;
     width: fit-content;
@@ -809,7 +814,7 @@ span{
     border:1px solid white;
 }
 #nameOfTest{top:25px;left:20px;font-size:20px;}
-#studentName{top:65px;left:20px;font-size:14px;}
+#studentName{top:65px;left:23px;font-size:14px;}
 #className{top:65px;right:70px;font-size:14px;}
 #datumName{top:30px;right:70px;font-size:14px;}
 #nameOfTest:hover,#studentName:hover,#className:hover,#datumName:hover{
@@ -818,7 +823,7 @@ span{
 
 #newTask{
     padding:5px;
-    background-color: rgb(0, 128, 0);
+    background-color: var(--blue);
     font-size: 20px;
     border-radius: 5px;
     width:fit-content;
