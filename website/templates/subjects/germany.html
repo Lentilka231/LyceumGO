@@ -31,8 +31,8 @@
     </div>
 </div>
 <div class="grid-items second">
-    <div class="Module" id="M1" tabindex="1" value="3" value2="4" style="background-color: rgb(115, 64, 155);">
-        <p><b>1) Deutsch ist NICHT leicht!</b></p>
+    <div class="Module" id="M1" tabindex="1" value="3" value2="4" style="background-color: rgb(139, 68, 194);">
+        <p id="T1"><b>1) Deutsch ist NICHT leicht!</b></p>
         <div class="child">
             <p class="L" id="L3" >Lektion 1-3</p>
         </div>                
@@ -45,7 +45,7 @@
             <p class="L" id="L6">Lektion 6</p>
         </div> 
     </div>
-    <div class="Module" id="M3" tabindex="1" value="3" value2="7" style="background-color: rgb(153, 28, 126);">
+    <div class="Module" id="M3" tabindex="1" value="3" value2="7" style="background-color: rgb(185, 40, 125);">
         <p><b>3) Freizeit und Feiern</b></p>
         <div class="child">
             <p class="L" id="L7">Lektion 7</p>
@@ -53,7 +53,7 @@
             <p class="L" id="L9">Lektion 9</p>
         </div>
     </div>
-    <div class="Module" id="M4" tabindex="1" value="4" value2="8" style="background-color: rgb(30, 150, 70);height:4rem;">
+    <div class="Module" id="M4" tabindex="1" value="4" value2="8" style="background-color: rgb(18, 173, 70);height:4rem;">
         <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
         <div class="child">
             <p class="L" id="L10">Lektion 10</p>
@@ -61,7 +61,7 @@
             <p class="L" id="L12">Lektion 12</p>
         </div>
     </div>
-    <div class="Module" id="M5" tabindex="1" value="3" value2="7" style="background-color: rgb(74, 101, 160);">
+    <div class="Module" id="M5" tabindex="1" value="3" value2="7" style="background-color: rgb(70, 111, 199);">
         <p><b>5) Zu Hause und auf Reisen</b></p>
         <div class="child">
             <p class="L" id="L13">Lektion 13</p>
@@ -79,28 +79,28 @@
             <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
                 <b class="nadpisChild">Gramatik</b>
                 <div class="Material">
-                    <div class="Block b11"onclick="visibilator('3','g',1)">
+                    <div class="Block b11"onclick="visibilator('1-3','g',1)">
                         <b>Verbkonjugation im Präsens</b><br>
                         Časování sloves v přítomném čase
                     </div>
-                    <div class="Block b11"onclick="visibilator('3','g',2)">
+                    <div class="Block b11"onclick="visibilator('1-3','g',2)">
                         <b>Unbestimmte und bestimmte Artikel</b><br>
                         Neurčité a určitě členy
                     </div>
-                    <div class="Block b11"onclick="visibilator('3','g',3)">
+                    <div class="Block b11"onclick="visibilator('1-3','g',3)">
                         <b>Possessivartikel</b><br>
                         Přivlasťnovací zájmena
                     </div>
-                    <div class="Block b11"onclick="visibilator('3','g',4)">
+                    <div class="Block b11"onclick="visibilator('1-3','g',4)">
                         <b>Zeitangaben</b><br>
                         Časové údaje
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color: rgb(157, 101, 201);">
+            <div class="DIVchild" id="Wortschatz" style="background-color: rgb(157, 101, 201);">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce1-3"]["words"].items()%}
+                    {%for i,v in NJ1["lekce1-3"]["Wortschatz"].items()%}
                     <div class="Block b12" onclick="visibilator('1-3','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -158,10 +158,10 @@
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color: rgb(247, 167, 18);">
+            <div class="DIVchild" id="Wortschatz" style="background-color: rgb(247, 167, 18);">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce4"]["words"].items()%}
+                    {%for i,v in NJ1["lekce4"]["Wortschatz"].items()%}
                     <div class="Block b22" onclick="visibilator('4','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -207,10 +207,10 @@
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color: rgb(247, 167, 18);">
+            <div class="DIVchild" id="Wortschatz" style="background-color: rgb(247, 167, 18);">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce5"]["words"].items()%}
+                    {%for i,v in NJ1["lekce5"]["Wortschatz"].items()%}
                     <div class="Block b22" onclick="visibilator('5','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -260,10 +260,10 @@
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color: rgb(247, 167, 18);">
+            <div class="DIVchild" id="Wortschatz" style="background-color: rgb(247, 167, 18);">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce6"]["words"].items()%}
+                    {%for i,v in NJ1["lekce6"]["Wortschatz"].items()%}
                     <div class="Block b22" onclick="visibilator('6','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -313,10 +313,10 @@
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color: rgb(229, 65, 96)">
+            <div class="DIVchild" id="Wortschatz" style="background-color: rgb(229, 65, 96)">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce7"]["words"].items()%}
+                    {%for i,v in NJ1["lekce7"]["Wortschatz"].items()%}
                     <div class="Block b32" onclick="visibilator('7','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -366,10 +366,10 @@
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color: rgb(229, 65, 96)">
+            <div class="DIVchild" id="Wortschatz" style="background-color: rgb(229, 65, 96)">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce8"]["words"].items()%}
+                    {%for i,v in NJ1["lekce8"]["Wortschatz"].items()%}
                     <div class="Block b32" onclick="visibilator('8','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -415,10 +415,10 @@
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color: rgb(229, 65, 96)">
+            <div class="DIVchild" id="Wortschatz" style="background-color: rgb(229, 65, 96)">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce9"]["words"].items()%}
+                    {%for i,v in NJ1["lekce9"]["Wortschatz"].items()%}
                     <div class="Block b32" onclick="visibilator('9','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -464,10 +464,10 @@
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color:rgb(58, 176, 89)">
+            <div class="DIVchild" id="Wortschatz" style="background-color:rgb(58, 176, 89)">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce10"]["words"].items()%}
+                    {%for i,v in NJ1["lekce10"]["Wortschatz"].items()%}
                     <div class="Block b42" onclick="visibilator('10','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -521,10 +521,10 @@
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color:rgb(58, 176, 89)">
+            <div class="DIVchild" id="Wortschatz" style="background-color:rgb(58, 176, 89)">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce11"]["words"].items()%}
+                    {%for i,v in NJ1["lekce11"]["Wortschatz"].items()%}
                     <div class="Block b42" onclick="visibilator('11','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -578,10 +578,10 @@
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color:rgb(58, 176, 89)">
+            <div class="DIVchild" id="Wortschatz" style="background-color:rgb(58, 176, 89)">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce11"]["words"].items()%}
+                    {%for i,v in NJ1["lekce11"]["Wortschatz"].items()%}
                     <div class="Block b42" onclick="visibilator('12','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -635,10 +635,10 @@
                     </div>
                 </div>
             </div>
-            <div class="DIVchild" id="wortschatz" style="background-color:rgb(91, 122, 188)">
+            <div class="DIVchild" id="Wortschatz" style="background-color:rgb(91, 122, 188)">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce13"]["words"].items()%}
+                    {%for i,v in NJ1["lekce13"]["Wortschatz"].items()%}
                     <div class="Block b52" onclick="visibilator('13','w','{{i}}')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
@@ -730,10 +730,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Verbkonjugation im Präsens</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Unbestimmte und bestimmte Artikel</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Possessivartikel</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Gramatik</td><td>Zeitangaben</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Grammatik</td><td>Verbkonjugation im Präsens</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Grammatik</td><td>Unbestimmte und bestimmte Artikel</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Grammatik</td><td>Possessivartikel</td></tr>
+                    <tr><td>1</td><td>1-3</td><td>Grammatik</td><td>Zeitangaben</td></tr>
                     <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Slovíčka 1-3</td></tr>
                     <tr><td>2</td><td>4</td><td>Wortschatz</td><td>Slovíčka 4</td></tr>
                     <tr><td>2</td><td>5</td><td>Wortschatz</td><td>Slovíčka 5</td></tr>
@@ -764,7 +764,7 @@
                 <div id="PageNumber">1</div>
                 <div id="RightButton" onclick="changePage('right')">&gt</div>
                 <div id="AddPage" onclick="DoSmWithPage('A')">+</div>
-                <div class="list">
+                <div class="list"id="firstPage">
                     <div id="zahlavi">
                         <b><div id="nameOfTest" contenteditable="true" spellcheck="false">Test</div></b>
                         <div id="studentName" contenteditable="true" spellcheck="false">jméno: </div>
@@ -782,7 +782,7 @@
         </div>
         <div class="task ABCD">
             <div class="questions">
-                <b id="nzABCD" class="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
+                <b id="nABCD" class="nzadani">Wählst du die (richtige) Antwort, wenigstens versuchst du es.</b><br>
                 <p id="czABCD" class="czadani">Vyber (správnou) odpověď, alespoň to zkus.</p>
             </div>
             <div class="answer">
@@ -938,8 +938,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="Teorie x3g1">
+        <div class="Teorie x1-3g1">
             <p class="nnadpis"><b>Verbkonjugation im Präsens</b></p>
             <p class="cnadpis">Časování sloves v přítomném čase</p>
             <div class="g">
@@ -959,8 +958,8 @@
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
                 <p class="ctext">Cvičení:</p>
-                <div class="t easyt" onclick="teststart('ABCD','3','grammar','1')">leichter Test</div>
-                <div class="t hardt" onclick="teststart('TextInput','3','grammar','1')">schwieriger Test</div>
+                <div class="t easyt" onclick="teststart('ABCD','1-3','Grammatik','1')">leichter Test</div>
+                <div class="t hardt" onclick="teststart('TextInput','1-3','Grammatik','1')">schwieriger Test</div>
             </div>
             <div class="DYK">
                 <div class="arrow-left"></div>
@@ -980,7 +979,7 @@
                 </div>
             </div>
         </div>
-        <div class="Teorie x3g2">
+        <div class="Teorie x1-3g2">
             <p class="nnadpis"><b>Unbestimmte und bestimmte Artikel</b></p>
             <p class="cnadpis">Neurčité a určité členy</p>
             <div class="g">
@@ -1023,8 +1022,8 @@
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
                 <p class="ctext">Cvičení:</p>
-                <div class="t easyt" onclick="teststart('ABCD','3','grammar','2')">leichter Test</div>
-                <div class="t hardt" onclick="teststart('TextInput','3','grammar','2')">schwieriger Test</div>
+                <div class="t easyt" onclick="teststart('ABCD','1-3','Grammatik','2')">leichter Test</div>
+                <div class="t hardt" onclick="teststart('TextInput','1-3','Grammatik','2')">schwieriger Test</div>
             </div>
             <div class="DYK">
                 <div class="arrow-left"></div>
@@ -1039,7 +1038,7 @@
             </div>
 
         </div>
-        <div class="Teorie x3g3">
+        <div class="Teorie x1-3g3">
             <p class="nnadpis"><b>Possessivartikel</b></p>
             <p class="cnadpis">Přivlasťnovací zájmena</p>
             <div class="g">
@@ -1080,11 +1079,11 @@
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
                 <p class="ctext">Cvičení:</p>
-                <div class="t easyt" onclick="teststart('ABCD','3','grammar','3')">leichter Test</div>
-                <div class="t hardt" onclick="teststart('TextInput','3','grammar','3')">schwieriger Test</div>
+                <div class="t easyt" onclick="teststart('ABCD','1-3','Grammatik','3')">leichter Test</div>
+                <div class="t hardt" onclick="teststart('TextInput','1-3','Grammatik','3')">schwieriger Test</div>
             </div>
         </div>
-        <div class="Teorie x3g4">
+        <div class="Teorie x1-3g4">
             <p class="nnadpis"><b>Unbestimmte und bestimmte Artikel</b></p>
             <p class="cnadpis">Neurčité a určité členy</p>
             <div class="g">
@@ -1126,12 +1125,11 @@
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
                 <p class="ctext">Cvičení:</p>
-                <div class="t easyt" onclick="teststart('ABCD','3','grammar','4')">leichter Test</div>
-                <div class="t hardt" onclick="teststart('TextInput','3','grammar','4')">schwieriger Test</div>
+                <div class="t easyt" onclick="teststart('ABCD','1-3','Grammatik','4')">leichter Test</div>
+                <div class="t hardt" onclick="teststart('TextInput','1-3','Grammatik','4')">schwieriger Test</div>
             </div>
         </div>
-        
-        <div class="Teorie x3l1">
+        <div class="Teorie x1-3l1">
             <div class="gtext">
                 <table class="Text">
                     <tr><th class="P1">Nikola:</th><td>Hallo Peter</td></tr>
@@ -1167,12 +1165,11 @@
             </div>
             <div class="cara"> </div>
         </div>
-        <div class="Teorie x3l2">hgkignmb</div>
-        <div class="Teorie x3l3"></div>
-
-        <div class="Teorie x3t1"></div>
-        <div class="Teorie x3t2"></div>
-        <div class="Teorie x3t3"></div>
+        <div class="Teorie x1-3l2">hgkignmb</div>
+        <div class="Teorie x1-3l3"></div>
+        <div class="Teorie x1-3t1"></div>
+        <div class="Teorie x1-3t2"></div>
+        <div class="Teorie x1-3t3"></div>
     </div>
 </div>
 </div>
@@ -1285,6 +1282,8 @@
     let TypeOfTest;
     let SetOfQuestions;
     let Success;
+    let czText;
+    let nText;
     let NumberOfPossibleAnswers;
     let WordsInVocabulary=[];
     let OrderOfWords =[];
@@ -1346,7 +1345,7 @@
         }
         else{
             if (typ=="w"){
-                CurrentVocabulary=NJ["lekce"+lekce]["words"][ukol];
+                CurrentVocabulary=NJ["lekce"+lekce]["Wortschatz"][ukol];
                 slovicka=""
                 for(let i=0;i<CurrentVocabulary[0];i++){
                     slovicka+="<tr><td>"+(i+1)+"</td><td>"+CurrentVocabulary[3][i]+"</td><td>"+CurrentVocabulary[1][i]+"</td><td>"+CurrentVocabulary[2][i]+"</td></tr>";
@@ -1374,7 +1373,9 @@
         $("#ConnectingControl").hide();
         $("#RepeatConnecting").hide();
         $("#progression").hide();
-        kontrola.disconnect();
+        if(typeof kontrola==="undefined"){}else{
+            kontrola.disconnect();
+        }
         balicekKaretDobry.innerHTML="";
         balicekKaretSpatny.innerHTML="";
         balicekKaretVyber.innerHTML="";
@@ -1404,7 +1405,10 @@
             case "TextInput":
                 $("#progression").show();
                 $("."+type).show();
+                console.log(k,t,x)
                 SetOfQuestions=NJ["lekce"+k][t][x-1][1];
+                nText=NJ["lekce"+k][t][x-1][2];
+                czText=NJ["lekce"+k][t][x-1][3];
                 UnusedQuestions=Array.from({length:SetOfQuestions.length}, (_, i) => i);
                 Success=Array.from({length:SetOfQuestions.length},(_,i) => 1);
                 NumberForCalculationOfSuccess=0
@@ -1595,8 +1599,8 @@
             dvapokusy=1;
             switch(TypeOfTest){
                 case "ABCD":
-                    document.getElementById("nzABCD").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
-                    document.getElementById("czABCD").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
+                    document.getElementById("nABCD").innerHTML=nText;
+                    document.getElementById("czABCD").innerHTML=czText;
                     document.getElementById("FrantaABCD").innerHTML=SetOfQuestions[a]["q"];
                     b=["a","1","2","3"];
                     for (let i=0;i<NumberOfPossibleAnswers;i++){
@@ -1608,8 +1612,8 @@
                 case "TextInput":
                     TextInput.focus();
                     CanUseEnter=true;
-                    document.getElementById("nzX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniN;
-                    document.getElementById("czX").innerHTML=SetOfQuestions[MomentalQuestion].zadaniC;
+                    document.getElementById("nzX").innerHTML=nText;
+                    document.getElementById("czX").innerHTML=czText;
                     document.getElementById("FrantaX").innerHTML=SetOfQuestions[a]["q"];
                     break;
                 case "CZtoN":
@@ -1740,48 +1744,68 @@ for(let i=0;i<Tasks.length;i++){
         }
     }
 }
-
 function addTask (){
     let Page=canvas.getElementsByClassName("list")[CurrentPage-1].getElementsByClassName("content")[0]
     let h=0;
     for(let i=0;i<Page.children.length;i++){h+=Page.children[i].offsetHeight;}
-    if(markTask!=""&&h<298){
-        if(markTask.children[2].innerText=="Gramatik"){
+    if(markTask!=""){
+        if(markTask.children[2].innerText=="Grammatik"&&h+164<354){
             let TaskDiv = `
-            <div class='TaskDiv'>
+            <div class='TaskDiv' style="height:164px">
                 <b><div class="TaskName"></div></b>
-                Otázek: <select class='numberOfQuestions'>
+                Otázek: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
                     <option value='6'>6</option>
                     <option value='8'>8</option>
                     <option value='10'>10</option>
                     <option value='12'>12</option>
-                </select>
+                </select> (L:<span class="lesson"></span> <span class="type"></span>)
                 <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
             </div>`;
             Page.insertAdjacentHTML("beforeend",TaskDiv);
-            Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[3].innerText;
+            Page.lastChild.getElementsByClassName("lesson")[0].innerText=markTask.children[1].innerText;
+            Page.lastChild.getElementsByClassName("type")[0].innerText=markTask.children[2].innerText;Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[3].innerText;
             Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
-                Page.lastChild.style.height=24*Page.lastChild.getElementsByTagName("select")[0].value+20+"px";
+                h=0;
+                for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
+                if(h+12*this.value+20<354){
+                    this.parentElement.style.height=12*this.value+20+"px";
+                }
+                else{
+                    console.log(this.getAttribute("datavalue"));
+                    this.value=this.getAttribute("datavalue");
+                }
+                this.blur();
             });
         }
-        else{
+        else if(h+56<354){
             let TaskDiv = `
-            <div class='TaskDiv'>
+            <div class='TaskDiv' style="height:height:56px">
                 <b><div class="TaskName"></div></b>
-                Slovíček: <select class='numberOfQuestions'>
+                Slovíček: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
                     <option value='9'>9</option>
                     <option value='12'>12</option>
                     <option value='15'>15</option>
                     <option value='18'>18</option>
                     <option value='21'>21</option>
                     <option value='24'>24</option>
-                </select>
+                </select> (L:<span class="lesson"></span> <span class="type"></span>)
                 <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
             <div>`;
             Page.insertAdjacentHTML("beforeend",TaskDiv);
+            Page.lastChild.getElementsByClassName("lesson")[0].innerText=markTask.children[1].innerText;
+            Page.lastChild.getElementsByClassName("type")[0].innerText=markTask.children[2].innerText;
             Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[3].innerText;
-            Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
-                Page.lastChild.style.height=4*Page.lastChild.getElementsByTagName("select")[0].value+20+"px";
+            Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(e){
+                h=0;
+                for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
+                if(h+4*this.value+20<354){
+                    this.parentElement.style.height=4*this.value+20+"px";
+                }
+                else{
+                    console.log(this.getAttribute("datavalue"));
+                    this.value=this.getAttribute("datavalue");
+                }
+                this.blur();
             });
         }
     }
@@ -1791,20 +1815,48 @@ function downloadPDF(){
     const doc = new jsPDF();
     doc.setFont("Calibri Bold","bold");
     doc.setFontSize(20);
-    doc.text("Random ultra náhodný text",10,10);
+    doc.text(document.getElementById("nameOfTest").innerText,10,10);
     doc.setFont("Calibri Regular","normal");
     doc.setFontSize(16);
     doc.text(document.getElementById("studentName").innerText,10,20);
     doc.text(document.getElementById("datumName").innerText,150,10);
     doc.text(document.getElementById("className").innerText,154,20);
     doc.line(10,30,200,30);
-    for(let x=0;x<1;x++){
+    let h=0;
+    for(let x=0;x<document.getElementById("firstPage").getElementsByClassName("content")[0].children.length;x++){
+        Task=document.getElementById("firstPage").getElementsByClassName("content")[0].children[x];
+        TaskQ =NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText];
+        console.log(TaskQ);
+        doc.setFontSize(16);
+        doc.setFont("Calibri Bold","bold");
+        if(Task.getElementsByClassName("type")[0].innerText=="Grammatik"){
+            doc.text(TaskQ[2],10,40+h);
+            h+=12;
+            doc.setFontSize(14);
+            doc.setFont("Calibri Regular","normal");
+            UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
+            for(let y=0;y<document.getElementsByClassName("numberOfQuestions")[0].value;y++){
+                randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+                doc.text(TaskQ[1][UnusedQuestions[randomNumber]]["q"],10,40+h);
+                h+=6;
+                UnusedQuestions.splice(randomNumber,1);
+            }
+        }
+        else{
+            doc.text("Übersetzen diese Wörter",10,40+h);
+            h+=12;
+            doc.setFontSize(14);
+            doc.setFont("Calibri Regular","normal");
 
+        }
+        h+=10;
     }
     for(let i=1;i<pages.length;i++){
         page=pages[i];
         doc.addPage();
-        
+        for(let x=0;x<page.children;x++){
+            Task=page.children[x];
+        }
     }
     doc.save(document.getElementById("nameOfTest").innerText+".pdf");
 }
@@ -1832,7 +1884,7 @@ function sortTableByColumn(table, column, asc = true) {
     table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-asc", asc);
     table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
 }
-const tabulka = document.getElementById("ListOfMaterials").getElementsByTagName("th")
+const tabulka = document.getElementById("ListOfMaterials").getElementsByTagName("th");
 Array.prototype.forEach.call(tabulka,headerCell => {
     headerCell.addEventListener("click", () => {
     const tableElement =headerCell.parentElement.parentElement.parentElement ;
@@ -1896,9 +1948,11 @@ function DoSmWithPage(x){
     }
     else if(x=="R"){
         let lists = canvas.getElementsByClassName("list")
-        if(lists.length!=1){
+        if(document.getElementById("firstPage")!=lists[CurrentPage-1]){
             lists[CurrentPage-1].remove();
-            changePage("left")
+            changePage("left");
+        }else{
+            alert("První stránku nemůžeš vymazat");
         }
     }
 

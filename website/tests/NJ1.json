@@ -1,738 +1,576 @@
 {
 "lekce1-3":{
-    "grammar":[
-        [4,
+    "Grammatik":{
+        "Verbkonjugation im Präsens":[4,
             [
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
-            "q":"ich ______",
+            "q":"ich ______ (spielen)",
             "a":"spiele",
             "1":"spielst",
             "2":"spielt",
             "3":"spielen"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
-            "q":"du ______",
+            "q":"du ______ (spielen)",
             "a":"spielst",
             "1":"spiele",
             "2":"spielt",
             "3":"spielen"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
-            "q":"er/sie/es ______",
+
+            "q":"er/sie/es ______ (spielen)",
             "a":"spielt",
             "1":"spielst",
             "2":"spiele",
             "3":"spielen"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
-            "q":"wir ______",
+            "q":"wir ______ (spielen)",
             "a":"spielen",
             "1":"spielst",
             "2":"spielt",
             "3":"spiele"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
-            "q":"ihr ______",
+            "q":"ihr ______ (spielen)",
             "a":"spielt",
             "1":"spielst",
             "2":"spiele",
             "3":"spielen"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>spielen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>spielen</i></u>:",
-            "q":"sie/Sie ______",
+
+            "q":"sie/Sie ______ (spielen)",
             "a":"spielen",
             "1":"spielst",
             "2":"spielt",
             "3":"spiele"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
-            "q":"ich ______",
+            "q":"ich ______ (trinken)",
             "a":"trinke",
             "1":"trinkst",
             "2":"trinkt",
             "3":"trinken"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
-            "q":"du ______",
+            "q":"du ______ (trinken)",
             "a":"trinkst",
             "1":"trinke",
             "2":"trinkt",
             "3":"trinken"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
-            "q":"er/sie/es ______",
+            "q":"er/sie/es ______ (trinken)",
             "a":"trinkt",
             "1":"trinkst",
             "2":"trinke",
             "3":"trinken"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
-            "q":"wir ______",
+            "q":"wir ______ (trinken)",
             "a":"trinken",
             "1":"trinkst",
             "2":"trinkt",
             "3":"trinke"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
-            "q":"ihr ______",
+            "q":"ihr ______ (trinken)",
             "a":"trinkt",
             "1":"trinkst",
             "2":"trinke",
             "3":"trinken"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>trinken</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>trinken</i></u>:",
-            "q":"sie/Sie ______",
+            "q":"sie/Sie ______ (trinken)",
             "a":"trinken",
             "1":"trinkst",
             "2":"trinkt",
             "3":"trinke"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
-            "q":"ich ______",
+            "q":"ich ______ (haben)",
             "a":"habe",
             "1":"hast",
             "2":"hat",
             "3":"haben"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
-            "q":"du ______",
+            "q":"du ______ (haben)",
             "a":"hast",
             "1":"habe",
             "2":"hat",
             "3":"haben"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
-            "q":"er/sie/es ______",
+            "q":"er/sie/es ______ (haben)",
             "a":"hat",
             "1":"hast",
             "2":"habt",
             "3":"haben"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
-            "q":"wir ______",
+            "q":"wir ______ (haben)",
             "a":"haben",
             "1":"hast",
             "2":"hat",
             "3":"habe"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
-            "q":"ihr ______",
+            "q":"ihr ______ (haben)",
             "a":"habt",
             "1":"hast",
             "2":"habe",
             "3":"haben"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>haben</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>haben</i></u>:",
-            "q":"sie/Sie ______",
+            "q":"sie/Sie ______ (haben)",
             "a":"haben",
             "1":"hast",
             "2":"habt",
             "3":"habe"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
-            "q":"ich ______",
+            "q":"ich ______ (sein)",
             "a":"bin",
             "1":"bist",
             "2":"ist",
             "3":"sind"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
-            "q":"du ______",
+            "q":"du ______ (sein)",
             "a":"bist",
             "1":"bin",
             "2":"ist",
             "3":"seid"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
-            "q":"er/sie/es ______",
+            "q":"er/sie/es ______ (sein)",
             "a":"ist",
             "1":"bist",
             "2":"bin",
             "3":"sind"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
-            "q":"wir ______",
+            "q":"wir ______ (sein)",
             "a":"sind",
             "1":"bist",
             "2":"ist",
             "3":"bin"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
-            "q":"ihr ______",
+            "q":"ihr ______ (sein)",
             "a":"seid",
             "1":"bist",
             "2":"bin",
             "3":"sind"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>sein</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>sein</i></u>:",
-            "q":"sie/Sie ______",
+            "q":"sie/Sie ______ (sein)",
             "a":"sind",
             "1":"bist",
             "2":"ist",
             "3":"bin"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
-            "q":"ich ______",
+            "q":"ich ______ (essen)",
             "a":"esse",
             "1":"isst",
             "2":"esst",
             "3":"essen"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
-            "q":"du ______",
+            "q":"du ______ (essen)",
             "a":"isst",
             "1":"esse",
             "2":"esst",
             "3":"essen"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
-            "q":"er/sie/es ______",
+            "q":"er/sie/es ______ (essen)",
             "a":"isst",
             "1":"esst",
             "2":"esse",
             "3":"essen"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
-            "q":"wir ______",
+            "q":"wir ______  (essen)",
             "a":"essen",
             "1":"isst",
             "2":"esst",
             "3":"esse"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
-            "q":"ihr ______",
+            "q":"ihr ______ (essen)",
             "a":"esst",
             "1":"isst",
             "2":"esse",
             "3":"essen"
             },
             {
-            "zadaniN":"Gibst du die richtige Form des Verbs <u><i>essen</i></u> an:",
-            "zadaniC":"Uveď správný tvar slovesa <u><i>essen</i></u>:",
-            "q":"sie/Sie ______",
+            "q":"sie/Sie ______ (essen)",
             "a":"essen",
             "1":"isst",
             "2":"esst",
             "3":"esse"
             }
-            ]
+            ],
+            "Gibst du die richtige Form des Verbs an.",
+            "Uveď správný tvar slovesa."
         ],
-        [3,
+        "Unbestimmte und bestimmte Artikel":[3,
             [
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"Hast du ___ Computer zu Hause?",
             "a":"ein",
             "1":"der",
             "2":""
             },
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"Trinken Sie ___ Tee? Ja, ich trinke gern der schwarzen Tee.",
             "a":"ein",
             "1":"der",
             "2":""
             },
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Pullover den ich gekauft habe ist super.",
             "a":"Der",
             "1":"Ein",
             "2":""
             },
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"Ist es ___ Banane? Das denke ich nicht.",
             "a":"eine",
             "1":"die",
             "2":""
             },
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"Können wir ___ Speisekarte nehmen.",
             "a":"eine",
             "1":"die",
             "2":""
             },
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"Hose! Was kostet ___ Hose? ",
             "a":"die",
             "1":"eine",
             "2":""
             },
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"Endlich habe ich ___ T-Shirt gekauft.",
             "a":"das",
             "1":"ein",
             "2":""
             },
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Eis hat dir gefallen? Ja es war super lecker.",
             "a":"Das",
             "1":"Ein",
             "2":""
             },
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"Ich muss ___ Auto kaufen, aber ich weiß nicht welche.",
             "a":"ein",
             "1":"das",
             "2":""
             },
             {            
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"Wie viel kosten ___ Schuhe.",
             "a":"die",
             "1":"eine",
             "2":""
             },
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"___ Tomaten? Warum brauchen wir die Tomaten?",
             "a":"",
             "1":"eine",
             "2":"die"
             },
             {
-            "zadaniN":"Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-            "zadaniC":"Doplň neurčitý/určitý člen nebo žádný člen.",
             "q":"Ich brauche ___ Socken, aber wo kann ich sie kaufen?",
             "a":"",
             "1":"eine",
             "2":"die"
             }
-            ]
+            ],
+            "Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+            "Doplň neurčitý/určitý člen nebo žádný člen."
         ],
-        [4,
+        "Possessivartikel":[4,
             [
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Neutral</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>střední</u></i> rod?",
-            "q":"___ Eis",
+            "q":"___ Eis (mein)",
             "a":"mein",
             "1":"meine",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Neutral</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>střední</u></i> rod?",
-            "q":"___ Wasser",
+            "q":"___ Wasser (mein)",
             "a":"mein",
             "1":"meine",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Neutral</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>střední</u></i> rod?",
-            "q":"___ Theater",
+            "q":"___ Theater (mein)",
             "a":"mein",
             "1":"meine",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Neutral</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>střední</u></i> rod?",
-            "q":"___ Foto",
+            "q":"___ Foto (dein)",
             "a":"dein",
             "1":"deine",
             "2":"deinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Neutral</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>střední</u></i>?",
-            "q":"___ Baby",
+            "q":"___ Baby (dein)",
             "a":"dein",
             "1":"deine",
             "2":"deinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Maskulin</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>mužský</u></i> rod?",
-            "q":"___ Kaffee",
+            "q":"___ Kaffee (mein)",
             "a":"mein",
             "1":"meine",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Maskulin</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>mužský</u></i> rod?",
-            "q":"___ Joghurt",
+            "q":"___ Joghurt (mein)",
             "a":"mein",
             "1":"meine",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Maskulin</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>mužský</u></i> rod?",
-            "q":"___ Euro",
+            "q":"___ Euro (mein)",
             "a":"mein",
             "1":"meine",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Maskulin</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>mužský</u></i> rod?",
-            "q":"___ Tourist",
+            "q":"___ Tourist (dein)",
             "a":"dein",
             "1":"deine",
             "2":"deinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Maskulin</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>mužský</u></i>?",
-            "q":"___ Vater",
+            "q":"___ Vater (mein)",
             "a":"mein",
             "1":"meine",
             "2":"meinen",
             "3":""
             },	
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Feminim</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>ženský</u></i> rod?",
-            "q":"___ Karte",
+            "q":"___ Karte (mein)",
             "a":"meine",
             "1":"mein",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Feminim</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>ženský</u></i> rod?",
-            "q":"___ Schokolade",
+            "q":"___ Schokolade (mein)",
             "a":"meine",
             "1":"mein",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Feminim</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>ženský</u></i> rod?",
-            "q":"___ Bluse",
+            "q":"___ Bluse (mein)",
             "a":"meine",
             "1":"mein",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Feminim</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>ženský</u></i> rod?",
-            "q":"___ Disco",
+            "q":"___ Disco (dein)",
             "a":"deine",
             "1":"dein",
             "2":"deinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Feminim</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>ženský</u></i>?",
-            "q":"___ Mutter",
+            "q":"___ Mutter (dein)",
             "a":"deine",
             "1":"dein",
             "2":"deinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Plural</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>množné číslo</u></i>?",
-            "q":"___ Geschwister",
+            "q":"___ Geschwister (mein)",
             "a":"meine",
             "1":"mein",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Plural</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>množné číslo</u></i>?",
-            "q":"___ Großeltern",
+            "q":"___ Großeltern (mein)",
             "a":"meine",
             "1":"mein",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'mein' für <u><i>Plural</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'můj' pro <u><i>množné číslo</u></i>?",
-            "q":"___ Alpen",
+            "q":"___ Alpen (mein)",
             "a":"meine",
             "1":"mein",
             "2":"meinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Plural</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>množné číslo</u></i>?",
-            "q":"___ Schulfächer",
+            "q":"___ Schulfächer (dein)",
             "a":"deine",
             "1":"dein",
             "2":"deinen",
             "3":""
             },
             {
-            "zadaniN":"Wie ist das Possessivpronomen 'dein' für <u><i>Plural</u></i>?",
-            "zadaniC":"Jak je přivlastňovací zájmeno 'tvůj' pro <u><i>množné číslo</u></i>?",
-            "q":"___ Eltern",
+            "q":"___ Eltern (dein)",
             "a":"deine",
             "1":"dein",
             "2":"deinen",
             "3":""
             }
-            ]
+            ],
+            "Deklinatierst das Possessivpronomen.",
+            "Vyskloňuj přivlastňovací zájmeno."
         ],
-        [2,
+        "Zeitangaben":[2,
             [
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Montag",
             "a":"am",
             "1":"im"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Dienstag",
             "a":"am",
             "1":"im"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Mittwoch",
             "a":"am",
             "1":"im"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Donnerstag",
             "a":"am",
             "1":"im"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Freitag",
             "a":"am",
             "1":"im"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Samstag",
             "a":"am",
             "1":"im"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Sonntag",
             "a":"am",
             "1":"im"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Wochenende",
             "a":"am",
             "1":"im"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Januar",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Februar",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ March",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ April",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Mai",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Juny",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ July",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ August",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ September",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ October",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ November",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Dezember",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Frühling",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Sommer",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Herbst",
             "a":"im",
             "1":"am"
             },
             {
-            "zadaniN":"Schreibst du die richtige Zeitpräposition.",
-            "zadaniC":"Uveď správnou časovou předložku.",
             "q":"___ Winter",
             "a":"im",
             "1":"am"
             }
-            ]
+            ],
+            "Schreibst du die richtige Zeitpräposition.",
+            "Uveď správnou časovou předložku."
         ]
-    ],
-    "words":{
+    },
+    "Wortschatz":{
         "Seite 9-10":[30,
             [
             "Deutsch",
@@ -1463,10 +1301,10 @@
     }
 },
 "lekce4":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             "das Hobby, -s",
@@ -1582,10 +1420,10 @@
     }  
 },
 "lekce5":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             "das Hobby, -s",
@@ -1701,10 +1539,10 @@
     }  
 },
 "lekce6":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             ],
@@ -1727,10 +1565,10 @@
     }  
 },
 "lekce7":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             ],
@@ -1753,10 +1591,10 @@
     }  
 },
 "lekce8":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             ],
@@ -1779,10 +1617,10 @@
     }  
 },
 "lekce9":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             ],
@@ -1805,10 +1643,10 @@
     }  
 },
 "lekce10":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             ],
@@ -1831,10 +1669,10 @@
     }  
 },
 "lekce11":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             ],
@@ -1857,10 +1695,10 @@
     }  
 },
 "lekce12":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             ],
@@ -1883,10 +1721,10 @@
     }  
 },
 "lekce13":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             ],
@@ -1909,10 +1747,10 @@
     }  
 },
 "lekce14":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             ],
@@ -1935,10 +1773,10 @@
     }  
 },
 "lekce15":{
-    "grammar":[
+    "Grammatik":[
         []
     ],
-    "words":{
+    "Wortschatz":{
         "Seite 27-29":[23,
             [
             ],

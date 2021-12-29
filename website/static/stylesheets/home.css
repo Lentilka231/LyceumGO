@@ -6,7 +6,7 @@ body{
   position: absolute;
   top:20%;
   left:100px;
-  color: rgb(254, 95, 85);
+  color: var(--red);
   position: relative;
   font-size: 5rem;
   font-family: fredokaone;

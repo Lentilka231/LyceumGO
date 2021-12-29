@@ -8,10 +8,18 @@
   }
   body{
     height:100%;
-    background-color: rgb(239, 239, 250);
+    background-color: var(--theBrightestBlue);
     font-family: arial;
   }
-  
+  :root{
+    --blue:rgb(87, 115, 153);
+    --brighterBlue:rgb(189, 213, 234);
+    --theBrightestBlue:rgb(247, 247, 255);
+    --red:rgb(254, 95, 85);
+    --black: rgb(73, 88, 103);
+    --module:rgb(87, 115, 153);
+    --itemsGrid:rgb(189, 213, 234);
+  }
 /*----------------------------------------------------------------------*/
 
 

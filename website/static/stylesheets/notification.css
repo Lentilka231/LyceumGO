@@ -1,5 +1,5 @@
 #Maindiv{
-    background-color: rgb(189, 213, 234);
+    background-color: var(--brighterBlue);
     padding:30px;
     width:80%;
     height:90%;

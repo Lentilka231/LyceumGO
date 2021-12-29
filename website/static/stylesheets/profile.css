@@ -1,11 +1,10 @@
 /*--------profile.html/editprofile.html----------*/
 
 #Info{
-    background-color: rgb(189, 213, 234);
+    background-color: var(--brighterBlue);
     padding:30px;
     width:90%;
     height:90%;
-    border: solid rgb(189, 193, 234);
     border-radius: 10px;
   }
 #user{
@@ -35,7 +34,7 @@
     font-family:"Arial";
 } 
 #ProfileAboutMe{
-    background-color: rgb(247, 247, 255);
+    background-color: var(--theBrightestBlue);
     border-radius: 5px;
     width:400px;
     height:110px;
@@ -78,7 +77,7 @@ td{
 
 }
 #NotesBubak{
-    background-color: rgb(189, 213, 234);
+    background-color: var(--brighterBlue);
     padding:20px;
     position:absolute;
     top:50%;

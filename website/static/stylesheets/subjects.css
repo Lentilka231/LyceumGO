@@ -1,7 +1,7 @@
 #SubjectMainDiv{
     width:90vw;
     height:80vh;
-    background-color: rgb(189, 213, 234);
+    background-color: var(--brighterBlue);
     padding:50px;
     display:grid;
     grid-template-columns: repeat(auto-fit,200px);
@@ -38,7 +38,7 @@
     width:300px;
     height:150px;
     padding:30px;
-    background-color: rgb(189, 213, 234);
+    background-color: var(--brighterBlue);
     position:absolute;
     top:50%;
     left:50%;

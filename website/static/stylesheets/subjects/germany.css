@@ -6,7 +6,15 @@
     border-radius:10px ;
     transition:height .3s;
     overflow: hidden;
+    background-color: var(--module);
+    color:rgb(49, 49, 49);
 }
+/* #T3,#T4,#T5{  
+    -webkit-text-fill-color:transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+} */
 #CreateTest{
     padding:15px;
     margin:10px 0px;
@@ -31,11 +39,9 @@
 #PVerb{
     background-color: brown;
     padding:5px;
-    border:solid 3px rgb(138, 38, 38);
     position: relative;
     width:220px;
-    border-radius:10px ;
-
+    border-radius:10px;
 }
 #clickDisabler{
     position: fixed;
@@ -155,7 +161,7 @@
 #TestDiv{
     width:1000px;
     height:600px;
-    background-color: rgb(247, 247, 255);
+    background-color: var(--theBrightestBlue);
     position:absolute;
     box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
     padding:30px;
@@ -207,6 +213,9 @@
 }
 span{
     color:rgb(255, 153, 0);
+}
+#canvas span{
+    color:black;
 }
 .cara{
     background-color: black;
@@ -281,7 +290,7 @@ span{
     display:none;
 }
 .Felix,#kontrola{
-    background-color: rgb(189, 213, 234);
+    background-color: var(--brighterBlue);
     font-size: 28px;
     border-radius:5px ;
     width:250px;
@@ -519,7 +528,7 @@ span{
     top:50%;
     left:75px;
     transform: translate(0%,-50%);
-    background-color: rgb(189, 213, 234);
+    background-color: var(--brighterBlue);
     border-radius: 5px;
     text-align: center;
     padding:10px;
@@ -530,7 +539,7 @@ span{
 
 }
 #ConnectingControl:hover{
-    background-color: rgb(189, 213, 234);
+    background-color: var(--brighterBlue);
 }
 #RepeatConnecting{
     background-size:80px 80px;
@@ -631,8 +640,8 @@ span{
 .Text{
     width:400px;
     border-spacing:5px;
-    background-color:  rgb(189, 213, 234);
-    border:5px solid rgb(87, 115, 153);
+    background-color:  var(--brighterBlue);
+    border:5px solid var(--blue);
     border-radius: 5px;
 }
 .P1{
