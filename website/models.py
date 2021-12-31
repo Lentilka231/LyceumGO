@@ -42,7 +42,7 @@ class Informatics (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-    subname = db.Column(db.String(10))
+    subname = db.Column(db.String(15))
 
 class Programming (db.Model):
     id=db.Column(db.Integer, primary_key=True)
@@ -51,11 +51,6 @@ class Programming (db.Model):
     subname = db.Column(db.String(10))
 
 class Germany (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress=db.Column(db.String(10))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-    subname = db.Column(db.String(10))
-class Physics (db.Model):
     id=db.Column(db.Integer, primary_key=True)
     progress=db.Column(db.String(10))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)

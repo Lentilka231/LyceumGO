@@ -10,7 +10,6 @@
 <script src="{{url_for('static',filename='fonts/Calibri Regular-normal.js')}}"></script>
 <script src="{{url_for('static',filename='fonts/Calibri Bold-bold.js')}}"></script>
 <script src="{{url_for('static',filename='fonts/Cantarell-Regular-normal.js')}}"></script>
-
 {%endblock%}
 {%block content%}
 
@@ -31,13 +30,13 @@
     </div>
 </div>
 <div class="grid-items second">
-    <div class="Module" id="M1" tabindex="1" value="3" value2="4" style="background-color: rgb(139, 68, 194);">
+    <div class="Module" id="M1" tabindex="1" value="3" value2="4.5" style="background-color: rgb(139, 68, 194);">
         <p id="T1"><b>1) Deutsch ist NICHT leicht!</b></p>
         <div class="child">
             <p class="L" id="L3" >Lektion 1-3</p>
         </div>                
     </div>
-    <div class="Module" id="M2" tabindex="1" value="3" value2="7" style="background-color: orange;">
+    <div class="Module" id="M2" tabindex="1" value="3" value2="8" style="background-color: orange;">
         <p><b>2) Hobbys und Schule</b></p>
         <div class="child">
             <p class="L" id="L4">Lektion 4</p>
@@ -45,7 +44,7 @@
             <p class="L" id="L6">Lektion 6</p>
         </div> 
     </div>
-    <div class="Module" id="M3" tabindex="1" value="3" value2="7" style="background-color: rgb(185, 40, 125);">
+    <div class="Module" id="M3" tabindex="1" value="3" value2="8" style="background-color: rgb(185, 40, 125);">
         <p><b>3) Freizeit und Feiern</b></p>
         <div class="child">
             <p class="L" id="L7">Lektion 7</p>
@@ -53,7 +52,7 @@
             <p class="L" id="L9">Lektion 9</p>
         </div>
     </div>
-    <div class="Module" id="M4" tabindex="1" value="4" value2="8" style="background-color: rgb(18, 173, 70);height:4rem;">
+    <div class="Module" id="M4" tabindex="1" value="4" value2="9" style="background-color: rgb(18, 173, 70);height:4rem;">
         <p><b>4) Essen, Einkaufen und Gesundheit</b></p>
         <div class="child">
             <p class="L" id="L10">Lektion 10</p>
@@ -61,7 +60,7 @@
             <p class="L" id="L12">Lektion 12</p>
         </div>
     </div>
-    <div class="Module" id="M5" tabindex="1" value="3" value2="7" style="background-color: rgb(70, 111, 199);">
+    <div class="Module" id="M5" tabindex="1" value="3" value2="8" style="background-color: rgb(70, 111, 199);">
         <p><b>5) Zu Hause und auf Reisen</b></p>
         <div class="child">
             <p class="L" id="L13">Lektion 13</p>
@@ -1219,7 +1218,7 @@
         for(let i=3;i<16;i++){
             $("#L"+i).click(function(e){
                 for(let i=0;i<L.length;i++){
-                        L[i].style.color="black"
+                        L[i].style.color="rgb(49, 49, 49)"
                 }
                 for (let i=3;i<16;i++){
                     $("#DIVL"+i).hide()
@@ -1228,7 +1227,7 @@
 
                 if($("#DIVL"+i).is(":visible")){
                     
-                    document.getElementById("L"+i).style.color="black";
+                    document.getElementById("L"+i).style.color="rgb(49, 49, 49);";
                     $("#DIVL"+i).hide()
                 }
                 else{
@@ -1405,7 +1404,6 @@
             case "TextInput":
                 $("#progression").show();
                 $("."+type).show();
-                console.log(k,t,x)
                 SetOfQuestions=NJ["lekce"+k][t][x-1][1];
                 nText=NJ["lekce"+k][t][x-1][2];
                 czText=NJ["lekce"+k][t][x-1][3];
@@ -1736,10 +1734,12 @@ for(let i=0;i<Tasks.length;i++){
             }
             tr.style.backgroundColor="var(--brighterBlue)";
             markTask=tr;
+            ButtonAddTask.classList.add("newTaskH");
             ButtonAddTask.style.opacity="1";
         }
         else{
             markTask="";
+            ButtonAddTask.classList.remove("newTaskH");
             ButtonAddTask.style.opacity="0.5";
             tr.style.backgroundColor="inherit";
         }
@@ -1755,12 +1755,13 @@ function addTask (){
                 let TaskDiv = `
                 <div class='TaskDiv' style="height:86px">
                     <b><div class="TaskName"></div></b>
+                    (L:<span class="lesson"></span> <span class="type"></span>)
                     Otázek: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
                         <option value='6'>6</option>
                         <option value='8'>8</option>
                         <option value='10'>10</option>
                         <option value='12'>12</option>
-                    </select> (L:<span class="lesson"></span> <span class="type"></span>)
+                    </select>
                     <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
                 </div>`;
                 Page.insertAdjacentHTML("beforeend",TaskDiv);
@@ -1773,7 +1774,6 @@ function addTask (){
                         this.parentElement.style.height=11*this.value+20+"px";
                     }
                     else{
-                        console.log(this.getAttribute("datavalue"));
                         this.value=this.getAttribute("datavalue");
                     }
                     this.blur();
@@ -1782,16 +1782,22 @@ function addTask (){
         }
         else if(h+56<PageSize){
             let TaskDiv = `
-            <div class='TaskDiv' style="height:51.5px">
-                <b><div class="TaskName"></div></b>
+            <div class='TaskDiv' style="height:60px">
+                <b><span class="TaskName"></span></b> (L:<span class="lesson"></span> <span class="type"></span>)<br>
                 Slovíček: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
-                    <option value='9'>9</option>
+                    <option value='8'>8</option>
                     <option value='12'>12</option>
-                    <option value='15'>15</option>
-                    <option value='18'>18</option>
-                    <option value='21'>21</option>
+                    <option value='16'>16</option>
+                    <option value='20'>20</option>
                     <option value='24'>24</option>
-                </select> (L:<span class="lesson"></span> <span class="type"></span>)
+                    <option value='28'>28</option>
+                </select> 
+                <span>Způsob překladu:</span>
+                <select class="TypeOfTranslation">
+                    <option value='N>CZ'>N>CZ</option>
+                    <option value='CZ>N'>CZ>N</option>
+                    <option value='50%'>50%</option>
+                </select>
                 <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
             <div>`;
             Page.insertAdjacentHTML("beforeend",TaskDiv);
@@ -1801,11 +1807,10 @@ function addTask (){
             Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(e){
                 h=0;
                 for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
-                if(h+3.5*this.value+20<PageSize){
-                    this.parentElement.style.height=3.5*this.value+20+"px";
+                if(h+5*this.value+20<PageSize){
+                    this.parentElement.style.height=5*this.value+20+"px";
                 }
                 else{
-                    console.log(this.getAttribute("datavalue"));
                     this.value=this.getAttribute("datavalue");
                 }
                 this.blur();
@@ -1857,11 +1862,19 @@ function downloadPDF(){
                 doc.setFontSize(12);
                 UnusedQuestions=Array.from({length:TaskQ.length}, (_, i) => Array.from({length:TaskQ[i][1].length}, (_, e) => e));
                 doc.setFont("Calibri Regular","normal");
-                for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value/3;y++){
-                    for(let z=0;z<3;z++){
+
+                for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value/2;y++){
+                    for(let z=0;z<2;z++){
+                        if(Task.getElementsByClassName("TypeOfTranslation")[0].value=="CZ>N"){
+                            TOT=2;
+                        }else if (Task.getElementsByClassName("TypeOfTranslation")[0].value=="N>CZ"){
+                            TOT=1;
+                        }else{
+                            TOT=z+1;
+                        }
                         randomNumber1=Math.floor(Math.random()*UnusedQuestions.length);
                         randomNumber2=Math.floor(Math.random()*UnusedQuestions[randomNumber1].length);
-                        doc.text(TaskQ[randomNumber1][2][UnusedQuestions[randomNumber1][randomNumber2]],10+z*65,i!=0?15+h:40+h);
+                        doc.text(TaskQ[randomNumber1][TOT][UnusedQuestions[randomNumber1][randomNumber2]],10+z*90,i!=0?15+h:40+h);
                         UnusedQuestions[randomNumber1].splice(randomNumber2,1);
                     }
                 h+=6;
@@ -1937,8 +1950,6 @@ function changePage(x,max=""){
         PageNumber.innerText=CurrentPage;
         LeftButton.classList.add("CanHover");
         LeftButton.classList.remove("CantHover");
-        console.log(lists.length);
-        console.log(CurrentPage);
         if(lists.length==CurrentPage){
             RightButton.classList.add("CantHover");    
             RightButton.classList.remove("CanHover");

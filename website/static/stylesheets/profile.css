@@ -3,8 +3,8 @@
 #Info{
     background-color: var(--brighterBlue);
     padding:30px;
-    width:90%;
-    height:90%;
+    width:1200px;
+    height:700px;
     border-radius: 10px;
   }
 #user{
@@ -12,15 +12,7 @@
     float:left;
 }
 
-#userstats{
-    background-color: rgb(151, 151, 202);
-    width:60%;
-    float:left;
-    height:100%;
-    padding:50px;
-    border: solid rgb(151, 131, 202);
-    border-radius: 10px;
-}
+
 /*-----------user side-----------*/
 .UserImg{
     border:3px solid;
@@ -46,27 +38,21 @@
 }
 
 /*-----------userstats side-----------*/
-td{
-    padding:3px
-}
-.subjects{
-    margin-bottom:10px;
-    width:300px;
-    border: solid rgb(151, 131, 202);
+#userstats{
+    width:60%;
+    float:left;
+    height:100%;
+    padding:50px;
+    border:5px solid var(--blue);
     border-radius: 10px;
-    background-color: rgb(160, 138, 214);
 }
-.star{
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    opacity:0;
+#aktivita{
+    width:400px;
+    height:100px;
+    display:flex;
+    flex-flow: row;
+    text-align: center;
 }
-
-.subjects:hover .star {
-    opacity: 1;
-}
-
 /*-----------editprofile.html-----------*/
 #editnotes{
     max-width:400px;

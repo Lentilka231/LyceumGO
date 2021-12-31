@@ -16,9 +16,7 @@ from .sendmail import *
 
 views = Blueprint("views", __name__)
 
-subjectspro={"informatics":"0/1","programming":"0/1"}
-
-SUBJECTS = ["Programování","Informatika","Němčina 1","Fyzika"]
+SUBJECTS = ["Programování","Informatika","Němčina I"]
 def createrandomcode():
     x=""
     for i in range(6):
@@ -50,7 +48,7 @@ def home():
         return redirect(url_for("views.profile"))
     formL = LoginForm()
     formR = RegisterForm()
-
+           
     if formL.validate_on_submit():
         user = Users.query.filter_by(email=formL.email.data).first()
         if user:
@@ -66,11 +64,15 @@ def home():
         usern = Users.query.filter_by(name=formR.name.data).first()
         if not usere :
             if not usern:
-                SendMail(formR.email.data, formR.name.data, "Welcome")
-                new_user = Users(email=formR.email.data,name=formR.name.data,password=generate_password_hash(formR.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=formR.person.data,subjects="")
+                new_user=Users(email=formR.email.data,name=formR.name.data,password=generate_password_hash(formR.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=formR.person.data,subjects="")
                 db.session.add(new_user)
                 db.session.commit()
                 login_user(new_user)
+                db.session.add(Germany(progress="0/100",user_id=current_user.id,subname="Němčina I"))
+                db.session.add(Informatics(progress="0/100",user_id=current_user.id,subname="Informatika"))
+                db.session.add(Programming(progress="0/100",user_id=current_user.id,subname="Programování"))
+                db.session.commit()
+                SendMail(formR.email.data, formR.name.data, "Welcome")
                 print("Account was created succesfully, welcome",formR.name.data)
                 return redirect(url_for("views.home"))
             else:
@@ -103,40 +105,7 @@ def profile():
 @views.route("/subjects",methods=["GET","POST"])
 def subjects():
     if current_user.is_authenticated:
-        if request.method=="POST":
-            if request.form["submit_button"]=="createsub":
-                x=request.form.get("subject")
-                if x=="Programování":
-                    pass
-                elif x=="Informatika":
-                    pass
-                elif x=="Fyzika":
-                    if not Physics.query.filter_by(user_id=current_user.id).first():
-                        current_user.subjects+="Physics/"
-                        news = Physics(progress="0/100",user_id=current_user.id,subname="Fyzika")
-                        db.session.add(news)
-                        db.session.commit()
-                    else:
-                        flash("Tato učebna už existuje")
-                elif x=="Němčina 1":
-                    if not Germany.query.filter_by(user_id=current_user.id).first():
-                        current_user.subjects+="Germany1/"
-                        news = Germany(progress="0/100",user_id=current_user.id,subname="Němčina 1")
-                        db.session.add(news)
-                        db.session.commit()
-                    else:
-                        flash("Tato učebna už existuje")
-        usersub=[]
-        for i in current_user.subjects.split("/"):
-            if i=="Germany1":
-                usersub.append(Germany.query.filter_by(user_id=current_user.id).first())
-            elif i=="Informatics":
-                usersub.append(Informatics.query.filter_by(user_id=current_user.id).first())
-            elif i=="Programming":
-                usersub.append(Programming.query.filter_by(user_id=current_user.id).first())
-            elif i=="Physics":
-                usersub.append(Physics.query.filter_by(user_id=current_user.id).first())
-        return render_template("subjects.html",user=current_user,subjects=SUBJECTS,usersub=usersub)
+        return render_template("subjects.html",user=current_user,subjects=SUBJECTS)
     else:
         return redirect(url_for("views.home"))
 

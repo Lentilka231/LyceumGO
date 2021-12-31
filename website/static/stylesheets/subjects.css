@@ -3,72 +3,26 @@
     height:80vh;
     background-color: var(--brighterBlue);
     padding:50px;
-    display:grid;
-    grid-template-columns: repeat(auto-fit,200px);
-    grid-template-rows:repeat(auto-fit,250px);
-    grid-column-gap:40px;
-    grid-row-gap:30px;
-}
-#studySubject{
-    height: 100%;
-    width:100%;
-    margin:auto;
-    font-size: 150px;
-    text-align: center;
-    padding-top:1rem;
-    background-color: rgb(157, 157, 223);
-    cursor:pointer
-}
-.sub{
+    border-radius: 10px;
     display:flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
+
 .subject{
-    width:200px;
-    height:250px;
-    background-color: rgb(157, 157, 223);
+    width:400px;
+    height:600px;
+    background-color: var(--blue);
     padding:20px;
-    color:black
+    color:black;
+    transition: all 0.3s ease;
+}
+.subject:hover{
+    box-shadow: 0 0 20px black;
+    transform:scale(1.01)
 }
 .SubName{
-    font-size:24px;
+    margin-top: 70px;
+    text-align: center;
+    font-size:50px;
     margin-bottom:10px
-}
-.Bubak{
-    width:300px;
-    height:150px;
-    padding:30px;
-    background-color: var(--brighterBlue);
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
-}
-#CreateSub{
-    display:none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-#buttonForSubjects{
-    margin-top:50px;
-    position:absolute;
-    bottom:20px;
-}
-#exit{
-    position:absolute;
-    right:30px;
-    bottom:20px;
-}
-#selection{
-    padding: 3px;
-    font-size: 20px;
-    position: absolute;
-    left:50%;
-    transform: translate(-50%,0%);
-    border:3px solid rgb(73, 73, 73);
-    border-radius:5px;
 }

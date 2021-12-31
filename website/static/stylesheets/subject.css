@@ -7,8 +7,8 @@
 }
 .NAME{
     left:5%;
-    font-size: 70px ;
-    font-family:Arial;
+    font-size: 70px;
+    font-family: Arial;
 }
 #grid-container{
     height:100%;
@@ -59,7 +59,7 @@
     margin-top:5px;
 }
 #subclassinfo{
-
+    height:120px;
     font-size: 35px;
 }
 #subclassinfo p{

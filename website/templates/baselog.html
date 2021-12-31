@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/universal.css')}}">
     <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/style.css')}}">
-
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Fredoka+One&family=Signika+Negative:wght@500&display=swap" rel="stylesheet">
     <title>{%block title%}{%endblock%}</title>
     {%block head%}
     {%endblock%}
@@ -48,7 +48,7 @@
                   inkscape:window-maximized="1"
                   inkscape:current-layer="svg12" />
                <title
-                  id="title2">People</title>
+                  id="title2">Třída</title>
                <path
                   d="M402 168c-2.93 40.67-33.1 72-66 72s-63.12-31.32-66-72c-3-42.31 26.37-72 66-72s69 30.46 66 72z"
                   fill="none"
@@ -121,7 +121,7 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg6" />
   <title
-     id="title2">Book</title>
+     id="title2">Materiály</title>
   <path
      d="m 254.31217,176.87826 c 16,-63.16 76.43,-95.41 208,-96 a 15.94,15.94 0 0 1 16,16 v 288 a 16,16 0 0 1 -16,16 c -128,0 -177.45,25.81 -208,64 -30.37,-38 -80,-64 -207.999996,-64 -9.88,0 -16,-8.05 -16,-17.93 v -286.07 a 15.94,15.94 0 0 1 16,-16 c 131.569996,0.59 191.999996,32.84 207.999996,96 z m 0,0 v 288"
      fill="none"
@@ -136,7 +136,7 @@
             </a>
 
             <div class="dropdown">
-                <button class="button--">{{user.name}}</button>
+                <button>{{user.name}}</button>
                 <div class="dropdown-content">
                     <a href="profile">Účet</a>
                     <a href="notification">Oznámení</a>

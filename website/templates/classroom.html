@@ -3,6 +3,7 @@
 {%block head%}
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/classroom.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
+<link href=>
 {%endblock%}
 {%block content%}
 {%if not user.classroom%}
@@ -31,7 +32,6 @@
                 </select>
                 <button class="BasicButton" value="createclass" name="submit_button" id="tlacitko">Vytvořit třídu</button> 
             </form>
-
         </div>
     {%endif%}
 {%else%}
@@ -42,54 +42,31 @@
             <div id="info">
                 <div class="i">Učitel/ka: {{classroom.teacher}}</div>
                 <div class="i">Založeno: {{classroom.beginning}}</div>
-                <div class="i">Code: {{classroom.code}}</div>
+                {%if user.person=="t"%}<div class="i">Code: {{classroom.code}}</div>{%endif%}
             </div>
         </div>
-        <div class="seznam">
-            <b>
-            <div id="classnav">
-                <div class="objekt" id="o1">Studenti</div>
-                <div class="objekt" id="o2">Chat</div>
-                <div class="objekt" id="o3">Předměty</div>
-            </div>
-            </b>
-            <div class="s" id="s0">
-                <table style="width:100%">
-                    <tr style="background-color: rgb(91, 91, 172);border-bottom:1px solid black">
-                        <th style="width:5%">Id</th>
-                        <th style="width:70%">Jméno</th>
-                        <th style="width:95%">Oblíbený předmět</th>
-                        <th style="width:100%"></th>
-                    </tr>
-                    <form method="POST">
-                    {%for i,v in students%}
-                        <tr class="sinfo">
-                            <td>{{i+1}}</td>
-                            <td>{{v.name}}</td>
-                            <td>{{v.favouritesub}}</td>
-                            <td><button value="kickstudent-{{v.id}}" name="submit_button" id="kickstudent">✕</button></td>
-                        </tr>
-                    {%endfor%}
-                    </form>
-                </table>
-            </div>
-            <div class="s" id="s1">
-                probably never come
-                <ul id="messages"></ul>
-                <input type="text" id="myMessage">
-                <button name="submit_button" value="sendmess" id="sendButton">Send</button>
-            </div>
-            <div class="s" id="s2">
+        <table style="width:100%;">
+            <thead>
+                <tr style="height:50px;background-color: rgb(55, 55, 55);color:var(--theBrightestBlue);border-bottom:1px solid black">
+                    <th style="width:3%">Id</th>
+                    <th style="width:70%">Jméno</th>
+                    <th style="width:90%">Oblíbený předmět</th>
+                    {%if user.person=="t"%}<th style="width:90%"></th>{%endif%}
+                </tr>
+            </thead>
+            <tbody>
                 <form method="POST">
-                {%for sub in subjects%}
-                    <div class="subject">
-                        <p id=""><b>{{sub.subject}}</b></p>
-                        <button value="destroysubclass-{{sub.id}}" name="submit_button" id="kickstudent">✕</button>
-                    </div>
+                {%for i,v in students%}
+                    <tr class="sinfo">
+                        <td>{{i+1}}</td>
+                        <td>{{v.name}}</td>
+                        <td>{{v.favouritesub}}</td>
+                        {%if user.person=="t"%}<td><button value="kickstudent-{{v.id}}" name="submit_button" id="kickstudent">✕</button></td>{%endif%}
+                    </tr>
                 {%endfor%}
                 </form>
-            </div>
-        </div>
+            </tbody>
+        </table>
     </div>
 {%if user.person=="t"%}
     <div id="CreateSubClass">

@@ -25,31 +25,15 @@
         </div>
     </div>
     <div id="userstats">
-        <form action="" method="POST">
-        {%for i,subject in subjects.items()%}
-            <div class="subjects" style="float: left;">
-                <table>
-                    <tr >
-                        <td rowspan="3"><img src="{{url_for('static',filename='images/'+i+'.png')}}" style="border-radius:50%"></td>
-                        <td><p><b>{{i}}<buton class="star" value={{i}} name="submit_button">
-                            {%if i in favouritesub%}
-                                <img style="width: 16px" src="{{url_for('static',filename='images/ystar.png')}}">
-                            {%else%}
-                                <img style="width: 16px" src="{{url_for('static',filename='images/wstar.png')}}">
-                            {%endif%}</buton>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span id='{{i}}'>{{subject.progress1}}</span>
-                            <div class="bar_jak_sar">
-                                <div id="{{i}}bar" class="papapa"></div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        {%endfor%}
-        <form>
+        <div id="aktivita">
+            <div><img id="PO" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>Po</div>
+            <div><img id="UT" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>Út</div>
+            <div><img id="ST" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>St</div>
+            <div><img id="CT" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>Čt</div>
+            <div><img id="PA" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>Pá</div>
+            <div><img id="SO" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>So</div>
+            <div><img id="NE" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>Ne</div>
+        </div>
     </div>
     <div id="NotesBubak">
         <form method="POST">
@@ -59,6 +43,14 @@
         </form>
     </div>
     <script>
+        let myDate = new Date();
+        days=["Po","Út","St","Čt","Pá","So","Ne"];
+        for(let i=0;i<7;i++){
+            document.getElementById("aktivita").innerHTML=`
+            <div><img id="${days[myDate+i]>7?days[i]:days[myDate+i-7]}" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>${days[myDate+i]>7?days[i]:days[myDate+i-7]}</div>`;
+        }
+
+        console.log(myDate.getDay());
         $(document).ready(function(){
             $("#NotesBubak").hide();
             $("#ProfileAboutMe").click(function(){
@@ -67,6 +59,7 @@
                 }                
             });
         });
+
     </script>
 </div>
 </div>

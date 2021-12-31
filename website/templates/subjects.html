@@ -7,50 +7,21 @@
 {%block content%}
 <div id="flex-container">
 <div id="SubjectMainDiv">
-    {%if user.person=="t"%}
-    {%for sub in usersub%}
-        <div class="sub">
-            <a href="{{sub.subname}}">
-                <div class="subject">
-                    <p class="SubName">{{sub.subname}}</p>                    
-                </div>
-            </a>
+    <a href="Germany">
+        <div class="subject">
+            <p class="SubName">Němčina</p>
         </div>
-        
-    {%endfor%}
-    <div id="studySubject">
-        ＋
-    </div>
-    {%endif%}
-</div>
-<div>
-    <div id="CreateSub">
-    <div class="Bubak">
-        <form method="POST">
-            <div id="input">
-                <select id="selection"name="subject">
-                    {%for i in subjects%}
-                        <option value="{{i}}">{{i}}</option>
-                    {%endfor%}
-                </select>
-            </div>
-            <button class="BasicButton"name="submit_button" value="createsub" id="buttonForSubjects">Vytvoř učebnu</button>
-        </form>
-        <div class="BasicButton" id="exit">
-            Zrušit
+    </a>   
+    <a href="Informatics">
+        <div class="subject">
+            <p class="SubName">Informatika</p>
         </div>
-    </div>
-    </div>
+    </a>  
+    <a href="Programming">
+        <div class="subject">
+            <p class="SubName">Programování</p>
+        </div>
+    </a>  
 </div>
 </div>
-<script>
-    $(document).ready(function(){ 
-        $("#studySubject").click(function(){
-            $("#CreateSub").show()
-        })
-        $("#exit").click(function(){
-            $("#CreateSub").hide()
-        }) 
-    });
-</script>
 {%endblock%}

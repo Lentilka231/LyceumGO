@@ -15,19 +15,15 @@ def NJf (rocnik,kapitola):
 
 #------------INFORMATIKA-----------------------------------------------------------------------------------------------------------------------
 
-@subjects.route("/Informatika")
+@subjects.route("/Informatics")
 def Informatika():
     return render_template("subjects/informatika.html",user=current_user,subject=Informatics.query.filter_by(user_id=current_user.id).first())
 #------------PROGRAMOVÁNÍ-----------------------------------------------------------------------------------------------------------------------
-@subjects.route("/Programování")
+@subjects.route("/Programming")
 def Programovani():
     return render_template("subjects/programovani.html",user=current_user,subject=Programming.query.filter_by(user_id=current_user.id).first())
-#------------Fyzika-----------------------------------------------------------------------------------------------------------------------
-@subjects.route("/Fyzika")
-def Fyzika():
-    return render_template("subjects/physics.html",user=current_user,subject=Physics.query.filter_by(user_id=current_user.id).first())
 #------------NĚMČINA----------------------------------------------------------------------------------------------------------------------------
-@subjects.route("/Němčina 1")
+@subjects.route("/Germany")
 def Nemcina():
     subclass=None
     with open("website/tests/NJ1.json", encoding="utf-8") as f:
