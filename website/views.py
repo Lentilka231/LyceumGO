@@ -28,6 +28,8 @@ def createmessage(title,message,prijemceid,question):
     db.session.add(new_message)
     print("message was created")
     db.session.commit()
+def IsLeapYear(year):
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 class RegisterForm(FlaskForm):
     email = StringField("Email", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,64, message="velikost majliku musí být od 5 do 64 znaků"),validators.Email(message="Zadáváš mi špatný email")])
     name = StringField("Name", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,20,message="velikost jména musí být od 5 do 20 znaků")])
@@ -64,14 +66,25 @@ def home():
         usern = Users.query.filter_by(name=formR.name.data).first()
         if not usere :
             if not usern:
-                new_user=Users(email=formR.email.data,name=formR.name.data,password=generate_password_hash(formR.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=formR.person.data,subjects="",activity="F/F/F/F/F/F/F")
+                new_user=Users(
+                email=formR.email.data,
+                name=formR.name.data,
+                password=generate_password_hash(formR.password1.data, method="sha256"),
+                beginning=date.today().year,
+                favouritesub="",
+                person=formR.person.data,
+                Nactivity="F/F/F/F/F/F/F",
+                INFactivity="F/F/F/F/F/F/F",
+                PRGactivity="F/F/F/F/F/F/F",
+                NlastDayActiv=0,
+                INFlastDayActiv=0,
+                PRGlastDayActiv=0,
+                Nprogress=0,
+                INFprogress=0,
+                PRGprogress=0)
                 db.session.add(new_user)
                 db.session.commit()
                 login_user(new_user)
-                db.session.add(Germany(progress=0,user_id=current_user.id))
-                db.session.add(Informatics(progress=0,user_id=current_user.id))
-                db.session.add(Programming(progress=0,user_id=current_user.id))
-                db.session.commit()
                 SendMail(formR.email.data, formR.name.data, "Welcome")
                 print("Account was created succesfully, welcome",formR.name.data)
                 return redirect(url_for("views.home"))
@@ -88,8 +101,24 @@ def profile():
             if request.form["submit_button"]=="save":
                 current_user.notes= request.form.get("note")
                 current_user.favouritesub=request.form.get("FS")
-            db.session.commit()
-        return render_template("profile.html",user=current_user,subjects={},NJ=Germany.query.filter_by(user_id=current_user.id).first(),INF=Informatics.query.filter_by(user_id=current_user.id).first(),PRG=Programming.query.filter_by(user_id=current_user.id).first())
+                db.session.commit()
+        time=datetime.datetime.now()
+        maxday= 366 if IsLeapYear(time.year) else 365
+        x=int(time.strftime("%j"))-current_user.NlastDayActiv
+        if x<0:
+            x=current_user.NlastDayActiv+int(time.strftime("%j"))-maxday
+        print(x)
+        if x>6:
+            current_user.Nactivity="F/F/F/F/F/F/F"
+        else:
+            activity=current_user.Nactivity.split("/")
+            for i in range(x):
+                del activity[0]
+                activity.append("F")
+            current_user.Nactivity="/".join(activity)
+        current_user.NlastDayActiv=int(time.strftime("%j"))
+        db.session.commit()
+        return render_template("profile.html",user=current_user,subjects={},NJ=current_user.Nprogress,INF=current_user.INFprogress,PRG=current_user.PRGprogress)
     else:
         return redirect(url_for("views.home"))
 @views.route("/subjects",methods=["GET","POST"])

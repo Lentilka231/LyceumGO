@@ -19,7 +19,7 @@
 <div class="grid-items first">
     <div class="scrollery">
         <div id="subclassinfo">
-            <p>Progres: {{subject.progress}}</p>
+            <p>Progres: {{user.Nprogress}}</p>
             <div id="PVerb" onclick="visibilator('PVerb','','')" style="cursor:pointer;">
                 Verb/Slovesa
             </div>
@@ -78,20 +78,20 @@
             <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
                 <b class="nadpisChild">Gramatik</b>
                 <div class="Material">
-                    <div class="Block b11"onclick="visibilator('1-3','g',1)">
-                        <b>Verbkonjugation im Präsens</b><br>
+                    <div class="Block b11"onclick="visibilator(this.getElementsByClassName('NOT')[0].innerText)">
+                        <b class="NOT">Verbkonjugation im Präsens</b><br>
                         Časování sloves v přítomném čase
                     </div>
-                    <div class="Block b11"onclick="visibilator('1-3','g',2)">
-                        <b>Unbestimmte und bestimmte Artikel</b><br>
+                    <div class="Block b11"onclick="visibilator(this.getElementsByClassName('NOT')[0].innerText)">
+                        <b class="NOT">Unbestimmte und bestimmte Artikel</b><br>
                         Neurčité a určitě členy
                     </div>
-                    <div class="Block b11"onclick="visibilator('1-3','g',3)">
-                        <b>Possessivartikel</b><br>
+                    <div class="Block b11"onclick="visibilator(this.getElementsByClassName('NOT')[0].innerText)">
+                        <b class="NOT">Possessivartikel</b><br>
                         Přivlasťnovací zájmena
                     </div>
-                    <div class="Block b11"onclick="visibilator('1-3','g',4)">
-                        <b>Zeitangaben</b><br>
+                    <div class="Block b11"onclick="visibilator(this.getElementsByClassName('NOT')[0].innerText)">
+                        <b class="NOT">Zeitangaben</b><br>
                         Časové údaje
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
                     {%for i,v in NJ1["lekce1-3"]["Wortschatz"].items()%}
-                    <div class="Block b12" onclick="visibilator('1-3','w','{{i}}')">
+                    <div class="Block b12" onclick="visibilator('{{i}}','1-3','w')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
                             {{v[0]}}
@@ -113,7 +113,7 @@
             <div class="DIVchild" id="lesen" style="background-color: rgb(93, 84, 164);">
                 <b class="nadpisChild">Lesen</b>
                 <div class="Material">
-                    <div class="Block b13" onclick="visibilator('3','l','1')">
+                    <div class="Block b13" onclick="visibilator('Text1')">
                         <b>Text1</b><br>
                         Hallo Leute!
                     </div>
@@ -937,7 +937,7 @@
                 </div>
             </div>
         </div>
-        <div class="Teorie x1-3g1">
+        <div class="Teorie Verbkonjugation_im_Präsens">
             <p class="nnadpis"><b>Verbkonjugation im Präsens</b></p>
             <p class="cnadpis">Časování sloves v přítomném čase</p>
             <div class="g">
@@ -978,7 +978,7 @@
                 </div>
             </div>
         </div>
-        <div class="Teorie x1-3g2">
+        <div class="Teorie Unbestimmte_und_bestimmte_Artikel">
             <p class="nnadpis"><b>Unbestimmte und bestimmte Artikel</b></p>
             <p class="cnadpis">Neurčité a určité členy</p>
             <div class="g">
@@ -1037,7 +1037,7 @@
             </div>
 
         </div>
-        <div class="Teorie x1-3g3">
+        <div class="Teorie Possessivartikel">
             <p class="nnadpis"><b>Possessivartikel</b></p>
             <p class="cnadpis">Přivlasťnovací zájmena</p>
             <div class="g">
@@ -1082,7 +1082,7 @@
                 <div class="t hardt" onclick="teststart('TextInput','1-3','Grammatik','3')">schwieriger Test</div>
             </div>
         </div>
-        <div class="Teorie x1-3g4">
+        <div class="Teorie Zeitangaben">
             <p class="nnadpis"><b>Unbestimmte und bestimmte Artikel</b></p>
             <p class="cnadpis">Neurčité a určité členy</p>
             <div class="g">
@@ -1128,7 +1128,7 @@
                 <div class="t hardt" onclick="teststart('TextInput','1-3','Grammatik','4')">schwieriger Test</div>
             </div>
         </div>
-        <div class="Teorie x1-3l1">
+        <div class="Teorie Text1">
             <div class="gtext">
                 <table class="Text">
                     <tr><th class="P1">Nikola:</th><td>Hallo Peter</td></tr>
@@ -1279,6 +1279,7 @@
     let UnusedQuestions;
     let MomentalQuestion;
     let TypeOfTest;
+    let NameOfTest;
     let SetOfQuestions;
     let Success;
     let czText;
@@ -1336,13 +1337,14 @@
 //---------------------------------------------------------------------------
 //Obecné funkce pro otázky, ...
     //zobrazuje okno pro teorie, texty, otázky, ...
-    function visibilator(lekce,typ,ukol){
+    function visibilator(ukol,lekce,typ,){
         CanUseEsc=true;
         $("#clickDisabler").show();
-        if (lekce=="CreateTest"){
+        if (ukol=="CreateTest"){
             document.getElementById("CreateTestDIV").style.display="block";
         }
         else{
+            NameOfTest=ukol.replace(/ /g,"_");
             if (typ=="w"){
                 CurrentVocabulary=NJ["lekce"+lekce]["Wortschatz"][ukol];
                 slovicka=""
@@ -1359,7 +1361,7 @@
                     DidYouKnow[i].querySelector(".DYKCBody").style.visibility="hidden";
                     DidYouKnow[i].style.height="40px";
                 }
-                $(".x"+lekce+typ+ukol).show();
+                $("."+NameOfTest).show();
             }
         }
     };
@@ -1641,11 +1643,19 @@
         for (let i=0;i<Success.length;i++){
             NumberForCalculationOfSuccess+=Success[i];
         };
-        document.getElementById("procenta").innerText=Math.round(NumberForCalculationOfSuccess/Success.length*100)+"%";
+        x=Math.round(NumberForCalculationOfSuccess/Success.length*100)
+        document.getElementById("procenta").innerText=x+"%";
         $(".congratulation").show();
+        
         CanUseArrows=false;
         CanUseEnter=false;
     }
+    $.post("/Germany", {
+        submit_button:"ENDOFTEST",
+        nameOfTest: NameOfTest,
+        value:90,
+    });
+    console.log("hotovo")
     // hlídá, jestli má zobrazit výsledek pro TextInput nebo ne 
     let SubstituteForInputKontrol = new MutationObserver(function(){
         if (substituteForInput.innerHTML!=""){
@@ -1761,6 +1771,10 @@ function addTask (){
                         <option value='8'>8</option>
                         <option value='10'>10</option>
                         <option value='12'>12</option>
+                        <option value='14'>14</option>
+                        <option value='16'>16</option>
+                        <option value='18'>18</option>
+                        <option value='20'>20</option>
                     </select>
                     <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
                 </div>`;
@@ -1850,6 +1864,7 @@ function downloadPDF(){
                 UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
                 for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
                     randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+                    console.log(TaskQ[1][UnusedQuestions[randomNumber]]);
                     doc.text(y+1+") "+TaskQ[1][UnusedQuestions[randomNumber]]["q"],10,i!=0?(h+15):(40+h));
                     h+=6;
                     UnusedQuestions.splice(randomNumber,1);
@@ -2226,4 +2241,5 @@ let CardsLeft = new MutationObserver(function(){
 CardsLeft.observe(balicekKaretVyber,config);
 
 </script>
+
 {%endblock%}

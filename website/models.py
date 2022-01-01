@@ -10,12 +10,19 @@ class Users (db.Model,UserMixin):
     classroomid = db.Column(db.Integer,db.ForeignKey("classrooms.id"))
     person=db.Column(db.String(1))
     notes = db.Column(db.String(500))
-    grade = db.Column(db.Integer)
     beginning = db.Column(db.Integer)
     favouritesub =db.Column(db.String(30))
     messages = db.relationship("Messages")
-    subjects = db.Column(db.String(50))
-    activity = db.Column(db.String(50))
+    tests = db.relationship("Tests")
+    Nactivity = db.Column(db.String(50))
+    INFactivity = db.Column(db.String(50))
+    PRGactivity = db.Column(db.String(50))
+    NlastDayActiv = db.Column(db.Integer)
+    INFlastDayActiv = db.Column(db.Integer)
+    PRGlastDayActiv = db.Column(db.Integer)
+    Nprogress= db.Column(db.Integer)
+    INFprogress=db.Column(db.Integer)
+    PRGprogress=db.Column(db.Integer)
 
 class Classrooms (db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -39,17 +46,8 @@ class Messages(db.Model):
     answer = db.Column(db.String(20))
     question = db.Column(db.String(20))
 
-class Informatics (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress=db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-
-class Programming (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress=db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-
-class Germany (db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    progress=db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
+class Tests (db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    name=db.Column(db.String(50))
+    user_id =db.Column(db.Integer,db.ForeignKey("users.id"))
+    result=db.Column(db.Integer)

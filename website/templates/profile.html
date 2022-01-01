@@ -32,44 +32,63 @@
         </div>
     </div>
     <div id="userstats">
-        <div id="aktivita">
-        </div>
-        <div id="help">?</div>
         <div class="statistics">
             Němčina
+            <div class="aktivita" id="Naktivita">
+            </div>
             <div class="progres">
                 Progres: <div class="ProgresBar"><div id=NPlnitko></div></div>
             </div>
         </div>
         <div class="statistics">
             Informatika
+            <div class="aktivita" id="INFaktivita">
+            </div>
             <div class="progres">
                 Progres: <div class="ProgresBar"><div id=INFPlnitko></div></div>
             </div>
         </div>
         <div class="statistics">
             Programování
+            <div class="aktivita" id="PRGaktivita">
+            </div>
             <div class="progres">
                 Progres: <div class="ProgresBar"><div id=PRGPlnitko></div></div>
             </div>
         </div>
     </div>
     <script>
-        const a="{{user.activity}}".split("/");
+        const a="{{user.Nactivity}}".split("/");
         const myDate = new Date();
         const days=["Po","Út","St","Čt","Pá","So","Ne"];
         function sleep(ms){
             return new Promise(resolve => setTimeout(resolve,ms))
         };
+        for(let i=0;i<7;i++){
+            document.getElementById("Naktivita").innerHTML+=`
+            <div class="day">
+                ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+                <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
+            </div>`;
+            document.getElementById("INFaktivita").innerHTML+=`
+            <div class="day">
+                ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+                <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
+            </div>`;
+            document.getElementById("PRGaktivita").innerHTML+=`
+            <div class="day">
+                ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+                <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
+            </div>`;
+
+        }
         async function aktivita () {
             for(let i=0;i<7;i++){
-                document.getElementById("aktivita").innerHTML+=`
-                <div class="day">
-                    ${a[i]=="T"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
-                    <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
-                </div>`;
                 await sleep(200)
-                }
+                document.getElementById("Naktivita").children[i].children[0].style.opacity=1;
+                document.getElementById("INFaktivita").children[i].children[0].style.opacity=1;
+                document.getElementById("PRGaktivita").children[i].children[0].style.opacity=1;
+            }
         }
         aktivita();
         document.getElementById("FS").addEventListener("change",function(){
@@ -81,6 +100,7 @@
         document.getElementById("NPlnitko").style.width="{{NJ.progress}}%";
         document.getElementById("INFPlnitko").style.width="{{INF.progress}}%";
         document.getElementById("PRGPlnitko").style.width="{{PRG.progress}}%";
+        
     </script>
 </div>
 </div>
