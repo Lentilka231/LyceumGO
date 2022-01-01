@@ -10,6 +10,7 @@
     <div id="user">
         <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
         <div id="info">
+            <form method="POST">
             <p style="font-size: 36px;"><b>{{user.name}}</b></p>
             <p class="information">Email: {{user.email}}</p>
             {%if user.person=="s"%}
@@ -17,49 +18,69 @@
             {%else%}
                 <p class="information">Učitel</p>
             {%endif%}
-            <p class="information">Oblíbené předměty:{%for fs in favouritesub%}{{fs}}{%endfor%}</p>
+            <p class="information">Oblíbený předmět:
+                <select name="FS" id="FS">
+                    {%for i in ["","Němčina","Informatika","Programování"]%}
+                        <option value="{{i}}"{%if user.favouritesub==i %}selected{%endif%}>{{i}}</option>
+                    {%endfor%}
+                </select>
+            </p>
             {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
-            <p class="information">O mě(nebo mně IDK):</p>
-            <p id="ProfileAboutMe">{%if user.notes%}{{user.notes}}{%endif%}</p>
-            
+                <textarea maxlength="1000" name="note" class="Inputs" id="ProfileAboutMe">{%if user.notes%}{{user.notes}}{%endif%}</textarea>
+                <button type="submit" name="submit_button"value="save" id="save" class="BasicButton" style="display:none">Uložit</button>
+            </form>
         </div>
     </div>
     <div id="userstats">
         <div id="aktivita">
-            <div><img id="PO" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>Po</div>
-            <div><img id="UT" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>Út</div>
-            <div><img id="ST" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>St</div>
-            <div><img id="CT" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>Čt</div>
-            <div><img id="PA" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>Pá</div>
-            <div><img id="SO" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>So</div>
-            <div><img id="NE" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>Ne</div>
+        </div>
+        <div id="help">?</div>
+        <div class="statistics">
+            Němčina
+            <div class="progres">
+                Progres: <div class="ProgresBar"><div id=NPlnitko></div></div>
+            </div>
+        </div>
+        <div class="statistics">
+            Informatika
+            <div class="progres">
+                Progres: <div class="ProgresBar"><div id=INFPlnitko></div></div>
+            </div>
+        </div>
+        <div class="statistics">
+            Programování
+            <div class="progres">
+                Progres: <div class="ProgresBar"><div id=PRGPlnitko></div></div>
+            </div>
         </div>
     </div>
-    <div id="NotesBubak">
-        <form method="POST">
-            <textarea name="note" class="Inputs" id="editnotes">{{user.notes}}</textarea><br>
-            <button name="submit_button"value="save" class="BasicButton">Uložit</button>
-            <button name="submit_button" value="cancel" class="BasicButton" style="float:right">Zrušit</button>
-        </form>
-    </div>
     <script>
-        let myDate = new Date();
-        days=["Po","Út","St","Čt","Pá","So","Ne"];
-        for(let i=0;i<7;i++){
-            document.getElementById("aktivita").innerHTML=`
-            <div><img id="${days[myDate+i]>7?days[i]:days[myDate+i-7]}" src="{{url_for('static',filename='images/BFire.png')}}" style=width:40px><br>${days[myDate+i]>7?days[i]:days[myDate+i-7]}</div>`;
+        const a="{{user.activity}}".split("/");
+        const myDate = new Date();
+        const days=["Po","Út","St","Čt","Pá","So","Ne"];
+        function sleep(ms){
+            return new Promise(resolve => setTimeout(resolve,ms))
+        };
+        async function aktivita () {
+            for(let i=0;i<7;i++){
+                document.getElementById("aktivita").innerHTML+=`
+                <div class="day">
+                    ${a[i]=="T"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+                    <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
+                </div>`;
+                await sleep(200)
+                }
         }
-
-        console.log(myDate.getDay());
-        $(document).ready(function(){
-            $("#NotesBubak").hide();
-            $("#ProfileAboutMe").click(function(){
-                if ($("#NotesBubak").is(":hidden")){
-                    $("#NotesBubak").show();
-                }                
-            });
-        });
-
+        aktivita();
+        document.getElementById("FS").addEventListener("change",function(){
+            document.getElementById("save").style.display="block"
+        })
+        document.getElementById("ProfileAboutMe").addEventListener("change",function (){
+            document.getElementById("save").style.display="block"
+        })
+        document.getElementById("NPlnitko").style.width="{{NJ.progress}}%";
+        document.getElementById("INFPlnitko").style.width="{{INF.progress}}%";
+        document.getElementById("PRGPlnitko").style.width="{{PRG.progress}}%";
     </script>
 </div>
 </div>

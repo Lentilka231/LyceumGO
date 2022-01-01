@@ -64,13 +64,13 @@ def home():
         usern = Users.query.filter_by(name=formR.name.data).first()
         if not usere :
             if not usern:
-                new_user=Users(email=formR.email.data,name=formR.name.data,password=generate_password_hash(formR.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=formR.person.data,subjects="")
+                new_user=Users(email=formR.email.data,name=formR.name.data,password=generate_password_hash(formR.password1.data, method="sha256"),beginning=date.today().year,favouritesub="",person=formR.person.data,subjects="",activity="F/F/F/F/F/F/F")
                 db.session.add(new_user)
                 db.session.commit()
                 login_user(new_user)
-                db.session.add(Germany(progress="0/100",user_id=current_user.id,subname="Němčina I"))
-                db.session.add(Informatics(progress="0/100",user_id=current_user.id,subname="Informatika"))
-                db.session.add(Programming(progress="0/100",user_id=current_user.id,subname="Programování"))
+                db.session.add(Germany(progress=0,user_id=current_user.id))
+                db.session.add(Informatics(progress=0,user_id=current_user.id))
+                db.session.add(Programming(progress=0,user_id=current_user.id))
                 db.session.commit()
                 SendMail(formR.email.data, formR.name.data, "Welcome")
                 print("Account was created succesfully, welcome",formR.name.data)
@@ -84,22 +84,12 @@ def home():
 @views.route("/profile",methods=["GET","POST"])
 def profile():
     if current_user.is_authenticated:
-        if current_user.favouritesub.split("/"):
-            x=current_user.favouritesub.split("/")
         if request.method=="POST":
             if request.form["submit_button"]=="save":
                 current_user.notes= request.form.get("note")
-                db.session.commit()
-            elif request.form["submit_button"]=="cancel":
-                pass
-            elif request.form["submit_button"]:
-                if not x[0]:
-                    x[0] = request.form["submit_button"]
-                elif not x[1]:
-                    x[1] =request.form["submit_button"]
-                current_user.favouritesub=x[0]+"/"+x[1]
+                current_user.favouritesub=request.form.get("FS")
             db.session.commit()
-        return render_template("profile.html",user=current_user,subjects={},favouritesub=x)
+        return render_template("profile.html",user=current_user,subjects={},NJ=Germany.query.filter_by(user_id=current_user.id).first(),INF=Informatics.query.filter_by(user_id=current_user.id).first(),PRG=Programming.query.filter_by(user_id=current_user.id).first())
     else:
         return redirect(url_for("views.home"))
 @views.route("/subjects",methods=["GET","POST"])

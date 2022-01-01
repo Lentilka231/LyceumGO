@@ -15,6 +15,7 @@ class Users (db.Model,UserMixin):
     favouritesub =db.Column(db.String(30))
     messages = db.relationship("Messages")
     subjects = db.Column(db.String(50))
+    activity = db.Column(db.String(50))
 
 class Classrooms (db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,18 +41,15 @@ class Messages(db.Model):
 
 class Informatics (db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    progress=db.Column(db.String(10))
+    progress=db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-    subname = db.Column(db.String(15))
 
 class Programming (db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    progress=db.Column(db.String(10))
+    progress=db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-    subname = db.Column(db.String(10))
 
 class Germany (db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    progress=db.Column(db.String(10))
+    progress=db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),unique=True)
-    subname = db.Column(db.String(10))
