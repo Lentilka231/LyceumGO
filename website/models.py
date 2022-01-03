@@ -13,13 +13,15 @@ class Users (db.Model,UserMixin):
     beginning = db.Column(db.Integer)
     favouritesub =db.Column(db.String(30))
     messages = db.relationship("Messages")
-    tests = db.relationship("Tests")
+    Ntests = db.relationship("NTests")
+    INFtests = db.relationship("INFTests")
+    PRGtests = db.relationship("PRGTests")
     Nactivity = db.Column(db.String(50))
     INFactivity = db.Column(db.String(50))
     PRGactivity = db.Column(db.String(50))
-    NlastDayActiv = db.Column(db.Integer)
-    INFlastDayActiv = db.Column(db.Integer)
-    PRGlastDayActiv = db.Column(db.Integer)
+    NLastActivTime = db.Column(db.String(11))
+    INFLastActivTime = db.Column(db.String(11))
+    PRGLastActivTime = db.Column(db.String(11))
     Nprogress= db.Column(db.Integer)
     INFprogress=db.Column(db.Integer)
     PRGprogress=db.Column(db.Integer)
@@ -46,7 +48,17 @@ class Messages(db.Model):
     answer = db.Column(db.String(20))
     question = db.Column(db.String(20))
 
-class Tests (db.Model):
+class NTests (db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    name=db.Column(db.String(50))
+    user_id =db.Column(db.Integer,db.ForeignKey("users.id"))
+    result=db.Column(db.Integer)
+class INFTests (db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    name=db.Column(db.String(50))
+    user_id =db.Column(db.Integer,db.ForeignKey("users.id"))
+    result=db.Column(db.Integer)
+class PRGTests (db.Model):
     id=db.Column(db.Integer,primary_key=True)
     name=db.Column(db.String(50))
     user_id =db.Column(db.Integer,db.ForeignKey("users.id"))

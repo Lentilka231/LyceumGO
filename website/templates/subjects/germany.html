@@ -1646,15 +1646,15 @@
         x=Math.round(NumberForCalculationOfSuccess/Success.length*100)
         document.getElementById("procenta").innerText=x+"%";
         $(".congratulation").show();
-        
+        $.post("/Germany", {
+            submit_button:"ENDOFTEST",
+            nameOfTest: nameOfTest,
+            value:x,
+        });
         CanUseArrows=false;
         CanUseEnter=false;
     }
-    $.post("/Germany", {
-        submit_button:"ENDOFTEST",
-        nameOfTest: NameOfTest,
-        value:90,
-    });
+    
     console.log("hotovo")
     // hlídá, jestli má zobrazit výsledek pro TextInput nebo ne 
     let SubstituteForInputKontrol = new MutationObserver(function(){

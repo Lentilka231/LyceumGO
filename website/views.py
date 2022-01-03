@@ -15,7 +15,6 @@ from validate_email import validate_email
 from .sendmail import *
 
 views = Blueprint("views", __name__)
-
 SUBJECTS = ["Programování","Informatika","Němčina I"]
 def createrandomcode():
     x=""
@@ -76,9 +75,9 @@ def home():
                 Nactivity="F/F/F/F/F/F/F",
                 INFactivity="F/F/F/F/F/F/F",
                 PRGactivity="F/F/F/F/F/F/F",
-                NlastDayActiv=0,
-                INFlastDayActiv=0,
-                PRGlastDayActiv=0,
+                NLastActivTime=datetime.now().strftime("%Y-%m-%d"),
+                INFLastActivTime=datetime.now().strftime("%Y-%m-%d"),
+                PRGLastActivTime=datetime.now().strftime("%Y-%m-%d"),
                 Nprogress=0,
                 INFprogress=0,
                 PRGprogress=0)
@@ -102,12 +101,9 @@ def profile():
                 current_user.notes= request.form.get("note")
                 current_user.favouritesub=request.form.get("FS")
                 db.session.commit()
-        time=datetime.datetime.now()
-        maxday= 366 if IsLeapYear(time.year) else 365
-        x=int(time.strftime("%j"))-current_user.NlastDayActiv
-        if x<0:
-            x=current_user.NlastDayActiv+int(time.strftime("%j"))-maxday
-        print(x)
+        time=datetime.now()
+        y=current_user.NLastActivTime.split("-")
+        x=(date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%j")))-date(int(y[0]),int(y[1]),int(y[2]))).days
         if x>6:
             current_user.Nactivity="F/F/F/F/F/F/F"
         else:
@@ -116,7 +112,7 @@ def profile():
                 del activity[0]
                 activity.append("F")
             current_user.Nactivity="/".join(activity)
-        current_user.NlastDayActiv=int(time.strftime("%j"))
+        current_user.NLastActivTime=time.strftime("%Y-%m-%d")
         db.session.commit()
         return render_template("profile.html",user=current_user,subjects={},NJ=current_user.Nprogress,INF=current_user.INFprogress,PRG=current_user.PRGprogress)
     else:

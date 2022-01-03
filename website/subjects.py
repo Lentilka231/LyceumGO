@@ -3,7 +3,7 @@ from flask_login import login_required,current_user
 from .models import *
 from . import db
 import json
-import datetime
+from datetime import datetime,date
 
 subjects = Blueprint("subjects", __name__)
 def Test(sub,test):
@@ -29,16 +29,9 @@ def Nemcina():
     if current_user.is_authenticated:
         if request.method=="POST":
             if request.form["submit_button"]=="ENDOFTEST":
-                time=datetime.datetime.now()
-                a=2
-                b=365
-                x=int(time.strftime("%j"))-current_user.NlastDayActiv
-                x=a-b
-                if x<0:
-                    maxday= 366 if IsLeapYear(time.year) else 365
-                    x=current_user.NlastDayActiv+int(time.strftime("%j"))-maxday
-                    x=a+b-maxday
-                print(x)
+                time=datetime.now()
+                y=current_user.NLastActivTime.split("-")
+                x=(date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%j")))-date(int(y[0]),int(y[1]),int(y[2]))).days
                 if x>6:
                     current_user.Nactivity="F/F/F/F/F/F/F"
                 else:
@@ -46,10 +39,18 @@ def Nemcina():
                     for i in range(x):
                         del activity[0]
                         activity.append("F")
+                    activity[-1]="T"
                     current_user.Nactivity="/".join(activity)
-                activity[-1]="T"
-                current_user.NlastDayActiv=int(time.strftime("%j"))
-                print(current_user.Nactivity)
+                current_user.NLastActivTime=time.strftime("%Y-%m-%d")
+                Notexists=True
+                for i in range(len(current_user.Ntests)):
+                    x=current_user.Ntests[i]
+                    if x.name==request.form["nameOfTest"]:
+                        if x.result<int(request.form["value"]):
+                            x.result=int(request.form["value"])
+                        Notexists=False
+                if Notexists:
+                    db.session.add(NTests(name=request.form["nameOfTest"],user_id=current_user.id,result=request.form["value"]))
                 db.session.commit()
         with open("website/tests/NJ1.json", encoding="utf-8") as f:
             NJ = json.load(f)
