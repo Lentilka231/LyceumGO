@@ -7,44 +7,46 @@
 {%endblock%}
 {%block content%}
 <div id="flex-container">
-    <div id="Maindiv">
-        <table id="tabulka">
-            <tr class="sMesS">
-                <th style="column-span:3">Messages</th>
-
-            </tr>
-            {%for message in user.messages%}
-                <tr class="sinfo">
-                    <td class='sTil'>{{message.title}} </td>
-                    <td>{{message.message}} </td>
-                    <td id="sDatum">{{message.datum}} </td>
-                    {%if message.question!="none"%}
-                        {%if message.answer!="none"%}
-                        <td>{{message.answer}}</td>
-                        <td>
-                            <form method="POST">
-                                <button value="{{message.id}}-destroy" name="submit_button">✕</button>
-                            </form>
-                        </td>
-                        {%else%}
-                        <td>
-                        <form method="POST" style="margin:auto">
-                            <button value="{{message.id}}-yes" name="submit_button">Yes</button>
-                            <button value="{{message.id}}-no" name="submit_button">No</button>
-                        </form>
-                        </td>
-                        {%endif%}
-                    {%else%}
-                    <td>
-                        <form method="POST">
-                            <button value="{{message.id}}-destroy" name="submit_button">✕</button>
-                        </form>
-                    </td>
-                    {%endif%}
-                </tr>
-            {%endfor%}
-        </table>
-    </div>
+<div id="Maindiv">
+    <div id="PageTitle">Messages</div>
+    <table id="tabulka">
+        <tr class="sMesS">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        {%for message in user.messages%}
+        <tr class="sinfo">
+            <td class='sTil'>{{message.title}} </td>
+            <td>{{message.message}} </td>
+            <td id="sDatum">{{message.datum}} </td>
+            {%if message.question!="none"%}
+                {%if message.answer!="none"%}
+                <td>{{message.answer}}</td>
+                <td>
+                    <form method="POST">
+                        <button value="{{message.id}}-destroy" name="submit_button">✕</button>
+                    </form>
+                </td>
+                {%else%}
+                <td>
+                <form method="POST" style="margin:auto">
+                    <button value="{{message.id}}-yes" name="submit_button">Yes</button>
+                    <button value="{{message.id}}-no" name="submit_button">No</button>
+                </form>
+                </td>
+                {%endif%}
+            {%else%}
+            <td>
+                <form method="POST">
+                    <button value="{{message.id}}-destroy" name="submit_button">✕</button>
+                </form>
+            </td>
+            {%endif%}
+        </tr>
+        {%endfor%}
+    </table>
 </div>
-<script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/notificS.js')}}"></script>
+</div>
 {%endblock%}

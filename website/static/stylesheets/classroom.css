@@ -4,8 +4,6 @@
     width:240px;
     background-color: var(--blue);
     border-radius:20px;
-    margin:auto;
-    margin-top:200px;
     justify-content: center;
 }
 #uciteldiv{
@@ -14,8 +12,6 @@
     width:250px;
     background-color: var(--blue);
     border-radius:20px;
-    margin:auto;
-    margin-top:200px;
     justify-content: center;
 }
 .Inputs{
@@ -32,8 +28,8 @@
 #MainDiv{
     background-color: var(--brighterBlue);
     padding:30px;
-    min-width:1200px;
-    min-height: 700px;
+    width:1000px;
+    height: 550px;
     border-radius: 10px;
     display:flex;
 }

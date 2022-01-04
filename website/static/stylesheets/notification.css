@@ -1,9 +1,8 @@
 #Maindiv{
     background-color: var(--brighterBlue);
     padding:30px;
-    width:80%;
-    height:90%;
-    border: solid rgb(189, 193, 234);
+    width:1000px;
+    height:550px;
     border-radius: 10px;
     position: relative;
 }
@@ -15,17 +14,13 @@ tr.sinfo td{
     text-align: center;
     padding-left: 5px;
     padding-right: 5px;
-    background-color: rgb(189, 203, 234);
     border: solid black 0.5px;
 }
 tr.sinfo:hover td{
     background-color: rgb(99, 179, 250);;
 }
-#tabulka{
-    border-left:rgb(119, 173, 255,0.8) solid;
-    border-top:rgba(119, 173, 255,0.8) solid;
-}
-.sMesS{
-    background-color: rgba(137, 137, 235, 0.5);
-    font-size: 20px;
+
+#PageTitle{
+    font-size: 30px;
+    font-weight: bold;
 }

@@ -6,6 +6,7 @@
 <link href=>
 {%endblock%}
 {%block content%}
+<div id="flex-container">
 {%if not user.classroom%}
     {%if user.person=="s"%}
         <div id="studentdiv">
@@ -35,94 +36,89 @@
         </div>
     {%endif%}
 {%else%}
-<div id="flex-container">
-    <div id="MainDiv">
-        <div id="ClassInfo">   
-            <div id="Name"><b>{{classroom.name}}</b></div>
-            <div id="info">
-                <div class="i">Učitel/ka: {{classroom.teacher}}</div>
-                <div class="i">Založeno: {{classroom.beginning}}</div>
-                {%if user.person=="t"%}<div class="i">Code: {{classroom.code}}</div>{%endif%}
-            </div>
+
+<div id="MainDiv">
+    <div id="ClassInfo">   
+        <div id="Name"><b>{{classroom.name}}</b></div>
+        <div id="info">
+            <div class="i">Učitel/ka: {{classroom.teacher}}</div>
+            <div class="i">Založeno: {{classroom.beginning}}</div>
+            {%if user.person=="t"%}<div class="i">Code: {{classroom.code}}</div>{%endif%}
         </div>
-        <table style="width:100%;">
-            <thead>
-                <tr style="height:50px;background-color: rgb(55, 55, 55);color:var(--theBrightestBlue);border-bottom:1px solid black">
-                    <th style="width:3%">Id</th>
-                    <th style="width:70%">Jméno</th>
-                    <th style="width:90%">Oblíbený předmět</th>
-                    {%if user.person=="t"%}<th style="width:90%"></th>{%endif%}
-                </tr>
-            </thead>
-            <tbody>
-                <form method="POST">
-                {%for i,v in students%}
-                    <tr class="sinfo">
-                        <td>{{i+1}}</td>
-                        <td>{{v.name}}</td>
-                        <td>{{v.favouritesub}}</td>
-                        {%if user.person=="t"%}<td><button value="kickstudent-{{v.id}}" name="submit_button" id="kickstudent">✕</button></td>{%endif%}
-                    </tr>
-                {%endfor%}
-                </form>
-            </tbody>
-        </table>
     </div>
-{%if user.person=="t"%}
-    <div id="CreateSubClass">
-        <div class="Bubak">
+    <table style="width:100%;">
+        <thead>
+            <tr style="height:50px;background-color: rgb(55, 55, 55);color:var(--theBrightestBlue);border-bottom:1px solid black">
+                <th style="width:3%">Id</th>
+                <th style="width:70%">Jméno</th>
+                <th style="width:90%">Oblíbený předmět</th>
+                {%if user.person=="t"%}<th style="width:90%"></th>{%endif%}
+            </tr>
+        </thead>
+        <tbody>
             <form method="POST">
-                <div class="input">
-                    <label>Předmět:</label><br>
-                    <select name="subject">
-                        {%for i in subjects[classroom.grade-1]%}
-                            <option value="{{i}}">{{i}}</option>
-                        {%endfor%}
-                    </select>
-                </div>
-                <div class="input">
-                    <label>Učitel:</label><br>
-                    <select name="teacher">
-                        {%for i in teachers%}
-                            <option  value="{{i.name}}">{{i.name}}</option>
-                        {%endfor%}
-                    </select>
-                </div>
-                <button name="submit_button" value="createsubclass">Vytvoř učebnu</button>
+            {%for i,v in students%}
+                <tr class="sinfo">
+                    <td>{{i+1}}</td>
+                    <td>{{v.name}}</td>
+                    <td>{{v.favouritesub}}</td>
+                    {%if user.person=="t"%}<td><button value="kickstudent-{{v.id}}" name="submit_button" id="kickstudent">✕</button></td>{%endif%}
+                </tr>
+            {%endfor%}
             </form>
-            <div class="BasicButton" id="exit">
-                Zrušit
+        </tbody>
+    </table>
+</div>
+{%if user.person=="t"%}
+<div id="CreateSubClass">
+    <div class="Bubak">
+        <form method="POST">
+            <div class="input">
+                <label>Předmět:</label><br>
+                <select name="subject">
+                    {%for i in subjects[classroom.grade-1]%}
+                        <option value="{{i}}">{{i}}</option>
+                    {%endfor%}
+                </select>
             </div>
+            <div class="input">
+                <label>Učitel:</label><br>
+                <select name="teacher">
+                    {%for i in teachers%}
+                        <option  value="{{i.name}}">{{i.name}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+            <button name="submit_button" value="createsubclass">Vytvoř učebnu</button>
+        </form>
+        <div class="BasicButton" id="exit">
+            Zrušit
         </div>
     </div>
-{%endif%}
-    <script>
-        $(document).ready(function(){
-            for(let i=0;i<4;i++){
-                $("#s"+i).hide();
-            }
-            $("#s0").show();
-            for(let i=1;i<=4;i++){
-                $("#o"+i).click(function(){
-                    for(let i=0;i<4;i++){
-                        $("#s"+i).hide();
-                    }
-                    $("#s"+(i-1)).show();
-                });
-            }   
-            $("#NewClassroom").click(function(){
-                $("#CreateSubClass").show()
-            })
-            $("#exit").click(function(){
-                $("#CreateSubClass").hide()
-            }) 
-        });
-    </script>
 </div>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
-<script type="text/javascript" src="{{url_for('static',filename='javascriptoooooooooooooo/liveChat.js')}}"></script>
-
+{%endif%}
+</div>
+<script>
+    $(document).ready(function(){
+        for(let i=0;i<4;i++){
+            $("#s"+i).hide();
+        }
+        $("#s0").show();
+        for(let i=1;i<=4;i++){
+            $("#o"+i).click(function(){
+                for(let i=0;i<4;i++){
+                    $("#s"+i).hide();
+                }
+                $("#s"+(i-1)).show();
+            });
+        }   
+        $("#NewClassroom").click(function(){
+            $("#CreateSubClass").show()
+        })
+        $("#exit").click(function(){
+            $("#CreateSubClass").hide()
+        }) 
+    });
+</script>
 {%endif%}
 {%endblock%}
