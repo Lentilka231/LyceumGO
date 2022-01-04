@@ -17,6 +17,7 @@ body{
 }
 :root{
   --black: rgb(73, 88, 103);
+  --grey:rgb(55, 55, 55);
   --blue:rgb(87, 115, 153);
   --brighterBlue:rgb(189, 213, 234);
   --theBrightestBlue:rgb(247, 247, 255);

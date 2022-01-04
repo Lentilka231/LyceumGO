@@ -69,34 +69,7 @@
         </tbody>
     </table>
 </div>
-{%if user.person=="t"%}
-<div id="CreateSubClass">
-    <div class="Bubak">
-        <form method="POST">
-            <div class="input">
-                <label>Předmět:</label><br>
-                <select name="subject">
-                    {%for i in subjects[classroom.grade-1]%}
-                        <option value="{{i}}">{{i}}</option>
-                    {%endfor%}
-                </select>
-            </div>
-            <div class="input">
-                <label>Učitel:</label><br>
-                <select name="teacher">
-                    {%for i in teachers%}
-                        <option  value="{{i.name}}">{{i.name}}</option>
-                    {%endfor%}
-                </select>
-            </div>
-            <button name="submit_button" value="createsubclass">Vytvoř učebnu</button>
-        </form>
-        <div class="BasicButton" id="exit">
-            Zrušit
-        </div>
-    </div>
-</div>
-{%endif%}
+
 </div>
 <script>
     $(document).ready(function(){
@@ -112,12 +85,6 @@
                 $("#s"+(i-1)).show();
             });
         }   
-        $("#NewClassroom").click(function(){
-            $("#CreateSubClass").show()
-        })
-        $("#exit").click(function(){
-            $("#CreateSubClass").hide()
-        }) 
     });
 </script>
 {%endif%}

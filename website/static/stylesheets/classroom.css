@@ -28,13 +28,14 @@
 #MainDiv{
     background-color: var(--brighterBlue);
     padding:30px;
-    width:1000px;
-    height: 550px;
+    width:70%;
+    height:90%;
+    min-width: 950px;
+    max-width:1100px;
+    max-height:650px;
     border-radius: 10px;
-    display:flex;
-}
-#ClassInfo{
-    width:30%;
+    display:grid;
+    grid-template-columns:1fr 3fr;
 }
 #Name{
     font-size:70px;
@@ -49,7 +50,6 @@
 }
 .sinfo{
     background-color: rgb(255, 255, 255);
-
 }
 table, th, td {
     border-collapse: collapse;    
@@ -73,26 +73,4 @@ tr:nth-child(odd) {background: rgb(58, 119, 177)}
     border:none;
     background-color:transparent;
     cursor:pointer;
-}
-
-#exit{
-    position: absolute;
-    right:50px;
-    bottom:30px;
-}
-.input{
-    padding:10px;
-}
-#NewClassroom{
-    position: absolute;
-    right:70px;
-    bottom:30px;
-}
-#CreateSubClass{
-    display:none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 }

@@ -15,15 +15,14 @@ from validate_email import validate_email
 from .sendmail import *
 
 views = Blueprint("views", __name__)
-SUBJECTS = ["Programování","Informatika","Němčina I"]
 def createrandomcode():
     x=""
     for i in range(6):
         x+=random.choice(string.ascii_letters)
     return x
-def createmessage(title,message,prijemceid,question):
-    datum=str(datetime.now())[:-11]
-    new_message=Messages(user_name=prijemceid,title=title,message=message,datum=datum,seen=False,answer="none",sender=current_user.id,question=question)
+def createmessage(message,prijemceid,typeM):
+    datum=str(datetime.now())[:-10]
+    new_message=Messages(user_name=prijemceid,message=message,datum=datum,sender=current_user.id,typeM=typeM)
     db.session.add(new_message)
     print("message was created")
     db.session.commit()
@@ -114,13 +113,13 @@ def profile():
             current_user.Nactivity="/".join(activity)
         current_user.NLastActivTime=time.strftime("%Y-%m-%d")
         db.session.commit()
-        return render_template("profile.html",user=current_user,subjects={},NJ=current_user.Nprogress,INF=current_user.INFprogress,PRG=current_user.PRGprogress)
+        return render_template("profile.html",user=current_user,NJ=current_user.Nprogress,INF=current_user.INFprogress,PRG=current_user.PRGprogress)
     else:
         return redirect(url_for("views.home"))
 @views.route("/subjects",methods=["GET","POST"])
 def subjects():
     if current_user.is_authenticated:
-        return render_template("subjects.html",user=current_user,subjects=SUBJECTS)
+        return render_template("subjects.html",user=current_user,)
     else:
         return redirect(url_for("views.home"))
 
@@ -136,7 +135,7 @@ def classroom():
                 classroom=Classrooms.query.filter_by(code=code).first()
                 if classroom:
                     teacher=Users.query.filter_by(name=classroom.teacher).first()
-                    createmessage("Žádost", f"{current_user.name} žádá o připojení do třídy {classroom.name}. Chcete ho příjmout",teacher.id,"anone")
+                    createmessage(f"{current_user.name} žádá o připojení do třídy {classroom.name}. Chcete ho příjmout?",teacher.id,"AnoNe")
                     flash("Žádost byla odeslána")
                 else:
                     flash("Špatný code")
@@ -158,11 +157,11 @@ def classroom():
                 classroom.numofstudents-=1
                 student.classroom=None
                 student.classroomid=None
-                createmessage("Vyhazov", f"Byl jste vyhozen ze třídy {current_user.classroom}",student.id,"none")    
+                createmessage(f"Byl jste vyhozen ze třídy {current_user.classroom}",student.id,"regular")    
         if classroom:
             if classroom.students:
                 students=enumerate(classroom.students)
-        return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers,subjects=SUBJECTS)
+        return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers)
     else:
         return redirect(url_for("views.home"))
 
@@ -178,24 +177,24 @@ def notification():
         if request.method=="POST":
             if request.form["submit_button"]:
                 x=request.form["submit_button"]
+                message=""
                 for mess in current_user.messages:
                     if mess.id==int(x[:x.find("-")]):
                         message=mess
                         break
                 task=x[x.find("-")+1:]
-                message.answer=task
-                message.seen=True
-                classroom = Classrooms.query.filter_by(name=current_user.classroom).first()
-                if task=="yes" and len(classroom.students)<30:
-                    boy=Users.query.filter_by(id=message.sender).first()
-                    boy.classroom=classroom.name
-                    boy.classroomid=classroom.id
-                    classroom.numofstudents+=1
-                    db.session.commit()
-                    createmessage("Odpověď",f"Byl jsi příjmut do třídy {classroom.name}.", message.sender,"none")
-                elif task=="no":
-                    createmessage("Odpověď", f"Byl jsi odmítnut při vstupu do třídy {classroom.name}.", message.sender,"none")
-                elif task=="destroy":
+                if message:
+                    message.answer=task
+                    message.seen=True
+                    classroom = Classrooms.query.filter_by(name=current_user.classroom).first()
+                    if task=="yes" and len(classroom.students)<30:
+                        boy=Users.query.filter_by(id=message.sender).first()
+                        boy.classroom=classroom.name
+                        boy.classroomid=classroom.id
+                        classroom.numofstudents+=1
+                        createmessage(f"Byl jsi příjmut do třídy {classroom.name}.", message.sender,"regular")
+                    elif task=="no":
+                        createmessage(f"Byl jsi odmítnut při vstupu do třídy {classroom.name}.", message.sender,"regular")
                     db.session.delete(message)
                     db.session.commit()
         return render_template("notification.html",user=current_user)

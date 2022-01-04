@@ -41,13 +41,9 @@ class Messages(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     user_name = db.Column(db.Integer,db.ForeignKey("users.id"))
     sender = db.Column(db.Integer)
-    title = db.Column(db.String(100))
     message = db.Column(db.String(10000))
     datum = db.Column(db.String(50))
-    seen = db.Column(db.Boolean)
-    answer = db.Column(db.String(20))
-    question = db.Column(db.String(20))
-
+    typeM =db.Column(db.String(10))
 class NTests (db.Model):
     id=db.Column(db.Integer,primary_key=True)
     name=db.Column(db.String(50))

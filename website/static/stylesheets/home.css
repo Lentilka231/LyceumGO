@@ -118,6 +118,9 @@ transition: left 1s ease;
 .Input{
   font-size: 1.4rem;
 }
+.Input input{
+  width:320px;
+}
 .Inputs{
   margin:20px 0px;
   font-size: 1.5rem;

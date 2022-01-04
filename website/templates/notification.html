@@ -9,44 +9,31 @@
 <div id="flex-container">
 <div id="Maindiv">
     <div id="PageTitle">Messages</div>
-    <table id="tabulka">
-        <tr class="sMesS">
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
+    <div id="tabulka">
+        <div id="head">
+            <span style="width:450px">Info</span>
+            <span style="width:200px">Datum</span>
+            <span style="width:100px">Odpověď</span>
+        </div>
+        <div id="body">
         {%for message in user.messages%}
-        <tr class="sinfo">
-            <td class='sTil'>{{message.title}} </td>
-            <td>{{message.message}} </td>
-            <td id="sDatum">{{message.datum}} </td>
-            {%if message.question!="none"%}
-                {%if message.answer!="none"%}
-                <td>{{message.answer}}</td>
-                <td>
-                    <form method="POST">
-                        <button value="{{message.id}}-destroy" name="submit_button">✕</button>
-                    </form>
-                </td>
+        <div class="mess">
+            <span style="width:450px" class="m">{{message.message}} </span>
+            <span style="width:200px">{{message.datum}} </span>
+            <span style="width:100px">
+            <form method="POST" style="margin:auto">
+                {%if message.typeM=="AnoNe"%}
+                <button type="submit" value="{{message.id}}-yes" name="submit_button" class="button">Yes</button>
+                <button type="submit" value="{{message.id}}-no" name="submit_button" class="button">No</button>
                 {%else%}
-                <td>
-                <form method="POST" style="margin:auto">
-                    <button value="{{message.id}}-yes" name="submit_button">Yes</button>
-                    <button value="{{message.id}}-no" name="submit_button">No</button>
-                </form>
-                </td>
+                <button type="submit" value="{{message.id}}-" name="submit_button" class="button">✕</button>
                 {%endif%}
-            {%else%}
-            <td>
-                <form method="POST">
-                    <button value="{{message.id}}-destroy" name="submit_button">✕</button>
-                </form>
-            </td>
-            {%endif%}
-        </tr>
+            </form>
+            </span>
+        </div>
         {%endfor%}
-    </table>
+        </div>
+    </div>
 </div>
 </div>
 {%endblock%}

@@ -7,30 +7,7 @@
 {%block content%}
 <div id="flex-container">
 <div id="Info">
-    <div id="user">
-        <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
-        <div id="info">
-            <form method="POST">
-            <p style="font-size: 36px;"><b>{{user.name}}</b></p>
-            <p class="information">Email: {{user.email}}</p>
-            {%if user.person=="s"%}
-                <p class="information">Ročník: {{user.grade}}</p>
-            {%else%}
-                <p class="information">Učitel</p>
-            {%endif%}
-            <p class="information">Oblíbený předmět:
-                <select name="FS" id="FS">
-                    {%for i in ["","Němčina","Informatika","Programování"]%}
-                        <option value="{{i}}"{%if user.favouritesub==i %}selected{%endif%}>{{i}}</option>
-                    {%endfor%}
-                </select>
-            </p>
-            {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
-                <textarea maxlength="1000" name="note" class="Inputs" id="ProfileAboutMe">{%if user.notes%}{{user.notes}}{%endif%}</textarea>
-                <button type="submit" name="submit_button"value="save" id="save" class="BasicButton" style="display:none">Uložit</button>
-            </form>
-        </div>
-    </div>
+    <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
     <div id="userstats">
         <div class="statistics">
             Němčina
@@ -57,51 +34,72 @@
             </div>
         </div>
     </div>
-    <script>
-        const a="{{user.Nactivity}}".split("/");
-        const myDate = new Date();
-        const days=["Po","Út","St","Čt","Pá","So","Ne"];
-        function sleep(ms){
-            return new Promise(resolve => setTimeout(resolve,ms))
-        };
-        for(let i=0;i<7;i++){
-            document.getElementById("Naktivita").innerHTML+=`
-            <div class="day">
-                ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
-                <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
-            </div>`;
-            document.getElementById("INFaktivita").innerHTML+=`
-            <div class="day">
-                ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
-                <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
-            </div>`;
-            document.getElementById("PRGaktivita").innerHTML+=`
-            <div class="day">
-                ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
-                <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
-            </div>`;
+    <div id="info">
+        <form method="POST">
+        <p style="font-size: 36px;"><b>{{user.name}}</b></p>
+        <p class="information">Email: {{user.email}}</p>
+        {%if user.person=="s"%}
+            <p class="information">Ročník: {{user.grade}}</p>
+        {%else%}
+            <p class="information">Učitel</p>
+        {%endif%}
+        <p class="information">Oblíbený předmět:
+            <select name="FS" id="FS">
+                {%for i in ["","Němčina","Informatika","Programování"]%}
+                    <option value="{{i}}"{%if user.favouritesub==i %}selected{%endif%}>{{i}}</option>
+                {%endfor%}
+            </select>
+        </p>
+        {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
+            <textarea maxlength="1000" name="note" class="Inputs" id="ProfileAboutMe">{%if user.notes%}{{user.notes}}{%endif%}</textarea>
+            <button type="submit" name="submit_button"value="save" id="save" class="BasicButton" style="display:none">Uložit</button>
+        </form>
+</div>
+</div>
+</div>
+<script>
+const a="{{user.Nactivity}}".split("/");
+const myDate = new Date();
+    const days=["Po","Út","St","Čt","Pá","So","Ne"];
+    function sleep(ms){
+        return new Promise(resolve => setTimeout(resolve,ms))
+    };
+    for(let i=0;i<7;i++){
+        document.getElementById("Naktivita").innerHTML+=`
+        <div class="day">
+            ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+            <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
+        </div>`;
+        document.getElementById("INFaktivita").innerHTML+=`
+        <div class="day">
+            ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+            <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
+        </div>`;
+        document.getElementById("PRGaktivita").innerHTML+=`
+        <div class="day">
+            ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+            <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
+        </div>`;
 
+    }
+    async function aktivita () {
+        for(let i=0;i<7;i++){
+            await sleep(200)
+            document.getElementById("Naktivita").children[i].children[0].style.opacity=1;
+            document.getElementById("INFaktivita").children[i].children[0].style.opacity=1;
+            document.getElementById("PRGaktivita").children[i].children[0].style.opacity=1;
         }
-        async function aktivita () {
-            for(let i=0;i<7;i++){
-                await sleep(200)
-                document.getElementById("Naktivita").children[i].children[0].style.opacity=1;
-                document.getElementById("INFaktivita").children[i].children[0].style.opacity=1;
-                document.getElementById("PRGaktivita").children[i].children[0].style.opacity=1;
-            }
-        }
-        aktivita();
-        document.getElementById("FS").addEventListener("change",function(){
-            document.getElementById("save").style.display="block"
-        })
-        document.getElementById("ProfileAboutMe").addEventListener("change",function (){
-            document.getElementById("save").style.display="block"
-        })
-        document.getElementById("NPlnitko").style.width="{{NJ.progress}}px";
-        document.getElementById("INFPlnitko").style.width="{{INF.progress}}px";
-        document.getElementById("PRGPlnitko").style.width="{{PRG.progress}}px";
-        
-    </script>
-</div>
-</div>
+    }
+    aktivita();
+    document.getElementById("FS").addEventListener("change",function(){
+        document.getElementById("save").style.display="block"
+    })
+    document.getElementById("ProfileAboutMe").addEventListener("change",function (){
+        document.getElementById("save").style.display="block"
+    })
+    document.getElementById("NPlnitko").style.width="{{NJ.progress}}px";
+    document.getElementById("INFPlnitko").style.width="{{INF.progress}}px";
+    document.getElementById("PRGPlnitko").style.width="{{PRG.progress}}px";
+    
+</script>
 {% endblock %}
