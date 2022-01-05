@@ -33,7 +33,6 @@ class Classrooms (db.Model):
     teacher =db.Column(db.String(30))
     numofstudents = db.Column(db.Integer)
     code = db.Column(db.String(6))
-    grade = db.Column(db.Integer)
     beginning = db.Column(db.Integer)
     students = db.relationship("Users")
 

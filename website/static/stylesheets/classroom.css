@@ -54,7 +54,6 @@
 table, th, td {
     border-collapse: collapse;    
     padding:7px;
-    border-right:1px solid black;
 }
 table{
     border:3px solid rgb(55, 55, 55);

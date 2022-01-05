@@ -1,13 +1,21 @@
 {%extends "baselog.html"%}
 {%block title%}Profil{% endblock %}
 {%block head%}
-<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/profile.css')}}">
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/home.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
 {%endblock%}
 {%block content%}
 <div id="flex-container">
 <div id="Info">
-    <img src="{{url_for('static',filename='images/Incognito.png')}}" class="UserImg">
+    <div id="Me">
+        <img src="{{url_for('static',filename='images/Incognito.png')}}" id="UserImg">
+        <p style="font-size: 36px;margin-top:10px;"><b>{{user.name}}</b></p>
+        {%if user.person=="s"%}
+            <p >Student</p>
+        {%else%}
+            <p >Učitel</p>
+        {%endif%}
+    </div>
     <div id="userstats">
         <div class="statistics">
             Němčina
@@ -35,14 +43,9 @@
         </div>
     </div>
     <div id="info">
+
         <form method="POST">
-        <p style="font-size: 36px;"><b>{{user.name}}</b></p>
         <p class="information">Email: {{user.email}}</p>
-        {%if user.person=="s"%}
-            <p class="information">Ročník: {{user.grade}}</p>
-        {%else%}
-            <p class="information">Učitel</p>
-        {%endif%}
         <p class="information">Oblíbený předmět:
             <select name="FS" id="FS">
                 {%for i in ["","Němčina","Informatika","Programování"]%}

@@ -1,0 +1,182 @@
+body{
+  background-color: rgb(26, 26, 26);
+  overflow:hidden ;
+}
+#LyceumGO{
+  position: absolute;
+  top:20%;
+  left:100px;
+  color: var(--red);
+  font-size: 5rem;
+  font-family: 'Fredoka One';
+  margin: 0px 20px;
+  padding: 10px;
+  width:fit-content
+}
+#logreg{
+  position: absolute;
+  top:10%;
+  right:10%;
+  width:400px;
+  height:80%;
+  background-color: rgb(87, 101, 122);
+  padding: 10px;
+  border-radius:10px;
+  border:rgb(150, 162, 185) solid 7px;
+  overflow: hidden;
+}
+.submit{
+  margin-top:40px;
+  font-size: 1.5rem;
+}
+.LR{
+  position:absolute;
+  bottom:0px;
+  font-size: 2rem;
+  width:200px;
+  text-align:center;
+  padding:10px;
+  cursor: pointer;
+}
+#R{
+  right:0px;
+}
+#transmition{
+  box-shadow: inset 0px 0px 5000px 50px rgb(13,13,13);
+  position:fixed;
+  width:100%;
+  height:100%
+}
+#LRbackground{
+position: absolute;
+bottom:0px;
+left:0px;
+width:200px;
+height:50px;
+background-color: rgb(87, 101, 122);
+transition: left 1s ease;
+}
+#Move{
+  position:absolute;
+  display:flex;
+  width:800px;
+  height:calc(100% - 70px);
+  transition: all 1s ease;
+  left:-360px;
+}
+.RegisterDiv, .LoginDiv{
+  width:360px;
+}
+.LoginDiv{
+  margin-left: 20px;  
+}
+.RegisterDiv{
+  transition: overflow-y 0.5s ease;
+}
+.RegisterDiv:hover{
+  overflow-y: auto;
+}
+@keyframes HypnoticColorChanger{
+  0%{
+    box-shadow: 100px 100px 100px 100px  rgb(5,100,255);
+  }
+  10%{
+    box-shadow: 100px 100px 100px 100px  rgb(22, 116, 160);
+  }
+  20%{
+    box-shadow: 100px 100px 100px 100px  rgb(81, 189, 38);
+  }
+  30%{
+    box-shadow: 100px 100px 100px 100px  rgb(173, 204, 32);
+  }
+  40%{
+    box-shadow: 100px 100px 100px 100px  rgb(218, 205, 29);
+  }
+  50%{
+    box-shadow: 100px 100px 100px 100px  rgb(209, 167, 27);
+  }
+  60%{
+    box-shadow: 100px 100px 100px 100px  rgb(219, 144, 30);
+  }
+  70%{
+    box-shadow: 100px 100px 100px 100px  rgb(209, 79, 27);
+  }
+  80%{
+    box-shadow: 100px 100px 100px 100px  rgb(209, 54, 27);
+  }
+  90%{
+    box-shadow: 100px 100px 100px 100px  rgb(111, 25, 190);
+  }
+  100%{
+    box-shadow: 100px 100px 100px 100px  rgb(5,100,255);
+  }
+}
+.Nadpis{
+  font-size: 4rem;
+  margin-bottom: 50px;
+}
+.Input{
+  font-size: 1.4rem;
+}
+.Input input{
+  width:320px;
+}
+.Inputs{
+  margin:20px 0px;
+  font-size: 1.5rem;
+  padding:5px;
+  background-color:rgba(0, 0, 0, 0);
+  color:black;
+  border:none;
+  border-bottom: 1px solid black;
+}
+input:focus{
+  outline:none;
+}
+::placeholder{
+  color:rgba(209, 209, 209, 0.658)
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  box-shadow: none;
+  -webkit-box-shadow:0 0 0 30px rgb(87, 101, 122) inset !important;
+}
+input:-webkit-autofill{
+  -webkit-text-fill-color: black !important;
+}
+#bg{
+  background-color: rgb(150, 162, 185);
+  width:100%;
+  height:50px;
+  position: absolute;
+  bottom:0px;
+  left:0px;
+}
+.h{
+  width:5rem;
+  height:5rem;
+  position: absolute;
+  position: fixed;
+}
+#background{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+#barvitko{
+  width:0px;
+  height:0px;
+  left:-500px;
+  border-radius:50%;
+  position:absolute;
+  animation:HypnoticColorChanger 50s ease infinite
+}
+#LOGO{
+  width:300px;
+  height:300px;
+  position:absolute;
+  bottom: 5%;
+  left:5%;
+}

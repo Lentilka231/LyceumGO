@@ -1,182 +1,159 @@
-body{
-  background-color: rgb(26, 26, 26);
-  overflow:hidden ;
-}
-#LyceumGO{
-  position: absolute;
-  top:20%;
-  left:100px;
-  color: var(--red);
-  font-size: 5rem;
-  font-family: 'Fredoka One';
-  margin: 0px 20px;
-  padding: 10px;
-  width:fit-content
-}
-#logreg{
-  position: absolute;
-  top:10%;
-  right:10%;
-  width:400px;
-  height:80%;
-  background-color: rgb(87, 101, 122);
-  padding: 10px;
-  border-radius:10px;
-  border:rgb(150, 162, 185) solid 7px;
-  overflow: hidden;
-}
-.submit{
-  margin-top:40px;
-  font-size: 1.5rem;
-}
-.LR{
-  position:absolute;
-  bottom:0px;
-  font-size: 2rem;
-  width:200px;
-  text-align:center;
-  padding:10px;
-  cursor: pointer;
-}
-#R{
-  right:0px;
-}
-#transmition{
-  box-shadow: inset 0px 0px 5000px 50px rgb(13,13,13);
-  position:fixed;
-  width:100%;
-  height:100%
-}
-#LRbackground{
-position: absolute;
-bottom:0px;
-left:0px;
-width:200px;
-height:50px;
-background-color: rgb(87, 101, 122);
-transition: left 1s ease;
-}
-#Move{
-  position:absolute;
-  display:flex;
-  width:800px;
-  height:calc(100% - 70px);
-  transition: all 1s ease;
-  left:-360px;
-}
-.RegisterDiv, .LoginDiv{
-  width:360px;
-}
-.LoginDiv{
-  margin-left: 20px;  
-}
-.RegisterDiv{
-  transition: overflow-y 0.5s ease;
-}
-.RegisterDiv:hover{
-  overflow-y: auto;
-}
-@keyframes HypnoticColorChanger{
-  0%{
-    box-shadow: 100px 100px 100px 100px  rgb(5,100,255);
+/*--------profile.html/editprofile.html----------*/
+
+#Info{
+    background-color: var(--brighterBlue);
+    padding:30px;
+    width:70%;
+    height:90%;
+    min-width: 950px;
+    max-width:1100px;
+    max-height:650px;
+    border-radius: 10px;
+    position:relative;
+    display:grid;
+    grid-template-columns:2fr 3fr;
+    grid-template-rows:2fr 1fr;
+    grid-gap:10px;
   }
-  10%{
-    box-shadow: 100px 100px 100px 100px  rgb(22, 116, 160);
-  }
-  20%{
-    box-shadow: 100px 100px 100px 100px  rgb(81, 189, 38);
-  }
-  30%{
-    box-shadow: 100px 100px 100px 100px  rgb(173, 204, 32);
-  }
-  40%{
-    box-shadow: 100px 100px 100px 100px  rgb(218, 205, 29);
-  }
-  50%{
-    box-shadow: 100px 100px 100px 100px  rgb(209, 167, 27);
-  }
-  60%{
-    box-shadow: 100px 100px 100px 100px  rgb(219, 144, 30);
-  }
-  70%{
-    box-shadow: 100px 100px 100px 100px  rgb(209, 79, 27);
-  }
-  80%{
-    box-shadow: 100px 100px 100px 100px  rgb(209, 54, 27);
-  }
-  90%{
-    box-shadow: 100px 100px 100px 100px  rgb(111, 25, 190);
-  }
-  100%{
-    box-shadow: 100px 100px 100px 100px  rgb(5,100,255);
-  }
+#user{
+    width:40%;
+    float:left;
 }
-.Nadpis{
-  font-size: 4rem;
-  margin-bottom: 50px;
+
+
+/*-----------user side-----------*/
+#UserImg{
+    border:3px solid;
+    border-radius:100%;
+    width:200px;
 }
-.Input{
-  font-size: 1.4rem;
+#Me{
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-start;
+    width:calc(100% - 30px);
 }
-.Input input{
-  width:320px;
+
+#info{
+    border-top: 3px solid var(--blue);
+    font-size:20px;
+} 
+#ProfileAboutMe{
+    background-color: var(--theBrightestBlue);
+    border:transparent;
+    border-radius: 5px;
+    width:350px;
+    height:90px;
+    word-break:break-all;
+    margin-top:10px;
+    padding:5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: 'Signika Negative', sans-serif;
 }
-.Inputs{
-  margin:20px 0px;
-  font-size: 1.5rem;
-  padding:5px;
-  background-color:rgba(0, 0, 0, 0);
-  color:black;
-  border:none;
-  border-bottom: 1px solid black;
+#FS{
+    background-color: var(--theBrightestBlue);
+    border: transparent;
+    padding:2px;
+    border-radius:5px;
+    font-size: 20px;
+    cursor:pointer;
 }
-input:focus{
-  outline:none;
+/*-----------userstats side-----------*/
+#userstats{
+    grid-column: 2/3;
+    grid-row:1/3;
+    width:100%;
+    height:100%;
+    border-radius: 10px;
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows:1fr 1fr 1fr;
+    grid-gap:10px;
 }
-::placeholder{
-  color:rgba(209, 209, 209, 0.658)
+.aktivita{
+    position:absolute;
+    width:55%;
+    padding:5px;
+    display:flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    text-align: center;
+    font-size: 16px;    
+    top:15px;
+    right:10px;
 }
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-  box-shadow: none;
-  -webkit-box-shadow:0 0 0 30px rgb(87, 101, 122) inset !important;
+.statistics{
+    position:relative;
+    background-color: var(--black);
+    padding:20px;
+    border-radius: 10px;
+    font-size: 24px;
+    color:var(--theBrightestBlue);
 }
-input:-webkit-autofill{
-  -webkit-text-fill-color: black !important;
+.day{
+    width:30px;
+    height:60px;
+    font-weight: bold;
+    position:relative;
 }
-#bg{
-  background-color: rgb(150, 162, 185);
-  width:100%;
-  height:50px;
-  position: absolute;
-  bottom:0px;
-  left:0px;
+.day img{
+    opacity:0;
+    transition: opacity 1s ease;
+    height:30px;
 }
-.h{
-  width:5rem;
-  height:5rem;
-  position: absolute;
-  position: fixed;
+.day p{
+    position:absolute;
+    left:50%;
+    transform: translate(-50%,0%);
+    bottom:2px
 }
-#background{
-  position:absolute;
-  width:100%;
-  height:100%;
+.progres{
+    margin-top:3%;
+    font-size: 20px;
 }
-#barvitko{
-  width:0px;
-  height:0px;
-  left:-500px;
-  border-radius:50%;
-  position:absolute;
-  animation:HypnoticColorChanger 50s ease infinite
+.ProgresBar{
+    margin-top:10px;
+    width:400px;
+    height:30px;
+    border: 3px solid var(--blue);
+    background-color: var(--blue);
+    border-radius: 10px;
+    overflow: hidden;
 }
-#LOGO{
-  width:300px;
-  height:300px;
-  position:absolute;
-  bottom: 5%;
-  left:5%;
+#NPlnitko,#INFPlnitko,#PRGPlnitko{
+    background-color: var(--theBrightestBlue);
+    height:100%;
+    width:0px;
+    transition: width 3s ease;
+}
+/*-----------editprofile.html-----------*/
+#NotesBubak{
+    background-color: var(--brighterBlue);
+    padding:20px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
+}
+textarea {
+    resize: none;
+}
+.information{
+    margin-top:10px;
+}
+  
+
+::placeholder { /* Firefox, Chrome, Opera */
+    color: black;
+}
+   
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:black;
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:black;
 }

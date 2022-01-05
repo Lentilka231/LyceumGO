@@ -3,7 +3,6 @@
 {%block head%}
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subject.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects/germany.css')}}">
-<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects/germany12.css')}}">
 
 <script src="{{url_for('static',filename='jspdf/node_modules/jspdf/dist/jspdf.umd.min.js')}}"></script>
 <script>const { jsPDF } = window.jspdf;</script>
@@ -1648,7 +1647,6 @@
         CanUseEnter=false;
     }
     
-    console.log("hotovo")
     // hlídá, jestli má zobrazit výsledek pro TextInput nebo ne 
     let SubstituteForInputKontrol = new MutationObserver(function(){
         if (substituteForInput.innerHTML!=""){
@@ -1724,7 +1722,7 @@ const LeftButton =document.getElementById("LeftButton");
 const ButtonAddTask = document.getElementById("newTask");
 const Tasks= document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 const TableQuestions = Array.from(document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].querySelectorAll("tr"));
-const PageSize=450;
+const PageSize=350;
 let CurrentPage = 1;
 let markTask;
 for(let i=0;i<Tasks.length;i++){
@@ -1754,9 +1752,9 @@ function addTask (){
     for(let i=0;i<Page.children.length;i++){h+=Page.children[i].offsetHeight;}
     if(markTask!=""){
         if(markTask.children[2].innerText=="Grammatik"){
-            if(h+80<PageSize){
+            if(h+68<PageSize){
                 let TaskDiv = `
-                <div class='TaskDiv' style="height:86px">
+                <div class='TaskDiv' style="height:68px">
                     <b><div class="TaskName"></div></b>
                     (L:<span class="lesson"></span> <span class="type"></span>)
                     Otázek: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
@@ -1777,8 +1775,8 @@ function addTask (){
                 Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
                     h=0;
                     for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
-                    if(h+11*this.value+20<PageSize){
-                        this.parentElement.style.height=11*this.value+20+"px";
+                    if(h+8*this.value+20<PageSize){
+                        this.parentElement.style.height=8*this.value+20+"px";
                     }
                     else{
                         this.value=this.getAttribute("datavalue");
@@ -1787,9 +1785,9 @@ function addTask (){
                 });
             }
         }
-        else if(h+56<PageSize){
+        else if(h+49.6<PageSize){
             let TaskDiv = `
-            <div class='TaskDiv' style="height:60px">
+            <div class='TaskDiv' style="height:49.6px">
                 <b><span class="TaskName"></span></b> (L:<span class="lesson"></span> <span class="type"></span>)<br>
                 Slovíček: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
                     <option value='8'>8</option>
@@ -1799,7 +1797,7 @@ function addTask (){
                     <option value='24'>24</option>
                     <option value='28'>28</option>
                 </select> 
-                <span>Způsob překladu:</span>
+                <span>Překlad:</span>
                 <select class="TypeOfTranslation">
                     <option value='N>CZ'>N>CZ</option>
                     <option value='CZ>N'>CZ>N</option>
@@ -1814,8 +1812,8 @@ function addTask (){
             Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(e){
                 h=0;
                 for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
-                if(h+5*this.value+20<PageSize){
-                    this.parentElement.style.height=5*this.value+20+"px";
+                if(h+3.7*this.value+20<PageSize){
+                    this.parentElement.style.height=3.7*this.value+20+"px";
                 }
                 else{
                     this.value=this.getAttribute("datavalue");
@@ -1838,12 +1836,14 @@ function downloadPDF(){
     doc.text(document.getElementById("className").innerText,154,20);
     doc.line(10,30,200,30);
     let ukol=1;
-    for(let i=0;i<pages.length;i++){
+    let i=0;
+    do{
         page=pages[i];
         if(i!=0){
             doc.addPage();
         }
         let h=0;
+        
         for(let x=0;x<page.getElementsByClassName("content")[0].children.length;x++){
             Task=page.getElementsByClassName("content")[0].children[x];
             doc.setFontSize(16);
@@ -1857,7 +1857,6 @@ function downloadPDF(){
                 UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
                 for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
                     randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
-                    console.log(TaskQ[1][UnusedQuestions[randomNumber]]);
                     doc.text(y+1+") "+TaskQ[1][UnusedQuestions[randomNumber]]["q"],10,i!=0?(h+15):(40+h));
                     h+=6;
                     UnusedQuestions.splice(randomNumber,1);
@@ -1891,7 +1890,9 @@ function downloadPDF(){
         ukol++;
         h+=5;
     }
-    }
+        i++;
+        doc.text(i.toString(),100,290);
+    }while(i<pages.length)
     doc.save(document.getElementById("nameOfTest").innerText+".pdf");
 }
 

@@ -55,4 +55,4 @@ def Nemcina():
         with open("website/tests/NJ1.json", encoding="utf-8") as f:
             NJ = json.load(f)
         return render_template("subjects/germany.html",user=current_user,NJ1=NJ)
-    return redirect(url_for("views.home"))
+    return redirect(url_for("views.index"))

@@ -41,9 +41,8 @@ class LoginForm(FlaskForm):
     rememberme = BooleanField("Remember me")
     submit = SubmitField("Log In")
 
-@views.route("/home",methods=["GET","POST"])
 @views.route("/",methods=["GET","POST"])
-def home():
+def index():
     if current_user.is_authenticated:
         return redirect(url_for("views.profile"))
     formL = LoginForm()
@@ -85,15 +84,15 @@ def home():
                 login_user(new_user)
                 SendMail(formR.email.data, formR.name.data, "Welcome")
                 print("Account was created succesfully, welcome",formR.name.data)
-                return redirect(url_for("views.home"))
+                return redirect(url_for("views.index"))
             else:
                 flash("Please use different name.")
         else:
             flash("Please use different email.")
     return render_template("index.html", user=current_user,formL=formL,formR=formR)
 
-@views.route("/profile",methods=["GET","POST"])
-def profile():
+@views.route("/home",methods=["GET","POST"])
+def home():
     if current_user.is_authenticated:
         if request.method=="POST":
             if request.form["submit_button"]=="save":
@@ -113,15 +112,15 @@ def profile():
             current_user.Nactivity="/".join(activity)
         current_user.NLastActivTime=time.strftime("%Y-%m-%d")
         db.session.commit()
-        return render_template("profile.html",user=current_user,NJ=current_user.Nprogress,INF=current_user.INFprogress,PRG=current_user.PRGprogress)
+        return render_template("home.html",user=current_user,NJ=current_user.Nprogress,INF=current_user.INFprogress,PRG=current_user.PRGprogress)
     else:
-        return redirect(url_for("views.home"))
+        return redirect(url_for("views.index"))
 @views.route("/subjects",methods=["GET","POST"])
 def subjects():
     if current_user.is_authenticated:
         return render_template("subjects.html",user=current_user,)
     else:
-        return redirect(url_for("views.home"))
+        return redirect(url_for("views.index"))
 
 @views.route("/classroom",methods=["GET","POST"])
 def classroom():
@@ -163,13 +162,13 @@ def classroom():
                 students=enumerate(classroom.students)
         return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers)
     else:
-        return redirect(url_for("views.home"))
+        return redirect(url_for("views.index"))
 
 @views.route("/logout")
 def logout():
     if current_user.is_authenticated:
         logout_user()
-    return redirect(url_for("views.home"))
+    return redirect(url_for("views.index"))
 
 @views.route("/notification",methods=["GET","POST"])
 def notification():
