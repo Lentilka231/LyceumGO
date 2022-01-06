@@ -35,6 +35,7 @@ class Classrooms (db.Model):
     code = db.Column(db.String(6))
     beginning = db.Column(db.Integer)
     students = db.relationship("Users")
+    germanteacher = db.Column(db.String(20))
 
 class Messages(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -43,6 +44,7 @@ class Messages(db.Model):
     message = db.Column(db.String(10000))
     datum = db.Column(db.String(50))
     typeM =db.Column(db.String(10))
+    typeQ =db.Column(db.String(10))
 class NTests (db.Model):
     id=db.Column(db.Integer,primary_key=True)
     name=db.Column(db.String(50))

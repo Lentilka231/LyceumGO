@@ -73,3 +73,24 @@ tr:nth-child(odd) {background: rgb(58, 119, 177)}
     background-color:transparent;
     cursor:pointer;
 }
+#germanTeacherInput{
+    width:220px;
+    padding:3px;
+    font-size:20px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0);
+    border:none;
+    border-radius: 0px;
+    border-bottom:1px solid black ;
+}
+#GermanTeacherSubmit{
+    padding:5px;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+#GermanTeacherSubmit:hover{
+    background: var(--hoverBlue)
+}

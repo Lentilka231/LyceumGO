@@ -25,12 +25,6 @@
         <div id="uciteldiv">
             <form action="" method="POST" style="margin:auto">
                 <input type="text" name="name" placeholder="Enter name" class="Inputs">
-                <select name="grade" class="Inputs">
-                    <option value="g1">Ročník 1</option>
-                    <option value="g2">Ročník 2</option>
-                    <option value="g3">Ročník 3</option>
-                    <option value="g4">Ročník 4</option>
-                </select>
                 <button class="BasicButton" value="createclass" name="submit_button" id="tlacitko">Vytvořit třídu</button> 
             </form>
         </div>
@@ -43,7 +37,15 @@
         <div id="info">
             <div class="i">Učitel/ka: {{classroom.teacher}}</div>
             <div class="i">Založeno: {{classroom.beginning}}</div>
-            {%if user.person=="t"%}<div class="i">Code: {{classroom.code}}</div>{%endif%}
+            {%if user.person=="t"%}
+                <div class="i">Code: {{classroom.code}}</div>
+                <div class="i">Němčina:
+                    <form method="POST"> 
+                    <input id="germanTeacherInput" maxlength="20" name="GermanTeacher" value="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}" placeholder="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}">
+                    <button name="submit_button" value="newTeacher" type="submit" id="GermanTeacherSubmit" style="display:none">Uložit</button>
+                    </form>
+                </div>
+            {%endif%}
         </div>
     </div>
     <table style="width:100%;">
@@ -85,6 +87,9 @@
                 $("#s"+(i-1)).show();
             });
         }   
+    });
+    document.getElementById("germanTeacherInput").addEventListener("change",function(){
+        document.getElementById("GermanTeacherSubmit").style.display="block";
     });
 </script>
 {%endif%}
