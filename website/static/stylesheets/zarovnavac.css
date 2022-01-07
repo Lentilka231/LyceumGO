@@ -4,3 +4,14 @@
     align-items: center;
     height:calc(100% - 80px);
 }
+#Maindiv{
+    background-color: var(--brighterBlue);
+    padding:30px;
+    width:70%;
+    height:90%;
+    min-width: 950px;
+    max-width:1100px;
+    max-height:650px;
+    border-radius: 10px;
+    position: relative;
+}

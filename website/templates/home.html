@@ -54,7 +54,7 @@
             </select>
         </p>
         {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
-            <textarea maxlength="1000" name="note" class="Inputs" id="ProfileAboutMe">{%if user.notes%}{{user.notes}}{%endif%}</textarea>
+            <textarea maxlength="150" name="note" class="Inputs" id="ProfileAboutMe">{%if user.notes%}{{user.notes}}{%endif%}</textarea>
             <button type="submit" name="submit_button"value="save" id="save" class="BasicButton" style="display:none">Uložit</button>
         </form>
 </div>

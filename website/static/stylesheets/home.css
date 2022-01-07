@@ -25,7 +25,7 @@
 #UserImg{
     border:3px solid;
     border-radius:100%;
-    width:200px;
+    width:150px;
 }
 #Me{
     display:flex;
@@ -44,7 +44,7 @@
     border:transparent;
     border-radius: 5px;
     width:350px;
-    height:90px;
+    height:80px;
     word-break:break-all;
     margin-top:10px;
     padding:5px;

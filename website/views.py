@@ -165,7 +165,10 @@ def classroom():
         return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers)
     else:
         return redirect(url_for("views.index"))
-
+@views.route("/classrooms",methods=["GET","POST"])
+def classrooms():
+    x=Classrooms.query.filter_by(germanteacher=current_user.name).all()
+    return render_template("classrooms.html",user=current_user,classrooms=x) 
 @views.route("/logout")
 def logout():
     if current_user.is_authenticated:
@@ -198,8 +201,8 @@ def notification():
                     elif message.typeQ=="InviteToAJob":
                         task=x[x.find("-")+1:]
                         classroom = Classrooms.query.filter_by(name=current_user.classroom).first()
+                        teacher = Users.query.filter_by(id=message.sender).first()
                         if task=="yes":
-                            teacher = Users.query.filter_by(id=message.sender).first()
                             classroom = Classrooms.query.filter_by(name=teacher.classroom).first()
                             classroom.germanteacher=current_user.name
                             createmessage(f"Učitel/ka {teacher.name} příjmul/a práci učitele.", message.sender)
