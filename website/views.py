@@ -167,8 +167,14 @@ def classroom():
         return redirect(url_for("views.index"))
 @views.route("/classrooms",methods=["GET","POST"])
 def classrooms():
+    if request.method=="POST":
+        if request.form["submit_button"]=="changePage" and current_user.person=="t":
+            return 
     x=Classrooms.query.filter_by(germanteacher=current_user.name).all()
     return render_template("classrooms.html",user=current_user,classrooms=x) 
+@views.route("/",methods=["GET","POST"])
+def students():
+    return render_template("students.html",user=current_user)
 @views.route("/logout")
 def logout():
     if current_user.is_authenticated:

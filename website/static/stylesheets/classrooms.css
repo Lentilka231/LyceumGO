@@ -1,0 +1,28 @@
+#Maindiv{
+    display:grid;
+    grid-auto-rows: 250px;
+    grid-template-columns: repeat(4,200px);
+    grid-gap: 30px;
+}
+.class{
+    position: relative;
+    background-color: var(--blue);
+    border-radius: 10px;
+}
+.class:hover{
+    background: radial-gradient(circle, rgba(134,174,228,1) 0%, rgba(87,115,153,1) 100%);
+}
+.name{
+    font-size: 30px;
+    position:absolute;
+    top:30px;
+    left:50%;
+    transform: translate(-50%,0%);
+}
+.PS{
+    font-size:20px;
+    position:absolute;
+    top:70px;
+    left:50%;
+    transform: translate(-50%,0%);
+}

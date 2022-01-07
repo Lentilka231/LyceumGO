@@ -7,9 +7,24 @@
 {%block content%}
 <div id="flex-container">
 <div id="Maindiv">
-<div>
-
+{%for i in classrooms%}
+    <div class="class" onclick="classroomClick('{{i.name}}')">
+        <div class="name">
+            {{i.name}}
+        </div>
+        <div class="PS">
+            (němčina)
+        </div>
+    </div>
+{%endfor%}
 </div>
 </div>
-</div>
+<script>
+    function classroomClick(x){
+        $.post("/classrooms", {
+            submit_button:"changePage",
+            value:x
+        });
+    }
+</script>
 {%endblock%}
