@@ -1,13 +1,24 @@
-#Maindiv{
+#Grid1{
+    width:100%;
+    height:100%;
     display:grid;
     grid-auto-rows: 250px;
     grid-template-columns: repeat(4,200px);
     grid-gap: 30px;
 }
+#Grid2{
+    display:grid;
+    grid-template-columns:1fr 3fr;
+}
 .class{
+    width:100%;
+    height:100%;
     position: relative;
     background-color: var(--blue);
     border-radius: 10px;
+    cursor: pointer;
+    border:none;
+    font-family: 'Signika Negative', sans-serif;
 }
 .class:hover{
     background: radial-gradient(circle, rgba(134,174,228,1) 0%, rgba(87,115,153,1) 100%);
@@ -25,4 +36,78 @@
     top:70px;
     left:50%;
     transform: translate(-50%,0%);
+}
+#AddTest{
+    font-size: 30px;
+    background-color: var(--blue);
+    width:fit-content;
+    border-radius: 10px;
+    padding:5px;
+    cursor:pointer;
+}
+.input{
+    margin-bottom: 20px;
+}
+#saveButton,#exit{
+    position:absolute;
+    bottom:30px;
+    font-size: 20px;
+    background-color: var(--blue);
+    width:fit-content;
+    border-radius: 5px;
+    padding:5px;
+    cursor:pointer;
+    border: none;
+    font-family: 'Signika Negative', sans-serif;
+}
+#exit{
+    right:30px;
+}
+#saveButton{
+    left:30px;
+}
+#bubak{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0,0,0,0.5);
+}
+#zadavac{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:400px;
+    height:400px;
+    background-color: var(--brighterBlue);
+    padding:30px;
+    border-radius: 10px;
+}
+#testSelect,#duration,#date{
+    font-size: 18px;
+    width:150px
+}
+#ScheduledTests{
+    margin-top:20px;
+    width:250px;
+    height:350px;
+    overflow-y: auto;
+}
+.testDiv{
+    position: relative;
+    background-color: var(--blue);
+    padding:10px;
+    min-width:220px;
+    width:fit-content;
+    margin:10px 0px;
+    border-radius: 10px;
+}
+#additionalText{
+    width:340px;
+    height:70px;
+    font-family: 'Signika Negative', sans-serif;
+    resize: none;
 }

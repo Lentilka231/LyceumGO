@@ -67,9 +67,11 @@
             <p class="L" id="L15">Lektion 15</p>
         </div>
     </div>
+    {%if user.person=="t"%}
     <div id="CreateTest" onclick="visibilator('CreateTest')">
         <b>Test erstellen</b>
     </div>
+    {%endif%}
 </div>
 <div class="grid-items third">
     <div class="scrollery">
@@ -748,8 +750,9 @@
                 </tbody>
             </table>
             <div id="newTask" onclick="addTask()">Přidat</div>
+            <div id="saveTest" onclick="saveTest()">Uložit</div>
             <div id="downloadPDF" onclick="downloadPDF()">Stáhnout</div>
-            <div id="canvas">
+            <div id="canvas" class="canvas">
                 <div id="RemovePage" class="CantHover" onclick="DoSmWithPage('R')">-</div>
                 <div id="LeftButton" class="CantHover" onclick="changePage('left')">&lt</div>
                 <div id="PageNumber">1</div>
@@ -1896,6 +1899,14 @@ function downloadPDF(){
     doc.save(document.getElementById("nameOfTest").innerText+".pdf");
 }
 
+function saveTest(){
+    console.log(document.getElementById("canvas").innerHTML)
+    $.post("/Germany", {
+        submit_button:"SAVETEST",
+        name:document.getElementById("nameOfTest").innerText,
+        value:document.getElementById("canvas").innerHTML
+    });
+}
 function sortTableByColumn(table, column, asc = true) {
     const dirModifier = asc ? 1 : -1;
     const tBody = table.tBodies[0];

@@ -8,7 +8,7 @@
 }
 #uciteldiv{
     padding:20px;
-    height:250px;
+    height:150px;
     width:250px;
     background-color: var(--blue);
     border-radius:20px;
@@ -93,4 +93,35 @@ tr:nth-child(odd) {background: rgb(58, 119, 177)}
 }
 #GermanTeacherSubmit:hover{
     background: var(--hoverBlue)
+}
+#ScheduledTests{
+    font-size: 16px;
+    margin-top:20px;
+    width:250px;
+    height:350px;
+    overflow-y: auto;
+}
+.deleteTest{
+    font-size: 14px;
+    position:absolute;
+    top:10px;
+    right:10px;
+    background: none;
+    border:none;
+    cursor:pointer
+}
+.testDiv{
+    position: relative;
+    background-color: var(--blue);
+    padding:10px;
+    min-width:220px;
+    width:fit-content;
+    margin:10px 0px;
+    border-radius: 10px;
+}
+#additionalText{
+    width:340px;
+    height:70px;
+    font-family: 'Signika Negative', sans-serif;
+    resize: none;
 }

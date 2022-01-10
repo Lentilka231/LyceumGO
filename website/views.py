@@ -128,6 +128,16 @@ def classroom():
         classroom=Classrooms.query.filter_by(name=current_user.classroom).first()
         students=[]
         teachers=Users.query.filter_by(person="t").all()
+        tests=classroom.scheduledtests
+        time=datetime.now()
+        minutes2=int(time.strftime("%H"))*60+int(time.strftime("%M"))
+        for i in tests:
+            minutes1=int(i.datum[11:13])*60+int(i.datum[14:])
+            g=date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%d")))-date(int(i.datum[:4]),int(i.datum[5:7]),int(i.datum[8:10]))
+            if g.days>=0 and minutes1<minutes2:
+                i.canstart="T"
+                if i.duration+minutes1<minutes2:
+                    i.canstart="E"
         if request.method=="POST":
             if request.form["submit_button"]=="findclass":
                 code=request.form.get("code")
@@ -159,22 +169,65 @@ def classroom():
                 student.classroom=None
                 student.classroomid=None
                 createmessage(f"Byl jste vyhozen ze třídy {current_user.classroom}",student.id)    
+            elif "testincoming" in request.form["submit_button"]:
+                if current_user.person=="s":
+                    return redirect(url_for("views.test",testid=request.form['submit_button'][12:]))
+        db.session.commit()
         if classroom:
             if classroom.students:
                 students=enumerate(classroom.students)
         return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers)
     else:
         return redirect(url_for("views.index"))
+
 @views.route("/classrooms",methods=["GET","POST"])
 def classrooms():
-    if request.method=="POST":
-        if request.form["submit_button"]=="changePage" and current_user.person=="t":
-            return 
-    x=Classrooms.query.filter_by(germanteacher=current_user.name).all()
-    return render_template("classrooms.html",user=current_user,classrooms=x) 
-@views.route("/",methods=["GET","POST"])
-def students():
-    return render_template("students.html",user=current_user)
+    if current_user.is_authenticated:
+        if request.method=="POST":
+            a=request.form["submit_button"].split("/")
+            classroom=Classrooms.query.filter_by(name=a[1]).first()
+            if classroom.germanteacher==current_user.name:
+                if a[0]=="add":
+                    if request.form.get("duration") and request.form.get("date"):
+                        tests = current_user.tests
+                        test=""
+                        for i in tests:
+                            if i.name==request.form.get("test"):
+                                test=i.id
+                        if test:
+                            newTest=ScheduledTests(
+                                classroom=classroom.id,
+                                duration=request.form.get("duration"),
+                                datum=request.form.get("date"),
+                                testname=request.form.get("test"),
+                                testid=test,
+                                info=request.form.get("info"),
+                                canstart="F")
+                            db.session.add(newTest)
+                            db.session.commit()
+                elif a[0]=="cancel":
+                    scheduledTest =ScheduledTests.query.filter_by(id=a[2]).first() 
+                    if scheduledTest:
+                        db.session.delete(scheduledTest)
+                        db.session.commit()
+            return render_template("classrooms.html",user=current_user,classroom=classroom)
+        x=Classrooms.query.filter_by(germanteacher=current_user.name).all()
+        return render_template("classrooms.html",user=current_user,classrooms=x) 
+    return redirect(url_for("views.index"))
+
+@views.route("/test/<int:testid>",methods=["GET","POST"])
+def test(testid):
+    if current_user.is_authenticated:
+        if current_user.person=="s":
+            IsItYourTest=False
+            for i in Classrooms.query.filter_by(name=current_user.classroom).first().scheduledtests:
+                print()
+                if i.testid==testid and i.canstart=="T":
+                    IsItYourTest=True
+            if IsItYourTest:
+                return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=testid).first())
+        return redirect(url_for("views.classroom"))
+    return redirect(url_for("views.index"))
 @views.route("/logout")
 def logout():
     if current_user.is_authenticated:
@@ -218,4 +271,4 @@ def notification():
                     db.session.commit()
         return render_template("notification.html",user=current_user)
     else:
-        return redirect(url_for("auth.login"))
+        return redirect(url_for("views.index"))

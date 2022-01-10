@@ -2,29 +2,103 @@
 {%block title%}Classrooms{%endblock%}
 {%block head%}
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/classrooms.css')}}">
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/classroom.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
 {%endblock%}
 {%block content%}
 <div id="flex-container">
 <div id="Maindiv">
-{%for i in classrooms%}
-    <div class="class" onclick="classroomClick('{{i.name}}')">
-        <div class="name">
-            {{i.name}}
+    {%if classrooms%}
+    <div id="Grid1">
+        <form method="POST">
+            {%for i in classrooms%}
+            <button type="submit" name="submit_button" value="sub/{{i.name}}" class="class">
+                <div class="name">
+                    {{i.name}}
+                </div>
+                <div class="PS">
+                    (němčina)
+                </div>
+            </button>
+            {%endfor%}
+        </form>
+    </div>
+    {%elif classroom%}
+    <div id="Grid2">
+    <div id="ClassInfo">   
+        <div id="Name"><b>{{classroom.name}}</b></div>
+        <div id="info">
+            <div class="i">Učitel/ka: {{classroom.teacher}}</div>
+            <div class="i">Založeno: {{classroom.beginning}}</div>
         </div>
-        <div class="PS">
-            (němčina)
+        {%if user.name==classroom.germanteacher%}
+        <div id="AddTest" onclick="document.getElementById('bubak').style.display='block'">
+            Zadat test
+        </div>
+        {%endif%}
+        <div id="ScheduledTests">
+            <form method="POST">
+                {%for i in classroom.scheduledtests%}
+                <div class="testDiv">
+                    <b>{{i.testname}}</b><br>
+                    Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
+                    Doba trvání: {{i.duration}} min.<br>
+                    {%if i.info%}
+                    {{i.info}}
+                    {%endif%}
+                    <button class="deleteTest" name="submit_button" value="cancel/{{classroom.name}}/{{i.id}}">✕</button>
+                </div>
+                {%endfor%}
+            </form>
         </div>
     </div>
-{%endfor%}
+    <table style="width:100%;">
+        <thead>
+            <tr style="height:50px;background-color: rgb(55, 55, 55);color:var(--theBrightestBlue);border-bottom:1px solid black">
+                <th style="width:3%">Id</th>
+                <th style="width:70%">Jméno</th>
+                <th style="width:90%">Oblíbený předmět</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i,v in students%}
+            <tr class="sinfo">
+                <td>{{i+1}}</td>
+                <td>{{v.name}}</td>
+                <td>{{v.favouritesub}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    </div>
+
+    <div id="bubak">
+        <div id="zadavac">
+            <form method="POST">
+                <div class="input">
+                    Datum konání:<br>
+                    <input type="datetime-local" name="date" id="date" onclick="console.log(this.value)" style="width:fit-content">
+                </div>
+                <div class="input">
+                    Doba konání (min):<br>
+                    <input type="number" name="duration"id="duration">
+                </div>
+                <div class="input">
+                    Test:<br>
+                    <select name="test" id="testSelect" >
+                        {%for i in user.tests%}
+                        <option value="{{i.name}}">{{i.name}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+                <textarea name="info" id="additionalText" maxlength="100"></textarea>
+                <button type="submit" name="submit_button" value="add/{{classroom.name}}" id="saveButton">Uložit</button>
+                <div id="exit" onclick="document.getElementById('bubak').style.display='none'">Zrušit</div>
+            </form>
+        </div>
+    </div>
+    {%endif%}
 </div>
 </div>
-<script>
-    function classroomClick(x){
-        $.post("/classrooms", {
-            submit_button:"changePage",
-            value:x
-        });
-    }
-</script>
+
 {%endblock%}

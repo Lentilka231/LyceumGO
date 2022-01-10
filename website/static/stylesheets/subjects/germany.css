@@ -214,7 +214,7 @@
 span{
     color:rgb(255, 153, 0);
 }
-#canvas span{
+.canvas span{
     color:black;
 }
 .cara{
@@ -758,7 +758,7 @@ span{
 #reset:hover{
     background: radial-gradient(circle, rgb(250, 99, 99) 0%, rgba(245,37,37,1) 100%);
 }
-#canvas{
+.canvas{
     width:350px;
     height:495px;
     position: absolute;
@@ -861,6 +861,7 @@ span{
     cursor:pointer;
     opacity:0.5;
 }
+
 .newTaskH:hover{
     background: radial-gradient(circle, rgba(102,161,241,1) 0%, rgba(74,126,198,1) 100%);
 }
@@ -874,11 +875,24 @@ span{
 .TaskDiv:hover{
     border:1px solid black
 }
+#saveTest{
+    cursor:pointer;
+    position: absolute;
+    top:350px;
+    left:130px;
+    border-radius: 5px;
+    font-size: 20px;
+    padding:5px;
+    background-color: rgb(116, 116, 116);
+}
+#saveTest:hover{
+    background: radial-gradient(circle, rgba(170,170,170,1) 0%, rgb(124, 123, 123) 100%);
+}
 #downloadPDF{
     cursor:pointer;
     position: absolute;
     top:350px;
-    left:50px;
+    left:20px;
     border-radius: 5px;
     font-size: 20px;
     padding:5px;

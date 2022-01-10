@@ -3,7 +3,6 @@
 {%block head%}
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/classroom.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
-<link href=>
 {%endblock%}
 {%block content%}
 <div id="flex-container">
@@ -39,13 +38,40 @@
             <div class="i">Založeno: {{classroom.beginning}}</div>
             {%if user.person=="t"%}
                 <div class="i">Code: {{classroom.code}}</div>
-                <div class="i">Němčina:
+                <div class="i">Učitel/ka němčiny:
                     <form method="POST"> 
                     <input id="germanTeacherInput" maxlength="20" name="GermanTeacher" value="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}" placeholder="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}">
                     <button name="submit_button" value="newTeacher" type="submit" id="GermanTeacherSubmit" style="display:none">Uložit</button>
                     </form>
                 </div>
             {%endif%}
+            <div id="ScheduledTests">
+                <form method="POST">
+                    {%if user.person=="s"%}
+                        {%for i in classroom.scheduledtests%}
+                        <button class="testDiv" name="submit_button" value="testincoming{{i.id}}">
+                            <b>{{i.testname}}</b><br>
+                            Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
+                            Doba trvání: {{i.duration}} min.<br>
+                            {%if i.info%}
+                            {{i.info}}
+                            {%endif%}
+                        </button>
+                        {%endfor%}
+                    {%else%}
+                        {%for i in classroom.scheduledtests%}
+                        <button class="testDiv" name="submit_button" value="resaults{{i.id}}">
+                            <b>{{i.testname}}</b><br>
+                            Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
+                            Doba trvání: {{i.duration}} min.<br>
+                            {%if i.info%}
+                            {{i.info}}
+                            {%endif%}
+                        </button>
+                        {%endfor%}
+                    {%endif%}
+                </form>
+            </div>
         </div>
     </div>
     <table style="width:100%;">

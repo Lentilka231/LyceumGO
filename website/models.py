@@ -12,6 +12,7 @@ class Users (db.Model,UserMixin):
     notes = db.Column(db.String(150))
     beginning = db.Column(db.Integer)
     favouritesub =db.Column(db.String(30))
+    tests = db.relationship("Tests")
     messages = db.relationship("Messages")
     Ntests = db.relationship("NTests")
     INFtests = db.relationship("INFTests")
@@ -25,7 +26,6 @@ class Users (db.Model,UserMixin):
     Nprogress= db.Column(db.Integer)
     INFprogress=db.Column(db.Integer)
     PRGprogress=db.Column(db.Integer)
-
 class Classrooms (db.Model):
     id = db.Column(db.Integer, primary_key=True)
     active = db.Column(db.Boolean)
@@ -36,7 +36,21 @@ class Classrooms (db.Model):
     beginning = db.Column(db.Integer)
     students = db.relationship("Users")
     germanteacher = db.Column(db.String(20))
-
+    scheduledtests= db.relationship("ScheduledTests")
+class Tests(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    name=db.Column(db.String(20))
+    data=db.Column(db.String(10000))
+    creator=db.Column(db.Integer,db.ForeignKey("users.id"))
+class ScheduledTests(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    classroom=db.Column(db.Integer,db.ForeignKey("classrooms.id"))
+    duration=db.Column(db.Integer)
+    datum=db.Column(db.String(50))
+    testname=db.Column(db.String(20))
+    testid=db.Column(db.Integer)
+    info=db.Column(db.String(100))
+    canstart=db.Column(db.String(1))
 class Messages(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     user_name = db.Column(db.Integer,db.ForeignKey("users.id"))

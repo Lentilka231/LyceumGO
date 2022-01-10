@@ -28,30 +28,35 @@ def Programovani():
 def Nemcina():
     if current_user.is_authenticated:
         if request.method=="POST":
-            if request.form["submit_button"]=="ENDOFTEST":
-                time=datetime.now()
-                y=current_user.NLastActivTime.split("-")
-                x=(date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%j")))-date(int(y[0]),int(y[1]),int(y[2]))).days
-                if x>6:
-                    current_user.Nactivity="F/F/F/F/F/F/F"
-                else:
-                    activity=current_user.Nactivity.split("/")
-                    for i in range(x):
-                        del activity[0]
-                        activity.append("F")
-                    activity[-1]="T"
-                    current_user.Nactivity="/".join(activity)
-                current_user.NLastActivTime=time.strftime("%Y-%m-%d")
-                Notexists=True
-                for i in range(len(current_user.Ntests)):
-                    x=current_user.Ntests[i]
-                    if x.name==request.form["nameOfTest"]:
-                        if x.result<int(request.form["value"]):
-                            x.result=int(request.form["value"])
-                        Notexists=False
-                if Notexists:
-                    db.session.add(NTests(name=request.form["nameOfTest"],user_id=current_user.id,result=request.form["value"]))
-                db.session.commit()
+            if current_user.person=="t":
+                if request.form["submit_button"]=="ENDOFTEST":
+                    time=datetime.now()
+                    y=current_user.NLastActivTime.split("-")
+                    x=(date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%j")))-date(int(y[0]),int(y[1]),int(y[2]))).days
+                    if x>6:
+                        current_user.Nactivity="F/F/F/F/F/F/F"
+                    else:
+                        activity=current_user.Nactivity.split("/")
+                        for i in range(x):
+                            del activity[0]
+                            activity.append("F")
+                        activity[-1]="T"
+                        current_user.Nactivity="/".join(activity)
+                    current_user.NLastActivTime=time.strftime("%Y-%m-%d")
+                    Notexists=True
+                    for i in range(len(current_user.Ntests)):
+                        x=current_user.Ntests[i]
+                        if x.name==request.form["nameOfTest"]:
+                            if x.result<int(request.form["value"]):
+                                x.result=int(request.form["value"])
+                            Notexists=False
+                    if Notexists:
+                        db.session.add(NTests(name=request.form["nameOfTest"],user_id=current_user.id,result=request.form["value"]))
+                    db.session.commit()
+                elif request.form["submit_button"]=="SAVETEST":
+                    newTest = Tests(name=request.form.get("name"),data=request.form.get("value"),creator=current_user.id)
+                    db.session.add(newTest)
+                    db.session.commit()
         with open("website/tests/NJ1.json", encoding="utf-8") as f:
             NJ = json.load(f)
         return render_template("subjects/germany.html",user=current_user,NJ1=NJ)
