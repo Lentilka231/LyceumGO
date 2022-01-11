@@ -1910,16 +1910,17 @@ async function downloadPDF(){
     doc.save(document.getElementById("nameOfTest").innerText+".pdf");
 
 }
-
+function savePDF(){
+    $.post("/Germany", {
+        submit_button:"SAVETEST",
+        name:document.getElementById("TN").innerText,
+        value:document.getElementById("Former").innerHTML
+    });
+}
 function showTest(){
     document.getElementById("clickDisabler2").style.display="block";
     randomPDF()
 
-    // $.post("/Germany", {
-    //     submit_button:"SAVETEST",
-    //     name:document.getElementById("nameOfTest").innerText,
-    //     value:document.getElementById("canvas").innerHTML
-    // });
 }
 function randomPDF(){
     document.getElementById("Former").innerHTML=`
