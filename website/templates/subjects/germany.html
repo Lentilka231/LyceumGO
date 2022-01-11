@@ -750,7 +750,7 @@
                 </tbody>
             </table>
             <div id="newTask" onclick="addTask()">Přidat</div>
-            <div id="saveTest" onclick="saveTest()">Náhled</div>
+            <div id="showTest" onclick="showTest()">Náhled</div>
             <div id="canvas" class="canvas">
                 <div id="RemovePage" class="CantHover" onclick="DoSmWithPage('R')">-</div>
                 <div id="LeftButton" class="CantHover" onclick="changePage('left')">&lt</div>
@@ -1173,7 +1173,11 @@
         </div>
         
     </div>
-    <div id="downloadPDF" onclick="downloadPDF()">Stáhnout</div>
+    <div id="buttonsPDF">
+        <div id="savePDF"  onclick="savePDF()">Uložit</div>
+        <div id="downloadPDF" onclick="downloadPDF()">Stáhnout</div>
+        <div id="exitPDF" style="background-color:#E71212" onclick="exitPDF()">Zrušit</div>
+    </div>
 </div>
 </div>
 <script>
@@ -1907,7 +1911,7 @@ function downloadPDF(){
     doc.save(document.getElementById("nameOfTest").innerText+".pdf");
 }
 
-function saveTest(){
+function showTest(){
     document.getElementById("clickDisabler2").style.display="block";
 
     // $.post("/Germany", {
@@ -1915,6 +1919,9 @@ function saveTest(){
     //     name:document.getElementById("nameOfTest").innerText,
     //     value:document.getElementById("canvas").innerHTML
     // });
+}
+function exitPDF (){
+    document.getElementById("clickDisabler2").style.display="none";
 }
 function sortTableByColumn(table, column, asc = true) {
     const dirModifier = asc ? 1 : -1;

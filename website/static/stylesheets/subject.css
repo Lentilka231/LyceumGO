@@ -1,5 +1,5 @@
 #MainDiv{
-    height:90vh;
+    height:calc(100% - 80px);
     padding:50px;
     display:flex;
     justify-content: center;
