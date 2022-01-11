@@ -750,8 +750,7 @@
                 </tbody>
             </table>
             <div id="newTask" onclick="addTask()">Přidat</div>
-            <div id="saveTest" onclick="saveTest()">Uložit</div>
-            <div id="downloadPDF" onclick="downloadPDF()">Stáhnout</div>
+            <div id="saveTest" onclick="saveTest()">Náhled</div>
             <div id="canvas" class="canvas">
                 <div id="RemovePage" class="CantHover" onclick="DoSmWithPage('R')">-</div>
                 <div id="LeftButton" class="CantHover" onclick="changePage('left')">&lt</div>
@@ -1166,6 +1165,15 @@
         <div class="Teorie x1-3t3"></div>
     </div>
 </div>
+</div>
+<div id="clickDisabler2">
+    <div id="Former">
+        <div id="Navrh">
+    
+        </div>
+        
+    </div>
+    <div id="downloadPDF" onclick="downloadPDF()">Stáhnout</div>
 </div>
 </div>
 <script>
@@ -1900,12 +1908,13 @@ function downloadPDF(){
 }
 
 function saveTest(){
-    console.log(document.getElementById("canvas").innerHTML)
-    $.post("/Germany", {
-        submit_button:"SAVETEST",
-        name:document.getElementById("nameOfTest").innerText,
-        value:document.getElementById("canvas").innerHTML
-    });
+    document.getElementById("clickDisabler2").style.display="block";
+
+    // $.post("/Germany", {
+    //     submit_button:"SAVETEST",
+    //     name:document.getElementById("nameOfTest").innerText,
+    //     value:document.getElementById("canvas").innerHTML
+    // });
 }
 function sortTableByColumn(table, column, asc = true) {
     const dirModifier = asc ? 1 : -1;
@@ -2246,5 +2255,4 @@ let CardsLeft = new MutationObserver(function(){
 CardsLeft.observe(balicekKaretVyber,config);
 
 </script>
-
 {%endblock%}

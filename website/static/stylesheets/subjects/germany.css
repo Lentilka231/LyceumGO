@@ -43,7 +43,8 @@
     width:fit-content;
     border-radius:10px;
 }
-#clickDisabler{
+#clickDisabler,#clickDisabler2{
+    background-color:rgba(0,0,0,0.5);
     position: fixed;
     top:0;
     bottom:0;
@@ -51,6 +52,21 @@
     right:0;
     display:none;
     z-index:3;
+}
+#Navrh{
+    height: calc(297px*3);
+    width:100%;
+    background: white;
+}
+#Former{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    position:relative;
+    width:calc(210px*3);
+    height: 90%;
+    overflow-y: auto;
 }
 .DIVchild{
     margin:10px;
@@ -163,7 +179,7 @@
     height:600px;
     background-color: var(--theBrightestBlue);
     position:absolute;
-    box-shadow: 0 0 0 100vmax rgba(0,0,0,.3);
+    /* box-shadow: 0 0 0 100vmax rgba(0,0,0,.3); */
     padding:30px;
     top:50%;
     left:50%;
@@ -891,8 +907,9 @@ span{
 #downloadPDF{
     cursor:pointer;
     position: absolute;
-    top:350px;
-    left:20px;
+    transform: translate(0%,-50%);
+    top:50%;
+    right:200px;
     border-radius: 5px;
     font-size: 20px;
     padding:5px;
