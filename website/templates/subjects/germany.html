@@ -4,8 +4,11 @@
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subject.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/subjects/germany.css')}}">
 
-<script src="{{url_for('static',filename='jspdf/node_modules/jspdf/dist/jspdf.umd.min.js')}}"></script>
+<!-- <script src="{{url_for('static',filename='jspdf/node_modules/jspdf/dist/jspdf.umd.min.js')}}"></script> -->
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
 <script>const { jsPDF } = window.jspdf;</script>
+<script src="{{url_for('static',filename='node_modules/dompurify/dist/purify.js')}}"></script>
+<script src="{{url_for('static',filename='node_modules/html2canvas/dist/html2canvas.js')}}"></script>
 <script src="{{url_for('static',filename='fonts/Calibri Regular-normal.js')}}"></script>
 <script src="{{url_for('static',filename='fonts/Calibri Bold-bold.js')}}"></script>
 <script src="{{url_for('static',filename='fonts/Cantarell-Regular-normal.js')}}"></script>
@@ -1168,12 +1171,20 @@
 </div>
 <div id="clickDisabler2">
     <div id="Former">
-        <div id="Navrh">
-    
+        <div class="Platno">
+            <div id="ZP">
+                <b><div id="TN" contenteditable="true" spellcheck="false">Test</div></b>
+                <div id="SN" contenteditable="true" spellcheck="false">jméno: </div>
+                <div id="CN" contenteditable="true" spellcheck="false">třída: </div>
+                <div id="DN" contenteditable="true" spellcheck="false">datum: </div>
+                <hr style="position:absolute;top:100px;width:calc(100% - 50px);">
+            </div>
         </div>
-        
     </div>
     <div id="buttonsPDF">
+        <div id="randomPDF"  onclick="randomPDF()">
+            <svg width="32px" height="32px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#000" d="M255.76 44.764c-6.176 0-12.353 1.384-17.137 4.152L85.87 137.276c-9.57 5.536-9.57 14.29 0 19.826l152.753 88.36c9.57 5.536 24.703 5.536 34.272 0l152.753-88.36c9.57-5.535 9.57-14.29 0-19.825l-152.753-88.36c-4.785-2.77-10.96-4.153-17.135-4.153zm.926 82.855a31.953 18.96 0 0 1 22.127 32.362 31.953 18.96 0 1 1-45.188-26.812 31.953 18.96 0 0 1 23.06-5.55zM75.67 173.84c-5.753-.155-9.664 4.336-9.664 12.28v157.696c0 11.052 7.57 24.163 17.14 29.69l146.93 84.848c9.57 5.526 17.14 1.156 17.14-9.895V290.76c0-11.052-7.57-24.16-17.14-29.688l-146.93-84.847c-2.69-1.555-5.225-2.327-7.476-2.387zm360.773.002c-2.25.06-4.783.83-7.474 2.385l-146.935 84.847c-9.57 5.527-17.14 18.638-17.14 29.69v157.7c0 11.05 7.57 15.418 17.14 9.89L428.97 373.51c9.57-5.527 17.137-18.636 17.137-29.688v-157.7c0-7.942-3.91-12.432-9.664-12.278zM89.297 195.77a31.236 18.008 58.094 0 1 33.818 41.183 31.236 18.008 58.094 1 1-45-25.98 31.236 18.008 58.094 0 1 11.182-15.203zm221.52 64.664A18.008 31.236 31.906 0 1 322 275.637a18.008 31.236 31.906 0 1-45 25.98 18.008 31.236 31.906 0 1 33.818-41.183zM145.296 289.1a31.236 18.008 58.094 0 1 33.818 41.183 31.236 18.008 58.094 0 1-45-25.98 31.236 18.008 58.094 0 1 11.182-15.203zm277.523 29.38A18.008 31.236 31.906 0 1 434 333.684a18.008 31.236 31.906 0 1-45 25.98 18.008 31.236 31.906 0 1 33.818-41.184zm-221.52 64.663a31.236 18.008 58.094 0 1 33.817 41.183 31.236 18.008 58.094 1 1-45-25.98 31.236 18.008 58.094 0 1 11.182-15.203z"/></svg>
+        </div>
         <div id="savePDF"  onclick="savePDF()">Uložit</div>
         <div id="downloadPDF" onclick="downloadPDF()">Stáhnout</div>
         <div id="exitPDF" style="background-color:#E71212" onclick="exitPDF()">Zrušit</div>
@@ -1737,7 +1748,7 @@ const LeftButton =document.getElementById("LeftButton");
 const ButtonAddTask = document.getElementById("newTask");
 const Tasks= document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 const TableQuestions = Array.from(document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].querySelectorAll("tr"));
-const PageSize=350;
+const NavrhPlatno = document.getElementsByClassName("Platno");
 let CurrentPage = 1;
 let markTask;
 for(let i=0;i<Tasks.length;i++){
@@ -1767,7 +1778,7 @@ function addTask (){
     for(let i=0;i<Page.children.length;i++){h+=Page.children[i].offsetHeight;}
     if(markTask!=""){
         if(markTask.children[2].innerText=="Grammatik"){
-            if(h+68<PageSize){
+            if(h+68<Page.offsetHeight){
                 let TaskDiv = `
                 <div class='TaskDiv' style="height:68px">
                     <b><div class="TaskName"></div></b>
@@ -1790,7 +1801,7 @@ function addTask (){
                 Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
                     h=0;
                     for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
-                    if(h+8*this.value+20<PageSize){
+                    if(h+8*this.value+20<Page.offsetHeight){
                         this.parentElement.style.height=8*this.value+20+"px";
                     }
                     else{
@@ -1800,7 +1811,7 @@ function addTask (){
                 });
             }
         }
-        else if(h+49.6<PageSize){
+        else if(h+49.6<Page.offsetHeight){
             let TaskDiv = `
             <div class='TaskDiv' style="height:49.6px">
                 <b><span class="TaskName"></span></b> (L:<span class="lesson"></span> <span class="type"></span>)<br>
@@ -1827,7 +1838,7 @@ function addTask (){
             Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(e){
                 h=0;
                 for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
-                if(h+3.7*this.value+20<PageSize){
+                if(h+3.7*this.value+20<Page.offsetHeight){
                     this.parentElement.style.height=3.7*this.value+20+"px";
                 }
                 else{
@@ -1838,17 +1849,20 @@ function addTask (){
         }
     }
 }
-function downloadPDF(){
-    let pages=document.getElementsByClassName("list");
-    const doc = new jsPDF('p','mm',[297, 210]);
+async function downloadPDF(){
+    let pages=document.getElementsByClassName("Platno");
+    const doc = new jsPDF('p','mm','a4');
+    // for (let i=0;i<1;i++){
+    //     await doc.html(NavrhPlatno[i])
+    // }
     doc.setFont("Calibri Bold","bold");
     doc.setFontSize(20);
-    doc.text(document.getElementById("nameOfTest").innerText,10,10);
+    doc.text(document.getElementById("TN").innerText,10,10);
     doc.setFont("Calibri Regular","normal");
     doc.setFontSize(16);
-    doc.text(document.getElementById("studentName").innerText,10,20);
-    doc.text(document.getElementById("datumName").innerText,150,10);
-    doc.text(document.getElementById("className").innerText,154,20);
+    doc.text(document.getElementById("SN").innerText,10,20);
+    doc.text(document.getElementById("DN").innerText,150,10);
+    doc.text(document.getElementById("CN").innerText,154,20);
     doc.line(10,30,200,30);
     let ukol=1;
     let i=0;
@@ -1859,45 +1873,30 @@ function downloadPDF(){
         }
         let h=0;
         
-        for(let x=0;x<page.getElementsByClassName("content")[0].children.length;x++){
-            Task=page.getElementsByClassName("content")[0].children[x];
+        for(let x=0;x<page.getElementsByClassName("ukol").length;x++){
+            Task=page.getElementsByClassName("ukol")[x];
             doc.setFontSize(16);
             doc.setFont("Calibri Bold","bold");
-            if(Task.getElementsByClassName("type")[0].innerText=="Grammatik"){
-                TaskQ =NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText];
-                doc.text(ukol+". "+TaskQ[2],10,i!=0?(h+15):(40+h));
+            if(Task.classList.contains("gram")){
+                doc.text(Task.getElementsByClassName("zadani")[0].innerText,10,i!=0?(h+15):(40+h));
                 h+=5;
                 doc.setFontSize(12);
                 doc.setFont("Calibri Regular","normal");
-                UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
-                for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
-                    randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
-                    doc.text(y+1+") "+TaskQ[1][UnusedQuestions[randomNumber]]["q"],10,i!=0?(h+15):(40+h));
+                ptag=Task.getElementsByClassName("TContent")[0].children;
+                for(let y=0;y<ptag.length;y++){
+                    doc.text(`${ptag[y].innerText}`,10,i!=0?(h+15):(40+h));
                     h+=6;
-                    UnusedQuestions.splice(randomNumber,1);
                 }
             }
             else{
-                TaskQ =Object.values(NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText]);
-                doc.text(ukol+". Übersetzen diese Wörter",10,i!=0?h+15:40+h);
+                doc.text(Task.getElementsByClassName("zadani")[0].innerText,10,i!=0?h+15:40+h);
                 h+=5;
                 doc.setFontSize(12);
-                UnusedQuestions=Array.from({length:TaskQ.length}, (_, i) => Array.from({length:TaskQ[i][1].length}, (_, e) => e));
                 doc.setFont("Calibri Regular","normal");
-
-                for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value/2;y++){
+                slovicka=Task.getElementsByClassName("container")[0].children;
+                for(let y=0;y<slovicka[0].children.length;y++){
                     for(let z=0;z<2;z++){
-                        if(Task.getElementsByClassName("TypeOfTranslation")[0].value=="CZ>N"){
-                            TOT=2;
-                        }else if (Task.getElementsByClassName("TypeOfTranslation")[0].value=="N>CZ"){
-                            TOT=1;
-                        }else{
-                            TOT=z+1;
-                        }
-                        randomNumber1=Math.floor(Math.random()*UnusedQuestions.length);
-                        randomNumber2=Math.floor(Math.random()*UnusedQuestions[randomNumber1].length);
-                        doc.text(TaskQ[randomNumber1][TOT][UnusedQuestions[randomNumber1][randomNumber2]],10+z*90,i!=0?15+h:40+h);
-                        UnusedQuestions[randomNumber1].splice(randomNumber2,1);
+                        doc.text(`${slovicka[z].getElementsByTagName("p")[y].innerText}`,10+z*90,i!=0?15+h:40+h);
                     }
                 h+=6;
             }
@@ -1909,16 +1908,87 @@ function downloadPDF(){
         doc.text(i.toString(),100,290);
     }while(i<pages.length)
     doc.save(document.getElementById("nameOfTest").innerText+".pdf");
+
 }
 
 function showTest(){
     document.getElementById("clickDisabler2").style.display="block";
+    randomPDF()
 
     // $.post("/Germany", {
     //     submit_button:"SAVETEST",
     //     name:document.getElementById("nameOfTest").innerText,
     //     value:document.getElementById("canvas").innerHTML
     // });
+}
+function randomPDF(){
+    document.getElementById("Former").innerHTML=`
+    <div class="Platno">
+        <div id="ZP">
+            <b><div id="TN" contenteditable="true" spellcheck="false">Test</div></b>
+            <div id="SN" contenteditable="true" spellcheck="false">jméno: </div>
+            <div id="CN" contenteditable="true" spellcheck="false">třída: </div>
+            <div id="DN" contenteditable="true" spellcheck="false">datum: </div>
+            <hr style="position:absolute;top:100px;width:calc(100% - 50px);">
+        </div>
+    </div>`;
+    let pages=document.getElementsByClassName("list");
+    document.getElementById("TN").innerText=document.getElementById("nameOfTest").innerText;
+    document.getElementById("SN").innerText=document.getElementById("studentName").innerText;
+    document.getElementById("CN").innerText=document.getElementById("className").innerText;
+    document.getElementById("DN").innerText=document.getElementById("datumName").innerText;
+    let ukol=1;
+    let i=0;
+    do{
+        page=pages[i];
+        if(i!=0){
+            document.getElementById("Former").innerHTML+="<div class='Platno'></div>"
+        }
+        for(let x=0;x<page.getElementsByClassName("content")[0].children.length;x++){
+            Task=page.getElementsByClassName("content")[0].children[x];
+            if(Task.getElementsByClassName("type")[0].innerText=="Grammatik"){
+                TaskQ =NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText];
+                TaskToPlace=`<div class="ukol gram"><div class="zadani"><b>${ukol}. ${TaskQ[2]}</b></div><div class="TContent">`;
+                UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
+                for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
+                    randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+                    TaskToPlace+=`<p>${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
+                    UnusedQuestions.splice(randomNumber,1);
+                }
+                TaskToPlace+="</div>"
+                NavrhPlatno[i].innerHTML+=TaskToPlace
+            }
+            else{
+                TaskQ =Object.values(NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText]);
+                TaskToPlace=`<div class="ukol wort"><div class="zadani"><b>${ukol}. Übersetzen diese Wörter</b></div><div class="container">`;
+                UnusedQuestions=Array.from({length:TaskQ.length}, (_, i) => Array.from({length:TaskQ[i][1].length}, (_, e) => e));
+
+                for(let z=0;z<2;z++){
+                    TaskToPlace+="<div class='pul'>";
+                    for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value/2;y++){
+                        if(Task.getElementsByClassName("TypeOfTranslation")[0].value=="CZ>N"){
+                            TOT=2;
+                        }else if (Task.getElementsByClassName("TypeOfTranslation")[0].value=="N>CZ"){
+                            TOT=1;
+                        }else{
+                            TOT=z+1;
+                        }
+                        randomNumber1=Math.floor(Math.random()*UnusedQuestions.length);
+                        randomNumber2=Math.floor(Math.random()*UnusedQuestions[randomNumber1].length);
+
+                        TaskToPlace+=`<p>${TaskQ[randomNumber1][TOT][UnusedQuestions[randomNumber1][randomNumber2]]}</p>`;
+                        UnusedQuestions[randomNumber1].splice(randomNumber2,1);
+                    }
+                    TaskToPlace+="</div>";
+                }
+                TaskToPlace+="</div></div>"
+                NavrhPlatno[i].innerHTML+=TaskToPlace
+            }
+            ukol++;
+        }
+        NavrhPlatno[i].innerHTML+=`<div class="PageNumber">${i+1}</div>`;
+        i++;
+    }while(i<pages.length)
 }
 function exitPDF (){
     document.getElementById("clickDisabler2").style.display="none";
