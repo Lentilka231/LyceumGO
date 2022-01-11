@@ -53,20 +53,21 @@
     display:none;
     z-index:3;
 }
-#Navrh{
+.Platno{
     height: calc(297px*3);
-    width:100%;
+    width:calc(210px*3);
     background: white;
+    position:relative;
+    margin-bottom: 50px;
 }
 #Former{
     position: absolute;
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
-    position:relative;
-    width:calc(210px*3);
+    width:647px;
     height: 90%;
-    overflow-y: auto;
+    overflow-y:auto;
 }
 .DIVchild{
     margin:10px;
@@ -798,7 +799,6 @@ span{
 }
 #zahlavi{
     height:70px;
-    grid-column: 1/3;
 }
 #PageNumber,#RightButton,#LeftButton,#AddPage,#RemovePage{
     z-index:3;
@@ -905,7 +905,7 @@ span{
 #showTest:hover{
     background: radial-gradient(circle, rgba(170,170,170,1) 0%, rgb(124, 123, 123) 100%);
 }
-#exitPDF,#downloadPDF,#savePDF{
+#exitPDF,#downloadPDF,#savePDF,#randomPDF{
     cursor:pointer;
     width:100px;
     text-align: center;
@@ -914,7 +914,7 @@ span{
     padding:5px;
     background-color: rgb(116, 116, 116);
 }
-#downloadPDF:hover,#savePDF:hover{
+#downloadPDF:hover,#savePDF:hover,#randomPDF:hover{
     background: radial-gradient(circle, rgba(170,170,170,1) 0%, rgb(124, 123, 123) 100%);
 }
 #exitPDF:hover{
@@ -929,12 +929,12 @@ background: -webkit-radial-gradient(circle, hsla(0, 85%, 69%, 1) 0%, hsla(0, 86%
 }
 #buttonsPDF{
     width:150px;
-    height:200px;
+    height:250px;
     background-color:var(--black) ;
     position: absolute;
-    transform: translate(0%,-50%);
+    transform: translate(-50%,-50%);
     top:50%;
-    right:100px;
+    left:calc(50% + 500px);
     display:flex;
     flex-flow:column;
     justify-content:space-around;
@@ -953,4 +953,41 @@ background: -webkit-radial-gradient(circle, hsla(0, 85%, 69%, 1) 0%, hsla(0, 86%
     right:10px;
     top:5px;
     cursor: pointer;
+}
+.Platno{
+    padding:25px;
+}
+#ZP{
+    height:80px;
+}
+#TN,#SN,#CN,#DN{
+    position:absolute;
+    width: fit-content;
+    padding:3px;
+    border:1px solid white;
+}
+#TN{top:25px;left:20px;font-size:20px;}
+#SN{top:65px;left:23px;font-size:16px;}
+#CN{top:65px;right:70px;font-size:16px;}
+#DN{top:30px;right:70px;font-size:16px;}
+.PageNumber{
+    position: absolute;
+    bottom:20px;
+    left:50%;
+    transform: translate(-50%,0%);
+}
+.ukol{
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+.zadani{
+    font-size: 16px;
+}
+.container{
+    display: flex;
+    width:100%;
+}
+.pul{
+    font-size: 15px;
+    width:50%;
 }
