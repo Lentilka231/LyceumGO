@@ -9,7 +9,6 @@ class Users (db.Model,UserMixin):
     classroom = db.Column(db.String(20))
     classroomid = db.Column(db.Integer,db.ForeignKey("classrooms.id"))
     person=db.Column(db.String(1))
-    notes = db.Column(db.String(150))
     beginning = db.Column(db.Integer)
     favouritesub =db.Column(db.String(30))
     tests = db.relationship("Tests")

@@ -4,4 +4,18 @@
     transform: translate(-50%,0%);
     width:1000px;
     padding:30px;
+    margin-top:50px;
+}
+.pulparent{
+    display: flex;
+}
+.zadani{
+    font-size: 18px;
+}
+.task{
+    margin-bottom: 20px;
+
+}
+input{
+    width:100px
 }

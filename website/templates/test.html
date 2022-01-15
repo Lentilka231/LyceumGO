@@ -6,6 +6,37 @@
 {%endblock%}
 {%block content%}
 <div id="Maindiv">
-
+    <form id="Test" method="POST">
+    </form>
 </div>
+<script>
+    const test =document.getElementById("Test"); 
+    const testQ = "{{test.data}}".split(";");
+    for (let i=0;i<testQ.length;i++){
+        Ukol=testQ[i].split("$");
+        u=""
+        if(Ukol[0].includes("Übersetzen diese Wörter")){
+            console.log("trol")
+            u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div><div class="pulparent"><div>`
+            for(let x=1;x<Ukol.length;x++){
+                u+=Ukol[x].split(":")[0]+"<br>";
+            }
+            u+="</div><div style='margin-left:10px'>"  
+            for(let x=1;x<Ukol.length;x++){
+                u+=`<input name='${i+"-"+x}'><br>`;
+            }          
+            u+="</div></div>"  
+
+        }
+        else{
+            u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div>`
+            for(let x=1;x<Ukol.length;x++){
+                u+=Ukol[x].split(":")[0].replace("______",`<input name='${i+"-"+x}'>`)+"<br>";
+            }
+            u+="</div>"
+        }
+        test.innerHTML+=u;
+    }
+    test.innerHTML+="<button name='submit_button' value='Test{{testid}}'>Odeslat</button>";
+</script>
 {%endblock%}

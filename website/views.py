@@ -44,7 +44,7 @@ class LoginForm(FlaskForm):
 @views.route("/",methods=["GET","POST"])
 def index():
     if current_user.is_authenticated:
-        return redirect(url_for("views.home"))
+        return redirect(url_for("views.profile"))
     formL = LoginForm()
     formR = RegisterForm()
            
@@ -53,7 +53,7 @@ def index():
         if user:
             if check_password_hash(user.password, formL.password.data):
                 login_user(user, remember=formL.rememberme.data)
-                return redirect (url_for("views.home"))
+                return redirect (url_for("views.profile"))
             else:
                 flash("Incorrect password, try again.",category="error")
         else:
@@ -91,8 +91,8 @@ def index():
             flash("Please use different email.")
     return render_template("index.html", user=current_user,formL=formL,formR=formR)
 
-@views.route("/home",methods=["GET","POST"])
-def home():
+@views.route("/profile",methods=["GET","POST"])
+def profile():
     if current_user.is_authenticated:
         if request.method=="POST":
             if request.form["submit_button"]=="save":
@@ -112,7 +112,7 @@ def home():
             current_user.Nactivity="/".join(activity)
         current_user.NLastActivTime=time.strftime("%Y-%m-%d")
         db.session.commit()
-        return render_template("home.html",user=current_user,NJ=current_user.Nprogress,INF=current_user.INFprogress,PRG=current_user.PRGprogress)
+        return render_template("profile.html",user=current_user,NJ=current_user.Nprogress,INF=current_user.INFprogress,PRG=current_user.PRGprogress)
     else:
         return redirect(url_for("views.index"))
 @views.route("/subjects",methods=["GET","POST"])
@@ -134,9 +134,9 @@ def classroom():
         for i in tests:
             minutes1=int(i.datum[11:13])*60+int(i.datum[14:])
             g=date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%d")))-date(int(i.datum[:4]),int(i.datum[5:7]),int(i.datum[8:10]))
-            if g.days>=0 and minutes1<minutes2:
+            if g.days>=0 and minutes1<=minutes2:
                 i.canstart="T"
-                if i.duration+minutes1<minutes2:
+                if i.duration+minutes1<=minutes2:
                     i.canstart="E"
         if request.method=="POST":
             if request.form["submit_button"]=="findclass":
@@ -221,11 +221,10 @@ def test(testid):
         if current_user.person=="s":
             IsItYourTest=False
             for i in Classrooms.query.filter_by(name=current_user.classroom).first().scheduledtests:
-                print()
                 if i.testid==testid and i.canstart=="T":
                     IsItYourTest=True
             if IsItYourTest:
-                return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=testid).first())
+                return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=ScheduledTests.query.filter_by(id=testid).first().id).first(),testid=testid)
         return redirect(url_for("views.classroom"))
     return redirect(url_for("views.index"))
 @views.route("/logout")

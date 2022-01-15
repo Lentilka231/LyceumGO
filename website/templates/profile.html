@@ -1,14 +1,13 @@
 {%extends "baselog.html"%}
 {%block title%}Profil{% endblock %}
 {%block head%}
-<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/home.css')}}">
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/profile.css')}}">
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
 {%endblock%}
 {%block content%}
 <div id="flex-container">
 <div id="Info">
     <div id="Me">
-        <img src="{{url_for('static',filename='images/Incognito.png')}}" id="UserImg">
         <p style="font-size: 36px;margin-top:10px;"><b>{{user.name}}</b></p>
         {%if user.person=="s"%}
             <p >Student</p>
@@ -53,8 +52,7 @@
                 {%endfor%}
             </select>
         </p>
-        {%if classroom%}<p class="information">Třída: {{classroom}}</p>{%endif%}
-            <textarea maxlength="150" name="note" class="Inputs" id="ProfileAboutMe">{%if user.notes%}{{user.notes}}{%endif%}</textarea>
+        <p class="information">Třída:{%if classroom%} {{classroom}}{%endif%}</p>
             <button type="submit" name="submit_button"value="save" id="save" class="BasicButton" style="display:none">Uložit</button>
         </form>
 </div>
@@ -95,9 +93,6 @@ const myDate = new Date();
     }
     aktivita();
     document.getElementById("FS").addEventListener("change",function(){
-        document.getElementById("save").style.display="block"
-    })
-    document.getElementById("ProfileAboutMe").addEventListener("change",function (){
         document.getElementById("save").style.display="block"
     })
     document.getElementById("NPlnitko").style.width="{{NJ.progress}}px";

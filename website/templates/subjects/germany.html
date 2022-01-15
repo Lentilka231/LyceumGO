@@ -1911,10 +1911,38 @@ async function downloadPDF(){
 
 }
 function savePDF(){
+    TestToSend="";
+    let i=0;
+    let pages=document.getElementsByClassName("Platno");
+    do{
+        page=pages[i];
+        
+        for(let x=0;x<page.getElementsByClassName("ukol").length;x++){
+            Task=page.getElementsByClassName("ukol")[x];
+            if(Task.classList.contains("gram")){
+                ptag=Task.getElementsByClassName("TContent")[0].children;
+                TestToSend+=`;${Task.getElementsByClassName("zadani")[0].innerText}`;
+                for(let y=0;y<ptag.length;y++){
+                    TestToSend+=`$${ptag[y].innerText}:${ptag[y].getAttribute("value")}`;
+                }
+            }
+            else{
+                TestToSend+=`;${Task.getElementsByClassName("zadani")[0].innerText}`;
+                slovicka=Task.getElementsByClassName("container")[0].children;
+                for(let y=0;y<slovicka[0].children.length;y++){
+                    for(let z=0;z<2;z++){
+                        TestToSend+=`$${slovicka[z].getElementsByTagName("p")[y].innerText}:${slovicka[z].getElementsByTagName("p")[y].getAttribute("value")}`;
+                    }
+                }
+            }
+    }
+        i++;
+    }while(i<pages.length)
+ 
     $.post("/Germany", {
         submit_button:"SAVETEST",
         name:document.getElementById("TN").innerText,
-        value:document.getElementById("Former").innerHTML
+        value:TestToSend.substring(1)
     });
 }
 function showTest(){
@@ -1953,7 +1981,7 @@ function randomPDF(){
                 UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
                 for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
                     randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
-                    TaskToPlace+=`<p>${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
+                    TaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
                     UnusedQuestions.splice(randomNumber,1);
                 }
                 TaskToPlace+="</div>"
@@ -1977,7 +2005,7 @@ function randomPDF(){
                         randomNumber1=Math.floor(Math.random()*UnusedQuestions.length);
                         randomNumber2=Math.floor(Math.random()*UnusedQuestions[randomNumber1].length);
 
-                        TaskToPlace+=`<p>${TaskQ[randomNumber1][TOT][UnusedQuestions[randomNumber1][randomNumber2]]}</p>`;
+                        TaskToPlace+=`<p value="${TaskQ[randomNumber1][TOT==1?2:1][UnusedQuestions[randomNumber1][randomNumber2]]}">${TaskQ[randomNumber1][TOT][UnusedQuestions[randomNumber1][randomNumber2]]} </p>`;
                         UnusedQuestions[randomNumber1].splice(randomNumber2,1);
                     }
                     TaskToPlace+="</div>";
