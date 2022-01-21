@@ -9,6 +9,7 @@ DB_name = "LyceumDB"
 def create_app():
     app= Flask(__name__)
     app.config["SECRET_KEY"]="SecretKey"
+    # app.config["SQLALCHEMY_DATABASE_URI"]="mysql+pymysql://root:pswd123@localhost/lyceumgo"
     app.config["SQLALCHEMY_DATABASE_URI"]="sqlite:///"+DB_name
     db.init_app(app)
 

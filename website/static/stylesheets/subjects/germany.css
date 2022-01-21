@@ -970,6 +970,9 @@ background: -webkit-radial-gradient(circle, hsla(0, 85%, 69%, 1) 0%, hsla(0, 86%
 #SN{top:65px;left:23px;font-size:16px;}
 #CN{top:65px;right:70px;font-size:16px;}
 #DN{top:30px;right:70px;font-size:16px;}
+#TN:hover,#SN:hover,#CN:hover,#DN:hover{
+    background-color: rgba(105, 105, 105, 0.1);
+}
 .PageNumber{
     position: absolute;
     bottom:20px;

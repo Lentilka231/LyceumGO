@@ -44,11 +44,14 @@
                     <button name="submit_button" value="newTeacher" type="submit" id="GermanTeacherSubmit" style="display:none">Uložit</button>
                     </form>
                 </div>
+            {%else%}
+            <div class="i">Učitel/ka němčiny: {%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}</div>
             {%endif%}
             <div id="ScheduledTests">
                 <form method="POST">
                     {%if user.person=="s"%}
-                        {%for i in classroom.scheduledtests%}
+                        {%for v,i in tests%}
+                        {%if CT[v]=="T" %}
                         <button class="testDiv" name="submit_button" value="testincoming{{i.id}}">
                             <b>{{i.testname}}</b><br>
                             Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
@@ -57,6 +60,7 @@
                             {{i.info}}
                             {%endif%}
                         </button>
+                        {%endif%}
                         {%endfor%}
                     {%else%}
                         {%for i in classroom.scheduledtests%}

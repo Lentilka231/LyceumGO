@@ -127,17 +127,8 @@ def classroom():
     if current_user.is_authenticated:
         classroom=Classrooms.query.filter_by(name=current_user.classroom).first()
         students=[]
-        teachers=Users.query.filter_by(person="t").all()
-        tests=classroom.scheduledtests
-        time=datetime.now()
-        minutes2=int(time.strftime("%H"))*60+int(time.strftime("%M"))
-        for i in tests:
-            minutes1=int(i.datum[11:13])*60+int(i.datum[14:])
-            g=date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%d")))-date(int(i.datum[:4]),int(i.datum[5:7]),int(i.datum[8:10]))
-            if g.days>=0 and minutes1<=minutes2:
-                i.canstart="T"
-                if i.duration+minutes1<=minutes2:
-                    i.canstart="E"
+        CTests=[]
+        x=""
         if request.method=="POST":
             if request.form["submit_button"]=="findclass":
                 code=request.form.get("code")
@@ -158,74 +149,140 @@ def classroom():
                     classroom =Classrooms.query.filter_by(name=current_user.classroom).first()
                 else:
                     flash("použij jiné jméno")
-            elif request.form["submit_button"]=="newTeacher":
-                teacher = Users.query.filter_by(name=request.form.get("GermanTeacher")).first()
-                if teacher and current_user.person=="t" and teacher.person=="t":
-                    createmessage(f"Potřebujeme tě jako učitele němčiny pro třidu {classroom.name}", teacher.id,typeM="AnoNe",typeQ="InviteToAJob")                 
-            elif "kickstudent" in request.form["submit_button"]:
-                a=request.form.get("submit_button")
-                student=Users.query.filter_by(id=a[a.find("-")+1:]).first()
-                classroom.numofstudents-=1
-                student.classroom=None
-                student.classroomid=None
-                createmessage(f"Byl jste vyhozen ze třídy {current_user.classroom}",student.id)    
-            elif "testincoming" in request.form["submit_button"]:
-                if current_user.person=="s":
-                    return redirect(url_for("views.test",testid=request.form['submit_button'][12:]))
-        db.session.commit()
         if classroom:
+            x=enumerate(classroom.scheduledtests)
+            tests=classroom.scheduledtests
+            now=datetime.now()
+            for i in tests:
+                start=datetime(int(i.datum[:4]),int(i.datum[5:7]),int(i.datum[8:10]),int(i.datum[11:13]),int(i.datum[14:]))
+                if str(current_user.id) in i.completed.split("/"):
+                    CTests.append("F")
+                else:
+                    CTests.append("T")
+                if (now-start).seconds>0:
+                    i.canstart="T"
+                if (now-start).seconds>i.duration*60:
+                    i.canstart="E"
+            if request.method=="POST":
+                if request.form["submit_button"]=="newTeacher":
+                    teacher = Users.query.filter_by(name=request.form.get("GermanTeacher")).first()
+                    if teacher and current_user.person=="t" and teacher.person=="t":
+                        createmessage(f"Potřebujeme tě jako učitele němčiny pro třidu {classroom.name}", teacher.id,typeM="AnoNe",typeQ="InviteToAJob")                 
+                elif "kickstudent" in request.form["submit_button"]:
+                    a=request.form.get("submit_button")
+                    student=Users.query.filter_by(id=a[a.find("-")+1:]).first()
+                    classroom.numofstudents-=1
+                    student.classroom=None
+                    student.classroomid=None
+                    createmessage(f"Byl jste vyhozen ze třídy {current_user.classroom}",student.id)    
+                elif "testincoming" in request.form["submit_button"]:
+                    if current_user.person=="s":
+                        return redirect(url_for("views.test",scheduledTest=request.form['submit_button'][12:]))
+                elif "resaults" in request.form["submit_button"]:
+                    return redirect(url_for("views.resaults",resaults=request.form["submit_button"][8:]))
+            db.session.commit()
             if classroom.students:
                 students=enumerate(classroom.students)
-        return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers)
+        return render_template("classroom.html",user=current_user,classroom=classroom,students=students,CT=CTests,tests=x)
     else:
         return redirect(url_for("views.index"))
 
 @views.route("/classrooms",methods=["GET","POST"])
 def classrooms():
     if current_user.is_authenticated:
-        if request.method=="POST":
-            a=request.form["submit_button"].split("/")
-            classroom=Classrooms.query.filter_by(name=a[1]).first()
-            if classroom.germanteacher==current_user.name:
-                if a[0]=="add":
-                    if request.form.get("duration") and request.form.get("date"):
-                        tests = current_user.tests
-                        test=""
-                        for i in tests:
-                            if i.name==request.form.get("test"):
-                                test=i.id
-                        if test:
-                            newTest=ScheduledTests(
-                                classroom=classroom.id,
-                                duration=request.form.get("duration"),
-                                datum=request.form.get("date"),
-                                testname=request.form.get("test"),
-                                testid=test,
-                                info=request.form.get("info"),
-                                canstart="F")
-                            db.session.add(newTest)
+        if current_user.person=="t":
+            if request.method=="POST":
+                a=request.form["submit_button"].split("/")
+                classroom=Classrooms.query.filter_by(name=a[1]).first()
+                if classroom.germanteacher==current_user.name:
+                    if a[0]=="add":
+                        if request.form.get("duration") and request.form.get("date"):
+                            tests = current_user.tests
+                            test=""
+                            for i in tests:
+                                if i.name==request.form.get("test"):
+                                    test=i.id
+                            if test:
+                                newTest=Scheduledtests(
+                                    classroom=classroom.id,
+                                    duration=request.form.get("duration"),
+                                    datum=request.form.get("date"),
+                                    testname=request.form.get("test"),
+                                    testid=test,
+                                    info=request.form.get("info"),
+                                    canstart="F",
+                                    completed="/")
+                                db.session.add(newTest)
+                                db.session.commit()
+                    elif a[0]=="cancel":
+                        scheduledTest =Scheduledtests.query.filter_by(id=a[2]).first() 
+                        if scheduledTest:
+                            x = Resaultsfromtests.query.filter_by(scheduledTest=a[2]).all()
+                            for i in x:
+                                db.session.delete(i)
+                            db.session.delete(scheduledTest)
                             db.session.commit()
-                elif a[0]=="cancel":
-                    scheduledTest =ScheduledTests.query.filter_by(id=a[2]).first() 
-                    if scheduledTest:
-                        db.session.delete(scheduledTest)
-                        db.session.commit()
-            return render_template("classrooms.html",user=current_user,classroom=classroom)
-        x=Classrooms.query.filter_by(germanteacher=current_user.name).all()
-        return render_template("classrooms.html",user=current_user,classrooms=x) 
+                return render_template("classrooms.html",user=current_user,classroom=classroom)
+            x=Classrooms.query.filter_by(germanteacher=current_user.name).all()
+            return render_template("classrooms.html",user=current_user,classrooms=x) 
+        return redirect(url_for("views.profile"))
     return redirect(url_for("views.index"))
 
-@views.route("/test/<int:testid>",methods=["GET","POST"])
-def test(testid):
+@views.route("/test/<int:scheduledTest>",methods=["GET","POST"])
+def test(scheduledTest):
     if current_user.is_authenticated:
         if current_user.person=="s":
-            IsItYourTest=False
             for i in Classrooms.query.filter_by(name=current_user.classroom).first().scheduledtests:
-                if i.testid==testid and i.canstart=="T":
-                    IsItYourTest=True
-            if IsItYourTest:
-                return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=ScheduledTests.query.filter_by(id=testid).first().id).first(),testid=testid)
+                if i.id==scheduledTest and i.canstart=="T" and not(current_user.id in i.completed.split("/")):
+                    if request.method=="POST":
+                        x=Scheduledtests.query.filter_by(id=scheduledTest).first()
+                        x.completed+="/"+str(current_user.id)
+                        Test=Tests.query.filter_by(id=x.testid).first().data.split(";")
+                        data=""
+                        for x in range(len(Test)):
+                            z=Test[x].split("$")
+                            for y in range(len(z)):
+                                if y==0:
+                                    data+=f"QQQ{z[y]}"
+                                else:
+                                    if '______' in z[y].split(':')[0]:
+                                        data+=f";{z[y].split(':')[0].replace('______','_'+request.form.get(str(x)+'-'+str(y))+'_')}="
+                                    else:
+                                        data+=f";{z[y].split(':')[0]+' _'+request.form.get(str(x)+'-'+str(y))}_="
+                            data+="$"
+                        db.session.add(Resaultsfromtests(data=data,student=current_user.id,scheduledTest=scheduledTest))
+                        db.session.commit()
+                        return redirect(url_for("views.classroom"))
+                    return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=i.testid).first(),testid=scheduledTest)
         return redirect(url_for("views.classroom"))
+    return redirect(url_for("views.index"))
+@views.route("/resaults/<int:resaults>")
+def resaults(resaults):
+    if current_user.is_authenticated:
+
+        if current_user.person=="t":
+            answers = Resaultsfromtests.query.filter_by(scheduledTest=resaults).all()
+            if answers:
+                x=[]
+                y=[]
+                for z,m in enumerate(answers):
+                    x.append([])
+                    y.append(Users.query.filter_by(id=m.student).first().name)
+                    for v,i in enumerate(m.data.split("$")):
+                        x[z].append([])
+                        for p,k in enumerate(i.split(";")):
+                            x[z][v].append(k.split("="))
+                return render_template("resaults.html",user=current_user,resaults=answers,a=x,s=y)
+        if current_user.person=="s":
+            answers = Resaultsfromtests.query.filter_by(student=current_user.id,scheduledTest=resaults).first()
+            if answers:
+                answers.data.split("$")
+                x=[]
+                for v,i in enumerate(answers):
+                    x.append([])
+                    for k in i.split(";"):
+                        x[v].append(k.split("="))
+                return render_template("resaults.html",user=current_user,resaults=answers,a=x)
     return redirect(url_for("views.index"))
 @views.route("/logout")
 def logout():

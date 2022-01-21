@@ -5,9 +5,11 @@
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
 {%endblock%}
 {%block content%}
-<div id="Maindiv">
-    <form id="Test" method="POST">
-    </form>
+<div id="bg">
+<div id="MainDiv">
+<form id="Test" method="POST">
+</form>
+</div>
 </div>
 <script>
     const test =document.getElementById("Test"); 
@@ -17,16 +19,12 @@
         u=""
         if(Ukol[0].includes("Übersetzen diese Wörter")){
             console.log("trol")
-            u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div><div class="pulparent"><div>`
+            u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div><div class="parent">`
             for(let x=1;x<Ukol.length;x++){
-                u+=Ukol[x].split(":")[0]+"<br>";
+                u+=Ukol[x].split(":")[0];
+                u+=`<input name='${i+"-"+x}'>`;
             }
-            u+="</div><div style='margin-left:10px'>"  
-            for(let x=1;x<Ukol.length;x++){
-                u+=`<input name='${i+"-"+x}'><br>`;
-            }          
             u+="</div></div>"  
-
         }
         else{
             u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div>`
@@ -37,6 +35,41 @@
         }
         test.innerHTML+=u;
     }
-    test.innerHTML+="<button name='submit_button' value='Test{{testid}}'>Odeslat</button>";
+    test.innerHTML+="<button id='submitButton' name='submit_button' value='Test{{testid}}'>Odeslat</button>";
+
+    window.addEventListener( "load", function () {
+        function sendData() {
+            const XHR = new XMLHttpRequest();
+
+            // Bind the FormData object and the form element
+            const FD = new FormData( form );
+
+            // Define what happens on successful data submission
+            XHR.addEventListener( "load", function(event) {
+            alert( event.target.responseText );
+            } );
+
+            // Define what happens in case of error
+            XHR.addEventListener( "error", function( event ) {
+            alert( 'Oops! Something went wrong.' );
+            } );
+
+            // Set up our request
+            XHR.open( "POST", "http://127.0.0.1:5000/" );
+
+            // The data sent is what the user provided in the form
+            XHR.send( FD );
+        }
+
+        // Access the form element...
+        const form = document.getElementById( "submitButton" );
+
+        // ...and take over its submit event.
+        form.addEventListener( "submit", function ( event ) {
+            event.preventDefault();
+
+            sendData();
+        } );
+    } );
 </script>
 {%endblock%}
