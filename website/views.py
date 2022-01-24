@@ -194,6 +194,7 @@ def classrooms():
             if request.method=="POST":
                 a=request.form["submit_button"].split("/")
                 classroom=Classrooms.query.filter_by(name=a[1]).first()
+                students=enumerate(classroom.students)
                 if classroom.germanteacher==current_user.name:
                     if a[0]=="add":
                         if request.form.get("duration") and request.form.get("date"):
@@ -222,7 +223,8 @@ def classrooms():
                                 db.session.delete(i)
                             db.session.delete(scheduledTest)
                             db.session.commit()
-                return render_template("classrooms.html",user=current_user,classroom=classroom)
+                    
+                return render_template("classrooms.html",user=current_user,classroom=classroom,students=students)
             x=Classrooms.query.filter_by(germanteacher=current_user.name).all()
             return render_template("classrooms.html",user=current_user,classrooms=x) 
         return redirect(url_for("views.profile"))
@@ -276,9 +278,8 @@ def resaults(resaults):
         if current_user.person=="s":
             answers = Resaultsfromtests.query.filter_by(student=current_user.id,scheduledTest=resaults).first()
             if answers:
-                answers.data.split("$")
                 x=[]
-                for v,i in enumerate(answers):
+                for v,i in enumerate(answers.data.split("$")):
                     x.append([])
                     for k in i.split(";"):
                         x[v].append(k.split("="))
@@ -319,6 +320,10 @@ def notification():
                         teacher = Users.query.filter_by(id=message.sender).first()
                         if task=="yes":
                             classroom = Classrooms.query.filter_by(name=teacher.classroom).first()
+                            for i in classroom.scheduledtests:
+                                for y in Resaultsfromtests.query.filter_by(scheduledTest=i.id).all():
+                                    db.session.delete(y)
+                                db.session.delete(i)
                             classroom.germanteacher=current_user.name
                             createmessage(f"Učitel/ka {teacher.name} příjmul/a práci učitele.", message.sender)
                         elif task=="no":

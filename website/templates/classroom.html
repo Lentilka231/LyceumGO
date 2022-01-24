@@ -56,6 +56,16 @@
                             <b>{{i.testname}}</b><br>
                             Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
                             Doba trvání: {{i.duration}} min.<br>
+                            {%if i.canstart=="E"%}(Skončilo){%endif%}
+                            {%if i.info%}
+                            {{i.info}}
+                            {%endif%}
+                        </button>
+                        {%elif CT[v]=="F"%}
+                        <button class="testDiv" name="submit_button" value="resaults{{i.id}}">
+                            <b>{{i.testname}}</b><br>
+                            Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
+                            Doba trvání: {{i.duration}} min.<br>
                             {%if i.info%}
                             {{i.info}}
                             {%endif%}
@@ -68,6 +78,7 @@
                             <b>{{i.testname}}</b><br>
                             Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
                             Doba trvání: {{i.duration}} min.<br>
+                            {%if i.canstart=="E"%}(Skončilo){%endif%}
                             {%if i.info%}
                             {{i.info}}
                             {%endif%}

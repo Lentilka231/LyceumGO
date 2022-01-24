@@ -60,12 +60,12 @@ table{
     height:fit-content;
 }
 tr{
+    background-color:white ;
     height:30px;
 }
 tbody td{
     height:30px;
 }
-tr:nth-child(odd) {background: rgb(58, 119, 177)}
 
 #kickstudent{
     text-decoration: none;
@@ -74,6 +74,7 @@ tr:nth-child(odd) {background: rgb(58, 119, 177)}
     cursor:pointer;
 }
 #germanTeacherInput{
+    margin-top: 10px;
     width:220px;
     padding:3px;
     font-size:20px;
@@ -111,6 +112,8 @@ tr:nth-child(odd) {background: rgb(58, 119, 177)}
     cursor:pointer
 }
 .testDiv{
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 16px;
     position: relative;
     background-color: var(--blue);
     padding:10px;
