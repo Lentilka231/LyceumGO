@@ -11,16 +11,17 @@
     <div id="g">
         <div id="ListOfCompleted">
             {%for i in s%}
-                <div class="s">{{i}}</div>
+                <div class="s"onclick="showAnswers('{{i}}')">{{i}}</div>
             {%endfor%}
         </div>
         <div id="Answers">
             {%for y in a%}
-                <div class="a">
+                <div id="{{y[-1]}}" class="a">
                 {%for i in y%}
                     {%for x in i%}
                     {%if x[0][0:3]=="QQQ"%}
                     <b>{{x[0][3:]}}</b><br>
+                    {%elif i==y[-1]%}
                     {%else%}
                     {{x[0]}}<br>
                     {%endif%}
@@ -46,4 +47,13 @@
     </div>
     {%endif%}
 </div></div>
+<script>
+    function showAnswers (name){
+        Array.from(document.getElementsByClassName("a")).forEach(element => {
+            console.log(element)
+            element.style.display="none"
+        });
+        document.getElementById(name).style.display='block'
+    }
+</script>
 {%endblock%}

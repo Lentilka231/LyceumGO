@@ -261,7 +261,6 @@ def test(scheduledTest):
 @views.route("/resaults/<int:resaults>")
 def resaults(resaults):
     if current_user.is_authenticated:
-
         if current_user.person=="t":
             answers = Resaultsfromtests.query.filter_by(scheduledTest=resaults).all()
             if answers:
@@ -269,11 +268,13 @@ def resaults(resaults):
                 y=[]
                 for z,m in enumerate(answers):
                     x.append([])
-                    y.append(Users.query.filter_by(id=m.student).first().name)
+                    name=Users.query.filter_by(id=m.student).first().name
+                    y.append(name)
                     for v,i in enumerate(m.data.split("$")):
                         x[z].append([])
                         for p,k in enumerate(i.split(";")):
                             x[z][v].append(k.split("="))
+                    x[0].append(name)
                 return render_template("resaults.html",user=current_user,resaults=answers,a=x,s=y)
         if current_user.person=="s":
             answers = Resaultsfromtests.query.filter_by(student=current_user.id,scheduledTest=resaults).first()

@@ -22,43 +22,46 @@
             u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div><div class="parent">`
             for(let x=1;x<Ukol.length;x++){
                 u+=Ukol[x].split(":")[0];
-                u+=`<input name='${i+"-"+x}'>`;
+                u+=`<input onchange='if(!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(this.value)){this.style.backgroundColor="red"}else{this.style.backgroundColor="white"}' name='${i+"-"+x}'>`;
             }
             u+="</div></div>"  
         }
         else{
             u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div>`
             for(let x=1;x<Ukol.length;x++){
-                u+=Ukol[x].split(":")[0].replace("______",`<input name='${i+"-"+x}'>`)+"<br>";
+                u+=Ukol[x].split(":")[0].replace("______",`<input onchange='if(!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(this.value)){this.style.backgroundColor="red"}else{this.style.backgroundColor="white"}' name='${i+"-"+x}'>`)+"<br>";
             }
             u+="</div>"
         }
         test.innerHTML+=u;
     }
     test.innerHTML+="<button id='submitButton' name='submit_button' value='Test{{testid}}'>Odeslat</button>";
-
     window.addEventListener( "load", function () {
         function sendData() {
-            const XHR = new XMLHttpRequest();
-
-            // Bind the FormData object and the form element
-            const FD = new FormData( form );
-
-            // Define what happens on successful data submission
-            XHR.addEventListener( "load", function(event) {
-            alert( event.target.responseText );
-            } );
-
-            // Define what happens in case of error
-            XHR.addEventListener( "error", function( event ) {
-            alert( 'Oops! Something went wrong.' );
-            } );
-
-            // Set up our request
-            XHR.open( "POST", "http://127.0.0.1:5000/" );
-
-            // The data sent is what the user provided in the form
-            XHR.send( FD );
+            isOk=true
+            document.getElementsByTagName("input").forEach(element => {if(element.style.backgrounColor=="red"){isOk=false}})
+            if (isOk){
+                const XHR = new XMLHttpRequest();
+    
+                // Bind the FormData object and the form element
+                const FD = new FormData( form );
+    
+                // Define what happens on successful data submission
+                XHR.addEventListener( "load", function(event) {
+                alert( event.target.responseText );
+                } );
+    
+                // Define what happens in case of error
+                XHR.addEventListener( "error", function( event ) {
+                alert( 'Oops! Something went wrong.' );
+                } );
+    
+                // Set up our request
+                XHR.open( "POST", "http://127.0.0.1:5000/" );
+    
+                // The data sent is what the user provided in the form
+                XHR.send( FD );
+            }
         }
 
         // Access the form element...
@@ -71,5 +74,11 @@
             sendData();
         } );
     } );
+    $('form input').keydown(function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
 </script>
 {%endblock%}

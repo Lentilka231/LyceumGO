@@ -40,7 +40,7 @@
                 <div class="i">Code: {{classroom.code}}</div>
                 <div class="i">Učitel/ka němčiny:
                     <form method="POST"> 
-                    <input id="germanTeacherInput" maxlength="20" name="GermanTeacher" value="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}" placeholder="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}">
+                    <input id="germanTeacherInput" onchange="if(/^[a-zA-Z]+$/.test(this.value)){console.log('etwas');document.getElementById('GermanTeacherSubmit').style.display='none';}else{document.getElementById('GermanTeacherSubmit').style.display='block';}" maxlength="20" name="GermanTeacher" value="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}" placeholder="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}">
                     <button name="submit_button" value="newTeacher" type="submit" id="GermanTeacherSubmit" style="display:none">Uložit</button>
                     </form>
                 </div>
@@ -54,7 +54,7 @@
                         {%if CT[v]=="T" %}
                         <button class="testDiv" name="submit_button" value="testincoming{{i.id}}">
                             <b>{{i.testname}}</b><br>
-                            Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
+                            Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
                             Doba trvání: {{i.duration}} min.<br>
                             {%if i.canstart=="E"%}(Skončilo){%endif%}
                             {%if i.info%}
@@ -64,7 +64,7 @@
                         {%elif CT[v]=="F"%}
                         <button class="testDiv" name="submit_button" value="resaults{{i.id}}">
                             <b>{{i.testname}}</b><br>
-                            Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
+                            Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
                             Doba trvání: {{i.duration}} min.<br>
                             {%if i.info%}
                             {{i.info}}
@@ -76,7 +76,7 @@
                         {%for i in classroom.scheduledtests%}
                         <button class="testDiv" name="submit_button" value="resaults{{i.id}}">
                             <b>{{i.testname}}</b><br>
-                            Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
+                            Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
                             Doba trvání: {{i.duration}} min.<br>
                             {%if i.canstart=="E"%}(Skončilo){%endif%}
                             {%if i.info%}
@@ -128,9 +128,12 @@
                 $("#s"+(i-1)).show();
             });
         }   
-    });
-    document.getElementById("germanTeacherInput").addEventListener("change",function(){
-        document.getElementById("GermanTeacherSubmit").style.display="block";
+        $('form input').keydown(function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
     });
 </script>
 {%endif%}
