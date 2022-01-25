@@ -1018,3 +1018,23 @@ background: -webkit-radial-gradient(circle, hsla(0, 85%, 69%, 1) 0%, hsla(0, 86%
     font-size: 15px;
     width:50%;
 }
+#flashedmsg{
+    width:300px;
+    height:fit-content;
+    padding:10px;
+    border: rgb(224, 58, 58) 5px solid;
+    border-radius: 5px;
+    z-index:50;
+    position: absolute;
+    top:5%;
+    left:50%;
+    transform: translate(-50%,0%);
+    background-color: var(--red);
+    display: none;
+  }
+  #exit{
+    position: absolute;
+    right:10px;
+    top:10px;
+    cursor: pointer;
+  }

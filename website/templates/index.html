@@ -46,24 +46,6 @@
                     </div>
                 </form> 
             </div>
-            <div style="position: relative;top:100px">
-                {%with messages = get_flashed_messages(with_categories=true)%}
-                    {% if messages %}
-                        {%for msg in messages %}
-                            flash error:<p style="background-color: rgb(214, 97, 97);">{{msg}}</p>
-                        {%endfor%}
-                    {% endif %}
-                {%endwith%}
-                {% for error in formR.name.errors%}
-                    <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
-                {% endfor%}
-                {% for error in formR.password1.errors%}
-                    <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
-                {% endfor%}
-                {% for error in formR.email.errors%}
-                    <p style="background-color: rgb(214, 97, 97);">{{error}}</p>
-                {% endfor%}
-            </div>
         </div>
         <div class="LoginDiv" style="height:400px">
             <p class="Nadpis"><b>Login</b></p>
@@ -82,13 +64,6 @@
                     </div>
                     {{formL.submit(style="padding:5px",value="Login",class="submit")}}
                 </form> 
-                {%with messages = get_flashed_messages()%}
-                    {% if messages %}
-                        {%for msg in messages %}
-                        <p>{{msg}}</p>
-                        {%endfor%}
-                    {% endif %}
-                {%endwith%}
             </div>
         </div>
     </div>
@@ -97,6 +72,25 @@
     <div class="LR"id="L">Login</div>
     <div class="LR" id="R">Register</div> 
     </div>
+</div>
+<div id="flashedmsg"><div style="width:260px">
+    {%with messages = get_flashed_messages(with_categories=true)%}
+        {% if messages %}
+            {%for msg in messages %}
+                <p>{{msg[1]}}</p>
+            {%endfor%}
+        {% endif %}
+    {%endwith%}
+    {% for error in formR.name.errors%}
+        <p>{{error}}</p>
+    {% endfor%}
+    {% for error in formR.password1.errors%}
+        <p>{{error}}</p>
+    {% endfor%}
+    {% for error in formR.email.errors%}
+        <p>{{error}}</p>
+    {% endfor%}</div>
+    <div id="exit" onclick="document.getElementById('flashedmsg').style.display='none'">✕</div>
 </div>
 <script>
     let LRbackground = document.getElementById("LRbackground");
@@ -131,6 +125,9 @@
         circle.style.top=e.pageY-100+"px";
     }
     document.addEventListener("mousemove",onMouseMove);
+    if (document.getElementById("flashedmsg").innerText.length>41){
+        document.getElementById("flashedmsg").style.display="block"
+    }
 </script>
 </body>
 </html>

@@ -128,3 +128,23 @@ tbody td{
     font-family: 'Signika Negative', sans-serif;
     resize: none;
 }
+#flashedmsg{
+    width:300px;
+    height:fit-content;
+    padding:10px;
+    border: rgb(224, 58, 58) 5px solid;
+    border-radius: 5px;
+    z-index:50;
+    position: absolute;
+    top:5%;
+    left:50%;
+    transform: translate(-50%,0%);
+    background-color: var(--red);
+    display: none;
+  }
+  #exit{
+    position: absolute;
+    right:10px;
+    top:10px;
+    cursor: pointer;
+  }

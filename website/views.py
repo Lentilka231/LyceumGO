@@ -29,7 +29,7 @@ def createmessage(message,prijemceid,typeM="regular",typeQ="regular"):
 def IsLeapYear(year):
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 class RegisterForm(FlaskForm):
-    email = StringField("Email", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,64, message="velikost majliku musí být od 5 do 64 znaků"),validators.Email(message="Zadáváš mi špatný email")])
+    email = StringField("Email", [validators.InputRequired(message="Email potřebuji"),validators.Email(message="Zadáváš mi špatný email")])
     name = StringField("Name", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,20,message="velikost jména musí být od 5 do 20 znaků")])
     password1 = PasswordField("Password1", [validators.InputRequired(message="Heslo potřebuji"), validators.Length(5,24),validators.EqualTo("password2",message="Hesla se musí rovnat")])
     password2 = PasswordField("Password2")
@@ -55,9 +55,9 @@ def index():
                 login_user(user, remember=formL.rememberme.data)
                 return redirect (url_for("views.profile"))
             else:
-                flash("Incorrect password, try again.",category="error")
+                flash("Špatné heslo")
         else:
-            flash("Email does not exist.",category="error")
+            flash("Email neexistuje")
     if formR.validate_on_submit():
         usere = Users.query.filter_by(email=formR.email.data).first()
         usern = Users.query.filter_by(name=formR.name.data).first()
@@ -86,9 +86,9 @@ def index():
                 print("Account was created succesfully, welcome",formR.name.data)
                 return redirect(url_for("views.index"))
             else:
-                flash("Please use different name.")
+                flash("Prosím použí jiné jméno")
         else:
-            flash("Please use different email.")
+            flash("Prosím použí jíný email")
     return render_template("index.html", user=current_user,formL=formL,formR=formR)
 
 @views.route("/profile",methods=["GET","POST"])
@@ -148,7 +148,7 @@ def classroom():
                     db.session.commit()
                     classroom =Classrooms.query.filter_by(name=current_user.classroom).first()
                 else:
-                    flash("použij jiné jméno")
+                    flash("Prosím použí jiné jméno")
         if classroom:
             x=enumerate(classroom.scheduledtests)
             tests=classroom.scheduledtests
