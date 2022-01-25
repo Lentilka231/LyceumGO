@@ -128,16 +128,6 @@ def classroom():
         classroom=Classrooms.query.filter_by(name=current_user.classroom).first()
         students=[]
         teachers=Users.query.filter_by(person="t").all()
-        tests=classroom.scheduledtests
-        time=datetime.now()
-        minutes2=int(time.strftime("%H"))*60+int(time.strftime("%M"))
-        for i in tests:
-            minutes1=int(i.datum[11:13])*60+int(i.datum[14:])
-            g=date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%d")))-date(int(i.datum[:4]),int(i.datum[5:7]),int(i.datum[8:10]))
-            if g.days>=0 and minutes1<minutes2:
-                i.canstart="T"
-                if i.duration+minutes1<minutes2:
-                    i.canstart="E"
         if request.method=="POST":
             if request.form["submit_button"]=="findclass":
                 code=request.form.get("code")
@@ -158,24 +148,36 @@ def classroom():
                     classroom =Classrooms.query.filter_by(name=current_user.classroom).first()
                 else:
                     flash("použij jiné jméno")
-            elif request.form["submit_button"]=="newTeacher":
-                teacher = Users.query.filter_by(name=request.form.get("GermanTeacher")).first()
-                if teacher and current_user.person=="t" and teacher.person=="t":
-                    createmessage(f"Potřebujeme tě jako učitele němčiny pro třidu {classroom.name}", teacher.id,typeM="AnoNe",typeQ="InviteToAJob")                 
-            elif "kickstudent" in request.form["submit_button"]:
-                a=request.form.get("submit_button")
-                student=Users.query.filter_by(id=a[a.find("-")+1:]).first()
-                classroom.numofstudents-=1
-                student.classroom=None
-                student.classroomid=None
-                createmessage(f"Byl jste vyhozen ze třídy {current_user.classroom}",student.id)    
-            elif "testincoming" in request.form["submit_button"]:
-                if current_user.person=="s":
-                    return redirect(url_for("views.test",testid=request.form['submit_button'][12:]))
-        db.session.commit()
         if classroom:
-            if classroom.students:
-                students=enumerate(classroom.students)
+            tests=classroom.scheduledtests
+            time=datetime.now()
+            minutes2=int(time.strftime("%H"))*60+int(time.strftime("%M"))
+            for i in tests:
+                minutes1=int(i.datum[11:13])*60+int(i.datum[14:])
+                g=date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%d")))-date(int(i.datum[:4]),int(i.datum[5:7]),int(i.datum[8:10]))
+                if g.days>=0 and minutes1<minutes2:
+                    i.canstart="T"
+                    if i.duration+minutes1<minutes2:
+                        i.canstart="E"
+            if request.method=="POST":
+                if request.form["submit_button"]=="newTeacher":
+                    teacher = Users.query.filter_by(name=request.form.get("GermanTeacher")).first()
+                    if teacher and current_user.person=="t" and teacher.person=="t":
+                        createmessage(f"Potřebujeme tě jako učitele němčiny pro třidu {classroom.name}", teacher.id,typeM="AnoNe",typeQ="InviteToAJob")                 
+                elif "kickstudent" in request.form["submit_button"]:
+                    a=request.form.get("submit_button")
+                    student=Users.query.filter_by(id=a[a.find("-")+1:]).first()
+                    classroom.numofstudents-=1
+                    student.classroom=None
+                    student.classroomid=None
+                    createmessage(f"Byl jste vyhozen ze třídy {current_user.classroom}",student.id)    
+                elif "testincoming" in request.form["submit_button"]:
+                    if current_user.person=="s":
+                        return redirect(url_for("views.test",testid=request.form['submit_button'][12:]))
+            db.session.commit()
+            if classroom:
+                if classroom.students:
+                    students=enumerate(classroom.students)
         return render_template("classroom.html",user=current_user,classroom=classroom,students=students,teachers=teachers)
     else:
         return redirect(url_for("views.index"))
