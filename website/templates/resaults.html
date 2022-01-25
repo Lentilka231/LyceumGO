@@ -1,0 +1,59 @@
+{%extends "baselog.html"%}
+{%block title%}Výsledky{% endblock %}
+{%block head%}
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/resaults.css')}}">
+<link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
+{%endblock%}
+{%block content%}
+<div id="bg">
+<div id="MainDiv">
+    {%if user.person=="t"%}
+    <div id="g">
+        <div id="ListOfCompleted">
+            {%for i in s%}
+                <div class="s"onclick="showAnswers('{{i}}')">{{i}}</div>
+            {%endfor%}
+        </div>
+        <div id="Answers">
+            {%for y in a%}
+                <div id="{{y[-1]}}" class="a">
+                {%for i in y%}
+                    {%for x in i%}
+                    {%if x[0][0:3]=="QQQ"%}
+                    <b>{{x[0][3:]}}</b><br>
+                    {%elif i==y[-1]%}
+                    {%else%}
+                    {{x[0]}}<br>
+                    {%endif%}
+                    {%endfor%}<br>
+                {%endfor%}    
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+    {%else%}
+    <div style="height:100%">
+        <div id="Answers">
+            {%for i in a%}
+                {%for x in i%}
+                {%if x[0][0:3]=="QQQ"%}
+                <b>{{x[0][3:]}}</b><br>
+                {%else%}
+                {{x[0]}}<br>
+                {%endif%}
+                {%endfor%}<br> 
+            {%endfor%}    
+        </div>
+    </div>
+    {%endif%}
+</div></div>
+<script>
+    function showAnswers (name){
+        Array.from(document.getElementsByClassName("a")).forEach(element => {
+            console.log(element)
+            element.style.display="none"
+        });
+        document.getElementById(name).style.display='block'
+    }
+</script>
+{%endblock%}

@@ -904,7 +904,7 @@
             <div class="sgrid">
                 <div id="slovicka">
                     <table id='tabulka'>
-                        <tr><th style="width:30px">id</th><th style="width:230px">německy</th><th>česky</th></tr>
+                        <tr><th style="width:30px">id</th><th style="width:230px"><div style="cursor:pointer" onclick="GermanWordsHider()">německy</div></th><th><div style="cursor:pointer" onclick="CzechWordsHider()">česky</div></th></tr>
                         <tr><td colspan=3 >
                             <div id="scroll">
                                 <table id="slovnicek">
@@ -913,6 +913,8 @@
                             </div>
                         </td></tr>
                     </table>
+                    <div id="GermanWH"></div>
+                    <div id="CzechWH"></div>
                 </div>
                 <div class="Wgridchild Flashcards" onclick="teststart('FlashCards')">
                     Lernkarten
@@ -954,8 +956,8 @@
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
                 <p class="ctext">Cvičení:</p>
-                <div class="t easyt" onclick="teststart('ABCD','1-3','Grammatik','1')">leichter Test</div>
-                <div class="t hardt" onclick="teststart('TextInput','1-3','Grammatik','1')">schwieriger Test</div>
+                <div class="t easyt" onclick="teststart('ABCD','1-3','Grammatik','Verbkonjugation im Präsens')">leichter Test</div>
+                <div class="t hardt" onclick="teststart('TextInput','1-3','Grammatik','Verbkonjugation im Präsens')">schwieriger Test</div>
             </div>
             <div class="DYK">
                 <div class="arrow-left"></div>
@@ -1191,20 +1193,60 @@
     </div>
 </div>
 </div>
+<div id="flashedmsg">
+    <div style="width:260px">
+    {%with messages = get_flashed_messages(with_categories=true)%}
+        {% if messages %}
+            {%for msg in messages %}
+                <p>{{msg[1]}}</p>
+            {%endfor%}
+        {% endif %}
+    {%endwith%}
+    </div>
+    <div id="exit" onclick="document.getElementById('flashedmsg').style.display='none'">✕</div>
+</div>
 <script>
     function sleep(ms){
         return new Promise(resolve => setTimeout(resolve,ms))
     };
     const DidYouKnow = document.getElementsByClassName("DidYKChild");
     let DidYouKnowOPEN = [];
+    let G = true
+    let C = true
+    async function GermanWordsHider(){
+        if(G){
+            document.getElementById("GermanWH").style.display="block";
+            document.getElementById("GermanWH").style.backdropFilter="blur(3px)";
+            G=false;
+        }
+        else{
+            document.getElementById("GermanWH").style.backdropFilter="blur(0px)";
+            G=true;
+            await sleep(300);
+            document.getElementById("GermanWH").style.display="none";
+        }
+    }
+    async function CzechWordsHider(){
+        if(C){
+            document.getElementById("CzechWH").style.display="block";
+            document.getElementById("CzechWH").style.backdropFilter="blur(3px)";
+            C=false;
+        }
+        else{
+            document.getElementById("CzechWH").style.backdropFilter="blur(0px)";
+            C=true;
+            await sleep(300);
+            document.getElementById("CzechWH").style.display="none";
 
+        }
+    }
     //vše týkající se zviditelňování
     $(document).ready(function(){
         const child = document.querySelectorAll(".child"); 
         const x = document.querySelectorAll(".Module");
         const L = document.querySelectorAll(".L");
         const a = [false,false,false,false,false]
-
+       
         // tohle zobrazuje Lektiony 1-15 v modulech
 
         for(let i=1;i<6;i++){
@@ -1232,7 +1274,7 @@
         for (let i=3;i<16;i++){
             $("#DIVL"+i).hide()
         }
-        
+      
         for(let i=3;i<16;i++){
             $("#L"+i).click(function(e){
                 for(let i=0;i<L.length;i++){
@@ -1280,6 +1322,9 @@
                 }
             };
         };
+        if (document.getElementById("flashedmsg").innerText.length>41){
+            document.getElementById("flashedmsg").style.display="block"
+        }
     });
 </script>
 <!-- kostra projektu -->
@@ -1424,16 +1469,16 @@
             case "TextInput":
                 $("#progression").show();
                 $("."+type).show();
-                SetOfQuestions=NJ["lekce"+k][t][x-1][1];
-                nText=NJ["lekce"+k][t][x-1][2];
-                czText=NJ["lekce"+k][t][x-1][3];
+                SetOfQuestions=NJ["lekce"+k][t][x][1];
+                nText=NJ["lekce"+k][t][x][2];
+                czText=NJ["lekce"+k][t][x][3];
                 UnusedQuestions=Array.from({length:SetOfQuestions.length}, (_, i) => i);
                 Success=Array.from({length:SetOfQuestions.length},(_,i) => 1);
                 NumberForCalculationOfSuccess=0
                 document.getElementById("ABCDodpovedi").innerHTML="";
                 ABCD=["A","B","C","D"];
                 ABCDanswer=document.getElementsByClassName("Felix");
-                NumberOfPossibleAnswers=NJ["lekce"+k][t][x-1][0];
+                NumberOfPossibleAnswers=NJ["lekce"+k][t][x][0];
                 for(let i=0;i<NumberOfPossibleAnswers;i++){
                     document.getElementById("ABCDodpovedi").innerHTML+=`<div style='border:solid 3px rgb(189, 213, 234)' type='button' class='Felix' id='${ABCD[i]}' onclick='checkanswer(\"${ABCD[i]}\")'>Odpoved ${ABCD[i]}</div>`;
                 };
@@ -1749,6 +1794,7 @@ const ButtonAddTask = document.getElementById("newTask");
 const Tasks= document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 const TableQuestions = Array.from(document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].querySelectorAll("tr"));
 const NavrhPlatno = document.getElementsByClassName("Platno");
+let Ukolu=0;
 let CurrentPage = 1;
 let markTask;
 for(let i=0;i<Tasks.length;i++){
@@ -1850,72 +1896,106 @@ function addTask (){
     }
 }
 async function downloadPDF(){
-    let pages=document.getElementsByClassName("Platno");
-    const doc = new jsPDF('p','mm','a4');
-    // for (let i=0;i<1;i++){
-    //     await doc.html(NavrhPlatno[i])
-    // }
-    doc.setFont("Calibri Bold","bold");
-    doc.setFontSize(20);
-    doc.text(document.getElementById("TN").innerText,10,10);
-    doc.setFont("Calibri Regular","normal");
-    doc.setFontSize(16);
-    doc.text(document.getElementById("SN").innerText,10,20);
-    doc.text(document.getElementById("DN").innerText,150,10);
-    doc.text(document.getElementById("CN").innerText,154,20);
-    doc.line(10,30,200,30);
-    let ukol=1;
-    let i=0;
-    do{
-        page=pages[i];
-        if(i!=0){
-            doc.addPage();
-        }
-        let h=0;
-        
-        for(let x=0;x<page.getElementsByClassName("ukol").length;x++){
-            Task=page.getElementsByClassName("ukol")[x];
-            doc.setFontSize(16);
-            doc.setFont("Calibri Bold","bold");
-            if(Task.classList.contains("gram")){
-                doc.text(Task.getElementsByClassName("zadani")[0].innerText,10,i!=0?(h+15):(40+h));
-                h+=5;
-                doc.setFontSize(12);
-                doc.setFont("Calibri Regular","normal");
-                ptag=Task.getElementsByClassName("TContent")[0].children;
-                for(let y=0;y<ptag.length;y++){
-                    doc.text(`${ptag[y].innerText}`,10,i!=0?(h+15):(40+h));
+    if (!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(document.getElementById("TN").innerText)){
+        let pages=document.getElementsByClassName("Platno");
+        const doc = new jsPDF('p','mm','a4');
+        // for (let i=0;i<1;i++){
+        //     await doc.html(NavrhPlatno[i])
+        // }
+        doc.setFont("Calibri Bold","bold");
+        doc.setFontSize(20);
+        doc.text(document.getElementById("TN").innerText,10,10);
+        doc.setFont("Calibri Regular","normal");
+        doc.setFontSize(16);
+        doc.text(document.getElementById("SN").innerText,10,20);
+        doc.text(document.getElementById("DN").innerText,150,10);
+        doc.text(document.getElementById("CN").innerText,154,20);
+        doc.line(10,30,200,30);
+        let ukol=1;
+        let i=0;
+        do{
+            page=pages[i];
+            if(i!=0){
+                doc.addPage();
+            }
+            let h=0;
+            
+            for(let x=0;x<page.getElementsByClassName("ukol").length;x++){
+                Task=page.getElementsByClassName("ukol")[x];
+                doc.setFontSize(16);
+                doc.setFont("Calibri Bold","bold");
+                if(Task.classList.contains("gram")){
+                    doc.text(Task.getElementsByClassName("zadani")[0].innerText,10,i!=0?(h+15):(40+h));
+                    h+=5;
+                    doc.setFontSize(12);
+                    doc.setFont("Calibri Regular","normal");
+                    ptag=Task.getElementsByClassName("TContent")[0].children;
+                    for(let y=0;y<ptag.length;y++){
+                        doc.text(`${ptag[y].innerText}`,10,i!=0?(h+15):(40+h));
+                        h+=6;
+                    }
+                }
+                else{
+                    doc.text(Task.getElementsByClassName("zadani")[0].innerText,10,i!=0?h+15:40+h);
+                    h+=5;
+                    doc.setFontSize(12);
+                    doc.setFont("Calibri Regular","normal");
+                    slovicka=Task.getElementsByClassName("container")[0].children;
+                    for(let y=0;y<slovicka[0].children.length;y++){
+                        for(let z=0;z<2;z++){
+                            doc.text(`${slovicka[z].getElementsByTagName("p")[y].innerText}`,10+z*90,i!=0?15+h:40+h);
+                        }
                     h+=6;
                 }
             }
-            else{
-                doc.text(Task.getElementsByClassName("zadani")[0].innerText,10,i!=0?h+15:40+h);
-                h+=5;
-                doc.setFontSize(12);
-                doc.setFont("Calibri Regular","normal");
-                slovicka=Task.getElementsByClassName("container")[0].children;
-                for(let y=0;y<slovicka[0].children.length;y++){
-                    for(let z=0;z<2;z++){
-                        doc.text(`${slovicka[z].getElementsByTagName("p")[y].innerText}`,10+z*90,i!=0?15+h:40+h);
-                    }
-                h+=6;
-            }
+            ukol++;
+            h+=5;
         }
-        ukol++;
-        h+=5;
+            i++;
+            doc.text(i.toString(),100,290);
+        }while(i<pages.length)
+        doc.save(document.getElementById("TN").innerText+".pdf");
     }
-        i++;
-        doc.text(i.toString(),100,290);
-    }while(i<pages.length)
-    doc.save(document.getElementById("nameOfTest").innerText+".pdf");
-
+    else{
+        console.log("chyba")
+    }
 }
 function savePDF(){
-    $.post("/Germany", {
-        submit_button:"SAVETEST",
-        name:document.getElementById("TN").innerText,
-        value:document.getElementById("Former").innerHTML
-    });
+    if (document.getElementById("TN").innerText.match("^[A-Za-z0-9]+$")){
+        TestToSend="";
+        let i=0;
+        let pages=document.getElementsByClassName("Platno");
+        do{
+            page=pages[i];
+            
+            for(let x=0;x<page.getElementsByClassName("ukol").length;x++){
+                Task=page.getElementsByClassName("ukol")[x];
+                if(Task.classList.contains("gram")){
+                    ptag=Task.getElementsByClassName("TContent")[0].children;
+                    TestToSend+=`;${Task.getElementsByClassName("zadani")[0].innerText}`;
+                    for(let y=0;y<ptag.length;y++){
+                        TestToSend+=`$${ptag[y].innerText}:${ptag[y].getAttribute("value")}`;
+                    }
+                }
+                else{
+                    TestToSend+=`;${Task.getElementsByClassName("zadani")[0].innerText}`;
+                    slovicka=Task.getElementsByClassName("container")[0].children;
+                    for(let y=0;y<slovicka[0].children.length;y++){
+                        for(let z=0;z<2;z++){
+                            TestToSend+=`$${slovicka[z].getElementsByTagName("p")[y].innerText}:${slovicka[z].getElementsByTagName("p")[y].getAttribute("value")}`;
+                        }
+                    }
+                }
+        }
+            i++;
+        }while(i<pages.length)
+    
+        $.post("/Germany", {
+            submit_button:"SAVETEST",
+            name:document.getElementById("TN").innerText,
+            value:TestToSend.substring(1)
+        });
+    }
 }
 function showTest(){
     document.getElementById("clickDisabler2").style.display="block";
@@ -1949,11 +2029,11 @@ function randomPDF(){
             Task=page.getElementsByClassName("content")[0].children[x];
             if(Task.getElementsByClassName("type")[0].innerText=="Grammatik"){
                 TaskQ =NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText];
-                TaskToPlace=`<div class="ukol gram"><div class="zadani"><b>${ukol}. ${TaskQ[2]}</b></div><div class="TContent">`;
+                TaskToPlace=`<div class="ukol gram" onclick="randomUkol(this)" ><div class="zadani"value="${"lekce"+Task.getElementsByClassName("lesson")[0].innerText}/${Task.getElementsByClassName("type")[0].innerText}/${Task.getElementsByClassName("TaskName")[0].innerText}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value}"><b>${ukol}. ${TaskQ[2]}</b></div><div class="TContent">`;
                 UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
                 for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
                     randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
-                    TaskToPlace+=`<p>${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
+                    TaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
                     UnusedQuestions.splice(randomNumber,1);
                 }
                 TaskToPlace+="</div>"
@@ -1961,7 +2041,7 @@ function randomPDF(){
             }
             else{
                 TaskQ =Object.values(NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText]);
-                TaskToPlace=`<div class="ukol wort"><div class="zadani"><b>${ukol}. Übersetzen diese Wörter</b></div><div class="container">`;
+                TaskToPlace=`<div class="ukol wort" onclick="randomUkol(this)"><div class="zadani" value="${"lekce"+Task.getElementsByClassName("lesson")[0].innerText}/${Task.getElementsByClassName("type")[0].innerText}/${Task.getElementsByClassName("TypeOfTranslation")[0].value}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value/2}"><b>${ukol}. Übersetzen diese Wörter</b></div><div class="container">`;
                 UnusedQuestions=Array.from({length:TaskQ.length}, (_, i) => Array.from({length:TaskQ[i][1].length}, (_, e) => e));
 
                 for(let z=0;z<2;z++){
@@ -1977,7 +2057,7 @@ function randomPDF(){
                         randomNumber1=Math.floor(Math.random()*UnusedQuestions.length);
                         randomNumber2=Math.floor(Math.random()*UnusedQuestions[randomNumber1].length);
 
-                        TaskToPlace+=`<p>${TaskQ[randomNumber1][TOT][UnusedQuestions[randomNumber1][randomNumber2]]}</p>`;
+                        TaskToPlace+=`<p value="${TaskQ[randomNumber1][TOT==1?2:1][UnusedQuestions[randomNumber1][randomNumber2]]}">${TaskQ[randomNumber1][TOT][UnusedQuestions[randomNumber1][randomNumber2]]} </p>`;
                         UnusedQuestions[randomNumber1].splice(randomNumber2,1);
                     }
                     TaskToPlace+="</div>";
@@ -1993,6 +2073,47 @@ function randomPDF(){
 }
 function exitPDF (){
     document.getElementById("clickDisabler2").style.display="none";
+}
+function randomUkol (ukol){
+    if(ukol.classList.contains("gram")){
+        a=ukol.getElementsByClassName("zadani")[0].getAttribute("value").split("/");
+        TaskQ =NJ[a[0]][a[1]][a[2]];
+        TaskToPlace=`<div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}"><b>${a[3]}. ${TaskQ[2]}</b></div><div class="TContent">`;
+        UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
+        for(let y=0;y<a[4];y++){
+            randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+            TaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
+            UnusedQuestions.splice(randomNumber,1);
+        }
+        TaskToPlace+="</div>"
+    }
+    else{
+        a=ukol.getElementsByClassName("zadani")[0].getAttribute("value").split("/");
+        TaskQ =Object.values(NJ[a[0]][a[1]]);
+        TaskToPlace=`<div class="ukol wort"><div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}"><b>${a[3]}. Übersetzen diese Wörter</b></div><div class="container">`;
+        UnusedQuestions=Array.from({length:TaskQ.length}, (_, i) => Array.from({length:TaskQ[i][1].length}, (_, e) => e));
+
+        for(let z=0;z<2;z++){
+            TaskToPlace+="<div class='pul'>";
+            for(let y=0;y<a[4];y++){
+                if(a[2]=="CZ>N"){
+                    TOT=2;
+                }else if (a[2]=="N>CZ"){
+                    TOT=1;
+                }else{
+                    TOT=z+1;
+                }
+                randomNumber1=Math.floor(Math.random()*UnusedQuestions.length);
+                randomNumber2=Math.floor(Math.random()*UnusedQuestions[randomNumber1].length);
+
+                TaskToPlace+=`<p value="${TaskQ[randomNumber1][TOT==1?2:1][UnusedQuestions[randomNumber1][randomNumber2]]}">${TaskQ[randomNumber1][TOT][UnusedQuestions[randomNumber1][randomNumber2]]} </p>`;
+                UnusedQuestions[randomNumber1].splice(randomNumber2,1);
+            }
+            TaskToPlace+="</div>";
+        }
+        TaskToPlace+="</div></div>"
+    }
+    ukol.innerHTML=TaskToPlace
 }
 function sortTableByColumn(table, column, asc = true) {
     const dirModifier = asc ? 1 : -1;

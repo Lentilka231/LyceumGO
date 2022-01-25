@@ -62,7 +62,7 @@
         </thead>
         <tbody>
             {%for i,v in students%}
-            <tr class="sinfo">
+            <tr>
                 <td>{{i+1}}</td>
                 <td>{{v.name}}</td>
                 <td>{{v.favouritesub}}</td>
@@ -100,5 +100,13 @@
     {%endif%}
 </div>
 </div>
+<script>
+    $('form input').keydown(function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
+</script>
 
 {%endblock%}

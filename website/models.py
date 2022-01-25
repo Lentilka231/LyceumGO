@@ -1,15 +1,14 @@
 from . import db
 from flask_login import UserMixin
-
+from sqlalchemy.dialects import mysql
 class Users (db.Model,UserMixin):
     id=db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True)
-    email = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(1000))
+    email = db.Column(db.String(255), unique=True)
+    password = db.Column(db.Text)
     classroom = db.Column(db.String(20))
     classroomid = db.Column(db.Integer,db.ForeignKey("classrooms.id"))
     person=db.Column(db.String(1))
-    notes = db.Column(db.String(150))
     beginning = db.Column(db.Integer)
     favouritesub =db.Column(db.String(30))
     tests = db.relationship("Tests")
@@ -36,13 +35,13 @@ class Classrooms (db.Model):
     beginning = db.Column(db.Integer)
     students = db.relationship("Users")
     germanteacher = db.Column(db.String(20))
-    scheduledtests= db.relationship("ScheduledTests")
+    scheduledtests= db.relationship("Scheduledtests")
 class Tests(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     name=db.Column(db.String(20))
-    data=db.Column(db.String(10000))
+    data=db.Column(db.Text)
     creator=db.Column(db.Integer,db.ForeignKey("users.id"))
-class ScheduledTests(db.Model):
+class Scheduledtests(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     classroom=db.Column(db.Integer,db.ForeignKey("classrooms.id"))
     duration=db.Column(db.Integer)
@@ -51,14 +50,21 @@ class ScheduledTests(db.Model):
     testid=db.Column(db.Integer)
     info=db.Column(db.String(100))
     canstart=db.Column(db.String(1))
+    resaults = db.relationship("Resaultsfromtests")
+    completed=db.Column(db.Text)
+class Resaultsfromtests(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    data=db.Column(db.Text)
+    student = db.Column(db.Integer)
+    scheduledTest = db.Column(db.Integer,db.ForeignKey("scheduledtests.id"))
 class Messages(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     user_name = db.Column(db.Integer,db.ForeignKey("users.id"))
     sender = db.Column(db.Integer)
-    message = db.Column(db.String(10000))
+    message = db.Column(db.Text)
     datum = db.Column(db.String(50))
     typeM =db.Column(db.String(10))
-    typeQ =db.Column(db.String(10))
+    typeQ =db.Column(db.String(20))
 class NTests (db.Model):
     id=db.Column(db.Integer,primary_key=True)
     name=db.Column(db.String(50))
