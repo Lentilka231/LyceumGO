@@ -57,6 +57,12 @@ def Nemcina():
                     newTest = Tests(name=request.form.get("name"),data=request.form.get("value"),creator=current_user.id)
                     db.session.add(newTest)
                     db.session.commit()
+                elif request.form["submit_button"]=="REMOVETEST":
+                    for i in current_user.tests:
+                        if str(i.id)==request.form.get("idtest"):
+                            db.session.delete(i)
+                            db.session.commit()
+                            break
         with open("website/tests/NJ1.json", encoding="utf-8") as f:
             NJ = json.load(f)
         return render_template("subjects/germany.html",user=current_user,NJ1=NJ)

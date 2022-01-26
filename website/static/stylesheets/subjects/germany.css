@@ -1049,6 +1049,7 @@ background: -webkit-radial-gradient(circle, hsla(0, 85%, 69%, 1) 0%, hsla(0, 86%
     background-color: rgb(116, 116, 116);
   }
   #pTCanvas{
+    padding:50px;
     position: absolute;
     left:50%;
     top:50px;
@@ -1061,7 +1062,7 @@ background: -webkit-radial-gradient(circle, hsla(0, 85%, 69%, 1) 0%, hsla(0, 86%
 }
 #buttonsSPT{
     width:150px;
-    height:250px;
+    height:150px;
     background-color:var(--black) ;
     position: absolute;
     transform: translate(-50%,-50%);
@@ -1084,4 +1085,69 @@ background: -webkit-radial-gradient(circle, hsla(0, 85%, 69%, 1) 0%, hsla(0, 86%
 }
 #deleteSPT:hover{
     background: radial-gradient(circle, rgba(170,170,170,1) 0%, rgb(124, 123, 123) 100%);
+}
+#tests{
+    height:300px;
+    width:200px;
+    background-color: var(--black);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top:50%;
+    left:calc(50% - 525px);
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    border-radius: 10px;
+    padding:20px;
+}
+.PT{
+    width:100%;
+    padding:5px;
+    background-color: var(--brighterBlue);
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom:10px;
+}
+.PTest{
+    display:none
+}
+#areYouSure{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    display:none;
+    width:250px;
+    padding:20px;
+    height:100px;
+    background-color: var(--black);
+    z-index: 5;
+    border-radius: 10px;
+    text-align: center;
+    color:white;
+}
+
+#aYSD{
+    position:absolute;
+    left:20px;
+    top:50px;
+    cursor: pointer;
+    padding:3px;
+    border-radius: 5px;
+    background-color: var(--brighterBlue);
+    font-size: 20px;
+    color:black;
+
+}
+#aYSC{
+    font-size: 20px;
+    position:absolute;
+    top:50px;
+    right:20px;
+    cursor: pointer;
+    padding:3px;
+    border-radius: 5px;
+    color:black;
+    background-color:#E71212
 }

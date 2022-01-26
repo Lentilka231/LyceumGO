@@ -1193,13 +1193,29 @@
     </div>
 </div>
 <div id="preparedTest">
+    <div id="tests">
+        {%for i in user.tests%}
+        <div class="PT" onclick="showPT('{{i.id}}')">
+            {{i.name}}
+        </div>
+        {%endfor%}
+    </div>
     <div id="pTCanvas">
-
+        {%for i in user.tests%}
+        <div class="PTest" id="{{i.id}}">
+            {{i.name}}
+        </div>
+        {%endfor%}
     </div>
     <div id="buttonsSPT">
-        <div id="deleteSPT" onclick="deleteSPT()">Vymazat</div>
-        <div id="exitSPT" onclick="exitSPT()">Zrušit</div>
+        <div id="deleteSPT" style="opacity:0.5">Smazat</div>
+        <div id="exitSPT" style="background-color:#E71212" onclick="exitSPT()">Zrušit</div>
     </div>
+</div>
+<div id="areYouSure">
+    Chcete smazat tento test?
+        <div id="aYSD" onclick="deleteSPT()">Smazat</div>
+        <div id="aYSC" onclick="document.getElementById('areYouSure').style.display='none'">Zrušit</div>
 </div>
 </div>
 <div id="flashedmsg">
@@ -1220,8 +1236,8 @@
     };
     const DidYouKnow = document.getElementsByClassName("DidYKChild");
     let DidYouKnowOPEN = [];
-    let G = true
-    let C = true
+    let G = true;
+    let C = true;
     async function GermanWordsHider(){
         if(G){
             document.getElementById("GermanWH").style.display="block";
@@ -1803,6 +1819,7 @@ const ButtonAddTask = document.getElementById("newTask");
 const Tasks= document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 const TableQuestions = Array.from(document.getElementById("ListOfMaterials").getElementsByTagName("tbody")[0].querySelectorAll("tr"));
 const NavrhPlatno = document.getElementsByClassName("Platno");
+let CurrentPTest;
 let Ukolu=0;
 let CurrentPage = 1;
 let markTask;
@@ -2245,10 +2262,26 @@ function showSavedTests(){
     document.getElementById("preparedTest").style.display="block";
 }
 function deleteSPT(){
-
+    $.post("/Germany", {
+        submit_button:"REMOVETEST",
+        idtest:CurrentPTest
+    });
+    document.getElementById("areYouSure").style.display="none";
 }
 function exitSPT(){
     document.getElementById("preparedTest").style.display="none";
+}
+function showPT(e){
+    Array.from(document.getElementsByClassName("PTest")).forEach(function(element){
+        element.style.display="none"
+    });
+    document.getElementById(e).style.display="block";
+    document.getElementById("deleteSPT").style.opacity="1";
+    document.getElementById("deleteSPT").onclick=ays;
+    CurrentPTest=e;
+}
+function ays(){
+    document.getElementById('areYouSure').style.display='block'
 }
 </script>
 <!-- Draggable stuff -->
