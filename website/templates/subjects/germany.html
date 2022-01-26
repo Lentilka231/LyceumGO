@@ -678,7 +678,6 @@
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
     <div id="TDContent">
         <div id="CreateTestDIV">
-
             <div class="nzadani"><b>Hier kannst du einen Test erstellen</b></div>
             <div id="filters">
                 <div>
@@ -754,6 +753,7 @@
             </table>
             <div id="newTask" onclick="addTask()">Přidat</div>
             <div id="showTest" onclick="showTest()">Náhled</div>
+            <div id="showSavedTests" onclick="showSavedTests()">Uložené testy</div>
             <div id="canvas" class="canvas">
                 <div id="RemovePage" class="CantHover" onclick="DoSmWithPage('R')">-</div>
                 <div id="LeftButton" class="CantHover" onclick="changePage('left')">&lt</div>
@@ -1190,6 +1190,15 @@
         <div id="savePDF"  onclick="savePDF()">Uložit</div>
         <div id="downloadPDF" onclick="downloadPDF()">Stáhnout</div>
         <div id="exitPDF" style="background-color:#E71212" onclick="exitPDF()">Zrušit</div>
+    </div>
+</div>
+<div id="preparedTest">
+    <div id="pTCanvas">
+
+    </div>
+    <div id="buttonsSPT">
+        <div id="deleteSPT" onclick="deleteSPT()">Vymazat</div>
+        <div id="exitSPT" onclick="exitSPT()">Zrušit</div>
     </div>
 </div>
 </div>
@@ -2232,6 +2241,15 @@ $('[contenteditable]').on('paste', function(e) {
 }).on('keypress', function(e){
         return e.which != 13;
 });
+function showSavedTests(){
+    document.getElementById("preparedTest").style.display="block";
+}
+function deleteSPT(){
+
+}
+function exitSPT(){
+    document.getElementById("preparedTest").style.display="none";
+}
 </script>
 <!-- Draggable stuff -->
 <script>

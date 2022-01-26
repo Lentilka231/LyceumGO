@@ -40,7 +40,7 @@
                 <div class="i">Code: {{classroom.code}}</div>
                 <div class="i">Učitel/ka němčiny:
                     <form method="POST"> 
-                    <input id="germanTeacherInput" onchange="if(/^[a-zA-Z]+$/.test(this.value)){console.log('etwas');document.getElementById('GermanTeacherSubmit').style.display='none';}else{document.getElementById('GermanTeacherSubmit').style.display='block';}" maxlength="20" name="GermanTeacher" value="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}" placeholder="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}">
+                    <input id="germanTeacherInput" onchange="document.getElementById('GermanTeacherSubmit').style.display='block'" maxlength="20" name="GermanTeacher" value="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}" placeholder="{%if classroom.germanteacher%}{{classroom.germanteacher}}{%endif%}">
                     <button name="submit_button" value="newTeacher" type="submit" id="GermanTeacherSubmit" style="display:none">Uložit</button>
                     </form>
                 </div>
