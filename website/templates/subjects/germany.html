@@ -1195,7 +1195,7 @@
 <div id="preparedTest">
     <div id="tests">
         {%for i in user.tests%}
-        <div class="PT" onclick="showPT('{{i.id}}')">
+        <div class="PT" id="tlacitko-{{i.id}}" onclick="showPT('{{i.id}}')">
             {{i.name}}
         </div>
         {%endfor%}
@@ -1203,7 +1203,19 @@
     <div id="pTCanvas">
         {%for i in user.tests%}
         <div class="PTest" id="{{i.id}}">
-            {{i.name}}
+            <script>
+                x="{{i.data}}".split(";");
+                textToAdd="";
+                for(let i=0;i<x.length;i++){
+                    textToAdd+=`<div class='PTukol'><p class="PTzadani"><b>${x[i].split("$")[0]}</b></p>`
+                    for(let y=1;y<x[i].split("$").length;y++){
+                        textToAdd+=`<p>${x[i].split("$")[y].split(":")[0]}</p>`;
+                    }
+                    textToAdd+="</div>"
+                    console.log()
+                }
+                document.getElementById("{{i.id}}").innerHTML=textToAdd;
+            </script>
         </div>
         {%endfor%}
     </div>
@@ -2267,6 +2279,9 @@ function deleteSPT(){
         idtest:CurrentPTest
     });
     document.getElementById("areYouSure").style.display="none";
+    document.getElementById(CurrentPTest).style.display="none";
+    document.getElementById("tlacitko-"+CurrentPTest).style.display="none";
+
 }
 function exitSPT(){
     document.getElementById("preparedTest").style.display="none";
