@@ -80,16 +80,7 @@
                 <p>{{msg[1]}}</p>
             {%endfor%}
         {% endif %}
-    {%endwith%}
-    {% for error in formR.name.errors%}
-        <p>{{error}}</p>
-    {% endfor%}
-    {% for error in formR.password1.errors%}
-        <p>{{error}}</p>
-    {% endfor%}
-    {% for error in formR.email.errors%}
-        <p>{{error}}</p>
-    {% endfor%}</div>
+    {%endwith%}</div>
     <div id="exit" onclick="document.getElementById('flashedmsg').style.display='none'">✕</div>
 </div>
 <script>

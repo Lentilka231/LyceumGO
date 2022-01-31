@@ -32,10 +32,12 @@
     </div>
 </div>
 <div class="grid-items second">
-    <div class="Module" id="M1" tabindex="1" value="3" value2="4.5" style="background-color: rgb(139, 68, 194);">
+    <div class="Module" id="M1" tabindex="1" value="3" value2="8" style="background-color: rgb(139, 68, 194);">
         <p id="T1"><b>1) Deutsch ist NICHT leicht!</b></p>
         <div class="child">
-            <p class="L" id="L3" >Lektion 1-3</p>
+            <p class="L" id="L1" >Lektion 1</p>
+            <p class="L" id="L2" >Lektion 2</p>
+            <p class="L" id="L3" >Lektion 3</p>
         </div>                
     </div>
     <div class="Module" id="M2" tabindex="1" value="3" value2="8" style="background-color: orange;">
@@ -78,7 +80,7 @@
 </div>
 <div class="grid-items third">
     <div class="scrollery">
-        <div id="DIVL3">
+        <div id="DIVL1">
             <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
                 <b class="nadpisChild">Gramatik</b>
                 <div class="Material">
@@ -86,10 +88,51 @@
                         <b class="NOT">Verbkonjugation im Präsens</b><br>
                         Časování sloves v přítomném čase
                     </div>
-                    <div class="Block b11"onclick="visibilator(this.getElementsByClassName('NOT')[0].innerText)">
-                        <b class="NOT">Unbestimmte und bestimmte Artikel</b><br>
-                        Neurčité a určitě členy
+                </div>
+            </div>
+            <div class="DIVchild" id="Wortschatz" style="background-color: rgb(157, 101, 201);">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce1"]["Wortschatz"].items()%}
+                    <div class="Block b12" onclick="visibilator('{{i}}','1','w')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
                     </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color: rgb(93, 84, 164);">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b13" onclick="visibilator('Text1')">
+                        <b>Text1</b><br>
+                        Hallo Leute!
+                    </div>
+                    <div class="Block b13" onclick="visibilator('3','l','2')">
+                        <b>Text2</b><br>
+                        Heute habe ich nicht Geburstag.
+                    </div>
+                    <div class="Block b13" onclick="visibilator('3','l','3')">
+                        <b>Text3</b><br>
+                        Prag ist teuer.
+                    </div>
+                    <div class="Block b13" onclick="visibilator('3','l','4')">
+                        <b>Text4</b><br>
+                        Meine Familie ist groß.
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color: rgb(54, 80, 136);">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL2">
+            <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
                     <div class="Block b11"onclick="visibilator(this.getElementsByClassName('NOT')[0].innerText)">
                         <b class="NOT">Possessivartikel</b><br>
                         Přivlasťnovací zájmena
@@ -103,8 +146,61 @@
             <div class="DIVchild" id="Wortschatz" style="background-color: rgb(157, 101, 201);">
                 <b class="nadpisChild">Wortschatz</b>
                 <div class="Material">
-                    {%for i,v in NJ1["lekce1-3"]["Wortschatz"].items()%}
-                    <div class="Block b12" onclick="visibilator('{{i}}','1-3','w')">
+                    {%for i,v in NJ1["lekce2"]["Wortschatz"].items()%}
+                    <div class="Block b12" onclick="visibilator('{{i}}','2','w')">
+                        <b>{{i}}</b>
+                        <div class="celkemwort">
+                            {{v[0]}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+            <div class="DIVchild" id="lesen" style="background-color: rgb(93, 84, 164);">
+                <b class="nadpisChild">Lesen</b>
+                <div class="Material">
+                    <div class="Block b13" onclick="visibilator('Text1')">
+                        <b>Text1</b><br>
+                        Hallo Leute!
+                    </div>
+                    <div class="Block b13" onclick="visibilator('3','l','2')">
+                        <b>Text2</b><br>
+                        Heute habe ich nicht Geburstag.
+                    </div>
+                    <div class="Block b13" onclick="visibilator('3','l','3')">
+                        <b>Text3</b><br>
+                        Prag ist teuer.
+                    </div>
+                    <div class="Block b13" onclick="visibilator('3','l','4')">
+                        <b>Text4</b><br>
+                        Meine Familie ist groß.
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="endtest" style="background-color: rgb(54, 80, 136);">
+                <b class="nadpisChild">Tests</b>
+            </div>
+        </div>
+        <div id="DIVL3">
+            <div class="DIVchild" id="gramatik" style="background-color: rgb(185, 120, 185);">
+                <b class="nadpisChild">Gramatik</b>
+                <div class="Material">
+                    <div class="Block b11"onclick="visibilator(this.getElementsByClassName('NOT')[0].innerText)">
+                        <b class="NOT">Possessivartikel</b><br>
+                        Přivlasťnovací zájmena
+                    </div>
+                    <div class="Block b11"onclick="visibilator(this.getElementsByClassName('NOT')[0].innerText)">
+                        <b class="NOT">Zeitangaben</b><br>
+                        Časové údaje
+                    </div>
+                </div>
+            </div>
+            <div class="DIVchild" id="Wortschatz" style="background-color: rgb(157, 101, 201);">
+                <b class="nadpisChild">Wortschatz</b>
+                <div class="Material">
+                    {%for i,v in NJ1["lekce3"]["Wortschatz"].items()%}
+                    <div class="Block b12" onclick="visibilator('{{i}}','3','w')">
                         <b>{{i}}</b>
                         <div class="celkemwort">
                             {{v[0]}}
@@ -732,11 +828,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>1</td><td>1-3</td><td>Grammatik</td><td>Verbkonjugation im Präsens</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Grammatik</td><td>Unbestimmte und bestimmte Artikel</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Grammatik</td><td>Possessivartikel</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Grammatik</td><td>Zeitangaben</td></tr>
-                    <tr><td>1</td><td>1-3</td><td>Wortschatz</td><td>Slovíčka 1-3</td></tr>
+                    <tr><td>1</td><td>1</td><td>Grammatik</td><td>Verbkonjugation im Präsens</td></tr>
+                    <tr><td>1</td><td>2</td><td>Grammatik</td><td>Unbestimmte und bestimmte Artikel</td></tr>
+                    <tr><td>1</td><td>2</td><td>Grammatik</td><td>Possessivartikel</td></tr>
+                    <tr><td>1</td><td>3</td><td>Grammatik</td><td>Zeitangaben</td></tr>
+                    <tr><td>1</td><td>1</td><td>Wortschatz</td><td>Slovíčka 1</td></tr>
+                    <tr><td>1</td><td>2</td><td>Wortschatz</td><td>Slovíčka 2</td></tr>
+                    <tr><td>1</td><td>3</td><td>Wortschatz</td><td>Slovíčka 3</td></tr>
                     <tr><td>2</td><td>4</td><td>Wortschatz</td><td>Slovíčka 4</td></tr>
                     <tr><td>2</td><td>5</td><td>Wortschatz</td><td>Slovíčka 5</td></tr>
                     <tr><td>2</td><td>6</td><td>Wortschatz</td><td>Slovíčka 6</td></tr>
@@ -956,8 +1054,8 @@
             <div class="b">
                 <p class="ntext"><b>Übungen:</b></p>
                 <p class="ctext">Cvičení:</p>
-                <div class="t easyt" onclick="teststart('ABCD','1-3','Grammatik','Verbkonjugation im Präsens')">leichter Test</div>
-                <div class="t hardt" onclick="teststart('TextInput','1-3','Grammatik','Verbkonjugation im Präsens')">schwieriger Test</div>
+                <div class="t easyt" onclick="teststart('ABCD','1','Grammatik','Verbkonjugation im Präsens')">leichter Test</div>
+                <div class="t hardt" onclick="teststart('TextInput','1','Grammatik','Verbkonjugation im Präsens')">schwieriger Test</div>
             </div>
             <div class="DYK">
                 <div class="arrow-left"></div>
@@ -1054,24 +1152,64 @@
                         <td class="a" style="background-color:rgb(228, 213, 76);">všechny rody</td>
                     </tr>
                     <tr>
-                        <td style="background-color:rgb(77, 135, 223)"><b>Das ist/sind ...</b></td>
+                        <td style="background-color:rgb(77, 135, 223)"><b>můj</b></td>
                         <td><span>mein</span> Vater</td>
-                        <td><span>mein</span> Baby</td>
                         <td><span>meine</span> Mutter</td>
+                        <td><span>mein</span> Baby</td>
                         <td><span>meine</span> Eltern</td>
                     </tr>
                     <tr>
-                        <td style="background-color:rgb(77, 135, 223)"><b>Ist/Sind das ...?</b></td>
+                        <td style="background-color:rgb(77, 135, 223)"><b>tvůj</b></td>
                         <td><span>dein</span> Vater</td>
-                        <td><span>dein</span> Baby</td>
                         <td><span>deine</span> Mutter</td>
+                        <td><span>dein</span> Baby</td>
                         <td><span>deine</span> Eltern</td>
                     </tr>
-
+                    <tr>
+                        <td style="background-color:rgb(77, 135, 223)"><b>jeho</b></td>
+                        <td><span>sein</span> Vater</td>
+                        <td><span>seine</span> Mutter</td>
+                        <td><span>sein</span> Baby</td>
+                        <td><span>seine</span> Eltern</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:rgb(77, 135, 223)"><b>její</b></td>
+                        <td><span>ihr</span> Vater</td>
+                        <td><span>ihre</span> Mutter</td>
+                        <td><span>ihr</span> Baby</td>
+                        <td><span>ihre</span> Eltern</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:rgb(77, 135, 223)"><b>náš</b></td>
+                        <td><span>unser</span> Vater</td>
+                        <td><span>unsere</span> Mutter</td>
+                        <td><span>unser</span> Baby</td>
+                        <td><span>unsere</span> Eltern</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:rgb(77, 135, 223)"><b>váš</b></td>
+                        <td><span>euer</span> Vater</td>
+                        <td><span>eure</span> Mutter</td>
+                        <td><span>euer</span> Baby</td>
+                        <td><span>eure</span> Eltern</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:rgb(77, 135, 223)"><b>jejich</b></td>
+                        <td><span>ihr</span> Vater</td>
+                        <td><span>ihre</span> Mutter</td>
+                        <td><span>ihr</span> Baby</td>
+                        <td><span>ihre</span> Eltern</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:rgb(77, 135, 223)"><b>váš (vykání)</b></td>
+                        <td><span>Ihr</span> Vater</td>
+                        <td><span>Ihre</span> Mutter</td>
+                        <td><span>Ihr</span> Baby</td>
+                        <td><span>Ihre</span> Eltern</td>
+                    </tr>
                 </table>
             </div>
             <ul class="additionalText">
-                <li>Přivlasťnovacích zájmen je víc, nicméně pro začátek nám stačí tyto</li>
             </ul>
             <div class="cara"></div>
             <div class="b">
@@ -1308,22 +1446,20 @@
         
         $("#TDContent").children().hide();
         //pracujou s rozklikáváním jednotlivých modelů
-        for (let i=3;i<16;i++){
+        for (let i=1;i<16;i++){
             $("#DIVL"+i).hide()
         }
       
-        for(let i=3;i<16;i++){
+        for(let i=1;i<16;i++){
             $("#L"+i).click(function(e){
                 for(let i=0;i<L.length;i++){
                         L[i].style.color="rgb(49, 49, 49)"
                 }
-                for (let i=3;i<16;i++){
+                for (let i=1;i<16;i++){
                     $("#DIVL"+i).hide()
                 }
                 e.stopPropagation();
-
                 if($("#DIVL"+i).is(":visible")){
-                    
                     document.getElementById("L"+i).style.color="rgb(49, 49, 49);";
                     $("#DIVL"+i).hide()
                 }
@@ -1446,6 +1582,7 @@
         else{
             NameOfTest=ukol.replace(/ /g,"_");
             if (typ=="w"){
+                document.getElementById("slovnicek").innerHTML="";
                 CurrentVocabulary=NJ["lekce"+lekce]["Wortschatz"][ukol];
                 slovicka=""
                 for(let i=0;i<CurrentVocabulary[0];i++){
@@ -1465,7 +1602,7 @@
             }
         }
     };
-    // skovává okno pro teorie, texty, otázky, ...
+    // schovává okno pro teorie, texty, otázky, ...
     function hider(){
         $("#clickDisabler").hide();
         $("#TDContent").children().hide();

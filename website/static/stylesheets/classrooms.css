@@ -48,7 +48,7 @@
 .input{
     margin-bottom: 20px;
 }
-#saveButton,#exit{
+#saveButton,#exitt{
     position:absolute;
     bottom:30px;
     font-size: 20px;
@@ -60,7 +60,7 @@
     border: none;
     font-family: 'Signika Negative', sans-serif;
 }
-#exit{
+#exitt{
     right:30px;
 }
 #saveButton{

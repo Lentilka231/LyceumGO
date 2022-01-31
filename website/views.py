@@ -29,9 +29,9 @@ def createmessage(message,prijemceid,typeM="regular",typeQ="regular"):
 def IsLeapYear(year):
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 class RegisterForm(FlaskForm):
-    email = StringField("Email", [validators.InputRequired(message="Email potřebuji"),validators.Email(message="Zadáváš mi špatný email")])
-    name = StringField("Name", [validators.InputRequired(message="Email potřebuji"), validators.Length(5,20,message="velikost jména musí být od 5 do 20 znaků")])
-    password1 = PasswordField("Password1", [validators.InputRequired(message="Heslo potřebuji"), validators.Length(5,24),validators.EqualTo("password2",message="Hesla se musí rovnat")])
+    email = StringField("Email", [validators.InputRequired(),validators.Email()])
+    name = StringField("Name", [validators.InputRequired(), validators.Length(5,20,)])
+    password1 = PasswordField("Password1", [validators.InputRequired(), validators.Length(5,24),validators.EqualTo("password2")])
     password2 = PasswordField("Password2")
     person = SelectField("Person",choices=[("s","student"),("t","teacher")])
     submit = SubmitField("Log In")
