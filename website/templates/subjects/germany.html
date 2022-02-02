@@ -2071,7 +2071,7 @@ function addTask (){
     }
 }
 async function downloadPDF(){
-    if (!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(document.getElementById("TN").innerText)){
+    if (/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(document.getElementById("TN").innerText)){
         let pages=document.getElementsByClassName("Platno");
         const doc = new jsPDF('p','mm','a4');
         // for (let i=0;i<1;i++){
