@@ -1775,34 +1775,59 @@
             "mnoho, hodně,",
             "chatovat,",
             "špatný, špatně(nesprávně)" 
+            ],
+            [
+            "das",
+            "der",
+            "die",
+            "die",
+            "die",
+            "",
+            "der",
+            "das",
+            "das",
+            "der",
+            "der",
+            "",
+            "",
+            "das",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
             ]
         ],
         "Seite 30-31":[24,
             [
-            "der Kontakt, -e",
-            "(das) Aerobic ",
+            "Kontakt, -e",
+            "Aerobic ",
             "Aerobic machen",
             "außerdem",
             "gern",
-            "die Freundin, -nen",
-            "der Film, -e",
+            "Freundin, -nen",
+            "Film, -e",
             "sehen",
             "genial",
-            "der Computer,-",
+            "Computer,-",
             "telefonieren",
             "zeichnen",
-            "die Leute",
-            "die Musik",
+            "Leute",
+            "Musik",
             "hören",
             "Musik hören",
             "sammeln",
             "Ich habe keine Hobbys.",
-            "die CD, -s",
+            "CD, -s",
             "Radio hören",
             "Ich weiß nicht.",
-            "das Beispiel, -e",
-            "das Handy, -s",
-            "die DVD, -s"
+            "Beispiel, -e",
+            "Handy, -s",
+            "DVD, -s"
             ],
             [
             "kontakt,",
@@ -1829,6 +1854,32 @@
             "příklad,",
             "mobil,",
             "DVD"
+            ],
+            [
+            "der",
+            "(das)",
+            "",
+            "",
+            "",
+            "die",
+            "der",
+            "",
+            "",
+            "der",
+            "",
+            "",
+            "die",
+            "die",
+            "",
+            "",
+            "",
+            "",
+            "die",
+            "",
+            "",
+            "das",
+            "das",
+            "die"
             ]
         ]
     },
@@ -2145,19 +2196,6 @@
         []
     ],
     "Wortschatz":{
-        "Seite 27-29":[23,
-            [
-            ],
-            [
-            ]
-        ],
-        "Seite 30-31":[24,
-            [
-            ],
-            [
-
-            ]
-        ]
     },
     "text":{
 
@@ -2217,5 +2255,396 @@
     "tests":{
 
     }  
+},
+"lekce16":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce17":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce18":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce19":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce20":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce21":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce22":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce23":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce24":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce25":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce26":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce27":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce28":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce29":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
+},
+"lekce30":{
+    "Grammatik":[
+        []
+    ],
+    "Wortschatz":{
+        "Seite 27-29":[23,
+            [
+            ],
+            [
+            ]
+        ],
+        "Seite 30-31":[24,
+            [
+            ],
+            [
+
+            ]
+        ]
+    },
+    "text":{
+
+    },
+    "tests":{
+
+    }  
 }
+
 }
