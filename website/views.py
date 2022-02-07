@@ -101,7 +101,7 @@ def profile():
                 db.session.commit()
         time=datetime.now()
         y=current_user.NLastActivTime.split("-")
-        x=(date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%j")))-date(int(y[0]),int(y[1]),int(y[2]))).days
+        x=(date(int(time.strftime("%Y")),int(time.strftime("%m")),int(time.strftime("%d")))-date(int(y[0]),int(y[1]),int(y[2]))).days
         if x>6:
             current_user.Nactivity="F/F/F/F/F/F/F"
         else:
