@@ -423,7 +423,7 @@ span{
 }
 #tabulka th, #slovnicek td{padding:3px;}
 #slovnicek td:nth-child(1) {text-align:right;width:20px}
-#slovnicek td:nth-child(2) {text-align:right;width:30px}
+#slovnicek td:nth-child(2) {text-align:right;width:30px;vertical-align: top}
 #slovnicek td:nth-child(3) {width:200px}
 #slovnicek td:nth-child(4) {width:200px}
 #CzechWH{
@@ -436,7 +436,9 @@ span{
     height:470px;
     backdrop-filter: blur(0px);
     transition: backdrop-filter .3s ease;
-
+}
+#slovnicek tr:hover{
+    background-color: rgb(0,0,0,0.1);
 }
 #GermanWH{
     display:none;

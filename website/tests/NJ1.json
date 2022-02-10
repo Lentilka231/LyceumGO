@@ -589,8 +589,6 @@
             "das"
             ]
         ]
-    },
-    "tests":{
     }
 },
 "lekce2":{
@@ -1169,8 +1167,6 @@
             ""
             ]
         ]
-    },
-    "tests":{
     }
 },
 "lekce3":{
@@ -1501,8 +1497,6 @@
             "das"
             ]
         ]
-    },
-    "tests":{
     }
 },
 "lekce4":{
@@ -1882,13 +1876,7 @@
             "die"
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce5":{
     "Grammatik":[
@@ -2001,13 +1989,7 @@
             "DVD"
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce6":{
     "Grammatik":[
@@ -2027,13 +2009,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce7":{
     "Grammatik":[
@@ -2053,13 +2029,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce8":{
     "Grammatik":[
@@ -2079,13 +2049,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce9":{
     "Grammatik":[
@@ -2105,13 +2069,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce10":{
     "Grammatik":[
@@ -2131,13 +2089,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce11":{
     "Grammatik":[
@@ -2157,13 +2109,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce12":{
     "Grammatik":[
@@ -2183,26 +2129,14 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce13":{
     "Grammatik":[
         []
     ],
     "Wortschatz":{
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce14":{
     "Grammatik":[
@@ -2222,13 +2156,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce15":{
     "Grammatik":[
@@ -2248,13 +2176,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce16":{
     "Grammatik":[
@@ -2274,13 +2196,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce17":{
     "Grammatik":[
@@ -2300,13 +2216,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce18":{
     "Grammatik":[
@@ -2326,13 +2236,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce19":{
     "Grammatik":[
@@ -2352,13 +2256,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce20":{
     "Grammatik":[
@@ -2378,13 +2276,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce21":{
     "Grammatik":[
@@ -2404,13 +2296,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce22":{
     "Grammatik":[
@@ -2430,13 +2316,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce23":{
     "Grammatik":[
@@ -2456,13 +2336,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce24":{
     "Grammatik":[
@@ -2701,91 +2575,534 @@
                 "das"
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce25":{
     "Grammatik":[
         []
     ],
     "Wortschatz":{
-        "Seite 27-29":[23,
+        "1":[41,
             [
+                "Medien",
+                "besprechen",
+                "Feuer",
+                "Feuer löschen",
+                "Feuerwehr, -en",
+                "Behinderten",
+                "Rollstuhl, Rollstühle",
+                "schieben",
+                "Musikfestival, -s",
+                "Campingplatz, Campingplätze",
+                "grillen",
+                "Medien nutzen",
+                "Vorteil, -e",
+                "Nachteil, -e",
+                "Gefahr, -en",
+                "Streit",
+                "peinlich",
+                "Fotos ins Internet stellen",
+                "löschen",
+                "sich entschuldigen bei",
+                "Ärger",
+                "Ärger haben mit",
+                "Psychologe, -n",
+                "einen Termin ausmachen",
+                "Mein Handy ist an.",
+                "schauen",
+                "unter dem Tisch",
+                "stecken",
+                "dringend",
+                "verbringen",
+                "am Computer",
+                "im Internet",
+                "vor dem Fernseher",
+                "nach Informationen suchen",
+                "austauschen",
+                "Webseite, -n",
+                "Dialog, -e",
+                "ungefähr",
+                "Mach's gut!",
+                "aufhören mit",
+                "versprechen"
             ],
             [
+                "média",
+                "probírat",
+                "oheň",
+                "hasit oheň",
+                "hasiči",
+                "zdravotně postižení",
+                "invalidní vozík",
+                "tlačit",
+                "hudební festival",
+                "kemp",
+                "grilovat",
+                "využívat média",
+                "výhoda",
+                "nevýhoda",
+                "nebezpečí",
+                "hádka",
+                "trapný",
+                "dávat fotky na internet",
+                "vymazávat, smazávat",
+                "omluvit",
+                "nepříjemnost",
+                "mít nepříjemnosti",
+                "psycholog",
+                "domluvit si termín",
+                "Mám zapnutý mobil.",
+                "dívat se",
+                "pod stolem",
+                "strčit",
+                "naléhavý, nutně",
+                "strávit",
+                "u počítače",
+                "na internetu",
+                "u televize",
+                "vyhledávat informace",
+                "vyměnit",
+                "webová stránka",
+                "rozhovor",
+                "přibližně, asi",
+                "Měj se hezky!",
+                "přestávat",
+                "slíbit"
+            ],
+            [
+                "die",
+                "",
+                "das",
+                "",
+                "die",
+                "die",
+                "der",
+                "",
+                "das",
+                "der",
+                "",
+                "",
+                "der",
+                "der",
+                "die",
+                "der",
+                "",
+                "",
+                "",
+                "",
+                "der",
+                "",
+                "der",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "die",
+                "der",
+                "",
+                "",
+                "",
+                ""
             ]
         ],
-        "Seite 30-31":[24,
+        "2":[26,
             [
+                "Freistunde, -n",
+                "Inhalt, -e",
+                "Zitat, -e",
+                "Titel, -",
+                "Überschrift, -en",
+                "Zeitungsartikel, -",
+                "schreiben über",
+                "arbeiten an",
+                "Redakteur, -e",
+                "Redaktion, -en",
+                "Kontakt, -e",
+                "Kontakt aufnehmen mit/zu",
+                "Treffen, -",
+                "jemanden unterhalten",
+                "kritisch",
+                "informieren über",
+                "ab September",
+                "erscheinen",
+                "vorschlagen",
+                "beginnen",
+                "nicht ..., sondern ...",
+                "Koordination, -en",
+                "Rest, -e",
+                "Briefkasten, Briefkästene",
+                "Fotograf, -en",
+                "Leser, -"
             ],
             [
-
+                "volná hodina",
+                "obsah",
+                "citát",
+                "titule, nadpis",
+                "nadpis",
+                "novinový článek",
+                "psát o",
+                "pracovat na",
+                "redaktor",
+                "redakce",
+                "kontakt",
+                "navázat kontakt s",
+                "setkání, schůzka",
+                "někoho bavit",
+                "kritický",
+                "informovat o",
+                "od září",
+                "vycházet",
+                "navrhnout",
+                "beginnen",
+                "ne..., ale...",
+                "koordinace",
+                "zbytek",
+                "poštovní schránka",
+                "fotograf",
+                "čtenář"
+            ],
+            [
+                "die",
+                "der",
+                "das",
+                "der",
+                "die",
+                "der",
+                "",
+                "",
+                "der",
+                "die",
+                "der",
+                "",
+                "das",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "die",
+                "der",
+                "der",
+                "der",
+                "der"
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce26":{
     "Grammatik":[
         []
     ],
     "Wortschatz":{
-        "Seite 27-29":[23,
+        "Freiwiligarbeit":[47,
             [
+                "engagiert",
+                "engagiert sein",
+                "behindert",
+                "Behindertenheim, -e",
+                "Rollstuhlfahrer, -",
+                "eng",
+                "Eingang, Eingänge",
+                "Treppe, -n",
+                "Altenheim, -e",
+                "Besuch, -e",
+                "Vergangenheit",
+                "Ding, -e",
+                "Not, Nöte",
+                "Menschen in Not",
+                "benutzen",
+                "dass",
+                "berichten",
+                "frech",
+                "Sportverein, -e",
+                "aufregend",
+                "klug",
+                "auf einem Musikfestival",
+                "Gelände, -",
+                "Dusche, -n",
+                "Taschenmesser, -",
+                "Insekt, -en",
+                "Insektenspray, -s",
+                "Packung, -en",
+                "am Zelt",
+                "Abendessen, -",
+                "sich streiten mit",
+                "sich treffen mit",
+                "sich erholen von",
+                "da drüben",
+                "sich beeilen",
+                "sich freuen auf",
+                "sich freuen über",
+                "Das Konzert wird sicher super.",
+                "sich ausruhen",
+                "hinlegen",
+                "in einer halben Stunde",
+                "sich anziehen",
+                "sich verletzen",
+                "sich verstehen mit",
+                "sich vorstellen",
+                "sich langweilen",
+                "sich ärgern"
             ],
             [
-            ]
-        ],
-        "Seite 30-31":[24,
-            [
+                "angažovaný",
+                "angažovat se",
+                "postižený",
+                "domov pro zdravotně postižené",
+                "vozíčkář",
+                "úzký",
+                "vchod",
+                "schody",
+                "domov důchodců",
+                "návštěva",
+                "minulost",
+                "věc",
+                "nouze",
+                "lidé v nouzi",
+                "používat",
+                "že",
+                "vyprávět",
+                "drzý",
+                "sportovní klub",
+                "vzrušující",
+                "chytrý",
+                "na hudebním festivalu",
+                "areál",
+                "sprcha",
+                "kapesní nůž",
+                "hmyz",
+                "repelent",
+                "balení",
+                "u stanu",
+                "večeře",
+                "hádat se s",
+                "setkat se s",
+                "zotavit se z",
+                "tamhle naproti",
+                "pospíšit si",
+                "těšit se na",
+                "mít radost z",
+                "Koncert bude určitě super.",
+                "odpočívat",
+                "položit",
+                "za půl hodiny",
+                "obléknout si",
+                "zranit se",
+                "rozumět si s",
+                "představit se",
+                "nudit se",
+                "zlobit se"
             ],
             [
-
+                "",
+                "",
+                "",
+                "das",
+                "der",
+                "",
+                "der",
+                "die",
+                "das",
+                "der",
+                "die",
+                "das",
+                "die",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "der",
+                "",
+                "",
+                "",
+                "das",
+                "die",
+                "das",
+                "das",
+                "das",
+                "die",
+                "",
+                "das",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce27":{
     "Grammatik":[
         []
     ],
     "Wortschatz":{
-        "Seite 27-29":[23,
+        "Grillparty":[27,
             [
+                "am Donnerstagabend",
+                "übermorgen",
+                "wie besprochen",
+                "am Samstagnachmittag",
+                "so gegen 16 Uhr",
+                "am Samstag früh",
+                "wegfahren",
+                "nachts",
+                "zurückkommen",
+                "besorgen",
+                "Semmel, -n",
+                "etwas Süßen",
+                "Nachtisch",
+                "backen",
+                "sich kümmern um",
+                "Wunsch, Wünsche",
+                "bis Donnerstag",
+                "Bescheid geben",
+                "Gast, Gäste",
+                "Grill, -s",
+                "Kohle",
+                "Besteck",
+                "Paprika, -",
+                "Gurke, -n",
+                "Marille, -n",
+                "Erdapfel, Erdäpfel",
+                "Paradeiser, -"
             ],
             [
+                "ve čtvrtek večer",
+                "pozítří",
+                "jak jsme se domluvili",
+                "v sobotu odpoledne",
+                "tak okolo 16. hodiny",
+                "v sobotu ráno",
+                "odjet",
+                "v noci",
+                "vrátit se",
+                "obstarat",
+                "houska",
+                "něco sladkého",
+                "dezert",
+                "péct",
+                "starat se o",
+                "přání",
+                "do čtvrtka",
+                "dát vědět",
+                "host",
+                "gril",
+                "uhlí",
+                "příbor",
+                "paprika",
+                "okurka",
+                "meruňka",
+                "brambora",
+                "rajče"
+            ],
+            [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "die",
+                "",
+                "der",
+                "",
+                "",
+                "der",
+                "",
+                "",
+                "der",
+                "der",
+                "die",
+                "das",
+                "die",
+                "die",
+                "die",
+                "der",
+                "der"
             ]
         ],
-        "Seite 30-31":[24,
+        "Kochen":[21,
             [
+                "nämlich",
+                "Nudel, -n",
+                "niemand",
+                "unterwegs",
+                "zu Mittag essen",
+                "Schweinefleisch",
+                "Rindfleisch",
+                "Hähnchen, -",
+                "fett",
+                "meist",
+                "Ich habe viel zu tun.",
+                "einladen zu",
+                "Zusammensein",
+                "Mittagessen, -",
+                "zu Abend essen",
+                "von entfernt",
+                "auftreten",
+                "Dichter, -",
+                "Präsentation, -en",
+                "Erklärung, -en",
+                "Sehenswürdigkeit, -en"
             ],
             [
-
+                "totiž",
+                "nudle, těstovina",
+                "nikdo",
+                "na cestě",
+                "obědvat",
+                "vepřové",
+                "hovězí",
+                "kuře",
+                "tučný",
+                "většinou",
+                "Mám toho hodně.",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce28":{
     "Grammatik":[
@@ -2805,13 +3122,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce29":{
     "Grammatik":[
@@ -2831,13 +3142,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 },
 "lekce30":{
     "Grammatik":[
@@ -2857,13 +3162,7 @@
 
             ]
         ]
-    },
-    "text":{
-
-    },
-    "tests":{
-
-    }  
+    } 
 }
 
 }
