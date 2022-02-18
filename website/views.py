@@ -7,7 +7,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,validators,Form
 from wtforms.validators import InputRequired,Length,Email,EqualTo
 from . import db
-import os
 import random
 import string
 from datetime import date,datetime
