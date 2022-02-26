@@ -1,6 +1,6 @@
 .Module{
     padding:13px;
-    margin:10px 0px;
+    margin-bottom:10px;
     height:3rem;
     z-index:2;
     border-radius:10px ;
@@ -12,7 +12,29 @@
 .Module:hover, #CreateTest:hover, #PVerb:hover{
     box-shadow: 3px 3px 10px rgb(95, 95, 95);
 }
-
+#WS{
+    margin:20px 20px;
+    font-size:30px;
+}
+#G{
+    font-size:30px;
+}
+.GO{
+    display:none;
+}
+#temata div{
+    width:100%;
+    padding:10px;
+    background-color: var(--blue);
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+#temata{
+    padding-right:20px;
+    border-right:1px solid black;
+}
 #CreateTest{
     padding:13px;
     margin:10px 0px;
@@ -29,6 +51,13 @@
 }
 #CreateTestDIV{
     display: none;
+}
+.third{
+    display:grid;
+    grid-template-columns:175px 1fr;
+    grid-template-rows:50px 7fr;
+    grid-gap:10px;
+    overflow-x:auto
 
 }
 .second{
@@ -37,6 +66,7 @@
 }
 .child{
     display:none;
+    font-size: 1rem;
 }
 #PVerb{
     background-color: brown;
@@ -78,6 +108,7 @@
     border-radius: 10px;
     padding:10px;
 }
+
 .Material{
     display: flex;
     justify-content:left;
@@ -100,71 +131,6 @@
     cursor:pointer;
     border-radius: 10px;
 }
-.b11:hover{
-    background:rgb(158, 103, 158)
-}
-.b12:hover{
-    background-color:rgb(134, 84, 172) ;
-}
-.b13:hover{
-    background-color:rgb(75, 67, 134) ;
-}
-.b14:hover{
-    background-color:rgb(41, 60, 102) ;
-}
-.Block:hover  .celkemwort{
-    display:block;
-}
-.b21:hover{
-    background-color: rgb(218, 191, 22);
-}
-.b22:hover{
-    background-color: rgb(216, 147, 18);
-}
-.b23:hover{
-    background-color: rgb(167, 112, 11);
-}
-.b24:hover{
-    background-color: rgb(114, 76, 5);
-}
-
-.b31:hover{
-    background-color: rgb(209, 103, 124);
-}
-.b32:hover{
-    background-color: rgb(196, 57, 82);
-}
-.b33:hover{
-    background-color: rgb(122, 31, 69);
-}
-.b34:hover{
-    background-color: rgb(66, 11, 47);
-}
-
-.b41:hover{
-    background-color: rgb(85, 187, 119);
-}
-.b42:hover{
-    background-color: rgb(49, 141, 74);
-}
-.b43:hover{
-    background-color: rgb(22, 97, 47);
-}
-.b44:hover{
-    background-color: rgb(5, 54, 22);
-}
-.b51:hover{
-    background-color: rgb(121, 143, 194);
-}
-.b52:hover{
-    background-color: rgb(74, 99, 153);
-}
-.b53:hover{
-    background-color: rgb(42, 61, 102);
-}
-.b54:hover{
-    background-color: rgb(22, 32, 54);
-}
 .grid-items div::-webkit-scrollbar{
     width:12px;
 }
@@ -177,6 +143,8 @@
     background-color:transparent;
 }
 .grid-items::-webkit-scrollbar-thumb{
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
     background-color: var(--blue);
 }
 .grid-items div::-webkit-scrollbar-thumb{
@@ -188,19 +156,9 @@
     background-color: var(--blue);
 }
 #gisscroller{
-    margin:20px;
-    margin-right:10px;
-    
-    padding-right:10px;
+    padding:10px 20px;
     overflow-y:scroll;
-    height:calc(100% - 100px);
-}
-.celkemwort{
-    margin-top:5px;
-    width: 100%;
-    text-align: center;
-    font-size:16px;
-    display:none;
+    height:calc(100% - 150px);
 }
 .nadpisChild{
     margin-left:10px;
@@ -459,6 +417,23 @@ span{
     bottom:70px;
     padding:10px;
     z-index:1;
+}
+
+.GO div{
+    font-size: 17px;
+    padding: 10px 5px;
+    border-bottom: 1px solid rgba(107, 107, 107);
+    cursor:pointer;
+    width:250px
+}
+.GO div:hover{
+    color:rgb(95, 95, 95)
+}
+.GO div:last-child{
+    border-bottom: none;
+}
+.GON{
+    font-size: 28px;
 }
 .balicek{
     width:220px;
@@ -743,6 +718,13 @@ span{
 }
 .Text span{
     color:black;
+}
+.TitleWS{
+    margin-bottom:10px;
+    font-size: 1.1rem;
+}
+.L{
+    margin-bottom   :5px;
 }
 .gtext{
     display:grid;

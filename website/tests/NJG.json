@@ -1,0 +1,88 @@
+{
+"Unbestimmte und bestimmte Artikel":[3,
+    [
+    {
+    "q":"Hast du ______ Computer zu Hause? Nein, ich habe keinen Computer.",
+    "a":"ein",
+    "1":"der",
+    "2":""
+    },
+    {
+    "q":"Trinken Sie ______ Tee? Ja, ich trinke gern der schwarzen Tee.",
+    "a":"",
+    "1":"der",
+    "2":"ein"
+    },
+    {
+    "q":"______ Pullover, den ich gekauft habe, ist super.",
+    "a":"Der",
+    "1":"Ein",
+    "2":""
+    },
+    {
+    "q":"Ist das ______ Spiel? Nein das ist etwas andere.",
+    "a":"die",
+    "1":"eine",
+    "2":""
+    },
+    {
+    "q":"Können wir ______ Speisekarte nehmen.",
+    "a":"eine",
+    "1":"die",
+    "2":""
+    },
+    {
+    "q":"Das ist schöne Hose! Was kostet ______ Hose? ",
+    "a":"die",
+    "1":"eine",
+    "2":""
+    },
+    {
+    "q":"Endlich habe ich ______ T-Shirt gekauft.",
+    "a":"das",
+    "1":"ein",
+    "2":""
+    },
+    {
+    "q":"______ Eis hat dir gefallen? Ja es war super lecker.",
+    "a":"Das",
+    "1":"Ein",
+    "2":""
+    },
+    {
+    "q":"Ich muss ______ Auto kaufen, aber ich weiß nicht welches.",
+    "a":"ein",
+    "1":"das",
+    "2":""
+    },
+    {            
+    "q":"Wie viel kosten ______ Schuhe.",
+    "a":"die",
+    "1":"eine",
+    "2":""
+    },
+    {
+    "q":"______ Tomaten? Warum brauchen wir die Tomaten?",
+    "a":"",
+    "1":"eine",
+    "2":"die"
+    },
+    {
+    "q":"Ich brauche ______ Socken, aber wo kann ich sie kaufen?",
+    "a":"",
+    "1":"eine",
+    "2":"die"
+    }
+    ],
+    "Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
+    "Doplň neurčitý/určitý člen nebo žádný člen."
+],
+"Verben in Präsens":[4,
+    [
+        {
+            
+        }
+    ]
+]
+
+}

@@ -63,7 +63,7 @@ def Nemcina():
                             db.session.delete(i)
                             db.session.commit()
                             break
-        with open("website/tests/NJ1.json", encoding="utf-8") as f:
+        with open("website/tests/NJW.json", encoding="utf-8") as f:
             NJ = json.load(f)
-        return render_template("subjects/germany.html",user=current_user,NJ1=NJ)
+        return render_template("subjects/germany.html",user=current_user,NJW=NJ)
     return redirect(url_for("views.index"))
