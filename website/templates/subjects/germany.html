@@ -971,21 +971,22 @@
                 <div class="t easyt" onclick="teststart('ABCD','1-3','Grammatik','2')">leichter Test</div>
                 <div class="t hardt" onclick="teststart('TextInput','1-3','Grammatik','2')">schwieriger Test</div>
             </div>
-            <div class="DYK">
-                <div class="arrow-left"></div>
-                <div class="DidYouKnow">
-                    <div class="DidYKChild" value="6">
-                        <div class="DYCKName"><b>1. Hast du das wissen?</b></div>
-                        <div class="DYKCBody" >
-                            46% slov má rod ženský<br>34% slov má rod mužský<br>20% slov má rod střední
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
 
         </div>
         <div class="Teorie VerbenInPräsens">
-
+            <p class="nnadpis"><b>Verben in Präsens</b></p>
+            <p class="cnadpis">Slovesa v přítomném čase</p>
+            <div class="testy">
+                <div class="t chooset" onclick="teststart('ABCD','Verben in Präsens')">
+                <img src="{{url_for('static',filename='images/ABCD.png')}}"><br>Rozhodovačka
+                </div>
+                <div class="t translatet" onclick="teststart('TextInput')">
+                <img src="{{url_for('static',filename='images/Translate.png')}}"><br>Překlad
+                </div>
+                <div class="t pexesot" onclick="teststart('Pexeso')">
+                    <img src="{{url_for('static',filename='images/Pexeso.png')}}"><br>Pexeso</div>
+            </div>
         </div>
     </div>
 </div>
@@ -1064,8 +1065,6 @@
     function sleep(ms){
         return new Promise(resolve => setTimeout(resolve,ms))
     };
-    const DidYouKnow = document.getElementsByClassName("DidYKChild");
-    let DidYouKnowOPEN = [];
     let G = true;
     let C = true;
     async function GermanWordsHider(){
@@ -1129,32 +1128,7 @@
         }
 
         $("#TDContent").children().hide();
-        
-        for(let i=0;i<DidYouKnow.length;i++){
-            DidYouKnowOPEN.push[false];
-        }
-
-        for(let i=0;i<DidYouKnow.length;i++){
-            DidYouKnow[i].onclick= async function(){
-                
-                if (!DidYouKnowOPEN[i]){
-                    for(let j=0;j<DidYouKnow.length;j++){
-                        DidYouKnow[j].style.height="40px";
-                        DidYouKnow[j].querySelector(".DYKCBody").style.visibility="hidden";
-                        DidYouKnowOPEN[j]=false;
-                    }
-                    DidYouKnow[i].style.height=DidYouKnow[i].getAttribute("value")+"rem";
-                    await sleep(200);
-                    DidYouKnow[i].querySelector(".DYKCBody").style.visibility="visible";
-                    DidYouKnowOPEN[i]=true;
-                }
-                else{
-                    DidYouKnow[i].querySelector(".DYKCBody").style.visibility="hidden";
-                    DidYouKnow[i].style.height="40px";
-                    DidYouKnowOPEN[i]=false;
-                }
-            };
-        };
+    
         
         if (document.getElementById("flashedmsg").innerText.length>41){
             document.getElementById("flashedmsg").style.display="block"
@@ -1167,7 +1141,8 @@
     //kdybych se někdy divil proč jsem místo dict rozložil slovíčka na 2 array
     //je to z toho důvodu že přes internet dict přichází 
     //ROZHÁZENÉ a já nevím jak to :D
-    const NJ = JSON.parse('{{ NJW | tojson | safe }}');
+    const NJW = JSON.parse('{{ NJW | tojson | safe }}');
+    const NJG = JSON.parse('{{ NJG | tojson | safe }}')
     const zakladnibarva = "3px solid rgb(189, 213, 234)";
     const spravnabarva = "rgb(25, 146, 61)";
     const spatnabarva = "rgb(199, 42, 42)";
@@ -1244,7 +1219,7 @@
             NameOfTest=ukol.replace(/ /g,"_");
             if (typ=="w"){
                 document.getElementById("slovnicek").innerHTML="";
-                CurrentVocabulary=NJ["module"+module][ukol];
+                CurrentVocabulary=NJW["module"+module][ukol];
                 slovicka=""
                 for(let i=0;i<CurrentVocabulary[0];i++){
                     slovicka+="<tr><td>"+(i+1)+"</td><td>"+CurrentVocabulary[3][i]+"</td><td>"+CurrentVocabulary[1][i]+"</td><td>"+CurrentVocabulary[2][i]+"</td></tr>";
@@ -1254,11 +1229,6 @@
                 $(".xs").show();
             }
             else{
-                for(let i=0;i<DidYouKnow.length;i++){
-                    DidYouKnowOPEN[i]=false;
-                    DidYouKnow[i].querySelector(".DYKCBody").style.visibility="hidden";
-                    DidYouKnow[i].style.height="40px";
-                }
                 if(NameOfTest.slice(-1)=="."){
                     $("."+NameOfTest.slice(0,-1)).show();
                 }
@@ -1301,7 +1271,7 @@
         removeDrag([balicekKaretSpatny],[balicekKaretVyber]);
     };
     // příprava sady otázek
-    function teststart(type,k,t,x){
+    function teststart(type,test){
         $(".Teorie").hide();
         TypeOfTest=type;
         switch(type){
@@ -1309,16 +1279,17 @@
             case "TextInput":
                 $("#progression").show();
                 $("."+type).show();
-                SetOfQuestions=NJ["module"+k][x][1];
-                nText=NJ["module"+k][x][2];
-                czText=NJ["module"+k][x][3];
+                
+                SetOfQuestions=NJG[test][1];
+                nText=NJG[test][2];
+                czText=NJG[test][3];
                 UnusedQuestions=Array.from({length:SetOfQuestions.length}, (_, i) => i);
                 Success=Array.from({length:SetOfQuestions.length},(_,i) => 1);
-                NumberForCalculationOfSuccess=0
+                NumberForCalculationOfSuccess=0;
                 document.getElementById("ABCDodpovedi").innerHTML="";
                 ABCD=["A","B","C","D"];
                 ABCDanswer=document.getElementsByClassName("Felix");
-                NumberOfPossibleAnswers=NJ["module"+k][x][0];
+                NumberOfPossibleAnswers=NJG[test][0];
                 for(let i=0;i<NumberOfPossibleAnswers;i++){
                     document.getElementById("ABCDodpovedi").innerHTML+=`<div style='border:solid 3px rgb(189, 213, 234)' type='button' class='Felix' id='${ABCD[i]}' onclick='checkanswer(\"${ABCD[i]}\")'>Odpoved ${ABCD[i]}</div>`;
                 };

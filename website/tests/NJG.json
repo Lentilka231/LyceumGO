@@ -80,9 +80,16 @@
 "Verben in Präsens":[4,
     [
         {
-            
+            "q":"Wie kann ich zu Hause _____?",
+            "a":"bekommen",
+            "1":"treffen",
+            "2":"achten",
+            "3":"schwimmen"
         }
-    ]
+        
+    ],
+    "Ergänz die richtige verb.",
+    "Doplň správné sloveso."
 ]
 
 }

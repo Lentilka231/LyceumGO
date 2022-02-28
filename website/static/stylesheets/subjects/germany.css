@@ -230,29 +230,24 @@ span{
     bottom:140px;
     width:100%;
 }
-.easyt{
-    background-color: rgb(67, 155, 67);
-    padding:10px;
-    position: absolute;
-}
-.easyt:hover{
-    background-color:rgb(38, 114, 38);
-}
-.hardt:hover{
-    background-color:rgb(148, 29, 29);
-}
-.hardt{
-    background-color: rgb(201, 39, 39);
-    padding:10px;
-    position: absolute;
-    left:150px;
-}
+
 .task{
     display:none;
     position: relative;
     height:100%;
 }
+.testy{
+    display:flex;
+    justify-content:space-around;
+    height:150px;
+}
+.t{
+    text-align: center;
 
+}
+.t img{
+    width:75px;
+}
 #TDContent{
     height:100%;
     position: relative;
@@ -608,31 +603,6 @@ span{
 }
 #RepeatConnecting:hover{
     background-color: rgb(169, 190, 207);
-}
-.DidYouKnow{
-    position:absolute;
-    left:50px;
-    height:100%;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
-.DidYKChild{
-    width:250px;
-    height:40px;
-    background-color:rgb(158, 186, 238) ;
-    border-radius: 5px;
-    padding:10px;
-    transition: height 0.3s ease;
-    cursor:pointer;
-    margin-bottom: 10px;
-}
-.DidYKChild:hover{
-    background-color:rgb(136, 169, 231);
-}
-.DYKCBody{
-    margin-top: 10px;
-    visibility: hidden;
 }
 #progression{
     height:30px;
