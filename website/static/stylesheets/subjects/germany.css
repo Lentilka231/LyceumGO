@@ -239,11 +239,47 @@ span{
 .testy{
     display:flex;
     justify-content:space-around;
-    height:150px;
+    padding-top:40px;
+    padding-bottom:20px;
+    border-radius: 10px;
+    margin:10px 0px;
+    position: relative;
+}
+.tnadpis{
+    font-size: 24px;
+    position:absolute;
+    transform: translate(-50%,0%);
+    left:50%;
+    top:0%;
+}
+.pexeso{
+    margin-top:20px;
+    display:flex;
+    height:80%;
+    justify-content: space-around;
+}
+#npexeso, #czpexeso{
+    width:45%;
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(5,1fr);
+    grid-gap:10px;
+    text-align: center;
+}
+#npexeso div, #czpexeso div{
+    padding:10px;
+    border-radius: 10px;
+    background-color: var(--brighterBlue);
+    cursor:pointer;
+    font-size: 20px;
+    border:solid var(--brighterBlue) 3px;
 }
 .t{
+    padding:10px;
     text-align: center;
-
+}
+.t:hover{
+    background-color: rgb(230, 243, 255);
 }
 .t img{
     width:75px;
