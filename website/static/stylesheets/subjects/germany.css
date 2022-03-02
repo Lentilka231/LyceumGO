@@ -305,7 +305,12 @@ span{
     transform: translate(-50%,0%);
 }
 .Franta{
-    top:90px;
+    top:50px;
+    width:700px;
+    text-align: center;
+}
+#FrantaY{
+    top:30px;
     width:700px;
     text-align: center;
 }
@@ -349,6 +354,17 @@ span{
 .congratulations{
     display:none;
     height:100%;
+}
+@keyframes fromRedToBlue{
+    0% {
+        background-color: var(--red);
+        border: solid var(--red) 3px;
+    }
+    100% {
+        background-color: var(--theBrightestBlue);
+        border: solid var(--theBrightestBlue) 3px;
+        opacity:0.5;
+    }
 }
 #strana{
     height:7%;
@@ -643,12 +659,12 @@ span{
 #progression{
     height:30px;
     position: absolute;
-    top:120px;
+    top:50px;
     left:50%;
     transform: translate(-50%,0%);
     width:500px;
     border:solid black 2px;
-    border-radius: 5px;
+    border-radius: 50px;
 }
 #fill{
     border-radius:4px;

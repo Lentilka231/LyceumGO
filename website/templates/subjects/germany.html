@@ -784,14 +784,12 @@
             </div>
         </div>
         <div class="task TextInput">
-            <div class="questions">
-                <b id="nzX" class="nzadani">Schreibst du die (richtige) Antwort.</b><br>
-                <p id="czX" class="czadani">Napiš (správnou) odpověď.</p>
-            </div>
             <div class="answer">
+                <p id="FrantaY" style="top:20px;font-size: 16px;color:rgb(110, 110, 110)" class="Franta"></p>
                 <p id="FrantaX" class="Franta"></p>
                 
                 <div class="centralizer" style="bottom: 170px;">
+                    
                     <div id="XP">
                         <input type="text" id="TextInput" spellcheck="false">
                     </div>
@@ -906,7 +904,6 @@
             <div style="display:flex;flex-direction:column;justify-content:center;align-items: center;position: absolute;width: 100%;height: 100%;">
                 <p style="font-size: 42px;"><b>Gratulation zum Bestehen der Prüfung</b></p>
                 <p style="font-size:30px;">Gratuluji k dokončení testu:</p><br>
-                <p>Erfolgsquote / úspěšnost:</p><br>
                 <p style="font-size: 100px;"id="procenta"></p>
             </div>
         </div>
@@ -1018,8 +1015,10 @@
             </div>
             <div class="testy">
                 <div class="tnadpis">Die 100 besten Verben</div>
-                <div class="t" onclick="teststart('TextInput')">
-                <img src="{{url_for('static',filename='images/Translate.png')}}"><br>Překlad</div>
+                <div class="t" onclick="teststart('TextInput','Die 100 besten Verben','CZ')">
+                <img src="{{url_for('static',filename='images/TranslateToCZ.png')}}"><br>Překlad</div>
+                <div class="t" onclick="teststart('TextInput','Die 100 besten Verben','N')">
+                <img src="{{url_for('static',filename='images/TranslateToN.png')}}"><br>Překlad</div>
                 <div class="t" onclick="teststart('Pexeso','Die 100 besten Verben')">
                 <img src="{{url_for('static',filename='images/Pexeso.png')}}"><br>Pexeso</div>
             </div>
@@ -1185,6 +1184,7 @@
     let kontrola;
     let UnusedQuestions;
     let MomentalQuestion;
+    let Into;
     let TypeOfTest;
     let NameOfTest;
     let SetOfQuestions;
@@ -1307,7 +1307,7 @@
         removeDrag([balicekKaretSpatny],[balicekKaretVyber]);
     };
     // příprava sady otázek
-    function teststart(type,test){
+    function teststart(type,test,into){
         $(".Teorie").hide();
         TypeOfTest=type;
         switch(type){
@@ -1315,11 +1315,10 @@
             case "TextInput":
                 $("#progression").show();
                 $("."+type).show();
-                
+                Into=into;
                 SetOfQuestions=NJG[test][1];
-                nText=NJG[test][2];
                 czText=NJG[test][3];
-                UnusedQuestions=Array.from({length:SetOfQuestions.length}, (_, i) => i);
+                UnusedQuestions=Object.keys(SetOfQuestions);
                 Success=Array.from({length:SetOfQuestions.length},(_,i) => 1);
                 NumberForCalculationOfSuccess=0;
                 document.getElementById("ABCDodpovedi").innerHTML="";
@@ -1366,7 +1365,17 @@
                     n.splice(k,1);
                     keys.splice(a,1)
                 }
+                for(let i=0;i<10;i++){
+                    cz=document.getElementById("czp"+i);
+                    n=document.getElementById("np"+i);
+                    cz.style.animation="";
+                    n.style.animation="";
+                    cz.style.border="solid var(--brighterBlue) 3px";
+                    n.style.border="solid var(--brighterBlue) 3px";
+                }
                 NumberForCalculationOfSuccess=0;
+                Success=Array.from({length:10},(_,i) => 1);
+                Completed=0;
                 newquestion()
                 break
         }  
@@ -1394,16 +1403,30 @@
                 }
                 break;
             case "TextInput":
-                if (SetOfQuestions[MomentalQuestion].a==TextInput.value){
-                    UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
+                console.log(SetOfQuestions[UnusedQuestions[MomentalQuestion]])
+                // dodělat rozdělení mezi jednou a vícero možnými odpovědi.
+                if (Into=="CZ" && SetOfQuestions[UnusedQuestions[MomentalQuestion]]==TextInput.value){
                     BorderForTextInput.style.border="3px solid "+spravnabarva;
+                    console.log("prošel jsem")
+                    if(document.getElementById("chvilkanakontrolu").checked){
+                        await sleep(500);
+                    }
+                    UnusedQuestions.splice(MomentalQuestion,1);
+                    BorderForTextInput.style.border="none";
+                    TextInput.value="";
+                    document.getElementById("fill").style.width=(SetOfQuestions.length-UnusedQuestions.length)/SetOfQuestions.length*100+"%";
+                    newquestion()
+                }
+                else if(Into=="N" && UnusedQuestions[MomentalQuestion]==TextInput.value){
+                    BorderForTextInput.style.border="3px solid "+spravnabarva;
+                    console.log("prošel jsem")
 
                     if(document.getElementById("chvilkanakontrolu").checked){
                         await sleep(500);
                     }
+                    UnusedQuestions.splice(MomentalQuestion,1);
                     BorderForTextInput.style.border="none";
                     TextInput.value="";
-                    document.getElementById("fill").style.width=(SetOfQuestions.length-UnusedQuestions.length)/SetOfQuestions.length*100+"%";
                     newquestion()
                 }
                 else{
@@ -1537,13 +1560,19 @@
         else if (TypeOfTest=="Pexeso"){
             for(let i=0;i<10;i++){
                 document.getElementById("np"+i).onclick= function(){
-                    p=document.getElementById(CZchoosed).innerText
+                    p=document.getElementById(CZchoosed)
                     if(p){
-                        if(SetOfQuestions[this.innerText]==p){
-                            console.log("jsem borec")
-
+                        if(SetOfQuestions[this.innerText]==p.innerText){
+                            Completed+=1;
+                            if(Completed==10){
+                                endoftest();
+                            }
+                            else{
+                                this.style.animation="fromRedToBlue 1s forwards";
+                                p.style.animation="fromRedToBlue 1s forwards";
+                            }
                         }else{
-                            NumberForCalculationOfSuccess+=1
+                            Success[i]=0;
                         }
                     }else{
                         if (this.style.border=="solid var(--red) 3px"){
@@ -1560,14 +1589,19 @@
 
                 }
                 document.getElementById("czp"+i).onclick=function(){
-                    p=document.getElementById(Nchoosed).innerText
+                    p=document.getElementById(Nchoosed)
                     if(p){
-                        console.log(this.innerText)
-
-                        if(SetOfQuestions[p]==this.innerText){
-                            console.log("jsem borec")
+                        if(SetOfQuestions[p.innerText]==this.innerText){
+                            Completed+=1;
+                            if(Completed==10){
+                                endoftest();
+                            }
+                            else{
+                                this.style.animation="fromRedToBlue 1s forwards";
+                                p.style.animation="fromRedToBlue 1s forwards";
+                            }
                         }else{
-                            NumberForCalculationOfSuccess+=1
+                            Success[i]=0;
                         }
                     }
                     else{
@@ -1579,31 +1613,27 @@
                                 document.getElementById("czp"+y).style.border="solid var(--brighterBlue) 3px";
                             }
                             this.style.border="solid var(--red) 3px";
-                            CZchoosed=this.id
+                            CZchoosed=this.id;
                         }
                     }
                 }
             }
         }
         else if (UnusedQuestions.length>0){
-            do{
-                switch(TypeOfTest){
-                    case "ABCD":
-                    case "TextInput":
-                        a=Math.floor(Math.random()*SetOfQuestions.length);   
-                        break;
-                    case "CZtoN":
-                    case "NtoCZ":
-                        a=Math.floor(Math.random()*CurrentVocabulary[0]);
-                        break;   
-                }
+            switch(TypeOfTest){
+                case "ABCD":
+                case "TextInput":
+                    a=Math.floor(Math.random()*UnusedQuestions.length);   
+                    break;
+                case "CZtoN":
+                case "NtoCZ":
+                    a=Math.floor(Math.random()*CurrentVocabulary[0]);
+                    break;   
             }
-            while(!UnusedQuestions.includes(a));
             MomentalQuestion=a;
             dvapokusy=1;
             switch(TypeOfTest){
                 case "ABCD":
-                    document.getElementById("nABCD").innerHTML=nText;
                     document.getElementById("czABCD").innerHTML=czText;
                     document.getElementById("FrantaABCD").innerHTML=SetOfQuestions[a]["q"];
                     b=["a","1","2","3"];
@@ -1616,21 +1646,29 @@
                 case "TextInput":
                     TextInput.focus();
                     CanUseEnter=true;
-                    document.getElementById("nzX").innerHTML=nText;
-                    document.getElementById("czX").innerHTML=czText;
-                    document.getElementById("FrantaX").innerHTML=SetOfQuestions[a]["q"];
+                    document.getElementById("czX").innerText=czText;
+                    if(NumberOfPossibleAnswers==1){
+                        // pokud to mám uložené jako dictionary {"N":"CZ"}
+                        if(Into=="CZ"){
+                            document.getElementById("FrantaX").innerText=UnusedQuestions[MomentalQuestion];
+                        }else{
+                            document.getElementById("FrantaX").innerText=SetOfQuestions[UnusedQuestions[MomentalQuestion]];
+                        }
+                    }
+                    else{
+                        // pokud bývá více odpovědí v ABCD možnostech                        
+                        document.getElementById("FrantaX").innerText=UnusedQuestions[a];
+                    }
                     break;
                 case "CZtoN":
                     TextInput.focus();
                     CanUseEnter=true;
-                    document.getElementById("nzX").innerHTML="Schreibst du die deutsche Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš německou verzi slovíčka.";
                     document.getElementById("FrantaX").innerHTML=CurrentVocabulary[2][MomentalQuestion];
                     break;
                 case "NtoCZ":
                     TextInput.focus();
                     CanUseEnter=true;
-                    document.getElementById("nzX").innerHTML="Schreibst du die tschechische Version des Wortes.";
                     document.getElementById("czX").innerHTML="Napiš českou verzi slovíčka.";
                     document.getElementById("FrantaX").innerHTML=CurrentVocabulary[1][MomentalQuestion];
                     break;
@@ -1647,7 +1685,7 @@
         for (let i=0;i<Success.length;i++){
             NumberForCalculationOfSuccess+=Success[i];
         };
-        x=Math.round(NumberForCalculationOfSuccess/Success.length*100)
+        x=Math.round(NumberForCalculationOfSuccess/Success.length*100);
         document.getElementById("procenta").innerText=x+"%";
         $(".congratulation").show();
         $.post("/Germany", {
