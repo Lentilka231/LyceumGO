@@ -1,200 +1,243 @@
 {
-"Unbestimmte und bestimmte Artikel":[3,
-    [
+    "Podstatná jména":
     {
-    "q":"Hast du ______ Computer zu Hause? Nein, ich habe keinen Computer.",
-    "a":"ein",
-    "1":"der",
-    "2":""
+        "Unbestimmte und bestimmte Artikel":[3,
+            [
+            {
+            "q":"Hast du ______ Computer zu Hause? Nein, ich habe keinen Computer.",
+            "a":"ein",
+            "1":"der",
+            "2":""
+            },
+            {
+            "q":"Trinken Sie ______ Tee? Ja, ich trinke gern der schwarzen Tee.",
+            "a":"",
+            "1":"der",
+            "2":"ein"
+            },
+            {
+            "q":"______ Pullover, den ich gekauft habe, ist super.",
+            "a":"Der",
+            "1":"Ein",
+            "2":""
+            },
+            {
+            "q":"Ist das ______ Spiel? Nein das ist etwas andere.",
+            "a":"die",
+            "1":"eine",
+            "2":""
+            },
+            {
+            "q":"Können wir ______ Speisekarte nehmen.",
+            "a":"eine",
+            "1":"die",
+            "2":""
+            },
+            {
+            "q":"Das ist schöne Hose! Was kostet ______ Hose? ",
+            "a":"die",
+            "1":"eine",
+            "2":""
+            },
+            {
+            "q":"Endlich habe ich ______ T-Shirt gekauft.",
+            "a":"das",
+            "1":"ein",
+            "2":""
+            },
+            {
+            "q":"______ Eis hat dir gefallen? Ja es war super lecker.",
+            "a":"Das",
+            "1":"Ein",
+            "2":""
+            },
+            {
+            "q":"Ich muss ______ Auto kaufen, aber ich weiß nicht welches.",
+            "a":"ein",
+            "1":"das",
+            "2":""
+            },
+            {            
+            "q":"Wie viel kosten ______ Schuhe.",
+            "a":"die",
+            "1":"eine",
+            "2":""
+            },
+            {
+            "q":"______ Tomaten? Warum brauchen wir die Tomaten?",
+            "a":"",
+            "1":"eine",
+            "2":"die"
+            },
+            {
+            "q":"Ich brauche ______ Socken, aber wo kann ich sie kaufen?",
+            "a":"",
+            "1":"eine",
+            "2":"die"
+            }
+            ],
+            "Doplň neurčitý/určitý člen nebo žádný člen."
+        ]
     },
+    "Přídavná jména":
     {
-    "q":"Trinken Sie ______ Tee? Ja, ich trinke gern der schwarzen Tee.",
-    "a":"",
-    "1":"der",
-    "2":"ein"
     },
+    "Zájmena":
     {
-    "q":"______ Pullover, den ich gekauft habe, ist super.",
-    "a":"Der",
-    "1":"Ein",
-    "2":""
     },
+    "Slovesa":
     {
-    "q":"Ist das ______ Spiel? Nein das ist etwas andere.",
-    "a":"die",
-    "1":"eine",
-    "2":""
+        "Slovesa v přítomném čase I.":[4,
+            [
+                {
+                    "q":"Wie kann ich zu Hause _____?",
+                    "a":"bekommen",
+                    "1":"treffen",
+                    "2":"achten",
+                    "3":"schwimmen"
+                },
+                {
+                    "q":"_____ mir, was die Lösung ist?",
+                    "a":"Sagt",
+                    "1":"Lauft",
+                    "2":"Baut",
+                    "3":"Kocht"
+                },
+                {
+                    "q":"Du kannst deine Kleid hier _____.",
+                    "a":"lassen",
+                    "1":"essen",
+                    "2":"mitmachen",
+                    "3":"wandern"
+                },
+                {
+                    "q":"In der Höhle kann man nichts _____.",
+                    "a":"sehen",
+                    "1":"joggen",
+                    "2":"antworten",
+                    "3":"befragen"
+                },
+                {
+                    "q":"Wie lange _____ du bei Martin?",
+                    "a":"bleibst",
+                    "1":"spielst",
+                    "2":"passt",
+                    "3":"vorstellst"
+                }
+            ],
+            "Doplň správné sloveso."
+        ],
+        "Die 100 besten Verben":[1,
+            {
+                "sein" : "být",
+                "haben" : "mít",
+                "werden" : "stát se",
+                "können" : "moci, umět",
+                "machen" : "dělat",
+                "müssen" : "muset",
+                "sagen" : "říct, říkat",
+                "gehen" : "jít, chodit",
+                "geben" : "dát, dávat",
+                "wollen" : "chtít",
+                "kommen" : "přijít, přícházet",
+                "sollen" : "mít povinnost",
+                "sehen" : "vidět",
+                "mögen" : "mít rád",
+                "finden" : "najít, nacházet",
+                "wissen" : "vědět",
+                "glauben" : "věřit",
+                "lernen" : "učit se",
+                "dürfen" : "smět, moci",
+                "denken" : "myslet",
+                "heißen" : "jmenovat se, znamenat",
+                "sprechen" : "mluvit",
+                "tun" : "dělat, konat",
+                "fahren" : "jezdit, řídit",
+                "schreiben" : "psát",
+                "lassen" : "nechat",
+                "sich fragen" : "ptát se",
+                "bekommen" : "dostat, dostávat",
+                "nehmen" : "vzít, vzít si",
+                "sich freuen" : "těšit se",
+                "zeigen" : "ukázat",
+                "essen" : "jíst",
+                "arbeiten" : "pracovat",
+                "stehen" : "stát",
+                "bringen" : "přinést",
+                "kennen" : "znát",
+                "benutzen" : "používat",
+                "bleiben" : "zůstat",
+                "leben" : "žít",
+                "gucken" : "sledovat",
+                "stellen" : "položit, umístit, dát",
+                "hören" : "slyšet, poslouchat",
+                "spielen" : "hrát si",
+                "kaufen" : "kupovat, nakupovat",
+                "passieren" : "stát se, přihodit se",
+                "verstehen" : "rozumět, chápat",
+                "reden" : "mluvit, hovořit",
+                "schaffen" : "stihnout, vytvořit",
+                "halten" : "držet",
+                "trinken" : "pít",
+                "sich treffen" : "potkat se",
+                "lesen" : "číst",
+                "nennen" : "nazývat",
+                "führen" : "vést",
+                "brauchen" : "potřebovat",
+                "stimmen" : "hlasovat",
+                "wohnen" : "bydlet",
+                "helfen" : "pomáhat",
+                "erzählen" : "vypravovat, povídat",
+                "erreichen" : "dosáhnout",
+                "sich vorstellen" : "představit si",
+                "ziehen" : "tahat",
+                "versuchen" : "zkoušet",
+                "laufen" : "běžet, běhat",
+                "gewinnen" : "vyhrát",
+                "suchen" : "hledat",
+                "erklären" : "vysvětlovat",
+                "sich entscheiden" : "rozhodnout se",
+                "wählen" : "vybrat, vybírat",
+                "liegen" : "ležet",
+                "meinen" : "domnívat se, myslet",
+                "verlieren" : "prohrát",
+                "studieren" : "studovat",
+                "sich setzen" : "sednout si, posadit se",
+                "hoffen" : "doufat",
+                "vergessen" : "zapomenout",
+                "sitzen" : "sedět",
+                "einladen" : "pozvat",
+                "beschreiben" : "popsat",
+                "sich anschauen" : "dívat se",
+                "ändern" : "měnit",
+                "besuchen" : "navštívit",
+                "nutzen" : "použít, využít",
+                "kochen" : "vařit",
+                "feiern" : "slavit",
+                "fallen" : "padat",
+                "bauen" : "stavět",
+                "entwickeln" : "vyvinout",
+                "erwarten" : "očekávat",
+                "bezahlen" : "zaplatit",
+                "verkaufen" : "prodat, prodávat",
+                "tragen" : "nést, nosit",
+                "planen" : "plánovat",
+                "danken" : "děkovat",
+                "fühlen" : "cítit",
+                "übernehmen" : "převzít",
+                "sich erinnern" : "pamatovat si",
+                "merken" : "všimnout si, zjistit",
+                "lieben" : "milovat",
+                "erkennen" : "rozeznat"
+            },
+            "Doplň správné sloveso."
+        ]
     },
+    "Předložky":
     {
-    "q":"Können wir ______ Speisekarte nehmen.",
-    "a":"eine",
-    "1":"die",
-    "2":""
     },
+    "Spojky":
     {
-    "q":"Das ist schöne Hose! Was kostet ______ Hose? ",
-    "a":"die",
-    "1":"eine",
-    "2":""
-    },
-    {
-    "q":"Endlich habe ich ______ T-Shirt gekauft.",
-    "a":"das",
-    "1":"ein",
-    "2":""
-    },
-    {
-    "q":"______ Eis hat dir gefallen? Ja es war super lecker.",
-    "a":"Das",
-    "1":"Ein",
-    "2":""
-    },
-    {
-    "q":"Ich muss ______ Auto kaufen, aber ich weiß nicht welches.",
-    "a":"ein",
-    "1":"das",
-    "2":""
-    },
-    {            
-    "q":"Wie viel kosten ______ Schuhe.",
-    "a":"die",
-    "1":"eine",
-    "2":""
-    },
-    {
-    "q":"______ Tomaten? Warum brauchen wir die Tomaten?",
-    "a":"",
-    "1":"eine",
-    "2":"die"
-    },
-    {
-    "q":"Ich brauche ______ Socken, aber wo kann ich sie kaufen?",
-    "a":"",
-    "1":"eine",
-    "2":"die"
     }
-    ],
-    "Du ergänz die unbestimmte/bestimmte Artikel oder kein Artikel.",
-    "Doplň neurčitý/určitý člen nebo žádný člen."
-],
-"Verben in Präsens I.":[4,
-    [
-        {
-            "q":"Wie kann ich zu Hause _____?",
-            "a":"bekommen",
-            "1":"treffen",
-            "2":"achten",
-            "3":"schwimmen"
-        }
-        
-    ],
-    "Ergänz die richtige verb.",
-    "Doplň správné sloveso."
-],
-"Die 100 besten Verben":[1,
-    {
-        "sein" : "být",
-        "haben" : "mít",
-        "werden" : "stát se",
-        "können" : "moci, umět",
-        "machen" : "dělat",
-        "müssen" : "muset",
-        "sagen" : "říct, říkat",
-        "gehen" : "jít, chodit",
-        "geben" : "dát, dávat",
-        "wollen" : "chtít",
-        "kommen" : "přicházet, přijíždět",
-        "sollen" : "mít povinnost",
-        "sehen" : "vidět",
-        "mögen" : "mít rád",
-        "finden" : "najít, nacházet",
-        "wissen" : "vědět",
-        "glauben" : "věřit",
-        "lernen" : "učit se",
-        "dürfen" : "smět, moci",
-        "denken" : "myslet",
-        "heißen" : "jmenovat se, znamenat",
-        "sprechen" : "mluvit",
-        "tun" : "dělat, konat",
-        "fahren" : "jezdit, řídit",
-        "schreiben" : "psát",
-        "lassen" : "nechat",
-        "sich fragen" : "ptát se",
-        "bekommen" : "dostat",
-        "nehmen" : "vzít si",
-        "sich freuen" : "těšit se",
-        "zeigen" : "ukázat",
-        "essen" : "jíst",
-        "arbeiten" : "pracovat",
-        "stehen" : "stát",
-        "bringen" : "přinést",
-        "kennen" : "znát",
-        "benutzen" : "používat",
-        "bleiben" : "zůstat",
-        "leben" : "žít",
-        "gucken" : "sledovat",
-        "stellen" : "umístit, dát",
-        "hören" : "slyšet, poslouchat",
-        "spielen" : "hrát si",
-        "kaufen" : "nakupovat",
-        "passieren" : "stát se",
-        "verstehen" : "rozumět",
-        "reden" : "mluvit",
-        "schaffen" : "stihnout, vytvořit",
-        "halten" : "držet",
-        "trinken" : "pít",
-        "sich treffen" : "potkat se",
-        "lesen" : "číst",
-        "nennen" : "nazývat",
-        "führen" : "vést",
-        "brauchen" : "potřebovat",
-        "stimmen" : "hlasovat",
-        "wohnen" : "bydlet",
-        "helfen" : "pomáhat",
-        "erzählen" : "vypravovat, povídat",
-        "erreichen" : "dosáhnout",
-        "sich vorstellen" : "představit si",
-        "ziehen" : "tahat",
-        "versuchen" : "zkoušet",
-        "laufen" : "běžet",
-        "gewinnen" : "vyhrát",
-        "suchen" : "hledat",
-        "erklären" : "vysvětlovat",
-        "sich entscheiden" : "rozhodnout se",
-        "wählen" : "vybrat si",
-        "liegen" : "ležet",
-        "meinen" : "domnívat se, myslet",
-        "verlieren" : "prohrát",
-        "studieren" : "studovat",
-        "sich setzen" : "posadit se",
-        "hoffen" : "doufat",
-        "vergessen" : "zapomenout",
-        "sitzen" : "sedět",
-        "einladen" : "pozvat",
-        "beschreiben" : "popsat",
-        "sich anschauen" : "dívat se",
-        "ändern" : "měnit",
-        "besuchen" : "navštívit",
-        "nutzen" : "použít, využít",
-        "kochen" : "vařit",
-        "feiern" : "slavit",
-        "fallen" : "padat",
-        "bauen" : "stavět",
-        "entwickeln" : "vyvinout",
-        "erwarten" : "očekávat",
-        "bezahlen" : "zaplatit",
-        "verkaufen" : "prodat",
-        "tragen" : "nosit",
-        "planen" : "plánovat",
-        "danken" : "děkovat",
-        "fühlen" : "cítit",
-        "übernehmen" : "převzít",
-        "sich erinnern" : "pamatovat si",
-        "merken" : "všimnout si",
-        "lieben" : "milovat",
-        "erkennen" : "rozeznat"
-    },
-    "Doplň správné sloveso."
 
-]
 }
