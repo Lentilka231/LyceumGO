@@ -471,7 +471,7 @@ span{
     padding: 10px 5px;
     border-bottom: 1px solid rgba(107, 107, 107);
     cursor:pointer;
-    width:250px
+    width:220px
 }
 .GO div:hover{
     color:rgb(95, 95, 95)
@@ -793,8 +793,13 @@ span{
     color:white;
     background-color: rgb(55,55,55);
 }
+#FG,#FW{
+    display:flex;
+}
 #ModuleChoose,#SlDChoose{
+    margin-left: 10px;
     padding:3px;
+    cursor:pointer;
     font-size: 16px;
 }
 .ListOfMaterials{
@@ -813,9 +818,6 @@ span{
 }
 .ListOfMaterials thead{
     width:100%;
-}
-.ListOfMaterials tbody tr:hover{
-    background-color: rgba(0,0,0,0.1);
 }
 #ActivMaterials{
     width:500px;
@@ -857,17 +859,8 @@ span{
     text-align: center;
 }
 .ListOfMaterials td:nth-child(1) {width:150px}
-.ListOfMaterials td:nth-child(2) {width:350px}
+.ListOfMaterials td:nth-child(2) {width:330px}
 .ListOfMaterials td:nth-child(2) {text-align: left;}
-#reset{
-    padding:5px;
-    background-color: rgb(230, 19, 19);
-    border-radius: 5px;
-    cursor: pointer;
-}
-#reset:hover{
-    background: radial-gradient(circle, rgb(250, 99, 99) 0%, rgba(245,37,37,1) 100%);
-}
 .canvas{
     width:350px;
     height:495px;
