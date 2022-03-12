@@ -127,7 +127,87 @@
             ],
             "Doplň správné sloveso."
         ],
-        "Die 100 besten Verben":[1,
+        "Slovesa v přítomném čase II.":[4,
+            [
+                {
+                    "q":"Wie kann ich zu Hause _____?",
+                    "a":"bekommen",
+                    "1":"treffen",
+                    "2":"achten",
+                    "3":"schwimmen"
+                },
+                {
+                    "q":"_____ mir, was die Lösung ist?",
+                    "a":"Sagt",
+                    "1":"Lauft",
+                    "2":"Baut",
+                    "3":"Kocht"
+                },
+                {
+                    "q":"Du kannst deine Kleid hier _____.",
+                    "a":"lassen",
+                    "1":"essen",
+                    "2":"mitmachen",
+                    "3":"wandern"
+                },
+                {
+                    "q":"In der Höhle kann man nichts _____.",
+                    "a":"sehen",
+                    "1":"joggen",
+                    "2":"antworten",
+                    "3":"befragen"
+                },
+                {
+                    "q":"Wie lange _____ du bei Martin?",
+                    "a":"bleibst",
+                    "1":"spielst",
+                    "2":"passt",
+                    "3":"vorstellst"
+                }
+            ],
+            "Doplň správné sloveso."
+        ],
+        "Slovesa v přítomném čase III.":[4,
+            [
+                {
+                    "q":"Wie kann ich zu Hause _____?",
+                    "a":"bekommen",
+                    "1":"treffen",
+                    "2":"achten",
+                    "3":"schwimmen"
+                },
+                {
+                    "q":"_____ mir, was die Lösung ist?",
+                    "a":"Sagt",
+                    "1":"Lauft",
+                    "2":"Baut",
+                    "3":"Kocht"
+                },
+                {
+                    "q":"Du kannst deine Kleid hier _____.",
+                    "a":"lassen",
+                    "1":"essen",
+                    "2":"mitmachen",
+                    "3":"wandern"
+                },
+                {
+                    "q":"In der Höhle kann man nichts _____.",
+                    "a":"sehen",
+                    "1":"joggen",
+                    "2":"antworten",
+                    "3":"befragen"
+                },
+                {
+                    "q":"Wie lange _____ du bei Martin?",
+                    "a":"bleibst",
+                    "1":"spielst",
+                    "2":"passt",
+                    "3":"vorstellst"
+                }
+            ],
+            "Doplň správné sloveso."
+        ],
+        "100 nejčastějších sloves":[1,
             {
                 "sein" : "být",
                 "haben" : "mít",
