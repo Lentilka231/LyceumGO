@@ -759,7 +759,7 @@
         else{
             NameOfTest=ukol.replace(/ /g,"_");
             if (typ=="w"){
-                document.getElementById("slovnicek").innerHTML="";
+                document.getElementById("slovnicek").innerText="";
                 CurrentVocabulary=NJW["module"+module][ukol];
                 slovicka=""
                 for(let i=0;i<CurrentVocabulary[0];i++){
@@ -792,13 +792,13 @@
         if(typeof kontrola==="undefined"){}else{
             kontrola.disconnect();
         }
-        balicekKaretDobry.innerHTML="";
-        balicekKaretSpatny.innerHTML="";
-        balicekKaretVyber.innerHTML="";
+        balicekKaretDobry.innerText="";
+        balicekKaretSpatny.innerText="";
+        balicekKaretVyber.innerText="";
         for(let i=0;i<NumberOfPossibleAnswers;i++){
             ABCDanswer[i].style.border="solid 3px rgb(189, 213, 234)";
         }
-        substituteForInput.innerHTML="";
+        substituteForInput.innerText="";
         BorderForTextInput.style.border="none";
         TextInput.value="";
         CanUseEsc=false;
@@ -825,7 +825,7 @@
                 UnusedQuestions=NJG[category][test][1];
                 Success=Array.from({length:Object.keys(UnusedQuestions).length},(_,i) => 1);
                 NumberForCalculationOfSuccess=0;
-                document.getElementById("ABCDodpovedi").innerHTML="";
+                document.getElementById("ABCDodpovedi").innerText="";
                 ABCD=["A","B","C","D"];
                 ABCDanswer=document.getElementsByClassName("Felix");
                 NumberOfPossibleAnswers=NJG[category][test][0];
@@ -926,7 +926,7 @@
         switch(TypeOfTest){
             case "ABCD":
                 a=document.getElementById(x)
-                if (UnusedQuestions[MomentalQuestion].a==a.innerHTML){
+                if (UnusedQuestions[MomentalQuestion].a==a.innerText){
                     a.style.border="3px solid "+spravnabarva;
                     UnusedQuestions.splice(MomentalQuestion,1);
                     if(document.getElementById("chvilkanakontrolu").checked){
@@ -1016,9 +1016,9 @@
                     if(dvapokusy==0){
                         Success[MomentalQuestion]=0;
                         if(Into=="CZ"){
-                            substituteForInput.innerHTML=SetOfQuestions[UnusedQuestions[MomentalQuestion]];
+                            substituteForInput.innerText=SetOfQuestions[UnusedQuestions[MomentalQuestion]];
                         }else{
-                            substituteForInput.innerHTML=UnusedQuestions[MomentalQuestion];
+                            substituteForInput.innerText=UnusedQuestions[MomentalQuestion];
                         }
                     }
                     else if (dvapokusy==-1) {
@@ -1036,7 +1036,7 @@
                             Penalty=3;
                         }
                         document.getElementById("fill").style.width=MomentalFillWidth+"%";
-                        substituteForInput.innerHTML="";
+                        substituteForInput.innerText="";
                         BorderForTextInput.style.border="none";
                         TextInput.value="";
                         newquestion();
@@ -1050,62 +1050,72 @@
                 let slovicka;
                 let itcanbe=false;
                 if(TypeOfTest=="NtoCZ"){
-                    n=2;
-                }else{
-                    n=1
-                }
-                slovicka=CurrentVocabulary[n][UnusedQuestions[MomentalQuestion]].split(", ");
-
-                for(let i=0;i<slovicka.length;i++){
-                    if(!slovicka[i].includes("-")){
-                        x=slovicka[i].indexOf("/")
-                        if(x!=-1){
-                            p=x;
-                            f=x;
-                            while(true){
-                                p++;
-                                if(slovicka[i][p]==" "){
-                                    break;
-                                }
-                            }
-                            while(true){
-                                f--;
-                                if(slovicka[i][f]==" "){
-                                    break;
-                                }
-                            }
-                        }
-                        if (slovicka[i]==TextInput.value){
+                    slovicka=CurrentVocabulary[2][UnusedQuestions[MomentalQuestion]].split(", ");
+                    for(let i=0;i<slovicka.length;i++){
+                        if (slovicka[i]==TextInput.value && !slovicka[i].includes("-")){
                             itcanbe=true;
                             break;
                         }
                     }
-                }
-                if(itcanbe){
-                    UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
-                    BorderForTextInput.style.border="3px solid "+spravnabarva;
-
-                    if(document.getElementById("chvilkanakontrolu").checked){
-                        await sleep(500);
-                    }
-                    BorderForTextInput.style.border="none";
-                    TextInput.value="";
-                    newquestion();
-                }
-                else{
-                    BorderForTextInput.style.border="3px solid "+spatnabarva;
-                    if(dvapokusy==0){
-                        Success[MomentalQuestion]=0;
-                        substituteForInput.innerHTML=CurrentVocabulary[n][MomentalQuestion];
-                    }else if(dvapokusy==-1){
-                        substituteForInput.innerHTML="";
-                        UnusedQuestions.splice(UnusedQuestions.indexOf(MomentalQuestion),1);
+                    if(itcanbe){
+                        UnusedQuestions.splice(MomentalQuestion,1);
+                        BorderForTextInput.style.border="3px solid "+spravnabarva;
+                        if(document.getElementById("chvilkanakontrolu").checked){
+                            await sleep(500);
+                        }
                         BorderForTextInput.style.border="none";
                         TextInput.value="";
                         newquestion();
                     }
-                    dvapokusy--;
+                    else{
+                        BorderForTextInput.style.border="3px solid "+spatnabarva;
+                        if(dvapokusy==0){
+                            Success[MomentalQuestion]=0;
+                            substituteForInput.innerText=CurrentVocabulary[2][UnusedQuestions[MomentalQuestion]];
+                            
+                        }else if(dvapokusy==-1){
+                            substituteForInput.innerText="";
+                            UnusedQuestions.splice(MomentalQuestion,1);
+                            BorderForTextInput.style.border="none";
+                            TextInput.value="";
+                            newquestion();
+                        }
+                        dvapokusy--;
+                    }
                 }
+                else{
+                    slovicka=CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]].split(", ");
+                    for(let i=0;i<slovicka.length;i++){
+                        if (CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+slovicka[i]==TextInput.value && !slovicka[i].includes("-")){
+                            itcanbe=true;
+                            break;
+                        }
+                    }
+                    if(itcanbe){
+                        UnusedQuestions.splice(MomentalQuestion,1);
+                        BorderForTextInput.style.border="3px solid "+spravnabarva;
+                        if(document.getElementById("chvilkanakontrolu").checked){
+                            await sleep(500);
+                        }
+                        BorderForTextInput.style.border="none";
+                        TextInput.value="";
+                        newquestion();
+                    }
+                    else{
+                        BorderForTextInput.style.border="3px solid "+spatnabarva;
+                        if(dvapokusy==0){
+                            Success[MomentalQuestion]=0;
+                            substituteForInput.innerText=CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]];
+                        }else if(dvapokusy==-1){
+                            substituteForInput.innerText="";
+                            UnusedQuestions.splice(MomentalQuestion,1);
+                            BorderForTextInput.style.border="none";
+                            TextInput.value="";
+                            newquestion();
+                        }
+                        dvapokusy--;
+                    }
+                    }                
                 break;
         }
     };
@@ -1254,20 +1264,18 @@
                     break;
                 case "CZtoN":
                 case "NtoCZ":
-                    a=Math.floor(Math.random()*CurrentVocabulary[0]);
+                    a=Math.floor(Math.random()*UnusedQuestions.length);
                     break;   
             }
             MomentalQuestion=a;
             dvapokusy=1;
             switch(TypeOfTest){
                 case "ABCD":
-                    console.log(SetOfQuestions);
-                    console.log(a);
-                    document.getElementById("FrantaABCD").innerHTML=UnusedQuestions[a]["q"];
+                    document.getElementById("FrantaABCD").innerText=UnusedQuestions[a]["q"];
                     b=["a","1","2","3"];
                     for (let i=0;i<NumberOfPossibleAnswers;i++){
                         d=Math.floor(Math.random()*Math.abs(NumberOfPossibleAnswers-i));
-                        ABCDanswer[i].innerHTML=UnusedQuestions[a][b[d]];
+                        ABCDanswer[i].innerText=UnusedQuestions[a][b[d]];
                         b.splice(d,1);
                     };
                     NumberOfTests.innerText=ant+"/"+Success.length;
@@ -1292,12 +1300,12 @@
                 case "CZtoN":
                     TextInput.focus();
                     CanUseEnter=true;
-                    document.getElementById("FrantaX").innerHTML=CurrentVocabulary[2][UnusedQuestions[MomentalQuestion]];
+                    document.getElementById("FrantaX").innerText=CurrentVocabulary[2][UnusedQuestions[MomentalQuestion]];
                     break;
                 case "NtoCZ":
                     TextInput.focus();
                     CanUseEnter=true;
-                    document.getElementById("FrantaX").innerHTML=CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]];
+                    document.getElementById("FrantaX").innerText=CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]];
                     break;
             };
         }
@@ -1329,7 +1337,7 @@
     
     // hlídá, jestli má zobrazit výsledek pro TextInput nebo ne 
     let SubstituteForInputKontrol = new MutationObserver(function(){
-        if (substituteForInput.innerHTML!=""){
+        if (substituteForInput.innerText!=""){
             BorderForTextInput.style.display="none";
             substituteForInput.style.display="block";
         }
@@ -1350,7 +1358,7 @@
             case "NtoCZ":
             case "TextInput":
                 if (dvapokusy==-1){
-                    substituteForInput.innerHTML="";
+                    substituteForInput.innerText="";
                     BorderForTextInput.style.border="none";
                     TextInput.value="";
                     MomentalFillWidth-=Penalty;
@@ -2058,13 +2066,13 @@ function FlashcardsPreparing(){
     document.getElementById("vyber").onclick="";
     resetDecks();
     removeDrag(document.querySelectorAll('.karta'),document.querySelectorAll('.decks'));
-    balicekKaretSpatny.innerHTML="";
-    balicekKaretDobry.innerHTML="";
-    balicekKaretVyber.innerHTML="";
+    balicekKaretSpatny.innerText="";
+    balicekKaretDobry.innerText="";
+    balicekKaretVyber.innerText="";
     balicekKaretVyber.onclick=null;
     // dragRemove(balicekKaretSpatny);
     // dragRemove(document.getElementById("vyber"));
-    flashinfo.innerHTML="";
+    flashinfo.innerText="";
     for(let i=0;i<CurrentVocabulary[0];i++){
         let karta = document.createElement("div");
         let centralizer = document.createElement("div");
@@ -2103,24 +2111,24 @@ function FlashcardsPreparing(){
     
     kontrola = new MutationObserver(function(mutations){
         if (balicekKaretVyber.children.length==0){
-            vyhodnoceni.innerHTML=Math.round(balicekKaretDobry.children.length/CurrentVocabulary[0]*100)+"%";
+            vyhodnoceni.innerText=Math.round(balicekKaretDobry.children.length/CurrentVocabulary[0]*100)+"%";
             balicekKaretSpatny.onmouseover=function(){
-                flashinfo.innerHTML="Willst du deine Fehler korrigieren?";
+                flashinfo.innerText="Willst du deine Fehler korrigieren?";
                 document.getElementById("spatny").style.border="rgb(130,0,0) solid 10px";
                 document.getElementById("spatny").style.cursor="pointer";
             };
             balicekKaretSpatny.onmouseout=function(){
-                flashinfo.innerHTML="";
+                flashinfo.innerText="";
                 document.getElementById("spatny").style.border="rgb(160,22,22) solid 10px";
                 document.getElementById("spatny").style.cursor="auto";
             };
             document.getElementById("vyber").onmouseover=function(){
-                flashinfo.innerHTML="Möchtest du das Kartendeck wiederholen?";
+                flashinfo.innerText="Möchtest du das Kartendeck wiederholen?";
                 document.getElementById("vyber").style.border="rgb(100, 100, 100) solid 10px";
                 document.getElementById("vyber").style.cursor="pointer";
             }
             document.getElementById("vyber").onmouseout=function(){
-                flashinfo.innerHTML="";
+                flashinfo.innerText="";
                 document.getElementById("vyber").style.border="rgb(126, 126, 126) solid 10px";
                 document.getElementById("vyber").style.cursor="auto";
             }
@@ -2155,7 +2163,7 @@ function resetDecks(){
 }
 //hlídá jestli se má flashinfo zobrazit nebo ne
 let flashinfokontrola = new MutationObserver(function(){
-    if (flashinfo.innerHTML==""){
+    if (flashinfo.innerText==""){
         flashinfo.style.visibility="hidden";
     }
     else {

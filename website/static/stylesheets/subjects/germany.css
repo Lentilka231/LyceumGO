@@ -535,13 +535,13 @@ span{
 
 #bspopis{
     position:absolute;
-    bottom:40px;
-    left:95px;
+    bottom:100px;
+    left:140px;
 }
 #bdpopis{
     position:absolute;
-    bottom:40px;
-    right:95px;
+    bottom:100px;
+    right:150px;
 }
 .KartaText{
     top:75px;
@@ -577,7 +577,7 @@ span{
     width:130px;
     height:50px;
     font-size: 42px;
-    bottom:0px;
+    bottom:40px;
     text-align: center;
     z-index:0;
 }
