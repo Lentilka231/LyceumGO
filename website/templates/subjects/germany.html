@@ -29,7 +29,7 @@
     </div>
     {%if user.person=="t"%}
     <div id="CreateTest" onclick="visibilator('CreateTest')">
-        <b>Test erstellen</b>
+        <b>Vytvořit test</b>
     </div>
     {%endif%}
     <div class="bsetings">
@@ -216,7 +216,7 @@
     <div class="krizek" onclick="hider()" tabindex=3 style="z-index: 2;">✕</div>
     <div id="TDContent">
         <div id="CreateTestDIV">
-            <div class="nzadani"><b>Hier kannst du einen Test erstellen</b></div>
+            <div class="nzadani"><b>Zde můžeš vytvořit vlastní test</b></div>
           
             <div id="CTGW">
                 <div id="Grammatikk" style="background-color: rgb(55,55,55);color:white;">Gramatika</div>
@@ -317,23 +317,28 @@
             </div>
         </div>
         <div class="task TextInput">
-            <div class="answer">
+            <div class="answer">        
                 <p id="FrantaY" style="top:20px;font-size: 16px;color:rgb(110, 110, 110)" class="Franta"></p>
                 <p id="FrantaX" class="Franta"></p>
-                
-                <div class="centralizer" style="bottom: 170px;">
                     
-                    <div id="XP">
-                        <input type="text" id="TextInput" spellcheck="false">
-                    </div>
-                    <div id="SubstituteForInput">
+                <div class="centralizer" style="bottom: 170px;">
+                        
+                        <div id="XP">
+                            <input type="text" id="TextInput" spellcheck="false">
+                        </div>
+                        <div id="SubstituteForInput">
 
-                    </div>
+                        </div>
                 </div>
                 <div class="centralizer" style="bottom: 70px;">
-                    <div type="button" onclick="checkanswer('TextInput')" id="kontrola" style="margin-top:50px;">Kontroll</div>
+                        <div type="button" onclick="checkanswer('TextInput')" id="kontrola" style="margin-top:50px;">Kontroll</div>
                 </div>
+                <div id="QuestionMark">
+                    ?<div id="TextInputHelp">&nbspZadávej&nbsppouze&nbspčlen&nbspa&nbspjednotné&nbspčíslo&nbspněmeckého&nbspslovíčka.</div>
+                </div>
+                
             </div>
+
         </div>
         <div class="task FLASHCARDS">
             <p id="flashinfo"></p>
@@ -853,6 +858,9 @@
             case "CZtoN":
             case "NtoCZ":
                 $(".TextInput").show();
+                if(type=="CZtoN"){
+                    document.getElementById("QuestionMark").style.display="flex";
+                }
                 UnusedQuestions=Array.from({length:CurrentVocabulary[0]}, (_, i) => i);
                 Success=Array.from({length:CurrentVocabulary[0]},(_,i) => 1);
                 NumberForCalculationOfSuccess=0
@@ -1086,7 +1094,13 @@
                 else{
                     slovicka=CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]].split(", ");
                     for(let i=0;i<slovicka.length;i++){
-                        if (CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+slovicka[i]==TextInput.value && !slovicka[i].includes("-")){
+                        if(!CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]){
+                            if(slovicka[i]==TextInput.value && !slovicka[i].includes("-")){
+                                itcanbe=true;
+                                break;
+                            }
+                        }
+                        else if (CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+slovicka[i]==TextInput.value && !slovicka[i].includes("-")){
                             itcanbe=true;
                             break;
                         }
@@ -1382,7 +1396,11 @@
             }
         }
         else if (e.key==="Escape" && CanUseEsc){
-            hider();
+            if(PreparedTest){
+                exitPDF();
+            }else{
+                hider();
+            }
         }
         else if (e.key==="ArrowLeft" && CanUseArrows){
             if(balicekKaretVyber.firstChild){
@@ -1412,7 +1430,9 @@ h=Object.keys(NJG);
 for(let x=0;x<Object.keys(NJG).length;x++){
     z=Object.keys(NJG[h[x]]);
     for(let y=0;y<z.length;y++){
-        document.getElementById("LG").innerHTML+=`<tr><td>${h[x]}</td><td>${z[y]}</td></tr>`;
+        if(z[y][0]!=1){
+            document.getElementById("LG").innerHTML+=`<tr><td>${h[x]}</td><td>${z[y]}</td></tr>`;
+        }
     }
 }
 const MChoose =document.getElementById("ModuleChoose");
@@ -1433,7 +1453,8 @@ let CurrentPTest;
 let Ukolu=0;
 let CurrentPage = 1;
 let markTask;
-let hlidacGW;
+let hlidacGW="G";
+let PreparedTest=false;
 WortButton.onclick=function(){
     GramButton.style.backgroundColor="transparent";
     GramButton.style.color="black";
@@ -1516,8 +1537,8 @@ function addTask (){
             if(h+68<Page.offsetHeight){
                 let TaskDiv = `
                 <div class='TaskDiv' style="height:68px">
-                    <b><div class="TaskName"></div></b>
-                    (L:<span class="lesson"></span> <span class="type"></span>)
+                    <b><div class="TaskName" datavalue=""></div></b>
+                    (<span class="sld"></span>)
                     Otázek: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
                         <option value='6'>6</option>
                         <option value='8'>8</option>
@@ -1531,8 +1552,9 @@ function addTask (){
                     <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
                 </div>`;
                 Page.insertAdjacentHTML("beforeend",TaskDiv);
-                Page.lastChild.getElementsByClassName("lesson")[0].innerText=markTask.children[1].innerText;
-                Page.lastChild.getElementsByClassName("type")[0].innerText=markTask.children[2].innerText;Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[3].innerText;
+                Page.lastChild.getElementsByClassName("sld")[0].innerText=markTask.children[0].innerText;
+                Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[1].innerText;
+                Page.lastChild.getElementsByClassName("TaskName")[0].datavalue="G";
                 Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
                     h=0;
                     for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
@@ -1550,14 +1572,13 @@ function addTask (){
             if(h+49.6<Page.offsetHeight){
             let TaskDiv = `
             <div class='TaskDiv' style="height:49.6px">
-                <b><span class="TaskName"></span></b> (L:<span class="lesson"></span> <span class="type"></span>)<br>
+                <b><div class="TaskName" datavalue=""></div></b>
+                (<span class="m"></span>)
                 Slovíček: <select class='numberOfQuestions' datavalue="" onfocus="this.setAttribute('datavalue', this.value)">
                     <option value='8'>8</option>
                     <option value='12'>12</option>
                     <option value='16'>16</option>
                     <option value='20'>20</option>
-                    <option value='24'>24</option>
-                    <option value='28'>28</option>
                 </select> 
                 <span>Překlad:</span>
                 <select class="TypeOfTranslation">
@@ -1568,14 +1589,14 @@ function addTask (){
                 <div class="taskRemove" onclick="this.parentElement.remove()">✕</div>
             <div>`;
             Page.insertAdjacentHTML("beforeend",TaskDiv);
-            Page.lastChild.getElementsByClassName("lesson")[0].innerText=markTask.children[1].innerText;
-            Page.lastChild.getElementsByClassName("type")[0].innerText=markTask.children[2].innerText;
-            Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[3].innerText;
+            Page.lastChild.getElementsByClassName("m")[0].innerText=markTask.children[0].innerText;
+            Page.lastChild.getElementsByClassName("TaskName")[0].innerText=markTask.children[1].innerText;
+            Page.lastChild.getElementsByClassName("TaskName")[0].datavalue="W";
             Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(e){
                 h=0;
                 for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
-                if(h+3.7*this.value+20<Page.offsetHeight){
-                    this.parentElement.style.height=3.7*this.value+20+"px";
+                if(h+3.8*this.value+20<Page.offsetHeight){
+                    this.parentElement.style.height=3.8*this.value+20+"px";
                 }
                 else{
                     this.value=this.getAttribute("datavalue");
@@ -1611,7 +1632,6 @@ async function downloadPDF(){
                 doc.addPage();
             }
             let h=0;
-            
             for(let x=0;x<page.getElementsByClassName("ukol").length;x++){
                 Task=page.getElementsByClassName("ukol")[x];
                 doc.setFontSize(16);
@@ -1687,12 +1707,13 @@ function savePDF(){
             name:document.getElementById("TN").innerText,
             value:TestToSend.substring(1)
         });
+        console.log("úspěch");
     }
 }
 function showTest(){
+    PreparedTest=true;
     document.getElementById("clickDisabler2").style.display="block";
-    randomPDF()
-
+    randomPDF();
 }
 function randomPDF(){
     document.getElementById("Former").innerHTML=`
@@ -1719,9 +1740,14 @@ function randomPDF(){
         }
         for(let x=0;x<page.getElementsByClassName("content")[0].children.length;x++){
             Task=page.getElementsByClassName("content")[0].children[x];
-            if(Task.getElementsByClassName("type")[0].innerText=="Grammatik"){
-                TaskQ =NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText];
-                TaskToPlace=`<div class="ukol gram" onclick="randomUkol(this)" ><div class="zadani"value="${"lekce"+Task.getElementsByClassName("lesson")[0].innerText}/${Task.getElementsByClassName("type")[0].innerText}/${Task.getElementsByClassName("TaskName")[0].innerText}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value}"><b>${ukol}. ${TaskQ[2]}</b></div><div class="TContent">`;
+            if(Task.getElementsByClassName("TaskName")[0].datavalue=="G"){
+                TaskQ =NJG[Task.getElementsByClassName("sld")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText];
+                TaskToPlace=`
+                <div class="ukol gram" onclick="randomUkol(this)">
+                    <div class="zadani"value="${Task.getElementsByClassName("sld")[0].innerText}/${Task.getElementsByClassName("TaskName")[0].innerText}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value}">
+                        <b>${ukol}. ${TaskQ[2]}</b>
+                    </div>
+                <div class="TContent">`;
                 UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
                 for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
                     randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
@@ -1732,9 +1758,14 @@ function randomPDF(){
                 NavrhPlatno[i].innerHTML+=TaskToPlace
             }
             else{
-                TaskQ =Object.values(NJ["lekce"+Task.getElementsByClassName("lesson")[0].innerText][Task.getElementsByClassName("type")[0].innerText]);
-                TaskToPlace=`<div class="ukol wort" onclick="randomUkol(this)"><div class="zadani" value="${"lekce"+Task.getElementsByClassName("lesson")[0].innerText}/${Task.getElementsByClassName("type")[0].innerText}/${Task.getElementsByClassName("TypeOfTranslation")[0].value}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value/2}"><b>${ukol}. Übersetzen diese Wörter</b></div><div class="container">`;
-                UnusedQuestions=Array.from({length:TaskQ.length}, (_, i) => Array.from({length:TaskQ[i][1].length}, (_, e) => e));
+                TaskQ =Object.values(NJW["module"+Task.getElementsByClassName("m")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText]);
+                TaskToPlace=`
+                <div class="ukol wort" onclick="randomUkol(this)">
+                    <div class="zadani" value="${"module"+Task.getElementsByClassName("m")[0].innerText}/${Task.getElementsByClassName("TaskName")[0].innerText}/${Task.getElementsByClassName("TypeOfTranslation")[0].value}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value/2}">
+                        <b>${ukol}. Übersetzen diese Wörter</b>
+                    </div>
+                    <div class="container">`;
+                UnusedQuestions=Array.from({length:TaskQ[0]}, (_, i) => i);
 
                 for(let z=0;z<2;z++){
                     TaskToPlace+="<div class='pul'>";
@@ -1747,15 +1778,17 @@ function randomPDF(){
                             TOT=z+1;
                         }
                         randomNumber1=Math.floor(Math.random()*UnusedQuestions.length);
-                        randomNumber2=Math.floor(Math.random()*UnusedQuestions[randomNumber1].length);
-
-                        TaskToPlace+=`<p value="${TaskQ[randomNumber1][TOT==1?2:1][UnusedQuestions[randomNumber1][randomNumber2]]}">${TaskQ[randomNumber1][TOT][UnusedQuestions[randomNumber1][randomNumber2]]} </p>`;
-                        UnusedQuestions[randomNumber1].splice(randomNumber2,1);
+                        if(TaskQ[3][UnusedQuestions[randomNumber1]] && TOT==1){
+                            TaskToPlace+=`<p value="${TaskQ[TOT==1?2:1][UnusedQuestions[randomNumber1]]}">${TaskQ[3][UnusedQuestions[randomNumber1]]+" "+TaskQ[TOT][UnusedQuestions[randomNumber1]]} </p>`;
+                        }else{
+                            TaskToPlace+=`<p value="${TaskQ[TOT==1?2:1][UnusedQuestions[randomNumber1]]}">${TaskQ[TOT][UnusedQuestions[randomNumber1]]} </p>`;
+                        }
+                        UnusedQuestions.splice(randomNumber1,1);
                     }
                     TaskToPlace+="</div>";
                 }
-                TaskToPlace+="</div></div>"
-                NavrhPlatno[i].innerHTML+=TaskToPlace
+                TaskToPlace+="</div></div>";
+                NavrhPlatno[i].innerHTML+=TaskToPlace;
             }
             ukol++;
         }
@@ -1764,15 +1797,16 @@ function randomPDF(){
     }while(i<pages.length)
 }
 function exitPDF (){
+    PreparedTest=false;
     document.getElementById("clickDisabler2").style.display="none";
 }
 function randomUkol (ukol){
     if(ukol.classList.contains("gram")){
         a=ukol.getElementsByClassName("zadani")[0].getAttribute("value").split("/");
-        TaskQ =NJ[a[0]][a[1]][a[2]];
-        TaskToPlace=`<div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}"><b>${a[3]}. ${TaskQ[2]}</b></div><div class="TContent">`;
+        TaskQ =NJG[a[0]][a[1]];
+        TaskToPlace=`<div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}"><b>${a[2]}. ${TaskQ[2]}</b></div><div class="TContent">`;
         UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
-        for(let y=0;y<a[4];y++){
+        for(let y=0;y<a[3];y++){
             randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
             TaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
             UnusedQuestions.splice(randomNumber,1);
@@ -1781,9 +1815,9 @@ function randomUkol (ukol){
     }
     else{
         a=ukol.getElementsByClassName("zadani")[0].getAttribute("value").split("/");
-        TaskQ =Object.values(NJ[a[0]][a[1]]);
-        TaskToPlace=`<div class="ukol wort"><div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}"><b>${a[3]}. Übersetzen diese Wörter</b></div><div class="container">`;
-        UnusedQuestions=Array.from({length:TaskQ.length}, (_, i) => Array.from({length:TaskQ[i][1].length}, (_, e) => e));
+        TaskQ =Object.values(NJW[a[0]][a[1]]);
+        TaskToPlace=`<div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}"><b>${a[3]}. Übersetzen diese Wörter</b></div><div class="container">`;
+        UnusedQuestions=Array.from({length:TaskQ[0]}, (_, i) => i);
 
         for(let z=0;z<2;z++){
             TaskToPlace+="<div class='pul'>";
@@ -1796,10 +1830,12 @@ function randomUkol (ukol){
                     TOT=z+1;
                 }
                 randomNumber1=Math.floor(Math.random()*UnusedQuestions.length);
-                randomNumber2=Math.floor(Math.random()*UnusedQuestions[randomNumber1].length);
-
-                TaskToPlace+=`<p value="${TaskQ[randomNumber1][TOT==1?2:1][UnusedQuestions[randomNumber1][randomNumber2]]}">${TaskQ[randomNumber1][TOT][UnusedQuestions[randomNumber1][randomNumber2]]} </p>`;
-                UnusedQuestions[randomNumber1].splice(randomNumber2,1);
+                if(TaskQ[3][UnusedQuestions[randomNumber1]] && TOT==1){
+                    TaskToPlace+=`<p value="${TaskQ[TOT==1?2:1][UnusedQuestions[randomNumber1]]}">${TaskQ[3][UnusedQuestions[randomNumber1]]+" "+TaskQ[TOT][UnusedQuestions[randomNumber1]]} </p>`;
+                }else{
+                    TaskToPlace+=`<p value="${TaskQ[TOT==1?2:1][UnusedQuestions[randomNumber1]]}">${TaskQ[TOT][UnusedQuestions[randomNumber1]]} </p>`;
+                }
+                UnusedQuestions.splice(randomNumber1,1);
             }
             TaskToPlace+="</div>";
         }

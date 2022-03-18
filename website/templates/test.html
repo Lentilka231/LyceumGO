@@ -29,7 +29,7 @@
         else{
             u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div>`
             for(let x=1;x<Ukol.length;x++){
-                u+=Ukol[x].split(":")[0].replace("______",`<input onchange='if(!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(this.value)){this.style.backgroundColor="red"}else{this.style.backgroundColor="white"}' name='${i+"-"+x}'>`)+"<br>";
+                u+=Ukol[x].split(":")[0].replace("______",` <input onchange='if(!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(this.value)){this.style.backgroundColor="red"}else{this.style.backgroundColor="white"}' name='${i+"-"+x}'> `)+"<br>";
             }
             u+="</div>"
         }

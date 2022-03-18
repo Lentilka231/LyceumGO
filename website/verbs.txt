@@ -47,53 +47,58 @@ helfen - Kannst du ihm helfen?
 
 
 
-abfahren
-abgeben
-abschreiben
-anfangen
-angreifen
-anhaben
-ankommen
-anrufen
-sich anziehen
-aufnehmen
-auftreten
-aufwaschen
-ausgehen
-ausreiten
-auschlafen
-aussehen
-aussprechen
-aussteigen
-backen
-beginnen
-bekommen
-beschreiben
-besprechen
-bitten
-bleibenbringen
-denkeneinladen
-einsteigen
-entscheiden
-erfahren
-erfinden
-essenfahren
-fernsehen
-findenfliegen
-flißen
-geben
-gefallen
-gehen
-gewinnen
-haben
-halten
-heißen
-helfen
-kennenkommen
-lassen
-laufen
-lesen
-liegen
+abfahren - Wann fährt der Bus ab?
+abgeben - Ich gebe ihm nicht meine Waffe ab.
+abschreiben - Während des Test ihr nicht abschreiben dürft.
+anfangen - Es ist 19:45. Wann fangt das Konzert an? In 15 Minuten. 
+angreifen - Sie möchten uns morgen angreifen?
+anhaben - Was hast du an? Du kannst nich mit di
+ankommen - Wir fahren schon 2 Stunde. Wann kommen wir in Brno an?
+anrufen - Ich muss ihm jetzt anrufen.
+sich anziehen - Wenn du mit uns gehen willst, dann sollst du etwas warmes anziehen.
+aufnehmen - Er nimmt alle Flüchtling in seinem Haus auf.
+auftreten - Unser Musikband tritt jetzt auf dem Konzert auf.
+aufwaschen - Mein Bruder ist hoch aber ich bin nich. Ich wünsche mehr aufwachsen.
+ausgehen - Ich möchte heute Abend ausgehen.
+ausreiten - Wir können jetzt zum See ausreiten oder nur gehen.
+auschlafen - Ich gehe ins Bett auschlafen.
+aussehen - Schaul mal! Das Kleidung des Mädchen sieht großartig aus.
+aussprechen - Wie sprichst du das Wort aus?
+aussteigen - In der nächsten Hauptstelle müssen wir aussteigen.
+backen - Was bäckt dein Mutter? Es riecht unglaublich gut.
+beginnen - Ich beginne mit Hunger. Wir könnten ins Restaurant gehen. 
+bekommen - Enschuldigen Sie mir. Wie kann ich zu dieses Hotel bekommen?
+beschreiben - Kannst du mir der Mensch beschreiben? Er war klein und schlank.
+besprechen - Wir sollen das noch ein mal besprechen.
+bitten - Ich bitte euch um eine Hilfe. Ich weiß nicht was anders soll ich tun.
+bleiben - Wir bleiben hier, weil draußen regnet es.
+bringen - Bringt mir bitte meine Brille. Ich kann nichts ohne sie lesen.
+denken - Was denkst du über den Krieg?
+einladen - Ihr könnt alle Freunde einladen.
+einsteigen - Wir müssen in den richtigen Bus einsteigen.
+sich entscheiden - Ich bin nicht sicher. Ich muss mich noch entscheiden. 
+erfahren - Was erfahren wir auf dieserem Vorlesung?
+erfinden - Hast du die Lösung. Nein, ich kann nichts erfinden.
+essen - Was isst du am liebsten? Ich mag Schnitzel mit Kartoffeln.
+fahren - Kannst du ein Auto fahren? Nein ich habe noch keine Fahrerlaubnis.
+fernsehen - Wie lange siehst du fern? Nicht so lange nur ein paar Stunden.
+finden - Wie findest unser neuer Lehrer? Ja, er geht.
+fliegen - Warum können manche Vögel fliegen und manche nicht.
+flißen - Wir müssen sofort fließen. Sie möchten uns töten.
+geben - Ich soll nicht dir meine Hausaufgabe geben.
+gefallen - Wie gefällt dir die Blumen. Sie gefallen mir viel.
+gehen - Ich gehe einkaufen. Brauchst du etwas?
+gewinnen - Ich möchte der Wettberwerb gewinnen, weil meine Eltern und Freunde sich auf mich verlassen. 
+haben - Ich habe keine Ahnung.
+halten - Was haltest du in deine Hand. Das ist mein Geschenk für meine Mutter.
+heißen - Er hat klaustrofobie. Das heißt er kann nicht in kleinen Räumen sein.
+helfen - Können Sie uns helfen? Ja was brauchen Sie.
+kennen - Kennst du der neuer Mitschüler?
+kommen - Woher kommst du? Ich komme gerade aus der Schulle. 
+lassen - Wo kann ich meine Dinge lassen? 
+laufen - Wir laufen bis zur Ziellinie.
+lesen - Ich kann nicht ohne meine Brille lesen.
+liegen - 
 mitbringen
 mitfahren
 mitgehen

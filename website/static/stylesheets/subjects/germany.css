@@ -326,6 +326,7 @@ span{
     position:absolute;
     top:20%;
     height: 80%;
+    width:100%;
     left:50%;
     transform: translate(-50%,0%);
 }
@@ -573,6 +574,30 @@ span{
     left:50%;
     transform: translate(-50%,0%);
 }
+#QuestionMark{
+    padding:10px 17px;
+    width:40px;
+    font-size: 20px;
+    position:absolute;
+    bottom:0px;
+    right:0px;
+    background-color: var(--red);
+    color:white;
+    display:none;
+    border-radius: 5px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+#TextInputHelp{
+    margin-left:15px;
+    width:540px;
+    height:20px;
+}
+#QuestionMark:hover{
+    width:540px;
+}
+
 #vyhodnoceni{
     width:130px;
     height:50px;
