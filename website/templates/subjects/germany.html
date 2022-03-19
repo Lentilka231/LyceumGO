@@ -1095,6 +1095,7 @@
                     document.getElementById("np"+i).onclick= async function(){
                         p=document.getElementById(CZchoosed)
                         if(p){
+                            console.log("ahojda");
                             if(CurrentVocabulary[1][CurrentVocabulary[2].indexOf(p.innerText)]==this.innerText.substr(4)){
                                 Completed+=1;
                                 if(Completed==10){
@@ -1106,13 +1107,15 @@
                                     this.style.animation="fromRedToBlue 1s forwards";
                                     p.style.animation="fromRedToBlue 1s forwards";
                                 }
-                            }else{
+                            }
+                            else{
                                 this.style.animation="shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
                                 await sleep(820);
                                 this.style.animation="";
                                 Success[i]=0;
                             }
-                        }else{
+                        }
+                        else{
                             if (this.style.border=="solid var(--red) 3px"){
                                 this.style.border="solid var(--brighterBlue) 3px";
                                 Nchoosed=null;
@@ -1129,6 +1132,7 @@
                         p=document.getElementById(Nchoosed)
                         if(p){
                             if(CurrentVocabulary[1][CurrentVocabulary[2].indexOf(this.innerText)]==p.innerText.substr(4)){
+                                console.log("ahojda")
                                 Completed+=1;
                                 if(Completed==10){
                                     endoftest();
@@ -1163,7 +1167,7 @@
             }
             else{
                 for(let i=0;i<10;i++){
-                    document.getElementById("np"+i).onclick= function(){
+                    document.getElementById("np"+i).onclick= async function(){
                         p=document.getElementById(CZchoosed)
                         if(p){
                             if(SetOfQuestions[this.innerText]==p.innerText){
@@ -1172,10 +1176,15 @@
                                     endoftest();
                                 }
                                 else{
+                                    Nchoosed=null;
+                                    CZchoosed=null;
                                     this.style.animation="fromRedToBlue 1s forwards";
                                     p.style.animation="fromRedToBlue 1s forwards";
                                 }
                             }else{
+                                this.style.animation="shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
+                                await sleep(820);
+                                this.style.animation="";
                                 Success[i]=0;
                             }
                         }else{
@@ -1192,7 +1201,7 @@
                         }
     
                     }
-                    document.getElementById("czp"+i).onclick=function(){
+                    document.getElementById("czp"+i).onclick=async function(){
                         p=document.getElementById(Nchoosed)
                         if(p){
                             if(SetOfQuestions[p.innerText]==this.innerText){
@@ -1201,10 +1210,15 @@
                                     endoftest();
                                 }
                                 else{
+                                    Nchoosed=null;
+                                    CZchoosed=null;
                                     this.style.animation="fromRedToBlue 1s forwards";
                                     p.style.animation="fromRedToBlue 1s forwards";
                                 }
                             }else{
+                                this.style.animation="shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
+                                await sleep(820);
+                                this.style.animation="";
                                 Success[i]=0;
                             }
                         }
