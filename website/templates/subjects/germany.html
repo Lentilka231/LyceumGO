@@ -416,7 +416,7 @@
             <div class="sgrid">
                 <div id="slovicka">
                     <table id='tabulka'>
-                        <tr><th style="width:30px">id</th><th style="width:230px"><div style="cursor:pointer" onclick="GermanWordsHider()">německy</div></th><th><div style="cursor:pointer" onclick="CzechWordsHider()">česky</div></th></tr>
+                        <tr><th style="width:30px">id</th><th style="width:230px"><div style="cursor:pointer" onclick="LanguageWordsHider(document.getElementById('GermanWH'))">německy</div></th><th><div style="cursor:pointer" onclick="LanguageWordsHider(document.getElementById('CzechWH'))">česky</div></th></tr>
                         <tr><td colspan=3 >
                             <div id="scroll">
                                 <table id="slovnicek">
@@ -425,8 +425,8 @@
                             </div>
                         </td></tr>
                     </table>
-                    <div id="GermanWH"></div>
-                    <div id="CzechWH"></div>
+                    <div id="GermanWH"style="display:none; left:25px"></div>
+                    <div id="CzechWH" style="display:none; left:238px"></div>
                 </div>
                 <div class="Wgridchild Flashcards" onclick="teststart('FlashCards')">
                     Lernkarten
@@ -604,36 +604,16 @@
     <div id="exit" onclick="document.getElementById('flashedmsg').style.display='none'">✕</div>
 </div>
 <script>
-    function sleep(ms){
-        return new Promise(resolve => setTimeout(resolve,ms))
-    };
-    let G = true;
-    let C = true;
-    async function GermanWordsHider(){
-        if(G){
-            document.getElementById("GermanWH").style.display="block";
-            document.getElementById("GermanWH").style.backdropFilter="blur(3px)";
-            G=false;
+    function sleep(ms){return new Promise(resolve => setTimeout(resolve,ms))};
+    async function LanguageWordsHider(G){
+        if(G.style.display=='none'){
+            G.style.display="block";
+            G.style.backdropFilter="blur(3px)";
         }
         else{
-            document.getElementById("GermanWH").style.backdropFilter="blur(0px)";
-            G=true;
+            G.style.backdropFilter="blur(0px)";
             await sleep(300);
-            document.getElementById("GermanWH").style.display="none";
-        }
-    }
-    async function CzechWordsHider(){
-        if(C){
-            document.getElementById("CzechWH").style.display="block";
-            document.getElementById("CzechWH").style.backdropFilter="blur(3px)";
-            C=false;
-        }
-        else{
-            document.getElementById("CzechWH").style.backdropFilter="blur(0px)";
-            C=true;
-            await sleep(300);
-            document.getElementById("CzechWH").style.display="none";
-
+            G.style.display="none";
         }
     }
     //vše týkající se zviditelňování
@@ -641,22 +621,20 @@
         const child = document.querySelectorAll(".child"); 
         const x = document.querySelectorAll(".Module");
         const a = [false,false,false,false,false,false,false,false,false,false]
-       
         for(let i=1;i<11;i++){
-        $("#M"+i).click(function(){
-            if (!(a[i-1])){
-                for (let y=0;y<10;y++){
-                    a[y]=false;
-                    child[y].style.display="none";
-                    x[y].style.height=x[y].getAttribute("value")+"px";
-                };
-                a[i-1]=true;
-                x[i-1].style.height=x[i-1].getAttribute("value2")+"px";
-                child[i-1].style.display="block";
-            }        
-        });
+            $("#M"+i).click(function(){
+                if (!(a[i-1])){
+                    for (let y=0;y<10;y++){
+                        a[y]=false;
+                        child[y].style.display="none";
+                        x[y].style.height=x[y].getAttribute("value")+"px";
+                    };
+                    a[i-1]=true;
+                    x[i-1].style.height=x[i-1].getAttribute("value2")+"px";
+                    child[i-1].style.display="block";
+                }        
+            });
         };
-        
         for(let i=1;i<7;i++){
             $("#G"+i).click(function(){
                 for(let y=1;y<7;y++){
@@ -667,10 +645,7 @@
                 this.style.backgroundColor="rgb(121 148 185)";
             })
         }
-
-        $("#TDContent").children().hide();
-    
-        
+        $("#TDContent").children().hide();     
         if (document.getElementById("flashedmsg").innerText.length>41){
             document.getElementById("flashedmsg").style.display="block"
         }

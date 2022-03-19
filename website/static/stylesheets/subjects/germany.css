@@ -453,32 +453,19 @@ span{
 #slovnicek td:nth-child(2) {text-align:right;width:30px;vertical-align: top}
 #slovnicek td:nth-child(3) {width:200px}
 #slovnicek td:nth-child(4) {width:200px}
-#CzechWH{
-    display:none;
+#CzechWH,#GermanWH{
     z-index:5;
     position:absolute;
     top:30px;
-    left:240px;
-    width:200px;
+    width:220px;
     height:470px;
     backdrop-filter: blur(0px);
     transition: backdrop-filter .3s ease;
+
 }
 #slovnicek tr:hover{
     background-color: rgb(0,0,0,0.1);
 }
-#GermanWH{
-    display:none;
-    z-index:5;
-    position:absolute;
-    top:30px;
-    left:30px;
-    width:200px;
-    height:470px;
-    backdrop-filter: blur(0px);
-    transition: backdrop-filter .3s ease;
-}
-
 #table{
     position: absolute;
     width:800px;
