@@ -62,7 +62,7 @@
                             {%endif%}
                         </button>
                         {%elif CT[v]=="F"%}
-                        <button class="testDiv" name="submit_button" value="resaults{{i.id}}">
+                        <button class="testDiv" name="submit_button" value="results{{i.id}}">
                             <b>{{i.testname}}</b><br>
                             Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
                             Doba trvání: {{i.duration}} min.<br>
@@ -74,7 +74,7 @@
                         {%endfor%}
                     {%else%}
                         {%for i in classroom.scheduledtests%}
-                        <button class="testDiv" name="submit_button" value="resaults{{i.id}}">
+                        <button class="testDiv" name="submit_button" value="results{{i.id}}">
                             <b>{{i.testname}}</b><br>
                             Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
                             Doba trvání: {{i.duration}} min.<br>

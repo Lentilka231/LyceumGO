@@ -50,9 +50,9 @@ class Scheduledtests(db.Model):
     testid=db.Column(db.Integer)
     info=db.Column(db.String(100))
     canstart=db.Column(db.String(1))
-    resaults = db.relationship("Resaultsfromtests")
+    results = db.relationship("Resultsfromtests")
     completed=db.Column(db.Text)
-class Resaultsfromtests(db.Model):
+class Resultsfromtests(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     data=db.Column(db.Text)
     student = db.Column(db.Integer)

@@ -322,10 +322,14 @@
                 <p id="FrantaX" class="Franta"></p>
                     
                 <div class="centralizer" style="bottom: 170px;">
-                        
+                    <div style="display:flex;">
+                        <div id="XPA">
+                            <input type="text" id="TextInputArtikel" spellcheck="false" maxlength="3">
+                        </div>
                         <div id="XP">
                             <input type="text" id="TextInput" spellcheck="false">
                         </div>
+                    </div>
                         <div id="SubstituteForInput">
 
                         </div>
@@ -663,12 +667,15 @@
     const spravnabarva = "rgb(25, 146, 61)";
     const spatnabarva = "rgb(199, 42, 42)";
     const oznacovacibarva = "3px solid rgb(87, 115, 153)";
-    let kontrola,MomentalFillWidth,UnusedQuestions,MomentalQuestion,Into,Penalty,Boost,TypeOfTest,NameOfTest,SetOfQuestions,Success,NumberOfPossibleAnswers,NumberForCalculationOfSuccess,ABCDanswer,CurrentVocabulary,ant;
+    let kontrola,MomentalFillWidth,UnusedQuestions,MomentalQuestion,Into,Penalty,Boost,TypeOfTest,NameOfTest,SetOfQuestions,Success,NumberOfPossibleAnswers,NumberForCalculationOfSuccess,ABCDanswer,CurrentVocabulary,ant,derdiedas;
     let CanUseEnter=false,CanUseEsc=false,CanUseArrows=false;
     let WordsInVocabulary=[],OrderOfWords =[];
     const substituteForInput=document.getElementById("SubstituteForInput");
     const TextInput = document.getElementById("TextInput");
+    const TextInputArtikel = document.getElementById("TextInputArtikel");
     const BorderForTextInput = document.getElementById("XP"); 
+    const BorderForTextInputArtikel = document.getElementById("XPA");
+
     const NumberOfTests = document.getElementById("numberofTests");
     let dvapokusy,TenWords,WhichBox;
     let z=0;
@@ -759,7 +766,9 @@
         }
         substituteForInput.innerText="";
         BorderForTextInput.style.border="none";
+        BorderForTextInputArtikel.style.border="none";
         TextInput.value="";
+        TextInputArtikel.value="";
         CanUseEsc=false;
         CanUseEnter=false;
         CanUseArrows=false;
@@ -811,6 +820,7 @@
                 break;
             case "CZtoN":
             case "NtoCZ":
+                $("#progression").show();
                 $(".TextInput").show();
                 if(type=="CZtoN"){
                     document.getElementById("QuestionMark").style.display="flex";
@@ -1020,6 +1030,22 @@
                         }
                     }
                     if(itcanbe){
+                        
+                        MomentalFillWidth+=Boost;
+                        if(MomentalFillWidth>100){
+                            MomentalFillWidth=100;
+                        }else if(MomentalFillWidth>=75){
+                            Boost=2;
+                            Penalty=4;
+                        }else if (MomentalFillWidth>=50){
+                            Boost=3;
+                            Penalty=3;
+                        }else if (MomentalFillWidth>=25){
+                            Boost=4;
+                            Penalty=2;
+                        }
+                        document.getElementById("fill").style.width=MomentalFillWidth+"%";
+
                         UnusedQuestions.splice(MomentalQuestion,1);
                         BorderForTextInput.style.border="3px solid "+spravnabarva;
                         if(document.getElementById("chvilkanakontrolu").checked){
@@ -1030,12 +1056,27 @@
                         newquestion();
                     }
                     else{
+
                         BorderForTextInput.style.border="3px solid "+spatnabarva;
                         if(dvapokusy==0){
                             Success[MomentalQuestion]=0;
                             substituteForInput.innerText=CurrentVocabulary[2][UnusedQuestions[MomentalQuestion]];
                             
                         }else if(dvapokusy==-1){
+                            MomentalFillWidth-=Penalty;
+                            if(MomentalFillWidth<0){
+                                MomentalFillWidth=0;
+                            }else if(MomentalFillWidth<25){
+                                Boost=5;
+                                Penalty=0;
+                            }else if (MomentalFillWidth<50){
+                                Boost=4;
+                                Penalty=2;
+                            }else if (MomentalFillWidth<75){
+                                Boost=3;
+                                Penalty=3;
+                            }
+                            document.getElementById("fill").style.width=MomentalFillWidth+"%";
                             substituteForInput.innerText="";
                             UnusedQuestions.splice(MomentalQuestion,1);
                             BorderForTextInput.style.border="none";
@@ -1047,38 +1088,86 @@
                 }
                 else{
                     slovicka=CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]].split(", ");
+                    derdiedas=false;
                     for(let i=0;i<slovicka.length;i++){
                         if(!CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]){
                             if(slovicka[i]==TextInput.value && !slovicka[i].includes("-")){
+                                console.log("12");
+                                itcanbe=true;
+                                derdiedas=true;
+                                break;
+                            }
+                        }
+                        else{
+                            if(CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]==TextInputArtikel.value){
+                                console.log("1");
+                                derdiedas=true;
+                            }
+                            if(slovicka[i]==TextInput.value && !slovicka[i].includes("-")){
+                                console.log("2");
                                 itcanbe=true;
                                 break;
                             }
                         }
-                        else if (CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+slovicka[i]==TextInput.value && !slovicka[i].includes("-")){
-                            itcanbe=true;
-                            break;
-                        }
                     }
-                    if(itcanbe){
+                    if(itcanbe && derdiedas){
+                        MomentalFillWidth+=Boost;
+                        if(MomentalFillWidth>100){
+                            MomentalFillWidth=100;
+                        }else if(MomentalFillWidth>=75){
+                            Boost=2;
+                            Penalty=4;
+                        }else if (MomentalFillWidth>=50){
+                            Boost=3;
+                            Penalty=3;
+                        }else if (MomentalFillWidth>=25){
+                            Boost=4;
+                            Penalty=2;
+                        }
+                        document.getElementById("fill").style.width=MomentalFillWidth+"%";
                         UnusedQuestions.splice(MomentalQuestion,1);
+                        BorderForTextInputArtikel.style.border="3px solid "+spravnabarva;
                         BorderForTextInput.style.border="3px solid "+spravnabarva;
                         if(document.getElementById("chvilkanakontrolu").checked){
                             await sleep(500);
                         }
                         BorderForTextInput.style.border="none";
+                        BorderForTextInputArtikel.style.border="none";
                         TextInput.value="";
+                        TextInputArtikel.value="";
                         newquestion();
                     }
                     else{
-                        BorderForTextInput.style.border="3px solid "+spatnabarva;
+                        if(!derdiedas){
+                            BorderForTextInputArtikel.style.border="3px solid "+spatnabarva;
+                        }
+                        if(!itcanbe){
+                            BorderForTextInput.style.border="3px solid "+spatnabarva;
+                        }
                         if(dvapokusy==0){
                             Success[MomentalQuestion]=0;
                             substituteForInput.innerText=CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]];
                         }else if(dvapokusy==-1){
+                            MomentalFillWidth-=Penalty;
+                            if(MomentalFillWidth<0){
+                                MomentalFillWidth=0;
+                            }else if(MomentalFillWidth<25){
+                                Boost=5;
+                                Penalty=0;
+                            }else if (MomentalFillWidth<50){
+                                Boost=4;
+                                Penalty=2;
+                            }else if (MomentalFillWidth<75){
+                                Boost=3;
+                                Penalty=3;
+                            }
+                            document.getElementById("fill").style.width=MomentalFillWidth+"%";
                             substituteForInput.innerText="";
                             UnusedQuestions.splice(MomentalQuestion,1);
                             BorderForTextInput.style.border="none";
+                            BorderForTextInputArtikel.style.border="none";
                             TextInput.value="";
+                            TextInputArtikel.value="";
                             newquestion();
                         }
                         dvapokusy--;
@@ -1095,7 +1184,6 @@
                     document.getElementById("np"+i).onclick= async function(){
                         p=document.getElementById(CZchoosed)
                         if(p){
-                            console.log("ahojda");
                             if(CurrentVocabulary[1][CurrentVocabulary[2].indexOf(p.innerText)]==this.innerText.substr(4)){
                                 Completed+=1;
                                 if(Completed==10){
@@ -1280,12 +1368,19 @@
                     window.setTimeout(() => TextInput.focus(), 0);
                     break;
                 case "CZtoN":
-                    TextInput.focus();
                     CanUseEnter=true;
+                    if(CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]){
+                        BorderForTextInputArtikel.style.display="block";
+                        window.setTimeout(() => TextInputArtikel.focus(), 0);
+                    }else{
+                        window.setTimeout(() => TextInput.focus(), 0);
+                    }
+
                     document.getElementById("FrantaX").innerText=CurrentVocabulary[2][UnusedQuestions[MomentalQuestion]];
                     break;
                 case "NtoCZ":
-                    TextInput.focus();
+                    
+                window.setTimeout(() => TextInput.focus(), 0);
                     CanUseEnter=true;
                     document.getElementById("FrantaX").innerText=CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]];
                     break;
@@ -1342,6 +1437,7 @@
                 if (dvapokusy==-1){
                     substituteForInput.innerText="";
                     BorderForTextInput.style.border="none";
+                    BorderForTextInputArtikel.style.border="none";
                     TextInput.value="";
                     MomentalFillWidth-=Penalty;
                     if(MomentalFillWidth<0){

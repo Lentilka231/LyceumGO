@@ -98,7 +98,7 @@ kommen - Woher kommst du? Ich komme gerade aus der Schulle.
 lassen - Wo kann ich meine Dinge lassen? 
 laufen - Wir laufen bis zur Ziellinie.
 lesen - Ich kann nicht ohne meine Brille lesen.
-liegen - 
+liegen - Wo liegt die HauptStadt des Deutschland.
 mitbringen
 mitfahren
 mitgehen

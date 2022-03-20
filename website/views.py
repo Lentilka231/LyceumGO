@@ -177,8 +177,8 @@ def classroom():
                 elif "testincoming" in request.form["submit_button"]:
                     if current_user.person=="s":
                         return redirect(url_for("views.test",scheduledTest=request.form['submit_button'][12:]))
-                elif "resaults" in request.form["submit_button"]:
-                    return redirect(url_for("views.resaults",resaults=request.form["submit_button"][8:]))
+                elif "results" in request.form["submit_button"]:
+                    return redirect(url_for("views.results",results=request.form["submit_button"][7:]))
             db.session.commit()
             if classroom.students:
                 students=enumerate(classroom.students)
@@ -217,7 +217,7 @@ def classrooms():
                     elif a[0]=="cancel":
                         scheduledTest =Scheduledtests.query.filter_by(id=a[2]).first() 
                         if scheduledTest:
-                            x = Resaultsfromtests.query.filter_by(scheduledTest=a[2]).all()
+                            x = Resultsfromtests.query.filter_by(scheduledTest=a[2]).all()
                             for i in x:
                                 db.session.delete(i)
                             db.session.delete(scheduledTest)
@@ -251,17 +251,17 @@ def test(scheduledTest):
                                     else:
                                         data+=f";{z[y].split(':')[0]+' _'+request.form.get(str(x)+'-'+str(y))}_="
                             data+="$"
-                        db.session.add(Resaultsfromtests(data=data,student=current_user.id,scheduledTest=scheduledTest))
+                        db.session.add(Resultsfromtests(data=data,student=current_user.id,scheduledTest=scheduledTest))
                         db.session.commit()
                         return redirect(url_for("views.classroom"))
                     return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=i.testid).first(),testid=scheduledTest)
         return redirect(url_for("views.classroom"))
     return redirect(url_for("views.index"))
-@views.route("/resaults/<int:resaults>")
-def resaults(resaults):
+@views.route("/results/<int:results>")
+def results(results):
     if current_user.is_authenticated:
         if current_user.person=="t":
-            answers = Resaultsfromtests.query.filter_by(scheduledTest=resaults).all()
+            answers = Resultsfromtests.query.filter_by(scheduledTest=results).all()
             if answers:
                 x=[]
                 y=[]
@@ -274,16 +274,16 @@ def resaults(resaults):
                         for p,k in enumerate(i.split(";")):
                             x[z][v].append(k.split("="))
                     x[0].append(name)
-                return render_template("resaults.html",user=current_user,resaults=answers,a=x,s=y)
+                return render_template("results.html",user=current_user,results=answers,a=x,s=y)
         if current_user.person=="s":
-            answers = Resaultsfromtests.query.filter_by(student=current_user.id,scheduledTest=resaults).first()
+            answers = Resultsfromtests.query.filter_by(student=current_user.id,scheduledTest=results).first()
             if answers:
                 x=[]
                 for v,i in enumerate(answers.data.split("$")):
                     x.append([])
                     for k in i.split(";"):
                         x[v].append(k.split("="))
-                return render_template("resaults.html",user=current_user,resaults=answers,a=x)
+                return render_template("results.html",user=current_user,results=answers,a=x)
     return redirect(url_for("views.index"))
 @views.route("/logout")
 def logout():
@@ -321,7 +321,7 @@ def notification():
                         if task=="yes":
                             classroom = Classrooms.query.filter_by(name=teacher.classroom).first()
                             for i in classroom.scheduledtests:
-                                for y in Resaultsfromtests.query.filter_by(scheduledTest=i.id).all():
+                                for y in Resultsfromtests.query.filter_by(scheduledTest=i.id).all():
                                     db.session.delete(y)
                                 db.session.delete(i)
                             classroom.germanteacher=current_user.name

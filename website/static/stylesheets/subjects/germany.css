@@ -1250,3 +1250,10 @@ background: -webkit-radial-gradient(circle, hsla(0, 85%, 69%, 1) 0%, hsla(0, 86%
 .PTukol{
     margin-bottom: 10px;
 }
+#XPA{
+    display:none;
+    margin-right:20px;
+}
+#TextInputArtikel{
+    width:100px;
+}
