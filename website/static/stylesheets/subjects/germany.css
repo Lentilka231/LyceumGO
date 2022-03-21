@@ -335,7 +335,11 @@ span{
     width:700px;
     text-align: center;
 }
-
+#nw{
+    color:rgb(80, 80, 80);
+    font-size: 16px;
+    text-align: center;
+}
 .centralizer,.Franta{
     position: absolute;
     left:50%;

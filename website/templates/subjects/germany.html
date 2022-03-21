@@ -317,10 +317,12 @@
             </div>
         </div>
         <div class="task TextInput">
-            <div class="answer">        
-                <p id="FrantaY" style="top:20px;font-size: 16px;color:rgb(110, 110, 110)" class="Franta"></p>
+            <div class="answer"> 
+                <div class="centralizer" style="top:-90px">
+                    <p id="nw"></p>
+                </div>       
                 <p id="FrantaX" class="Franta"></p>
-                    
+                
                 <div class="centralizer" style="bottom: 170px;">
                     <div style="display:flex;">
                         <div id="XPA">
@@ -338,7 +340,7 @@
                         <div type="button" onclick="checkanswer('TextInput')" id="kontrola" style="margin-top:50px;">Kontroll</div>
                 </div>
                 <div id="QuestionMark">
-                    ?<div id="TextInputHelp">&nbspZadávej&nbsppouze&nbspčlen&nbspa&nbspjednotné&nbspčíslo&nbspněmeckého&nbspslovíčka.</div>
+                    ?<div id="TextInputHelp">&nbspU&nbsppodstatných&nbspjmen&nbspzadávej&nbsppouze&nbspčlen&nbspa&nbspjednotné&nbspčíslo.</div>
                 </div>
                 
             </div>
@@ -675,7 +677,7 @@
     const TextInputArtikel = document.getElementById("TextInputArtikel");
     const BorderForTextInput = document.getElementById("XP"); 
     const BorderForTextInputArtikel = document.getElementById("XPA");
-
+    const nw = document.getElementById("nw");
     const NumberOfTests = document.getElementById("numberofTests");
     let dvapokusy,TenWords,WhichBox;
     let z=0;
@@ -767,6 +769,7 @@
         substituteForInput.innerText="";
         BorderForTextInput.style.border="none";
         BorderForTextInputArtikel.style.border="none";
+        nw.style.display="none";
         TextInput.value="";
         TextInputArtikel.value="";
         CanUseEsc=false;
@@ -822,6 +825,7 @@
             case "NtoCZ":
                 $("#progression").show();
                 $(".TextInput").show();
+                nw.style.display="block";
                 if(type=="CZtoN"){
                     document.getElementById("QuestionMark").style.display="flex";
                 }
@@ -1092,7 +1096,6 @@
                     for(let i=0;i<slovicka.length;i++){
                         if(!CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]){
                             if(slovicka[i]==TextInput.value && !slovicka[i].includes("-")){
-                                console.log("12");
                                 itcanbe=true;
                                 derdiedas=true;
                                 break;
@@ -1100,11 +1103,9 @@
                         }
                         else{
                             if(CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]==TextInputArtikel.value){
-                                console.log("1");
                                 derdiedas=true;
                             }
                             if(slovicka[i]==TextInput.value && !slovicka[i].includes("-")){
-                                console.log("2");
                                 itcanbe=true;
                                 break;
                             }
@@ -1220,7 +1221,6 @@
                         p=document.getElementById(Nchoosed)
                         if(p){
                             if(CurrentVocabulary[1][CurrentVocabulary[2].indexOf(this.innerText)]==p.innerText.substr(4)){
-                                console.log("ahojda")
                                 Completed+=1;
                                 if(Completed==10){
                                     endoftest();
@@ -1368,14 +1368,15 @@
                     window.setTimeout(() => TextInput.focus(), 0);
                     break;
                 case "CZtoN":
+                    nw.innerText=CurrentVocabulary[0]-UnusedQuestions.length+"/"+CurrentVocabulary[0];
                     CanUseEnter=true;
                     if(CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]){
                         BorderForTextInputArtikel.style.display="block";
                         window.setTimeout(() => TextInputArtikel.focus(), 0);
                     }else{
+                        BorderForTextInputArtikel.style.display="none";
                         window.setTimeout(() => TextInput.focus(), 0);
                     }
-
                     document.getElementById("FrantaX").innerText=CurrentVocabulary[2][UnusedQuestions[MomentalQuestion]];
                     break;
                 case "NtoCZ":
@@ -1416,6 +1417,7 @@
     let SubstituteForInputKontrol = new MutationObserver(function(){
         if (substituteForInput.innerText!=""){
             BorderForTextInput.style.display="none";
+            BorderForTextInputArtikel.style.display="none";
             substituteForInput.style.display="block";
         }
         else{
@@ -1439,6 +1441,7 @@
                     BorderForTextInput.style.border="none";
                     BorderForTextInputArtikel.style.border="none";
                     TextInput.value="";
+                    TextInputArtikel.value="";
                     MomentalFillWidth-=Penalty;
                     if(MomentalFillWidth<0){
                         MomentalFillWidth=0;
