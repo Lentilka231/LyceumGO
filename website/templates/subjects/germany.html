@@ -344,7 +344,6 @@
                 </div>
                 
             </div>
-
         </div>
         <div class="task FLASHCARDS">
             <p id="flashinfo"></p>
@@ -823,7 +822,6 @@
                 break;
             case "CZtoN":
             case "NtoCZ":
-                $("#progression").show();
                 $(".TextInput").show();
                 nw.style.display="block";
                 if(type=="CZtoN"){
@@ -841,6 +839,7 @@
                 FlashcardsPreparing();
                 break;
             case "Pexeso":
+
                 $(".Pexeso").show();
                 n=Array.from({length:10}, (_, i) => i);
                 m=Array.from({length:10}, (_, i) => i);
@@ -895,7 +894,18 @@
                 }
 
                 break
-        }  
+            case "Plural":
+                $(".TextInput").show();
+                nw.style.display="block";
+                UnusedQuestions=[];
+                for(let i=0;i<CurrentVocabulary[0];i++){
+                    UnusedQuestions.push(i);
+                }
+                Success=Array.from({length:UnusedQuestions.length},(_,i) => 1);
+                NumberForCalculationOfSuccess=0
+                newquestion();
+                break;
+            }  
     };
     // zkontrolovává odpovědi, dál rozhoduje co se bude dít
     async function checkanswer(x){
@@ -1034,22 +1044,6 @@
                         }
                     }
                     if(itcanbe){
-                        
-                        MomentalFillWidth+=Boost;
-                        if(MomentalFillWidth>100){
-                            MomentalFillWidth=100;
-                        }else if(MomentalFillWidth>=75){
-                            Boost=2;
-                            Penalty=4;
-                        }else if (MomentalFillWidth>=50){
-                            Boost=3;
-                            Penalty=3;
-                        }else if (MomentalFillWidth>=25){
-                            Boost=4;
-                            Penalty=2;
-                        }
-                        document.getElementById("fill").style.width=MomentalFillWidth+"%";
-
                         UnusedQuestions.splice(MomentalQuestion,1);
                         BorderForTextInput.style.border="3px solid "+spravnabarva;
                         if(document.getElementById("chvilkanakontrolu").checked){
@@ -1067,20 +1061,6 @@
                             substituteForInput.innerText=CurrentVocabulary[2][UnusedQuestions[MomentalQuestion]];
                             
                         }else if(dvapokusy==-1){
-                            MomentalFillWidth-=Penalty;
-                            if(MomentalFillWidth<0){
-                                MomentalFillWidth=0;
-                            }else if(MomentalFillWidth<25){
-                                Boost=5;
-                                Penalty=0;
-                            }else if (MomentalFillWidth<50){
-                                Boost=4;
-                                Penalty=2;
-                            }else if (MomentalFillWidth<75){
-                                Boost=3;
-                                Penalty=3;
-                            }
-                            document.getElementById("fill").style.width=MomentalFillWidth+"%";
                             substituteForInput.innerText="";
                             UnusedQuestions.splice(MomentalQuestion,1);
                             BorderForTextInput.style.border="none";
@@ -1112,20 +1092,6 @@
                         }
                     }
                     if(itcanbe && derdiedas){
-                        MomentalFillWidth+=Boost;
-                        if(MomentalFillWidth>100){
-                            MomentalFillWidth=100;
-                        }else if(MomentalFillWidth>=75){
-                            Boost=2;
-                            Penalty=4;
-                        }else if (MomentalFillWidth>=50){
-                            Boost=3;
-                            Penalty=3;
-                        }else if (MomentalFillWidth>=25){
-                            Boost=4;
-                            Penalty=2;
-                        }
-                        document.getElementById("fill").style.width=MomentalFillWidth+"%";
                         UnusedQuestions.splice(MomentalQuestion,1);
                         BorderForTextInputArtikel.style.border="3px solid "+spravnabarva;
                         BorderForTextInput.style.border="3px solid "+spravnabarva;
@@ -1149,20 +1115,6 @@
                             Success[MomentalQuestion]=0;
                             substituteForInput.innerText=CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]];
                         }else if(dvapokusy==-1){
-                            MomentalFillWidth-=Penalty;
-                            if(MomentalFillWidth<0){
-                                MomentalFillWidth=0;
-                            }else if(MomentalFillWidth<25){
-                                Boost=5;
-                                Penalty=0;
-                            }else if (MomentalFillWidth<50){
-                                Boost=4;
-                                Penalty=2;
-                            }else if (MomentalFillWidth<75){
-                                Boost=3;
-                                Penalty=3;
-                            }
-                            document.getElementById("fill").style.width=MomentalFillWidth+"%";
                             substituteForInput.innerText="";
                             UnusedQuestions.splice(MomentalQuestion,1);
                             BorderForTextInput.style.border="none";
@@ -1175,7 +1127,32 @@
                     }
                     }                
                 break;
-        }
+            case "Plural":
+                if(CurrentVocabulary[4][UnusedQuestions[MomentalQuestion]]==TextInput.value ){
+                    UnusedQuestions.splice(MomentalQuestion,1);
+                    BorderForTextInput.style.border="3px solid "+spravnabarva;
+                    if(document.getElementById("chvilkanakontrolu").checked){
+                        await sleep(500);
+                    }
+                    BorderForTextInput.style.border="none";
+                    TextInput.value="";
+                    newquestion();
+                }
+                else{
+                    if(dvapokusy==0){
+                        Success[MomentalQuestion]=0;
+                        substituteForInput.innerText=CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]];
+                    }else if(dvapokusy==-1){
+                        substituteForInput.innerText="";
+                        UnusedQuestions.splice(MomentalQuestion,1);
+                        BorderForTextInput.style.border="none";
+                        TextInput.value="";
+                        newquestion();
+                    }
+                    dvapokusy--;
+                }                
+                break;
+            }
     };
     // odesílá novou otázku https://www.youtube.com/watch?v=OnkTUKtxRiczku
     function newquestion(a){
@@ -1334,6 +1311,7 @@
                     break;
                 case "CZtoN":
                 case "NtoCZ":
+                case "Plural":
                     a=Math.floor(Math.random()*UnusedQuestions.length);
                     break;   
             }
@@ -1379,11 +1357,15 @@
                     }
                     document.getElementById("FrantaX").innerText=CurrentVocabulary[2][UnusedQuestions[MomentalQuestion]];
                     break;
-                case "NtoCZ":
-                    
+                case "NtoCZ":        
                 window.setTimeout(() => TextInput.focus(), 0);
                     CanUseEnter=true;
                     document.getElementById("FrantaX").innerText=CurrentVocabulary[3][UnusedQuestions[MomentalQuestion]]+" "+CurrentVocabulary[1][UnusedQuestions[MomentalQuestion]];
+                    break;
+                case "Plural":
+                    window.setTimeout(() => TextInput.focus(), 0);
+                    CanUseEnter=true;
+                    document.getElementById("FrantaX").innerText=CurrentVocabulary[2][UnusedQuestions[MomentalQuestion]];
                     break;
             };
         }
