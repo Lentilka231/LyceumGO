@@ -51,30 +51,39 @@
                 <form method="POST">
                     {%if user.person=="s"%}
                         {%for v,i in tests%}
-                        {%if CT[v]=="T" %}
-                        <button class="testDiv" name="submit_button" value="testincoming{{i.id}}">
-                            <b>{{i.testname}}</b><br>
-                            Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
-                            Doba trvání: {{i.duration}} min.<br>
-                            {%if i.canstart=="E"%}(Skončilo){%endif%}
-                            {%if i.info%}
-                            {{i.info}}
+                            {%if i.canstart=="T"%}
+                                <button class="testDiv" name="submit_button" value="testincoming{{i.id}}">
+                                    <b>{{i.testname}}</b><br>
+                                    Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
+                                    Doba trvání: {{i.duration}} min.<br>
+                                    {%if i.info%}
+                                    {{i.info}}
+                                    {%endif%}
+                                </button>
+                            {%elif i.canstart=="F"%}
+                                <div class="testDiv">
+                                    <b>{{i.testname}}</b><br>
+                                    Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
+                                    Doba trvání: {{i.duration}} min.<br>
+                                    {%if i.info%}
+                                    {{i.info}}
+                                    {%endif%}
+                                </div>
+                            {%elif i.canstart=="E"%}
+                                <button class="testDiv" name="submit_button" value="results{{i.id}}">
+                                    <b>{{i.testname}}</b><br>
+                                    Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
+                                    Doba trvání: {{i.duration}} min.<br>
+                                    (skončilo)
+                                    {%if i.info%}
+                                    {{i.info}}
+                                    {%endif%}
+                                </button>
                             {%endif%}
-                        </button>
-                        {%elif CT[v]=="F"%}
-                        <button class="testDiv" name="submit_button" value="results{{i.id}}">
-                            <b>{{i.testname}}</b><br>
-                            Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
-                            Doba trvání: {{i.duration}} min.<br>
-                            {%if i.info%}
-                            {{i.info}}
-                            {%endif%}
-                        </button>
-                        {%endif%}
                         {%endfor%}
                     {%else%}
                         {%for i in classroom.scheduledtests%}
-                        <button class="testDiv" name="submit_button" value="results{{i.id}}">
+                        <div class="testDiv" name="submit_button">
                             <b>{{i.testname}}</b><br>
                             Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
                             Doba trvání: {{i.duration}} min.<br>
@@ -82,11 +91,12 @@
                             {%if i.info%}
                             {{i.info}}
                             {%endif%}
-                        </button>
+                        </div>
                         {%endfor%}
                     {%endif%}
                 </form>
             </div>
+            {%if user.person=="t"%}<div id="ClassDEL" onclick="document.getElementById('bubak').style.display='block'">Vymazat třídu</div>{%endif%}
         </div>
     </div>
     <table style="width:100%;">
@@ -113,6 +123,17 @@
     </table>
 </div>
 </div>
+{%if user.person=="t"%}
+<div id="bubak">
+    <div id="END">
+        Doopravdy chceš vymazat třídu?
+        <form method="POST">
+            <button type="submit" name="submit_button" value="deleteCLASS" id="delete">Smazat</button>
+        </form>
+        <div id="cancel" onclick="document.getElementById('bubak').style.display='none'">Zrušit</div>
+    </div>
+</div>
+{%endif%}
 <div id="flashedmsg"><div style="width:260px">
     {%with messages = get_flashed_messages(with_categories=true)%}
         {% if messages %}

@@ -38,16 +38,28 @@
         {%endif%}
         <div id="ScheduledTests">
             <form method="POST">
-                {%for i in classroom.scheduledtests%}
-                <div class="testDiv">
-                    <b>{{i.testname}}</b><br>
-                    Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
-                    Doba trvání: {{i.duration}} min.<br>
-                    {%if i.info%}
-                    {{i.info}}
+                {%for v,i in tests%}
+                    {%if i.canstart=="T"%}
+                        <div class="testDiv">
+                            <b>{{i.testname}}</b><br>
+                            Kdy: {{i.datum[5:7]+'. '+i.datum[8:10]+'. ('+i.datum[11:]+')'}}<br>
+                            Doba trvání: {{i.duration}} min.<br>
+                            {%if i.info%}
+                            {{i.info}}
+                            {%endif%}
+                            <button class="deleteTest" name="submit_button" value="cancel/{{classroom.name}}/{{i.id}}">✕</button>
+                        </div>          
+                    {%elif i.canstart=="E"%}
+                        <button class="testDiv" name="submit_button" value="results/{{i.id}}">
+                            <b>{{i.testname}}</b><br>
+                            Kdy: {{i.datum[8:10]+'. '+i.datum[5:7]+'. ('+i.datum[11:]+')'}}<br>
+                            Doba trvání: {{i.duration}} min.<br>
+                            {%if i.info%}
+                            {{i.info}}
+                            {%endif%}
+                        </button>
                     {%endif%}
-                    <button class="deleteTest" name="submit_button" value="cancel/{{classroom.name}}/{{i.id}}">✕</button>
-                </div>
+
                 {%endfor%}
             </form>
         </div>

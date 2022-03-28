@@ -435,7 +435,7 @@
                 </div>
                 <div id="Wgrid">
                     <div class="Wgridchild" onclick="teststart('FlashCards')">
-                        <img src="{{url_for('static',filename='images/Learnkarten.png')}}">
+                        <img src="{{url_for('static',filename='images/Lernkarten.png')}}">
                         Lernkarten
                     </div>
                     <div class="Wgridchild" onclick="teststart('Pexeso','W')">
@@ -1792,6 +1792,7 @@ function randomPDF(){
                 UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
                 for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
                     randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+                    console.log(TaskQ[1][UnusedQuestions[randomNumber]]["a"]);
                     TaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
                     UnusedQuestions.splice(randomNumber,1);
                 }

@@ -36,6 +36,7 @@
     border-radius: 10px;
     display:grid;
     grid-template-columns:1fr 3fr;
+    position:relative;
 }
 #Name{
     font-size:70px;
@@ -99,7 +100,7 @@ tbody td{
     font-size: 16px;
     margin-top:20px;
     width:250px;
-    height:350px;
+    height:250px;
     overflow-y: auto;
 }
 .deleteTest{
@@ -141,10 +142,68 @@ tbody td{
     transform: translate(-50%,0%);
     background-color: var(--red);
     display: none;
-  }
-  #exit{
-    position: absolute;
-    right:10px;
-    top:10px;
-    cursor: pointer;
-  }
+}
+#exit{
+position: absolute;
+right:10px;
+top:10px;
+cursor: pointer;
+}
+#ClassDEL{
+background-color: var(--red);
+font-size: 16px;
+padding:5px;
+border-radius: 10px;
+position: absolute;
+bottom:20px;
+cursor:pointer;
+}
+#bubak{
+display:none;
+position:fixed;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background-color: rgba(0,0,0,0.5);
+}
+#cancel{
+position: absolute;
+bottom: 30px;
+font-size: 20px;
+background-color: var(--blue);
+width: fit-content;
+border-radius: 5px;
+padding: 5px;
+cursor: pointer;
+border: none;
+right:30px;
+font-family: 'Signika Negative', sans-serif;
+
+}
+#delete{
+position: absolute;
+bottom: 30px;
+font-size: 20px;
+background-color: var(--red);
+width: fit-content;
+border-radius: 5px;
+padding: 5px;
+cursor: pointer;
+border: none;
+left:30px;
+font-family: 'Signika Negative', sans-serif;
+}
+#END{
+background-color: var(--brighterBlue);
+width:300px;
+font-size: 17px;
+height:150px;
+text-align: center;
+border-radius: 10px;
+position:absolute;
+top:50%;
+left:50%;
+transform: translate(-50%, -50%);
+padding:20px;
+}

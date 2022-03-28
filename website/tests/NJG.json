@@ -123,6 +123,13 @@
                     "1":"spielst",
                     "2":"passt",
                     "3":"vorstellst"
+                },
+                {
+                    "q":"Was _____ am Computer?",
+                    "a":"spielst",
+                    "1":"isst",
+                    "2":"unterhaltest",
+                    "3":"entscheidest"
                 }
             ],
             "Doplň správné sloveso."

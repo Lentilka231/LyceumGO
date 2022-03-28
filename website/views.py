@@ -148,6 +148,18 @@ def classroom():
                     classroom =Classrooms.query.filter_by(name=current_user.classroom).first()
                 else:
                     flash("Prosím použí jiné jméno")
+            elif request.form["submit_button"]=="deleteCLASS":
+                if classroom:
+                    if current_user.name==classroom.teacher:
+                        for i in classroom.students:
+                            i.classroom=""
+                            i.classroomid=""
+                        for i in classroom.scheduledtests:
+                            for x in i.results:
+                                db.session.delete(x)
+                            db.session.delete(i)
+                        db.session.delete(classroom)
+                        db.session.commit()
         if classroom:
             x=enumerate(classroom.scheduledtests)
             tests=classroom.scheduledtests
@@ -193,7 +205,8 @@ def classrooms():
             if request.method=="POST":
                 a=request.form["submit_button"].split("/")
                 classroom=Classrooms.query.filter_by(name=a[1]).first()
-                students=enumerate(classroom.students)
+                if "results" in request.form["submit_button"]:
+                    return redirect(url_for("views.results",results=a[1]))
                 if classroom.germanteacher==current_user.name:
                     if a[0]=="add":
                         if request.form.get("duration") and request.form.get("date"):
@@ -222,9 +235,23 @@ def classrooms():
                                 db.session.delete(i)
                             db.session.delete(scheduledTest)
                             db.session.commit()
-                    
-                return render_template("classrooms.html",user=current_user,classroom=classroom,students=students)
+                students=enumerate(classroom.students)
+                now=datetime.now()
+                CTests=[]
+                tests=enumerate(classroom.scheduledtests)
+                for i in classroom.scheduledtests:
+                    start=datetime(int(i.datum[:4]),int(i.datum[5:7]),int(i.datum[8:10]),int(i.datum[11:13]),int(i.datum[14:]))
+                    if str(current_user.id) in i.completed.split("/"):
+                        CTests.append("F")
+                    else:
+                        CTests.append("T")
+                    if (now-start).seconds>0:
+                        i.canstart="T"
+                    if (now-start).seconds>i.duration*60:
+                        i.canstart="E"
+                return render_template("classrooms.html",user=current_user,classroom=classroom,students=students,CT=CTests,tests=tests)
             x=Classrooms.query.filter_by(germanteacher=current_user.name).all()
+            
             return render_template("classrooms.html",user=current_user,classrooms=x) 
         return redirect(url_for("views.profile"))
     return redirect(url_for("views.index"))
@@ -246,8 +273,8 @@ def test(scheduledTest):
                                 if y==0:
                                     data+=f"QQQ{z[y]}"
                                 else:
-                                    if '______' in z[y].split(':')[0]:
-                                        data+=f";{z[y].split(':')[0].replace('______','_'+request.form.get(str(x)+'-'+str(y))+'_')}="
+                                    if '_____' in z[y].split(':')[0]:
+                                        data+=f";{z[y].split(':')[0].replace('_____','_'+request.form.get(str(x)+'-'+str(y))+'_')}="
                                     else:
                                         data+=f";{z[y].split(':')[0]+' _'+request.form.get(str(x)+'-'+str(y))}_="
                             data+="$"
