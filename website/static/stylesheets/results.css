@@ -24,9 +24,9 @@
     height:100%;
 }
 #ListOfCompleted{
-    height:100%;
-    border-right:1px solid black;
-    padding:10px
+    height:90%;
+    padding:10px;
+    overflow-y:auto;
 }
 #Answers{
     max-height:100%;
@@ -41,4 +41,13 @@
     text-align: center;
     font-size: 24px;
     margin-bottom: 10px;
+}
+#TESTdelete{
+    background-color: var(--red);
+    padding:10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+    position:absolute;
+    bottom:20px
 }

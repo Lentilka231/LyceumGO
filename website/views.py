@@ -261,7 +261,7 @@ def test(scheduledTest):
     if current_user.is_authenticated:
         if current_user.person=="s":
             for i in Classrooms.query.filter_by(name=current_user.classroom).first().scheduledtests:
-                if i.id==scheduledTest and i.canstart=="T" and not(current_user.id in i.completed.split("/")):
+                if i.id==scheduledTest and i.canstart=="T" and not(str(current_user.id) in i.completed.split("/")):
                     if request.method=="POST":
                         x=Scheduledtests.query.filter_by(id=scheduledTest).first()
                         x.completed+="/"+str(current_user.id)
@@ -284,11 +284,20 @@ def test(scheduledTest):
                     return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=i.testid).first(),testid=scheduledTest)
         return redirect(url_for("views.classroom"))
     return redirect(url_for("views.index"))
-@views.route("/results/<int:results>")
+@views.route("/results/<int:results>",methods=["GET","POST"])
 def results(results):
     if current_user.is_authenticated:
         if current_user.person=="t":
             answers = Resultsfromtests.query.filter_by(scheduledTest=results).all()
+            if request.method=="POST":
+                if request.form["submit_button"]=="delete":
+                    test=Scheduledtests.query.filter_by(id=results).first()
+                    if test.creatorid==current_user.id:
+                        db.session.delete(test)
+                        for i in answers:
+                            db.session.delete(i)
+                        db.session.commit()
+                        return redirect(url_for("views.profile"))
             if answers:
                 x=[]
                 y=[]

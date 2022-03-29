@@ -43,6 +43,7 @@ class Tests(db.Model):
     creator=db.Column(db.Integer,db.ForeignKey("users.id"))
 class Scheduledtests(db.Model):
     id = db.Column(db.Integer,primary_key=True)
+    creatorid=db.Column(db.Integer)
     classroom=db.Column(db.Integer,db.ForeignKey("classrooms.id"))
     duration=db.Column(db.Integer)
     datum=db.Column(db.String(50))

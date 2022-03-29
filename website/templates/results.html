@@ -9,10 +9,15 @@
 <div id="MainDiv">
     {%if user.person=="t"%}
     <div id="g">
-        <div id="ListOfCompleted">
-            {%for i in s%}
-                <div class="s"onclick="showAnswers('{{i}}')">{{i}}</div>
-            {%endfor%}
+        <div style="height:100%;border-right:1px solid black;">
+            <div id="ListOfCompleted">
+                {%for i in s%}
+                    <div class="s"onclick="showAnswers('{{i}}')">{{i}}</div>
+                {%endfor%}
+            </div>
+            <form method="POST">
+                <button id="TESTdelete" name="submit_button" value="delete"><b>Smazat test</b></button>
+            </form>
         </div>
         <div id="Answers">
             {%for y in a%}
