@@ -168,6 +168,9 @@
             document.getElementById("flashedmsg").style.display="block"
         }
     });
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
 </script>
 {%endif%}
 {%endblock%}

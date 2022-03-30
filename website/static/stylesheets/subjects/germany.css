@@ -172,7 +172,7 @@
 }
 #gisscroller{
     padding:10px 20px;
-    overflow-y:scroll;
+    overflow-y:auto;
     height:calc(100% - 100px);
 }
 .nadpisChild{
@@ -1072,6 +1072,10 @@ background: -webkit-radial-gradient(circle, hsla(0, 85%, 69%, 1) 0%, hsla(0, 86%
 }
 .numberOfQuestions,.TypeOfTranslation{
     padding:2px;
+    width:60px;
+}
+.numberOfQuestions{
+    width:50px;
 }
 .taskRemove{
     position: absolute;

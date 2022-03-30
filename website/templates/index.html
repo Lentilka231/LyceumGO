@@ -119,6 +119,9 @@
     if (document.getElementById("flashedmsg").innerText.length>41){
         document.getElementById("flashedmsg").style.display="block"
     }
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
 </script>
 </body>
 </html>

@@ -68,7 +68,7 @@ const myDate = new Date();
     for(let i=0;i<7;i++){
         document.getElementById("Naktivita").innerHTML+=`
         <div class="day">
-            ${a[i]=="T"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+            ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
             <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
         </div>`;
         document.getElementById("INFaktivita").innerHTML+=`
@@ -98,6 +98,8 @@ const myDate = new Date();
     document.getElementById("NPlnitko").style.width="{{NJ.progress}}px";
     document.getElementById("INFPlnitko").style.width="{{INF.progress}}px";
     document.getElementById("PRGPlnitko").style.width="{{PRG.progress}}px";
-    
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
 </script>
 {% endblock %}

@@ -21,7 +21,6 @@
 <div class="grid-items first">
     <div class="scrollery">
         <div id="subclassinfo">
-            <p>Progres: {{user.Nprogress}}</p>
             <div id="PVerb" onclick="visibilator('PVerb','','')" style="cursor:pointer;">
                 Verb/Slovesa
             </div>
@@ -1460,7 +1459,9 @@
 // užitečné odkazy:
 // Basic examples: https://mrrio.github.io/jsPDF/examples/basic.html
 // for fonts: https://www.devlinpeck.com/tutorials/jspdf-custom-font
-
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
 for(let x=1;x<Object.keys(NJW).length+1;x++){
     z=Object.keys(NJW["module"+x]);
     for(let y=0;y<z.length;y++){

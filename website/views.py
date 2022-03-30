@@ -206,6 +206,7 @@ def classrooms():
                 a=request.form["submit_button"].split("/")
                 classroom=Classrooms.query.filter_by(name=a[1]).first()
                 if "results" in request.form["submit_button"]:
+                    print(a[1])
                     return redirect(url_for("views.results",results=a[1]))
                 if classroom.germanteacher==current_user.name:
                     if a[0]=="add":
@@ -224,7 +225,9 @@ def classrooms():
                                     testid=test,
                                     info=request.form.get("info"),
                                     canstart="F",
-                                    completed="/")
+                                    completed="/",
+                                    creatorid=current_user.id
+                                    )
                                 db.session.add(newTest)
                                 db.session.commit()
                     elif a[0]=="cancel":
@@ -263,25 +266,27 @@ def test(scheduledTest):
             for i in Classrooms.query.filter_by(name=current_user.classroom).first().scheduledtests:
                 if i.id==scheduledTest and i.canstart=="T" and not(str(current_user.id) in i.completed.split("/")):
                     if request.method=="POST":
-                        x=Scheduledtests.query.filter_by(id=scheduledTest).first()
-                        x.completed+="/"+str(current_user.id)
-                        Test=Tests.query.filter_by(id=x.testid).first().data.split(";")
-                        data=""
-                        for x in range(len(Test)):
-                            z=Test[x].split("$")
-                            for y in range(len(z)):
-                                if y==0:
-                                    data+=f"QQQ{z[y]}"
-                                else:
-                                    if '_____' in z[y].split(':')[0]:
-                                        data+=f";{z[y].split(':')[0].replace('_____','_'+request.form.get(str(x)+'-'+str(y))+'_')}="
-                                    else:
-                                        data+=f";{z[y].split(':')[0]+' _'+request.form.get(str(x)+'-'+str(y))}_="
-                            data+="$"
-                        db.session.add(Resultsfromtests(data=data,student=current_user.id,scheduledTest=scheduledTest))
+                        
+                        # x=Scheduledtests.query.filter_by(id=scheduledTest).first()
+                        # x.completed+="/"+str(current_user.id)
+                        # Test=Tests.query.filter_by(id=x.testid).first().data.split(";")
+                        # data=""
+                        # for x in range(len(Test)):
+                        #     z=Test[x].split("$")
+                        #     for y in range(len(z)):
+                        #         if y==0:
+                        #             data+=f"QQQ{z[y]}"
+                        #         else:
+                        #             if '_____' in z[y].split(':')[0]:
+                        #                 data+=f";{z[y].split(':')[0].replace('_____','_'+request.form.get(str(x)+'-'+str(y))+'_')}="
+                        #             else:
+                        #                 data+=f";{z[y].split(':')[0]+' _'+request.form.get(str(x)+'-'+str(y))}_="
+                        #     data+="$"
+                        # db.session.add(Resultsfromtests(data=data,student=current_user.id,scheduledTest=scheduledTest))
+                        db.session.add(Resultsfromtests(data=request.form.get("data"),student=current_user.id,scheduledTest=scheduledTest))
                         db.session.commit()
                         return redirect(url_for("views.classroom"))
-                    return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=i.testid).first(),testid=scheduledTest)
+                    return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=i.testid).first(),testid=scheduledTest,duration=Scheduledtests.query.filter_by(id=scheduledTest).first().duration)
         return redirect(url_for("views.classroom"))
     return redirect(url_for("views.index"))
 @views.route("/results/<int:results>",methods=["GET","POST"])
@@ -298,19 +303,19 @@ def results(results):
                             db.session.delete(i)
                         db.session.commit()
                         return redirect(url_for("views.profile"))
-            if answers:
-                x=[]
-                y=[]
-                for z,m in enumerate(answers):
-                    x.append([])
-                    name=Users.query.filter_by(id=m.student).first().name
-                    y.append(name)
-                    for v,i in enumerate(m.data.split("$")):
-                        x[z].append([])
-                        for p,k in enumerate(i.split(";")):
-                            x[z][v].append(k.split("="))
-                    x[0].append(name)
-                return render_template("results.html",user=current_user,results=answers,a=x,s=y)
+            
+            x=[]
+            y=[]
+            for z,m in enumerate(answers):
+                x.append([])
+                name=Users.query.filter_by(id=m.student).first().name
+                y.append(name)
+                for v,i in enumerate(m.data.split("$")):
+                    x[z].append([])
+                    for p,k in enumerate(i.split(";")):
+                        x[z][v].append(k.split("="))
+                x[-1].append(name)
+            return render_template("results.html",user=current_user,results=answers,a=x,s=y)
         if current_user.person=="s":
             answers = Resultsfromtests.query.filter_by(student=current_user.id,scheduledTest=results).first()
             if answers:

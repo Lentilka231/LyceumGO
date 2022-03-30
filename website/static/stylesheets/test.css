@@ -38,5 +38,6 @@ input{
     font-size: 28px;
     border: none;
     border-radius: 5px;
-    cursor:pointer
+    cursor:pointer;
+    width:fit-content;
 }

@@ -13,7 +13,7 @@
 #grid-container{
     height:100%;
     display:grid;
-    grid-template-columns: minmax(300px, 2fr) minmax(300px,1fr) minmax(300px,4fr);
+    grid-template-columns: minmax(300px, 2fr) minmax(320px,1fr) minmax(300px,4fr);
     grid-template-rows: 1fr 9fr;
     grid-row-gap:20px;
     grid-column-gap:30px;
