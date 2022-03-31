@@ -59,7 +59,9 @@ def index():
             flash("Email neexistuje")
     if formR.validate_on_submit():
         usere = Users.query.filter_by(email=formR.email.data).first()
-        usern = Users.query.filter_by(name=formR.name.data).first()
+        usern=False
+        if formR.person.data=="t":
+            usern = Users.query.filter_by(name=formR.name.data).first()
         if not usere :
             if not usern:
                 new_user=Users(
