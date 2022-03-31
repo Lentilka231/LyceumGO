@@ -23,14 +23,22 @@
             u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div><div class="parent">`
             for(let x=1;x<Ukol.length;x++){
                 u+=Ukol[x].split(":")[0];
-                u+=`<input onchange='if(!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(this.value)){this.style.backgroundColor="red";this.value2='F'}else{this.style.backgroundColor="white";this.value2='T'}' name='${i+"-"+x}'>`;
+                u+=`<input onchange='if(!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(this.value)){this.style.backgroundColor="red";this.value2="F"}else{this.style.backgroundColor="white";this.value2="T"}' name='${i+"-"+x}'>`;
             }
             u+="</div></div>"  
         }
         else{
             u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div>`
             for(let x=1;x<Ukol.length;x++){
-                u+=Ukol[x].split(":")[0].replace("_____",` <input onchange='if(!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(this.value)){this.style.backgroundColor="red";this.value2='F'}else{this.style.backgroundColor="white";this.value2='T'}' name='${i+"-"+x}'> `)+"<br>";
+                u+=Ukol[x].split(":")[0].replace("_____",` <input onchange='
+                if(!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(this.value))
+                {
+                    this.style.backgroundColor="red";
+                    this.value2="F"
+                }else{
+                    this.style.backgroundColor="white";
+                    this.value2="T"
+                }' name='${i+"-"+x}'> `)+"<br>";
             }
             u+="</div>"
         }
@@ -70,7 +78,7 @@
                         }
                     }else{
                         if (q[x].value2=="T"){
-                            data+=";"+z[x].split(':')[0]+' _'+q[x].value+"_";
+                            data+=";"+z[x].split(':')[0]+'=_'+q[x].value+"_";
                         }else{
                             data+=";"+z[x].split(':')[0];
                         }
@@ -79,10 +87,10 @@
             }
             data+="$";
         }
-        console.log(data);
-        $.post("/test", {
+        $.post("/test/{{testid}}", {
             data:data
         });
+       window.location.href="/classroom";
     }
-</script>
+    </script>
 {%endblock%}

@@ -99,7 +99,7 @@ lassen - Wo kann ich meine Dinge lassen?
 laufen - Wir laufen bis zur Ziellinie.
 lesen - Ich kann nicht ohne meine Brille lesen.
 liegen - Wo liegt die HauptStadt des Deutschland.
-mitbringen
+mitbringen - Wer b
 mitfahren
 mitgehen
 mithelfen

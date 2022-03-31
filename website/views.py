@@ -265,30 +265,17 @@ def classrooms():
 def test(scheduledTest):
     if current_user.is_authenticated:
         if current_user.person=="s":
+            if request.method=="POST":
+                db.session.add(Resultsfromtests(data=request.form.get("data"),student=current_user.id,scheduledTest=scheduledTest))
+                db.session.commit()
+                return redirect(url_for("views.classroom"))
+            st=Scheduledtests.query.filter_by(id=scheduledTest).first()
+            now=datetime.now()
+            start=datetime(int(st.datum[:4]),int(st.datum[5:7]),int(st.datum[8:10]),int(st.datum[11:13]),int(st.datum[14:]))
+            duration=st.duration*60-(now-start).seconds
             for i in Classrooms.query.filter_by(name=current_user.classroom).first().scheduledtests:
                 if i.id==scheduledTest and i.canstart=="T" and not(str(current_user.id) in i.completed.split("/")):
-                    if request.method=="POST":
-                        
-                        # x=Scheduledtests.query.filter_by(id=scheduledTest).first()
-                        # x.completed+="/"+str(current_user.id)
-                        # Test=Tests.query.filter_by(id=x.testid).first().data.split(";")
-                        # data=""
-                        # for x in range(len(Test)):
-                        #     z=Test[x].split("$")
-                        #     for y in range(len(z)):
-                        #         if y==0:
-                        #             data+=f"QQQ{z[y]}"
-                        #         else:
-                        #             if '_____' in z[y].split(':')[0]:
-                        #                 data+=f";{z[y].split(':')[0].replace('_____','_'+request.form.get(str(x)+'-'+str(y))+'_')}="
-                        #             else:
-                        #                 data+=f";{z[y].split(':')[0]+' _'+request.form.get(str(x)+'-'+str(y))}_="
-                        #     data+="$"
-                        # db.session.add(Resultsfromtests(data=data,student=current_user.id,scheduledTest=scheduledTest))
-                        db.session.add(Resultsfromtests(data=request.form.get("data"),student=current_user.id,scheduledTest=scheduledTest))
-                        db.session.commit()
-                        return redirect(url_for("views.classroom"))
-                    return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=i.testid).first(),testid=scheduledTest,duration=Scheduledtests.query.filter_by(id=scheduledTest).first().duration)
+                    return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=i.testid).first(),testid=scheduledTest,duration=duration)
         return redirect(url_for("views.classroom"))
     return redirect(url_for("views.index"))
 @views.route("/results/<int:results>",methods=["GET","POST"])
