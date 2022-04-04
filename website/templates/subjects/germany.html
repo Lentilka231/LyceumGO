@@ -534,9 +534,6 @@
                     <img src="{{url_for('static',filename='images/Pexeso.png')}}"><br>Pexeso</div>
                 </div>
             </div>
-            <div class="testy">
-                
-            </div>
         </div>
     </div>
 </div>
@@ -1338,17 +1335,11 @@
                 case "TextInput":
                     NumberOfTests.innerText=ant+"/"+Success.length;
                     CanUseEnter=true;
-                    if(NumberOfPossibleAnswers==1){
-                        // pokud to mám uložené jako dictionary {"N":"CZ"}
-                        if(Into=="CZ"){
-                            document.getElementById("FrantaX").innerText=UnusedQuestions[MomentalQuestion];
-                        }else{
-                            document.getElementById("FrantaX").innerText=SetOfQuestions[UnusedQuestions[MomentalQuestion]];
-                        }
-                    }
-                    else{
-                        // pokud bývá více odpovědí v ABCD možnostech                        
-                        document.getElementById("FrantaX").innerText=UnusedQuestions[a];
+                    // pokud to mám uložené jako dictionary {"N":"CZ"}
+                    if(Into=="CZ"){
+                        document.getElementById("FrantaX").innerText=UnusedQuestions[MomentalQuestion];
+                    }else{
+                        document.getElementById("FrantaX").innerText=SetOfQuestions[UnusedQuestions[MomentalQuestion]];
                     }
                     window.setTimeout(() => TextInput.focus(), 0);
                     break;

@@ -264,11 +264,13 @@ def classrooms():
 def test(scheduledTest):
     if current_user.is_authenticated:
         if current_user.person=="s":
+            st=Scheduledtests.query.filter_by(id=scheduledTest).first()
+            print(request.method)
             if request.method=="POST":
                 db.session.add(Resultsfromtests(data=request.form.get("data"),student=current_user.id,scheduledTest=scheduledTest))
+                st.completed+="/"+current_user.id
                 db.session.commit()
                 return redirect(url_for("views.classroom"))
-            st=Scheduledtests.query.filter_by(id=scheduledTest).first()
             now=datetime.now()
             start=datetime(int(st.datum[:4]),int(st.datum[5:7]),int(st.datum[8:10]),int(st.datum[11:13]),int(st.datum[14:]))
             duration=st.duration*60-(now-start).seconds

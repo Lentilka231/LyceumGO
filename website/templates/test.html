@@ -87,10 +87,10 @@
             }
             data+="$";
         }
-        $.post("/test/{{testid}}", {
-            data:data
-        });
-       window.location.href="/classroom";
+        console.log("chyba")
+        $.post("/test/{{testid}}", {data:data},function(return_data){alert(return_data.message)});
+        window.location.href="/classroom";
+        
     }
     </script>
 {%endblock%}
