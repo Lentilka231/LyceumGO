@@ -37,7 +37,6 @@ class RegisterForm(FlaskForm):
 class LoginForm(FlaskForm):
     email = StringField("Email", [validators.InputRequired(), validators.Length(5,64),validators.Email()])
     password = PasswordField("Password", [validators.InputRequired(), validators.Length(5,24)])
-    rememberme = BooleanField("Remember me")
     submit = SubmitField("Log In")
 
 @views.route("/",methods=["GET","POST"])
