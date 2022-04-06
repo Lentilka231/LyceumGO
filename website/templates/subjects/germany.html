@@ -21,9 +21,6 @@
 <div class="grid-items first">
     <div class="scrollery">
         <div id="subclassinfo">
-            <div id="PVerb" onclick="visibilator('PVerb','','')" style="cursor:pointer;">
-                Verb/Slovesa
-            </div>
         </div>
     </div>
     {%if user.person=="t"%}
@@ -435,7 +432,7 @@
                 <div id="Wgrid">
                     <div class="Wgridchild" onclick="teststart('FlashCards')">
                         <img src="{{url_for('static',filename='images/Lernkarten.png')}}">
-                        Lernkarten
+                        Flashcards
                     </div>
                     <div class="Wgridchild" onclick="teststart('Pexeso','W')">
                         <img src="{{url_for('static',filename='images/Pexeso.png')}}">
@@ -451,7 +448,7 @@
                     </div>
                     <div class="Wgridchild" style="grid-column:1/3;" onclick="teststart('Plural')">
                         <img src="{{url_for('static',filename='images/Translate.png')}}">
-                        Plural
+                        Překlad
                     </div>
                 </div>
             </div>
@@ -909,7 +906,7 @@
                 break;
             }  
     };
-    // zkontrolovává odpovědi, dál rozhoduje co se bude dít
+    // zkontroluje odpověď, dál rozhoduje co se bude dít
     async function checkanswer(x){
         console.log(dvapokusy);
         switch(TypeOfTest){

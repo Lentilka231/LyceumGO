@@ -27,9 +27,10 @@ def createmessage(message,prijemceid,typeM="regular",typeQ="regular"):
     db.session.commit()
 def IsLeapYear(year):
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+    
 class RegisterForm(FlaskForm):
     email = StringField("Email", [validators.InputRequired(),validators.Email()])
-    name = StringField("Name", [validators.InputRequired(), validators.Length(5,20,)])
+    name = StringField("Name", [validators.InputRequired(), validators.Length(5,20)])
     password1 = PasswordField("Password1", [validators.InputRequired(), validators.Length(5,24),validators.EqualTo("password2")])
     password2 = PasswordField("Password2")
     person = SelectField("Person",choices=[("s","student"),("t","teacher")])
@@ -264,20 +265,20 @@ def classrooms():
 def test(scheduledTest):
     if current_user.is_authenticated:
         if current_user.person=="s":
-            st=Scheduledtests.query.filter_by(id=scheduledTest).first()
             print(request.method)
+            st=Scheduledtests.query.filter_by(id=scheduledTest).first()
             if request.method=="POST":
                 db.session.add(Resultsfromtests(data=request.form.get("data"),student=current_user.id,scheduledTest=scheduledTest))
-                st.completed+="/"+current_user.id
+                st.completed+="/"+str(current_user.id)
                 db.session.commit()
-                return redirect(url_for("views.classroom"))
+                return
             now=datetime.now()
             start=datetime(int(st.datum[:4]),int(st.datum[5:7]),int(st.datum[8:10]),int(st.datum[11:13]),int(st.datum[14:]))
             duration=st.duration*60-(now-start).seconds
             for i in Classrooms.query.filter_by(name=current_user.classroom).first().scheduledtests:
                 if i.id==scheduledTest and i.canstart=="T" and not(str(current_user.id) in i.completed.split("/")):
                     return render_template("test.html",user=current_user,test=Tests.query.filter_by(id=i.testid).first(),testid=scheduledTest,duration=duration)
-        return redirect(url_for("views.classroom"))
+        return redirect(url_for("views.profile"))
     return redirect(url_for("views.index"))
 @views.route("/results/<int:results>",methods=["GET","POST"])
 def results(results):

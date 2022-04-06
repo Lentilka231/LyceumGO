@@ -55,12 +55,8 @@
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }
-    wait();
-    async function wait(){
-        await sleep(1000*60*{{duration}});
-        send();
-    }
-    function send(){
+    
+    async function send(){
         data=""
         for(let i=0;i<document.getElementsByClassName("task").length;i++){
             q=document.getElementsByClassName("task")[i].getElementsByTagName("input");
@@ -87,10 +83,14 @@
             }
             data+="$";
         }
-        console.log("chyba")
-        $.post("/test/{{testid}}", {data:data},function(return_data){alert(return_data.message)});
+        $.post("http://127.0.0.1:5000/test/{{testid}}",{data:data});
+        await sleep(300);
         window.location.href="/classroom";
-        
     }
+    async function wait(){
+        await sleep(1000*60*{{duration}});
+        send();
+    }
+    wait();
     </script>
 {%endblock%}

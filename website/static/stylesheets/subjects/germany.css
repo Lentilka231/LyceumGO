@@ -205,9 +205,11 @@
 .nnadpis{
     font-size: 30px;
     margin-bottom: 10px;
+    text-align: center;
 }
 .cnadpis{
     font-size: 20px;
+    text-align: center;
 }
 .ntext{
     font-size: 20px;
@@ -352,7 +354,7 @@ span{
 }
 #SubstituteForInput{
     text-align: center;
-    width:300px;
+    width:500px;
     font-size:30px;
     padding:5px;
     display:none;
@@ -517,11 +519,10 @@ span{
     border:rgb(160,22,22) solid 10px;
 }
 #dobry{
-    background-color: rgb(13, 161, 75);
+    background-color: var(--brighterBlue);
     right:10px;
-    border:rgb(13, 128, 61) solid 10px;
+    border:rgb(104, 135, 161) solid 10px;
 }
-
 #VYBER {
     position:relative;
     height:100%;

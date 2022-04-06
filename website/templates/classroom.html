@@ -114,7 +114,7 @@
                 <tr class="sinfo">
                     <td>{{i+1}}</td>
                     <td>{{v.name}}</td>
-                    <td>{{v.favouritesub}}</td>
+                    <td style="text-align: center;">{{v.favouritesub}}</td>
                     {%if user.person=="t"%}<td><button value="kickstudent-{{v.id}}" name="submit_button" id="kickstudent">✕</button></td>{%endif%}
                 </tr>
             {%endfor%}
