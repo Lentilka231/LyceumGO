@@ -5,10 +5,31 @@
 <link rel= "stylesheet" type= "text/css" href="{{url_for('static', filename='/stylesheets/zarovnavac.css')}}">
 {%endblock%}
 {%block content%}
+<div id="timer">
+    <script>
+        let d = {{duration}};
+let x = setInterval(function() {
+d--;
+let minutes = Math.floor(d/60);
+let seconds = Math.floor(d%60);
+
+
+document.getElementById("timer").innerHTML =minutes+":"+seconds;
+
+// If the count down is finished, write some text
+if (d < 0) {
+  clearInterval(x);
+  send();
+}
+}, 1000);
+    </script>
+</div>
 <div id="bg">
+
 <div id="MainDiv">
 <form id="Test" method="POST">
 </form>
+
 </div>
 </div>
 <script>
@@ -23,7 +44,15 @@
             u+=`<div class='task'><div class="zadani"><b>${Ukol[0]}</b></div><div class="parent">`
             for(let x=1;x<Ukol.length;x++){
                 u+=Ukol[x].split(":")[0];
-                u+=`<input onchange='if(!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(this.value)){this.style.backgroundColor="red";this.value2="F"}else{this.style.backgroundColor="white";this.value2="T"}' name='${i+"-"+x}'>`;
+                u+=`<input onchange='
+                if(!/^[A-Za-z0-9|ě|š|č|ř|ž|ý|á|í|é|ů|ú|ß|ó|Ó|Ě|Š|Č|Ř|Ž|Ý|Á|Í|É|Ů|Ú|ü|ë|ä|ö|ÿ|Ü|Ë|Ä|Ö|Ÿ|\s]+$/g.test(this.value))
+                {
+                    this.style.backgroundColor="red";
+                    this.value2="F"
+                }else{
+                    this.style.backgroundColor="white";
+                    this.value2="T";
+                }' name='${i+"-"+x}'>`;
             }
             u+="</div></div>"  
         }
@@ -66,31 +95,28 @@
                     data+="QQQ"+z[x]
                 }
                 else{
+
                     if(z[x].split(":")[0].includes("_____")){
                         if(q[x].value2=="T"){
-                            data+=";"+z[x].split(":")[0];
+                            data+=";"+z[x].split(":")[0].replace("_____","_"+q[x].value+"_")+" ("+testQ[i].split("$")[x].split(":")[1]+")";
                         }else{
-                            data+=";"+z[x].split(":")[0].replace("_____","_"+q[x].value+"_")
+                            data+=";"+z[x].split(":")[0]+" ("+testQ[i].split("$")[x].split(":")[1]+")";                            
                         }
                     }else{
                         if (q[x].value2=="T"){
-                            data+=";"+z[x].split(':')[0]+'=_'+q[x].value+"_";
+                            data+=";"+z[x].split(':')[0]+'=_'+q[x].value+"_"+" ("+testQ[i].split("$")[x].split(":")[1]+")";
                         }else{
-                            data+=";"+z[x].split(':')[0];
+                            data+=";"+z[x].split(':')[0]+" ("+testQ[i].split("$")[x].split(":")[1]+")";
                         }
                     }
                 }
             }
             data+="$";
         }
+        clearInterval(x);
         $.post("http://127.0.0.1:5000/test/{{testid}}",{data:data});
         await sleep(300);
         window.location.href="/classroom";
     }
-    async function wait(){
-        await sleep(1000*60*{{duration}});
-        send();
-    }
-    wait();
     </script>
 {%endblock%}

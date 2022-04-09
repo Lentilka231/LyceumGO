@@ -41,3 +41,14 @@ input{
     cursor:pointer;
     width:fit-content;
 }
+#timer{
+    padding:5px;
+    border-radius: 10px;
+    position: absolute;
+    left:50%;
+    transform: translate(-50%,0%);
+    top:100px;
+    background-color: var(--blue);
+    width:100px;
+    text-align: center;
+}

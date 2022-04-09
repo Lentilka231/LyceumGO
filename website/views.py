@@ -51,7 +51,7 @@ def index():
         user = Users.query.filter_by(email=formL.email.data).first()
         if user:
             if check_password_hash(user.password, formL.password.data):
-                login_user(user, remember=formL.rememberme.data)
+                login_user(user)
                 return redirect (url_for("views.profile"))
             else:
                 flash("Špatné heslo")
