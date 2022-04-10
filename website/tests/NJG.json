@@ -94,45 +94,51 @@
                     "a":"bekommen",
                     "1":"treffen",
                     "2":"achten",
-                    "3":"schwimmen"
+                    "3":"schwimmen",
+                    "aa":"bekommen"
                 },
                 {
                     "q":"_____ mir, was die Lösung ist?",
                     "a":"Sagt",
                     "1":"Lauft",
                     "2":"Baut",
-                    "3":"Kocht"
+                    "3":"Kocht",
+                    "aa":"sagen"
                 },
                 {
                     "q":"Du kannst deine Kleid hier _____.",
                     "a":"lassen",
                     "1":"essen",
                     "2":"mitmachen",
-                    "3":"wandern"
+                    "3":"wandern",
+                    "aa":"lassen"
                 },
                 {
                     "q":"In der Höhle kann man nichts _____.",
                     "a":"sehen",
                     "1":"joggen",
                     "2":"antworten",
-                    "3":"befragen"
+                    "3":"befragen",
+                    "aa":"sehen"
                 },
                 {
                     "q":"Wie lange _____ du bei Martin?",
                     "a":"bleibst",
                     "1":"spielst",
                     "2":"passt",
-                    "3":"vorstellst"
+                    "3":"vorstellst",
+                    "aa":"bleiben"
                 },
                 {
-                    "q":"Was _____ am Computer?",
+                    "q":"Was _____ du am Computer?",
                     "a":"spielst",
                     "1":"isst",
                     "2":"unterhaltest",
-                    "3":"entscheidest"
+                    "3":"entscheidest",
+                    "aa":"spielen"
                 }
             ],
-            "Doplň správné sloveso."
+            "Doplň správné sloveso z nabídky."
         ],
         "Slovesa v přítomném čase II.":[4,
             [
@@ -172,7 +178,7 @@
                     "3":"vorstellst"
                 }
             ],
-            "Doplň správné sloveso."
+            "Doplň správné sloveso z nabídky."
         ],
         "Slovesa v přítomném čase III.":[4,
             [
@@ -212,7 +218,7 @@
                     "3":"vorstellst"
                 }
             ],
-            "Doplň správné sloveso."
+            "Doplň správné sloveso z nabídky."
         ],
         "100 nejčastějších sloves":[1,
             {
@@ -317,7 +323,7 @@
                 "lieben" : "milovat",
                 "erkennen" : "rozeznat"
             },
-            "Doplň správné sloveso."
+            "Doplň správné sloveso z nabídky."
         ]
     },
     "Předložky":

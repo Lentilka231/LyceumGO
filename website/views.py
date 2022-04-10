@@ -304,17 +304,18 @@ def results(results):
                 for v,i in enumerate(m.data.split("$")):
                     x[z].append([])
                     for p,k in enumerate(i.split(";")):
-                        x[z][v].append(k.split("="))
+                        x[z][v].append(k)
                 x[-1].append(name)
             return render_template("results.html",user=current_user,results=answers,a=x,s=y)
         if current_user.person=="s":
             answers = Resultsfromtests.query.filter_by(student=current_user.id,scheduledTest=results).first()
             if answers:
                 x=[]
-                for v,i in enumerate(answers.data.split("$")):
+                for v,i in enumerate(answers.data.split("$",answers.data.count("$"))):
                     x.append([])
                     for k in i.split(";"):
-                        x[v].append(k.split("="))
+                        x[v].append(k)
+                print(x)
                 return render_template("results.html",user=current_user,results=answers,a=x)
     return redirect(url_for("views.index"))
 @views.route("/logout")

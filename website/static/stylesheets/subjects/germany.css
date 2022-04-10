@@ -527,7 +527,17 @@ span{
     position:relative;
     height:100%;
 }
-
+.PContainer{
+    display:flex;
+}
+.frame{
+    max-width:400px;
+    width:fit-content;
+    height:fit-content;
+    border: 2px solid black;
+    padding:2px;
+    margin-bottom:2px;
+}
 #bspopis{
     position:absolute;
     bottom:100px;

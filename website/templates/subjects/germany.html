@@ -571,11 +571,24 @@
                 x="{{i.data}}".split(";");
                 textToAdd="";
                 for(let i=0;i<x.length;i++){
-                    textToAdd+=`<div class='PTukol'><p class="PTzadani"><b>${x[i].split("$")[0]}</b></p>`
-                    for(let y=1;y<x[i].split("$").length;y++){
-                        textToAdd+=`<p>${x[i].split("$")[y].split(":")[0]}</p>`;
+                    if(x[i].includes("Přelož.")){
+                        textToAdd+=`<div class='PTukol'><p class="PTzadani"><b>${x[i].split("$")[0].split("+")[0]}</b></p><div class="PContainer">`;
+                        for(let z=1;z<3;z++){
+                            textToAdd+="<div class='pul'>";
+                            for(let y=1;y<x[i].split("$").length/2;y++){
+                                textToAdd+=`<p>${x[i].split("$")[y*z].split(":")[0]}</p>`;
+                            }
+                            textToAdd+="</div>";
+                        }
+                        textToAdd+="</div></div>";
                     }
-                    textToAdd+="</div>"
+                    else{
+                        textToAdd+=`<div class='PTukol'><p class="PTzadani"><b>${x[i].split("$")[0].split("+")[0]}</b></p><div class="frame">${x[i].split("$")[0].split("+")[1]}</div>`;
+                        for(let y=1;y<x[i].split("$").length;y++){
+                            textToAdd+=`<p>${x[i].split("$")[y].split(":")[0]}</p>`;
+                        }
+                        textToAdd+="</div>";
+                    }               
                 }
                 document.getElementById("{{i.id}}").innerHTML=textToAdd;
             </script>
@@ -1163,7 +1176,7 @@
                     document.getElementById("np"+i).onclick= async function(){
                         p=document.getElementById(CZchoosed)
                         if(p){
-                            if(CurrentVocabulary[1][CurrentVocabulary[2].indexOf(p.innerText)]==this.innerText.substr(4)){
+                            if((CurrentVocabulary[3][CurrentVocabulary[2].indexOf(p.innerText)]!=""?CurrentVocabulary[3][CurrentVocabulary[2].indexOf(p.innerText)]+" ":"")+CurrentVocabulary[1][CurrentVocabulary[2].indexOf(p.innerText)]==this.innerText){
                                 Completed+=1;
                                 if(Completed==10){
                                     endoftest();
@@ -1198,7 +1211,7 @@
                     document.getElementById("czp"+i).onclick= async function(){
                         p=document.getElementById(Nchoosed)
                         if(p){
-                            if(CurrentVocabulary[1][CurrentVocabulary[2].indexOf(this.innerText)]==p.innerText.substr(4)){
+                            if((CurrentVocabulary[3][CurrentVocabulary[2].indexOf(this.innerText)]!=""?CurrentVocabulary[3][CurrentVocabulary[2].indexOf(this.innerText)]+" ":"")+CurrentVocabulary[1][CurrentVocabulary[2].indexOf(this.innerText)]==p.innerText){
                                 Completed+=1;
                                 if(Completed==10){
                                     endoftest();
@@ -1564,7 +1577,7 @@ function addTask (){
     for(let i=0;i<Page.children.length;i++){h+=Page.children[i].offsetHeight;}
     if(markTask!=""){
         if(hlidacGW=="G"){
-            if(h+68<Page.offsetHeight){
+            if(h+78<Page.offsetHeight){
                 let TaskDiv = `
                 <div class='TaskDiv' style="height:68px">
                     <b><div class="TaskName" datavalue=""></div></b>
@@ -1588,8 +1601,8 @@ function addTask (){
                 Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
                     h=0;
                     for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
-                    if(h+8*this.value+20<Page.offsetHeight){
-                        this.parentElement.style.height=8*this.value+20+"px";
+                    if(h+8*this.value+30<Page.offsetHeight){
+                        this.parentElement.style.height=8*this.value+30+"px";
                     }
                     else{
                         this.value=this.getAttribute("datavalue");
@@ -1668,9 +1681,12 @@ async function downloadPDF(){
                 doc.setFont("Calibri Bold","bold");
                 if(Task.classList.contains("gram")){
                     doc.text(Task.getElementsByClassName("zadani")[0].innerText,10,i!=0?(h+15):(40+h));
-                    h+=5;
+                    h+=7;
                     doc.setFontSize(12);
                     doc.setFont("Calibri Regular","normal");
+                    doc.text(Task.getElementsByClassName("frame")[0].innerText,10,i!=0?(h+15):(40+h))
+                    h+=7;
+
                     ptag=Task.getElementsByClassName("TContent")[0].children;
                     for(let y=0;y<ptag.length;y++){
                         doc.text(`${ptag[y].innerText}`,10,i!=0?(h+15):(40+h));
@@ -1715,6 +1731,7 @@ function savePDF(){
                 if(Task.classList.contains("gram")){
                     ptag=Task.getElementsByClassName("TContent")[0].children;
                     TestToSend+=`;${Task.getElementsByClassName("zadani")[0].innerText}`;
+                    TestToSend+=`+${Task.getElementsByClassName("frame")[0].innerText}`;
                     for(let y=0;y<ptag.length;y++){
                         TestToSend+=`$${ptag[y].innerText}:${ptag[y].getAttribute("value")}`;
                     }
@@ -1772,20 +1789,25 @@ function randomPDF(){
             Task=page.getElementsByClassName("content")[0].children[x];
             if(Task.getElementsByClassName("TaskName")[0].datavalue=="G"){
                 TaskQ =NJG[Task.getElementsByClassName("sld")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText];
+                PreTaskToPlace="";
+                aaa=Array.from({length:Task.getElementsByClassName("numberOfQuestions")[0].value},(_,i) => i);
+                aanswers=[];
+                UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
+                for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
+                    randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+                    h=Math.floor(Math.random()*aaa.length);
+                    aanswers[aaa[h]]=`${TaskQ[1][UnusedQuestions[randomNumber]]["aa"]}`;
+                    aaa.splice(h,1);
+                    PreTaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
+                    UnusedQuestions.splice(randomNumber,1);
+                }
                 TaskToPlace=`
                 <div class="ukol gram" onclick="randomUkol(this)">
                     <div class="zadani"value="${Task.getElementsByClassName("sld")[0].innerText}/${Task.getElementsByClassName("TaskName")[0].innerText}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value}">
                         <b>${ukol}. ${TaskQ[2]}</b>
                     </div>
-                <div class="TContent">`;
-                UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
-                for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
-                    randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
-                    console.log(TaskQ[1][UnusedQuestions[randomNumber]]["a"]);
-                    TaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
-                    UnusedQuestions.splice(randomNumber,1);
-                }
-                TaskToPlace+="</div>"
+                    <div class="frame">${aanswers.join(", ")}</div>
+                    <div class="TContent">${PreTaskToPlace}</div></div>`;
                 NavrhPlatno[i].innerHTML+=TaskToPlace
             }
             else{
@@ -1793,7 +1815,7 @@ function randomPDF(){
                 TaskToPlace=`
                 <div class="ukol wort" onclick="randomUkol(this)">
                     <div class="zadani" value="${"module"+Task.getElementsByClassName("m")[0].innerText}/${Task.getElementsByClassName("TaskName")[0].innerText}/${Task.getElementsByClassName("TypeOfTranslation")[0].value}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value/2}">
-                        <b>${ukol}. Übersetzen diese Wörter</b>
+                        <b>${ukol}. Přelož.</b>
                     </div>
                     <div class="container">`;
                 UnusedQuestions=Array.from({length:TaskQ[0]}, (_, i) => i);
@@ -1826,6 +1848,7 @@ function randomPDF(){
         NavrhPlatno[i].innerHTML+=`<div class="PageNumber">${i+1}</div>`;
         i++;
     }while(i<pages.length)
+
 }
 function exitPDF (){
     PreparedTest=false;
@@ -1835,19 +1858,29 @@ function randomUkol (ukol){
     if(ukol.classList.contains("gram")){
         a=ukol.getElementsByClassName("zadani")[0].getAttribute("value").split("/");
         TaskQ =NJG[a[0]][a[1]];
-        TaskToPlace=`<div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}"><b>${a[2]}. ${TaskQ[2]}</b></div><div class="TContent">`;
+        PreTaskToPlace="";
+        aaa=Array.from({length:a[3]},(_,i) => i);
+        aanswers=[];
         UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
         for(let y=0;y<a[3];y++){
             randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
-            TaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
+            h=Math.floor(Math.random()*aaa.length);
+            aanswers[aaa[h]]=`${TaskQ[1][UnusedQuestions[randomNumber]]["aa"]}`;
+            aaa.splice(h,1);
+            PreTaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
             UnusedQuestions.splice(randomNumber,1);
         }
-        TaskToPlace+="</div>"
+        TaskToPlace=`
+        <div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}">
+            <b>${a[2]}. ${TaskQ[2]}</b>
+        </div>
+        <div class="frame">${aanswers.join(", ")}</div>
+        <div class="TContent">${PreTaskToPlace}</div>`;
     }
     else{
         a=ukol.getElementsByClassName("zadani")[0].getAttribute("value").split("/");
         TaskQ =Object.values(NJW[a[0]][a[1]]);
-        TaskToPlace=`<div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}"><b>${a[3]}. Übersetzen diese Wörter</b></div><div class="container">`;
+        TaskToPlace=`<div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}"><b>${a[3]}. Přelož.</b></div><div class="container">`;
         UnusedQuestions=Array.from({length:TaskQ[0]}, (_, i) => i);
 
         for(let z=0;z<2;z++){

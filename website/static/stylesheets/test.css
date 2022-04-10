@@ -52,3 +52,11 @@ input{
     width:100px;
     text-align: center;
 }
+.frame{
+    max-width:400px;
+    width:fit-content;
+    height:fit-content;
+    border: 2px solid black;
+    padding:2px;
+    margin-bottom:2px;
+}

@@ -24,11 +24,11 @@
                     <div id="{{y[-1]}}" class="a">
                     {%for i in y%}
                         {%for x in i%}
-                        {%if x[0][0:3]=="QQQ"%}
-                        <b>{{x[0][3:]}}</b><br>
+                        {%if x[:3]=="QQQ"%}
+                        <b>{{x[3:]}}</b><br>
                         {%elif i==y[-1]%}
                         {%else%}
-                        {{x[0]}}<br>
+                        {{x}}<br>
                         {%endif%}
                         {%endfor%}<br>
                     {%endfor%}    
@@ -41,10 +41,10 @@
         <div id="Answers">
             {%for i in a%}
                 {%for x in i%}
-                {%if x[0][0:3]=="QQQ"%}
-                <b>{{x[0][3:]}}</b><br>
+                {%if x[0:3]=="QQQ"%}
+                <b>{{x[3:]}}</b><br>
                 {%else%}
-                {{x[0]}}<br>
+                    {{x}}<br>
                 {%endif%}
                 {%endfor%}<br> 
             {%endfor%}    

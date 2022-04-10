@@ -58,7 +58,10 @@
 </div>
 </div>
 <script>
-const a="{{user.Nactivity}}".split("/");
+const NJa="{{user.Nactivity}}".split("/");
+const INFa="{{user.INFactivity}}".split("/");
+const PRGa="{{user.PRGactivity}}".split("/");
+
 const myDate = new Date();
     const days=["Po","Út","St","Čt","Pá","So","Ne"];
     function sleep(ms){
@@ -67,17 +70,17 @@ const myDate = new Date();
     for(let i=0;i<7;i++){
         document.getElementById("Naktivita").innerHTML+=`
         <div class="day">
-            ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+            ${NJa[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
             <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
         </div>`;
         document.getElementById("INFaktivita").innerHTML+=`
         <div class="day">
-            ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+            ${INFa[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
             <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
         </div>`;
         document.getElementById("PRGaktivita").innerHTML+=`
         <div class="day">
-            ${a[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
+            ${PRGa[i]=="F"?"":"<img src='{{url_for('static',filename='images/BFire.png')}}'>"} 
             <p>${myDate.getDay()+i>6?days[myDate.getDay()+i-7]:days[myDate.getDay()+i]}</p>
         </div>`;
 
