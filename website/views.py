@@ -306,6 +306,7 @@ def results(results):
                     for p,k in enumerate(i.split(";")):
                         x[z][v].append(k)
                 x[-1].append(name)
+                print(x)
             return render_template("results.html",user=current_user,results=answers,a=x,s=y)
         if current_user.person=="s":
             answers = Resultsfromtests.query.filter_by(student=current_user.id,scheduledTest=results).first()

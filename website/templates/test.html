@@ -99,26 +99,31 @@ if (d < 0) {
         for(let i=0;i<document.getElementsByClassName("task").length;i++){
             q=document.getElementsByClassName("task")[i].getElementsByTagName("input");
             z=testQ[i].split("$");
+            console.log(z)
+            
+            
             for(let x=0;x<q.length;x++){
-                if(x==0){
-                    data+="QQQ"+z[x]
-                }
-                else{
 
-                    if(z[x].split(":")[0].includes("_____")){
-                        if(q[x].value2=="T"){
-                            data+=";"+z[x].split(":")[0].replace("_____","_"+q[x].value+"_")+" ("+testQ[i].split("$")[x].split(":")[1]+")";
-                        }else{
-                            data+=";"+z[x].split(":")[0]+" ("+testQ[i].split("$")[x].split(":")[1]+")";                            
-                        }
+                if(z[x+1].split(":")[0].includes("_____")){
+                    if(x==0){
+                        data+="QQQ"+z[0].split("+")[0];
+                    }
+                    if(q[x].value2=="T"){
+                        data+=";"+z[x+1].split(":")[0].replace("_____","_"+q[x].value+"_")+" ("+testQ[i].split("$")[x+1].split(":")[1]+")";
                     }else{
-                        if (q[x].value2=="T"){
-                            data+=";"+z[x].split(':')[0]+' = _'+q[x].value+"_ ("+testQ[i].split("$")[x].split(":")[1]+")";
-                        }else{
-                            data+=";"+z[x].split(':')[0]+" = ___ ("+testQ[i].split("$")[x].split(":")[1]+")";
-                        }
+                        data+=";"+z[x+1].split(":")[0]+" ("+testQ[i].split("$")[x+1].split(":")[1]+")";                            
+                    }
+                }else{
+                    if(x==0){
+                        data+="QQQ"+z[0];
+                    }
+                    if (q[x].value2=="T"){
+                        data+=";"+z[x+1].split(':')[0]+' = _'+q[x].value+"_ ("+testQ[i].split("$")[x+1].split(":")[1]+")";
+                    }else{
+                        data+=";"+z[x+1].split(':')[0]+" = ___ ("+testQ[i].split("$")[x+1].split(":")[1]+")";
                     }
                 }
+                
             }
             data+="$";
         }
