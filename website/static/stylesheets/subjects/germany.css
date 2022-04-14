@@ -261,6 +261,14 @@ span{
     grid-gap:50px;
     height:480px;
 }
+.trixdva{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 150px 200px;
+    grid-gap:50px;
+    height:480px;
+}
 .tnadpis{
     font-size: 24px;
     text-align: center;
@@ -304,6 +312,17 @@ span{
 .t{
     padding:10px;
     text-align: center;
+}
+.tq{
+    padding:10px;
+    text-align: center;
+    left:50%;
+    position: absolute;
+    transform: translate(-50%,0%);
+}
+.tq img{width:75px}
+.tq:hover{
+    background-color: rgb(230, 243, 255);
 }
 .t:hover{
     background-color: rgb(230, 243, 255);
@@ -534,7 +553,6 @@ span{
     max-width:400px;
     width:fit-content;
     height:fit-content;
-    border: 2px solid black;
     padding:2px;
     margin-bottom:2px;
 }

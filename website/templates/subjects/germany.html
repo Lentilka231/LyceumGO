@@ -35,7 +35,7 @@
 <div class="grid-items second">
     <p id="WS"><b>Wortschatz</b></p>
     <div id="gisscroller">
-        <div class="Module" id="M1" tabindex="1" value="50" value2="330" style="background-color: rgb(139, 68, 194);">
+        <div class="Module" id="M1" tabindex="1" value="50" value2="200" style="background-color: rgb(139, 68, 194);">
             <p class="TitleWS"><b>1) Deutsch ist NICHT leicht!</b></p>
             <div class="child">
                 {%for i,v in NJW["module1"].items()%}
@@ -158,50 +158,49 @@
     <div id="GO">
         <div class="GO GO1">
             <p class="GON">Podstatná jména (Nomen)</p>
-            <div>Silné skloňování</div>
+            <!-- <div>Silné skloňování</div>
             <div>Slabé skloňování</div>
             <div>Skloňování mix</div>
             <div>Člen určitý</div>
             <div>Člen neurčitý</div>
             <div>Beze Členu</div>
-            <div>Členy mix</div>
+            <div>Členy mix</div> -->
         </div>
         <div class="GO GO2">
             <p class="GON">Přídavná jména (Adjektive)</p>
-            <div>Skloňování s určitým členem</div>
+            <!-- <div>Skloňování s určitým členem</div>
             <div>Skloňování s neurčitým členem</div>
             <div>Skloňování bez členu</div>
             <div>Skloňování mix</div>
-            <div>Stupňování</div>
+            <div>Stupňování</div> -->
         </div>
         <div class="GO GO3">
             <p class="GON">Zájmena (Pronomen)</p>
-            <div>Osobní zájmena</div>
+            <!-- <div>Osobní zájmena</div>
             <div>Zvratná zájmena</div>
             <div>Ukazovací zájmena</div>
-            <div>Přivlasťnovací zájmena</div>
+            <div>Přivlasťnovací zájmena</div> -->
         </div>
         <div class="GO GO4">
             <p class="GON">Slovesa (Verben)</p>
             <div onclick="visibilator('VerbenInPräsens')">Slovesa v přítomném čase</div>
-            <div>Slovesa v Perfektu</div>
-            <div>Slovesa v Préteritu</div>
-            <div>Způsobová slovesa</div>
-            <div>Rozkazovací způsob</div>
-            <div>Slovesná rekce</div>
-            <div>Konjuktiv II.</div>
+            <div onclick="visibilator('RektionderVerben')">Slovesná rekce</div>
+            <div onclick="visibilator('Präteritum')">Slovesa v Préteritu</div>
+            <div onclick="visibilator('Modalverben')">Způsobová slovesa</div>
+            <!-- <div>Slovesa v Perfektu</div>
+            <div>Konjuktiv II.</div> -->
         </div>
         <div class="GO GO5">
             <p class="GON">Předložky (Präpositionen)</p>
-            <div>Předložky se 3. pádem</div>
+            <!-- <div>Předložky se 3. pádem</div>
             <div>Předložky se 4. pádem</div>
-            <div>Předložky mix</div>
+            <div>Předložky mix</div> -->
         </div>
         <div class="GO GO6">
             <p class="GON">Spojky (Konjuktionen)</p>
-            <div>Spojky souřadicí</div>
+            <!-- <div>Spojky souřadicí</div>
             <div>Spojky podřadicí</div>
-            <div>Spojky mix</div>
+            <div>Spojky mix</div> -->
         </div>
     </div>
 </div>
@@ -532,6 +531,37 @@
                 </div>
             </div>
         </div>
+        <div class="Teorie RektionderVerben">
+            <p class="nnadpis"><b>Rektion der Verb</b></p>
+            <p class="cnadpis">Slovesná rekce</p>
+            <div class="trixdva">
+                <div class="tblock">
+                    <div class="tnadpis">Slovesná rekce I.</div>
+                    <div class="tq" onclick="teststart('ABCD','Slovesná rekce','','Slovesa')">
+                    <img src="{{url_for('static',filename='images/ABCD.png')}}"><br>Rozhodovačka</div>
+                </div>
+            </div>
+        </div>
+        <div class="Teorie Präteritum">
+            <p class="nnadpis"><b>Präteritum</b></p>
+            <div class="trixdva">
+                <div class="tblock">
+                    <div class="tnadpis">Präteritum I.</div>
+                    <div class="tq" onclick="teststart('ABCD','Präteritum','','Slovesa')">
+                    <img src="{{url_for('static',filename='images/ABCD.png')}}"><br>Rozhodovačka</div>
+                </div>
+            </div>
+        </div>
+        <div class="Teorie Modalverben">
+            <p class="nnadpis"><b>Modalverben</b></p>
+            <div class="trixdva">
+                <div class="tblock">
+                    <div class="tnadpis">Modalverben I.</div>
+                    <div class="tq" onclick="teststart('ABCD','Způsobová slovesa','','Slovesa')">
+                    <img src="{{url_for('static',filename='images/ABCD.png')}}"><br>Rozhodovačka</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </div>
@@ -583,7 +613,10 @@
                         textToAdd+="</div></div>";
                     }
                     else{
-                        textToAdd+=`<div class='PTukol'><p class="PTzadani"><b>${x[i].split("$")[0].split("+")[0]}</b></p><div class="frame">${x[i].split("$")[0].split("+")[1]}</div>`;
+                        textToAdd+=`<div class='PTukol'><p class="PTzadani"><b>${x[i].split("$")[0].split("+")[0]}</b></p>`
+                        if(x[i].split("$")[0].split("+")[1]){
+                            textToAdd+=`<div class="frame">${x[i].split("$")[0].split("+")[1]}</div>`;
+                        }
                         for(let y=1;y<x[i].split("$").length;y++){
                             textToAdd+=`<p>${x[i].split("$")[y].split(":")[0]}</p>`;
                         }
@@ -1601,8 +1634,8 @@ function addTask (){
                 Page.lastChild.getElementsByTagName("select")[0].addEventListener("change",function(){
                     h=0;
                     for(let i=0;i<Page.children.length;i++){h+=Page.children[i]!=this.parentElement?Page.children[i].offsetHeight:0;}
-                    if(h+8*this.value+30<Page.offsetHeight){
-                        this.parentElement.style.height=8*this.value+30+"px";
+                    if(h+8*this.value+20+10*this.value/4<Page.offsetHeight){
+                        this.parentElement.style.height=8*this.value+20+10*this.value/5+"px";
                     }
                     else{
                         this.value=this.getAttribute("datavalue");
@@ -1684,9 +1717,10 @@ async function downloadPDF(){
                     h+=7;
                     doc.setFontSize(12);
                     doc.setFont("Calibri Regular","normal");
-                    doc.text(Task.getElementsByClassName("frame")[0].innerText,10,i!=0?(h+15):(40+h))
-                    h+=7;
-
+                    if(Task.getElementsByClassName("frame")[0]){
+                        doc.text(Task.getElementsByClassName("frame")[0].innerText,10,i!=0?(h+15):(40+h));
+                        h+=7;
+                    }    
                     ptag=Task.getElementsByClassName("TContent")[0].children;
                     for(let y=0;y<ptag.length;y++){
                         doc.text(`${ptag[y].innerText}`,10,i!=0?(h+15):(40+h));
@@ -1731,7 +1765,9 @@ function savePDF(){
                 if(Task.classList.contains("gram")){
                     ptag=Task.getElementsByClassName("TContent")[0].children;
                     TestToSend+=`;${Task.getElementsByClassName("zadani")[0].innerText}`;
-                    TestToSend+=`+${Task.getElementsByClassName("frame")[0].innerText}`;
+                    if(Task.getElementsByClassName("frame")[0]){
+                        TestToSend+=`+${Task.getElementsByClassName("frame")[0].innerText}`;
+                    }
                     for(let y=0;y<ptag.length;y++){
                         TestToSend+=`$${ptag[y].innerText}:${ptag[y].getAttribute("value")}`;
                     }
@@ -1789,26 +1825,43 @@ function randomPDF(){
             Task=page.getElementsByClassName("content")[0].children[x];
             if(Task.getElementsByClassName("TaskName")[0].datavalue=="G"){
                 TaskQ =NJG[Task.getElementsByClassName("sld")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText];
-                PreTaskToPlace="";
-                aaa=Array.from({length:Task.getElementsByClassName("numberOfQuestions")[0].value},(_,i) => i);
-                aanswers=[];
-                UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
-                for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
-                    randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
-                    h=Math.floor(Math.random()*aaa.length);
-                    aanswers[aaa[h]]=`${TaskQ[1][UnusedQuestions[randomNumber]]["aa"]}`;
-                    aaa.splice(h,1);
-                    PreTaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
-                    UnusedQuestions.splice(randomNumber,1);
+                if(TaskQ[1][0]["aa"]){
+                    PreTaskToPlace="";
+                    aaa=Array.from({length:Task.getElementsByClassName("numberOfQuestions")[0].value},(_,i) => i);
+                    aanswers=[];
+                    UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
+                    for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
+                        randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+                        h=Math.floor(Math.random()*aaa.length);
+                        aanswers[aaa[h]]=`${TaskQ[1][UnusedQuestions[randomNumber]]["aa"]}`;
+                        aaa.splice(h,1);
+                        PreTaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
+                        UnusedQuestions.splice(randomNumber,1);
+                    }
+                    TaskToPlace=`
+                    <div class="ukol gram" onclick="randomUkol(this)">
+                        <div class="zadani"value="${Task.getElementsByClassName("sld")[0].innerText}/${Task.getElementsByClassName("TaskName")[0].innerText}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value}">
+                            <b>${ukol}. ${TaskQ[2]}</b>
+                        </div>
+                        <div class="frame">${aanswers.join(", ")}</div>
+                        <div class="TContent">${PreTaskToPlace}</div></div>`;
+                    NavrhPlatno[i].innerHTML+=TaskToPlace
+                }else{
+                    TaskToPlace="";
+                    UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
+                    for(let y=0;y<Task.getElementsByClassName("numberOfQuestions")[0].value;y++){
+                        randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+                        TaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
+                        UnusedQuestions.splice(randomNumber,1);
+                    }
+                    TaskToPlace=`
+                    <div class="ukol gram" onclick="randomUkol(this)">
+                        <div class="zadani"value="${Task.getElementsByClassName("sld")[0].innerText}/${Task.getElementsByClassName("TaskName")[0].innerText}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value}">
+                            <b>${ukol}. ${TaskQ[2]}</b>
+                        </div>
+                        <div class="TContent">${TaskToPlace}</div></div>`;
+                    NavrhPlatno[i].innerHTML+=TaskToPlace
                 }
-                TaskToPlace=`
-                <div class="ukol gram" onclick="randomUkol(this)">
-                    <div class="zadani"value="${Task.getElementsByClassName("sld")[0].innerText}/${Task.getElementsByClassName("TaskName")[0].innerText}/${ukol}/${Task.getElementsByClassName("numberOfQuestions")[0].value}">
-                        <b>${ukol}. ${TaskQ[2]}</b>
-                    </div>
-                    <div class="frame">${aanswers.join(", ")}</div>
-                    <div class="TContent">${PreTaskToPlace}</div></div>`;
-                NavrhPlatno[i].innerHTML+=TaskToPlace
             }
             else{
                 TaskQ =Object.values(NJW["module"+Task.getElementsByClassName("m")[0].innerText][Task.getElementsByClassName("TaskName")[0].innerText]);
@@ -1856,26 +1909,44 @@ function exitPDF (){
 }
 function randomUkol (ukol){
     if(ukol.classList.contains("gram")){
-        a=ukol.getElementsByClassName("zadani")[0].getAttribute("value").split("/");
-        TaskQ =NJG[a[0]][a[1]];
-        PreTaskToPlace="";
-        aaa=Array.from({length:a[3]},(_,i) => i);
-        aanswers=[];
-        UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
-        for(let y=0;y<a[3];y++){
-            randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
-            h=Math.floor(Math.random()*aaa.length);
-            aanswers[aaa[h]]=`${TaskQ[1][UnusedQuestions[randomNumber]]["aa"]}`;
-            aaa.splice(h,1);
-            PreTaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
-            UnusedQuestions.splice(randomNumber,1);
+        if(ukol.getElementsByClassName("frame")[0]){
+            a=ukol.getElementsByClassName("zadani")[0].getAttribute("value").split("/");
+            TaskQ =NJG[a[0]][a[1]];
+            PreTaskToPlace="";
+            aaa=Array.from({length:a[3]},(_,i) => i);
+            aanswers=[];
+            UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
+            for(let y=0;y<a[3];y++){
+                randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+                h=Math.floor(Math.random()*aaa.length);
+                aanswers[aaa[h]]=`${TaskQ[1][UnusedQuestions[randomNumber]]["aa"]}`;
+                aaa.splice(h,1);
+                PreTaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
+                UnusedQuestions.splice(randomNumber,1);
+            }
+            TaskToPlace=`
+            <div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}">
+                <b>${a[2]}. ${TaskQ[2]}</b>
+            </div>
+            <div class="frame">${aanswers.join(", ")}</div>
+            <div class="TContent">${PreTaskToPlace}</div>`;
+        }else{
+            a=ukol.getElementsByClassName("zadani")[0].getAttribute("value").split("/");
+            TaskQ =NJG[a[0]][a[1]];
+            TaskToPlace="";
+            UnusedQuestions=Array.from({length:TaskQ[1].length}, (_, i) => i);
+            for(let y=0;y<a[3];y++){
+                randomNumber=Math.floor(Math.random()*UnusedQuestions.length);
+                TaskToPlace+=`<p value="${TaskQ[1][UnusedQuestions[randomNumber]]["a"]}">${y+1}) ${TaskQ[1][UnusedQuestions[randomNumber]]["q"]}</p>`;
+                UnusedQuestions.splice(randomNumber,1);
+            }
+            TaskToPlace=`
+            <div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}">
+                <b>${a[2]}. ${TaskQ[2]}</b>
+            </div>
+            <div class="TContent">${TaskToPlace}</div>`;
         }
-        TaskToPlace=`
-        <div class="zadani" value="${ukol.getElementsByClassName("zadani")[0].getAttribute("value")}">
-            <b>${a[2]}. ${TaskQ[2]}</b>
-        </div>
-        <div class="frame">${aanswers.join(", ")}</div>
-        <div class="TContent">${PreTaskToPlace}</div>`;
+        
     }
     else{
         a=ukol.getElementsByClassName("zadani")[0].getAttribute("value").split("/");

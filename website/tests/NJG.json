@@ -57,7 +57,7 @@
             "1":"das",
             "2":""
             },
-            {            
+            {
             "q":"Wie viel kosten ______ Schuhe.",
             "a":"die",
             "1":"eine",
@@ -90,52 +90,268 @@
         "Slovesa v přítomném čase I.":[4,
             [
                 {
-                    "q":"Wie kann ich zu Hause _____?",
-                    "a":"bekommen",
-                    "1":"treffen",
-                    "2":"achten",
-                    "3":"schwimmen",
-                    "aa":"bekommen"
+                    "q":"Wann _____ der Bus ab?",
+                    "a":"fährt",
+                    "1":"arbeitet",
+                    "2":"biegt",
+                    "3":"ändert",
+                    "aa":"fahren"
                 },
                 {
-                    "q":"_____ mir, was die Lösung ist?",
-                    "a":"Sagt",
-                    "1":"Lauft",
-                    "2":"Baut",
-                    "3":"Kocht",
-                    "aa":"sagen"
+                    "q":"Ich _____ ihm meine Waffe nicht ab.",
+                    "a":"gebe",
+                    "1":"breche",
+                    "2":"drucke",
+                    "3":"hole",
+                    "aa":"geben"
                 },
                 {
-                    "q":"Du kannst deine Kleid hier _____.",
-                    "a":"lassen",
+                    "q":"Während des Testes dürft ihr nicht _____.",
+                    "a":"abschreiben",
                     "1":"essen",
                     "2":"mitmachen",
                     "3":"wandern",
-                    "aa":"lassen"
+                    "aa":"abschreiben"
                 },
                 {
-                    "q":"In der Höhle kann man nichts _____.",
-                    "a":"sehen",
-                    "1":"joggen",
-                    "2":"antworten",
-                    "3":"befragen",
-                    "aa":"sehen"
+                    "q":"Es ist 19 Uhr. Wann _____ das Konzert an? In 15 Minuten.",
+                    "a":"fangt",
+                    "1":"bläst",
+                    "2":"fällt",
+                    "3":"färbt",
+                    "aa":"anfangen"
                 },
                 {
-                    "q":"Wie lange _____ du bei Martin?",
-                    "a":"bleibst",
-                    "1":"spielst",
-                    "2":"passt",
-                    "3":"vorstellst",
+                    "q":"Sie wollen uns morgen _____.",
+                    "a":"angreifen",
+                    "1":"leihen",
+                    "2":"sinken",
+                    "3":"schwinden",
+                    "aa":"angreifen"
+                },
+                {
+                    "q":"Was _____ du an? Du kannst nicht mit diesem Anzug gehen.",
+                    "a":"hast",
+                    "1":"färbst",
+                    "2":"fangst",
+                    "3":"forderst",
+                    "aa":"anhaben"
+                },
+                {
+                    "q":"Wir fahren schon 2 Stunden. Wann _____ wir in Brno an?",
+                    "a":"kommen",
+                    "1":"fordern",
+                    "2":"blasen",
+                    "3":"fallen",
+                    "aa":"kommen"
+                },
+                {
+                    "q":"Ich muss ihn jetzt _____",
+                    "a":"anrufen",
+                    "1":"begreifen",
+                    "2":"zerreißen",
+                    "3":"ziehen",
+                    "aa":"anrufen"
+                },
+                {
+                    "q":"Wenn du mit uns gehen willst, dann sollst du etwas Warmes _____.",
+                    "a":"anziehen",
+                    "1":"schließen",
+                    "2":"schweigen",
+                    "3":"graben",
+                    "aa":"anziehen"
+                },
+                {
+                    "q":"Er _____ alle Flüchtlinge in seinem Haus auf.",
+                    "a":"nimmt auf",
+                    "1":"blitzt",
+                    "2":"braucht",
+                    "3":"tritt",
+                    "aa":"aufnehmen"
+                },
+                {
+                    "q":"Unser Musikband _____ jetzt auf dem Konzert auf.",
+                    "a":"tritt",
+                    "1":"wachst",
+                    "2":"nimmt",
+                    "3":"braucht",
+                    "aa":"auftretten"
+                },
+                {
+                    "q":"Mein Bruder ist gross, aber ich bin nicht. Ich wünsche mehr _____.",
+                    "a":"aufwachsen",
+                    "1":"leihen",
+                    "2":"schweigen",
+                    "3":"wiegen",
+                    "aa":"aufwachsen"
+                },
+                {
+                    "q":"Ich möchte heute Abend mit Freunde _____.",
+                    "a":"ausgehen",
+                    "1":"lassen",
+                    "2":"raten",
+                    "3":"treffen",
+                    "aa":"ausgehen"
+                },
+                {
+                    "q":"Wir können jetzt zum See _____ oder nur gehen.",
+                    "a":"ausreiten",
+                    "1":"schließen",
+                    "2":"singen",
+                    "3":"fließen",
+                    "aa":"ausreiten"
+                },
+                {
+                    "q":"Ich gehe ins Bett _____.",
+                    "a":"ausschlafen",
+                    "1":"frieren",
+                    "2":"scheinen",
+                    "3":"tragen",
+                    "aa":"ausschlafen"
+                },
+                {
+                    "q":"Schaul mal! Die Kleidung des Mädchen _____ großartig aus.",
+                    "a":"sieht",
+                    "1":"spricht",
+                    "2":"geht",
+                    "3":"bildet",
+                    "aa":"aussehen"
+                },
+                {
+                    "q":"Wie _____ du das Wort aus?",
+                    "a":"sprichst",
+                    "1":"schläfst",
+                    "2":"bildest",
+                    "3":"gehst",
+                    "aa":"aussprechen"
+                },
+                {
+                    "q":"An der nächsten Haltestelle müssen wir _____.",
+                    "a":"aussteigen",
+                    "1":"beschreiben",
+                    "2":"bitten",
+                    "3":"liegen",
+                    "aa":"aussteigen"
+                },
+                {
+                    "q":"Was _____ deine Mutter? Es riecht unglaublich gut.",
+                    "a":"bäckt",
+                    "1":"kommt",
+                    "2":"schiebt",
+                    "3":"zieht",
+                    "aa":"backen"
+                },
+                {
+                    "q":"Wann _____ die Schule? Wir haben noch 15 Minuten.",
+                    "a":"beginnt",
+                    "1":"stehe",
+                    "2":"gehe",
+                    "3":"gewinne",
+                    "aa":"beginnen"
+                },
+                {
+                    "q":"Alle Teilnehmer _____ die Jause auf dem Weg.",
+                    "a":"bekommen",
+                    "1":"bringen",
+                    "2":"reiten",
+                    "3":"vorschlagen",
+                    "aa":"bekommen"
+                },
+                {
+                    "q":"Kannst du mir den Mensch _____? Er war klein und schlank.",
+                    "a":"beschreiben",
+                    "1":"sehen",
+                    "2":"verlassen",
+                    "3":"fliehen",
+                    "aa":"beschreiben"
+                },
+                {
+                    "q":"Wir sollen das noch einmal _____. Wir haben das mehrmals besprechen.",
+                    "a":"besprechen",
+                    "1":"anziehen",
+                    "2":"stehen",
+                    "3":"vergleichen",
+                    "aa":"besprechen"
+                },
+                {
+                    "q":"Ich _____ euch um die Hilfe. Ich weiß nicht, was ich anders tun soll.",
+                    "a":"bitte",
+                    "1":"lese",
+                    "2":"messe",
+                    "3":"zwinge",
+                    "aa":"bitten"
+                },
+                {
+                    "q":"Wir _____ hier, weil es draußen regnet.",
+                    "a":"bleiben",
+                    "1":"trinken",
+                    "2":"werden",
+                    "3":"finden",
                     "aa":"bleiben"
                 },
                 {
-                    "q":"Was _____ du am Computer?",
-                    "a":"spielst",
-                    "1":"isst",
-                    "2":"unterhaltest",
-                    "3":"entscheidest",
-                    "aa":"spielen"
+                    "q":"_____ mir bitte meine Brille. Ich kann nicht ohne sie lesen.",
+                    "a":"Bringt",
+                    "1":"Hilft",
+                    "2":"Lies",
+                    "3":"Fahrt",
+                    "aa":"bringen"
+                },
+                {
+                    "q":"Was _____ du über den Krieg?",
+                    "a":"denkst",
+                    "1":"nimmst",
+                    "2":"rufst",
+                    "3":"siehst",
+                    "aa":"denken"
+                },
+                {
+                    "q":"Ihr könnt alle Freunde _____.",
+                    "a":"einladen",
+                    "1":"weggehen",
+                    "2":"zurückkomen",
+                    "3":"ausschlafen",
+                    "aa":"einladen"
+                },
+                {
+                    "q":"Wir müssen in den richtigen Bus _____.",
+                    "a":"einsteigen",
+                    "1":"abfahren",
+                    "2":"bleiben",
+                    "3":"beginnen",
+                    "aa":"einsteigen"
+                },
+                {
+                    "q":"Ich bin nicht sicher. Ich muss mich noch _____.",
+                    "a":"entscheiden",
+                    "1":"aufnehmen",
+                    "2":"mithelfen",
+                    "3":"gewinnen",
+                    "aa":"entscheiden"
+                },
+                {
+                    "q":"Was _____ wir auf dieser Vorlesung?",
+                    "a":"erfahren",
+                    "1":"fahren",
+                    "2":"abfahren",
+                    "3":"kommen",
+                    "aa":"erfahren"
+                },
+                {
+                    "q":"Hast du die Lösung. Nein, ich kann nichts _____.",
+                    "a":"erfinden",
+                    "1":"einsteigen",
+                    "2":"aufwachsen",
+                    "3":"mitnehmen",
+                    "aa":"erfinden"
+                },
+                {
+                    "q":"Was _____ du am liebsten? Ich mag Schnitzel mit Kartoffeln.",
+                    "a":"isst",
+                    "1":"läufst",
+                    "2":"hilft",
+                    "3":"sitzt",
+                    "aa":"essen"
                 }
             ],
             "Doplň správné sloveso z nabídky."
@@ -143,79 +359,530 @@
         "Slovesa v přítomném čase II.":[4,
             [
                 {
-                    "q":"Wie kann ich zu Hause _____?",
-                    "a":"bekommen",
+                    "q":"Kannst du ein Auto ______? Nein ich habe noch keinen Führerschein.",
+                    "a":"fahren",
+                    "1":"messen",
+                    "2":"begreifen",
+                    "3":"schwimmen",
+                    "aa":"fahren"
+                },
+                {
+                    "q":"Wie lange ______ du fern? Nicht so lange nur ein paar Stunden.",
+                    "a":"siehst",
+                    "1":"bleibst",
+                    "2":"liegst",
+                    "3":"lenkst",
+                    "aa":"fernsehen"
+                },
+                {
+                    "q":"Wie ______ du unseren neuen Lehrer? Ja, ich finde ihn gut.",
+                    "a":"findest",
+                    "1":"joggst",
+                    "2":"regnest",
+                    "3":"wandern",
+                    "aa":"finden"
+                },
+                {
+                    "q":"Warum können manche Vogelarten ______ und manche nicht.",
+                    "a":"fliegen",
+                    "1":"bleiben",
+                    "2":"erfahren",
+                    "3":"backen",
+                    "aa":"fliegen"
+                },
+                {
+                    "q":"Dieses Wasser ______ nach Westen.",
+                    "a":"fließt",
+                    "1":"aufwachsen",
+                    "2":"abgeben",
+                    "3":"essen",
+                    "aa":"fließen"
+                },
+                {
+                    "q":"Ich soll dir meine Hausaufgaben nicht ______.",
+                    "a":"geben",
+                    "1":"halten",
+                    "2":"singen",
+                    "3":"waschen",
+                    "aa":"geben"
+                },
+                {
+                    "q":"Wie gefallen dir die Blumen. Sie ______ mir sehr.",
+                    "a":"gefallen",
+                    "1":"friert",
+                    "2":"lässt",
+                    "3":"klettert",
+                    "aa":"gefallen"
+                },
+                {
+                    "q":"Ich ______ einkaufen. Brauchst du etwas?",
+                    "a":"gehe",
+                    "1":"wasche",
+                    "2":"trage",
+                    "3":"lese",
+                    "aa":"gehen"
+                },
+                {
+                    "q":"Ich möchte den Wettberwerb ______, weil meine Eltern und Freunde sich auf mich verlassen.",
+                    "a":"gewinnen",
+                    "1":"auftreten",
+                    "2":"beginnen",
+                    "3":"backen",
+                    "aa":"gewinnen"
+                },
+                {
+                    "q":"Ich ______ keine Ahnung.",
+                    "a":"habe",
+                    "1":"gehe",
+                    "2":"verstehe",
+                    "3":"sitze",
+                    "aa":"haben"
+                },
+                {
+                    "q":"Was ______ du in deiner Hand? Das ist mein Geschenk für meine Mutter.",
+                    "a":"hältst",
+                    "1":"trittst",
+                    "2":"kommt",
+                    "3":"stiehlst",
+                    "aa":"halten"
+                },
+                {
+                    "q":"Er hat Klaustrophobie. Das ______, er kann in kleinen Raümen nicht sein.",
+                    "a":"heißt",
+                    "1":"verdient",
+                    "2":"zerbricht",
+                    "3":"brennt",
+                    "aa":"heißen"
+                },
+                {
+                    "q":"Können Sie uns ______? Ja. Was brauchen Sie.",
+                    "a":"helfen",
+                    "1":"nehmen",
+                    "2":"trinken",
+                    "3":"schlafen",
+                    "aa":"helfen"
+                },
+                {
+                    "q":"______ du den neuen Mitschüler?",
+                    "a":"Kennst",
+                    "1":"stirbst",
+                    "2":"schwimmst",
+                    "3":"nennst",
+                    "aa":"kennen"
+                },
+                {
+                    "q":"Woher ______ du? Ich komme aus Tschechien.",
+                    "a":"kommst",
+                    "1":"geschiehst",
+                    "2":"gefällst",
+                    "3":"gehst",
+                    "aa":"kommen"
+                },
+                {
+                    "q":"Wo kann ich meine Sachen ______?",
+                    "a":"lassen",
+                    "1":"erfinden",
+                    "2":"fließen",
+                    "3":"mithelfen",
+                    "aa":"lassen"
+                },
+                {
+                    "q":"Wir ______ bis zur Ziellinie.",
+                    "a":"laufen",
+                    "1":"kennen",
+                    "2":"schlafen",
+                    "3":"essen",
+                    "aa":"laufen"
+                },
+                {
+                    "q":"Ich kann nicht ohne meine Brille ______.",
+                    "a":"lesen",
+                    "1":"joggen",
+                    "2":"tun",
+                    "3":"aussteigen",
+                    "aa":"lesen"
+                },
+                {
+                    "q":"Wo ______ die HauptStadt von Deutschland.",
+                    "a":"liegt",
+                    "1":"bringt",
+                    "2":"isst",
+                    "3":"wirft",
+                    "aa":"liegen"
+                },
+                {
+                    "q":"Soll ich mehr Holz ______ oder wir haben es genug.",
+                    "a":"mitbringen",
+                    "1":"fernsehen",
+                    "2":"vergessen",
+                    "3":"verlassen",
+                    "aa":"mitbringen"
+                },
+                {
+                    "q":"______ du nach Italien mit? ",
+                    "a":"Fährst",
+                    "1":"Hilfst",
+                    "2":"Spielst",
+                    "3":"Gleitest",
+                    "aa":"mitfahren"
+                },
+                {
+                    "q":"Ich kann nicht ______, weil ich Deutsch habe.",
+                    "a":"mitgehen",
+                    "1":"fliegen",
+                    "2":"haben",
+                    "3":"backen",
+                    "aa":"mitgehen"
+                },
+                {
+                    "q":"Sie ______ im Altenheim mit.",
+                    "a":"hilft",
+                    "1":"bringt",
+                    "2":"nimmt",
+                    "3":"kommt",
+                    "aa":"mithelfen"
+                },
+                {
+                    "q":"Wir gehen zum Schwimmbad. ______ du mit?",
+                    "a":"Kommst",
+                    "1":"Nimmst",
+                    "2":"Spielst",
+                    "3":"Arbeitest",
+                    "aa":"mitkommen"
+                },
+                {
+                    "q":"Wir ______ nur solche Sachen mit, die wir brauchen.",
+                    "a":"nehmen",
+                    "1":"kommen",
+                    "2":"fahren",
+                    "3":"hören",
+                    "aa":"mitnehmen"
+                },
+                {
+                    "q":"Die Worte, die ihr nicht kennt, könnt ihr im Wörterbuch ______.",
+                    "a":"nachschlagen",
+                    "1":"essen",
+                    "2":"rennen",
+                    "3":"erkennen",
+                    "aa":"nachschlagen"
+                },
+                {
+                    "q":"Ich ______ diese drei roten Äpfel.",
+                    "a":"nehme",
+                    "1":"töte",
+                    "2":"friere",
+                    "3":"singe",
+                    "aa":"nehmen"
+                },
+                {
+                    "q":"Während des Testes können die Studenten nicht ______.",
+                    "a":"raten",
+                    "1":"erfahren",
+                    "2":"sitzen",
+                    "3":"bleiben",
+                    "aa":"raten"
+                },
+                {
+                    "q":"Ich will versuchen zu ______.",
+                    "a":"reiten",
+                    "1":"besprechen",
+                    "2":"beschreiben",
+                    "3":"anrufen",
+                    "aa":"reiten"
+                },
+                {
+                    "q":"Musst du nach den Bushaltestelle ______.",
+                    "a":"rennen",
+                    "1":"sprechen",
+                    "2":"leiden",
+                    "3":"gelingen",
+                    "aa":"rennen"
+                },
+                {
+                    "q":"Ich ______, aber niemand geht zum Telefon.",
+                    "a":"rufe",
+                    "1":"schaffe",
+                    "2":"schlage",
+                    "3":"beginne",
+                    "aa":"rufen"
+                },
+                {
+                    "q":"Die Sonne ______. Ich hoffe, es beginnt nicht zu regnen.",
+                    "a":"scheint",
+                    "1":"plant",
+                    "2":"baut",
+                    "3":"gräbt",
+                    "aa":"scheinen"
+                },
+                {
+                    "q":"Willst du das Ding den ganzen Weg ______?",
+                    "a":"schieben",
                     "1":"treffen",
                     "2":"achten",
-                    "3":"schwimmen"
-                },
-                {
-                    "q":"_____ mir, was die Lösung ist?",
-                    "a":"Sagt",
-                    "1":"Lauft",
-                    "2":"Baut",
-                    "3":"Kocht"
-                },
-                {
-                    "q":"Du kannst deine Kleid hier _____.",
-                    "a":"lassen",
-                    "1":"essen",
-                    "2":"mitmachen",
-                    "3":"wandern"
-                },
-                {
-                    "q":"In der Höhle kann man nichts _____.",
-                    "a":"sehen",
-                    "1":"joggen",
-                    "2":"antworten",
-                    "3":"befragen"
-                },
-                {
-                    "q":"Wie lange _____ du bei Martin?",
-                    "a":"bleibst",
-                    "1":"spielst",
-                    "2":"passt",
-                    "3":"vorstellst"
+                    "3":"schwimmen",
+                    "aa":"schieben"
                 }
             ],
             "Doplň správné sloveso z nabídky."
         ],
         "Slovesa v přítomném čase III.":[4,
             [
+
                 {
-                    "q":"Wie kann ich zu Hause _____?",
-                    "a":"bekommen",
-                    "1":"treffen",
-                    "2":"achten",
-                    "3":"schwimmen"
+                    "q":"Ich habe nur 3 Stunden geschlafen. Du musst mehr ______.",
+                    "a":"schlafen",
+                    "1":"klingen",
+                    "2":"greifen",
+                    "3":"geben",
+                    "aa":"schlafen"
                 },
                 {
-                    "q":"_____ mir, was die Lösung ist?",
-                    "a":"Sagt",
-                    "1":"Lauft",
-                    "2":"Baut",
-                    "3":"Kocht"
+                    "q":"Kannst du die Flasche ______?",
+                    "a":"schließen",
+                    "1":"braten",
+                    "2":"fliehen",
+                    "3":"sinken",
+                    "aa":"schließen"
                 },
                 {
-                    "q":"Du kannst deine Kleid hier _____.",
-                    "a":"lassen",
-                    "1":"essen",
-                    "2":"mitmachen",
-                    "3":"wandern"
+                    "q":"Er ______ seine Geheimnise in seinem Heft.",
+                    "a":"schreibt",
+                    "1":"tritt",
+                    "2":"schneidet",
+                    "3":"steigt",
+                    "aa":"schreiben"
                 },
                 {
-                    "q":"In der Höhle kann man nichts _____.",
+                    "q":"Im Fluss ______ Karpfen.",
+                    "a":"schwimmen",
+                    "1":"weinen",
+                    "2":"schreien",
+                    "3":"trinken",
+                    "aa":"schwimmen"
+                },
+                {
+                    "q":"Es ist unmöglich im Nebel etwas zu ______.",
                     "a":"sehen",
-                    "1":"joggen",
-                    "2":"antworten",
-                    "3":"befragen"
+                    "1":"brennen",
+                    "2":"beißen",
+                    "3":"halten",
+                    "aa":"sehen"
                 },
                 {
-                    "q":"Wie lange _____ du bei Martin?",
-                    "a":"bleibst",
-                    "1":"spielst",
-                    "2":"passt",
-                    "3":"vorstellst"
+                    "q":"Ich ______ fertig mit dem Test.",
+                    "a":"bin",
+                    "1":"backe",
+                    "2":"scheine",
+                    "3":"gebe",
+                    "aa":"sein"
+                },
+                {
+                    "q":"Sie ______ sehr schön. Vielen Dank, ich habe die Kunstschule besucht.",
+                    "a":"singen",
+                    "1":"graben",
+                    "2":"stehlen",
+                    "3":"stehen",
+                    "aa":"singen"
+                },
+                {
+                    "q":"Im Bus kann ich nie ______.",
+                    "a":"sitzen",
+                    "1":"leiden",
+                    "2":"empfehlen",
+                    "3":"heißen",
+                    "aa":"sitzen"
+                },
+                {
+                    "q":"Woüber ______ ihr hier? ",
+                    "a":"sprecht",
+                    "1":"hängt",
+                    "2":"beißen",
+                    "3":"riechen",
+                    "aa":"sprechen"
+                },
+                {
+                    "q":"Der Mann ______ ganz in der Nähe vom Weg.",
+                    "a":"steht",
+                    "1":"bäckt",
+                    "2":"hilft",
+                    "3":"weiß",
+                    "aa":"stehen"
+                },
+                {
+                    "q":"Sie müssen sich immer über etwas ______.",
+                    "a":"streiten",
+                    "1":"schlafen",
+                    "2":"scheiden",
+                    "3":"schlafen",
+                    "aa":"streiten"
+                },
+                {
+                    "q":"Ich will am Wettbewerb nicht ______.",
+                    "a":"teilnehmen",
+                    "1":"beginnen",
+                    "2":"gelingen",
+                    "3":"braten",
+                    "aa":"teilnehmen"
+                },
+                {
+                    "q":"Ich ______ diese Kiste in die Küche.",
+                    "a":"trage",
+                    "1":"lade",
+                    "2":"gleite",
+                    "3":"gieße",
+                    "aa":"tragen"
+                },
+                {
+                    "q":"Wir ______ uns unter der Brücke.",
+                    "a":"treffen",
+                    "1":"springen",
+                    "2":"wiegen",
+                    "3":"treten",
+                    "aa":"treffen"
+                },
+                {
+                    "q":"Sie ______ deinen Orangesaft.",
+                    "a":"trinkt",
+                    "1":"isst",
+                    "2":"gießt",
+                    "3":"misst",
+                    "aa":"trinken"
+                },
+                {
+                    "q":"Ich habe viel zu ______. Ich kann jetzt nicht helfen",
+                    "a":"tun",
+                    "1":"lassen",
+                    "2":"gleiten",
+                    "3":"wachsen",
+                    "aa":"tun"
+                },
+                {
+                    "q":"Noch zwei Haltstellen und dann ______ wir um.",
+                    "a":"steigen",
+                    "1":"ziehen",
+                    "2":"graben",
+                    "3":"greifen",
+                    "aa":"umsteigen"
+                },
+                {
+                    "q":"Karel ______ nach Amerika um.",
+                    "a":"zieht",
+                    "1":"steigt",
+                    "2":"grabt",
+                    "3":"greift",
+                    "aa":"umziehen"
+                },
+                {
+                    "q":"Sagt es ihm nichts, weil er fast immer alles ______.",
+                    "a":"vergisst",
+                    "1":"beißt",
+                    "2":"reißt",
+                    "3":"isst",
+                    "aa":"vergessen"
+                },
+                {
+                    "q":"Ihr können nicht diese zwei Studenten ______.",
+                    "a":"vergleichen",
+                    "1":"bleiben",
+                    "2":"gefallen",
+                    "3":"laufen",
+                    "aa":"vergleichen"
+                },
+                {
+                    "q":"Der Jung will nicht seine Heimat ______.",
+                    "a":"verlassen",
+                    "1":"hängen",
+                    "2":"fangen",
+                    "3":"frieren",
+                    "aa":"verlassen"
+                },
+                {
+                    "q":"Wir ______ nicht, ob wir hart kämpfen werden.",
+                    "a":"verlieren",
+                    "1":"gewinnen",
+                    "2":"reiten",
+                    "3":"rufen",
+                    "aa":"verlieren"
+                },
+                {
+                    "q":"Es ist besser, nichts zu ______, als das Versprechen nicht zu halten.",
+                    "a":"versprechen",
+                    "1":"lesen",
+                    "2":"heben",
+                    "3":"weisen",
+                    "aa":"versprechen"
+                },
+                {
+                    "q":"Die Schüler ______ den schwierigen Lehrstoff nicht.",
+                    "a":"verstehen",
+                    "1":"empfangen",
+                    "2":"halten",
+                    "3":"fliegen",
+                    "aa":"verstehen"
+                },
+                {
+                    "q":"Ich möchte Ihnen etwas ______.",
+                    "a":"vorschlagen",
+                    "1":"finden",
+                    "2":"liegen",
+                    "3":"essen",
+                    "aa":"vorschlagen"
+                },
+                {
+                    "q":"Jeden Abend muss man ______.",
+                    "a":"waschen",
+                    "1":"graben",
+                    "2":"biegen",
+                    "3":"gleiten",
+                    "aa":"waschen"
+                },
+                {
+                    "q":"Ich muss jetzt ______. Ich hoffe, dass wir uns wieder sehen.",
+                    "a":"weggehen",
+                    "1":"braten",
+                    "2":"verlieren",
+                    "3":"greifen",
+                    "aa":"weggehen"
+                },
+                {
+                    "q":"Mein Hand ______ mir weh. Sogar kann ich nicht mit ihr nicht bewegen.",
+                    "a":"tut",
+                    "1":"klagt",
+                    "2":"fühlt",
+                    "3":"riecht",
+                    "aa":"wehtun"
+                },
+                {
+                    "q":"Ich will nicht Lehrerin ______. Ich kann nicht mit Kindern arbeiten.",
+                    "a":"werden",
+                    "1":"essen",
+                    "2":"nehmen",
+                    "3":"anbieten",
+                    "aa":"werden"
+                },
+                {
+                    "q":"______ du, wie viel Beine hat eine Spinne?",
+                    "a":"Weißt",
+                    "1":"Triffst",
+                    "2":"Reitest",
+                    "3":"Verdienst",
+                    "aa":"wissen"
+                },
+                {
+                    "q":"Der Zug ______ Waggons.",
+                    "a":"zieht",
+                    "1":"beißt",
+                    "2":"schlägt",
+                    "3":"zwing",
+                    "aa":"ziehen"
+                },
+                {
+                    "q":"Ich weiße nicht, ob ich schaffe, rechtzeitig ______.",
+                    "a":"zurückkomen",
+                    "1":"sitzen",
+                    "2":"treten",
+                    "3":"senden",
+                    "aa":"zurückkomen"
                 }
             ],
             "Doplň správné sloveso z nabídky."
@@ -324,6 +991,806 @@
                 "erkennen" : "rozeznat"
             },
             "Doplň správné sloveso z nabídky."
+        ],        
+        "Způsobová slovesa":[4,
+            [
+                {
+                    "q":"Was soll ich nach dem Mittagessen tun, Mutter?",
+                    "a":"soll",
+                    "1":"dürfen",
+                    "2":"will",
+                    "3":"kannst",
+                    "aa":"sollen"
+                },
+                {
+                    "q":"Du sollst Einkäufe machen.",
+                    "a":"sollst",
+                    "1":"darfst",
+                    "2":"wollen",
+                    "3":"können",
+                    "aa":"sollen"
+                },
+                {
+                    "q":"Ihr sollt immer pünktlich sein!",
+                    "a":"sollt",
+                    "1":"müssen",
+                    "2":"dürft",
+                    "3":"können",
+                    "aa":"sollen"
+                },
+                {
+                    "q":"Er soll keinen Kaffee trinken.",
+                    "a":"soll",
+                    "1":"darfst",
+                    "2":"kannst",
+                    "3":"wollen",
+                    "aa":"sollen"
+                },
+                {
+                    "q":"Die Schüler sollen Mathe lernen.",
+                    "a":"sollen",
+                    "1":"müsst",
+                    "2":"mögen",
+                    "3":"will",
+                    "aa":"sollen"
+                },
+                {
+                    "q":"Frau Schulz soll zur Post gehen.",
+                    "a":"soll",
+                    "1":"darfst",
+                    "2":"müssen",
+                    "3":"magst",
+                    "aa":"sollen"
+                },
+                {
+                    "q":"Die Kinder sollen viel Milch trinken.",
+                    "a":"sollen",
+                    "1":"könnt",
+                    "2":"möchtet",
+                    "3":"darf",
+                    "aa":"sollen"
+                },
+                {
+                    "q":"Wir sollen am Nachmittag das Zimmer aufräumen.",
+                    "a":"sollen",
+                    "1":"möchte",
+                    "2":"muss",
+                    "3":"kannst",
+                    "aa":"sollen"
+                },
+                {
+                    "q":"Musst du in der Nacht arbeiten?",
+                    "a":"Musst",
+                    "1":"Darf",
+                    "2":"Können",
+                    "3":"will",
+                    "aa":"müssen"
+                },
+                {
+                    "q":"Ich muss morgen in die Schule gehen.",
+                    "a":"muss",
+                    "1":"darfst",
+                    "2":"sollen",
+                    "3":"könnt",
+                    "aa":"müssen"
+                },
+                {
+                    "q":"Wir müssen heute Nachmittag dem Vater helfen.",
+                    "a":"müssen",
+                    "1":"darf",
+                    "2":"könnt",
+                    "3":"sollst",
+                    "aa":"müssen"
+                },
+                {
+                    "q":"Das Kind muss zum Arzt gehen.",
+                    "a":"muss",
+                    "1":"darfst",
+                    "2":"sollt",
+                    "3":"mögen",
+                    "aa":"müssen"
+                },
+                {
+                    "q":"Müsst ihr dem Opa im Garten helfen?",
+                    "a":"Müsst",
+                    "1":"Darf",
+                    "2":"Sollen",
+                    "3":"Mögt",
+                    "aa":"müssen"
+                },
+                {
+                    "q":"Sie (PI.) müssen den Brief schicken.",
+                    "a":"müssen",
+                    "1":"mögen",
+                    "2":"kann",
+                    "3":"darfst",
+                    "aa":"müssen"
+                },
+                {
+                    "q":"Die Schüler müssen die Hausaufgaben machen.",
+                    "a":"müssen",
+                    "1":"darf",
+                    "2":"sollst",
+                    "3":"könnt",
+                    "aa":"müssen"
+                },
+                {
+                    "q":"Meine Eltern müssen viel arbeiten.",
+                    "a":"müssen",
+                    "1":"kann",
+                    "2":"dürfen",
+                    "3":"soll",
+                    "aa":"müssen"
+                },
+                {
+                    "q":"Inge kann gut Gitarre spielen.",
+                    "a":"kann",
+                    "1":"darfst",
+                    "2":"sollt",
+                    "3":"möchten",
+                    "aa":"können"
+                },
+                {
+                    "q":"Kann ich das Fenster öffnen?",
+                    "a":"Kann",
+                    "1":"Müssen",
+                    "2":"Darfst",
+                    "3":"Sollst",
+                    "aa":"können"
+                },
+                {
+                    "q":"Kannst du schon Deutsch sprechen?",
+                    "a":"Kannst",
+                    "1":"Darf",
+                    "2":"Müssen",
+                    "3":"Soll",
+                    "aa":"können"
+                },
+                {
+                    "q":"Wir können dich morgen besuchen.",
+                    "a":"können",
+                    "1":"soll",
+                    "2":"mögt",
+                    "3":"wollt",
+                    "aa":"können"
+                },
+                {
+                    "q":"Könnt ihr schon lesen?",
+                    "a":"Könnt",
+                    "1":"Wollen",
+                    "2":"Soll",
+                    "3":"Mag",
+                    "aa":"können"
+                },
+                {
+                    "q":"Eryk kann sehr gut schwimmen.",
+                    "a":"kann",
+                    "1":"sollen",
+                    "2":"darf",
+                    "3":"willst",
+                    "aa":"können"
+                },
+                {
+                    "q":"Er kann gut Handball spielen.",
+                    "a":"kann",
+                    "1":"mögen",
+                    "2":"müssen",
+                    "3":"sollt",
+                    "aa":"können"
+                },
+                {
+                    "q":"Sie (PI.) können schnell sprechen.",
+                    "a":"können",
+                    "1":"wollt",
+                    "2":"musst",
+                    "3":"darf",
+                    "aa":"können"
+                },
+                {
+                    "q":"Ich will heute in den ZOO gehen.",
+                    "a":"will",
+                    "1":"dürft",
+                    "2":"müssen",
+                    "3":"könnt",
+                    "aa":"wollen"
+                },
+                {
+                    "q":"Willt ihr mitkommen?",
+                    "a":"Willt",
+                    "1":"Können",
+                    "2":"Sollen",
+                    "3":"Muss",
+                    "aa":"wollen"
+                },
+                {
+                    "q":"Wollen Sie mir helfen, Herr Schreiber?",
+                    "a":"Wollen",
+                    "1":"Mag",
+                    "2":"Darfst",
+                    "3":"Könnt",
+                    "aa":"wollen"
+                },
+                {
+                    "q":"Was willst du hier?",
+                    "a":"willst",
+                    "1":"sollst",
+                    "2":"möchten",
+                    "3":"kann",
+                    "aa":"wollen"
+                },
+                {
+                    "q":"Hans, was willst du machen?",
+                    "a":"willst",
+                    "1":"müssen",
+                    "2":"könnt",
+                    "3":"möchte",
+                    "aa":"wollen"
+                },
+                {
+                    "q":"Ich will Fußball spielen.",
+                    "a":"will",
+                    "1":"dürfen",
+                    "2":"könnt",
+                    "3":"magst",
+                    "aa":"wollen"
+                },
+                {
+                    "q":"Meine Eltern wollen ins Theater gehen.",
+                    "a":"wollen",
+                    "1":"könnt",
+                    "2":"darf",
+                    "3":"soll",
+                    "aa":"wollen"
+                },
+                {
+                    "q":"Wir wollen nach Hause gehen.",
+                    "a":"wollen",
+                    "1":"mögen",
+                    "2":"soll",
+                    "3":"dürft",
+                    "aa":"wollen"
+                },
+                {
+                    "q":"Das Kind darf kein Eis essen.",
+                    "a":"darf",
+                    "1":"kanst",
+                    "2":"wollen",
+                    "3":"möchten",
+                    "aa":"dürfen"
+                },
+                {
+                    "q":"Darf ich ins Kino gehen?",
+                    "a":"Darf",
+                    "1":"Sollst",
+                    "2":"Können",
+                    "3":"Magst",
+                    "aa":"dürfen"
+                },
+                {
+                    "q":"Du darfst heute nicht fernsehen.",
+                    "a":"darfst",
+                    "1":"sollen",
+                    "2":"wollt",
+                    "3":"möchte",
+                    "aa":"dürfen"
+                },
+                {
+                    "q":"Wir dürfen kein Auto fahren.",
+                    "a":"dürfen",
+                    "1":"sollen",
+                    "2":"mag",
+                    "3":"willst",
+                    "aa":"dürfen"
+                },
+                {
+                    "q":"Tobias darf seine Schwester besuchen.",
+                    "a":"darf",
+                    "1":"möchte",
+                    "2":"willst",
+                    "3":"sollst",
+                    "aa":"dürfen"
+                },
+                {
+                    "q":"Die Kinder dürfen keinen Kaffee trinken.",
+                    "a":"dürfen",
+                    "1":"können",
+                    "2":"magst",
+                    "3":"sollen",
+                    "aa":"dürfen"
+                },
+                {
+                    "q":"Hier darf man nicht parken.",
+                    "a":"darf",
+                    "1":"möchten",
+                    "2":"müsst",
+                    "3":"sollst",
+                    "aa":"dürfen"
+                },
+                {
+                    "q":"Dürft ihr mich heute besuchen?",
+                    "a":"Dürft",
+                    "1":"Möchte",
+                    "2":"Wollen",
+                    "3":"Können",
+                    "aa":"dürfen"
+                },
+                {
+                    "q":"Das Mädchen mag keine Schokolade.",
+                    "a":"mag",
+                    "1":"sollst",
+                    "2":"möchtet",
+                    "3":"willst",
+                    "aa":"mögen"
+                },
+                {
+                    "q":"Mögt ihr Obstkuchen?",
+                    "a":"Mögt",
+                    "1":"Sollst",
+                    "2":"Kann",
+                    "3":"Müssen",
+                    "aa":"mögen"
+                },
+                {
+                    "q":"Die Schüler mögen die Schule nicht.",
+                    "a":"mögen",
+                    "1":"sollen",
+                    "2":"kannst",
+                    "3":"will",
+                    "aa":"mögen"
+                },
+                {
+                    "q":"Wer mag Tomatensuppe?",
+                    "a":"mag",
+                    "1":"willst",
+                    "2":"sollen",
+                    "3":"müsst",
+                    "aa":"mögen"
+                },
+                {
+                    "q":"Magst du einen Kaffee?",
+                    "a":"Magst",
+                    "1":"Will",
+                    "2":"Sollen",
+                    "3":"Dürfen",
+                    "aa":"mögen"
+                },
+                {
+                    "q":"Sie (PI.) mögen keine Krimifilme.",
+                    "a":"mögen",
+                    "1":"soll",
+                    "2":"könnt",
+                    "3":"müsst",
+                    "aa":"mögen"
+                },
+                {
+                    "q":"Er mag Käsekuchen.",
+                    "a":"mag",
+                    "1":"sollst",
+                    "2":"können",
+                    "3":"müsst",
+                    "aa":"mögen"
+                },
+                {
+                    "q":"Magst du Cola?",
+                    "a":"Magst",
+                    "1":"Sollt",
+                    "2":"Möchten",
+                    "3":"Darf",
+                    "aa":"mögen"
+                }
+            ],
+            "Doplňte způsobové sloveso ve správném tvaru."
+        ],
+        "Präteritum":[4,
+            [
+                {
+                    "q":"Man _____ schöne Weihnachtslieder.",
+                    "a":"sang",
+                    "1":"hielt",
+                    "2":"backte",
+                    "3":"lieh",
+                    "aa":"singen"
+                },
+                {
+                    "q":"Meine Freundin _____ mir von ihrer Familie.",
+                    "a":"erzählte",
+                    "1":"hieß",
+                    "2":"roch",
+                    "3":"schrie",
+                    "aa":"erzählen"
+                },
+                {
+                    "q":"Ich _____ mit der richtigen Straßenbahn, aber ich stieg zu spät aus.",
+                    "a":"fuhr",
+                    "1":"trat",
+                    "2":"sah",
+                    "3":"ging",
+                    "aa":"fahren"
+                },
+                {
+                    "q":"Noch vor einer Weile _____ die Vase auf dem Tisch.",
+                    "a":"stand",
+                    "1":"saß",
+                    "2":"las",
+                    "3":"griff",
+                    "aa":"stehen"
+                },
+                {
+                    "q":"Ich dachte, er _____ schon. Er war doch sehr alt.",
+                    "a":"starb",
+                    "1":"griff",
+                    "2":"fror",
+                    "3":"schlug",
+                    "aa":"sterben"
+                },
+                {
+                    "q":"Der Herr _____ zwölf Glas Bier. Dann wollte er nicht zahlen.",
+                    "a":"bestellte",
+                    "1":"floss",
+                    "2":"goss",
+                    "3":"kam",
+                    "aa":"bestellen"
+                },
+                {
+                    "q":"Ulrike _____ mich mit ihrem Wagen ins Zentrum.",
+                    "a":"brachte",
+                    "1":"kroch",
+                    "2":"lief",
+                    "3":"nahm",
+                    "aa":"bringen"
+                },
+                {
+                    "q":"Der Vater _____ die Tochter vom Kindergarten ab.",
+                    "a":"holte",
+                    "1":"legte",
+                    "2":"bog",
+                    "3":"arbeitete",
+                    "aa":"abholen"
+                },
+                {
+                    "q":"Ich _____ dich an, wo warst du?",
+                    "a":"rief",
+                    "1":"nahm",
+                    "2":"bot",
+                    "3":"band",
+                    "aa":"anrufen"
+                },
+                {
+                    "q":"Das Fernsehen _____ über das Unglück.",
+                    "a":"berichtete",
+                    "1":"empfahl",
+                    "2":"aß",
+                    "3":"gab",
+                    "aa":"berichten"
+                },
+                {
+                    "q":"Wir _____ uns nie für Fußball.",
+                    "a":"interessierten",
+                    "1":"sahen",
+                    "2":"langweilten",
+                    "3":"trafen",
+                    "aa":"interessieren"
+                },
+                {
+                    "q":"Ihr _____ alle unsere Vorschläge an, weil sie gut waren.",
+                    "a":"nahmt",
+                    "1":"bot",
+                    "2":"rief",
+                    "3":"band",
+                    "aa":"annehmen"
+                },
+                {
+                    "q":"Es _____ nach Feuer. Später erfuhren wir, dass die Fabrik brannte.",
+                    "a":"stank",
+                    "1":"lieh",
+                    "2":"schlug",
+                    "3":"drang",
+                    "aa":"stinken"
+                },
+                {
+                    "q":"Gerda _____ ihm viele Briefe, aber sie erhielt nie eine Antwort.",
+                    "a":"schrieb",
+                    "1":"nahm",
+                    "2":"begann",
+                    "3":"sang",
+                    "aa":"schreiben"
+                },
+                {
+                    "q":"Wir _____ im Unterricht, weil wir uns gründlich auf das Thema vorbereiteten.",
+                    "a":"glänzten",
+                    "1":"brannten",
+                    "2":"starben",
+                    "3":"tranken",
+                    "aa":"glänzen"
+                },
+                {
+                    "q":"Kein Mensch weiß, wo die Insel Atlantis _____.",
+                    "a":"lag",
+                    "1":"sprang",
+                    "2":"stank",
+                    "3":"grub",
+                    "aa":"liegen"
+                },
+                {
+                    "q":"Sie _____ sich ein Auto und besuchten ihre Großmutter.",
+                    "a":"liehen",
+                    "1":"klang",
+                    "2":"gelang",
+                    "3":"biss",
+                    "aa":"leihen"
+                },
+                {
+                    "q":"Robert _____ sich mit der Suppe viel Mühe, aber niemand aß sie.",
+                    "a":"gab",
+                    "1":"lud",
+                    "2":"begann",
+                    "3":"schuf",
+                    "aa":"geben"
+                },
+                {
+                    "q":"Ihr _____ zu früh, weil ihr das Ende nicht abwartetet.",
+                    "a":"feiertet",
+                    "1":"halft",
+                    "2":"gosst",
+                    "3":"hießt",
+                    "aa":"feiern"
+                },
+                {
+                    "q":"Er _____ bei der Firma und genoss sein Leben.",
+                    "a":"kündigte",
+                    "1":"aß",
+                    "2":"log",
+                    "3":"stank",
+                    "aa":"kündigen"
+                },
+                {
+                    "q":"Du _____ die Prüfung nicht ab, oder?",
+                    "a":"legtest",
+                    "1":"verlor",
+                    "2":"bog",
+                    "3":"warf",
+                    "aa":"ablegen"
+                },
+                {
+                    "q":"Sein Kopf _____ ihm weh, aber er nahm keine Tablette.",
+                    "a":"tat",
+                    "1":"schied",
+                    "2":"schlug",
+                    "3":"blieb",
+                    "aa":"wehtun"
+                },
+                {
+                    "q":"Ich _____ nicht, warum du dich die ganze Nacht mit ihm strittest.",
+                    "a":"begriff",
+                    "1":"sprach",
+                    "2":"schloss",
+                    "3":"hieß",
+                    "aa":"begreifen"
+                },
+                {
+                    "q":"Wir _____ unsere Hausschlüssel.",
+                    "a":"suchten",
+                    "1":"maßen",
+                    "2":"baten",
+                    "3":"schlugen",
+                    "aa":"suchen"
+                },
+                {
+                    "q":"Die Wäsche _____ in der Sonne.",
+                    "a":"trocknete",
+                    "1":"genoss",
+                    "2":"geschah",
+                    "3":"hing",
+                    "aa":"trocknen"
+                },
+                {
+                    "q":"So schlimm war es nicht. Ich _____ ein bisschen.",
+                    "a":"übertrieb",
+                    "1":"glitte",
+                    "2":"sang",
+                    "3":"zwang",
+                    "aa":"übertreiben"
+                },
+                {
+                    "q":"Hoffentlich _____ du schon deine Fehler.",
+                    "a":"verbessertest",
+                    "1":"stahlst",
+                    "2":"wogst",
+                    "3":"tatest",
+                    "aa":"verbessern"
+                },
+                {
+                    "q":"Helmut _____ sich wieder in die Falsche.",
+                    "a":"verliebte",
+                    "1":"rannte",
+                    "2":"schrie",
+                    "3":"wies",
+                    "aa":"verlieben"
+                },
+                {
+                    "q":"Wir _____ uns auf der Party.",
+                    "a":"langweilten",
+                    "1":"wog",
+                    "2":"goss",
+                    "3":"flog",
+                    "aa":"langweilen"
+                },
+                {
+                    "q":"Sie _____ viele Gäste ein, aber nur wenige fanden sich ein.",
+                    "a":"luden",
+                    "1":"stieg",
+                    "2":"roch",
+                    "3":"schlief",
+                    "aa":"einladen"
+                }
+                
+            ],
+            "Doplňte slovesa v präteritu."
+        ],
+        "Slovesná rekce":[4,
+            [
+                {
+                    "q":"Viele Leute interessieren sich _____ Musik.",
+                    "a":"für",
+                    "1":"mit",
+                    "2":"zu",
+                    "3":"von",
+                    "aa":""
+                },
+                {
+                    "q":"Der Unterricht beginnt heute _____ einem Test, leider!",
+                    "a":"mit",
+                    "1":"für",
+                    "2":"zu",
+                    "3":"von",
+                    "aa":""
+                },
+                {
+                    "q":"Die Kinder sprechen _____ dem Lehrer.",
+                    "a":"mit",
+                    "1":"für",
+                    "2":"zu",
+                    "3":"von",
+                    "aa":""
+                },
+                {
+                    "q":"Sie danken ihm _____ den Ausflug.",
+                    "a":"für",
+                    "1":"mit",
+                    "2":"von",
+                    "3":"zu",
+                    "aa":""
+                },
+                {
+                    "q":"Alle meine Freunde gratulieren mir _____ dem Geburtstag.",
+                    "a":"zu",
+                    "1":"mit",
+                    "2":"für",
+                    "3":"von",
+                    "aa":""
+                },
+                {
+                    "q":"Ich telefoniere jeden Tag _____ meiner Freundin.",
+                    "a":"mit",
+                    "1":"für",
+                    "2":"zu",
+                    "3":"von",
+                    "aa":""
+                },
+                {
+                    "q":"_____ Mathe brauche ich morgen ein Lineal.",
+                    "a":"Für",
+                    "1":"Mit",
+                    "2":"Von",
+                    "3":"Zu",
+                    "aa":""
+                },
+                {
+                    "q":"Er erzählte mir _____ der Party.",
+                    "a":"von",
+                    "1":"für",
+                    "2":"mit",
+                    "3":"zu",
+                    "aa":""
+                },
+                {
+                    "q":"Wir treffen uns _____ der Clique um fünf Uhr.",
+                    "a":"mit",
+                    "1":"für",
+                    "2":"von",
+                    "3":"zu",
+                    "aa":""
+                },
+                {
+                    "q":"Der Hund spielt _____ dem Ball.",
+                    "a":"mit",
+                    "1":"von",
+                    "2":"zu",
+                    "3":"für",
+                    "aa":""
+                },
+                {
+                    "q":"_____ wem telefonierst du denn so lange?",
+                    "a":"Mit",
+                    "1":"Für",
+                    "2":"Zu",
+                    "3":"Von",
+                    "aa":""
+                },
+                {
+                    "q":"Interessiert sich Stefan immer noch _____ Briefmarken?",
+                    "a":"für",
+                    "1":"mit",
+                    "2":"zu",
+                    "3":"von",
+                    "aa":""
+                },
+                {
+                    "q":"_____ wem spricht denn Vater so lange am Telefon?",
+                    "a":"Mit",
+                    "1":"Von",
+                    "2":"Zu",
+                    "3":"Von",
+                    "aa":""
+                },
+                {
+                    "q":"Spielst du _____ mir Monopoly?",
+                    "a":"mit",
+                    "1":"von",
+                    "2":"zu",
+                    "3":"für",
+                    "aa":""
+                },
+                {
+                    "q":"_____ wem hast du dich gestern vor dem Kino getroffen?",
+                    "a":"Mit",
+                    "1":"Für",
+                    "2":"Zu",
+                    "3":"Von",
+                    "aa":""
+                },
+                {
+                    "q":"Peter dankt seinem Opa _____ das neue Handy.",
+                    "a":"für",
+                    "1":"von",
+                    "2":"zu",
+                    "3":"mit",
+                    "aa":""
+                },
+                {
+                    "q":"Erst gestern erzählte sie mir _____ ihrem Unfall.",
+                    "a":"von",
+                    "1":"für",
+                    "2":"zu",
+                    "3":"mit",
+                    "aa":""
+                },
+                {
+                    "q":"Dieser Rock passt nicht _____ meiner Bluse.",
+                    "a":"zu",
+                    "1":"für",
+                    "2":"von",
+                    "3":"mit",
+                    "aa":""
+                },
+                {
+                    "q":"Bist du _____ dieser Lösung zufreiden.",
+                    "a":"mit",
+                    "1":"für",
+                    "2":"zu",
+                    "3":"von",
+                    "aa":""
+                },
+                {
+                    "q":"Er hat sie _____ einem Geschenk überrascht.",
+                    "a":"mit",
+                    "1":"für",
+                    "2":"zu",
+                    "3":"von",
+                    "aa":""
+                }
+            ],
+            "Doplňte vhodnou vazbu ke slovesu."
         ]
     },
     "Předložky":
