@@ -1791,6 +1791,314 @@
                 }
             ],
             "Doplňte vhodnou vazbu ke slovesu."
+        ],
+        "Skloňování přídavných jmen I.":[4,
+            [
+                {
+                    "q":"Ich möchte in einem _____ Haus wohnen. Dieses Haus ist aber nicht besonders hell.",
+                    "a":"hellen",
+                    "1":"helle",
+                    "2":"helles",
+                    "3":"heller",
+                    "aa":"hell"
+                },
+                {
+                    "q":"Ich besuche jeden Tag eine _____ Dame. Diese Frau ist sehr nett.",
+                    "a":"alte",
+                    "1":"alten",
+                    "2":"alter",
+                    "3":"altes",
+                    "aa":"alt"
+                },
+                {
+                    "q":"Unsere Kaffeemaschine ist kaputt. Du musst eine _____ kaufen.",
+                    "a":"neue",
+                    "1":"neuen",
+                    "2":"neuer",
+                    "3":"neues",
+                    "aa":"neu"
+                },
+                {
+                    "q":"Die neue Kollegin ist schlank. Mir gefallen _____ Mädchen.",
+                    "a":"schlanke",
+                    "1":"schlanken",
+                    "2":"schlankes",
+                    "3":"schlanker",
+                    "aa":"schlank"
+                },
+                {
+                    "q":"Der alte Mann ist hässlich, aber reich. Viele Frauen mögen _____ Männer.",
+                    "a":"reiche",
+                    "1":"reichen",
+                    "2":"reiches",
+                    "3":"reicher",
+                    "aa":"reich"
+                },
+                {
+                    "q":"Dieser Apfel ist faul. Wir essen nur _____ Obst.",
+                    "a":"frisches",
+                    "1":"frischen",
+                    "2":"frische",
+                    "3":"frischer",
+                    "aa":"frisch"
+                },
+                {
+                    "q":"Hier gibt es _____ Uhren, aber du willst eine teure.",
+                    "a":"billige",
+                    "1":"billigen",
+                    "2":"billiger",
+                    "3":"billiges",
+                    "aa":"billig"
+                },
+                {
+                    "q":"Karlheinz hat eine _____ Freundin. Sie ist ganz süß.",
+                    "a":"neue",
+                    "1":"neuen",
+                    "2":"neuer",
+                    "3":"neues",
+                    "aa":"neu"
+                },
+                {
+                    "q":"Mathias ist müde. Er braucht einen _____ Kaffee.",
+                    "a":"starken",
+                    "1":"starkes",
+                    "2":"starker",
+                    "3":"starke",
+                    "aa":"stark"
+                },
+                {
+                    "q":"Starken Kaffee ist gut für _____ Männer.",
+                    "a":"müde",
+                    "1":"müden",
+                    "2":"müder",
+                    "3":"müdes",
+                    "aa":"müde"
+                },
+                {
+                    "q":"Ergänze die richtigen Endungen! Du machst sonst einen _____ Fehler.",
+                    "a":"schweren",
+                    "1":"schweres",
+                    "2":"schwere",
+                    "3":"schwerer",
+                    "aa":"schwer"
+                },
+                {
+                    "q":"Der Clown ist lustig. Kinder _____ lustige Clowns im Zirkus.",
+                    "a":"lieben",
+                    "1":"liebe",
+                    "2":"lieber",
+                    "3":"liebes",
+                    "aa":"lieb"
+                },
+                {
+                    "q":"Diese Tasse ist schmutzig. Bringen Sie mir bitte eine _____.",
+                    "a":"saubere",
+                    "1":"sauberen",
+                    "2":"sauberes",
+                    "3":"sauberer",
+                    "aa":"sauber"
+                },
+                {
+                    "q":"Bei diesem _____ Wetter fühle ich mich nicht gut.",
+                    "a":"schlechten",
+                    "1":"schlechte",
+                    "2":"schlechter",
+                    "3":"schlechtes",
+                    "aa":"schlecht"
+                },
+                {
+                    "q":"Deine Brille ist rosarot. Du siehst alles durch eine _____ Brille.",
+                    "a":"rosarote",
+                    "1":"rosaroten",
+                    "2":"rosarotes",
+                    "3":"rosaroter",
+                    "aa":"rosarot"
+                },
+                {
+                    "q":"Er spricht englisch, aber er mag die _____ Küche nicht.",
+                    "a":"englische",
+                    "1":"englischen",
+                    "2":"englischer",
+                    "3":"englisches",
+                    "aa":"englisch"
+                },
+                {
+                    "q":"Dieser Ball ist rund, aber Rugby spielt man mit einem _____ Ball.",
+                    "a":"ovalen",
+                    "1":"ovale",
+                    "2":"ovales",
+                    "3":"ovaler",
+                    "aa":"oval"
+                },
+                {
+                    "q":"Die Lieder der _____ englischen Gruppe „Beatles“ singt man noch heute. Andere englische Gruppen sind nicht so berühmt.",
+                    "a":"berühmten",
+                    "1":"berühmte",
+                    "2":"berühmtes",
+                    "3":"berühmter",
+                    "aa":"berühmt"
+                },
+                {
+                    "q":"Die Waren der _____ Kaufhäuser sind teuer. Billig Waren gibt es nur selten.",
+                    "a":"großen",
+                    "1":"große",
+                    "2":"großer",
+                    "3":"großes",
+                    "aa":"groß"
+                },
+                {
+                    "q":"Unser _____ Geld ist weg.",
+                    "a":"ganzes",
+                    "1":"ganze",
+                    "2":"ganzer",
+                    "3":"ganzen",
+                    "aa":"ganz"
+                },
+                {
+                    "q":"In diesem Stadtviertel gibt es keine _____ Familienhäuser.",
+                    "a":"modernen",
+                    "1":"moderne",
+                    "2":"moderner",
+                    "3":"modernes",
+                    "aa":"modern"
+                },
+                {
+                    "q":"Er wohnt schon lange bei seiner _____ Großmutter.",
+                    "a":"alten",
+                    "1":"alte",
+                    "2":"altes",
+                    "3":"alter",
+                    "aa":"alt"
+                },
+                {
+                    "q":"Ihr müsst euer _____ Sofa gleich bezahlen.",
+                    "a":"neues",
+                    "1":"neue",
+                    "2":"neuer",
+                    "3":"neuen",
+                    "aa":"neu"
+                },
+                {
+                    "q":"Kannst du mir mit meinen _____ Koffern helfen?",
+                    "a":"schweren",
+                    "1":"schwere",
+                    "2":"schwerer",
+                    "3":"schweres",
+                    "aa":"schwer"
+                },
+                {
+                    "q":"Zieh doch eines deiner _____ T-Shirts an!",
+                    "a":"weißen",
+                    "1":"weiße",
+                    "2":"weißer",
+                    "3":"weißes",
+                    "aa":"weiß"
+                },
+                {
+                    "q":"Darf ich mein Auto in Ihre _____ Garage fahren?",
+                    "a":"leere",
+                    "1":"leeren",
+                    "2":"leeres",
+                    "3":"leerer",
+                    "aa":"leer"
+                },
+                {
+                    "q":"Zu ihren _____ Ideen will ich nichts sagen.",
+                    "a":"verrückten",
+                    "1":"verrückte",
+                    "2":"verrückter",
+                    "3":"verrücktes",
+                    "aa":"verrückt"
+                },
+                {
+                    "q":"Ralf geht mit seiner _____ Freundin zum Abiturball.",
+                    "a":"attraktiven",
+                    "1":"attraktive",
+                    "2":"attraktives",
+                    "3":"attraktiver",
+                    "aa":"attraktiv"
+                },
+                {
+                    "q":"In ihrem _____ Appartement gibt es nur wenige Möbel.",
+                    "a":"kleinen",
+                    "1":"kleine",
+                    "2":"kleines",
+                    "3":"kleiner",
+                    "aa":"klein"
+                },
+                {
+                    "q":"Das Goldene Gässchen in Prag ist wirklich keine _____ Straße.",
+                    "a":"breite",
+                    "1":"breiten",
+                    "2":"breites",
+                    "3":"breiter",
+                    "aa":"breit"
+                },
+                {
+                    "q":"Die Reinigung meines _____ Anzugs ist teuer.",
+                    "a":"dunklen",
+                    "1":"dunkle",
+                    "2":"dunkler",
+                    "3":"dunkles",
+                    "aa":"dunkle"
+                },
+                {
+                    "q":"Wir sind mit keinem unserer _____ Lehrer zufrieden.",
+                    "a":"ausländischen",
+                    "1":"ausländische",
+                    "2":"ausländischer",
+                    "3":"ausländisches",
+                    "aa":"ausländisch"
+                },
+                {
+                    "q":"Sie lädt ihre _____ Freunde zum Essen ein.",
+                    "a":"französischen",
+                    "1":"französische",
+                    "2":"französisches",
+                    "3":"französischer",
+                    "aa":"französisch"
+                },
+                {
+                    "q":"In diesem Restaurant gibt es keinen _____ Platz mehr.",
+                    "a":"freien",
+                    "1":"freies",
+                    "2":"freier",
+                    "3":"freie",
+                    "aa":"frei"
+                },
+                {
+                    "q":"Alle Leute mögen seinen _____ Humor.",
+                    "a":"schwarzen",
+                    "1":"schwarzer",
+                    "2":"schwarze",
+                    "3":"schwarzes",
+                    "aa":"schwarz"
+                },
+                {
+                    "q":"England ist für sein _____ und feuchtes Klima bekannt.",
+                    "a":"kühles",
+                    "1":"kühle",
+                    "2":"kühler",
+                    "3":"kühlen",
+                    "aa":"kühl"
+                },
+                {
+                    "q":"Meine _____ Witze versteht niemand.",
+                    "a":"guten",
+                    "1":"gute",
+                    "2":"guter",
+                    "3":"gutes",
+                    "aa":"gut"
+                },
+                {
+                    "q":"Jetzt habe ich keine _____ Lust mehr.",
+                    "a":"große",
+                    "1":"großes",
+                    "2":"großer",
+                    "3":"großen",
+                    "aa":"groß"
+                }
+            ],"Doplňte vhodnou koncovku."
         ]
     },
     "Předložky":
