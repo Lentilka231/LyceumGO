@@ -995,7 +995,7 @@
         "Způsobová slovesa":[4,
             [
                 {
-                    "q":"Was soll ich nach dem Mittagessen tun, Mutter?",
+                    "q":"Was _____ ich nach dem Mittagessen tun, Mutter?",
                     "a":"soll",
                     "1":"dürfen",
                     "2":"will",
@@ -1003,7 +1003,7 @@
                     "aa":"sollen"
                 },
                 {
-                    "q":"Du sollst Einkäufe machen.",
+                    "q":"Du _____ Einkäufe machen.",
                     "a":"sollst",
                     "1":"darfst",
                     "2":"wollen",
@@ -1011,7 +1011,7 @@
                     "aa":"sollen"
                 },
                 {
-                    "q":"Ihr sollt immer pünktlich sein!",
+                    "q":"Ihr _____ immer pünktlich sein!",
                     "a":"sollt",
                     "1":"müssen",
                     "2":"dürft",
@@ -1019,7 +1019,7 @@
                     "aa":"sollen"
                 },
                 {
-                    "q":"Er soll keinen Kaffee trinken.",
+                    "q":"Er _____ keinen Kaffee trinken.",
                     "a":"soll",
                     "1":"darfst",
                     "2":"kannst",
@@ -1027,7 +1027,7 @@
                     "aa":"sollen"
                 },
                 {
-                    "q":"Die Schüler sollen Mathe lernen.",
+                    "q":"Die Schüler _____ Mathe lernen.",
                     "a":"sollen",
                     "1":"müsst",
                     "2":"mögen",
@@ -1035,7 +1035,7 @@
                     "aa":"sollen"
                 },
                 {
-                    "q":"Frau Schulz soll zur Post gehen.",
+                    "q":"Frau Schulz _____ zur Post gehen.",
                     "a":"soll",
                     "1":"darfst",
                     "2":"müssen",
@@ -1043,7 +1043,7 @@
                     "aa":"sollen"
                 },
                 {
-                    "q":"Die Kinder sollen viel Milch trinken.",
+                    "q":"Die Kinder _____ viel Milch trinken.",
                     "a":"sollen",
                     "1":"könnt",
                     "2":"möchtet",
@@ -1051,7 +1051,7 @@
                     "aa":"sollen"
                 },
                 {
-                    "q":"Wir sollen am Nachmittag das Zimmer aufräumen.",
+                    "q":"Wir _____ am Nachmittag das Zimmer aufräumen.",
                     "a":"sollen",
                     "1":"möchte",
                     "2":"muss",
@@ -1059,7 +1059,7 @@
                     "aa":"sollen"
                 },
                 {
-                    "q":"Musst du in der Nacht arbeiten?",
+                    "q":"_____ du in der Nacht arbeiten?",
                     "a":"Musst",
                     "1":"Darf",
                     "2":"Können",
@@ -1067,7 +1067,7 @@
                     "aa":"müssen"
                 },
                 {
-                    "q":"Ich muss morgen in die Schule gehen.",
+                    "q":"Ich _____ morgen in die Schule gehen.",
                     "a":"muss",
                     "1":"darfst",
                     "2":"sollen",
@@ -1075,7 +1075,7 @@
                     "aa":"müssen"
                 },
                 {
-                    "q":"Wir müssen heute Nachmittag dem Vater helfen.",
+                    "q":"Wir _____ heute Nachmittag dem Vater helfen.",
                     "a":"müssen",
                     "1":"darf",
                     "2":"könnt",
@@ -1083,7 +1083,7 @@
                     "aa":"müssen"
                 },
                 {
-                    "q":"Das Kind muss zum Arzt gehen.",
+                    "q":"Das Kind _____ zum Arzt gehen.",
                     "a":"muss",
                     "1":"darfst",
                     "2":"sollt",
@@ -1091,7 +1091,7 @@
                     "aa":"müssen"
                 },
                 {
-                    "q":"Müsst ihr dem Opa im Garten helfen?",
+                    "q":"_____ ihr dem Opa im Garten helfen?",
                     "a":"Müsst",
                     "1":"Darf",
                     "2":"Sollen",
@@ -1099,7 +1099,7 @@
                     "aa":"müssen"
                 },
                 {
-                    "q":"Sie (PI.) müssen den Brief schicken.",
+                    "q":"Sie (PI.) _____ den Brief schicken.",
                     "a":"müssen",
                     "1":"mögen",
                     "2":"kann",
@@ -1107,7 +1107,7 @@
                     "aa":"müssen"
                 },
                 {
-                    "q":"Die Schüler müssen die Hausaufgaben machen.",
+                    "q":"Die Schüler _____ die Hausaufgaben machen.",
                     "a":"müssen",
                     "1":"darf",
                     "2":"sollst",
@@ -1115,7 +1115,7 @@
                     "aa":"müssen"
                 },
                 {
-                    "q":"Meine Eltern müssen viel arbeiten.",
+                    "q":"Meine Eltern _____ viel arbeiten.",
                     "a":"müssen",
                     "1":"kann",
                     "2":"dürfen",
@@ -1123,7 +1123,7 @@
                     "aa":"müssen"
                 },
                 {
-                    "q":"Inge kann gut Gitarre spielen.",
+                    "q":"Inge _____ gut Gitarre spielen.",
                     "a":"kann",
                     "1":"darfst",
                     "2":"sollt",
@@ -1131,7 +1131,7 @@
                     "aa":"können"
                 },
                 {
-                    "q":"Kann ich das Fenster öffnen?",
+                    "q":"_____ ich das Fenster öffnen?",
                     "a":"Kann",
                     "1":"Müssen",
                     "2":"Darfst",
@@ -1139,7 +1139,7 @@
                     "aa":"können"
                 },
                 {
-                    "q":"Kannst du schon Deutsch sprechen?",
+                    "q":"_____ du schon Deutsch sprechen?",
                     "a":"Kannst",
                     "1":"Darf",
                     "2":"Müssen",
@@ -1147,7 +1147,7 @@
                     "aa":"können"
                 },
                 {
-                    "q":"Wir können dich morgen besuchen.",
+                    "q":"Wir _____ dich morgen besuchen.",
                     "a":"können",
                     "1":"soll",
                     "2":"mögt",
@@ -1155,7 +1155,7 @@
                     "aa":"können"
                 },
                 {
-                    "q":"Könnt ihr schon lesen?",
+                    "q":"_____ ihr schon lesen?",
                     "a":"Könnt",
                     "1":"Wollen",
                     "2":"Soll",
@@ -1163,7 +1163,7 @@
                     "aa":"können"
                 },
                 {
-                    "q":"Eryk kann sehr gut schwimmen.",
+                    "q":"Eryk _____ sehr gut schwimmen.",
                     "a":"kann",
                     "1":"sollen",
                     "2":"darf",
@@ -1171,7 +1171,7 @@
                     "aa":"können"
                 },
                 {
-                    "q":"Er kann gut Handball spielen.",
+                    "q":"Er _____ gut Handball spielen.",
                     "a":"kann",
                     "1":"mögen",
                     "2":"müssen",
@@ -1179,7 +1179,7 @@
                     "aa":"können"
                 },
                 {
-                    "q":"Sie (PI.) können schnell sprechen.",
+                    "q":"Sie (PI.) _____ schnell sprechen.",
                     "a":"können",
                     "1":"wollt",
                     "2":"musst",
@@ -1187,7 +1187,7 @@
                     "aa":"können"
                 },
                 {
-                    "q":"Ich will heute in den ZOO gehen.",
+                    "q":"Ich _____ heute in den ZOO gehen.",
                     "a":"will",
                     "1":"dürft",
                     "2":"müssen",
@@ -1195,7 +1195,7 @@
                     "aa":"wollen"
                 },
                 {
-                    "q":"Willt ihr mitkommen?",
+                    "q":"_____ ihr mitkommen?",
                     "a":"Willt",
                     "1":"Können",
                     "2":"Sollen",
@@ -1203,7 +1203,7 @@
                     "aa":"wollen"
                 },
                 {
-                    "q":"Wollen Sie mir helfen, Herr Schreiber?",
+                    "q":"_____ Sie mir helfen, Herr Schreiber?",
                     "a":"Wollen",
                     "1":"Mag",
                     "2":"Darfst",
@@ -1211,7 +1211,7 @@
                     "aa":"wollen"
                 },
                 {
-                    "q":"Was willst du hier?",
+                    "q":"Was _____ du hier?",
                     "a":"willst",
                     "1":"sollst",
                     "2":"möchten",
@@ -1219,7 +1219,7 @@
                     "aa":"wollen"
                 },
                 {
-                    "q":"Hans, was willst du machen?",
+                    "q":"Hans, was _____ du machen?",
                     "a":"willst",
                     "1":"müssen",
                     "2":"könnt",
@@ -1227,7 +1227,7 @@
                     "aa":"wollen"
                 },
                 {
-                    "q":"Ich will Fußball spielen.",
+                    "q":"Ich _____ Fußball spielen.",
                     "a":"will",
                     "1":"dürfen",
                     "2":"könnt",
@@ -1235,7 +1235,7 @@
                     "aa":"wollen"
                 },
                 {
-                    "q":"Meine Eltern wollen ins Theater gehen.",
+                    "q":"Meine Eltern _____ ins Theater gehen.",
                     "a":"wollen",
                     "1":"könnt",
                     "2":"darf",
@@ -1243,7 +1243,7 @@
                     "aa":"wollen"
                 },
                 {
-                    "q":"Wir wollen nach Hause gehen.",
+                    "q":"Wir _____ nach Hause gehen.",
                     "a":"wollen",
                     "1":"mögen",
                     "2":"soll",
@@ -1251,7 +1251,7 @@
                     "aa":"wollen"
                 },
                 {
-                    "q":"Das Kind darf kein Eis essen.",
+                    "q":"Das Kind _____ kein Eis essen.",
                     "a":"darf",
                     "1":"kanst",
                     "2":"wollen",
@@ -1259,7 +1259,7 @@
                     "aa":"dürfen"
                 },
                 {
-                    "q":"Darf ich ins Kino gehen?",
+                    "q":"_____ ich ins Kino gehen?",
                     "a":"Darf",
                     "1":"Sollst",
                     "2":"Können",
@@ -1267,7 +1267,7 @@
                     "aa":"dürfen"
                 },
                 {
-                    "q":"Du darfst heute nicht fernsehen.",
+                    "q":"Du _____ heute nicht fernsehen.",
                     "a":"darfst",
                     "1":"sollen",
                     "2":"wollt",
@@ -1275,7 +1275,7 @@
                     "aa":"dürfen"
                 },
                 {
-                    "q":"Wir dürfen kein Auto fahren.",
+                    "q":"Wir _____ kein Auto fahren.",
                     "a":"dürfen",
                     "1":"sollen",
                     "2":"mag",
@@ -1283,7 +1283,7 @@
                     "aa":"dürfen"
                 },
                 {
-                    "q":"Tobias darf seine Schwester besuchen.",
+                    "q":"Tobias _____ seine Schwester besuchen.",
                     "a":"darf",
                     "1":"möchte",
                     "2":"willst",
@@ -1291,7 +1291,7 @@
                     "aa":"dürfen"
                 },
                 {
-                    "q":"Die Kinder dürfen keinen Kaffee trinken.",
+                    "q":"Die Kinder _____ keinen Kaffee trinken.",
                     "a":"dürfen",
                     "1":"können",
                     "2":"magst",
@@ -1299,7 +1299,7 @@
                     "aa":"dürfen"
                 },
                 {
-                    "q":"Hier darf man nicht parken.",
+                    "q":"Hier _____ man nicht parken.",
                     "a":"darf",
                     "1":"möchten",
                     "2":"müsst",
@@ -1307,7 +1307,7 @@
                     "aa":"dürfen"
                 },
                 {
-                    "q":"Dürft ihr mich heute besuchen?",
+                    "q":"_____ ihr mich heute besuchen?",
                     "a":"Dürft",
                     "1":"Möchte",
                     "2":"Wollen",
@@ -1315,7 +1315,7 @@
                     "aa":"dürfen"
                 },
                 {
-                    "q":"Das Mädchen mag keine Schokolade.",
+                    "q":"Das Mädchen _____ keine Schokolade.",
                     "a":"mag",
                     "1":"sollst",
                     "2":"möchtet",
@@ -1323,7 +1323,7 @@
                     "aa":"mögen"
                 },
                 {
-                    "q":"Mögt ihr Obstkuchen?",
+                    "q":"_____ ihr Obstkuchen?",
                     "a":"Mögt",
                     "1":"Sollst",
                     "2":"Kann",
@@ -1331,7 +1331,7 @@
                     "aa":"mögen"
                 },
                 {
-                    "q":"Die Schüler mögen die Schule nicht.",
+                    "q":"Die Schüler _____ die Schule nicht.",
                     "a":"mögen",
                     "1":"sollen",
                     "2":"kannst",
@@ -1339,7 +1339,7 @@
                     "aa":"mögen"
                 },
                 {
-                    "q":"Wer mag Tomatensuppe?",
+                    "q":"Wer _____ Tomatensuppe?",
                     "a":"mag",
                     "1":"willst",
                     "2":"sollen",
@@ -1347,7 +1347,7 @@
                     "aa":"mögen"
                 },
                 {
-                    "q":"Magst du einen Kaffee?",
+                    "q":"_____ du einen Kaffee?",
                     "a":"Magst",
                     "1":"Will",
                     "2":"Sollen",
@@ -1355,7 +1355,7 @@
                     "aa":"mögen"
                 },
                 {
-                    "q":"Sie (PI.) mögen keine Krimifilme.",
+                    "q":"Sie (PI.) _____ keine Krimifilme.",
                     "a":"mögen",
                     "1":"soll",
                     "2":"könnt",
@@ -1363,7 +1363,7 @@
                     "aa":"mögen"
                 },
                 {
-                    "q":"Er mag Käsekuchen.",
+                    "q":"Er _____ Käsekuchen.",
                     "a":"mag",
                     "1":"sollst",
                     "2":"können",
@@ -1371,7 +1371,7 @@
                     "aa":"mögen"
                 },
                 {
-                    "q":"Magst du Cola?",
+                    "q":"_____ du Cola?",
                     "a":"Magst",
                     "1":"Sollt",
                     "2":"Möchten",
